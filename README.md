@@ -24,7 +24,6 @@
 ### **Languages**
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
@@ -37,14 +36,11 @@
 ### **Databases & Cloud**
 ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
-![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)
-![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
 
 ### **Tools & DevOps**
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
 
 </div>
 
@@ -71,22 +67,15 @@
 
 <div align="center">
 
-## 🏆 **GitHub Trophies**
-
-<img src="https://github-profile-trophy.vercel.app/?username=NooobtimeX&theme=tokyonight&no-frame=true&row=1&column=7" />
-
-</div>
-
----
-
-<div align="center">
-
 ## 🌟 **Featured Projects**
 
-<a href="https://github.com/NooobtimeX/project1">
+<a href="https://github.com/NooobtimeX/prettier-config-generator">
   <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=NooobtimeX&repo=project1&theme=tokyonight" />
 </a>
-<a href="https://github.com/NooobtimeX/project2">
+<a href="https://github.com/NooobtimeX/portfolio">
+  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=NooobtimeX&repo=project2&theme=tokyonight" />
+</a>
+<a href="https://github.com/NooobtimeX/meta-tag-generator">
   <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=NooobtimeX&repo=project2&theme=tokyonight" />
 </a>
 
@@ -110,9 +99,6 @@
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=google-chrome&logoColor=white)](http://nooobtimex.me/)
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/NooobtimeX)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](#)
-[![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](#)
-[![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](#)
 
 ---
 
