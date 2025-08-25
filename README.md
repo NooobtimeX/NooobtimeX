@@ -70,13 +70,13 @@
 ## 🌟 **Featured Projects**
 
 <a href="https://github.com/NooobtimeX/prettier-config-generator">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=NooobtimeX&repo=project1&theme=tokyonight" />
+  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=NooobtimeX&repo=prettier-config-generator&theme=tokyonight" />
 </a>
 <a href="https://github.com/NooobtimeX/portfolio">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=NooobtimeX&repo=project2&theme=tokyonight" />
+  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=NooobtimeX&repo=portfolio&theme=tokyonight" />
 </a>
 <a href="https://github.com/NooobtimeX/meta-tag-generator">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=NooobtimeX&repo=project2&theme=tokyonight" />
+  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=NooobtimeX&repo=meta-tag-generator&theme=tokyonight" />
 </a>
 
 </div>
