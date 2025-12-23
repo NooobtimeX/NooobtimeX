@@ -1,5 +1,5 @@
 <div align="center">
-  
+
 # 👋 Hey there! I'm **NooobtimeX**
 
 <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=28&duration=4000&pause=1000&color=00D9FF&center=true&vCenter=true&width=600&lines=Full+Stack+Developer;Tech+Enthusiast;Problem+Solver;Always+Learning!" alt="Typing SVG" />
@@ -8,103 +8,101 @@
 
 ### 🚀 **About Me**
 
-</div>
-
-🎯 **Passionate Developer** constantly exploring new technologies and building innovative solutions  
-💻 **Tech Enthusiast** who loves turning ideas into reality through code  
+🎯 **Passionate Developer** specializing in modern web development and building seamless digital experiences.  
+💻 **Tech Enthusiast** who turns ideas into robust applications using the latest technologies.  
 🌐 **Portfolio**: [nooobtimex.me](http://nooobtimex.me/)  
-📧 **Let's Connect**: Always open to collaboration and new opportunities!
+📧 **Contact**: [nooobtimex@gmail.com](mailto:nooobtimex@gmail.com)
 
 ---
-
-<div align="center">
 
 ## 🛠️ **Tech Stack & Tools**
 
-### **Languages**
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-
-### **Frameworks & Libraries**
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
-![Express.js](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge&logo=express&logoColor=white)
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
-
-### **Databases & Cloud**
-![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
-
-### **Tools & DevOps**
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)
-
-</div>
+<table align="center">
+  <tr>
+    <td align="center" width="200">
+      <strong>Frontend & UI</strong><br/><br/>
+      <img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB" />
+      <img src="https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white" />
+      <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white" />
+      <img src="https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white" />
+    </td>
+    <td align="center" width="200">
+      <strong>Backend & DB</strong><br/><br/>
+      <img src="https://img.shields.io/badge/Node.js-43853D?style=flat-square&logo=node.js&logoColor=white" />
+      <img src="https://img.shields.io/badge/Express.js-404D59?style=flat-square&logo=express&logoColor=white" />
+      <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=flat-square&logo=mongodb&logoColor=white" />
+      <img src="https://img.shields.io/badge/PostgreSQL-316192?style=flat-square&logo=postgresql&logoColor=white" />
+    </td>
+    <td align="center" width="200">
+      <strong>DevOps & Tools</strong><br/><br/>
+      <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white" />
+      <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white" />
+      <img src="https://img.shields.io/badge/VS_Code-007ACC?style=flat-square&logo=visual-studio-code&logoColor=white" />
+      <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white" />
+    </td>
+  </tr>
+</table>
 
 ---
-
-<div align="center">
 
 ## 📊 **GitHub Analytics**
 
-<img height="180em" src="https://github-readme-stats.vercel.app/api?username=NooobtimeX&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true"/>
-<img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=NooobtimeX&layout=compact&langs_count=8&theme=tokyonight"/>
+<p align="center">
+  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=NooobtimeX&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true"/>
+  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=NooobtimeX&layout=compact&langs_count=8&theme=tokyonight"/>
+</p>
 
-</div>
-
-<div align="center">
-
-## 🔥 **Contribution Streak**
-
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=NooobtimeX&theme=tokyonight&hide_border=true" />
-
-</div>
+<p align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=NooobtimeX&theme=tokyonight&hide_border=true" />
+</p>
 
 ---
 
-<div align="center">
+## 🐍 **Contribution Snake**
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/NooobtimeX/NooobtimeX/output/github-contribution-grid-snake.svg" alt="Snake animation" onerror="this.src='https://github-readme-stats.vercel.app/api?username=NooobtimeX&show_icons=true&theme=tokyonight'"/>
+</p>
+
+> [!NOTE] > **Don't see the snake?** It takes about 2-3 minutes to wake up after you push your changes! Check the **Actions** tab to see its progress.
+
+---
 
 ## 🌟 **Featured Projects**
 
-<a href="https://github.com/NooobtimeX/prettier-config-generator">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=NooobtimeX&repo=prettier-config-generator&theme=tokyonight" />
-</a>
-<a href="https://github.com/NooobtimeX/portfolio">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=NooobtimeX&repo=portfolio&theme=tokyonight" />
-</a>
-<a href="https://github.com/NooobtimeX/meta-tag-generator">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=NooobtimeX&repo=meta-tag-generator&theme=tokyonight" />
-</a>
-
-</div>
+| Project             | Description                                                   | Links                                          |
+| :------------------ | :------------------------------------------------------------ | :--------------------------------------------- |
+| **LOOKLOOK PET**    | AI-powered pet care experience focused on personalized care.  | [Live](https://looklook.pet/)                  |
+| **Prettier Config** | Interactive tool to generate .prettierrc files effortlessly.  | [Live](https://prettier-config-generator.com/) |
+| **RS Award**        | Elegant showcase application for plaques and accolades.       | [Live](https://www.rs-award.com)               |
+| **RS Medal**        | A dedicated web app for displaying medals in a modern layout. | [Live](https://www.rs-medal.com)               |
 
 ---
-
-<div align="center">
 
 ## 📈 **Activity Graph**
 
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=NooobtimeX&theme=tokyo-night&hide_border=true" />
-
-</div>
+<p align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=NooobtimeX&theme=tokyo-night&hide_border=true" />
+</p>
 
 ---
-
-<div align="center">
 
 ## 🤝 **Let's Connect!**
 
-[![Portfolio](https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=google-chrome&logoColor=white)](http://nooobtimex.me/)
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/NooobtimeX)
-
----
+<p align="center">
+  <a href="http://nooobtimex.me/">
+    <img src="https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=google-chrome&logoColor=white" />
+  </a>
+  <a href="https://github.com/NooobtimeX">
+    <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" />
+  </a>
+  <a href="mailto:nooobtimex@gmail.com">
+    <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
+  </a>
+</p>
 
 <img src="https://komarev.com/ghpvc/?username=NooobtimeX&label=Profile%20Views&color=0e75b6&style=flat" alt="Profile Views" />
 
 **⭐ From [NooobtimeX](https://github.com/NooobtimeX) with ❤️**
 
 </div>
-
