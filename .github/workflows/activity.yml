@@ -1,0 +1,21 @@
+name: Latest Activity
+
+on:
+  schedule:
+    - cron: "0 0 * * 0"
+  workflow_dispatch:
+
+jobs:
+  update-readme:
+    name: Update this repo's README with latest activity
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      - uses: gautamkrishnar/blog-post-workflow@master
+        with:
+          feed_list: "https://github.com/NooobtimeX.atom"
+          max_post_count: 5
+          readme_path: "./README.md"
+          gh_token: ${{ secrets.GITHUB_TOKEN }}

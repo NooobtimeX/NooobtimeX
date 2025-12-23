@@ -8,10 +8,19 @@
 
 ### 🚀 **About Me**
 
-🎯 **Passionate Developer** specializing in modern web development and building seamless digital experiences.  
-💻 **Tech Enthusiast** who turns ideas into robust applications using the latest technologies.  
-🌐 **Portfolio**: [nooobtimex.me](http://nooobtimex.me/)  
-📧 **Contact**: [nooobtimex@gmail.com](mailto:nooobtimex@gmail.com)
+<table align="center">
+  <tr>
+    <td width="50%">
+      🎯 **Passionate Developer** specializing in modern web development and building seamless digital experiences.<br/><br/>
+      💻 **Tech Enthusiast** who turns ideas into robust applications using the latest technologies.<br/><br/>
+      🌐 **Portfolio**: [nooobtimex.me](http://nooobtimex.me/)<br/>
+      📧 **Contact**: [nooobtimex@gmail.com](mailto:nooobtimex@gmail.com)
+    </td>
+    <td width="50%" align="center">
+      <img src="https://github-readme-stats.vercel.app/api?username=NooobtimeX&show_icons=true&theme=tokyonight&hide_border=true" width="100%"/>
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -45,15 +54,15 @@
 
 ---
 
-## 📊 **GitHub Analytics**
+## ⚡ **Productivity & Fun**
 
 <p align="center">
-  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=NooobtimeX&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true"/>
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=NooobtimeX&layout=compact&langs_count=8&theme=tokyonight"/>
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=NooobtimeX&layout=compact&langs_count=8&theme=tokyonight&hide_border=true" height="180px"/>
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=NooobtimeX&theme=tokyonight&hide_border=true" height="180px"/>
 </p>
 
 <p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=NooobtimeX&theme=tokyonight&hide_border=true" />
+  <img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight" />
 </p>
 
 ---
@@ -76,6 +85,13 @@
 | **Prettier Config** | Interactive tool to generate .prettierrc files effortlessly.  | [Live](https://prettier-config-generator.com/) |
 | **RS Award**        | Elegant showcase application for plaques and accolades.       | [Live](https://www.rs-award.com)               |
 | **RS Medal**        | A dedicated web app for displaying medals in a modern layout. | [Live](https://www.rs-medal.com)               |
+
+---
+
+## 📜 **Latest Activity**
+
+<!-- START_SECTION:blog-post -->
+<!-- END_SECTION:blog-post -->
 
 ---
 
