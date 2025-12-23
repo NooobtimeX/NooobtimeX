@@ -13,9 +13,14 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v3
-      - uses: gautamkrishnar/blog-post-workflow@master
+      - uses: gautamkrishnar/blog-post-workflow@v1
         with:
           feed_list: "https://github.com/NooobtimeX.atom"
-          max_post_count: 5
+          max_post_count: 6
           readme_path: "./README.md"
           gh_token: ${{ secrets.GITHUB_TOKEN }}
+          template: "- [$title]($url) - $date"
+          date_format: "mmm dd, yyyy"
+          commit_message: "Updated with latest activity"
+          committer_username: "github-actions[bot]"
+          committer_email: "github-actions[bot]@users.noreply.github.com"
