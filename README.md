@@ -8,16 +8,12 @@
 
 ### 🚀 **About Me**
 
+<p align="center">
 🎯 **Passionate Developer** specializing in modern web development and building seamless digital experiences.
-💻 **Tech Enthusiast** who turns ideas into robust applications using the latest technologies.
+</p>
 
 <p align="center">
-  <a href="http://nooobtimex.me/">
-    <img src="https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=google-chrome&logoColor=white" />
-  </a>
-  <a href="mailto:nooobtimex@gmail.com">
-    <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
-  </a>
+💻 **Tech Enthusiast** who turns ideas into robust applications using the latest technologies.
 </p>
 
 <p align="center">
