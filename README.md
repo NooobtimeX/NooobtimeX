@@ -73,9 +73,12 @@
 
 ---
 
-### 🐍 **Progress**
+### 📊 **GitHub Stats**
 
-<img src="https://raw.githubusercontent.com/NooobtimeX/NooobtimeX/output/github-contribution-grid-snake.svg" alt="Snake animation" />
+<p align="center">
+  <img src="https://github-readme-stats-sigma-five.vercel.app/api?username=NooobtimeX&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=00D9FF&icon_color=00D9FF&count_private=true" alt="GitHub Stats" />
+  <img src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=NooobtimeX&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=00D9FF&count_private=true" alt="Most Used Languages" />
+</p>
 
 ---
 
