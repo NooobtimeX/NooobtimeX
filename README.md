@@ -11,7 +11,18 @@
 🎯 **Passionate Developer** specializing in modern web development and building seamless digital experiences.
 💻 **Tech Enthusiast** who turns ideas into robust applications using the latest technologies.
 
-[Portfolio](http://nooobtimex.me/) • [Contact](mailto:nooobtimex@gmail.com)
+<p align="center">
+  <a href="http://nooobtimex.me/">
+    <img src="https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=google-chrome&logoColor=white" />
+  </a>
+  <a href="mailto:nooobtimex@gmail.com">
+    <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
+  </a>
+</p>
+
+<p align="center">
+  <img src="https://komarev.com/ghpvc/?username=NooobtimeX&label=Profile%20Views&color=00D9FF&style=flat-square" alt="Profile Views" />
+</p>
 
 ---
 
@@ -51,20 +62,5 @@
   <img src="https://github-readme-stats-sigma-five.vercel.app/api?username=NooobtimeX&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=00D9FF&icon_color=00D9FF&count_private=true" alt="GitHub Stats" />
   <img src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=NooobtimeX&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=00D9FF&count_private=true" alt="Most Used Languages" />
 </p>
-
----
-
-### 🤝 **Connect**
-
-<p align="center">
-  <a href="http://nooobtimex.me/">
-    <img src="https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=google-chrome&logoColor=white" />
-  </a>
-  <a href="mailto:nooobtimex@gmail.com">
-    <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
-  </a>
-</p>
-
-<img src="https://komarev.com/ghpvc/?username=NooobtimeX&label=Profile%20Views&color=00D9FF&style=flat-square" alt="Profile Views" />
 
 </div>
