@@ -36,40 +36,12 @@
 
 ### 🌟 **Featured Projects**
 
-<table align="center">
-  <tr>
-    <td width="50%" align="center">
-      <h3>🐾 LOOKLOOK PET</h3>
-      <p>AI-powered pet care experience</p>
-      <a href="https://looklook.pet/">
-        <img src="https://img.shields.io/badge/🌐_Live_Demo-00D9FF?style=for-the-badge" />
-      </a>
-    </td>
-    <td width="50%" align="center">
-      <h3>⚙️ Prettier Config</h3>
-      <p>Interactive config generator</p>
-      <a href="https://prettier-config-generator.com/">
-        <img src="https://img.shields.io/badge/🌐_Live_Demo-00D9FF?style=for-the-badge" />
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="center">
-      <h3>🏆 RS Award</h3>
-      <p>Elegant showcase for accolades</p>
-      <a href="https://www.rs-award.com">
-        <img src="https://img.shields.io/badge/🌐_Live_Demo-00D9FF?style=for-the-badge" />
-      </a>
-    </td>
-    <td width="50%" align="center">
-      <h3>🥇 RS Medal</h3>
-      <p>Modern medal display app</p>
-      <a href="https://www.rs-medal.com">
-        <img src="https://img.shields.io/badge/🌐_Live_Demo-00D9FF?style=for-the-badge" />
-      </a>
-    </td>
-  </tr>
-</table>
+| Project | Description | Link |
+|---------|-------------|------|
+| 🐾 **LOOKLOOK PET** | AI-powered pet care experience | [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-00D9FF?style=for-the-badge)](https://looklook.pet/) |
+| ⚙️ **Prettier Config** | Interactive config generator | [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-00D9FF?style=for-the-badge)](https://prettier-config-generator.com/) |
+| 🏆 **RS Award** | Elegant showcase for accolades | [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-00D9FF?style=for-the-badge)](https://www.rs-award.com) |
+| 🥇 **RS Medal** | Modern medal display app | [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-00D9FF?style=for-the-badge)](https://www.rs-medal.com) |
 
 ---
 
