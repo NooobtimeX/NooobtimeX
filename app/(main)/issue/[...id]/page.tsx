@@ -10,6 +10,12 @@ interface IssueDetailPageProps {
 	}>
 }
 
+export async function generateStaticParams() {
+	return issuesData.map(post => ({
+		id: [post.id]
+	}))
+}
+
 export async function generateMetadata({ params }: IssueDetailPageProps): Promise<Metadata> {
 	const resolvedParams = await params
 	const id = resolvedParams.id?.[0]
