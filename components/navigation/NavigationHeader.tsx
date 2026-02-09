@@ -1,50 +1,50 @@
-"use client";
+'use client'
 
-import NavigationHeaderDesktop from "@/components/navigation/NavigationHeaderDesktop";
-import NavigationHeaderMobile from "@/components/navigation/NavigationHeaderMobile";
-import MenuItem from "@/interface/menuItem";
+import MenuItem from '@/common/interface/menuItem'
+import NavigationHeaderDesktop from '@/components/navigation/NavigationHeaderDesktop'
+import NavigationHeaderMobile from '@/components/navigation/NavigationHeaderMobile'
 
 export default function NavigationHeader() {
-  const menuItems: MenuItem[] = [
-    {
-      title: "ABILITIES",
-      href: "/ability",
-      icon: {
-        name: "Brain",
-        icon: "material-symbols:psychology",
-        description: "View my Abilities",
-      },
-    },
-    {
-      title: "ISSUES",
-      href: "/issue",
-      icon: {
-        name: "Laptop Code",
-        icon: "material-symbols:laptop-chromebook",
-        description: "Explore my Issues Archive",
-      },
-    },
-    {
-      title: "AFFILIATIONS",
-      href: "/affiliation",
-      icon: {
-        name: "Business",
-        icon: "material-symbols:domain",
-        description: "Companies & Career",
-      },
-    },
-  ];
+	const menuItems: MenuItem[] = [
+		{
+			title: 'ABILITIES',
+			href: '/ability',
+			icon: {
+				name: 'Brain',
+				icon: 'material-symbols:psychology',
+				description: 'View my Abilities'
+			}
+		},
+		{
+			title: 'ISSUES',
+			href: '/issue',
+			icon: {
+				name: 'Laptop Code',
+				icon: 'material-symbols:laptop-chromebook',
+				description: 'Explore my Issues Archive'
+			}
+		},
+		{
+			title: 'AFFILIATIONS',
+			href: '/affiliation',
+			icon: {
+				name: 'Business',
+				icon: 'material-symbols:domain',
+				description: 'Companies & Career'
+			}
+		}
+	]
 
-  return (
-    <nav className="z-50 fixed bottom-0 left-0 right-0 md:sticky md:top-0 w-full">
-      {/* Desktop Header */}
-      <div className="hidden md:block">
-        <NavigationHeaderDesktop menuItems={menuItems} />
-      </div>
-      {/* Mobile Header */}
-      <div className="block md:hidden">
-        <NavigationHeaderMobile menuItems={menuItems} />
-      </div>
-    </nav>
-  );
+	return (
+		<nav className='fixed right-0 bottom-0 left-0 z-50 w-full md:sticky md:top-0'>
+			{/* Desktop Header */}
+			<div className='hidden md:block'>
+				<NavigationHeaderDesktop menuItems={menuItems} />
+			</div>
+			{/* Mobile Header */}
+			<div className='block md:hidden'>
+				<NavigationHeaderMobile menuItems={menuItems} />
+			</div>
+		</nav>
+	)
 }

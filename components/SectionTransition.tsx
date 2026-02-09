@@ -1,14 +1,14 @@
-"use client";
+'use client'
 
-import ComicPop from "@/components/motion/ComicPop";
-import { ReactNode } from "react";
+import { ReactNode } from 'react'
+import ComicPop from '@/components/motion/ComicPop'
 
 interface SectionTransitionProps {
-  children: ReactNode;
+	children: ReactNode
 }
 
 const SectionTransition = ({ children }: SectionTransitionProps) => {
-  return <ComicPop triggerOnce={false}>{children}</ComicPop>;
-};
+	return <ComicPop triggerOnce={false}>{children}</ComicPop>
+}
 
-export default SectionTransition;
+export default SectionTransition

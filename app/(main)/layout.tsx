@@ -1,17 +1,17 @@
-import NavigationFooter from "@/components/navigation/NavigationFooter";
-import NavigationHeader from "@/components/navigation/NavigationHeader";
-import React from "react";
+import React from 'react'
+import NavigationFooter from '@/components/navigation/NavigationFooter'
+import NavigationHeader from '@/components/navigation/NavigationHeader'
 
 export default function MainLayout({
-  children,
+	children
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode
 }>) {
-  return (
-    <main className="min-h-screen relative flex flex-col">
-      <NavigationHeader />
-      <div className="flex-1">{children}</div>
-      <NavigationFooter />
-    </main>
-  );
+	return (
+		<main className='relative flex min-h-screen flex-col'>
+			<NavigationHeader />
+			<div className='flex-1'>{children}</div>
+			<NavigationFooter />
+		</main>
+	)
 }

@@ -1,51 +1,43 @@
-"use client";
+'use client'
 
-import IssueCard from "@/components/issue/IssueCard";
-import ComicPop from "@/components/motion/ComicPop";
-import { issuesData } from "@/data/issues";
+import IssueCard from '@/components/issue/IssueCard'
+import ComicPop from '@/components/motion/ComicPop'
+import { issuesData } from '@/data/issues'
 
 export default function IssuePreview() {
-  return (
-    <section id="issue" className="py-20 relative bg-black">
-      {/* Background Halftone Pattern */}
-      <div className="absolute inset-0 comic-halftone opacity-30 pointer-events-none"></div>
-      <div className="absolute inset-0 comic-web-pattern opacity-10 pointer-events-none"></div>
+	return (
+		<section id='issue' className='relative bg-black py-20'>
+			{/* Background Halftone Pattern */}
+			<div className='comic-halftone pointer-events-none absolute inset-0 opacity-30'></div>
+			<div className='comic-web-pattern pointer-events-none absolute inset-0 opacity-10'></div>
 
-      <div className="container max-w-7xl mx-auto px-4 relative z-10">
-        {/* Header */}
-        <ComicPop className="text-center mb-20 relative">
-          <div className="inline-block relative">
-            {/* Background splash */}
-            <div className="absolute inset-0 bg-primary transform rotate-2 blur-sm opacity-50"></div>
+			<div className='relative z-10 container mx-auto max-w-7xl px-4'>
+				{/* Header */}
+				<ComicPop className='relative mb-20 text-center'>
+					<div className='relative inline-block'>
+						{/* Background splash */}
+						<div className='bg-primary absolute inset-0 rotate-2 transform opacity-50 blur-sm'></div>
 
-            {/* Spider Decoration */}
-            <div className="absolute -top-12 -right-12 text-6xl transform rotate-12 drop-shadow-[0_0_10px_rgba(255,50,50,0.8)] z-20">
-              🕷️
-            </div>
+						{/* Spider Decoration */}
+						<div className='absolute -top-12 -right-12 z-20 rotate-12 transform text-6xl drop-shadow-[0_0_10px_rgba(255,50,50,0.8)]'>
+							🕷️
+						</div>
 
-            <div className="relative bg-white text-black px-10 py-4 border-4 border-black shadow-[8px_8px_0px_0px_white] transform rotate-1">
-              <h2 className="text-4xl md:text-6xl font-[Bangers] uppercase tracking-wider">
-                FEATURED ISSUES
-              </h2>
-            </div>
-          </div>
-          <p className="mt-8 text-muted-foreground text-xl font-[Bangers] tracking-wide max-w-2xl mx-auto uppercase">
-            A showcase of my recent work and creative solutions
-          </p>
-        </ComicPop>
+						<div className='relative rotate-1 transform border-4 border-black bg-white px-10 py-4 text-black shadow-[8px_8px_0px_0px_white]'>
+							<h2 className='font-[Bangers] text-4xl tracking-wider uppercase md:text-6xl'>FEATURED ISSUES</h2>
+						</div>
+					</div>
+					<p className='text-muted-foreground mx-auto mt-8 max-w-2xl font-[Bangers] text-xl tracking-wide uppercase'>
+						A showcase of my recent work and creative solutions
+					</p>
+				</ComicPop>
 
-        <div className="space-y-24 mb-12">
-          {issuesData.map((issue, index) => (
-            <IssueCard
-              key={issue.id}
-              issue={issue}
-              index={index}
-              variant="featured"
-              showAllAbilities={false}
-            />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+				<div className='mb-12 space-y-24'>
+					{issuesData.map((issue, index) => (
+						<IssueCard key={issue.id} issue={issue} index={index} variant='featured' showAllAbilities={false} />
+					))}
+				</div>
+			</div>
+		</section>
+	)
 }

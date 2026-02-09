@@ -1,10 +1,10 @@
 ---
-title: "Meet Kwan – A Future Computer Science"
-excerpt: "Kwan, a Computer Science student at Thammasat University, is already making waves with his impressive technical skills. A fan of pnpm for efficient package management and Next.js with the app folder router, Kwan’s focus is on building sleek, high-performance applications. His use of Tailwind CSS ensures clean, responsive designs, positioning him as a developer to watch in the future of tech."
-Image: "/favicon.ico"
-datePublished: "2025-01-04T16:00:00.000Z"
-dateModified: "2025-01-04T16:00:00.000Z"
-tags: ["Kwan", "NooobtimeX"]
+title: 'Meet Kwan – A Future Computer Science'
+excerpt: 'Kwan, a Computer Science student at Thammasat University, is already making waves with his impressive technical skills. A fan of pnpm for efficient package management and Next.js with the app folder router, Kwan’s focus is on building sleek, high-performance applications. His use of Tailwind CSS ensures clean, responsive designs, positioning him as a developer to watch in the future of tech.'
+Image: '/favicon.ico'
+datePublished: '2025-01-04T16:00:00.000Z'
+dateModified: '2025-01-04T16:00:00.000Z'
+tags: ['Kwan', 'NooobtimeX']
 ---
 
 In the ever-evolving field of technology, there’s always a need for bright minds who not only understand how things work but are passionate about shaping the future. One of those minds is Kwan, a talented computer science student at Thammasat University. Kwan's journey in tech is just beginning, and from what we can see, there's much more ahead!

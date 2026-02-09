@@ -1,5 +1,5 @@
-import type { Issue } from "@/interface";
-import { looklookPet, prettierConfig, rsAward, rsMedal } from "./issues/index";
+import type { Issue } from '@/common/interface'
+import { looklookPet, prettierConfig, rsAward, rsMedal } from './issues/index'
 
 /**
  * Issue Data with Image Requirements:
@@ -13,9 +13,4 @@ import { looklookPet, prettierConfig, rsAward, rsMedal } from "./issues/index";
  * Add new issues by creating a new file in data/issues/ and importing it here.
  */
 
-export const issuesData: Issue[] = [
-  looklookPet,
-  prettierConfig,
-  rsAward,
-  rsMedal,
-];
+export const issuesData: Issue[] = [looklookPet, prettierConfig, rsAward, rsMedal]

@@ -1,53 +1,43 @@
-"use client";
+'use client'
 
-import AffiliationCard from "@/components/affiliation/AffiliationCard";
-import ComicPop from "@/components/motion/ComicPop";
-import { affiliationData } from "@/data/affiliationData";
-import { AffiliationEntityType } from "@/enum";
-import React from "react";
+import React from 'react'
+import { AffiliationEntityType } from '@/common/enum'
+import AffiliationCard from '@/components/affiliation/AffiliationCard'
+import ComicPop from '@/components/motion/ComicPop'
+import { affiliationData } from '@/data/affiliationData'
 
 const AffiliationContent: React.FC = () => {
-  // Filter for Company type affiliations
-  const companiesData = affiliationData.filter(
-    (item) => item.affiliation.type === AffiliationEntityType.Company,
-  );
+	// Filter for Company type affiliations
+	const companiesData = affiliationData.filter(item => item.affiliation.type === AffiliationEntityType.Company)
 
-  return (
-    <div className="min-h-screen w-full relative bg-black pt-24 pb-20 overflow-x-hidden">
-      {/* Background elements */}
-      <div className="fixed inset-0 bg-[radial-gradient(circle_at_top_right,theme(colors.primary.DEFAULT)_0%,transparent_40%)] opacity-20 pointer-events-none"></div>
-      <div className="fixed inset-0 comic-halftone opacity-10 pointer-events-none"></div>
+	return (
+		<div className='relative min-h-screen w-full overflow-x-hidden bg-black pt-24 pb-20'>
+			{/* Background elements */}
+			<div className='bg-[radial-gradient(circle_at_top_right,theme(colors.primary.DEFAULT)_0%,transparent_40%)] pointer-events-none fixed inset-0 opacity-20'></div>
+			<div className='comic-halftone pointer-events-none fixed inset-0 opacity-10'></div>
 
-      <div className="container max-w-7xl mx-auto px-4 relative z-10">
-        {/* Header */}
-        <ComicPop
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-24"
-        >
-          <div className="inline-block relative group">
-            <div className="bg-white text-black px-12 py-6 border-4 border-black shadow-[8px_8px_0px_0px_white] transform -rotate-1 group-hover:rotate-0 transition-transform">
-              <h1 className="text-5xl md:text-7xl font-[Bangers] uppercase tracking-wider">
-                AFFILIATIONS
-              </h1>
-            </div>
-          </div>
-          <p className="mt-8 text-xl text-gray-400 font-[Bangers] uppercase tracking-wide">
-            Career & Companies
-          </p>
-        </ComicPop>
+			<div className='relative z-10 container mx-auto max-w-7xl px-4'>
+				{/* Header */}
+				<ComicPop initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className='mb-24 text-center'>
+					<div className='group relative inline-block'>
+						<div className='-rotate-1 transform border-4 border-black bg-white px-12 py-6 text-black shadow-[8px_8px_0px_0px_white] transition-transform group-hover:rotate-0'>
+							<h1 className='font-[Bangers] text-5xl tracking-wider uppercase md:text-7xl'>AFFILIATIONS</h1>
+						</div>
+					</div>
+					<p className='mt-8 font-[Bangers] text-xl tracking-wide text-gray-400 uppercase'>Career & Companies</p>
+				</ComicPop>
 
-        {/* Grid */}
-        <section className="pb-20 relative">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-            {companiesData.map((item, index) => (
-              <AffiliationCard key={item.id} item={item} index={index} />
-            ))}
-          </div>
-        </section>
-      </div>
-    </div>
-  );
-};
+				{/* Grid */}
+				<section className='relative pb-20'>
+					<div className='grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-10 lg:grid-cols-3'>
+						{companiesData.map((item, index) => (
+							<AffiliationCard key={item.id} item={item} index={index} />
+						))}
+					</div>
+				</section>
+			</div>
+		</div>
+	)
+}
 
-export default AffiliationContent;
+export default AffiliationContent
