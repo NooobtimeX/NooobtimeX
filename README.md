@@ -1,42 +1,62 @@
+<div align="center">
+
+# 👋 Hey there! I'm **NooobtimeX**
+
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=28&duration=4000&pause=1000&color=00D9FF&center=true&vCenter=true&width=600&lines=Full+Stack+Developer;Tech+Enthusiast;Problem+Solver;Always+Learning!" alt="Typing SVG" />
+
+---
+
+### 🚀 **About Me**
+
 <p align="center">
-  <img src="https://nooobtimex.me/profile/NooobtimeX.webp" alt="Logo" width="80" />
+🎯 **Passionate Developer** specializing in modern web development and building seamless digital experiences.
 </p>
 
-<h1 align="center">🚀 Portfolio – Wongsaphat Puangsorn</h1>
-
 <p align="center">
-  <a href="https://nooobtimex.me" target="_blank"><b>🌐 Visit My Website</b></a> •
-  <a href="https://github.com/NooobtimeX/portfolio" target="_blank">
-    <img src="https://img.shields.io/github/stars/NooobtimeX/portfolio?style=social" alt="GitHub stars" />
-  </a>
+💻 **Tech Enthusiast** who turns ideas into robust applications using the latest technologies.
 </p>
 
 <p align="center">
-  <b>A modern, responsive portfolio website built with Next.js, TypeScript, and Tailwind CSS.</b><br>
-  Showcases abilities, projects, affiliation, and contact information for Wongsaphat Puangsorn, a software developer from Thailand.
+  <img src="https://komarev.com/ghpvc/?username=NooobtimeX&label=Profile%20Views&color=00D9FF&style=flat-square" alt="Profile Views" />
 </p>
 
 ---
 
-## ✨ Features
+### 🛠️ **Tech Stack & Tools**
 
-- 🖥️ **Modern UI**: Built with React, Next.js, and Tailwind CSS
-- 📄 **Sections**: Hero, Abilities, Projects, Affiliation, Contact
-- 📱 **Responsive Navigation**: Desktop, tablet, and mobile headers
-- 🌗 **Theme Support**: Light/dark mode via Radix UI and next-themes
-- 🎬 **Animated Transitions**: Framer Motion and custom SectionTransition
-- 📊 **Charts & Carousels**: Recharts, Embla Carousel
-- 🔗 **Social Links**: GitHub, Facebook, and more
+<p align="center">
+  <img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB" />
+  <img src="https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white" />
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white" />
+  <img src="https://img.shields.io/badge/Node.js-43853D?style=flat-square&logo=node.js&logoColor=white" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white" />
+</p>
+<p align="center">
+  <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=flat-square&logo=mongodb&logoColor=white" />
+  <img src="https://img.shields.io/badge/PostgreSQL-316192?style=flat-square&logo=postgresql&logoColor=white" />
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white" />
+  <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white" />
+  <img src="https://img.shields.io/badge/VS_Code-007ACC?style=flat-square&logo=visual-studio-code&logoColor=white" />
+</p>
+
+---
+
+### 🌟 **Featured Projects**
+
+| Project                | Description                    | Link                                                                                                                         |
+| ---------------------- | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
+| 🐾 **LOOKLOOK PET**    | AI-powered pet care experience | [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-00D9FF?style=for-the-badge)](https://looklook.pet/)                  |
+| ⚙️ **Prettier Config** | Interactive config generator   | [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-00D9FF?style=for-the-badge)](https://prettier-config-generator.com/) |
+| 🏆 **RS Award**        | Elegant showcase for accolades | [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-00D9FF?style=for-the-badge)](https://www.rs-award.com)               |
+| 🥇 **RS Medal**        | Modern medal display app       | [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-00D9FF?style=for-the-badge)](https://www.rs-medal.com)               |
 
 ---
 
-## 🛠️ Tech Stack
+### 📊 **GitHub Stats**
 
-- ⚡ **Framework**: Next.js (TypeScript)
-- 🎨 **Styling**: Tailwind CSS, PostCSS
-- 🧩 **UI Components**: Radix UI, Lucide, Heroicons, React Icons
-- 🌀 **State & Animation**: Framer Motion, Embla Carousel
-- 🧹 **Linting/Formatting**: ESLint, Prettier
-- 🛎️ **Other**: Google Tag Manager, date-fns
+<p align="center">
+  <img src="https://github-readme-stats-sigma-five.vercel.app/api?username=NooobtimeX&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=00D9FF&icon_color=00D9FF&count_private=true" alt="GitHub Stats" />
+  <img src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=NooobtimeX&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=00D9FF&count_private=true" alt="Most Used Languages" />
+</p>
 
----
+</div>
