@@ -31,25 +31,25 @@ export const ruamsukPlatingAdvisor: AffiliationItem = {
 	startDate: '2026-01-01'
 }
 
-export const ruamsukPlatingSenior: AffiliationItem = {
-	id: AffiliationId.RuamsukPlatingSenior,
-	affiliation: ruamsukPlating,
-	position: Position.SeniorITSupport,
-	description: 'Leading trophy and award manufacturing company specializing in custom plaques and medals.',
-	abilities: [onlineMarketing, artificialIntelligence, seo, fullStackDevelopment],
-	type: AffiliationType.Work,
-	startDate: '2025-05-01',
-	endDate: '2025-07-15'
-}
-
 export const ruamsukPlatingJunior: AffiliationItem = {
 	id: AffiliationId.RuamsukPlatingJunior,
 	affiliation: ruamsukPlating,
 	position: Position.JuniorITSupport,
 	description:
 		'Developing WordPress websites and managing digital marketing campaigns for a leading trophy and award manufacturing company.',
-	abilities: [wordpress, woocommerce, css, seo, googleAnalytics, googleAds, facebookAds],
+	abilities: [
+		wordpress,
+		woocommerce,
+		css,
+		seo,
+		googleAnalytics,
+		googleAds,
+		facebookAds,
+		onlineMarketing,
+		artificialIntelligence,
+		fullStackDevelopment
+	],
 	type: AffiliationType.Work,
 	startDate: '2021-08-01',
-	endDate: '2025-04-30'
+	endDate: '2025-07-15'
 }

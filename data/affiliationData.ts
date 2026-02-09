@@ -2,16 +2,9 @@ import type { AffiliationItem } from '@/common/interface'
 import { freelanceBlitzwerkAffiliation as freelanceBlitzwerk } from './affiliations/freelance-blitzwerk'
 import { jasmineTechnologySolutionAffiliation as jasmineTechnologySolution } from './affiliations/jasmine-technology-solution'
 import { born } from './affiliations/personal'
-import { ruamsukPlatingAdvisor, ruamsukPlatingJunior, ruamsukPlatingSenior } from './affiliations/ruamsuk-plating'
+import { ruamsukPlatingAdvisor, ruamsukPlatingJunior } from './affiliations/ruamsuk-plating'
 
-const affiliations = [
-	born,
-	freelanceBlitzwerk,
-	jasmineTechnologySolution,
-	ruamsukPlatingAdvisor,
-	ruamsukPlatingJunior,
-	ruamsukPlatingSenior
-]
+const affiliations = [born, freelanceBlitzwerk, jasmineTechnologySolution, ruamsukPlatingAdvisor, ruamsukPlatingJunior]
 
 // Sort affiliations by startDate in descending order (newest first)
 export const affiliationData: AffiliationItem[] = affiliations.sort((a, b) => {
