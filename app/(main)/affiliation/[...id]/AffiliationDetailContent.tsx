@@ -7,11 +7,11 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Icon } from '@iconify/react'
 import { ArrowLeftIcon, CalendarIcon, MapPinIcon } from 'lucide-react'
+import { affiliationData } from '@/common/data/affiliation'
 import AffiliationCard from '@/components/affiliation/AffiliationCard'
 import ComicPop from '@/components/motion/ComicPop'
 import { Button } from '@/components/ui/button'
 import { formatAffiliationDuration } from '@/lib/utils'
-import { affiliationData } from '@/data/affiliationData'
 
 interface AffiliationDetailContentProps {
 	id: string

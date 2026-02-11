@@ -1,10 +1,10 @@
 'use client'
 
 import React from 'react'
+import { affiliationData } from '@/common/data/affiliation'
 import { AffiliationEntityType } from '@/common/enum'
 import AffiliationCard from '@/components/affiliation/AffiliationCard'
 import ComicPop from '@/components/motion/ComicPop'
-import { affiliationData } from '@/data/affiliationData'
 
 const AffiliationContent: React.FC = () => {
 	// Filter for Company type affiliations

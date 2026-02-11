@@ -1,8 +1,8 @@
 'use client'
 
+import { looklookPet, rsAward, rsMedal } from '@/common/data/issue'
 import IssueCard from '@/components/issue/IssueCard'
 import ComicPop from '@/components/motion/ComicPop'
-import { looklookPet, rsAward, rsMedal } from '@/data/issues/index'
 
 const featuredIssues = [looklookPet, rsAward, rsMedal]
 

@@ -6,13 +6,13 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Icon } from '@iconify/react'
 import { ArrowLeftIcon, ExternalLinkIcon, GithubIcon } from 'lucide-react'
+import { issuesData } from '@/common/data/issue'
 import ImageGallery from '@/components/issue/ImageGallery'
 import IssueCard from '@/components/issue/IssueCard'
 import IssueThumbnail from '@/components/issue/IssueThumbnail'
 import ComicPop from '@/components/motion/ComicPop'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
-import { issuesData } from '@/data/issues'
 
 interface IssueDetailContentProps {
 	id: string

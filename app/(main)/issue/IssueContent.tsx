@@ -1,9 +1,9 @@
 'use client'
 
 import React from 'react'
+import { issuesData } from '@/common/data/issue'
 import IssueCard from '@/components/issue/IssueCard'
 import ComicPop from '@/components/motion/ComicPop'
-import { issuesData } from '@/data/issues'
 
 const IssueContent: React.FC = () => {
 	return (

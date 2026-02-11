@@ -2,8 +2,6 @@
 
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
-import ComicPop from '@/components/motion/ComicPop'
-import { Button } from '@/components/ui/button'
 import {
 	docker,
 	mongodb,
@@ -17,7 +15,9 @@ import {
 	tailwindcss,
 	typescript,
 	vercel
-} from '@/data/abilities'
+} from '@/common/data/ability'
+import ComicPop from '@/components/motion/ComicPop'
+import { Button } from '@/components/ui/button'
 
 export default function AbilityPreview() {
 	// Show highlighted abilities

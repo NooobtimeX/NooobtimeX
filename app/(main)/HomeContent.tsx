@@ -3,6 +3,7 @@
 import React, { useRef } from 'react'
 import Link from 'next/link'
 import { motion, useScroll, useTransform } from 'framer-motion'
+import { personalData } from '@/common/data/personal'
 import ComicSeparator from '@/components/ComicSeparator'
 import ComicPop from '@/components/motion/ComicPop'
 import AbilityPreview from '@/components/section/AbilityPreview'
@@ -10,7 +11,6 @@ import AffiliationPreview from '@/components/section/AffiliationPreview'
 import IssuePreview from '@/components/section/IssuePreview'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
-import { personalData } from '@/data/personal'
 
 const HomeContent: React.FC = () => {
 	const containerRef = useRef<HTMLDivElement>(null)

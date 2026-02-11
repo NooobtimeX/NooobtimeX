@@ -1,0 +1,1 @@
+export { personalData } from './personal'

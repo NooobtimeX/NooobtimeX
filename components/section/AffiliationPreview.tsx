@@ -4,14 +4,14 @@ import type { Route } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
+import { jasmineTechnologySolutionAffiliation } from '@/common/data/affiliation/jasmine-technology-solution'
+import { ruamsukPlatingAdvisor } from '@/common/data/affiliation/ruamsuk-plating'
 import { AffiliationEntityType } from '@/common/enum'
 import type { AffiliationItem } from '@/common/interface'
 import ComicPop from '@/components/motion/ComicPop'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { formatAffiliationDuration, isCurrentPosition } from '@/lib/utils'
-import { jasmineTechnologySolutionAffiliation } from '@/data/affiliations/jasmine-technology-solution'
-import { ruamsukPlatingAdvisor } from '@/data/affiliations/ruamsuk-plating'
 
 export default function AffiliationPreview() {
 	const displayedAffiliations: AffiliationItem[] = [ruamsukPlatingAdvisor, jasmineTechnologySolutionAffiliation]

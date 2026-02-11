@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
-import { affiliationData } from '@/data/affiliationData'
-import { issuesData } from '@/data/issues'
+import { affiliationData } from '@/common/data/affiliation'
+import { issuesData } from '@/common/data/issue'
 
 const domain = 'https://nooobtimex.me'
 

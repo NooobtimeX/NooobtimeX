@@ -2,11 +2,11 @@
 
 import React from 'react'
 import { Icon } from '@iconify/react'
+import { abilitiesData } from '@/common/data/ability'
 import ComicPop from '@/components/motion/ComicPop'
 import { AbilityCard } from '@/components/ui/ability-card'
 import { ComicPanel } from '@/components/ui/comic-panel'
 import { cn } from '@/lib/utils'
-import { abilitiesData } from '@/data/abilitiesData'
 
 const AbilityContent: React.FC = () => {
 	return (
