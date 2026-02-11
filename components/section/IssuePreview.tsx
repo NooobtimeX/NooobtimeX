@@ -2,7 +2,9 @@
 
 import IssueCard from '@/components/issue/IssueCard'
 import ComicPop from '@/components/motion/ComicPop'
-import { issuesData } from '@/data/issues'
+import { looklookPet, rsAward, rsMedal } from '@/data/issues/index'
+
+const featuredIssues = [looklookPet, rsAward, rsMedal]
 
 export default function IssuePreview() {
 	return (
@@ -33,7 +35,7 @@ export default function IssuePreview() {
 				</ComicPop>
 
 				<div className='mb-12 space-y-24'>
-					{issuesData.map((issue, index) => (
+					{featuredIssues.map((issue, index) => (
 						<IssueCard key={issue.id} issue={issue} index={index} variant='featured' showAllAbilities={false} />
 					))}
 				</div>

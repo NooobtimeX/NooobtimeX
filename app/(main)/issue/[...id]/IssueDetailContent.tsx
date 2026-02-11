@@ -2,13 +2,13 @@
 
 import React from 'react'
 import type { Route } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Icon } from '@iconify/react'
 import { ArrowLeftIcon, ExternalLinkIcon, GithubIcon } from 'lucide-react'
 import ImageGallery from '@/components/issue/ImageGallery'
 import IssueCard from '@/components/issue/IssueCard'
+import IssueThumbnail from '@/components/issue/IssueThumbnail'
 import ComicPop from '@/components/motion/ComicPop'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
@@ -62,7 +62,12 @@ const IssueDetailContent: React.FC<IssueDetailContentProps> = ({ id }) => {
 								</div>
 
 								<div className='relative aspect-[16/9] overflow-hidden'>
-									<Image src={issue.images.banner} alt={issue.title} fill className='object-cover' />
+									<IssueThumbnail
+										src={issue.images.banner}
+										alt={issue.title}
+										title={issue.title}
+										className='object-cover'
+									/>
 								</div>
 							</div>
 						</ComicPop>

@@ -66,6 +66,34 @@ export const nats: Ability = {
 	level: AbilityLevel.Intermediate
 }
 
+export const python: Ability = {
+	name: 'Python',
+	icon: 'logos:python',
+	category: AbilityCategory.Backend,
+	level: AbilityLevel.Intermediate
+}
+
+export const websocket: Ability = {
+	name: 'WebSocket',
+	icon: 'material-symbols:cable',
+	category: AbilityCategory.Backend,
+	level: AbilityLevel.Intermediate
+}
+
+export const sse: Ability = {
+	name: 'SSE',
+	icon: 'material-symbols:stream',
+	category: AbilityCategory.Backend,
+	level: AbilityLevel.Intermediate
+}
+
+export const selenium: Ability = {
+	name: 'Selenium',
+	icon: 'logos:selenium',
+	category: AbilityCategory.Backend,
+	level: AbilityLevel.Intermediate
+}
+
 // ─── Database ───────────────────────────────────────────────
 export const postgresql: Ability = {
 	name: 'PostgreSQL',
@@ -115,6 +143,13 @@ export const railway: Ability = {
 export const docker: Ability = {
 	name: 'Docker',
 	icon: 'logos:docker-icon',
+	category: AbilityCategory.DevOps,
+	level: AbilityLevel.Intermediate
+}
+
+export const render: Ability = {
+	name: 'Render',
+	icon: 'simple-icons:render',
 	category: AbilityCategory.DevOps,
 	level: AbilityLevel.Intermediate
 }

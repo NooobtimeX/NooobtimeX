@@ -2,10 +2,10 @@
 
 import React from 'react'
 import type { Route } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRightIcon, GithubIcon } from 'lucide-react'
 import { Issue } from '@/common/interface'
+import IssueThumbnail from '@/components/issue/IssueThumbnail'
 import ComicPop from '@/components/motion/ComicPop'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -45,10 +45,10 @@ const IssueCard: React.FC<IssueCardProps> = ({ issue, index, variant = 'grid', s
 								isEven ? 'md:order-1 md:border-r-4' : 'md:order-2 md:border-l-4'
 							}`}>
 							<div className='bg-primary/20 absolute inset-0 z-10 opacity-0 mix-blend-multiply transition-opacity duration-300 group-hover:opacity-100'></div>
-							<Image
+							<IssueThumbnail
 								src={issue.images.banner}
 								alt={issue.title}
-								fill
+								title={issue.title}
 								className='transform object-cover transition-transform duration-700 group-hover:scale-110'
 							/>
 							{/* Halftone Overlay */}
@@ -128,10 +128,10 @@ const IssueCard: React.FC<IssueCardProps> = ({ issue, index, variant = 'grid', s
 						VOL. {new Date().getFullYear()}
 					</div>
 
-					<Image
+					<IssueThumbnail
 						src={issue.images.banner}
 						alt={issue.title}
-						fill
+						title={issue.title}
 						className='object-cover transition-transform duration-500 group-hover:scale-110'
 					/>
 					<div className='bg-primary/20 absolute inset-0 opacity-0 mix-blend-multiply transition-opacity duration-300 group-hover:opacity-100'></div>
