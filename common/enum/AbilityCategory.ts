@@ -3,8 +3,7 @@ export enum AbilityCategory {
 	Backend = 'Backend',
 	Database = 'Database',
 	DevOps = 'DevOps',
-	Mobile = 'Mobile',
-	Design = 'Design',
 	Tools = 'Tools',
-	Languages = 'Languages'
+	Marketing = 'Marketing',
+	AI = 'AI'
 }

@@ -1,14 +1,20 @@
 import type { AbilityGroup } from '@/common/interface'
 import {
+	aeo,
+	antigravity,
 	artificialIntelligence,
+	chatgpt,
+	clickup,
 	css,
 	docker,
 	facebookAds,
-	firebase,
-	fullStackDevelopment,
+	gemini,
 	github,
+	githubCopilot,
 	googleAds,
 	googleAnalytics,
+	jira,
+	monday,
 	mongodb,
 	nats,
 	nestjs,
@@ -22,11 +28,11 @@ import {
 	redis,
 	seo,
 	shadcnui,
+	sitemap,
 	tailwindcss,
 	typescript,
 	vercel,
-	woocommerce,
-	wordpress
+	vscode
 } from './abilities'
 
 export const abilitiesData: AbilityGroup[] = [
@@ -34,7 +40,7 @@ export const abilitiesData: AbilityGroup[] = [
 		category: 'Frontend & UI',
 		description: 'Modern web development and user interface abilities',
 		icon: 'material-symbols:laptop-chromebook',
-		abilities: [nextjs, react, typescript, tailwindcss, shadcnui, css, wordpress, woocommerce, fullStackDevelopment]
+		abilities: [nextjs, react, typescript, tailwindcss, shadcnui, css]
 	},
 	{
 		category: 'Backend',
@@ -46,12 +52,24 @@ export const abilitiesData: AbilityGroup[] = [
 		category: 'DevOps & Cloud',
 		description: 'Deployment, cloud services, and development workflow',
 		icon: 'material-symbols:cloud',
-		abilities: [vercel, railway, firebase, docker, github]
+		abilities: [vercel, railway, docker, github]
 	},
 	{
-		category: 'Marketing & Tools',
-		description: 'Digital marketing, analytics, and AI tools',
+		category: 'Tools',
+		description: 'Development tools and project management',
+		icon: 'material-symbols:build',
+		abilities: [vscode, clickup, jira, monday]
+	},
+	{
+		category: 'Marketing',
+		description: 'Digital marketing and analytics',
 		icon: 'material-symbols:trending-up',
-		abilities: [seo, googleAnalytics, googleAds, facebookAds, onlineMarketing, artificialIntelligence]
+		abilities: [seo, aeo, sitemap, googleAnalytics, googleAds, facebookAds, onlineMarketing]
+	},
+	{
+		category: 'Artificial Intelligence',
+		description: 'AI tools and technologies',
+		icon: 'material-symbols:robot-2',
+		abilities: [artificialIntelligence, chatgpt, gemini, githubCopilot, antigravity]
 	}
 ]

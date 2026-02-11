@@ -11,6 +11,7 @@ import ImageGallery from '@/components/issue/ImageGallery'
 import IssueCard from '@/components/issue/IssueCard'
 import ComicPop from '@/components/motion/ComicPop'
 import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 import { issuesData } from '@/data/issues'
 
 interface IssueDetailContentProps {
@@ -147,7 +148,7 @@ const IssueDetailContent: React.FC<IssueDetailContentProps> = ({ id }) => {
 						<ComicPop initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} delay={0.4} className='space-y-6'>
 							<div className='bg-card sticky top-24 rotate-1 transform border-4 border-white p-6 shadow-[8px_8px_0px_0px_white]'>
 								<h2 className='border-primary mb-6 border-b-4 pb-2 font-[Bangers] text-3xl tracking-wide text-white uppercase'>
-									ARSENAL
+									ABILITY
 								</h2>
 								<div className='space-y-4'>
 									{issue.abilities.map((ability, index) => (
@@ -156,12 +157,21 @@ const IssueDetailContent: React.FC<IssueDetailContentProps> = ({ id }) => {
 											initial={{ opacity: 0, x: 20 }}
 											animate={{ opacity: 1, x: 0 }}
 											delay={0.5 + index * 0.1}
-											className='hover:border-primary hover:bg-primary/10 flex items-center gap-4 border-2 border-white/10 bg-black p-3 transition-colors'>
-											<Icon icon={ability.icon} className='text-primary h-8 w-8' />
+											className='hover:border-primary flex items-center gap-4 border-2 border-zinc-200 bg-white p-3 transition-colors'>
+											<div
+												className={cn(
+													'flex items-center justify-center',
+													ability.whiteBg && 'rounded-full bg-zinc-100 p-1'
+												)}>
+												<Icon
+													icon={ability.icon}
+													className={cn('h-8 w-8', ability.whiteBg ? 'text-black' : 'text-primary')}
+												/>
+											</div>
 											<div>
-												<h4 className='font-[Bangers] text-xl tracking-wide text-white uppercase'>{ability.name}</h4>
+												<h4 className='font-[Bangers] text-xl tracking-wide text-black uppercase'>{ability.name}</h4>
 												{ability.category && (
-													<p className='text-muted-foreground font-[Inter] text-xs font-bold tracking-wider uppercase'>
+													<p className='font-[Inter] text-xs font-bold tracking-wider text-zinc-500 uppercase'>
 														{ability.category}
 													</p>
 												)}

@@ -4,13 +4,10 @@ import {
 	artificialIntelligence,
 	css,
 	facebookAds,
-	fullStackDevelopment,
 	googleAds,
 	googleAnalytics,
 	onlineMarketing,
-	seo,
-	woocommerce,
-	wordpress
+	seo
 } from '../abilities'
 
 export const ruamsukPlating: Affiliation = {
@@ -26,7 +23,7 @@ export const ruamsukPlatingAdvisor: AffiliationItem = {
 	affiliation: ruamsukPlating,
 	position: Position.Advisor,
 	description: 'Providing strategic technology advice and overseeing IT infrastructure upgrades.',
-	abilities: [onlineMarketing, artificialIntelligence, seo, fullStackDevelopment],
+	abilities: [onlineMarketing, artificialIntelligence, seo],
 	type: AffiliationType.Work,
 	startDate: '2026-01-01'
 }
@@ -34,21 +31,10 @@ export const ruamsukPlatingAdvisor: AffiliationItem = {
 export const ruamsukPlatingJunior: AffiliationItem = {
 	id: AffiliationId.RuamsukPlatingJunior,
 	affiliation: ruamsukPlating,
-	position: Position.JuniorITSupport,
+	position: Position.SoftwareEngineer,
 	description:
 		'Developing WordPress websites and managing digital marketing campaigns for a leading trophy and award manufacturing company.',
-	abilities: [
-		wordpress,
-		woocommerce,
-		css,
-		seo,
-		googleAnalytics,
-		googleAds,
-		facebookAds,
-		onlineMarketing,
-		artificialIntelligence,
-		fullStackDevelopment
-	],
+	abilities: [css, seo, googleAnalytics, googleAds, facebookAds, onlineMarketing, artificialIntelligence],
 	type: AffiliationType.Work,
 	startDate: '2021-08-01',
 	endDate: '2025-07-15'

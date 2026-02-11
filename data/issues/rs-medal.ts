@@ -1,6 +1,6 @@
 import { AffiliationId } from '@/common/enum'
 import type { Issue } from '@/common/interface'
-import { googleAds, nextjs, tailwindcss, vercel } from '../abilities'
+import { googleAds, mongodb, nextjs, railway, shadcnui, tailwindcss, vercel } from '../abilities'
 
 export const rsMedal: Issue = {
 	id: 'rs-medal',
@@ -11,7 +11,7 @@ export const rsMedal: Issue = {
 		banner: '/issue/RSMEDAL.png',
 		photos: ['/issue/RSMEDAL.png']
 	},
-	abilities: [nextjs, vercel, tailwindcss, googleAds],
+	abilities: [nextjs, vercel, tailwindcss, shadcnui, mongodb, railway, googleAds],
 	links: {
 		live: 'https://www.rs-medal.com'
 	},

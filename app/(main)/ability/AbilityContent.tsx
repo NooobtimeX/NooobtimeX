@@ -75,7 +75,15 @@ const AbilityContent: React.FC = () => {
 							<div className='w-full md:w-2/3'>
 								<div className='grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-6'>
 									{abilityGroup.abilities.map((ability, idx) => (
-										<AbilityCard key={ability.name} index={idx} name={ability.name} icon={ability.icon} />
+										<AbilityCard
+											key={ability.name}
+											index={idx}
+											name={ability.name}
+											icon={ability.icon}
+											level={ability.level}
+											category={ability.category}
+											whiteBg={ability.whiteBg}
+										/>
 									))}
 								</div>
 							</div>
