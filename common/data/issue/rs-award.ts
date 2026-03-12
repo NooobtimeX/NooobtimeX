@@ -16,5 +16,5 @@ export const rsAward: Issue = {
 		live: 'https://www.rs-award.com'
 	},
 	startDate: '2022-03-01',
-	linkedAffiliationId: AffiliationId.RuamsukPlatingJunior
+	linkedAffiliationId: AffiliationId.RuamsukPlatingSoftwareEngineerPartTime
 }

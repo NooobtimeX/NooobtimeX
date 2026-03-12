@@ -18,24 +18,26 @@ export const ruamsukPlating: Affiliation = {
 	type: AffiliationEntityType.Company
 }
 
-export const ruamsukPlatingAdvisor: AffiliationItem = {
-	id: AffiliationId.RuamsukPlatingAdvisor,
-	affiliation: ruamsukPlating,
-	position: Position.Advisor,
-	description: 'Providing strategic technology advice and overseeing IT infrastructure upgrades.',
-	abilities: [onlineMarketing, artificialIntelligence, seo],
-	type: AffiliationType.Work,
-	startDate: '2026-01-01'
-}
-
-export const ruamsukPlatingJunior: AffiliationItem = {
-	id: AffiliationId.RuamsukPlatingJunior,
+export const ruamsukPlatingSoftwareEngineerPartTime: AffiliationItem = {
+	id: AffiliationId.RuamsukPlatingSoftwareEngineerPartTime,
 	affiliation: ruamsukPlating,
 	position: Position.SoftwareEngineer,
 	description:
 		'Developing WordPress websites and managing digital marketing campaigns for a leading trophy and award manufacturing company.',
 	abilities: [css, seo, googleAnalytics, googleAds, facebookAds, onlineMarketing, artificialIntelligence],
-	type: AffiliationType.Work,
+	type: AffiliationType.PartTime,
 	startDate: '2021-08-01',
+	endDate: '2025-05-31'
+}
+
+export const ruamsukPlatingSoftwareEngineerFullTime: AffiliationItem = {
+	id: AffiliationId.RuamsukPlatingSoftwareEngineerFullTime,
+	affiliation: ruamsukPlating,
+	position: Position.SoftwareEngineer,
+	description:
+		'Developing WordPress websites and managing digital marketing campaigns for a leading trophy and award manufacturing company.',
+	abilities: [css, seo, googleAnalytics, googleAds, facebookAds, onlineMarketing, artificialIntelligence],
+	type: AffiliationType.FullTime,
+	startDate: '2025-06-01',
 	endDate: '2025-07-15'
 }

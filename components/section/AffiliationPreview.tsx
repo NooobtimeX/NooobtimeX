@@ -5,7 +5,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
 import { jasmineTechnologySolutionAffiliation } from '@/common/data/affiliation/jasmine-technology-solution'
-import { ruamsukPlatingAdvisor } from '@/common/data/affiliation/ruamsuk-plating'
+import {
+	ruamsukPlatingSoftwareEngineerFullTime,
+	ruamsukPlatingSoftwareEngineerPartTime
+} from '@/common/data/affiliation/ruamsuk-plating'
 import { AffiliationEntityType } from '@/common/enum'
 import type { AffiliationItem } from '@/common/interface'
 import ComicPop from '@/components/motion/ComicPop'
@@ -14,7 +17,11 @@ import { Button } from '@/components/ui/button'
 import { formatAffiliationDuration, isCurrentPosition } from '@/lib/utils'
 
 export default function AffiliationPreview() {
-	const displayedAffiliations: AffiliationItem[] = [ruamsukPlatingAdvisor, jasmineTechnologySolutionAffiliation]
+	const displayedAffiliations: AffiliationItem[] = [
+		ruamsukPlatingSoftwareEngineerPartTime,
+		ruamsukPlatingSoftwareEngineerFullTime,
+		jasmineTechnologySolutionAffiliation
+	]
 
 	return (
 		<section id='affiliation' className='relative overflow-hidden bg-black py-20'>

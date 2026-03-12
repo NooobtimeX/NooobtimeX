@@ -16,5 +16,5 @@ export const rsMedal: Issue = {
 		live: 'https://www.rs-medal.com'
 	},
 	startDate: '2022-08-01',
-	linkedAffiliationId: AffiliationId.RuamsukPlatingJunior
+	linkedAffiliationId: AffiliationId.RuamsukPlatingSoftwareEngineerPartTime
 }
