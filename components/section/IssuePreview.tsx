@@ -1,12 +1,12 @@
 'use client'
 
-import { looklookPet, rsAward, rsMedal } from '@/common/data/issue'
+import { issuesData } from '@/common/data/issue'
 import IssueCard from '@/components/issue/IssueCard'
 import ComicPop from '@/components/motion/ComicPop'
 
-const featuredIssues = [looklookPet, rsAward, rsMedal]
-
 export default function IssuePreview() {
+	const featuredIssues = issuesData.slice(0, 3)
+
 	return (
 		<section id='issue' className='relative bg-black py-20'>
 			{/* Background Halftone Pattern */}

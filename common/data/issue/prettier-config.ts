@@ -1,4 +1,5 @@
 import { nextjs, tailwindcss, vercel } from '@/common/data/ability'
+import { AffiliationId } from '@/common/enum'
 import type { Issue } from '@/common/interface'
 
 export const prettierConfig: Issue = {
@@ -14,5 +15,6 @@ export const prettierConfig: Issue = {
 	links: {
 		live: 'https://prettier-config-generator.com/'
 	},
-	startDate: '2024-01-15'
+	startDate: '2024-01-15',
+	linkedAffiliationId: AffiliationId.FreelanceBlitzwerk
 }

@@ -2,39 +2,14 @@
 
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
-import {
-	docker,
-	mongodb,
-	nestjs,
-	nextjs,
-	nodejs,
-	postgresql,
-	react,
-	redis,
-	shadcnui,
-	tailwindcss,
-	typescript,
-	vercel
-} from '@/common/data/ability'
+import { getDynamicAbilities } from '@/common/data/ability/dynamicAbilities'
 import ComicPop from '@/components/motion/ComicPop'
 import { Button } from '@/components/ui/button'
 
 export default function AbilityPreview() {
-	// Show highlighted abilities
-	const highlightedAbilities = [
-		nextjs,
-		react,
-		typescript,
-		nodejs,
-		tailwindcss,
-		postgresql,
-		nestjs,
-		mongodb,
-		docker,
-		redis,
-		shadcnui,
-		vercel
-	]
+	// Show top 12 abilities by frequency across all projects
+	const allSortedAbilities = getDynamicAbilities().flatMap(group => group.abilities)
+	const highlightedAbilities = allSortedAbilities.slice(0, 12)
 
 	return (
 		<section id='ability' className='relative bg-black py-20'>

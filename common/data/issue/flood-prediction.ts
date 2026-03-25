@@ -14,6 +14,6 @@ export const floodPrediction: Issue = {
 	},
 	abilities: [nextjs, prisma, vercel, postgresql, tailwindcss, python],
 	links: {},
-	startDate: '2025-01-01',
+	startDate: '2025-06-01',
 	linkedAffiliationId: AffiliationId.FreelanceBlitzwerk
 }

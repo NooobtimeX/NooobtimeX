@@ -14,6 +14,6 @@ export const onlinePokerGame: Issue = {
 	},
 	abilities: [nextjs, prisma, render, tailwindcss, websocket, sse, postgresql],
 	links: {},
-	startDate: '2025-01-01',
+	startDate: '2025-03-01',
 	linkedAffiliationId: AffiliationId.FreelanceBlitzwerk
 }

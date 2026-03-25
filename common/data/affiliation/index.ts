@@ -1,3 +1,3 @@
 export * from './companies'
-export * from './personal'
+export * from './newborn-private-life-life-event'
 export { affiliationData } from './affiliationData'

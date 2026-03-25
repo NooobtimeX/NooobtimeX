@@ -1,17 +1,18 @@
-import { googleAds, mongodb, nextjs, railway, shadcnui, tailwindcss, vercel } from '@/common/data/ability'
+import { googleAds, nextjs, shadcnui, tailwindcss, vercel } from '@/common/data/ability'
 import { AffiliationId } from '@/common/enum'
 import type { Issue } from '@/common/interface'
 
 export const rsMedal: Issue = {
 	id: 'rs-medal',
-	title: 'RS Medal',
-	description: 'A medal showcase web application built to display awards and accolades in an elegant layout.',
+	title: 'RS Medal (Legacy)',
+	description:
+		'[LEGACY] A medal showcase web application. This project has been succeeded by the unified RS TROPHY (rs-trophy.com) platform to provide a more robust and high-performance experience.',
 	images: {
-		thumbnail: '/issue/RSMEDAL.png',
-		banner: '/issue/RSMEDAL.png',
-		photos: ['/issue/RSMEDAL.png']
+		thumbnail: '/issue/RSTROPHY.png',
+		banner: '/issue/RSTROPHY.png',
+		photos: ['/issue/RSTROPHY.png']
 	},
-	abilities: [nextjs, vercel, tailwindcss, shadcnui, mongodb, railway, googleAds],
+	abilities: [nextjs, vercel, tailwindcss, shadcnui, googleAds],
 	links: {
 		live: 'https://www.rs-medal.com'
 	},

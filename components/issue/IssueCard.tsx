@@ -3,6 +3,7 @@
 import React from 'react'
 import type { Route } from 'next'
 import Link from 'next/link'
+import { Icon } from '@iconify/react'
 import { ArrowRightIcon, GithubIcon } from 'lucide-react'
 import { Issue } from '@/common/interface'
 import IssueThumbnail from '@/components/issue/IssueThumbnail'
@@ -77,7 +78,8 @@ const IssueCard: React.FC<IssueCardProps> = ({ issue, index, variant = 'grid', s
 										<Badge
 											key={idx}
 											variant='outline'
-											className='rounded-none border-white/30 px-2 py-1 text-xs font-bold text-white/80 uppercase'>
+											className='flex items-center gap-1 rounded-none border-white/30 px-2 py-1 text-xs font-bold text-white/80 uppercase'>
+											<Icon icon={ability.icon} className='h-3 w-3' />
 											{ability.name}
 										</Badge>
 									))}
@@ -157,7 +159,8 @@ const IssueCard: React.FC<IssueCardProps> = ({ issue, index, variant = 'grid', s
 							{abilitiesToShow.slice(0, 3).map((ability, idx) => (
 								<span
 									key={idx}
-									className='border border-white/10 bg-white/5 px-2 py-1 font-[Inter] text-[10px] font-bold text-white/60 uppercase'>
+									className='flex items-center gap-1 border border-white/10 bg-white/5 px-2 py-1 font-[Inter] text-[10px] font-bold text-white/60 uppercase'>
+									<Icon icon={ability.icon} className='h-3 w-3' />
 									{ability.name}
 								</span>
 							))}

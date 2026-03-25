@@ -16,103 +16,237 @@ export default function CVPage() {
 		window.print()
 	}
 
-	// Split projects (8 total) into two groups for Page 3 and Page 4
-	const page3Projects = issuesData.slice(0, 4)
-	const page4Projects = issuesData.slice(4, 8)
+	// Split affiliations for pagination (Max 3 per page)
+	const workExperiences = affiliationData.filter(a => a.type !== AffiliationType.LifeEvent)
+	const page2Affiliations = workExperiences.slice(0, 3)
+	const page3Affiliations = workExperiences.slice(3)
+
+	// Projects: 11 total. 4 per page = 3 pages of projects.
+	// Page 4: Projects 0-4
+	// Page 5: Projects 4-8
+	// Page 6: Projects 8-end
+	const page4Projects = issuesData.slice(0, 4)
+	const page5Projects = issuesData.slice(4, 8)
+	const page6Projects = issuesData.slice(8)
+
+	const getCompanyName = (id?: string) => {
+		if (!id) return null
+		const aff = affiliationData.find(a => a.id === id)
+		return aff?.affiliation.name || null
+	}
 
 	return (
-		<div className='min-h-screen bg-neutral-100 p-4 font-[Inter] text-black md:p-10 print:bg-white print:p-0'>
-			{/* Controls: Hidden during print */}
+		<div className='min-h-screen bg-zinc-100 py-10 font-sans text-black print:bg-white print:py-0'>
+			<style jsx global>{`
+				/* Global overrides for CV pages */
+				#cv-page-1,
+				#cv-page-2,
+				#cv-page-3,
+				#cv-page-4,
+				#cv-page-5,
+				#cv-page-6 {
+					font-family:
+						ui-sans-serif,
+						system-ui,
+						-apple-system,
+						BlinkMacSystemFont,
+						'Segoe UI',
+						Roboto,
+						'Helvetica Neue',
+						Arial,
+						sans-serif !important;
+				}
+				#cv-page-1 h1,
+				#cv-page-1 h2,
+				#cv-page-1 h3,
+				#cv-page-1 h4,
+				#cv-page-2 h1,
+				#cv-page-2 h2,
+				#cv-page-2 h3,
+				#cv-page-2 h4,
+				#cv-page-3 h1,
+				#cv-page-3 h2,
+				#cv-page-3 h3,
+				#cv-page-3 h4,
+				#cv-page-4 h1,
+				#cv-page-4 h2,
+				#cv-page-4 h3,
+				#cv-page-4 h4,
+				#cv-page-5 h1,
+				#cv-page-5 h2,
+				#cv-page-5 h3,
+				#cv-page-5 h4,
+				#cv-page-6 h1,
+				#cv-page-6 h2,
+				#cv-page-6 h3,
+				#cv-page-6 h4 {
+					font-family:
+						ui-sans-serif,
+						system-ui,
+						-apple-system,
+						BlinkMacSystemFont,
+						'Segoe UI',
+						Roboto,
+						'Helvetica Neue',
+						Arial,
+						sans-serif !important;
+					text-shadow: none !important;
+					letter-spacing: normal !important;
+					text-transform: uppercase !important;
+				}
+
+				@media print {
+					@page {
+						margin: 0;
+						size: A4 portrait;
+					}
+					html,
+					body {
+						background: white !important;
+						width: 210mm;
+						height: 100%;
+						margin: 0 !important;
+						padding: 0 !important;
+						-webkit-print-color-adjust: exact !important;
+						print-color-adjust: exact !important;
+					}
+					#cv-page-1,
+					#cv-page-2,
+					#cv-page-3,
+					#cv-page-4,
+					#cv-page-5 {
+						page-break-after: always !important;
+					}
+					#cv-page-1,
+					#cv-page-2,
+					#cv-page-3,
+					#cv-page-4,
+					#cv-page-5,
+					#cv-page-6 {
+						margin: 0 !important;
+						border: none !important;
+						box-shadow: none !important;
+						width: 210mm !important;
+						height: 296.9mm !important;
+						padding: 14mm !important;
+						break-inside: avoid !important;
+						display: flex !important;
+						flex-direction: column !important;
+						background: white !important;
+						overflow: hidden !important;
+					}
+					/* Restore image color for print */
+					img {
+						filter: none !important;
+						-webkit-print-color-adjust: exact !important;
+					}
+				}
+			`}</style>
+
+			{/* Controls */}
 			<div className='mb-8 flex justify-center print:hidden'>
 				<Button
 					onClick={handlePrint}
-					className='flex items-center gap-2 bg-black px-8 py-6 text-lg font-black tracking-tighter text-white uppercase hover:bg-zinc-800'>
-					<Icon icon='material-symbols:print' className='h-6 w-6' />
-					Save as PDF (Professional Print)
+					className='flex items-center gap-2 bg-red-600 px-10 py-7 text-xl font-bold tracking-tight text-white uppercase transition-transform active:scale-95'>
+					<Icon icon='material-symbols:print' className='h-7 w-7' />
+					Print Premium Color CV (A4)
 				</Button>
 			</div>
 
-			{/* PAGE 1: Profile, Education, Skills, Contact */}
+			{/* PAGE 1: Personal Branding & Core Info */}
 			<div
 				id='cv-page-1'
-				className='print:page-break-after-always mx-auto mb-10 w-full max-w-[210mm] border-4 border-black bg-white p-8 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] print:mb-0 print:h-[297mm] print:w-[210mm] print:border-0 print:p-12 print:shadow-none'>
-				<header className='mb-8 flex flex-col items-center border-b-4 border-black pb-8 text-center md:flex-row md:text-left'>
+				className='mx-auto mb-10 flex h-[297mm] w-[210mm] flex-col overflow-hidden border border-black/5 bg-white p-[14mm] shadow-lg print:mb-0 print:border-0 print:shadow-none'>
+				<header
+					className='mb-8 flex flex-row items-center justify-between border-b-4 border-red-600 pb-8'
+					style={{ WebkitPrintColorAdjust: 'exact' }}>
 					<div className='flex-1'>
-						<h1 className='font-[Bangers] text-5xl tracking-tighter text-black uppercase md:text-7xl'>
+						<h1 className='text-6xl leading-[0.85] font-black tracking-tighter text-black uppercase'>
 							{personalData.name}
 						</h1>
 						<p
-							className='text-primary mt-2 font-mono text-xl font-black uppercase'
-							style={{ WebkitPrintColorAdjust: 'exact' }}>
+							className='mt-2 font-mono text-2xl font-black tracking-widest text-red-600 uppercase'
+							style={{ WebkitPrintColorAdjust: 'exact', color: '#dc2626' }}>
 							{personalData.title}
 						</p>
-						<div className='mt-4 flex flex-wrap justify-center gap-4 font-bold md:justify-start'>
+						<div className='mt-6 flex flex-wrap gap-6 font-bold'>
 							<div
-								className='flex items-center gap-2 bg-black px-2 py-0.5 text-xs text-white uppercase'
+								className='flex items-center gap-2 text-[12px] uppercase'
 								style={{ WebkitPrintColorAdjust: 'exact' }}>
-								<Icon icon='material-symbols:mail' className='h-4 w-4' />
+								<Icon icon='material-symbols:mail' className='h-4 w-4 text-red-600' />
 								{personalData.contact.email}
 							</div>
-							<div className='flex items-center gap-2 border-2 border-black px-2 py-0.5 text-xs uppercase'>
-								<Icon icon='material-symbols:location-on' className='text-primary h-4 w-4' />
+							<div className='flex items-center gap-2 text-[12px] text-gray-700 uppercase'>
+								<Icon icon='material-symbols:location-on' className='h-4 w-4 text-red-600' />
 								{personalData.contact.location}
+							</div>
+							<div className='flex items-center gap-2 text-[12px] text-gray-700 uppercase'>
+								<Icon icon='material-symbols:language' className='h-4 w-4 text-red-600' />
+								nooobtimex.me
 							</div>
 						</div>
 					</div>
-					<div className='mt-8 md:mt-0'>
-						<div className='relative border-4 border-black bg-white p-2'>
-							<QRCodeSVG value='https://nooobtimex.me' size={100} />
-							<div
-								className='absolute -bottom-3 left-1/2 -translate-x-1/2 bg-black px-2 text-[8px] font-black whitespace-nowrap text-white uppercase'
-								style={{ WebkitPrintColorAdjust: 'exact' }}>
-								Portfolio Scan
-							</div>
-						</div>
+					<div className='flex flex-col items-center gap-2'>
+						<QRCodeSVG value='https://nooobtimex.me' size={80} fgColor='#dc2626' />
+						<span
+							className='text-[8px] font-black tracking-widest text-red-600 uppercase opacity-60'
+							style={{ WebkitPrintColorAdjust: 'exact' }}>
+							Portfolio Scan
+						</span>
 					</div>
 				</header>
 
-				<div className='grid grid-cols-1 gap-12 md:grid-cols-[1.5fr_1fr] print:grid-cols-[1.5fr_1fr]'>
-					<div className='space-y-12'>
-						{/* Summary */}
+				<div className='grid grid-cols-[1.6fr_1fr] gap-12 overflow-hidden'>
+					<div className='space-y-8'>
 						<section>
-							<h2 className='mb-3 flex items-center gap-2 border-b-2 border-black pb-1 font-[Bangers] text-xl tracking-wide uppercase'>
-								<Icon icon='material-symbols:person' className='text-primary h-6 w-6' />
-								Professional Profile
+							<h2
+								className='mb-4 flex items-center gap-2 border-b-2 border-red-600 pb-1.5 text-2xl font-black tracking-tight uppercase'
+								style={{ WebkitPrintColorAdjust: 'exact' }}>
+								Professional Summary
 							</h2>
-							<p className='text-sm leading-relaxed font-medium text-gray-700 md:text-base'>{personalData.about.bio}</p>
+							<p className='text-[14px] leading-relaxed font-medium text-gray-700'>{personalData.about.bio}</p>
 						</section>
 
-						{/* Education */}
 						<section>
-							<h2 className='mb-3 flex items-center gap-2 border-b-2 border-black pb-1 font-[Bangers] text-xl tracking-wide uppercase'>
-								<Icon icon='material-symbols:school' className='text-primary h-6 w-6' />
-								Education
+							<h2
+								className='mb-4 flex items-center gap-2 border-b-2 border-red-600 pb-1.5 text-2xl font-black tracking-tight uppercase'
+								style={{ WebkitPrintColorAdjust: 'exact' }}>
+								Academic Background
 							</h2>
-							<div className='before:bg-primary relative pl-4 before:absolute before:top-1.5 before:bottom-1.5 before:left-0 before:w-1'>
+							<div
+								className='relative pl-5 before:absolute before:top-1.5 before:left-0 before:h-[calc(100%-6px)] before:w-1.5 before:bg-red-600'
+								style={{ WebkitPrintColorAdjust: 'exact' }}>
 								<h3 className='text-lg font-black text-black uppercase'>B.S. Computer Science</h3>
-								<p className='font-bold text-gray-700 uppercase'>Thammasat University</p>
-								<p className='text-primary text-xs font-black uppercase tabular-nums'>2022 – 2025</p>
+								<p className='text-sm font-bold text-gray-500 uppercase'>Thammasat University</p>
+								<p
+									className='mt-0.5 text-xs font-black text-red-600 uppercase opacity-80'
+									style={{ WebkitPrintColorAdjust: 'exact' }}>
+									2022 – 2025
+								</p>
 							</div>
 						</section>
 
-						{/* Technical Skills - Dynamic */}
 						<section>
-							<h2 className='mb-3 flex items-center gap-2 border-b-2 border-black pb-1 font-[Bangers] text-xl tracking-wide uppercase'>
-								<Icon icon='material-symbols:settings-account-box' className='text-primary h-6 w-6' />
+							<h2
+								className='mb-4 flex items-center gap-2 border-b-2 border-red-600 pb-1.5 text-2xl font-black tracking-tight uppercase'
+								style={{ WebkitPrintColorAdjust: 'exact' }}>
 								Core Competencies
 							</h2>
-							<div className='grid grid-cols-1 gap-4 md:grid-cols-2 print:grid-cols-2'>
+							<div className='grid grid-cols-2 gap-x-6 gap-y-6'>
 								{getDynamicAbilities()
 									.filter((g: AbilityGroup) => ['Frontend', 'Backend', 'DevOps'].includes(g.category))
 									.map((group: AbilityGroup) => (
-										<div key={group.category} className='break-inside-avoid'>
-											<h3 className='mb-1.5 text-[9px] font-black text-black uppercase opacity-60'>{group.category}</h3>
-											<div className='flex flex-wrap gap-1'>
-												{group.abilities.map((a) => (
+										<div key={group.category}>
+											<h3 className='mb-2 text-[10px] font-black tracking-[0.2em] text-black uppercase opacity-40'>
+												{group.category}
+											</h3>
+											<div className='flex flex-wrap gap-1.5'>
+												{group.abilities.map(a => (
 													<span
 														key={a.name}
-														className='border border-black px-1.5 py-0.5 text-[8px] font-bold tracking-tight uppercase'
+														className='flex items-center gap-1 border-2 border-red-100 bg-red-50/30 px-2 py-0.5 text-[9px] font-black text-red-700/80 uppercase'
 														style={{ WebkitPrintColorAdjust: 'exact' }}>
+														<Icon icon={a.icon} className='h-3 w-3 text-red-600' />
 														{a.name}
 													</span>
 												))}
@@ -123,38 +257,43 @@ export default function CVPage() {
 						</section>
 					</div>
 
-					{/* Highlights Sidebar */}
-					<aside
-						className='space-y-12 border-l-4 border-black bg-neutral-50 p-6 print:bg-neutral-50'
-						style={{ WebkitPrintColorAdjust: 'exact' }}>
+					<aside className='space-y-10 border-l-2 border-red-50 pl-10' style={{ WebkitPrintColorAdjust: 'exact' }}>
 						<section>
-							<h2 className='mb-4 flex items-center gap-2 border-b-2 border-black pb-1 font-mono text-sm font-black uppercase'>
-								<Icon icon='material-symbols:star' className='text-primary h-5 w-5' />
-								Key Achievements
+							<h2
+								className='mb-4 text-xs font-black tracking-[0.2em] text-red-600 uppercase'
+								style={{ WebkitPrintColorAdjust: 'exact' }}>
+								Key Highlights
 							</h2>
 							<ul className='space-y-4'>
 								{personalData.about.highlights.map((h, i) => (
-									<li key={i} className='flex gap-3 text-xs leading-relaxed'>
-										<span className='mt-1 h-2 w-2 shrink-0 bg-black' style={{ WebkitPrintColorAdjust: 'exact' }}></span>
-										<span className='font-black text-gray-800 uppercase'>{h}</span>
+									<li key={i} className='flex gap-3 text-[12px] leading-snug'>
+										<span
+											className='mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-red-600'
+											style={{ WebkitPrintColorAdjust: 'exact' }}></span>
+										<span className='font-bold tracking-tight text-black uppercase'>{h}</span>
 									</li>
 								))}
 							</ul>
 						</section>
 
 						<section>
-							<h2 className='mb-4 flex items-center gap-2 border-b-2 border-black pb-1 font-mono text-sm font-black uppercase'>
-								<Icon icon='material-symbols:link' className='text-primary h-5 w-5' />
-								Engineering Links
+							<h2
+								className='mb-4 text-xs font-black tracking-[0.2em] text-red-600 uppercase'
+								style={{ WebkitPrintColorAdjust: 'exact' }}>
+								Contact
 							</h2>
-							<div className='mt-4 space-y-3'>
-								<div className='flex items-center gap-2 text-[10px] font-black uppercase'>
-									<Icon icon='simple-icons:github' className='h-4 w-4' />
-									<span>github.com/NooobtimeX</span>
+							<div className='space-y-4'>
+								<div className='flex items-center gap-3 text-[11px] font-black tracking-tight uppercase'>
+									<Icon icon='simple-icons:github' className='h-5 w-5 text-black' />
+									<span>github.com/nooobtimex</span>
 								</div>
-								<div className='text-primary flex items-center gap-2 text-[10px] font-black uppercase'>
-									<Icon icon='material-symbols:language' className='h-4 w-4' />
-									<span>nooobtimex.me</span>
+								<div className='flex items-center gap-3 text-[11px] font-black tracking-tight uppercase'>
+									<Icon
+										icon='simple-icons:linkedin'
+										className='h-5 w-5 text-red-600'
+										style={{ WebkitPrintColorAdjust: 'exact' }}
+									/>
+									<span>Wongsaphat Puangsorn</span>
 								</div>
 							</div>
 						</section>
@@ -162,144 +301,175 @@ export default function CVPage() {
 				</div>
 			</div>
 
-			{/* PAGE 2: Professional Experience */}
+			{/* PAGE 2: Experience (I) */}
 			<div
 				id='cv-page-2'
-				className='print:page-break-after-always mx-auto mb-10 w-full max-w-[210mm] border-4 border-black bg-white p-8 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] print:mb-0 print:h-[297mm] print:w-[210mm] print:border-0 print:p-12 print:shadow-none'>
-				<h2 className='mb-8 flex items-center gap-3 border-b-4 border-black pb-2 font-[Bangers] text-4xl tracking-wide uppercase'>
-					<Icon icon='material-symbols:work' className='text-primary h-10 w-10' />
-					Engineering Experience
+				className='mx-auto mb-10 flex h-[297mm] w-[210mm] flex-col overflow-hidden border border-black/5 bg-white p-[14mm] shadow-lg print:mb-0 print:border-0 print:shadow-none'>
+				<h2 className='mb-8 border-b-2 border-black pb-2 text-3xl font-black tracking-tight uppercase'>
+					Professional Experience
 				</h2>
 
 				<div className='space-y-10'>
-					{affiliationData
-						.filter(a => a.type !== AffiliationType.LifeEvent)
-						.map(aff => (
-							<div
-								key={aff.id}
-								className='relative break-inside-avoid pl-8 before:absolute before:top-2 before:left-0 before:h-full before:w-1.5 before:bg-black'>
-								<div className='mb-2 flex flex-wrap items-center justify-between gap-x-4'>
-									<h3 className='font-[Inter] text-2xl font-black tracking-tighter text-black uppercase md:text-3xl'>
-										{aff.affiliation.name}
-									</h3>
-									<span
-										className='bg-black px-3 py-1 text-[10px] font-black tracking-widest text-white uppercase'
-										style={{ WebkitPrintColorAdjust: 'exact' }}>
-										{new Date(aff.startDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })} –
-										{aff.endDate ?
-											new Date(aff.endDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
-										:	'Present'}
-									</span>
-								</div>
+					{page2Affiliations.map(aff => (
+						<div
+							key={aff.id}
+							className='relative break-inside-avoid pl-10 before:absolute before:top-2 before:left-0 before:h-full before:w-1.5 before:bg-red-600'
+							style={{ WebkitPrintColorAdjust: 'exact' }}>
+							<div className='mb-1'>
+								<h3 className='text-2xl font-black tracking-tight text-black uppercase'>{aff.affiliation.name}</h3>
+							</div>
+							<div className='mb-3'>
 								<p
-									className='text-primary mb-4 text-lg font-black uppercase tabular-nums'
+									className='text-lg font-black tracking-tight text-red-600 uppercase'
 									style={{ WebkitPrintColorAdjust: 'exact' }}>
 									{aff.position}
 								</p>
-								<p className='mb-6 text-sm leading-relaxed font-medium text-gray-700 md:text-base'>{aff.description}</p>
+							</div>
+							<div className='mb-4 flex items-center gap-4'>
+								<span
+									className='bg-red-600 px-3 py-1 text-[11px] font-black text-white uppercase'
+									style={{ WebkitPrintColorAdjust: 'exact' }}>
+									{new Date(aff.startDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })} –
+									{aff.endDate ?
+										new Date(aff.endDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
+									:	'Present'}
+								</span>
+								<span
+									className='border-2 border-red-200 bg-red-50 px-2 py-0.5 text-[10px] font-bold text-red-700 uppercase'
+									style={{ WebkitPrintColorAdjust: 'exact' }}>
+									{aff.type}
+								</span>
+							</div>
+							<p className='mb-6 line-clamp-4 text-[14px] leading-relaxed font-medium text-gray-700'>
+								{aff.description}
+							</p>
 
-								<div className='flex flex-wrap gap-2'>
-									{aff.abilities.map(ability => (
+							<div className='flex flex-wrap gap-1.5'>
+								{(() => {
+									const projectAbilities = issuesData
+										.filter(issue => issue.linkedAffiliationId === aff.id)
+										.flatMap(issue => issue.abilities)
+									const uniqueAbilities = Array.from(new Map(projectAbilities.map(a => [a.name, a])).values())
+
+									return uniqueAbilities.slice(0, 10).map(ability => (
 										<span
 											key={ability.name}
-											className='border-2 border-black bg-neutral-50 px-2 py-0.5 text-[9px] font-black text-black uppercase'
+											className='flex items-center gap-1 border-2 border-gray-100 bg-gray-50 px-2 py-0.5 text-[9px] font-black text-gray-400 uppercase'
 											style={{ WebkitPrintColorAdjust: 'exact' }}>
+											<Icon icon={ability.icon} className='h-3 w-3 text-red-600/40' />
 											{ability.name}
 										</span>
-									))}
-								</div>
+									))
+								})()}
 							</div>
-						))}
+						</div>
+					))}
 				</div>
 			</div>
 
-			{/* PAGE 3: Featured Projects Showcase */}
+			{/* PAGE 3: Experience (II) */}
 			<div
 				id='cv-page-3'
-				className='print:page-break-after-always mx-auto mb-10 w-full max-w-[210mm] border-4 border-black bg-white p-8 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] print:mb-0 print:h-[297mm] print:w-[210mm] print:border-0 print:p-12 print:shadow-none'>
-				<h2 className='mb-8 flex items-center gap-3 border-b-4 border-black pb-2 font-[Bangers] text-4xl tracking-wide uppercase'>
-					<Icon icon='material-symbols:rocket-launch' className='text-primary h-10 w-10' />
-					Product Showcase (I)
-				</h2>
+				className='mx-auto mb-10 flex h-[297mm] w-[210mm] flex-col overflow-hidden border border-black/5 bg-white p-[14mm] shadow-lg print:mb-0 print:border-0 print:shadow-none'>
+				{page3Affiliations.length > 0 && (
+					<section className='mb-10'>
+						<h2 className='mb-8 border-b-2 border-black pb-2 text-3xl font-black tracking-tight uppercase'>
+							Experience (Continued)
+						</h2>
+						<div className='space-y-10'>
+							{page3Affiliations.map(aff => (
+								<div
+									key={aff.id}
+									className='relative break-inside-avoid pl-10 before:absolute before:top-2 before:left-0 before:h-full before:w-1.5 before:bg-red-600'
+									style={{ WebkitPrintColorAdjust: 'exact' }}>
+									<div className='mb-1'>
+										<h3 className='text-2xl font-black tracking-tight text-black uppercase'>{aff.affiliation.name}</h3>
+									</div>
+									<div className='mb-3'>
+										<p
+											className='text-lg font-black tracking-tight text-red-600 uppercase'
+											style={{ WebkitPrintColorAdjust: 'exact' }}>
+											{aff.position}
+										</p>
+									</div>
+									<div className='mb-4 flex items-center gap-4'>
+										<span
+											className='bg-red-600 px-3 py-1 text-[11px] font-black text-white uppercase'
+											style={{ WebkitPrintColorAdjust: 'exact' }}>
+											{new Date(aff.startDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })} –
+											{aff.endDate ?
+												new Date(aff.endDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
+											:	'Present'}
+										</span>
+										<span
+											className='border-2 border-red-200 bg-red-50 px-2 py-0.5 text-[10px] font-bold text-red-700 uppercase'
+											style={{ WebkitPrintColorAdjust: 'exact' }}>
+											{aff.type}
+										</span>
+									</div>
+									<p className='line-clamp-4 text-[14px] leading-relaxed font-medium text-gray-700'>
+										{aff.description}
+									</p>
 
-				<div className='grid grid-cols-1 gap-12 md:grid-cols-2 print:grid-cols-2'>
-					{page3Projects.map(project => (
-						<div
-							key={project.id}
-							className='flex break-inside-avoid flex-col border-4 border-black bg-neutral-50 p-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]'
-							style={{ WebkitPrintColorAdjust: 'exact' }}>
-							<div className='mb-4 border-2 border-black bg-white'>
-								<img
-									src={project.images.thumbnail}
-									alt={project.title}
-									className='h-44 w-full object-cover object-top opacity-90'
-								/>
-							</div>
-							<div className='mb-2 flex items-center gap-2'>
-								<Icon icon='material-symbols:folder-open' className='text-primary h-5 w-5' />
-								<h3 className='text-xl leading-tight font-black tracking-tight text-black uppercase'>
-									{project.title}
-								</h3>
-							</div>
-							<p className='mb-4 line-clamp-4 flex-1 text-xs leading-relaxed font-medium text-gray-700'>
-								{project.description}
-							</p>
+									<div className='mt-6 flex flex-wrap gap-1.5'>
+										{(() => {
+											const projectAbilities = issuesData
+												.filter(issue => issue.linkedAffiliationId === aff.id)
+												.flatMap(issue => issue.abilities)
+											const uniqueAbilities = Array.from(new Map(projectAbilities.map(a => [a.name, a])).values())
 
-							<div className='flex flex-wrap gap-1.5 border-t-2 border-black/10 pt-4'>
-								{project.abilities.slice(0, 5).map(ability => (
-									<span
-										key={ability.name}
-										className='bg-primary/10 border-primary/30 text-primary flex items-center gap-1 border px-2 py-0.5 text-[8px] font-black uppercase'
-										style={{ WebkitPrintColorAdjust: 'exact' }}>
-										<Icon icon={ability.icon} className='h-2.5 w-2.5' />
-										{ability.name}
-									</span>
-								))}
-							</div>
+											return uniqueAbilities.slice(0, 10).map(ability => (
+												<span
+													key={ability.name}
+													className='flex items-center gap-1 border-2 border-gray-100 bg-gray-50 px-2 py-0.5 text-[9px] font-black text-gray-400 uppercase'
+													style={{ WebkitPrintColorAdjust: 'exact' }}>
+													<Icon icon={ability.icon} className='h-3 w-3 text-red-600/40' />
+													{ability.name}
+												</span>
+											))
+										})()}
+									</div>
+								</div>
+							))}
 						</div>
-					))}
-				</div>
+					</section>
+				)}
 			</div>
 
-			{/* PAGE 4: Specialized Engineering Showcase */}
+			{/* PAGE 4: Selected Projects (I) */}
 			<div
 				id='cv-page-4'
-				className='mx-auto w-full max-w-[210mm] border-4 border-black bg-white p-8 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] print:h-[297mm] print:w-[210mm] print:border-0 print:p-12 print:shadow-none'>
-				<h2 className='mb-8 flex items-center gap-3 border-b-4 border-black pb-2 font-[Bangers] text-4xl tracking-wide uppercase'>
-					<Icon icon='material-symbols:terminal' className='text-primary h-10 w-10' />
-					Product Showcase (II)
+				className='mx-auto mb-10 flex h-[297mm] w-[210mm] flex-col overflow-hidden border border-black/5 bg-white p-[14mm] shadow-lg print:mb-0 print:border-0 print:shadow-none'>
+				<h2 className='mb-10 border-b-2 border-black pb-2 text-3xl font-black tracking-tight uppercase'>
+					Selected Projects (I)
 				</h2>
 
-				<div className='grid grid-cols-1 gap-12 md:grid-cols-2 print:grid-cols-2'>
+				<div className='grid grid-cols-2 gap-6 overflow-hidden'>
 					{page4Projects.map(project => (
-						<div
-							key={project.id}
-							className='flex break-inside-avoid flex-col border-4 border-black bg-neutral-50 p-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]'
-							style={{ WebkitPrintColorAdjust: 'exact' }}>
-							<div className='mb-4 border-2 border-black bg-white'>
-								<img
-									src={project.images.thumbnail}
-									alt={project.title}
-									className='h-44 w-full object-cover object-top opacity-90'
-								/>
+						<div key={project.id} className='flex flex-col border border-gray-100 bg-zinc-50/20 p-4 shadow-sm'>
+							<div className='mb-4 aspect-video overflow-hidden border border-gray-100'>
+								<img src={project.images.thumbnail} alt={project.title} className='h-full w-full object-cover' />
 							</div>
-							<div className='mb-2 flex items-center gap-2'>
-								<Icon icon='material-symbols:folder-open' className='text-primary h-5 w-5' />
-								<h3 className='text-xl leading-tight font-black tracking-tight text-black uppercase'>
-									{project.title}
-								</h3>
-							</div>
-							<p className='mb-4 line-clamp-4 flex-1 text-xs leading-relaxed font-medium text-gray-700'>
+							<h3 className='mb-1 line-clamp-1 text-xl font-black tracking-tight text-black uppercase'>
+								{project.title}
+							</h3>
+							{getCompanyName(project.linkedAffiliationId) && (
+								<p
+									className='mb-3 text-[9px] font-black tracking-[0.15em] text-red-600 uppercase opacity-80'
+									style={{ WebkitPrintColorAdjust: 'exact' }}>
+									{getCompanyName(project.linkedAffiliationId)}
+								</p>
+							)}
+							<p className='mb-4 line-clamp-6 text-[12px] leading-normal font-medium text-gray-600'>
 								{project.description}
 							</p>
-
-							<div className='flex flex-wrap gap-1.5 border-t-2 border-black/10 pt-4'>
+							<div className='mt-auto flex flex-wrap gap-1.5 border-t border-gray-50 pt-3'>
 								{project.abilities.slice(0, 5).map(ability => (
 									<span
 										key={ability.name}
-										className='bg-primary/10 border-primary/30 text-primary flex items-center gap-1 border px-2 py-0.5 text-[8px] font-black uppercase'
+										className='flex items-center gap-1 rounded border border-red-100 bg-red-50 px-1.5 py-0.5 text-[8px] font-black text-red-700 uppercase'
 										style={{ WebkitPrintColorAdjust: 'exact' }}>
-										<Icon icon={ability.icon} className='h-2.5 w-2.5' />
+										<Icon icon={ability.icon} className='h-2.5 w-2.5 opacity-60' />
 										{ability.name}
 									</span>
 								))}
@@ -307,48 +477,93 @@ export default function CVPage() {
 						</div>
 					))}
 				</div>
-
-				<footer className='mt-16 flex items-center justify-between border-t-4 border-black pt-8'>
-					<div className='text-left'>
-						<p className='text-[10px] font-black tracking-widest text-black uppercase'>Modern CV Architecture</p>
-						<p className='text-[8px] font-bold text-gray-500 uppercase'>Dynamically Generated via Portfolio Core</p>
-					</div>
-					<div className='text-right'>
-						<p className='text-[10px] font-black tracking-widest text-black uppercase'>
-							{new Date().getFullYear()} © NOOOBTIMEX
-						</p>
-						<p className='text-[8px] font-bold text-gray-500 uppercase'>nooobtimex.me</p>
-					</div>
-				</footer>
 			</div>
 
-			<style jsx global>{`
-				@media print {
-					@page {
-						margin: 0;
-						size: A4 portrait;
-					}
-					html,
-					body {
-						background: white !important;
-						width: 210mm;
-						height: 297mm;
-						margin: 0 !important;
-						padding: 0 !important;
-					}
-					* {
-						-webkit-print-color-adjust: exact !important;
-						print-color-adjust: exact !important;
-					}
-					.print\\:page-break-after-always {
-						page-break-after: always !important;
-						break-after: page !important;
-					}
-					.break-inside-avoid {
-						break-inside: avoid !important;
-					}
-				}
-			`}</style>
+			{/* PAGE 5: Selected Projects (II) */}
+			<div
+				id='cv-page-5'
+				className='mx-auto mb-10 flex h-[297mm] w-[210mm] flex-col overflow-hidden border border-black/5 bg-white p-[14mm] shadow-lg print:mb-0 print:border-0 print:shadow-none'>
+				<h2 className='mb-10 border-b-2 border-black pb-2 text-3xl font-black tracking-tight uppercase'>
+					Selected Projects (II)
+				</h2>
+
+				<div className='grid grid-cols-2 gap-6 overflow-hidden'>
+					{page5Projects.map(project => (
+						<div key={project.id} className='flex flex-col border border-gray-100 bg-zinc-50/20 p-4 shadow-sm'>
+							<div className='mb-4 aspect-video overflow-hidden border border-gray-100'>
+								<img src={project.images.thumbnail} alt={project.title} className='h-full w-full object-cover' />
+							</div>
+							<h3 className='mb-1 line-clamp-1 text-xl font-black tracking-tight text-black uppercase'>
+								{project.title}
+							</h3>
+							{getCompanyName(project.linkedAffiliationId) && (
+								<p
+									className='mb-3 text-[9px] font-black tracking-[0.15em] text-red-600 uppercase opacity-80'
+									style={{ WebkitPrintColorAdjust: 'exact' }}>
+									{getCompanyName(project.linkedAffiliationId)}
+								</p>
+							)}
+							<p className='mb-4 line-clamp-6 text-[12px] leading-normal font-medium text-gray-600'>
+								{project.description}
+							</p>
+							<div className='mt-auto flex flex-wrap gap-1.5 border-t border-gray-50 pt-3'>
+								{project.abilities.slice(0, 5).map(ability => (
+									<span
+										key={ability.name}
+										className='flex items-center gap-1 rounded border border-red-100 bg-red-50 px-1.5 py-0.5 text-[8px] font-black text-red-700 uppercase'
+										style={{ WebkitPrintColorAdjust: 'exact' }}>
+										<Icon icon={ability.icon} className='h-2.5 w-2.5 opacity-60' />
+										{ability.name}
+									</span>
+								))}
+							</div>
+						</div>
+					))}
+				</div>
+			</div>
+
+			{/* PAGE 6: Selected Projects (Final) */}
+			<div
+				id='cv-page-6'
+				className='mx-auto flex h-[297mm] w-[210mm] flex-col overflow-hidden border border-black/5 bg-white p-[14mm] shadow-lg print:mb-0 print:border-0 print:shadow-none'>
+				<h2 className='mb-10 border-b-2 border-black pb-2 text-3xl font-black tracking-tight uppercase'>
+					Selected Projects (Final)
+				</h2>
+
+				<div className='grid grid-cols-2 gap-6 overflow-hidden'>
+					{page6Projects.map(project => (
+						<div key={project.id} className='flex flex-col border border-gray-100 bg-zinc-50/20 p-4 shadow-sm'>
+							<div className='mb-4 aspect-video overflow-hidden border border-gray-100'>
+								<img src={project.images.thumbnail} alt={project.title} className='h-full w-full object-cover' />
+							</div>
+							<h3 className='mb-1 line-clamp-1 text-xl font-black tracking-tight text-black uppercase'>
+								{project.title}
+							</h3>
+							{getCompanyName(project.linkedAffiliationId) && (
+								<p
+									className='mb-3 text-[9px] font-black tracking-[0.15em] text-red-600 uppercase opacity-80'
+									style={{ WebkitPrintColorAdjust: 'exact' }}>
+									{getCompanyName(project.linkedAffiliationId)}
+								</p>
+							)}
+							<p className='mb-4 line-clamp-6 text-[12px] leading-normal font-medium text-gray-600'>
+								{project.description}
+							</p>
+							<div className='mt-auto flex flex-wrap gap-1.5 border-t border-gray-50 pt-3'>
+								{project.abilities.slice(0, 5).map(ability => (
+									<span
+										key={ability.name}
+										className='flex items-center gap-1 rounded border border-red-100 bg-red-50 px-1.5 py-0.5 text-[8px] font-black text-red-700 uppercase'
+										style={{ WebkitPrintColorAdjust: 'exact' }}>
+										<Icon icon={ability.icon} className='h-2.5 w-2.5 opacity-60' />
+										{ability.name}
+									</span>
+								))}
+							</div>
+						</div>
+					))}
+				</div>
+			</div>
 		</div>
 	)
 }

@@ -4,11 +4,10 @@ import type { Route } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
-import { jasmineTechnologySolutionAffiliation } from '@/common/data/affiliation/jasmine-technology-solution'
-import {
-	ruamsukPlatingSoftwareEngineerFullTime,
-	ruamsukPlatingSoftwareEngineerPartTime
-} from '@/common/data/affiliation/ruamsuk-plating'
+import { jasmineTechnologySolutionAffiliation } from '@/common/data/affiliation/developer-jasmine-technology-solution-work'
+import { ruamsukPlatingSoftwareEngineerFullTime } from '@/common/data/affiliation/software-engineer-ruamsuk-plating-full-time'
+import { ruamsukPlatingSoftwareEngineerPartTime } from '@/common/data/affiliation/software-engineer-ruamsuk-plating-part-time'
+import { issuesData } from '@/common/data/issue'
 import { AffiliationEntityType } from '@/common/enum'
 import type { AffiliationItem } from '@/common/interface'
 import ComicPop from '@/components/motion/ComicPop'
@@ -21,7 +20,7 @@ export default function AffiliationPreview() {
 		ruamsukPlatingSoftwareEngineerPartTime,
 		ruamsukPlatingSoftwareEngineerFullTime,
 		jasmineTechnologySolutionAffiliation
-	]
+	].sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime())
 
 	return (
 		<section id='affiliation' className='relative overflow-hidden bg-black py-20'>
@@ -103,14 +102,23 @@ export default function AffiliationPreview() {
 
 									{/* Ability Stack */}
 									<div className='mb-6 flex flex-wrap gap-2'>
-										{affiliation.abilities.map((ability, abilityIndex) => (
-											<Badge
-												key={abilityIndex}
-												variant='outline'
-												className='rounded-none border-white/40 text-[10px] font-bold text-white/80 uppercase transition-colors hover:bg-white hover:text-black'>
-												{ability.name}
-											</Badge>
-										))}
+										{(() => {
+											const projectAbilities = issuesData
+												.filter(issue => issue.linkedAffiliationId === affiliation.id)
+												.flatMap(issue => issue.abilities)
+
+											const uniqueAbilities = Array.from(new Map(projectAbilities.map(a => [a.name, a])).values())
+
+											return uniqueAbilities.map((ability, abilityIndex) => (
+												<Badge
+													key={abilityIndex}
+													variant='outline'
+													className='flex items-center gap-1 rounded-none border-white/40 text-[10px] font-bold text-white/80 uppercase transition-colors hover:bg-white hover:text-black'>
+													<Icon icon={ability.icon} className='h-3 w-3' />
+													{ability.name}
+												</Badge>
+											))
+										})()}
 									</div>
 
 									<div className='mt-auto'>

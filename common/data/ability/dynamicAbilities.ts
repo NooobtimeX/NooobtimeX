@@ -1,4 +1,3 @@
-import { affiliationData } from '@/common/data/affiliation'
 import { issuesData } from '@/common/data/issue'
 import { AbilityCategory } from '@/common/enum'
 import type { Ability, AbilityGroup } from '@/common/interface'
@@ -6,15 +5,14 @@ import { categoryMetadata } from './categoryMetadata'
 
 export const getDynamicAbilities = (): AbilityGroup[] => {
 	const allAbilities: Ability[] = []
+	const abilityFrequency = new Map<string, number>()
 
 	// Collect from issues
 	issuesData.forEach(issue => {
-		allAbilities.push(...issue.abilities)
-	})
-
-	// Collect from affiliations
-	affiliationData.forEach(aff => {
-		allAbilities.push(...aff.abilities)
+		issue.abilities.forEach(ability => {
+			allAbilities.push(ability)
+			abilityFrequency.set(ability.name, (abilityFrequency.get(ability.name) || 0) + 1)
+		})
 	})
 
 	// Filter unique abilities by name
@@ -29,17 +27,29 @@ export const getDynamicAbilities = (): AbilityGroup[] => {
 
 	// Group by category
 	const grouped = Object.values(AbilityCategory).map(category => {
-		const abilitiesInCategory = uniqueAbilities.filter(a => a.category === category)
+		// Get abilities and sort by frequency (descending)
+		const abilitiesInCategory = uniqueAbilities
+			.filter(a => a.category === category)
+			.sort((a, b) => {
+				const freqA = abilityFrequency.get(a.name) || 0
+				const freqB = abilityFrequency.get(b.name) || 0
+				return freqB - freqA
+			})
+
 		const metadata = categoryMetadata[category]
+
+		// Calculate total frequency for this category to determine group sorting
+		const totalCategoryFrequency = abilitiesInCategory.reduce((sum, a) => sum + (abilityFrequency.get(a.name) || 0), 0)
 
 		return {
 			category,
 			description: metadata.description,
 			icon: metadata.icon,
-			abilities: abilitiesInCategory
+			abilities: abilitiesInCategory,
+			totalFrequency: totalCategoryFrequency
 		}
 	})
 
-	// Filter out categories with no abilities
-	return grouped.filter(group => group.abilities.length > 0)
+	// Filter out categories with no abilities and sort by totalFrequency (descending)
+	return grouped.filter(group => group.abilities.length > 0).sort((a, b) => b.totalFrequency - a.totalFrequency)
 }

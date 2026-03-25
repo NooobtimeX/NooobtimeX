@@ -8,6 +8,7 @@ import { notFound } from 'next/navigation'
 import { Icon } from '@iconify/react'
 import { ArrowLeftIcon, CalendarIcon, MapPinIcon } from 'lucide-react'
 import { affiliationData } from '@/common/data/affiliation'
+import { issuesData } from '@/common/data/issue'
 import AffiliationCard from '@/components/affiliation/AffiliationCard'
 import ComicPop from '@/components/motion/ComicPop'
 import { Button } from '@/components/ui/button'
@@ -24,7 +25,12 @@ const AffiliationDetailContent: React.FC<AffiliationDetailContentProps> = ({ id 
 		notFound()
 	}
 
-	const { affiliation, position, description, abilities, startDate, endDate, type } = affiliationItem
+	const { affiliation, position, description, startDate, endDate, type } = affiliationItem
+
+	const projectAbilities = issuesData
+		.filter(issue => issue.linkedAffiliationId === affiliationItem.id)
+		.flatMap(issue => issue.abilities)
+	const uniqueAbilities = Array.from(new Map(projectAbilities.map(a => [a.name, a])).values())
 
 	return (
 		<div className='relative min-h-screen w-full overflow-x-hidden bg-black pt-24 pb-20'>
@@ -80,7 +86,7 @@ const AffiliationDetailContent: React.FC<AffiliationDetailContentProps> = ({ id 
 
 								<div className='space-y-2'>
 									<h2 className='text-primary font-[Bangers] text-2xl tracking-widest uppercase'>{affiliation.name}</h2>
-									<h1 className='font-[Bangers] text-5xl leading-[0.9] tracking-wide break-words text-white uppercase md:text-6xl'>
+									<h1 className='font-[Bangers] text-5xl leading-[0.9] tracking-wide wrap-break-word text-white uppercase md:text-6xl'>
 										{position}
 									</h1>
 								</div>
@@ -134,11 +140,11 @@ const AffiliationDetailContent: React.FC<AffiliationDetailContentProps> = ({ id 
 						delay={0.3}
 						className='bg-card border-4 border-white p-8 shadow-[8px_8px_0px_0px_white]'>
 						<h2 className='border-primary mb-8 inline-block border-b-4 pb-2 font-[Bangers] text-4xl tracking-wide text-white uppercase'>
-							MISSION ABILITIES
+							MISSION ABILITIES ({uniqueAbilities.length})
 						</h2>
 
 						<div className='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-							{abilities.map((ability, index) => (
+							{uniqueAbilities.map((ability, index) => (
 								<ComicPop
 									key={index}
 									initial={{ opacity: 0, x: 20 }}

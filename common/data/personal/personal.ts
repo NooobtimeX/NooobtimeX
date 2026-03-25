@@ -9,18 +9,18 @@ export const personalData: PersonalData = {
 		'Forward-thinking Software Developer specializing in modern JavaScript/TypeScript ecosystems and high-performance system design.',
 	avatar: '/profile/NooobtimeX.webp',
 	about: {
-		bio: 'Passionate about transitioning complex business requirements into scalable, zero-maintenance architectures. Seeking a role to take ownership of modern infrastructure, drive technical strategy, and grow toward a Senior/Technical Architect position within a results-driven engineering culture.',
+		bio: 'Enthusiastic and dedicated developer focused on transforming business requirements into clean, sustainable code. I am passionate about mastering modern infrastructure and am seeking a collaborative engineering culture where I can contribute to high-performance systems while learning from senior mentors.',
 		highlights: [
-			'Modern JavaScript/TypeScript ecosystems expert',
-			'High-performance system design specialist',
-			'Scalable, zero-maintenance architecture focus',
-			'Strategic technical strategy and leadership'
+			'Eager to master modern JavaScript/TypeScript ecosystems',
+			'Focused on building robust, high-performance systems',
+			'Committed to clean and sustainable architecture principles',
+			'Passionate about technical growth and collaborative learning'
 		]
 	},
 	contact: {
 		email: 'nooobtimex@gmail.com',
 		location: 'Pak Kret District, Nonthaburi',
-		availability: 'Available for Senior/Technical Architect and Software Developer roles'
+		availability: 'Available for Software Developer roles with a focus on growth and modern infrastructure'
 	},
 	socialLinks: [
 		{

@@ -1,4 +1,5 @@
 import { docker, mongodb, nats, nestjs, nextjs, railway, redis, shadcnui, typescript } from '@/common/data/ability'
+import { AffiliationId } from '@/common/enum'
 import type { Issue } from '@/common/interface'
 
 export const looklookPet: Issue = {
@@ -25,5 +26,6 @@ export const looklookPet: Issue = {
 	links: {
 		live: 'https://looklook.pet/'
 	},
-	startDate: '2024-06-01'
+	startDate: '2025-07-15',
+	linkedAffiliationId: AffiliationId.JasmineTechnologySolution
 }

@@ -5,5 +5,6 @@ export enum AffiliationType {
 	Freelance = 'freelance',
 	LifeEvent = 'life-event',
 	PartTime = 'part-time',
-	FullTime = 'full-time'
+	FullTime = 'full-time',
+	Contract = 'contract'
 }

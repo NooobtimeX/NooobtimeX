@@ -5,6 +5,7 @@ import type { Route } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
+import { issuesData } from '@/common/data/issue'
 import { AffiliationItem } from '@/common/interface'
 import ComicPop from '@/components/motion/ComicPop'
 import { Badge } from '@/components/ui/badge'
@@ -17,6 +18,11 @@ interface AffiliationCardProps {
 
 const AffiliationCard: React.FC<AffiliationCardProps> = ({ item, index }) => {
 	const isCurrent = isCurrentPosition(item.endDate)
+
+	const projectAbilities = issuesData
+		.filter(issue => issue.linkedAffiliationId === item.id)
+		.flatMap(issue => issue.abilities)
+	const uniqueAbilities = Array.from(new Map(projectAbilities.map(a => [a.name, a])).values())
 
 	return (
 		<ComicPop delay={index * 0.1} className='h-full'>
@@ -42,7 +48,7 @@ const AffiliationCard: React.FC<AffiliationCardProps> = ({ item, index }) => {
 				</div>
 
 				{/* Content Section */}
-				<div className='relative flex flex-grow flex-col bg-black p-6'>
+				<div className='relative flex grow flex-col bg-black p-6'>
 					{/* Active Mission Indicator */}
 					{isCurrent && (
 						<div className='bg-primary absolute -top-4 left-6 z-30 animate-pulse border-2 border-white px-4 py-1 font-[Bangers] text-white shadow-[4px_4px_0px_0px_black]'>
@@ -78,16 +84,17 @@ const AffiliationCard: React.FC<AffiliationCardProps> = ({ item, index }) => {
 
 					<div className='mt-auto space-y-4'>
 						<div className='flex flex-wrap gap-1.5'>
-							{item.abilities?.slice(0, 5).map((ability, idx) => (
+							{uniqueAbilities.slice(0, 5).map((ability, idx) => (
 								<Badge
 									key={idx}
 									variant='outline'
-									className='rounded-none border-white/20 px-1.5 py-0 text-[9px] font-bold text-white/60 uppercase'>
+									className='flex items-center gap-1 rounded-none border-white/20 px-1.5 py-0 text-[10px] font-bold text-white/60 uppercase'>
+									<Icon icon={ability.icon} className='h-3 w-3' />
 									{ability.name}
 								</Badge>
 							))}
-							{item.abilities && item.abilities.length > 5 && (
-								<span className='text-[10px] font-bold text-zinc-500'>+{item.abilities.length - 5}</span>
+							{uniqueAbilities.length > 5 && (
+								<span className='text-[10px] font-bold text-zinc-500'>+{uniqueAbilities.length - 5}</span>
 							)}
 						</div>
 
