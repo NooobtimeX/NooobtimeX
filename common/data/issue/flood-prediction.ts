@@ -4,9 +4,9 @@ import type { Issue } from '@/common/interface'
 
 export const floodPrediction: Issue = {
 	id: 'flood-prediction',
-	title: 'Flood Prediction Display Graph',
+	title: 'Flood Data Dashboard',
 	description:
-		'A flood prediction visualization platform that displays interactive graphs and forecasts. Leveraging Python for data processing and machine learning predictions, with a Next.js frontend for presenting real-time flood risk analytics.',
+		'Built a comprehensive, high-performance forecasting dashboard using Next.js, PostgreSQL, Prisma, and TailwindCSS to visualize complex data sets.',
 	images: {
 		thumbnail: '/issue/flood-prediction.png',
 		banner: '/issue/flood-prediction.png',

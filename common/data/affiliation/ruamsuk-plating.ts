@@ -23,7 +23,7 @@ export const ruamsukPlatingSoftwareEngineerPartTime: AffiliationItem = {
 	affiliation: ruamsukPlating,
 	position: Position.SoftwareEngineer,
 	description:
-		'Developing WordPress websites and managing digital marketing campaigns for a leading trophy and award manufacturing company.',
+		'Full Stack & SEO: Drove full-stack web application development while integrating targeted SEO and online marketing strategies. Digital Transformation: Led AI and digital organizational transformation, modernizing legacy workflows to increase operational efficiency.',
 	abilities: [css, seo, googleAnalytics, googleAds, facebookAds, onlineMarketing, artificialIntelligence],
 	type: AffiliationType.PartTime,
 	startDate: '2021-08-01',
@@ -35,9 +35,8 @@ export const ruamsukPlatingSoftwareEngineerFullTime: AffiliationItem = {
 	affiliation: ruamsukPlating,
 	position: Position.SoftwareEngineer,
 	description:
-		'Developing WordPress websites and managing digital marketing campaigns for a leading trophy and award manufacturing company.',
+		'Full Stack & SEO: Drove full-stack web application development while integrating targeted SEO and online marketing strategies. Digital Transformation: Led AI and digital organizational transformation, modernizing legacy workflows to increase operational efficiency.',
 	abilities: [css, seo, googleAnalytics, googleAds, facebookAds, onlineMarketing, artificialIntelligence],
 	type: AffiliationType.FullTime,
-	startDate: '2025-06-01',
-	endDate: '2025-07-15'
+	startDate: '2025-06-01'
 }

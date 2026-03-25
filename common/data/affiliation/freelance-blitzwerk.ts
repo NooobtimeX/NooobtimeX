@@ -14,7 +14,8 @@ export const freelanceBlitzwerkAffiliation: AffiliationItem = {
 	id: AffiliationId.FreelanceBlitzwerk,
 	affiliation: freelanceBlitzwerk,
 	position: Position.FullStackDeveloper,
-	description: 'Collaborative freelance work developing modern web applications for various clients.',
+	description:
+		'Collaborated on end-to-end web development projects, delivering scalable solutions tailored to client needs.',
 	abilities: [nextjs, typescript, nodejs, postgresql, prisma],
 	type: AffiliationType.Freelance,
 	startDate: '2025-01-01',

@@ -2,13 +2,15 @@
 
 import React from 'react'
 import { Icon } from '@iconify/react'
-import { abilitiesData } from '@/common/data/ability'
+import { getDynamicAbilities } from '@/common/data/ability/dynamicAbilities'
 import ComicPop from '@/components/motion/ComicPop'
 import { AbilityCard } from '@/components/ui/ability-card'
 import { ComicPanel } from '@/components/ui/comic-panel'
 import { cn } from '@/lib/utils'
 
 const AbilityContent: React.FC = () => {
+	const abilitiesData = getDynamicAbilities()
+
 	return (
 		<div className='relative min-h-screen w-full overflow-x-hidden bg-black pt-28 pb-24'>
 			{/* Background Elements */}

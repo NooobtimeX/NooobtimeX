@@ -102,6 +102,13 @@ const HomeContent: React.FC = () => {
 									<Link href='/issue'>EXPLORE ISSUES</Link>
 								</Button>
 								<Button
+									asChild
+									variant='outline'
+									size='lg'
+									className='comic-button h-14 border-2 border-white bg-white px-8 text-xl text-black hover:bg-black hover:text-white'>
+									<Link href='/cv'>DOWNLOAD CV</Link>
+								</Button>
+								<Button
 									variant='outline'
 									size='lg'
 									className='comic-button h-14 border-2 border-white bg-transparent px-8 text-xl text-white hover:bg-white hover:text-black'>

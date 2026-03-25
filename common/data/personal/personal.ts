@@ -4,23 +4,23 @@ import type { PersonalData } from '@/common/interface'
 
 export const personalData: PersonalData = {
 	name: 'WONGSAPHAT PUANGSORN',
-	title: 'Full Stack Developer',
+	title: 'Software Developer',
 	tagline:
-		'Specializing in modern web development, I turn ideas into seamless digital affiliations by building robust web applications using the latest abilities.',
+		'Forward-thinking Software Developer specializing in modern JavaScript/TypeScript ecosystems and high-performance system design.',
 	avatar: '/profile/NooobtimeX.webp',
 	about: {
-		bio: 'I am a passionate full-stack developer with expertise in modern web abilities. I love creating beautiful, functional, and user-friendly applications that solve real-world problems.',
+		bio: 'Passionate about transitioning complex business requirements into scalable, zero-maintenance architectures. Seeking a role to take ownership of modern infrastructure, drive technical strategy, and grow toward a Senior/Technical Architect position within a results-driven engineering culture.',
 		highlights: [
-			'3+ years of web development affiliation',
-			'Expert in React, Next.js, and Node.js',
-			'Strong background in UI/UX design',
-			'Passionate about clean code and best practices'
+			'Modern JavaScript/TypeScript ecosystems expert',
+			'High-performance system design specialist',
+			'Scalable, zero-maintenance architecture focus',
+			'Strategic technical strategy and leadership'
 		]
 	},
 	contact: {
 		email: 'nooobtimex@gmail.com',
-		location: 'Bangkok, Thailand',
-		availability: 'Available for freelance and full-time opportunities'
+		location: 'Pak Kret District, Nonthaburi',
+		availability: 'Available for Senior/Technical Architect and Software Developer roles'
 	},
 	socialLinks: [
 		{
@@ -31,9 +31,9 @@ export const personalData: PersonalData = {
 		},
 		{
 			platform: SocialPlatform.Website,
-			url: 'https://www.facebook.com/xnooobtime',
+			url: 'https://nooobtimex.me',
 			icon: FaFacebook,
-			username: 'xnooobtime'
+			username: 'nooobtimex.me'
 		}
 	]
 }
