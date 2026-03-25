@@ -7,7 +7,6 @@ import { prettierConfig } from './prettier-config'
 import { rsAward } from './rs-award'
 import { rsMedal } from './rs-medal'
 import { rsTrophy } from './rs-trophy'
-import { rsTrophyV0 } from './rs-trophy-v0'
 import { rsTrophyV1 } from './rs-trophy-v1'
 import { webAppAutomation } from './web-app-automation'
 
@@ -20,7 +19,6 @@ const issues = [
 	webAppAutomation,
 	prettierConfig,
 	rsTrophyV1,
-	rsTrophyV0,
 	rsAward,
 	rsMedal
 ]
