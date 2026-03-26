@@ -247,27 +247,29 @@ export default function CVPage() {
 							</h2>
 							<div className='grid grid-cols-2 gap-x-6 gap-y-6'>
 								{getDynamicAbilities()
-									.filter((g: AbilityGroup) =>
-										['Frontend', 'Backend', 'Infrastructure', 'Growth & Management'].includes(g.category)
-									)
-									.map((group: AbilityGroup) => (
-										<div key={group.category}>
-											<h3 className='mb-2 text-[10px] font-black tracking-[0.2em] text-black uppercase opacity-40'>
-												{group.category}
-											</h3>
-											<div className='flex flex-wrap gap-1.5'>
-												{group.abilities.map(a => (
-													<span
-														key={a.name}
-														className='flex items-center gap-1 border-2 border-red-100 bg-red-50/30 px-2 py-0.5 text-[9px] font-black text-red-700/80 uppercase'
-														style={{ WebkitPrintColorAdjust: 'exact' }}>
-														<Icon icon={a.icon} className='h-3 w-3 text-red-600' />
-														{a.name}
-													</span>
-												))}
+									.filter((g: AbilityGroup) => ['Frontend', 'Backend', 'Infrastructure'].includes(g.category))
+									.map((group: AbilityGroup) => {
+										const coreAbilities = group.abilities.filter(a => a.important)
+										if (coreAbilities.length === 0) return null
+										return (
+											<div key={group.category}>
+												<h3 className='mb-2 text-[10px] font-black tracking-[0.2em] text-black uppercase opacity-40'>
+													{group.category}
+												</h3>
+												<div className='flex flex-wrap gap-1.5'>
+													{coreAbilities.map(a => (
+														<span
+															key={a.name}
+															className='flex items-center gap-1 border-2 border-red-100 bg-red-50/30 px-2 py-0.5 text-[9px] font-black text-red-700/80 uppercase'
+															style={{ WebkitPrintColorAdjust: 'exact' }}>
+															<Icon icon={a.icon} className='h-3 w-3 text-red-600' />
+															{a.name}
+														</span>
+													))}
+												</div>
 											</div>
-										</div>
-									))}
+										)
+									})}
 							</div>
 						</section>
 					</div>
