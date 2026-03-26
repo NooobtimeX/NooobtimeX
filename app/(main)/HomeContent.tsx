@@ -51,7 +51,7 @@ const HomeContent: React.FC = () => {
 						<div className='relative z-20 order-2 flex flex-col items-center text-center lg:order-1 lg:items-start lg:text-left'>
 							{/* Speech Bubble / Intro */}
 							<ComicPop delay={0.2} className='relative mb-6 hidden self-start lg:block'>
-								<div className='rounded-[50%_20%_60%_30%] border-4 border-black bg-white px-6 py-3 font-[Bangers] text-xl text-black shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]'>
+								<div className='rounded-[50%_20%_60%_30%] border-4 border-black bg-white px-6 py-3 text-xl font-black text-black shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]'>
 									THE NEW HERO IN TECH!
 								</div>
 								<div className='absolute -bottom-2 left-6 h-4 w-4 rotate-45 transform border-r-4 border-b-4 border-black bg-white'></div>
@@ -63,7 +63,7 @@ const HomeContent: React.FC = () => {
 									initial={{ x: -100, opacity: 0 }}
 									animate={{ x: 0, opacity: 1 }}
 									triggerOnce={true}
-									className='stroke-black font-[Bangers] text-4xl tracking-wider text-white md:text-6xl'
+									className='stroke-black text-4xl font-black tracking-wider text-white md:text-6xl'
 									style={{ textShadow: '4px 4px 0px #000' }}>
 									HELLO, I&apos;M
 								</ComicPop>
@@ -71,7 +71,7 @@ const HomeContent: React.FC = () => {
 									initial={{ scale: 0.8, opacity: 0 }}
 									animate={{ scale: 1, opacity: 1 }}
 									delay={0.1}
-									className='text-primary font-[Bangers] text-7xl leading-[0.85] tracking-tight drop-shadow-[5px_5px_0px_rgba(255,255,255,1)] md:text-9xl'>
+									className='text-primary text-7xl leading-[0.85] font-black tracking-tight drop-shadow-[5px_5px_0px_rgba(255,255,255,1)] md:text-9xl'>
 									{personalData.name.split(' ')[0]}
 								</ComicPop>
 								<ComicPop
@@ -79,7 +79,7 @@ const HomeContent: React.FC = () => {
 									animate={{ x: 0, opacity: 1 }}
 									delay={0.2}
 									className='mt-2 inline-block rotate-2 transform bg-white'>
-									<span className='block border-4 border-black px-4 py-1 font-[Bangers] text-3xl text-black md:text-5xl'>
+									<span className='block border-4 border-black px-4 py-1 text-3xl font-black text-black md:text-5xl'>
 										{personalData.title}
 									</span>
 								</ComicPop>
@@ -89,7 +89,7 @@ const HomeContent: React.FC = () => {
 								initial={{ opacity: 0 }}
 								animate={{ opacity: 1 }}
 								delay={0.4}
-								className='border-primary mb-8 max-w-xl border-l-4 bg-black/50 p-4 font-[Inter] text-lg leading-relaxed text-gray-300 backdrop-blur-sm md:text-xl'>
+								className='border-primary mb-8 max-w-xl border-l-4 bg-black/50 p-4 text-lg leading-relaxed text-gray-300 backdrop-blur-sm md:text-xl'>
 								{personalData.tagline}
 							</ComicPop>
 
@@ -133,14 +133,14 @@ const HomeContent: React.FC = () => {
 											alt={personalData.name}
 											className='scale-110 object-cover transition-transform duration-700 hover:scale-100'
 										/>
-										<AvatarFallback className='bg-card text-primary font-[Bangers] text-9xl'>
+										<AvatarFallback className='bg-card text-primary text-9xl font-black'>
 											{personalData.name.charAt(0)}
 										</AvatarFallback>
 									</Avatar>
 								</div>
 
 								{/* Corner Badge */}
-								<div className='bg-primary absolute -bottom-6 -left-6 z-20 -rotate-6 transform border-4 border-black px-4 py-2 font-[Bangers] text-2xl text-white shadow-[4px_4px_0px_0px_white]'>
+								<div className='bg-primary absolute -bottom-6 -left-6 z-20 -rotate-6 transform border-4 border-black px-4 py-2 text-2xl font-black text-white shadow-[4px_4px_0px_0px_white]'>
 									Kwan
 								</div>
 							</div>

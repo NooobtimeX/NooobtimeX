@@ -17,9 +17,9 @@ export default function Loading() {
 			</div>
 
 			<div className='mt-8 animate-pulse text-center'>
-				<h2 className='mb-2 font-[Bangers] text-4xl tracking-widest text-white uppercase'>LOADING ISSUE...</h2>
+				<h2 className='mb-2 text-4xl font-black tracking-widest text-white uppercase'>LOADING ISSUE...</h2>
 				<div className='bg-primary inline-block -rotate-2 transform border-2 border-white px-4 py-1'>
-					<span className='font-[Inter] text-sm font-bold tracking-wide text-white'>MEANWHILE...</span>
+					<span className='text-sm font-bold tracking-wide text-white'>MEANWHILE...</span>
 				</div>
 			</div>
 		</div>

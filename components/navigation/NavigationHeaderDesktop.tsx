@@ -4,7 +4,9 @@ import type { Route } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
+import { assets } from '@/common/data/assets'
 import MenuItem from '@/common/interface/menuItem'
+import { GlobalSearch } from '@/components/search/GlobalSearch'
 import { ComicPanel } from '@/components/ui/comic-panel'
 import { ComicTooltip } from '@/components/ui/comic-tooltip'
 import { TooltipProvider } from '@/components/ui/tooltip'
@@ -26,7 +28,7 @@ export default function NavigationHeaderDesktop({ menuItems }: NavigationHeaderD
 					<Link href='/' className='relative z-10'>
 						<div className='relative h-10 w-10 overflow-hidden rounded-full border-2 border-white shadow-[0_0_10px_rgba(255,50,50,0.5)] transition-all group-hover/logo:shadow-[0_0_20px_rgba(255,50,50,0.8)]'>
 							<Image
-								src='/favicon.ico'
+								src={assets.personal.favicon}
 								alt='Portfolio Logo'
 								className='object-cover'
 								width={40}
@@ -37,7 +39,7 @@ export default function NavigationHeaderDesktop({ menuItems }: NavigationHeaderD
 					</Link>
 					<Link
 						href='/'
-						className='group-hover/logo:text-primary relative z-10 stroke-black font-[Bangers] text-2xl tracking-wider text-white uppercase transition-colors'
+						className='group-hover/logo:text-primary relative z-10 stroke-black text-2xl font-black tracking-tight text-white uppercase transition-colors'
 						style={{ textShadow: '2px 2px 0px #000' }}>
 						NooobtimeX
 					</Link>
@@ -57,7 +59,7 @@ export default function NavigationHeaderDesktop({ menuItems }: NavigationHeaderD
 								}>
 								<Link
 									href={item.href as Route}
-									className={`group relative flex h-full items-center justify-center px-8 py-4 font-[Bangers] text-xl tracking-wide text-zinc-400 uppercase transition-all hover:text-white ${index !== menuItems.length - 1 ? 'border-r-4 border-white' : ''} `}>
+									className={`group relative flex h-full items-center justify-center px-8 py-4 text-xl font-black tracking-tight text-zinc-400 uppercase transition-all hover:text-white ${index !== menuItems.length - 1 ? 'border-r-4 border-white' : ''} `}>
 									<span className='relative z-10 drop-shadow-md transition-transform duration-200 group-hover:scale-110 group-hover:rotate-2'>
 										{item.title}
 									</span>
@@ -71,8 +73,13 @@ export default function NavigationHeaderDesktop({ menuItems }: NavigationHeaderD
 					</TooltipProvider>
 				</div>
 
+				{/* Search & Actions */}
+				<div className='group-hover/logo:bg-primary flex h-full items-center gap-4 border-l-4 border-white px-4 py-2 transition-colors'>
+					<GlobalSearch />
+				</div>
+
 				{/* End Cap / Decorative */}
-				<div className='h-full w-12 self-stretch bg-[radial-gradient(circle,white_2px,transparent_2.5px)] bg-[length:8px_8px] opacity-20'></div>
+				<div className='h-full w-4 self-stretch bg-[radial-gradient(circle,white_1px,transparent_1.5px)] bg-[length:6px_6px] opacity-20'></div>
 			</ComicPanel>
 		</div>
 	)

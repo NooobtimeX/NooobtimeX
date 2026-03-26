@@ -20,7 +20,7 @@ export default function AbilityPreview() {
 				{/* Header Section with Tape Effect */}
 				<ComicPop className='relative mb-16 text-center'>
 					<div className='inline-block -rotate-2 transform border-4 border-black bg-white px-8 py-4 text-black shadow-[8px_8px_0px_0px_rgba(255,255,255,1)]'>
-						<h2 className='font-[Bangers] text-4xl tracking-wider uppercase md:text-6xl'>TOP ABILITIES</h2>
+						<h2 className='text-4xl font-black tracking-wider uppercase md:text-6xl'>TOP ABILITIES</h2>
 					</div>
 					<div className='bg-primary/80 absolute -top-4 -left-4 z-[-1] h-12 w-12 rounded-full'></div>
 				</ComicPop>
@@ -37,7 +37,7 @@ export default function AbilityPreview() {
 								<Icon icon={ability.icon} className='h-8 w-8' />
 							</div>
 							<div className='text-center'>
-								<h3 className='mb-1 font-[Bangers] text-xl tracking-wide text-white uppercase'>{ability.name}</h3>
+								<h3 className='mb-1 text-xl font-black tracking-wide text-white uppercase'>{ability.name}</h3>
 								<div className='bg-primary mx-auto h-1 w-12'></div>
 							</div>
 						</ComicPop>
@@ -47,7 +47,7 @@ export default function AbilityPreview() {
 				<div className='flex justify-center'>
 					<Button
 						asChild
-						className='border-4 border-white bg-transparent px-10 py-6 font-[Bangers] text-xl text-white shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all hover:bg-white hover:text-black'>
+						className='border-4 border-white bg-transparent px-10 py-6 text-xl font-black text-white shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all hover:bg-white hover:text-black'>
 						<Link href='/ability'>VIEW FULL ARSENAL</Link>
 					</Button>
 				</div>

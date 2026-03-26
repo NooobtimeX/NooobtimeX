@@ -36,7 +36,7 @@ export default function AffiliationPreview() {
 				<ComicPop className='mb-20 text-center'>
 					<div className='relative inline-block'>
 						<div className='-rotate-1 transform border-4 border-black bg-white px-10 py-4 text-black shadow-[8px_8px_0px_0px_white]'>
-							<h2 className='font-[Bangers] text-4xl tracking-wider uppercase md:text-6xl'>CURRENT MISSION</h2>
+							<h2 className='text-4xl font-black tracking-wider uppercase md:text-6xl'>CURRENT MISSION</h2>
 						</div>
 					</div>
 				</ComicPop>
@@ -59,13 +59,11 @@ export default function AffiliationPreview() {
 											/>
 										)}
 										<div>
-											<h3 className='font-[Bangers] text-2xl tracking-wide text-black uppercase'>
+											<h3 className='text-2xl font-black tracking-wide text-black uppercase'>
 												{affiliation.affiliation.name}
 											</h3>
 											{affiliation.affiliation.type === AffiliationEntityType.Company && (
-												<Badge
-													variant='outline'
-													className='gap-1 rounded-none border-black px-2 font-[Inter] text-xs text-black'>
+												<Badge variant='outline' className='gap-1 rounded-none border-black px-2 text-xs text-black'>
 													<Icon icon='material-symbols:location-on' />
 													{affiliation.affiliation.location}
 												</Badge>
@@ -82,18 +80,18 @@ export default function AffiliationPreview() {
 									<div className='bg-primary absolute -bottom-3 -left-3 z-20 h-6 w-6 rotate-45 transform border-2 border-black'></div>
 
 									<div className='mb-4 flex flex-wrap items-center justify-between gap-2 border-b-2 border-white/20 pb-4'>
-										<h4 className='font-[Bangers] text-xl tracking-wide text-white uppercase md:text-2xl'>
+										<h4 className='text-xl font-black tracking-wide text-white uppercase md:text-2xl'>
 											{affiliation.position}
 										</h4>
 
 										{isCurrentPosition(affiliation.endDate) && (
-											<Badge className='bg-primary animate-pulse rounded-none border-2 border-white font-[Bangers] tracking-widest text-white'>
+											<Badge className='bg-primary animate-pulse rounded-none border-2 border-white font-black tracking-widest text-white'>
 												ACTIVE MISSION
 											</Badge>
 										)}
 									</div>
 
-									<div className='mb-4 flex items-center gap-2 font-[Inter] text-sm text-gray-300'>
+									<div className='mb-4 flex items-center gap-2 text-sm text-gray-300'>
 										<Icon icon='material-symbols:calendar-month' className='text-primary h-4 w-4' />
 										<span className='font-bold'>
 											{formatAffiliationDuration(affiliation.startDate, affiliation.endDate)}
@@ -102,7 +100,7 @@ export default function AffiliationPreview() {
 										<span className='text-xs font-bold tracking-wider uppercase'>{affiliation.type}</span>
 									</div>
 
-									<p className='mb-6 line-clamp-2 font-[Inter] text-sm text-gray-400'>{affiliation.description}</p>
+									<p className='mb-6 line-clamp-2 text-sm text-gray-400'>{affiliation.description}</p>
 
 									{/* Ability Stack */}
 									<div className='mb-6 flex flex-wrap gap-2'>
@@ -129,7 +127,7 @@ export default function AffiliationPreview() {
 										<Button
 											asChild
 											size='sm'
-											className='comic-button-sm bg-primary w-full border-2 border-white font-[Bangers] tracking-wider text-white transition-all hover:bg-white hover:text-black md:w-auto'>
+											className='comic-button-sm bg-primary w-full border-2 border-white font-black tracking-wider text-white transition-all hover:bg-white hover:text-black md:w-auto'>
 											<Link href={`/affiliation/${affiliation.id}` as Route}>MISSION BRIEF</Link>
 										</Button>
 									</div>
@@ -143,7 +141,7 @@ export default function AffiliationPreview() {
 				<div className='mt-12 flex justify-center'>
 					<Button
 						asChild
-						className='border-4 border-white bg-transparent px-10 py-6 font-[Bangers] text-xl text-white shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all hover:bg-white hover:text-black'>
+						className='border-4 border-white bg-transparent px-10 py-6 text-xl font-black text-white shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all hover:bg-white hover:text-black'>
 						<Link href='/affiliation'>VIEW CAREER HISTORY</Link>
 					</Button>
 				</div>

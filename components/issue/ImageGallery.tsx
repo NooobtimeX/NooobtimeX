@@ -74,7 +74,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images, title }) => {
 							setPage([index, 0])
 							setIsOpen(true)
 						}}>
-						<div className='bg-primary absolute top-0 right-0 z-10 border-b-2 border-l-2 border-black px-1 font-[Bangers] text-xs text-white opacity-0 transition-opacity group-hover:opacity-100'>
+						<div className='bg-primary absolute top-0 right-0 z-10 border-b-2 border-l-2 border-black px-1 text-xs font-black text-white opacity-0 transition-opacity group-hover:opacity-100'>
 							#{index + 1}
 						</div>
 						<Image
@@ -158,7 +158,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images, title }) => {
 
 						{/* Image Counter */}
 						{images.length > 1 && (
-							<div className='bg-primary absolute top-4 left-4 border-2 border-white px-4 py-2 font-[Bangers] text-xl text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]'>
+							<div className='bg-primary absolute top-4 left-4 border-2 border-white px-4 py-2 text-xl font-black text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]'>
 								PAGE {selectedImageIndex + 1} OF {images.length}
 							</div>
 						)}

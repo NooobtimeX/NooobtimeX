@@ -1,3 +1,4 @@
+import { assets } from '@/common/data/assets'
 import { AffiliationId } from '@/common/enum'
 import type { Issue } from '@/common/interface'
 import {
@@ -34,8 +35,8 @@ export const looklookPet: Issue = {
 	description:
 		'Architected a pet-parent community platform delivering a seamless user experience and integrated reward system. Engineered a robust backend featuring Redis-driven caching to handle complex data queries and reduce API response times.',
 	images: {
-		banner: '/issue/looklook-pet/banner.png',
-		photos: ['/issue/looklook-pet/banner.png']
+		banner: assets.issues.looklookPet.banner,
+		photos: [assets.issues.looklookPet.banner]
 	},
 	abilities: [nextjs, vercel, tailwindcss, shadcnui, googleAds],
 	links: {
@@ -51,8 +52,8 @@ export const rsTrophy: Issue = {
 	description:
 		'Leading the digital transformation of a legacy business into a definitive "Community Hub" for the Thai awards industry. Architecting the consolidation of fragmented legacy brands into a unified, high-performance system utilizing Bun, Elysia.js, and Next.js. Transitioning toward a Serverless/Zero-Maintenance model with Redis caching and MinIO asset management.',
 	images: {
-		banner: '/issue/rs-trophy/banner.png',
-		photos: ['/issue/rs-trophy/banner.png']
+		banner: assets.issues.rsTrophy.banner,
+		photos: [assets.issues.rsTrophy.banner]
 	},
 	abilities: [
 		bun,
@@ -82,8 +83,8 @@ export const rsTrophyV1: Issue = {
 	description:
 		'[LEGACY] The original e-commerce platform for RS TROPHY built on WordPress and WooCommerce. Managed the complete product catalog, customer orders, and digital marketing integrations before the transition to the modern high-performance system.',
 	images: {
-		banner: '/issue/rs-trophy-v1/banner.png',
-		photos: ['/issue/rs-trophy-v1/banner.png']
+		banner: assets.issues.rsTrophyV1.banner,
+		photos: [assets.issues.rsTrophyV1.banner]
 	},
 	abilities: [wordpress, woocommerce, seo, googleAnalytics, googleAds],
 	links: {
@@ -99,8 +100,8 @@ export const onlinePokerGame: Issue = {
 	description:
 		'A real-time multiplayer online poker game featuring Server-Sent Events for live updates. Built with Next.js and PostgreSQL for a seamless, interactive card gaming experience.',
 	images: {
-		banner: '/issue/online-poker-game/banner.png',
-		photos: ['/issue/online-poker-game/banner.png', '/issue/online-poker-game/1.png', '/issue/online-poker-game/2.png']
+		banner: assets.issues.onlinePokerGame.banner,
+		photos: [...assets.issues.onlinePokerGame.gallery]
 	},
 	abilities: [nextjs, prisma, render, tailwindcss, sse, postgresql],
 	links: {},
@@ -114,8 +115,8 @@ export const n8nRailway: Issue = {
 	description:
 		'Architected and deployed a self-hosted n8n automation engine on Railway utilizing Docker containers. Developed custom automated workflows to streamline internal business processes, lead management, and cross-platform data synchronization, resulting in a significant reduction in manual operational tasks.',
 	images: {
-		banner: '/issue/n8n-railway/banner.png',
-		photos: ['/issue/n8n-railway/banner.png']
+		banner: assets.issues.n8nRailway.banner,
+		photos: [assets.issues.n8nRailway.banner]
 	},
 	abilities: [n8n, railway, docker, nodejs, resend],
 	links: {},
@@ -129,8 +130,8 @@ export const tencentRailwayMigration: Issue = {
 	description:
 		'Architected and executed the migration of 15+ microservices from Tencent Cloud VMs to Railway. Optimized deployment workflows by reusing a single Dockerfile with environment-specific configurations for Production and UAT splits. Managed complex environment setups for each service, integrating GitHub for CI/CD and MinIO for object storage.',
 	images: {
-		banner: '/issue/tencent-railway-migration/banner.png',
-		photos: ['/issue/tencent-railway-migration/banner.png']
+		banner: assets.issues.tencentRailwayMigration.banner,
+		photos: [assets.issues.tencentRailwayMigration.banner]
 	},
 	abilities: [docker, railway, nodejs, github, minio],
 	links: {},
@@ -143,8 +144,8 @@ export const prettierConfig: Issue = {
 	title: 'Prettier Config Generator',
 	description: 'Generate your .prettierrc file effortlessly with this interactive Prettier configuration tool.',
 	images: {
-		banner: '/issue/prettier-config/banner.png',
-		photos: ['/issue/prettier-config/banner.png']
+		banner: assets.issues.prettierConfig.banner,
+		photos: [assets.issues.prettierConfig.banner]
 	},
 	abilities: [nextjs, vercel, tailwindcss],
 	links: {
@@ -160,8 +161,8 @@ export const rsMedal: Issue = {
 	description:
 		'[LEGACY] A medal showcase web application. This project has been succeeded by the unified RS TROPHY (rs-trophy.com) platform to provide a more robust and high-performance experience.',
 	images: {
-		banner: '/issue/rs-medal/banner.png',
-		photos: ['/issue/rs-medal/banner.png']
+		banner: assets.issues.rsMedal.banner,
+		photos: [assets.issues.rsMedal.banner]
 	},
 	abilities: [nextjs, vercel, tailwindcss, shadcnui, googleAds],
 	links: {
@@ -177,8 +178,8 @@ export const rsAward: Issue = {
 	description:
 		'[LEGACY] A plaque showcase web application. This project has been succeeded by the unified RS TROPHY (rs-trophy.com) platform as part of a major digital transformation.',
 	images: {
-		banner: '/issue/rs-award/banner.png',
-		photos: ['/issue/rs-award/banner.png']
+		banner: assets.issues.rsAward.banner,
+		photos: [assets.issues.rsAward.banner]
 	},
 	abilities: [nextjs, vercel, tailwindcss, shadcnui, googleAds],
 	links: {

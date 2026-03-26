@@ -28,7 +28,7 @@ const IssueThumbnail: React.FC<IssueThumbnailProps> = ({ src, alt, title, fill =
 		return (
 			<div
 				className={`flex items-center justify-center bg-linear-to-br from-zinc-800 to-zinc-900 ${fill ? 'absolute inset-0' : 'h-full w-full'}`}>
-				<span className='font-[Bangers] text-5xl tracking-widest text-white/70 select-none md:text-7xl'>
+				<span className='text-5xl font-black tracking-widest text-white/70 select-none md:text-7xl'>
 					{getInitials(title)}
 				</span>
 			</div>

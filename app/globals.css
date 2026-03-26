@@ -50,6 +50,8 @@
 	--color-sidebar-primary: var(--sidebar-primary);
 	--color-sidebar-foreground: var(--sidebar-foreground);
 	--color-sidebar: var(--sidebar);
+	--font-sans: var(--font-noto-sans), var(--font-noto-thai), sans-serif;
+	--font-noto: var(--font-noto-sans), var(--font-noto-thai), sans-serif;
 }
 
 /* Compatibility for Tailwind CSS v3 defaults */
@@ -217,7 +219,6 @@
 	/* Utility for buttons to make them look like comic actions */
 	.comic-button {
 		@apply font-bold tracking-wider uppercase transition-transform active:scale-95;
-		font-family: var(--font-bangers), cursive;
 	}
 
 	/* Smooth scrolling */
@@ -295,36 +296,36 @@
 
 	body {
 		@apply bg-background text-foreground;
+		font-family: var(--font-noto-sans), var(--font-noto-thai), sans-serif;
 		font-feature-settings:
 			'rlig' 1,
 			'calt' 1;
 		overflow-x: hidden;
 	}
 
-	/* Comic Headings */
+	/* Premium Sans-Serif Headings */
 	h1,
 	h2,
 	h3,
 	h4,
 	h5,
 	h6 {
-		font-family: var(--font-bangers), system-ui, cursive;
-		letter-spacing: 0.05em;
-		@apply font-normal uppercase;
-		/* Bangers is naturally bold */
+		font-family: var(--font-noto-sans), var(--font-noto-thai), sans-serif;
+		letter-spacing: -0.02em;
+		@apply font-black uppercase;
 		text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
 	}
 
 	h1 {
-		@apply text-5xl md:text-7xl;
+		@apply text-5xl leading-[0.9] md:text-8xl;
 	}
 
 	h2 {
-		@apply text-4xl md:text-5xl;
+		@apply text-4xl leading-[0.9] md:text-6xl;
 	}
 
 	h3 {
-		@apply text-3xl md:text-4xl;
+		@apply text-3xl leading-[0.9] md:text-5xl;
 	}
 
 	/* Body Text */
@@ -333,12 +334,11 @@
 	div,
 	li,
 	a {
-		font-family: var(--font-inter), sans-serif;
+		font-family: inherit;
 	}
 
 	/* Button Base overrides */
 	button {
 		@apply rounded-none;
-		/* No rounded corners */
 	}
 }

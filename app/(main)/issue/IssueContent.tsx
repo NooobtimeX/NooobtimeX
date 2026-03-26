@@ -15,14 +15,14 @@ const IssueContent: React.FC = () => {
 			<div className='relative z-10 container mx-auto mb-16 max-w-7xl px-4 text-center'>
 				<ComicPop initial={{ y: -50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className='relative inline-block'>
 					<div className='-rotate-1 transform border-4 border-black bg-white px-12 py-6 text-black shadow-[8px_8px_0px_0px_white]'>
-						<h1 className='font-[Bangers] text-5xl tracking-wider uppercase md:text-7xl'>ISSUE ARCHIVE</h1>
+						<h1 className='text-5xl font-black tracking-wider uppercase md:text-7xl'>ISSUE ARCHIVE</h1>
 					</div>
 				</ComicPop>
 				<ComicPop
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
 					delay={0.2}
-					className='mt-6 font-[Bangers] text-xl tracking-wide text-gray-400 uppercase'>
+					className='mt-6 text-xl font-black tracking-wide text-gray-400 uppercase'>
 					Select an issue to read details
 				</ComicPop>
 			</div>

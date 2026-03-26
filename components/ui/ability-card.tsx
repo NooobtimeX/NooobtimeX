@@ -2,7 +2,8 @@
 
 import React from 'react'
 import { Icon } from '@iconify/react'
-import { AbilityLevel } from '@/common/enum'
+import { categoryMetadata } from '@/common/data/ability/categoryMetadata'
+import { AbilityCategory, AbilityLevel } from '@/common/enum'
 import ComicPop from '@/components/motion/ComicPop'
 import { cn } from '@/lib/utils'
 
@@ -23,6 +24,10 @@ const levelConfig: Record<AbilityLevel, { bars: number; color: string; label: st
 }
 
 export function AbilityCard({ name, icon, level, category, index = 0, whiteBg }: AbilityCardProps) {
+	const metadata = categoryMetadata[category as AbilityCategory]
+	const accentColor = metadata?.color || '#ef4444'
+	const shadowColor = metadata?.shadow || 'rgba(255, 255, 255, 0.2)'
+
 	// Deterministic rotation based on name to prevent hydration mismatch
 	const randomRotation = React.useMemo(() => {
 		const seed = name.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0)
@@ -44,39 +49,54 @@ export function AbilityCard({ name, icon, level, category, index = 0, whiteBg }:
 				className={cn(
 					'relative flex min-h-[140px] flex-col items-center justify-center p-4',
 					'bg-card border-2 border-white/90',
-					'shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)]',
-					'group-hover:shadow-[6px_6px_0px_0px_#ef4444]', // Silk Red shadow
-					'group-hover:border-primary group-hover:bg-zinc-900',
+					'shadow-[4px_4px_0px_0px_var(--shadow-color)]',
+					'group-hover:shadow-[6px_6px_0px_0px_var(--accent-color)]',
+					'group-hover:border-[var(--accent-color)] group-hover:bg-zinc-900',
 					'transform transition-all duration-300'
 				)}
-				style={{ transform: `rotate(${randomRotation}deg)` }}>
+				style={
+					{
+						'transform': `rotate(${randomRotation}deg)`,
+						'--accent-color': accentColor,
+						'--shadow-color': shadowColor
+					} as React.CSSProperties
+				}>
 				{/* Corner accents */}
-				<div className='group-hover:border-primary absolute top-1 left-1 h-2 w-2 border-t-2 border-l-2 border-white/30'></div>
-				<div className='group-hover:border-primary absolute right-1 bottom-1 h-2 w-2 border-r-2 border-b-2 border-white/30'></div>
+				<div
+					style={{ borderColor: `${accentColor}4D` }}
+					className='absolute top-1 left-1 h-2 w-2 border-t-2 border-l-2 group-hover:border-[var(--accent-color)]'></div>
+				<div
+					style={{ borderColor: `${accentColor}4D` }}
+					className='absolute right-1 bottom-1 h-2 w-2 border-r-2 border-b-2 group-hover:border-[var(--accent-color)]'></div>
 
 				{/* Category Label */}
 				<div className='absolute top-2 right-2'>
-					<span className='bg-white/10 px-1.5 py-0.5 font-sans text-[10px] tracking-wide text-white/50 uppercase transition-colors group-hover:text-white/70'>
+					<span
+						style={{ color: `${accentColor}B3` }}
+						className='bg-white/10 px-1.5 py-0.5 font-sans text-[10px] tracking-wide uppercase transition-colors group-hover:text-white'>
 						{category}
 					</span>
 				</div>
 
 				{/* Icon Container with Glow */}
 				<div className='group-hover:animate-bounce-subtle relative mb-3'>
-					<div className='bg-primary/20 absolute inset-0 scale-0 rounded-full blur-xl transition-transform duration-500 group-hover:scale-150'></div>
+					<div
+						style={{ backgroundColor: `${accentColor}33` }}
+						className='absolute inset-0 scale-0 rounded-full blur-xl transition-transform duration-500 group-hover:scale-150'></div>
 					<div className={cn('relative z-10 flex items-center justify-center', whiteBg && 'rounded-full bg-white p-2')}>
 						<Icon
 							icon={icon}
+							style={{ color: whiteBg ? undefined : 'rgba(255,255,255,0.8)' }}
 							className={cn(
 								'h-10 w-10 transition-colors duration-300',
-								whiteBg ? 'text-black' : 'group-hover:text-primary text-white/80'
+								whiteBg ? 'text-black' : 'group-hover:text-[var(--accent-color)]'
 							)}
 						/>
 					</div>
 				</div>
 
 				{/* Text */}
-				<span className='text-center font-[Bangers] text-lg tracking-wider text-white/90 uppercase transition-all group-hover:scale-105 group-hover:text-white'>
+				<span className='text-center text-lg font-black tracking-tight text-white/90 uppercase transition-all group-hover:scale-105 group-hover:text-white'>
 					{name}
 				</span>
 

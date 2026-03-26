@@ -1,3 +1,4 @@
+import { assets } from '@/common/data/assets'
 import { AffiliationEntityType, AffiliationId, EmploymentType, Location, Position } from '@/common/enum'
 import type { Affiliation, AffiliationItem } from '@/common/interface'
 
@@ -6,7 +7,7 @@ import type { Affiliation, AffiliationItem } from '@/common/interface'
 export const ruamsukPlating: Affiliation = {
 	id: 'ruamsuk-plating',
 	name: 'RUAMSUK PLATING LIMITED PARTNERSHIP',
-	logo: '/logo/RSTROPHY.png',
+	logo: assets.logos.rsTrophy,
 	location: Location.PathumthaniThailand,
 	type: AffiliationEntityType.Company
 }
@@ -14,7 +15,7 @@ export const ruamsukPlating: Affiliation = {
 export const jasmineTechnologySolution: Affiliation = {
 	id: 'jasmine-technology-solution',
 	name: 'Jasmine Technology Solution',
-	logo: '/logo/JTS.png',
+	logo: assets.logos.jasmineTech,
 	location: Location.NonthaburiThailand,
 	type: AffiliationEntityType.Company
 }
@@ -22,7 +23,7 @@ export const jasmineTechnologySolution: Affiliation = {
 export const freelanceWithFriends: Affiliation = {
 	id: 'freelance-blitzwerk',
 	name: 'Freelance with friends',
-	logo: '/logo/blitzwerk.png',
+	logo: assets.logos.blitzwerk,
 	location: Location.Remote,
 	type: AffiliationEntityType.Company
 }

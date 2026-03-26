@@ -26,13 +26,13 @@ const AbilityContent: React.FC = () => {
 					<div className='relative z-10 inline-block'>
 						<div className='bg-primary absolute inset-0 translate-x-2 translate-y-2 skew-x-12'></div>
 						<div className='relative skew-x-12 border-4 border-black bg-white px-10 py-6'>
-							<h1 className='-skew-x-12 transform font-[Bangers] text-6xl tracking-wider text-black uppercase md:text-8xl'>
+							<h1 className='-skew-x-12 transform text-6xl font-black tracking-wider text-black uppercase md:text-8xl'>
 								ABILITIES
 							</h1>
 						</div>
 					</div>
 
-					<p className='mx-auto mt-8 max-w-3xl font-[Bangers] text-2xl tracking-wide text-white uppercase text-shadow-sm'>
+					<p className='mx-auto mt-8 max-w-3xl text-2xl font-black tracking-wide text-white uppercase text-shadow-sm'>
 						&quot;My comprehensive arsenal of technical skills and superpowers&quot;
 					</p>
 				</ComicPop>
@@ -59,7 +59,7 @@ const AbilityContent: React.FC = () => {
 									</div>
 
 									<div className='mt-8 space-y-4 text-center'>
-										<h2 className='font-[Bangers] text-4xl leading-none tracking-wide text-white uppercase md:text-5xl'>
+										<h2 className='text-4xl leading-none font-black tracking-wide text-white uppercase md:text-5xl'>
 											{abilityGroup.category}
 										</h2>
 
@@ -100,7 +100,7 @@ const AbilityContent: React.FC = () => {
 						whileInView={{ scale: 1, opacity: 1 }}
 						className='inline-block'>
 						<div className='bg-primary rotate-1 border-4 border-white px-8 py-3 text-white transition-transform hover:-rotate-1'>
-							<span className='font-[Bangers] text-2xl tracking-widest'>
+							<span className='text-2xl font-black tracking-widest'>
 								LVL {new Date().getFullYear() - 2020} || READY FOR ACTION
 							</span>
 						</div>

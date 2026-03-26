@@ -1,15 +1,20 @@
 import React from 'react'
 import type { Metadata } from 'next'
-import { Bangers, Inter } from 'next/font/google'
+import { Noto_Sans, Noto_Sans_Thai } from 'next/font/google'
 import { GoogleTagManager } from '@next/third-parties/google'
 import { ThemeProvider } from '@/components/theme-provider'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
-const bangers = Bangers({
-	weight: '400',
+const notoTabs = Noto_Sans({
 	subsets: ['latin'],
-	variable: '--font-bangers'
+	weight: ['100', '300', '400', '500', '700', '900'],
+	variable: '--font-noto-sans'
+})
+
+const notoThai = Noto_Sans_Thai({
+	subsets: ['thai', 'latin'],
+	weight: ['100', '300', '400', '500', '700', '900'],
+	variable: '--font-noto-thai'
 })
 
 export const metadata: Metadata = {
@@ -89,10 +94,9 @@ export default function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang='en' className='dark' suppressHydrationWarning>
+		<html lang='en' className={`dark ${notoTabs.variable} ${notoThai.variable}`} suppressHydrationWarning>
 			<GoogleTagManager gtmId='GTM-5PVXPTWP' />
-			<body
-				className={`${inter.variable} ${bangers.variable} bg-background text-foreground selection:bg-primary font-sans antialiased selection:text-white`}>
+			<body className='bg-background text-foreground selection:bg-primary font-noto antialiased selection:text-white'>
 				{/* Global Comic Texture Overlay */}
 				<div className='comic-texture pointer-events-none fixed inset-0 z-50 opacity-30 mix-blend-overlay'></div>
 

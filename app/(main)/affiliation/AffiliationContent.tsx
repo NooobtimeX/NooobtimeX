@@ -21,10 +21,10 @@ const AffiliationContent: React.FC = () => {
 				<ComicPop initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className='mb-24 text-center'>
 					<div className='group relative inline-block'>
 						<div className='-rotate-1 transform border-4 border-black bg-white px-12 py-6 text-black shadow-[8px_8px_0px_0px_white] transition-transform group-hover:rotate-0'>
-							<h1 className='font-[Bangers] text-5xl tracking-wider uppercase md:text-7xl'>AFFILIATIONS</h1>
+							<h1 className='text-5xl font-black tracking-wider uppercase md:text-7xl'>AFFILIATIONS</h1>
 						</div>
 					</div>
-					<p className='mt-8 font-[Bangers] text-xl tracking-wide text-gray-400 uppercase'>Career & Companies</p>
+					<p className='mt-8 text-xl font-black tracking-wide text-gray-400 uppercase'>Career & Companies</p>
 				</ComicPop>
 
 				{/* Grid */}

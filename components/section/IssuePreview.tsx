@@ -26,10 +26,10 @@ export default function IssuePreview() {
 						</div>
 
 						<div className='relative rotate-1 transform border-4 border-black bg-white px-10 py-4 text-black shadow-[8px_8px_0px_0px_white]'>
-							<h2 className='font-[Bangers] text-4xl tracking-wider uppercase md:text-6xl'>FEATURED ISSUES</h2>
+							<h2 className='text-4xl font-black tracking-tight uppercase md:text-6xl'>FEATURED ISSUES</h2>
 						</div>
 					</div>
-					<p className='text-muted-foreground mx-auto mt-8 max-w-2xl font-[Bangers] text-xl tracking-wide uppercase'>
+					<p className='text-muted-foreground mx-auto mt-8 max-w-2xl text-xl font-black tracking-tight uppercase'>
 						A showcase of my recent work and creative solutions
 					</p>
 				</ComicPop>

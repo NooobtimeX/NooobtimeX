@@ -50,7 +50,7 @@ const IssueDetailContent: React.FC<IssueDetailContentProps> = ({ id }) => {
 					<ComicPop initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
 						<Button
 							asChild
-							className='h-12 rounded-none border-2 border-black bg-white px-6 font-[Bangers] text-xl text-black uppercase shadow-[4px_4px_0px_0px_white] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-zinc-200 hover:shadow-[2px_2px_0px_0px_white]'>
+							className='h-12 rounded-none border-2 border-black bg-white px-6 text-xl font-black text-black uppercase shadow-[4px_4px_0px_0px_white] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-zinc-200 hover:shadow-[2px_2px_0px_0px_white]'>
 							<Link href='/issue' className='flex items-center gap-2'>
 								<ArrowLeftIcon className='h-5 w-5' />
 								BACK TO ARCHIVE
@@ -71,7 +71,7 @@ const IssueDetailContent: React.FC<IssueDetailContentProps> = ({ id }) => {
 							className='group perspective-1000 relative'>
 							<div className='relative border-4 border-white bg-black shadow-[12px_12px_0px_0px_rgba(255,255,255,1)] transition-all duration-300 hover:rotate-0 hover:shadow-[8px_8px_0px_0px_rgba(255,50,50,1)]'>
 								{/* Badge */}
-								<div className='bg-primary absolute top-0 right-0 z-20 border-b-4 border-l-4 border-black px-4 py-2 font-[Bangers] text-xl text-white'>
+								<div className='bg-primary absolute top-0 right-0 z-20 border-b-4 border-l-4 border-black px-4 py-2 text-xl font-black text-white'>
 									ISSUE #{String(issuesData.length - issuesData.findIndex(p => p.id === issue.id)).padStart(3, '0')}
 								</div>
 
@@ -91,13 +91,13 @@ const IssueDetailContent: React.FC<IssueDetailContentProps> = ({ id }) => {
 							<div className='bg-card relative space-y-6 border-4 border-white p-8 shadow-[8px_8px_0px_0px_white]'>
 								<div className='bg-primary absolute -top-3 -left-3 z-20 h-6 w-6 rotate-45 transform border-2 border-black'></div>
 
-								<h1 className='font-[Bangers] text-5xl leading-[0.9] tracking-wide wrap-break-word text-white uppercase md:text-6xl lg:text-7xl'>
+								<h1 className='text-5xl leading-[0.9] font-black tracking-wide wrap-break-word text-white uppercase md:text-6xl lg:text-7xl'>
 									{issue.title}
 								</h1>
 
 								<div className='h-1 w-full bg-white/20'></div>
 
-								<p className='text-muted-foreground font-[Inter] text-xl leading-relaxed'>{issue.description}</p>
+								<p className='text-muted-foreground text-xl leading-relaxed'>{issue.description}</p>
 
 								{/* Action Buttons */}
 								<div className='flex flex-col gap-4 pt-4 sm:flex-row'>
@@ -133,7 +133,7 @@ const IssueDetailContent: React.FC<IssueDetailContentProps> = ({ id }) => {
 							<ComicPop initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} delay={0.3}>
 								<div className='bg-card border-4 border-white p-2 shadow-[8px_8px_0px_0px_white]'>
 									<div className='mb-4 border-b-2 border-white/20 bg-black p-4'>
-										<h2 className='font-[Bangers] text-3xl tracking-wide text-white uppercase'>VISUAL EVIDENCE</h2>
+										<h2 className='text-3xl font-black tracking-wide text-white uppercase'>VISUAL EVIDENCE</h2>
 									</div>
 									<div className='space-y-6'>
 										{issue.images.photos && issue.images.photos.length > 0 && (
@@ -151,7 +151,7 @@ const IssueDetailContent: React.FC<IssueDetailContentProps> = ({ id }) => {
 									<div className='bg-card border-4 border-white p-6 shadow-[8px_8px_0px_0px_white]'>
 										<div className='mb-6 flex items-center gap-4'>
 											<div className='bg-primary h-8 w-3 border-2 border-black'></div>
-											<h2 className='font-[Bangers] text-3xl tracking-wide text-white uppercase'>
+											<h2 className='text-3xl font-black tracking-wide text-white uppercase'>
 												BIND COMPANY / AFFILIATION
 											</h2>
 										</div>
@@ -166,13 +166,13 @@ const IssueDetailContent: React.FC<IssueDetailContentProps> = ({ id }) => {
 						{/* Abilities - Right Panel */}
 						<ComicPop initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} delay={0.5} className='space-y-6'>
 							<div className='bg-card sticky top-24 transform border-4 border-white p-6 shadow-[8px_8px_0px_0px_white]'>
-								<h2 className='border-primary mb-8 border-b-4 pb-2 font-[Bangers] text-3xl tracking-wide text-white uppercase'>
+								<h2 className='border-primary mb-8 border-b-4 pb-2 text-3xl font-black tracking-wide text-white uppercase'>
 									ABILITIES
 								</h2>
 								<div className='space-y-8'>
 									{Object.entries(groupedAbilities).map(([category, abilities], catIndex) => (
 										<div key={category} className='space-y-4'>
-											<h4 className='text-primary font-[Bangers] text-xl tracking-widest uppercase'>{category}</h4>
+											<h4 className='text-primary text-xl font-black tracking-widest uppercase'>{category}</h4>
 											<div className='grid grid-cols-1 gap-3'>
 												{abilities.map((ability, index) => (
 													<ComicPop
@@ -192,9 +192,7 @@ const IssueDetailContent: React.FC<IssueDetailContentProps> = ({ id }) => {
 															/>
 														</div>
 														<div>
-															<h4 className='font-[Bangers] text-lg tracking-wide text-white uppercase'>
-																{ability.name}
-															</h4>
+															<h4 className='text-lg font-black tracking-wide text-white uppercase'>{ability.name}</h4>
 														</div>
 													</ComicPop>
 												))}
@@ -215,9 +213,9 @@ const IssueDetailContent: React.FC<IssueDetailContentProps> = ({ id }) => {
 
 					<ComicPop className='mb-12 text-center'>
 						<div className='mb-8 inline-block rotate-1 transform border-4 border-black bg-white px-8 py-3 text-black shadow-[8px_8px_0px_0px_white]'>
-							<h2 className='font-[Bangers] text-3xl tracking-wider uppercase md:text-5xl'>MEANWHILE...</h2>
+							<h2 className='text-3xl font-black tracking-wider uppercase md:text-5xl'>MEANWHILE...</h2>
 						</div>
-						<p className='text-muted-foreground font-[Bangers] text-xl tracking-wide uppercase'>
+						<p className='text-muted-foreground text-xl font-black tracking-wide uppercase'>
 							Check out these other issues
 						</p>
 					</ComicPop>

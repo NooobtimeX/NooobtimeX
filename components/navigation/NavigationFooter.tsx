@@ -13,16 +13,16 @@ const NavigationFooter = () => {
 				<div className='flex flex-col items-center justify-center space-y-8'>
 					{/* The End Graphic */}
 					<div className='group relative'>
-						<h2 className='bg-primary -rotate-2 transform cursor-default border-4 border-black p-4 font-[Bangers] text-5xl text-white shadow-[6px_6px_0px_0px_white] transition-transform duration-300 select-none hover:scale-105 hover:rotate-0 md:text-8xl md:shadow-[8px_8px_0px_0px_white]'>
+						<h2 className='bg-primary -rotate-2 transform cursor-default border-4 border-black p-4 text-5xl font-black text-white shadow-[6px_6px_0px_0px_white] transition-transform duration-300 select-none hover:scale-105 hover:rotate-0 md:text-8xl md:shadow-[8px_8px_0px_0px_white]'>
 							THE END?
 						</h2>
-						<div className='absolute -top-4 -right-2 rotate-12 animate-pulse border-2 border-black bg-white px-2 py-1 font-[Bangers] text-sm text-black md:-top-6 md:-right-8 md:px-3 md:text-xl'>
+						<div className='absolute -top-4 -right-2 rotate-12 animate-pulse border-2 border-black bg-white px-2 py-1 text-sm font-black text-black md:-top-6 md:-right-8 md:px-3 md:text-xl'>
 							TO BE CONTINUED...
 						</div>
 					</div>
 
 					{/* Quick Access Links for Dedicated Pages */}
-					<div className='flex max-w-xs flex-wrap justify-center gap-x-4 gap-y-2 font-[Bangers] text-lg tracking-wider uppercase md:max-w-none md:text-xl'>
+					<div className='flex max-w-xs flex-wrap justify-center gap-x-4 gap-y-2 text-lg font-black tracking-tight uppercase md:max-w-none md:text-xl'>
 						<Link
 							href='/'
 							className='hover:text-primary decoration-wavy underline-offset-4 transition-colors hover:underline'>
@@ -75,7 +75,7 @@ const NavigationFooter = () => {
 					<div className='h-0.5 w-full max-w-md bg-white/20'></div>
 
 					{/* Copyright Info */}
-					<div className='px-4 text-center font-[Inter] text-sm text-gray-400'>
+					<div className='px-4 text-center text-sm text-gray-400'>
 						<p>© {currentYear} Wongsaphat Puangsorn. All rights reserved.</p>
 						<p className='mt-2 text-xs opacity-60'>Inspired by Marvel Comics & Silk (Cindy Moon)</p>
 					</div>

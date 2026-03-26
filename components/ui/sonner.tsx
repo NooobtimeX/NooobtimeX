@@ -14,11 +14,10 @@ const Toaster = ({ ...props }: ToasterProps) => {
 			toastOptions={{
 				classNames: {
 					toast:
-						'group toast group-[.toaster]:bg-white group-[.toaster]:text-black group-[.toaster]:border-4 group-[.toaster]:border-black group-[.toaster]:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group-[.toaster]:font-[Bangers] group-[.toaster]:text-lg group-[.toaster]:uppercase group-[.toaster]:tracking-wide group-[.toaster]:rounded-none',
-					description:
-						'group-[.toast]:text-gray-700 group-[.toast]:font-[Inter] group-[.toast]:text-sm group-[.toast]:normal-case',
-					actionButton: 'group-[.toast]:bg-primary group-[.toast]:text-white font-[Bangers]',
-					cancelButton: 'group-[.toast]:bg-muted group-[.toast]:text-muted-foreground font-[Bangers]'
+						'group toast group-[.toaster]:bg-white group-[.toaster]:text-black group-[.toaster]:border-4 group-[.toaster]:border-black group-[.toaster]:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group-[.toaster]:font-black group-[.toaster]:text-lg group-[.toaster]:uppercase group-[.toaster]:tracking-wide group-[.toaster]:rounded-none',
+					description: 'group-[.toast]:text-gray-700 group-[.toast]: group-[.toast]:text-sm group-[.toast]:normal-case',
+					actionButton: 'group-[.toast]:bg-primary group-[.toast]:text-white font-black',
+					cancelButton: 'group-[.toast]:bg-muted group-[.toast]:text-muted-foreground font-black'
 				}
 			}}
 			icons={{
