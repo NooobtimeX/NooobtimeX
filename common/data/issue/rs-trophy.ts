@@ -22,9 +22,8 @@ export const rsTrophy: Issue = {
 	description:
 		'Leading the digital transformation of a legacy business into a definitive "Community Hub" for the Thai awards industry. Architecting the consolidation of fragmented legacy brands into a unified, high-performance system utilizing Bun, Elysia.js, and Next.js. Transitioning toward a Serverless/Zero-Maintenance model with Redis caching and MinIO asset management.',
 	images: {
-		thumbnail: '/issue/RSTROPHY.png',
-		banner: '/issue/RSTROPHY.png',
-		photos: ['/issue/RSTROPHY.png']
+		banner: '/issue/rs-trophy/banner.png',
+		photos: ['/issue/rs-trophy/banner.png']
 	},
 	abilities: [
 		bun,
@@ -42,7 +41,6 @@ export const rsTrophy: Issue = {
 		googleAnalytics
 	],
 	links: {
-		github: 'https://github.com/NooobtimeX',
 		live: 'https://rs-trophy.com'
 	},
 	startDate: '2026-03-01',

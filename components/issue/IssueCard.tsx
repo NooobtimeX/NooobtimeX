@@ -4,7 +4,7 @@ import React from 'react'
 import type { Route } from 'next'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
-import { ArrowRightIcon, GithubIcon } from 'lucide-react'
+import { ArrowRightIcon } from 'lucide-react'
 import { Issue } from '@/common/interface'
 import IssueThumbnail from '@/components/issue/IssueThumbnail'
 import ComicPop from '@/components/motion/ComicPop'
@@ -102,17 +102,6 @@ const IssueCard: React.FC<IssueCardProps> = ({ issue, index, variant = 'grid', s
 										<ArrowRightIcon className='ml-2 h-5 w-5' />
 									</Link>
 								</Button>
-								{issue.links.github && (
-									<Button
-										asChild
-										size='icon'
-										variant='outline'
-										className='h-12 w-12 rounded-none border-2 border-white bg-black text-white transition-colors hover:bg-white hover:text-black'>
-										<Link href={issue.links.github as Route} target='_blank'>
-											<GithubIcon className='h-6 w-6' />
-										</Link>
-									</Button>
-								)}
 							</div>
 						</div>
 					</div>

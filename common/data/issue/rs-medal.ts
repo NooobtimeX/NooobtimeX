@@ -8,9 +8,8 @@ export const rsMedal: Issue = {
 	description:
 		'[LEGACY] A medal showcase web application. This project has been succeeded by the unified RS TROPHY (rs-trophy.com) platform to provide a more robust and high-performance experience.',
 	images: {
-		thumbnail: '/issue/RSTROPHY.png',
-		banner: '/issue/RSTROPHY.png',
-		photos: ['/issue/RSTROPHY.png']
+		banner: '/issue/rs-medal/banner.png',
+		photos: ['/issue/rs-medal/banner.png']
 	},
 	abilities: [nextjs, vercel, tailwindcss, shadcnui, googleAds],
 	links: {

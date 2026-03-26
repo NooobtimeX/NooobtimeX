@@ -8,9 +8,8 @@ export const rsAward: Issue = {
 	description:
 		'[LEGACY] A plaque showcase web application. This project has been succeeded by the unified RS TROPHY (rs-trophy.com) platform as part of a major digital transformation.',
 	images: {
-		thumbnail: '/issue/RSTROPHY.png',
-		banner: '/issue/RSTROPHY.png',
-		photos: ['/issue/RSTROPHY.png']
+		banner: '/issue/rs-award/banner.png',
+		photos: ['/issue/rs-award/banner.png']
 	},
 	abilities: [nextjs, vercel, tailwindcss, shadcnui, googleAds],
 	links: {

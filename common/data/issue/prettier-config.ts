@@ -7,9 +7,8 @@ export const prettierConfig: Issue = {
 	title: 'Prettier Config Generator',
 	description: 'Generate your .prettierrc file effortlessly with this interactive Prettier configuration tool.',
 	images: {
-		thumbnail: '/issue/prettier.png',
-		banner: '/issue/prettier.png',
-		photos: ['/issue/prettier.png']
+		banner: '/issue/prettier-config/banner.png',
+		photos: ['/issue/prettier-config/banner.png']
 	},
 	abilities: [nextjs, vercel, tailwindcss],
 	links: {

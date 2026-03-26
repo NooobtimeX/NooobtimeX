@@ -8,9 +8,8 @@ export const n8nRailway: Issue = {
 	description:
 		'Architected and deployed a self-hosted n8n automation engine on Railway utilizing Docker containers. Developed custom automated workflows to streamline internal business processes, lead management, and cross-platform data synchronization, resulting in a significant reduction in manual operational tasks.',
 	images: {
-		thumbnail: '/issue/n8n-railway.png',
-		banner: '/issue/n8n-railway.png',
-		photos: ['/issue/n8n-railway.png']
+		banner: '/issue/n8n-railway/banner.png',
+		photos: ['/issue/n8n-railway/banner.png']
 	},
 	abilities: [n8n, railway, docker, nodejs, resend],
 	links: {},

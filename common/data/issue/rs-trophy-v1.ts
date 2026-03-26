@@ -8,9 +8,8 @@ export const rsTrophyV1: Issue = {
 	description:
 		'[LEGACY] The original e-commerce platform for RS TROPHY built on WordPress and WooCommerce. Managed the complete product catalog, customer orders, and digital marketing integrations before the transition to the modern high-performance system.',
 	images: {
-		thumbnail: '/issue/RSTROPHY.png',
-		banner: '/issue/RSTROPHY.png',
-		photos: ['/issue/RSTROPHY.png']
+		banner: '/issue/rs-trophy-v1/banner.png',
+		photos: ['/issue/rs-trophy-v1/banner.png']
 	},
 	abilities: [wordpress, woocommerce, seo, googleAnalytics, googleAds],
 	links: {

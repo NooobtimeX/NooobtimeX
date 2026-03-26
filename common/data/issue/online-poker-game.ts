@@ -8,9 +8,8 @@ export const onlinePokerGame: Issue = {
 	description:
 		'A real-time multiplayer online poker game featuring Server-Sent Events for live updates. Built with Next.js and PostgreSQL for a seamless, interactive card gaming experience.',
 	images: {
-		thumbnail: '/issue/poker/Picture1.png',
-		banner: '/issue/poker/Picture2.png',
-		photos: ['/issue/poker/Picture1.png', '/issue/poker/Picture2.png', '/issue/poker/Picture3.png']
+		banner: '/issue/online-poker-game/banner.png',
+		photos: ['/issue/online-poker-game/banner.png', '/issue/online-poker-game/1.png', '/issue/online-poker-game/2.png']
 	},
 	abilities: [nextjs, prisma, render, tailwindcss, sse, postgresql],
 	links: {},

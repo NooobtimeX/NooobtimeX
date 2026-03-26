@@ -10,6 +10,7 @@ import { ArrowLeftIcon, CalendarIcon, MapPinIcon } from 'lucide-react'
 import { affiliationData } from '@/common/data/affiliation'
 import { issuesData } from '@/common/data/issue'
 import AffiliationCard from '@/components/affiliation/AffiliationCard'
+import IssueCard from '@/components/issue/IssueCard'
 import ComicPop from '@/components/motion/ComicPop'
 import { Button } from '@/components/ui/button'
 import { formatAffiliationDuration } from '@/lib/utils'
@@ -27,10 +28,20 @@ const AffiliationDetailContent: React.FC<AffiliationDetailContentProps> = ({ id 
 
 	const { affiliation, position, description, startDate, endDate, type } = affiliationItem
 
-	const projectAbilities = issuesData
-		.filter(issue => issue.linkedAffiliationId === affiliationItem.id)
-		.flatMap(issue => issue.abilities)
+	const relatedIssues = issuesData.filter(issue => issue.linkedAffiliationId === affiliationItem.id)
+
+	const projectAbilities = relatedIssues.flatMap(issue => issue.abilities)
 	const uniqueAbilities = Array.from(new Map(projectAbilities.map(a => [a.name, a])).values())
+
+	const groupedAbilities = uniqueAbilities.reduce(
+		(acc, ability) => {
+			const category = ability.category || 'Other'
+			if (!acc[category]) acc[category] = []
+			acc[category].push(ability)
+			return acc
+		},
+		{} as Record<string, typeof uniqueAbilities>
+	)
 
 	return (
 		<div className='relative min-h-screen w-full overflow-x-hidden bg-black pt-24 pb-20'>
@@ -131,6 +142,26 @@ const AffiliationDetailContent: React.FC<AffiliationDetailContentProps> = ({ id 
 				</div>
 			</section>
 
+			{/* Operational Projects Section */}
+			{relatedIssues.length > 0 && (
+				<section className='relative mb-20'>
+					<div className='relative z-10 container mx-auto px-4'>
+						<div className='mb-12 flex items-center gap-4'>
+							<div className='bg-primary h-12 w-4 border-2 border-black'></div>
+							<h2 className='font-[Bangers] text-4xl tracking-wide text-white uppercase md:text-5xl'>
+								OPERATIONAL PROJECTS
+							</h2>
+						</div>
+
+						<div className='grid gap-8 md:grid-cols-2 lg:grid-cols-3'>
+							{relatedIssues.map((issue, index) => (
+								<IssueCard key={issue.id} issue={issue} index={index} variant='grid' />
+							))}
+						</div>
+					</div>
+				</section>
+			)}
+
 			{/* Abilities Section */}
 			<section className='relative mb-20'>
 				<div className='relative z-10 container mx-auto px-4'>
@@ -139,30 +170,37 @@ const AffiliationDetailContent: React.FC<AffiliationDetailContentProps> = ({ id 
 						animate={{ opacity: 1, y: 0 }}
 						delay={0.3}
 						className='bg-card border-4 border-white p-8 shadow-[8px_8px_0px_0px_white]'>
-						<h2 className='border-primary mb-8 inline-block border-b-4 pb-2 font-[Bangers] text-4xl tracking-wide text-white uppercase'>
+						<h2 className='border-primary mb-12 inline-block border-b-4 pb-2 font-[Bangers] text-4xl tracking-wide text-white uppercase'>
 							MISSION ABILITIES ({uniqueAbilities.length})
 						</h2>
 
-						<div className='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-							{uniqueAbilities.map((ability, index) => (
-								<ComicPop
-									key={index}
-									initial={{ opacity: 0, x: 20 }}
-									animate={{ opacity: 1, x: 0 }}
-									delay={0.4 + index * 0.05}
-									className='hover:border-primary hover:bg-primary/10 group flex items-center gap-4 border-2 border-white/10 bg-black p-4 transition-colors'>
-									<div className='group-hover:border-primary border-2 border-white/20 p-2 transition-colors'>
-										<Icon icon={ability.icon} className='text-primary h-8 w-8' />
+						<div className='space-y-12'>
+							{Object.entries(groupedAbilities).map(([category, abilities], catIndex) => (
+								<div key={category} className='space-y-6'>
+									<div className='flex items-center gap-3'>
+										<div className='h-px flex-1 bg-white/20'></div>
+										<h3 className='text-primary font-[Bangers] text-2xl tracking-widest uppercase'>{category}</h3>
+										<div className='h-px flex-1 bg-white/20'></div>
 									</div>
-									<div>
-										<h4 className='font-[Bangers] text-xl tracking-wide text-white uppercase'>{ability.name}</h4>
-										{ability.category && (
-											<p className='text-muted-foreground font-[Inter] text-xs font-bold tracking-wider uppercase'>
-												{ability.category}
-											</p>
-										)}
+
+									<div className='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+										{abilities.map((ability, index) => (
+											<ComicPop
+												key={index}
+												initial={{ opacity: 0, x: 20 }}
+												animate={{ opacity: 1, x: 0 }}
+												delay={0.4 + (catIndex * abilities.length + index) * 0.05}
+												className='hover:border-primary hover:bg-primary/10 group flex items-center gap-4 border-2 border-white/10 bg-black p-4 transition-colors'>
+												<div className='group-hover:border-primary border-2 border-white/20 p-2 transition-colors'>
+													<Icon icon={ability.icon} className='text-primary h-8 w-8' />
+												</div>
+												<div>
+													<h4 className='font-[Bangers] text-xl tracking-wide text-white uppercase'>{ability.name}</h4>
+												</div>
+											</ComicPop>
+										))}
 									</div>
-								</ComicPop>
+								</div>
 							))}
 						</div>
 					</ComicPop>

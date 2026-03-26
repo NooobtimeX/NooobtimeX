@@ -8,9 +8,8 @@ export const tencentRailwayMigration: Issue = {
 	description:
 		'Architected and executed the migration of 15+ microservices from Tencent Cloud VMs to Railway. Optimized deployment workflows by reusing a single Dockerfile with environment-specific configurations for Production and UAT splits. Managed complex environment setups for each service, integrating GitHub for CI/CD and MinIO for object storage.',
 	images: {
-		thumbnail: '/issue/tencent-railway-migration.png',
-		banner: '/issue/tencent-railway-migration.png',
-		photos: ['/issue/tencent-railway-migration.png']
+		banner: '/issue/tencent-railway-migration/banner.png',
+		photos: ['/issue/tencent-railway-migration/banner.png']
 	},
 	abilities: [docker, railway, nodejs, github, minio],
 	links: {},

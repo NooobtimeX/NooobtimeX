@@ -6,4 +6,5 @@ export interface AbilityGroup {
 	description: string
 	icon: string // Icon name for @iconify/react
 	abilities: Ability[]
+	totalFrequency?: number
 }

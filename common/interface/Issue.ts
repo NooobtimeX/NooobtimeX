@@ -7,13 +7,11 @@ export interface Issue {
 	title: string
 	description: string
 	images: {
-		thumbnail: string // Used for cards and previews
-		banner: string // Used for issue detail page header
+		banner: string // Used for issue detail page header and card previews
 		photos: string[] // Gallery of issue screenshots/photos
 	}
 	abilities: Ability[]
 	links: {
-		github?: string
 		live?: string
 	}
 	startDate: string // YYYY-MM-DD

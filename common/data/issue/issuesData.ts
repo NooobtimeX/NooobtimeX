@@ -1,5 +1,4 @@
 import type { Issue } from '@/common/interface'
-import { floodPrediction } from './flood-prediction'
 import { looklookPet } from './looklook-pet'
 import { n8nRailway } from './n8n-railway'
 import { onlinePokerGame } from './online-poker-game'
@@ -16,7 +15,6 @@ const issues = [
 	n8nRailway,
 	looklookPet,
 	onlinePokerGame,
-	floodPrediction,
 	prettierConfig,
 	rsTrophyV1,
 	rsAward,

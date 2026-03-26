@@ -5,8 +5,10 @@ import type { Route } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Icon } from '@iconify/react'
-import { ArrowLeftIcon, ExternalLinkIcon, GithubIcon } from 'lucide-react'
+import { ArrowLeftIcon, ExternalLinkIcon } from 'lucide-react'
+import { affiliationData } from '@/common/data/affiliation'
 import { issuesData } from '@/common/data/issue'
+import AffiliationCard from '@/components/affiliation/AffiliationCard'
 import ImageGallery from '@/components/issue/ImageGallery'
 import IssueCard from '@/components/issue/IssueCard'
 import IssueThumbnail from '@/components/issue/IssueThumbnail'
@@ -24,6 +26,18 @@ const IssueDetailContent: React.FC<IssueDetailContentProps> = ({ id }) => {
 	if (!issue) {
 		notFound()
 	}
+
+	const linkedAffiliation = affiliationData.find(a => a.id === issue.linkedAffiliationId)
+
+	const groupedAbilities = issue.abilities.reduce(
+		(acc, ability) => {
+			const category = ability.category || 'Other'
+			if (!acc[category]) acc[category] = []
+			acc[category].push(ability)
+			return acc
+		},
+		{} as Record<string, typeof issue.abilities>
+	)
 
 	return (
 		<div className='relative min-h-screen w-full overflow-x-hidden bg-black pt-24 pb-20'>
@@ -61,7 +75,7 @@ const IssueDetailContent: React.FC<IssueDetailContentProps> = ({ id }) => {
 									ISSUE #{id?.toUpperCase().slice(0, 3)}
 								</div>
 
-								<div className='relative aspect-[16/9] overflow-hidden'>
+								<div className='relative aspect-video overflow-hidden'>
 									<IssueThumbnail
 										src={issue.images.banner}
 										alt={issue.title}
@@ -77,7 +91,7 @@ const IssueDetailContent: React.FC<IssueDetailContentProps> = ({ id }) => {
 							<div className='bg-card relative space-y-6 border-4 border-white p-8 shadow-[8px_8px_0px_0px_white]'>
 								<div className='bg-primary absolute -top-3 -left-3 z-20 h-6 w-6 rotate-45 transform border-2 border-black'></div>
 
-								<h1 className='font-[Bangers] text-5xl leading-[0.9] tracking-wide break-words text-white uppercase md:text-6xl lg:text-7xl'>
+								<h1 className='font-[Bangers] text-5xl leading-[0.9] tracking-wide wrap-break-word text-white uppercase md:text-6xl lg:text-7xl'>
 									{issue.title}
 								</h1>
 
@@ -102,22 +116,6 @@ const IssueDetailContent: React.FC<IssueDetailContentProps> = ({ id }) => {
 											</Link>
 										</Button>
 									)}
-									{issue.links.github && (
-										<Button
-											variant='outline'
-											asChild
-											size='lg'
-											className='comic-button h-14 border-2 border-white bg-black px-8 text-xl text-white shadow-[4px_4px_0px_0px_white] hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-zinc-900 hover:shadow-[2px_2px_0px_0px_white]'>
-											<Link
-												href={issue.links.github as Route}
-												target='_blank'
-												rel='noopener noreferrer'
-												className='flex items-center gap-2'>
-												<GithubIcon className='h-5 w-5' />
-												SOURCE CODE
-											</Link>
-										</Button>
-									)}
 								</div>
 							</div>
 						</ComicPop>
@@ -129,59 +127,79 @@ const IssueDetailContent: React.FC<IssueDetailContentProps> = ({ id }) => {
 			<section className='relative mb-20'>
 				<div className='relative z-10 container mx-auto px-4'>
 					<div className='grid items-start gap-8 lg:grid-cols-3'>
-						{/* Issue Gallery - Left Panel */}
-						<ComicPop
-							initial={{ opacity: 0, y: 30 }}
-							animate={{ opacity: 1, y: 0 }}
-							delay={0.3}
-							className='lg:col-span-2'>
-							<div className='bg-card border-4 border-white p-2 shadow-[8px_8px_0px_0px_white]'>
-								<div className='mb-4 border-b-2 border-white/20 bg-black p-4'>
-									<h2 className='font-[Bangers] text-3xl tracking-wide text-white uppercase'>VISUAL EVIDENCE</h2>
+						{/* Left Panel - Gallery & Affiliation */}
+						<div className='space-y-8 lg:col-span-2'>
+							{/* Issue Gallery */}
+							<ComicPop initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} delay={0.3}>
+								<div className='bg-card border-4 border-white p-2 shadow-[8px_8px_0px_0px_white]'>
+									<div className='mb-4 border-b-2 border-white/20 bg-black p-4'>
+										<h2 className='font-[Bangers] text-3xl tracking-wide text-white uppercase'>VISUAL EVIDENCE</h2>
+									</div>
+									<div className='space-y-6'>
+										{issue.images.photos && issue.images.photos.length > 0 && (
+											<div className='space-y-4'>
+												<ImageGallery images={issue.images.photos} title={issue.title} />
+											</div>
+										)}
+									</div>
 								</div>
-								<div className='space-y-6'>
-									{issue.images.photos && issue.images.photos.length > 0 && (
-										<div className='space-y-4'>
-											<ImageGallery images={issue.images.photos} title={issue.title} />
+							</ComicPop>
+
+							{/* Bind Company / Affiliation */}
+							{linkedAffiliation && (
+								<ComicPop initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} delay={0.4}>
+									<div className='bg-card border-4 border-white p-6 shadow-[8px_8px_0px_0px_white]'>
+										<div className='mb-6 flex items-center gap-4'>
+											<div className='bg-primary h-8 w-3 border-2 border-black'></div>
+											<h2 className='font-[Bangers] text-3xl tracking-wide text-white uppercase'>
+												BIND COMPANY / AFFILIATION
+											</h2>
 										</div>
-									)}
-								</div>
-							</div>
-						</ComicPop>
+										<div className='max-w-md'>
+											<AffiliationCard item={linkedAffiliation} index={0} />
+										</div>
+									</div>
+								</ComicPop>
+							)}
+						</div>
 
 						{/* Abilities - Right Panel */}
-						<ComicPop initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} delay={0.4} className='space-y-6'>
-							<div className='bg-card sticky top-24 rotate-1 transform border-4 border-white p-6 shadow-[8px_8px_0px_0px_white]'>
-								<h2 className='border-primary mb-6 border-b-4 pb-2 font-[Bangers] text-3xl tracking-wide text-white uppercase'>
-									ABILITY
+						<ComicPop initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} delay={0.5} className='space-y-6'>
+							<div className='bg-card sticky top-24 transform border-4 border-white p-6 shadow-[8px_8px_0px_0px_white]'>
+								<h2 className='border-primary mb-8 border-b-4 pb-2 font-[Bangers] text-3xl tracking-wide text-white uppercase'>
+									ABILITIES
 								</h2>
-								<div className='space-y-4'>
-									{issue.abilities.map((ability, index) => (
-										<ComicPop
-											key={index}
-											initial={{ opacity: 0, x: 20 }}
-											animate={{ opacity: 1, x: 0 }}
-											delay={0.5 + index * 0.1}
-											className='hover:border-primary flex items-center gap-4 border-2 border-zinc-200 bg-white p-3 transition-colors'>
-											<div
-												className={cn(
-													'flex items-center justify-center',
-													ability.whiteBg && 'rounded-full bg-zinc-100 p-1'
-												)}>
-												<Icon
-													icon={ability.icon}
-													className={cn('h-8 w-8', ability.whiteBg ? 'text-black' : 'text-primary')}
-												/>
+								<div className='space-y-8'>
+									{Object.entries(groupedAbilities).map(([category, abilities], catIndex) => (
+										<div key={category} className='space-y-4'>
+											<h4 className='text-primary font-[Bangers] text-xl tracking-widest uppercase'>{category}</h4>
+											<div className='grid grid-cols-1 gap-3'>
+												{abilities.map((ability, index) => (
+													<ComicPop
+														key={index}
+														initial={{ opacity: 0, x: 20 }}
+														animate={{ opacity: 1, x: 0 }}
+														delay={0.6 + (catIndex * abilities.length + index) * 0.1}
+														className='hover:border-primary flex items-center gap-4 border-2 border-zinc-800 bg-black p-3 transition-colors'>
+														<div
+															className={cn(
+																'flex items-center justify-center',
+																ability.whiteBg && 'rounded-full bg-zinc-100 p-1'
+															)}>
+															<Icon
+																icon={ability.icon}
+																className={cn('h-6 w-6', ability.whiteBg ? 'text-black' : 'text-primary')}
+															/>
+														</div>
+														<div>
+															<h4 className='font-[Bangers] text-lg tracking-wide text-white uppercase'>
+																{ability.name}
+															</h4>
+														</div>
+													</ComicPop>
+												))}
 											</div>
-											<div>
-												<h4 className='font-[Bangers] text-xl tracking-wide text-black uppercase'>{ability.name}</h4>
-												{ability.category && (
-													<p className='font-[Inter] text-xs font-bold tracking-wider text-zinc-500 uppercase'>
-														{ability.category}
-													</p>
-												)}
-											</div>
-										</ComicPop>
+										</div>
 									))}
 								</div>
 							</div>

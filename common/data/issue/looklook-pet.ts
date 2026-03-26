@@ -8,10 +8,9 @@ export const looklookPet: Issue = {
 	description:
 		'Architected a pet-parent community platform delivering a seamless user experience and integrated reward system. Engineered a robust backend featuring Redis-driven caching to handle complex data queries and reduce API response times.',
 	images: {
-		thumbnail: '/issue/looklook.webp',
-		banner: '/issue/looklook.webp',
+		banner: '/issue/looklook-pet/banner.webp',
 		photos: [
-			'/issue/looklook.webp',
+			'/issue/looklook-pet/banner.webp',
 			'/issue/looklook-pet/1.webp',
 			'/issue/looklook-pet/2.webp',
 			'/issue/looklook-pet/3.webp',

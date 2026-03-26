@@ -467,7 +467,7 @@ export default function CVPage() {
 					{page4Projects.map(project => (
 						<div key={project.id} className='flex flex-col border border-gray-100 bg-zinc-50/20 p-4 shadow-sm'>
 							<div className='mb-4 aspect-video overflow-hidden border border-gray-100'>
-								<img src={project.images.thumbnail} alt={project.title} className='h-full w-full object-cover' />
+								<img src={project.images.banner} alt={project.title} className='h-full w-full object-cover' />
 							</div>
 							<h3 className='mb-1 line-clamp-1 text-xl font-black tracking-tight text-black uppercase'>
 								{project.title}
@@ -513,7 +513,7 @@ export default function CVPage() {
 					{page5Projects.map(project => (
 						<div key={project.id} className='flex flex-col border border-gray-100 bg-zinc-50/20 p-4 shadow-sm'>
 							<div className='mb-4 aspect-video overflow-hidden border border-gray-100'>
-								<img src={project.images.thumbnail} alt={project.title} className='h-full w-full object-cover' />
+								<img src={project.images.banner} alt={project.title} className='h-full w-full object-cover' />
 							</div>
 							<h3 className='mb-1 line-clamp-1 text-xl font-black tracking-tight text-black uppercase'>
 								{project.title}
@@ -559,7 +559,7 @@ export default function CVPage() {
 					{page6Projects.map(project => (
 						<div key={project.id} className='flex flex-col border border-gray-100 bg-zinc-50/20 p-4 shadow-sm'>
 							<div className='mb-4 aspect-video overflow-hidden border border-gray-100'>
-								<img src={project.images.thumbnail} alt={project.title} className='h-full w-full object-cover' />
+								<img src={project.images.banner} alt={project.title} className='h-full w-full object-cover' />
 							</div>
 							<h3 className='mb-1 line-clamp-1 text-xl font-black tracking-tight text-black uppercase'>
 								{project.title}
