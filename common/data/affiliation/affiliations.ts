@@ -28,23 +28,15 @@ export const freelanceWithFriends: Affiliation = {
 	type: AffiliationEntityType.Company
 }
 
-export const privateLife: Affiliation = {
-	id: 'private-life',
-	name: 'Private Life',
-	location: Location.BangkokThailand,
-	type: AffiliationEntityType.Personal
+export const personalProjects: Affiliation = {
+	id: 'personal-projects',
+	name: 'Personal Projects',
+	logo: assets.logos.nooobtimex, // Use personal logo
+	location: Location.Remote,
+	type: AffiliationEntityType.Company
 }
 
 // --- Experiences/Roles ---
-
-export const born: AffiliationItem = {
-	id: 'born',
-	affiliation: privateLife,
-	position: Position.NewBorn,
-	description: 'The beginning of the journey.',
-	type: EmploymentType.LifeEvent,
-	startDate: '1999-01-01'
-}
 
 export const freelanceBlitzwerkAffiliation: AffiliationItem = {
 	id: AffiliationId.FreelanceBlitzwerk,
@@ -97,4 +89,13 @@ export const ruamsukPlatingTechnicalAdvisor: AffiliationItem = {
 		'Strategic Advisory & Engineering Lead: Providing high-level technical guidance and architectural oversight for the RS TROPHY ecosystem. Taking end-to-end ownership of the technical strategy, infrastructure scaling, and long-term technology roadmaps as the sole technical architect for the organization.',
 	type: EmploymentType.Contract,
 	startDate: '2026-01-01'
+}
+
+export const personalProjectsAffiliation: AffiliationItem = {
+	id: AffiliationId.PersonalProjects,
+	affiliation: personalProjects,
+	position: Position.Developer,
+	description: 'Developing and maintaining high-impact personal projects and open-source contributions.',
+	type: EmploymentType.Freelance,
+	startDate: '2024-10-10'
 }

@@ -3,5 +3,6 @@ export enum AffiliationId {
 	FreelanceBlitzwerk = 'freelance-blitzwerk',
 	RuamsukPlatingSoftwareEngineerPartTime = 'ruamsuk-software-engineer-part-time',
 	RuamsukPlatingSoftwareEngineerFullTime = 'ruamsuk-software-engineer-full-time',
-	RuamsukPlatingTechnicalAdvisor = 'ruamsuk-technical-advisor'
+	RuamsukPlatingTechnicalAdvisor = 'ruamsuk-technical-advisor',
+	PersonalProjects = 'personal-projects'
 }

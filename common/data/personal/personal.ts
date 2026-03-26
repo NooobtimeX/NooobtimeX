@@ -9,6 +9,7 @@ export const personalData: PersonalData = {
 	tagline:
 		'Forward-thinking Software Developer specializing in modern JavaScript/TypeScript ecosystems and high-performance system design.',
 	avatar: assets.personal.avatar,
+	birthDate: '2003-04-19',
 	about: {
 		bio: 'Enthusiastic and dedicated developer focused on transforming business requirements into clean, sustainable code. I am passionate about mastering modern infrastructure and am seeking a collaborative engineering culture where I can contribute to high-performance systems while learning from senior mentors.',
 		highlights: [

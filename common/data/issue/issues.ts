@@ -151,8 +151,8 @@ export const prettierConfig: Issue = {
 	links: {
 		live: 'https://prettier-config-generator.com/'
 	},
-	startDate: '2024-01-15',
-	linkedAffiliationId: AffiliationId.FreelanceBlitzwerk
+	startDate: '2025-07-11',
+	linkedAffiliationId: AffiliationId.PersonalProjects
 }
 
 export const rsMedal: Issue = {

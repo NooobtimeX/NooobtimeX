@@ -15,5 +15,6 @@ export interface PersonalData {
 		location: string
 		availability: string
 	}
+	birthDate: string
 	socialLinks: SocialLink[]
 }

@@ -1,20 +1,20 @@
 import type { AffiliationItem } from '@/common/interface'
 import {
-	born,
 	freelanceBlitzwerkAffiliation as freelanceBlitzwerk,
 	jasmineTechnologySolutionAffiliation as jasmineTechnologySolution,
+	personalProjectsAffiliation as personalProjects,
 	ruamsukPlatingSoftwareEngineerFullTime,
 	ruamsukPlatingSoftwareEngineerPartTime,
 	ruamsukPlatingTechnicalAdvisor
 } from './affiliations'
 
 const affiliations = [
-	born,
 	freelanceBlitzwerk,
 	jasmineTechnologySolution,
 	ruamsukPlatingSoftwareEngineerPartTime,
 	ruamsukPlatingSoftwareEngineerFullTime,
-	ruamsukPlatingTechnicalAdvisor
+	ruamsukPlatingTechnicalAdvisor,
+	personalProjects
 ]
 
 // Sort affiliations by startDate in descending order (newest first)

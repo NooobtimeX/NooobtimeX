@@ -13,7 +13,8 @@ export const assets = {
 	logos: {
 		rsTrophy: '/logo/RSTROPHY.png',
 		jasmineTech: '/logo/JTS.png',
-		blitzwerk: '/logo/blitzwerk.png'
+		blitzwerk: '/logo/blitzwerk.png',
+		nooobtimex: '/profile/NooobtimeX.webp'
 	},
 	issues: {
 		rsTrophy: {
