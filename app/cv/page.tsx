@@ -7,7 +7,7 @@ import { getDynamicAbilities } from '@/common/data/ability/dynamicAbilities'
 import { affiliationData } from '@/common/data/affiliation'
 import { issuesData } from '@/common/data/issue'
 import { personalData } from '@/common/data/personal'
-import { AbilityCategory, AffiliationType } from '@/common/enum'
+import { AbilityCategory, EmploymentType } from '@/common/enum'
 import type { Ability, AbilityGroup } from '@/common/interface'
 import { Button } from '@/components/ui/button'
 
@@ -17,7 +17,7 @@ export default function CVPage() {
 	}
 
 	// Split affiliations for pagination (Max 3 per page)
-	const workExperiences = affiliationData.filter(a => a.type !== AffiliationType.LifeEvent)
+	const workExperiences = affiliationData.filter(a => a.type !== EmploymentType.LifeEvent)
 	const page2Affiliations = workExperiences.slice(0, 3)
 	const page3Affiliations = workExperiences.slice(3)
 

@@ -1,13 +1,15 @@
 import type { Issue } from '@/common/interface'
-import { looklookPet } from './looklook-pet'
-import { n8nRailway } from './n8n-railway'
-import { onlinePokerGame } from './online-poker-game'
-import { prettierConfig } from './prettier-config'
-import { rsAward } from './rs-award'
-import { rsMedal } from './rs-medal'
-import { rsTrophy } from './rs-trophy'
-import { rsTrophyV1 } from './rs-trophy-v1'
-import { tencentRailwayMigration } from './tencent-railway-migration'
+import {
+	looklookPet,
+	n8nRailway,
+	onlinePokerGame,
+	prettierConfig,
+	rsAward,
+	rsMedal,
+	rsTrophy,
+	rsTrophyV1,
+	tencentRailwayMigration
+} from './issues'
 
 const issues = [
 	rsTrophy,

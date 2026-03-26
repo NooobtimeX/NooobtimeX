@@ -72,7 +72,7 @@ const IssueDetailContent: React.FC<IssueDetailContentProps> = ({ id }) => {
 							<div className='relative border-4 border-white bg-black shadow-[12px_12px_0px_0px_rgba(255,255,255,1)] transition-all duration-300 hover:rotate-0 hover:shadow-[8px_8px_0px_0px_rgba(255,50,50,1)]'>
 								{/* Badge */}
 								<div className='bg-primary absolute top-0 right-0 z-20 border-b-4 border-l-4 border-black px-4 py-2 font-[Bangers] text-xl text-white'>
-									ISSUE #{id?.toUpperCase().slice(0, 3)}
+									ISSUE #{String(issuesData.length - issuesData.findIndex(p => p.id === issue.id)).padStart(3, '0')}
 								</div>
 
 								<div className='relative aspect-video overflow-hidden'>

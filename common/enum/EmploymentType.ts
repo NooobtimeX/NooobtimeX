@@ -1,5 +1,5 @@
-// Affiliation type enum
-export enum AffiliationType {
+// Employment type enum
+export enum EmploymentType {
 	Volunteer = 'volunteer',
 	Freelance = 'freelance',
 	LifeEvent = 'life-event',

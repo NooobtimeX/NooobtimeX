@@ -5,6 +5,7 @@ import type { Route } from 'next'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
 import { ArrowRightIcon } from 'lucide-react'
+import { issuesData } from '@/common/data/issue'
 import { Issue } from '@/common/interface'
 import IssueThumbnail from '@/components/issue/IssueThumbnail'
 import ComicPop from '@/components/motion/ComicPop'
@@ -21,8 +22,9 @@ interface IssueCardProps {
 const IssueCard: React.FC<IssueCardProps> = ({ issue, index, variant = 'grid', showAllAbilities = false }) => {
 	const abilitiesToShow = showAllAbilities ? issue.abilities : issue.abilities.slice(0, 3)
 
-	// Comic Issue Number based on index or ID logic
-	const issueNumber = `#${String(index + 1).padStart(3, '0')}`
+	// Comic Issue Number calculated from its global rank (oldest is #001)
+	const globalIndex = issuesData.findIndex(p => p.id === issue.id)
+	const issueNumber = `#${String(issuesData.length - globalIndex).padStart(3, '0')}`
 
 	if (variant === 'featured') {
 		const isEven = index % 2 === 0

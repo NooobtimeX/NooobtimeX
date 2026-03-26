@@ -1,10 +1,12 @@
 import type { AffiliationItem } from '@/common/interface'
-import { jasmineTechnologySolutionAffiliation as jasmineTechnologySolution } from './developer-jasmine-technology-solution-work'
-import { freelanceBlitzwerkAffiliation as freelanceBlitzwerk } from './full-stack-developer-freelance-with-friends-freelance'
-import { born } from './newborn-private-life-life-event'
-import { ruamsukPlatingSoftwareEngineerFullTime } from './software-engineer-ruamsuk-plating-full-time'
-import { ruamsukPlatingSoftwareEngineerPartTime } from './software-engineer-ruamsuk-plating-part-time'
-import { ruamsukPlatingTechnicalAdvisor } from './technical-advisor-ruamsuk-plating'
+import {
+	born,
+	freelanceBlitzwerkAffiliation as freelanceBlitzwerk,
+	jasmineTechnologySolutionAffiliation as jasmineTechnologySolution,
+	ruamsukPlatingSoftwareEngineerFullTime,
+	ruamsukPlatingSoftwareEngineerPartTime,
+	ruamsukPlatingTechnicalAdvisor
+} from './affiliations'
 
 const affiliations = [
 	born,

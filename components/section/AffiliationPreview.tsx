@@ -4,10 +4,12 @@ import type { Route } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
-import { jasmineTechnologySolutionAffiliation } from '@/common/data/affiliation/developer-jasmine-technology-solution-work'
-import { freelanceBlitzwerkAffiliation } from '@/common/data/affiliation/full-stack-developer-freelance-with-friends-freelance'
-import { ruamsukPlatingSoftwareEngineerPartTime } from '@/common/data/affiliation/software-engineer-ruamsuk-plating-part-time'
-import { ruamsukPlatingTechnicalAdvisor } from '@/common/data/affiliation/technical-advisor-ruamsuk-plating'
+import {
+	freelanceBlitzwerkAffiliation,
+	jasmineTechnologySolutionAffiliation,
+	ruamsukPlatingSoftwareEngineerPartTime,
+	ruamsukPlatingTechnicalAdvisor
+} from '@/common/data/affiliation'
 import { issuesData } from '@/common/data/issue'
 import { AffiliationEntityType } from '@/common/enum'
 import type { AffiliationItem } from '@/common/interface'

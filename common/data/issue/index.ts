@@ -1,7 +1,2 @@
-export { looklookPet } from './looklook-pet'
-export { onlinePokerGame } from './online-poker-game'
-export { prettierConfig } from './prettier-config'
-export { rsAward } from './rs-award'
-export { rsMedal } from './rs-medal'
-export { rsTrophy } from './rs-trophy'
+export * from './issues'
 export { issuesData } from './issuesData'

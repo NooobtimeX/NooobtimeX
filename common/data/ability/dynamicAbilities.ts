@@ -1,9 +1,15 @@
 import { issuesData } from '@/common/data/issue'
 import { AbilityCategory } from '@/common/enum'
 import type { Ability, AbilityGroup } from '@/common/interface'
+import { orderedAbilities } from './abilities'
 import { categoryMetadata } from './categoryMetadata'
 
 export const getDynamicAbilities = (): AbilityGroup[] => {
+	const abilityOrderMap = new Map<string, number>()
+	orderedAbilities.forEach((ability, index) => {
+		abilityOrderMap.set(ability.name, index)
+	})
+
 	const allAbilities: Ability[] = []
 	const abilityFrequency = new Map<string, number>()
 
@@ -27,12 +33,15 @@ export const getDynamicAbilities = (): AbilityGroup[] => {
 
 	// Group by category
 	const grouped = Object.values(AbilityCategory).map(category => {
-		// Get abilities and sort by frequency (descending)
+		// Get abilities and sort by manual order first, then frequency
 		const abilitiesInCategory = uniqueAbilities
 			.filter(a => a.category === category)
 			.sort((a, b) => {
-				if (a.important && !b.important) return -1
-				if (!a.important && b.important) return 1
+				const orderA = abilityOrderMap.get(a.name) ?? 999
+				const orderB = abilityOrderMap.get(b.name) ?? 999
+
+				if (orderA !== orderB) return orderA - orderB
+
 				const freqA = abilityFrequency.get(a.name) || 0
 				const freqB = abilityFrequency.get(b.name) || 0
 				return freqB - freqA
@@ -43,15 +52,19 @@ export const getDynamicAbilities = (): AbilityGroup[] => {
 		// Calculate total frequency for this category to determine group sorting
 		const totalCategoryFrequency = abilitiesInCategory.reduce((sum, a) => sum + (abilityFrequency.get(a.name) || 0), 0)
 
+		// Calculate min order for this category to determine group sorting
+		const minOrder = Math.min(...abilitiesInCategory.map(a => abilityOrderMap.get(a.name) ?? 999))
+
 		return {
 			category,
 			description: metadata.description,
 			icon: metadata.icon,
 			abilities: abilitiesInCategory,
-			totalFrequency: totalCategoryFrequency
+			totalFrequency: totalCategoryFrequency,
+			minOrder
 		}
 	})
 
-	// Filter out categories with no abilities and sort by totalFrequency (descending)
-	return grouped.filter(group => group.abilities.length > 0).sort((a, b) => b.totalFrequency - a.totalFrequency)
+	// Filter out categories with no abilities and sort by minOrder (ascending)
+	return grouped.filter(group => group.abilities.length > 0).sort((a, b) => a.minOrder - b.minOrder)
 }
