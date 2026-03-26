@@ -45,7 +45,7 @@
 
 | Project                | Description                    | Link                                                                                                                         |
 | ---------------------- | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
-| 🐾 **LOOKLOOK PET**    | AI-powered pet care experience | [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-00D9FF?style=for-the-badge)](https://looklook.pet/)                  |
+| 🐾 **LOOKLOOK PET**    | Modernized pet care experience | [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-00D9FF?style=for-the-badge)](https://looklook.pet/)                  |
 | ⚙️ **Prettier Config** | Interactive config generator   | [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-00D9FF?style=for-the-badge)](https://prettier-config-generator.com/) |
 | 🏆 **RS Award**        | Elegant showcase for accolades | [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-00D9FF?style=for-the-badge)](https://www.rs-award.com)               |
 | 🥇 **RS Medal**        | Modern medal display app       | [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-00D9FF?style=for-the-badge)](https://www.rs-medal.com)               |

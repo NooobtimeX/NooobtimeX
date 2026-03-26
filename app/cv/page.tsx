@@ -7,8 +7,8 @@ import { getDynamicAbilities } from '@/common/data/ability/dynamicAbilities'
 import { affiliationData } from '@/common/data/affiliation'
 import { issuesData } from '@/common/data/issue'
 import { personalData } from '@/common/data/personal'
-import { AffiliationType } from '@/common/enum'
-import type { AbilityGroup } from '@/common/interface'
+import { AbilityCategory, AffiliationType } from '@/common/enum'
+import type { Ability, AbilityGroup } from '@/common/interface'
 import { Button } from '@/components/ui/button'
 
 export default function CVPage() {
@@ -33,6 +33,19 @@ export default function CVPage() {
 		if (!id) return null
 		const aff = affiliationData.find(a => a.id === id)
 		return aff?.affiliation.name || null
+	}
+
+	const categoryOrder: Record<string, number> = {
+		[AbilityCategory.Frontend]: 1,
+		[AbilityCategory.Backend]: 2,
+		[AbilityCategory.Infrastructure]: 3,
+		[AbilityCategory.GrowthManagement]: 4
+	}
+
+	const sortAbilities = (a: Ability, b: Ability) => {
+		if (a.important && !b.important) return -1
+		if (!a.important && b.important) return 1
+		return (categoryOrder[a.category] || 99) - (categoryOrder[b.category] || 99)
 	}
 
 	return (
@@ -234,7 +247,9 @@ export default function CVPage() {
 							</h2>
 							<div className='grid grid-cols-2 gap-x-6 gap-y-6'>
 								{getDynamicAbilities()
-									.filter((g: AbilityGroup) => ['Frontend', 'Backend', 'DevOps'].includes(g.category))
+									.filter((g: AbilityGroup) =>
+										['Frontend', 'Backend', 'Infrastructure', 'Growth & Management'].includes(g.category)
+									)
 									.map((group: AbilityGroup) => (
 										<div key={group.category}>
 											<h3 className='mb-2 text-[10px] font-black tracking-[0.2em] text-black uppercase opacity-40'>
@@ -349,7 +364,9 @@ export default function CVPage() {
 									const projectAbilities = issuesData
 										.filter(issue => issue.linkedAffiliationId === aff.id)
 										.flatMap(issue => issue.abilities)
-									const uniqueAbilities = Array.from(new Map(projectAbilities.map(a => [a.name, a])).values())
+									const uniqueAbilities = Array.from(new Map(projectAbilities.map(a => [a.name, a])).values()).sort(
+										sortAbilities
+									)
 
 									return uniqueAbilities.slice(0, 10).map(ability => (
 										<span
@@ -416,7 +433,9 @@ export default function CVPage() {
 											const projectAbilities = issuesData
 												.filter(issue => issue.linkedAffiliationId === aff.id)
 												.flatMap(issue => issue.abilities)
-											const uniqueAbilities = Array.from(new Map(projectAbilities.map(a => [a.name, a])).values())
+											const uniqueAbilities = Array.from(new Map(projectAbilities.map(a => [a.name, a])).values()).sort(
+												sortAbilities
+											)
 
 											return uniqueAbilities.slice(0, 10).map(ability => (
 												<span
@@ -464,15 +483,18 @@ export default function CVPage() {
 								{project.description}
 							</p>
 							<div className='mt-auto flex flex-wrap gap-1.5 border-t border-gray-50 pt-3'>
-								{project.abilities.slice(0, 5).map(ability => (
-									<span
-										key={ability.name}
-										className='flex items-center gap-1 rounded border border-red-100 bg-red-50 px-1.5 py-0.5 text-[8px] font-black text-red-700 uppercase'
-										style={{ WebkitPrintColorAdjust: 'exact' }}>
-										<Icon icon={ability.icon} className='h-2.5 w-2.5 opacity-60' />
-										{ability.name}
-									</span>
-								))}
+								{project.abilities
+									.sort(sortAbilities)
+									.slice(0, 5)
+									.map(ability => (
+										<span
+											key={ability.name}
+											className='flex items-center gap-1 rounded border border-red-100 bg-red-50 px-1.5 py-0.5 text-[8px] font-black text-red-700 uppercase'
+											style={{ WebkitPrintColorAdjust: 'exact' }}>
+											<Icon icon={ability.icon} className='h-2.5 w-2.5 opacity-60' />
+											{ability.name}
+										</span>
+									))}
 							</div>
 						</div>
 					))}
@@ -507,15 +529,18 @@ export default function CVPage() {
 								{project.description}
 							</p>
 							<div className='mt-auto flex flex-wrap gap-1.5 border-t border-gray-50 pt-3'>
-								{project.abilities.slice(0, 5).map(ability => (
-									<span
-										key={ability.name}
-										className='flex items-center gap-1 rounded border border-red-100 bg-red-50 px-1.5 py-0.5 text-[8px] font-black text-red-700 uppercase'
-										style={{ WebkitPrintColorAdjust: 'exact' }}>
-										<Icon icon={ability.icon} className='h-2.5 w-2.5 opacity-60' />
-										{ability.name}
-									</span>
-								))}
+								{project.abilities
+									.sort(sortAbilities)
+									.slice(0, 5)
+									.map(ability => (
+										<span
+											key={ability.name}
+											className='flex items-center gap-1 rounded border border-red-100 bg-red-50 px-1.5 py-0.5 text-[8px] font-black text-red-700 uppercase'
+											style={{ WebkitPrintColorAdjust: 'exact' }}>
+											<Icon icon={ability.icon} className='h-2.5 w-2.5 opacity-60' />
+											{ability.name}
+										</span>
+									))}
 							</div>
 						</div>
 					))}
@@ -550,15 +575,18 @@ export default function CVPage() {
 								{project.description}
 							</p>
 							<div className='mt-auto flex flex-wrap gap-1.5 border-t border-gray-50 pt-3'>
-								{project.abilities.slice(0, 5).map(ability => (
-									<span
-										key={ability.name}
-										className='flex items-center gap-1 rounded border border-red-100 bg-red-50 px-1.5 py-0.5 text-[8px] font-black text-red-700 uppercase'
-										style={{ WebkitPrintColorAdjust: 'exact' }}>
-										<Icon icon={ability.icon} className='h-2.5 w-2.5 opacity-60' />
-										{ability.name}
-									</span>
-								))}
+								{project.abilities
+									.sort(sortAbilities)
+									.slice(0, 5)
+									.map(ability => (
+										<span
+											key={ability.name}
+											className='flex items-center gap-1 rounded border border-red-100 bg-red-50 px-1.5 py-0.5 text-[8px] font-black text-red-700 uppercase'
+											style={{ WebkitPrintColorAdjust: 'exact' }}>
+											<Icon icon={ability.icon} className='h-2.5 w-2.5 opacity-60' />
+											{ability.name}
+										</span>
+									))}
 							</div>
 						</div>
 					))}

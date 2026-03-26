@@ -5,5 +5,6 @@ export const react: Ability = {
 	name: 'React',
 	icon: 'logos:react',
 	category: AbilityCategory.Frontend,
-	level: AbilityLevel.Expert
+	level: AbilityLevel.Expert,
+	important: true
 }

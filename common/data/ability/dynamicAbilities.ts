@@ -31,6 +31,8 @@ export const getDynamicAbilities = (): AbilityGroup[] => {
 		const abilitiesInCategory = uniqueAbilities
 			.filter(a => a.category === category)
 			.sort((a, b) => {
+				if (a.important && !b.important) return -1
+				if (!a.important && b.important) return 1
 				const freqA = abilityFrequency.get(a.name) || 0
 				const freqB = abilityFrequency.get(b.name) || 0
 				return freqB - freqA

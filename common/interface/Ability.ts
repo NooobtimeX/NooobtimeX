@@ -7,4 +7,5 @@ export interface Ability {
 	level: AbilityLevel
 	icon: string // Icon name for @iconify/react
 	whiteBg?: boolean
+	important?: boolean
 }

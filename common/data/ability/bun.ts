@@ -5,5 +5,6 @@ export const bun: Ability = {
 	name: 'Bun.js',
 	category: AbilityCategory.Backend,
 	level: AbilityLevel.Intermediate,
-	icon: 'simple-icons:bun'
+	icon: 'simple-icons:bun',
+	important: true
 }

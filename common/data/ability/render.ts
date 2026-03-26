@@ -4,6 +4,6 @@ import type { Ability } from '@/common/interface'
 export const render: Ability = {
 	name: 'Render',
 	icon: 'simple-icons:render',
-	category: AbilityCategory.DevOps,
+	category: AbilityCategory.Infrastructure,
 	level: AbilityLevel.Intermediate
 }

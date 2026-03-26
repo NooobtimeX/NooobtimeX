@@ -1,14 +1,18 @@
 import {
 	bullmq,
 	bun,
+	docker,
 	elysia,
 	googleAds,
 	googleAnalytics,
 	minio,
 	nextjs,
+	react,
 	redis,
 	shadcnui,
-	tailwindcss
+	tailwindcss,
+	typescript,
+	vercel
 } from '@/common/data/ability'
 import { AffiliationId } from '@/common/enum'
 import type { Issue } from '@/common/interface'
@@ -23,7 +27,22 @@ export const rsTrophy: Issue = {
 		banner: '/issue/RSTROPHY.png',
 		photos: ['/issue/RSTROPHY.png']
 	},
-	abilities: [bun, elysia, nextjs, redis, minio, tailwindcss, shadcnui, bullmq, googleAds, googleAnalytics],
+	abilities: [
+		bun,
+		elysia,
+		nextjs,
+		react,
+		typescript,
+		redis,
+		minio,
+		tailwindcss,
+		shadcnui,
+		bullmq,
+		docker,
+		vercel,
+		googleAds,
+		googleAnalytics
+	],
 	links: {
 		github: 'https://github.com/NooobtimeX',
 		live: 'https://rs-trophy.com'

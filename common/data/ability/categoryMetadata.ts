@@ -7,26 +7,14 @@ export const categoryMetadata: Record<AbilityCategory, { icon: string; descripti
 	},
 	[AbilityCategory.Backend]: {
 		icon: 'material-symbols:database',
-		description: 'Server-side development and data management'
+		description: 'Server-side development and database management'
 	},
-	[AbilityCategory.Database]: {
-		icon: 'material-symbols:storage',
-		description: 'Database design and administration'
-	},
-	[AbilityCategory.DevOps]: {
+	[AbilityCategory.Infrastructure]: {
 		icon: 'material-symbols:cloud',
-		description: 'Deployment, cloud services, and development workflow'
+		description: 'Infrastructure, deployment, and cloud solutions'
 	},
-	[AbilityCategory.Tools]: {
-		icon: 'material-symbols:build',
-		description: 'Development tools and project management'
-	},
-	[AbilityCategory.Marketing]: {
+	[AbilityCategory.GrowthManagement]: {
 		icon: 'material-symbols:trending-up',
-		description: 'Digital marketing and analytics'
-	},
-	[AbilityCategory.AI]: {
-		icon: 'material-symbols:robot-2',
-		description: 'AI tools and technologies'
+		description: 'Digital growth, marketing, and project management'
 	}
 }

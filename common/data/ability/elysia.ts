@@ -5,5 +5,6 @@ export const elysia: Ability = {
 	name: 'Elysia.js',
 	category: AbilityCategory.Backend,
 	level: AbilityLevel.Intermediate,
-	icon: 'material-symbols:flash-on'
+	icon: 'material-symbols:flash-on',
+	important: true
 }

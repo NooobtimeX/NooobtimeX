@@ -4,6 +4,6 @@ import type { Ability } from '@/common/interface'
 export const wordpress: Ability = {
 	name: 'WordPress',
 	icon: 'simple-icons:wordpress',
-	category: AbilityCategory.Tools,
+	category: AbilityCategory.GrowthManagement,
 	level: AbilityLevel.Expert
 }

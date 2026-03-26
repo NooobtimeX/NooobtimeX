@@ -4,7 +4,8 @@ import type { Ability } from '@/common/interface'
 export const vercel: Ability = {
 	name: 'Vercel',
 	icon: 'logos:vercel-icon',
-	category: AbilityCategory.DevOps,
+	category: AbilityCategory.Infrastructure,
 	level: AbilityLevel.Advanced,
-	whiteBg: true
+	whiteBg: true,
+	important: true
 }

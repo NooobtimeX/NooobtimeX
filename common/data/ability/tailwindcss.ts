@@ -5,5 +5,6 @@ export const tailwindcss: Ability = {
 	name: 'Tailwind CSS',
 	icon: 'logos:tailwindcss-icon',
 	category: AbilityCategory.Frontend,
-	level: AbilityLevel.Expert
+	level: AbilityLevel.Expert,
+	important: true
 }

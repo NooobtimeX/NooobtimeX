@@ -8,15 +8,15 @@ import { rsAward } from './rs-award'
 import { rsMedal } from './rs-medal'
 import { rsTrophy } from './rs-trophy'
 import { rsTrophyV1 } from './rs-trophy-v1'
-import { webAppAutomation } from './web-app-automation'
+import { tencentRailwayMigration } from './tencent-railway-migration'
 
 const issues = [
 	rsTrophy,
+	tencentRailwayMigration,
 	n8nRailway,
 	looklookPet,
 	onlinePokerGame,
 	floodPrediction,
-	webAppAutomation,
 	prettierConfig,
 	rsTrophyV1,
 	rsAward,

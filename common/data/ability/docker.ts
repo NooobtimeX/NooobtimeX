@@ -4,6 +4,7 @@ import type { Ability } from '@/common/interface'
 export const docker: Ability = {
 	name: 'Docker',
 	icon: 'logos:docker-icon',
-	category: AbilityCategory.DevOps,
-	level: AbilityLevel.Intermediate
+	category: AbilityCategory.Infrastructure,
+	level: AbilityLevel.Intermediate,
+	important: true
 }

@@ -4,6 +4,6 @@ import type { Ability } from '@/common/interface'
 export const googleAds: Ability = {
 	name: 'Google Ads',
 	icon: 'logos:google-ads',
-	category: AbilityCategory.Marketing,
+	category: AbilityCategory.GrowthManagement,
 	level: AbilityLevel.Intermediate
 }

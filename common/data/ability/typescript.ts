@@ -5,5 +5,6 @@ export const typescript: Ability = {
 	name: 'TypeScript',
 	icon: 'logos:typescript-icon',
 	category: AbilityCategory.Frontend,
-	level: AbilityLevel.Expert
+	level: AbilityLevel.Expert,
+	important: true
 }

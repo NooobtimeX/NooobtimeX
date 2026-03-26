@@ -4,7 +4,8 @@ import type { Ability } from '@/common/interface'
 export const github: Ability = {
 	name: 'Git/GitHub',
 	icon: 'logos:github-icon',
-	category: AbilityCategory.DevOps,
+	category: AbilityCategory.Infrastructure,
 	level: AbilityLevel.Advanced,
-	whiteBg: true
+	whiteBg: true,
+	important: true
 }

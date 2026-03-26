@@ -5,5 +5,6 @@ export const nodejs: Ability = {
 	name: 'Node.js',
 	icon: 'logos:nodejs-icon',
 	category: AbilityCategory.Backend,
-	level: AbilityLevel.Advanced
+	level: AbilityLevel.Advanced,
+	important: true
 }

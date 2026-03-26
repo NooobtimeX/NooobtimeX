@@ -4,6 +4,6 @@ import type { Ability } from '@/common/interface'
 export const railway: Ability = {
 	name: 'Railway',
 	icon: 'simple-icons:railway',
-	category: AbilityCategory.DevOps,
+	category: AbilityCategory.Infrastructure,
 	level: AbilityLevel.Intermediate
 }

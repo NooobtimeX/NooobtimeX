@@ -4,6 +4,6 @@ import type { Ability } from '@/common/interface'
 export const woocommerce: Ability = {
 	name: 'WooCommerce',
 	icon: 'simple-icons:woocommerce',
-	category: AbilityCategory.Tools,
+	category: AbilityCategory.GrowthManagement,
 	level: AbilityLevel.Expert
 }
