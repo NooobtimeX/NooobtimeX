@@ -4,5 +4,6 @@ export enum AffiliationId {
 	RuamsukPlatingSoftwareEngineerPartTime = 'ruamsuk-software-engineer-part-time',
 	RuamsukPlatingSoftwareEngineerFullTime = 'ruamsuk-software-engineer-full-time',
 	RuamsukPlatingTechnicalAdvisor = 'ruamsuk-technical-advisor',
-	PersonalProjects = 'personal-projects'
+	PersonalProjects = 'personal-projects',
+	ThammasatUniversity = 'thammasat-university'
 }

@@ -5,7 +5,8 @@ import {
 	personalProjectsAffiliation as personalProjects,
 	ruamsukPlatingSoftwareEngineerFullTime,
 	ruamsukPlatingSoftwareEngineerPartTime,
-	ruamsukPlatingTechnicalAdvisor
+	ruamsukPlatingTechnicalAdvisor,
+	thammasatUniversityAffiliation as thammasatUniversity
 } from './affiliations'
 
 const affiliations = [
@@ -14,7 +15,8 @@ const affiliations = [
 	ruamsukPlatingSoftwareEngineerPartTime,
 	ruamsukPlatingSoftwareEngineerFullTime,
 	ruamsukPlatingTechnicalAdvisor,
-	personalProjects
+	personalProjects,
+	thammasatUniversity
 ]
 
 // Sort affiliations by startDate in descending order (newest first)

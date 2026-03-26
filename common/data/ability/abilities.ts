@@ -10,6 +10,13 @@ export const nextjs: Ability = {
 	important: true
 }
 
+export const nuxtjs: Ability = {
+	name: 'Nuxt.js',
+	icon: 'logos:nuxt-icon',
+	category: AbilityCategory.Frontend,
+	level: AbilityLevel.Advanced
+}
+
 export const react: Ability = {
 	name: 'React',
 	icon: 'logos:react',
@@ -133,6 +140,13 @@ export const redis: Ability = {
 	important: true
 }
 
+export const supabase: Ability = {
+	name: 'Supabase',
+	icon: 'logos:supabase-icon',
+	category: AbilityCategory.Backend,
+	level: AbilityLevel.Advanced
+}
+
 // Infrastructure
 export const vercel: Ability = {
 	name: 'Vercel',
@@ -203,6 +217,27 @@ export const seo: Ability = {
 	level: AbilityLevel.Advanced
 }
 
+export const aeo: Ability = {
+	name: 'AEO',
+	icon: 'material-symbols:auto-awesome',
+	category: AbilityCategory.GrowthManagement,
+	level: AbilityLevel.Advanced
+}
+
+export const geo: Ability = {
+	name: 'GEO',
+	icon: 'material-symbols:public',
+	category: AbilityCategory.GrowthManagement,
+	level: AbilityLevel.Intermediate
+}
+
+export const jsonld: Ability = {
+	name: 'JSON-LD',
+	icon: 'material-symbols:data-object',
+	category: AbilityCategory.GrowthManagement,
+	level: AbilityLevel.Advanced
+}
+
 export const googleAnalytics: Ability = {
 	name: 'Google Analytics',
 	icon: 'logos:google-analytics',
@@ -231,8 +266,74 @@ export const woocommerce: Ability = {
 	level: AbilityLevel.Expert
 }
 
+// UI & Animation
+export const radixui: Ability = {
+	name: 'Radix UI',
+	icon: 'simple-icons:radixui',
+	category: AbilityCategory.Frontend,
+	level: AbilityLevel.Advanced
+}
+
+export const framerMotion: Ability = {
+	name: 'Framer Motion',
+	icon: 'logos:framer',
+	category: AbilityCategory.Frontend,
+	level: AbilityLevel.Advanced
+}
+
+export const emblaCarousel: Ability = {
+	name: 'Embla Carousel',
+	icon: 'carbon:carousel-horizontal',
+	category: AbilityCategory.Frontend,
+	level: AbilityLevel.Intermediate
+}
+
+export const lucide: Ability = {
+	name: 'Lucide Icons',
+	icon: 'lucide:box',
+	category: AbilityCategory.Frontend,
+	level: AbilityLevel.Expert
+}
+
+export const heroicons: Ability = {
+	name: 'Heroicons',
+	icon: 'logos:heroicons',
+	category: AbilityCategory.Frontend,
+	level: AbilityLevel.Expert
+}
+
+export const reactIcons: Ability = {
+	name: 'React Icons',
+	icon: 'logos:react',
+	category: AbilityCategory.Frontend,
+	level: AbilityLevel.Expert
+}
+
+// Data & Analytics
+export const recharts: Ability = {
+	name: 'Recharts',
+	icon: 'simple-icons:recharts',
+	category: AbilityCategory.Frontend,
+	level: AbilityLevel.Advanced
+}
+
+export const gtm: Ability = {
+	name: 'Google Tag Manager',
+	icon: 'logos:google-tag-manager',
+	category: AbilityCategory.GrowthManagement,
+	level: AbilityLevel.Advanced
+}
+
+export const datefns: Ability = {
+	name: 'date-fns',
+	icon: 'logos:javascript',
+	category: AbilityCategory.Frontend,
+	level: AbilityLevel.Advanced
+}
+
 export const orderedAbilities = [
 	nextjs,
+	nuxtjs,
 	react,
 	typescript,
 	tailwindcss,
@@ -248,6 +349,7 @@ export const orderedAbilities = [
 	bun,
 	postgresql,
 	mongodb,
+	supabase,
 	prisma,
 	redis,
 	vercel,
@@ -261,5 +363,14 @@ export const orderedAbilities = [
 	wordpress,
 	woocommerce,
 	n8n,
-	resend
+	resend,
+	radixui,
+	framerMotion,
+	recharts,
+	emblaCarousel,
+	lucide,
+	heroicons,
+	reactIcons,
+	gtm,
+	datefns
 ]

@@ -20,11 +20,6 @@ export default function IssuePreview() {
 						{/* Background splash */}
 						<div className='bg-primary absolute inset-0 rotate-2 transform opacity-50 blur-sm'></div>
 
-						{/* Spider Decoration */}
-						<div className='absolute -top-12 -right-12 z-20 rotate-12 transform text-6xl drop-shadow-[0_0_10px_rgba(255,50,50,0.8)]'>
-							🕷️
-						</div>
-
 						<div className='relative rotate-1 transform border-4 border-black bg-white px-10 py-4 text-black shadow-[8px_8px_0px_0px_white]'>
 							<h2 className='text-4xl font-black tracking-tight uppercase md:text-6xl'>FEATURED ISSUES</h2>
 						</div>

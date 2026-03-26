@@ -3,7 +3,9 @@ import {
 	looklookPet,
 	n8nRailway,
 	onlinePokerGame,
+	portfolio,
 	prettierConfig,
+	qrFood,
 	rsAward,
 	rsMedal,
 	rsTrophy,
@@ -20,7 +22,9 @@ const issues = [
 	prettierConfig,
 	rsTrophyV1,
 	rsAward,
-	rsMedal
+	rsMedal,
+	portfolio,
+	qrFood
 ]
 
 export const issuesData: Issue[] = issues.sort((a, b) => {

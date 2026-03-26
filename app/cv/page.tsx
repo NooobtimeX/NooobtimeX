@@ -486,7 +486,7 @@ export default function CVPage() {
 								{project.abilities
 									.sort(sortAbilities)
 									.slice(0, 5)
-									.map(ability => (
+									.map((ability: Ability) => (
 										<span
 											key={ability.name}
 											className='flex items-center gap-1 rounded border border-red-100 bg-red-50 px-1.5 py-0.5 text-[8px] font-black text-red-700 uppercase'
@@ -532,7 +532,7 @@ export default function CVPage() {
 								{project.abilities
 									.sort(sortAbilities)
 									.slice(0, 5)
-									.map(ability => (
+									.map((ability: Ability) => (
 										<span
 											key={ability.name}
 											className='flex items-center gap-1 rounded border border-red-100 bg-red-50 px-1.5 py-0.5 text-[8px] font-black text-red-700 uppercase'
@@ -578,7 +578,7 @@ export default function CVPage() {
 								{project.abilities
 									.sort(sortAbilities)
 									.slice(0, 5)
-									.map(ability => (
+									.map((ability: Ability) => (
 										<span
 											key={ability.name}
 											className='flex items-center gap-1 rounded border border-red-100 bg-red-50 px-1.5 py-0.5 text-[8px] font-black text-red-700 uppercase'

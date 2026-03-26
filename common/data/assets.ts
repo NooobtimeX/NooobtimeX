@@ -14,7 +14,8 @@ export const assets = {
 		rsTrophy: '/logo/RSTROPHY.png',
 		jasmineTech: '/logo/JTS.png',
 		blitzwerk: '/logo/blitzwerk.png',
-		nooobtimex: '/profile/NooobtimeX.webp'
+		nooobtimex: '/profile/NooobtimeX.webp',
+		qrFood: '/logo/qr-food.png'
 	},
 	issues: {
 		rsTrophy: {
@@ -30,7 +31,7 @@ export const assets = {
 			banner: '/issue/n8n-railway/banner.png'
 		},
 		looklookPet: {
-			banner: '/issue/looklook-pet/banner.png'
+			banner: '/issue/looklook-pet/banner.webp'
 		},
 		onlinePokerGame: {
 			banner: '/issue/online-poker-game/banner.png',
@@ -48,6 +49,12 @@ export const assets = {
 		},
 		rsAward: {
 			banner: '/issue/rs-award/banner.png'
+		},
+		qrFood: {
+			banner: '/issue/qr-food/banner.png'
+		},
+		portfolio: {
+			banner: '/issue/portfolio/banner.png'
 		}
 	}
 } as const

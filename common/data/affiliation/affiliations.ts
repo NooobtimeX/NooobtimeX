@@ -36,6 +36,14 @@ export const personalProjects: Affiliation = {
 	type: AffiliationEntityType.Company
 }
 
+export const thammasatUniversity: Affiliation = {
+	id: 'thammasat-university',
+	name: 'Thammasat University',
+	logo: assets.logos.qrFood,
+	location: Location.PathumthaniThailand,
+	type: AffiliationEntityType.Company
+}
+
 // --- Experiences/Roles ---
 
 export const freelanceBlitzwerkAffiliation: AffiliationItem = {
@@ -98,4 +106,14 @@ export const personalProjectsAffiliation: AffiliationItem = {
 	description: 'Developing and maintaining high-impact personal projects and open-source contributions.',
 	type: EmploymentType.Freelance,
 	startDate: '2024-10-10'
+}
+export const thammasatUniversityAffiliation: AffiliationItem = {
+	id: AffiliationId.ThammasatUniversity,
+	affiliation: thammasatUniversity,
+	position: Position.CollegeStudent,
+	description:
+		'Bachelor of Science in Computer Science. Specialized in full-stack development and system architecture through various academic and research projects.',
+	type: EmploymentType.FullTime,
+	startDate: '2021-06-01',
+	endDate: '2025-06-30'
 }

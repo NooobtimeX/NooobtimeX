@@ -72,7 +72,7 @@ const HomeContent: React.FC = () => {
 										initial={{ scale: 0.8, opacity: 0 }}
 										animate={{ scale: 1, opacity: 1 }}
 										delay={0.1}
-										className='text-primary text-6xl leading-none font-black tracking-tighter drop-shadow-[5px_5px_0px_rgba(255,255,255,1)] md:text-[8rem]'>
+										className='text-primary text-6xl leading-none font-black tracking-tighter drop-shadow-[5px_5px_0px_rgba(255,255,255,1)] md:text-[7rem]'>
 										{personalData.name.split(' ')[0]}
 									</ComicPop>
 								</div>

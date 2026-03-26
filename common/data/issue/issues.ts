@@ -2,26 +2,34 @@ import { assets } from '@/common/data/assets'
 import { AffiliationId } from '@/common/enum'
 import type { Issue } from '@/common/interface'
 import {
+	aeo,
 	bun,
 	docker,
 	elysia,
+	framerMotion,
+	geo,
 	github,
 	googleAds,
 	googleAnalytics,
+	jsonld,
 	minio,
 	n8n,
 	nextjs,
 	nodejs,
+	nuxtjs,
 	postgresql,
 	prisma,
+	radixui,
 	railway,
 	react,
+	recharts,
 	redis,
 	render,
 	resend,
 	seo,
 	shadcnui,
 	sse,
+	supabase,
 	tailwindcss,
 	typescript,
 	vercel,
@@ -38,7 +46,7 @@ export const looklookPet: Issue = {
 		banner: assets.issues.looklookPet.banner,
 		photos: [assets.issues.looklookPet.banner]
 	},
-	abilities: [nextjs, vercel, tailwindcss, shadcnui, googleAds],
+	abilities: [nextjs, vercel, tailwindcss, shadcnui, googleAds, seo, aeo, geo, jsonld],
 	links: {
 		live: 'https://looklook-pet.com'
 	},
@@ -68,7 +76,11 @@ export const rsTrophy: Issue = {
 		docker,
 		vercel,
 		googleAds,
-		googleAnalytics
+		googleAnalytics,
+		seo,
+		aeo,
+		geo,
+		jsonld
 	],
 	links: {
 		live: 'https://rs-trophy.com'
@@ -187,4 +199,38 @@ export const rsAward: Issue = {
 	},
 	startDate: '2022-03-01',
 	linkedAffiliationId: AffiliationId.RuamsukPlatingSoftwareEngineerPartTime
+}
+
+export const qrFood: Issue = {
+	id: 'qr-food',
+	title: 'QR-Food (Thesis Project)',
+	description:
+		'Developed a comprehensive QR-based food ordering and management system for restaurants. Features include real-time menu browsing, digital ordering, and a dashboard for restaurant owners to manage orders and kitchen workflows.',
+	images: {
+		banner: assets.issues.qrFood.banner,
+		photos: [assets.issues.qrFood.banner]
+	},
+	abilities: [nuxtjs, tailwindcss, supabase, vercel],
+	links: {
+		live: 'https://github.com/NooobtimeX/QR-Food'
+	},
+	startDate: '2023-11-01',
+	linkedAffiliationId: AffiliationId.ThammasatUniversity
+}
+
+export const portfolio: Issue = {
+	id: 'portfolio',
+	title: '🚀 Portfolio – Wongsaphat Puangsorn',
+	description:
+		'A professionalized, high-performance portfolio specialized in modern web development. Features a dynamic comic-book aesthetic, responsive navigation, and real-time data visualization of skills and affiliations.',
+	images: {
+		banner: assets.issues.portfolio.banner,
+		photos: [assets.issues.portfolio.banner]
+	},
+	abilities: [nextjs, tailwindcss, radixui, framerMotion, recharts, typescript, seo, aeo, geo, jsonld],
+	links: {
+		live: 'https://github.com/NooobtimeX/portfolio'
+	},
+	startDate: '2024-12-01',
+	linkedAffiliationId: AffiliationId.PersonalProjects
 }
