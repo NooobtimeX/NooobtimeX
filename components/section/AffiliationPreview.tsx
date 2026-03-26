@@ -5,8 +5,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
 import { jasmineTechnologySolutionAffiliation } from '@/common/data/affiliation/developer-jasmine-technology-solution-work'
-import { ruamsukPlatingSoftwareEngineerFullTime } from '@/common/data/affiliation/software-engineer-ruamsuk-plating-full-time'
+import { freelanceBlitzwerkAffiliation } from '@/common/data/affiliation/full-stack-developer-freelance-with-friends-freelance'
 import { ruamsukPlatingSoftwareEngineerPartTime } from '@/common/data/affiliation/software-engineer-ruamsuk-plating-part-time'
+import { ruamsukPlatingTechnicalAdvisor } from '@/common/data/affiliation/technical-advisor-ruamsuk-plating'
 import { issuesData } from '@/common/data/issue'
 import { AffiliationEntityType } from '@/common/enum'
 import type { AffiliationItem } from '@/common/interface'
@@ -17,9 +18,10 @@ import { formatAffiliationDuration, isCurrentPosition } from '@/lib/utils'
 
 export default function AffiliationPreview() {
 	const displayedAffiliations: AffiliationItem[] = [
-		ruamsukPlatingSoftwareEngineerPartTime,
-		ruamsukPlatingSoftwareEngineerFullTime,
-		jasmineTechnologySolutionAffiliation
+		ruamsukPlatingTechnicalAdvisor,
+		jasmineTechnologySolutionAffiliation,
+		freelanceBlitzwerkAffiliation,
+		ruamsukPlatingSoftwareEngineerPartTime
 	].sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime())
 
 	return (
