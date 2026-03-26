@@ -229,7 +229,7 @@ export const portfolio: Issue = {
 	},
 	abilities: [nextjs, tailwindcss, radixui, framerMotion, recharts, typescript, seo, aeo, geo, jsonld],
 	links: {
-		live: 'https://github.com/NooobtimeX/portfolio'
+		live: 'https://github.com/NooobtimeX/NooobtimeX'
 	},
 	startDate: '2024-12-01',
 	linkedAffiliationId: AffiliationId.PersonalProjects
