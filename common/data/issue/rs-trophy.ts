@@ -1,5 +1,4 @@
 import {
-	bullmq,
 	bun,
 	docker,
 	elysia,
@@ -37,7 +36,6 @@ export const rsTrophy: Issue = {
 		minio,
 		tailwindcss,
 		shadcnui,
-		bullmq,
 		docker,
 		vercel,
 		googleAds,
