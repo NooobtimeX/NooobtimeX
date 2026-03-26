@@ -163,7 +163,7 @@ export const prettierConfig: Issue = {
 	links: {
 		live: 'https://prettier-config-generator.com/'
 	},
-	startDate: '2025-07-11',
+	startDate: '2025-07-09',
 	linkedAffiliationId: AffiliationId.PersonalProjects
 }
 
@@ -210,7 +210,7 @@ export const qrFood: Issue = {
 		banner: assets.issues.qrFood.banner,
 		photos: [assets.issues.qrFood.banner]
 	},
-	abilities: [nuxtjs, tailwindcss, supabase, vercel],
+	abilities: [nuxtjs, tailwindcss, prisma, supabase, postgresql, vercel],
 	links: {
 		live: 'https://github.com/NooobtimeX/QR-Food'
 	},
@@ -231,6 +231,6 @@ export const portfolio: Issue = {
 	links: {
 		live: 'https://github.com/NooobtimeX/NooobtimeX'
 	},
-	startDate: '2024-12-01',
+	startDate: '2021-01-01',
 	linkedAffiliationId: AffiliationId.PersonalProjects
 }
