@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import Link from 'next/link'
 import { Icon } from '@iconify/react'
 import { QRCodeSVG } from 'qrcode.react'
 import { getDynamicAbilities } from '@/common/data/ability/dynamicAbilities'
@@ -157,12 +158,21 @@ export default function CVPage() {
 			`}</style>
 
 			{/* Controls */}
-			<div className='mb-8 flex justify-center print:hidden'>
+			<div className='mb-8 flex justify-center gap-4 print:hidden'>
 				<Button
 					onClick={handlePrint}
 					className='flex items-center gap-2 bg-red-600 px-10 py-7 text-xl font-bold tracking-tight text-white uppercase transition-transform active:scale-95'>
 					<Icon icon='material-symbols:print' className='h-7 w-7' />
 					Print Premium Color CV (A4)
+				</Button>
+				<Button
+					asChild
+					className='flex items-center gap-2 border-2 border-zinc-800 bg-zinc-950 px-10 py-7 text-xl font-bold tracking-tight text-white uppercase transition-transform hover:bg-zinc-900 active:scale-95'>
+					{/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+					<Link href={'/cv/presentation' as any}>
+						<Icon icon='material-symbols:slideshow' className='h-7 w-7 text-red-500' />
+						Presentation Mode
+					</Link>
 				</Button>
 			</div>
 
