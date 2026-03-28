@@ -28,9 +28,6 @@ export const assets = {
 		tencentRailwayMigration: {
 			banner: '/issue/tencent-railway-migration/banner.png'
 		},
-		n8nRailway: {
-			banner: '/issue/n8n-railway/banner.png'
-		},
 		looklookPet: {
 			banner: '/issue/looklook-pet/banner.webp'
 		},

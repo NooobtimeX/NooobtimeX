@@ -6,9 +6,11 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { personalData } from '@/common/data/personal'
 import ComicSeparator from '@/components/ComicSeparator'
 import ComicPop from '@/components/motion/ComicPop'
-import AbilityPreview from '@/components/section/AbilityPreview'
-import AffiliationPreview from '@/components/section/AffiliationPreview'
-import IssuePreview from '@/components/section/IssuePreview'
+import BentoShowcase from '@/components/section/BentoShowcase'
+import CareerTimeline from '@/components/section/CareerTimeline'
+import ContactStrip from '@/components/section/ContactStrip'
+import ProjectMosaic from '@/components/section/ProjectMosaic'
+import StatsBar from '@/components/section/StatsBar'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 
@@ -169,12 +171,23 @@ const HomeContent: React.FC = () => {
 				</div>
 			</section>
 
+			{/* Stats Bar — immediate impact under hero */}
+			<StatsBar />
+
+			{/* Command Center Bento */}
 			<ComicSeparator />
-			<AbilityPreview />
+			<BentoShowcase />
+
+			{/* Project Mosaic */}
 			<ComicSeparator />
-			<IssuePreview />
+			<ProjectMosaic />
+
+			{/* Career Timeline */}
 			<ComicSeparator />
-			<AffiliationPreview />
+			<CareerTimeline />
+
+			{/* Contact Strip */}
+			<ContactStrip />
 		</div>
 	)
 }
