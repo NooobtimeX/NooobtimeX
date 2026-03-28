@@ -4,14 +4,11 @@ const nextConfig: NextConfig = {
 	reactStrictMode: true,
 	poweredByHeader: false,
 	images: {
-		formats: ['image/avif', 'image/webp'],
+		formats: ['image/webp'],
 		minimumCacheTTL: 60,
 		qualities: [100]
 	},
 	typedRoutes: true,
-	experimental: {
-		optimizePackageImports: ['lucide-react', 'recharts', 'framer-motion', 'date-fns', '@radix-ui/react-icons']
-	},
 	async headers() {
 		return [
 			{
