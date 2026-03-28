@@ -17,6 +17,7 @@ import {
 	CommandList,
 	CommandSeparator
 } from '@/components/ui/command'
+import { cn } from '@/lib/utils'
 
 export function GlobalSearch() {
 	const [open, setOpen] = useState(false)
@@ -84,7 +85,9 @@ export function GlobalSearch() {
 		<>
 			<button
 				onClick={() => setOpen(true)}
-				className='bg-card hover:bg-primary group flex items-center justify-center gap-2 border-2 border-white px-3 py-3 shadow-[4px_4px_0px_0px_white] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_white] lg:h-full lg:translate-x-0 lg:translate-y-0 lg:border-0 lg:bg-transparent lg:px-4 lg:py-2 lg:shadow-none lg:hover:bg-transparent'>
+				className={cn(
+					'silk-item-mini lg:h-full lg:translate-x-0 lg:translate-y-0 lg:border-0 lg:bg-transparent lg:px-4 lg:py-2 lg:shadow-none lg:hover:bg-transparent'
+				)}>
 				<Icon
 					icon='material-symbols:search'
 					className='h-6 w-6 text-white transition-transform group-hover:scale-110 lg:h-5 lg:w-5'

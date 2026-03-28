@@ -24,8 +24,8 @@ export default function CareerTimeline() {
 
 			<div className='relative z-10 container mx-auto max-w-7xl px-4'>
 				<ComicPop className='mb-14 text-center'>
-					<div className='inline-block -rotate-1 border-4 border-black bg-white px-8 py-3 shadow-[6px_6px_0px_0px_white]'>
-						<h2 className='text-3xl font-black tracking-wider text-black uppercase md:text-5xl'>CAREER TIMELINE</h2>
+					<div className='silk-section-label'>
+						<h2 className='silk-section-label-text'>CAREER TIMELINE</h2>
 					</div>
 				</ComicPop>
 
@@ -71,9 +71,9 @@ export default function CareerTimeline() {
 									{/* Card */}
 									<Link
 										href={`/affiliation/${item.id}`}
-										className={`group hover:border-primary flex-1 border-2 p-3 transition-all hover:shadow-[3px_3px_0px_0px_hsl(355,85%,60%)] ${
+										className={`group hover:border-primary flex-1 border-4 p-3 transition-all hover:shadow-[4px_4px_0px_0px_hsl(355,85%,60%)] ${
 											isCurrent ?
-												'border-primary bg-primary/10 shadow-[3px_3px_0px_0px_hsl(355,85%,60%)]'
+												'border-primary bg-primary/10 shadow-[4px_4px_0px_0px_hsl(355,85%,60%)]'
 											:	'border-zinc-800 bg-zinc-900/60'
 										}`}>
 										{isCurrent && (
@@ -99,9 +99,7 @@ export default function CareerTimeline() {
 					viewport={{ once: true }}
 					transition={{ delay: 0.6 }}
 					className='mt-10 flex justify-center'>
-					<Link
-						href='/affiliation'
-						className='comic-button inline-flex items-center gap-2 border-4 border-white bg-transparent px-10 py-4 text-sm font-black tracking-widest text-white uppercase shadow-[4px_4px_0px_0px_white] transition-all hover:translate-x-1 hover:translate-y-1 hover:bg-white hover:text-black hover:shadow-[2px_2px_0px_0px_white]'>
+					<Link href='/affiliation' className='silk-button-tactical-outline px-10 py-4 text-sm'>
 						FULL CAREER HISTORY
 						<Icon icon='material-symbols:arrow-forward' className='h-4 w-4' />
 					</Link>

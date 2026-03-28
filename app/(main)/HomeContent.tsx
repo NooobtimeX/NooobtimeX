@@ -52,11 +52,11 @@ const HomeContent: React.FC = () => {
 						{/* LEFT: IMPACT TEXT */}
 						<div className='relative z-20 order-2 flex flex-col items-center text-center lg:order-1 lg:items-start lg:text-left'>
 							{/* Speech Bubble / Intro */}
-							<ComicPop delay={0.2} className='relative mb-6 hidden self-start lg:block'>
-								<div className='rounded-[50%_20%_60%_30%] border-4 border-black bg-white px-6 py-3 text-xl font-black text-black shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]'>
+							<ComicPop delay={0.2} className='mb-6 hidden self-start lg:block'>
+								<div className='silk-speech-bubble'>
 									THE NEW HERO IN TECH!
+									<div className='silk-speech-bubble-arrow'></div>
 								</div>
-								<div className='absolute -bottom-2 left-6 h-4 w-4 rotate-45 transform border-r-4 border-b-4 border-black bg-white'></div>
 							</ComicPop>
 
 							{/* Main Title Stack */}
@@ -82,13 +82,11 @@ const HomeContent: React.FC = () => {
 									initial={{ x: 100, opacity: 0 }}
 									animate={{ x: 0, opacity: 1 }}
 									delay={0.2}
-									className='relative inline-block rotate-1 transform bg-white'>
-									<div className='relative'>
-										<span className='block border-4 border-black px-6 py-2 text-3xl font-black text-black md:text-5xl'>
-											{personalData.title}
-										</span>
+									className='relative inline-block rotate-1 transform'>
+									<div className='silk-section-label'>
+										<span className='silk-section-label-text md:text-5xl'>{personalData.title}</span>
 										{/* Est. Tag */}
-										<div className='bg-primary absolute -top-4 -right-4 -rotate-3 border-2 border-black px-3 py-1 text-xs font-black tracking-widest text-white shadow-[2px_2px_0px_0px_white]'>
+										<div className='silk-item-mini-primary absolute -top-4 -right-4 -rotate-3 px-3 py-1 text-xs'>
 											EST. 2003
 										</div>
 									</div>
@@ -105,22 +103,13 @@ const HomeContent: React.FC = () => {
 
 							{/* Action Buttons */}
 							<ComicPop delay={0.6} className='flex w-full flex-col gap-6 sm:w-auto sm:flex-row'>
-								<Button
-									asChild
-									size='lg'
-									className='comic-button bg-primary h-16 border-2 border-white px-10 text-xl text-white shadow-[6px_6px_0px_0px_white] transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-[3px_3px_0px_0px_white]'>
+								<Button asChild size='lg' className='silk-button-tactical-primary h-16 px-10 text-xl'>
 									<Link href='/issue'>EXPLORE ISSUES</Link>
 								</Button>
-								<Button
-									asChild
-									size='lg'
-									className='comic-button h-16 border-2 border-white bg-white px-10 text-xl text-black shadow-[6px_6px_0px_0px_white] transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-[3px_3px_0px_0px_white]'>
+								<Button asChild size='lg' className='silk-button-tactical-white h-16 px-10 text-xl'>
 									<Link href='/cv'>DOWNLOAD CV</Link>
 								</Button>
-								<Button
-									asChild
-									size='lg'
-									className='comic-button h-16 border-2 border-white bg-transparent px-10 text-xl text-white shadow-[6px_6px_0px_0px_white] transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:bg-white hover:text-black hover:shadow-[3px_3px_0px_0px_white]'>
+								<Button asChild size='lg' className='silk-button-tactical-outline h-16 px-10 text-xl'>
 									<Link href='https://github.com/NooobtimeX'>GITHUB BASE</Link>
 								</Button>
 							</ComicPop>
@@ -133,8 +122,8 @@ const HomeContent: React.FC = () => {
 							className='relative order-1 flex justify-center lg:order-2 lg:justify-end xl:pr-10'>
 							<div className='relative h-80 w-80 md:h-[500px] md:w-[500px]'>
 								{/* Back panels */}
-								<div className='absolute inset-0 z-0 rotate-3 transform rounded-sm border-4 border-black bg-white shadow-[15px_15px_0px_0px_rgba(255,50,50,0.6)]'></div>
-								<div className='absolute inset-0 z-10 -rotate-2 transform overflow-hidden rounded-sm border-4 border-white bg-black'>
+								<div className='silk-panel absolute inset-0 z-0 rotate-3 transform bg-white shadow-[15px_15px_0px_0px_rgba(255,50,50,0.6)]'></div>
+								<div className='silk-panel absolute inset-0 z-10 -rotate-2 transform overflow-hidden bg-black'>
 									<div className='comic-halftone absolute inset-0 opacity-40'></div>
 									<Avatar className='h-full w-full rounded-none'>
 										<AvatarImage

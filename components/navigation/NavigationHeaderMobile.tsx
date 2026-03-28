@@ -33,8 +33,8 @@ export default function NavigationHeaderMobile({ menuItems }: NavigationHeaderMo
 
 			{/* Mobile Brand Button (Left) */}
 			<div className='fixed bottom-4 left-4 z-50 flex justify-center'>
-				<Link href={'/'}>
-					<div className='flex cursor-pointer items-center gap-2 border-2 border-white bg-black px-4 py-2 shadow-[4px_4px_0px_0px_white] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_white]'>
+				<Link href={'/' as Route}>
+					<div className='silk-item-mini flex cursor-pointer'>
 						<Image
 							src={assets.personal.favicon}
 							alt='NooobtimeX'
@@ -43,7 +43,7 @@ export default function NavigationHeaderMobile({ menuItems }: NavigationHeaderMo
 							height={24}
 							quality={100}
 						/>
-						<span className='text-xl font-black tracking-tight text-white uppercase'>NooobtimeX</span>
+						<span className='ml-2 text-xl font-black tracking-tight text-white uppercase'>NooobtimeX</span>
 					</div>
 				</Link>
 			</div>
@@ -52,7 +52,7 @@ export default function NavigationHeaderMobile({ menuItems }: NavigationHeaderMo
 			<Drawer>
 				<DrawerTrigger asChild>
 					<div className='fixed right-4 bottom-4 z-50'>
-						<Button className='bg-primary hover:bg-primary/90 h-auto rounded-none border-2 border-white px-4 py-2 text-xl font-black tracking-tight text-white shadow-[4px_4px_0px_0px_white] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_white]'>
+						<Button className='silk-item-mini-primary h-auto px-4 py-2 text-xl'>
 							MENU <RxHamburgerMenu className='ml-2 h-5 w-5' />
 						</Button>
 					</div>

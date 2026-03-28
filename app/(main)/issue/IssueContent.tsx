@@ -8,23 +8,33 @@ import ComicPop from '@/components/motion/ComicPop'
 const IssueContent: React.FC = () => {
 	return (
 		<div className='relative min-h-screen w-full overflow-x-hidden bg-black pt-24'>
-			{/* Background */}
-			<div className='comic-halftone pointer-events-none fixed inset-0 opacity-20'></div>
+			{/* Global Background Elements */}
+			<div className='pointer-events-none fixed inset-0 z-0 opacity-20'>
+				<div className='absolute inset-0 bg-[radial-gradient(circle_at_center,var(--color-primary)_1px,transparent_1px)] bg-size-[24px_24px]'></div>
+				{/* Top Right Web */}
+				<div className='comic-web-pattern absolute top-0 right-0 h-[500px] w-[500px] rotate-12 transform opacity-30'></div>
+				{/* Bottom Left Web */}
+				<div className='comic-web-pattern absolute bottom-0 left-0 h-[500px] w-[500px] scale-x-[-1] -rotate-12 transform opacity-30'></div>
+			</div>
+
+			<div className='pointer-events-none fixed top-0 left-0 z-0 h-full w-full opacity-10'>
+				<div className='bg-primary absolute top-[-20%] right-[-10%] h-[600px] w-[600px] rounded-full blur-[120px]'></div>
+				<div className='absolute bottom-[-10%] left-[-10%] h-[500px] w-[500px] rounded-full bg-white blur-[100px]'></div>
+			</div>
 
 			{/* Header */}
-			<div className='relative z-10 container mx-auto mb-16 max-w-7xl px-4 text-center'>
-				<ComicPop initial={{ y: -50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className='relative inline-block'>
-					<div className='-rotate-1 transform border-4 border-black bg-white px-12 py-6 text-black shadow-[8px_8px_0px_0px_white]'>
-						<h1 className='text-5xl font-black tracking-wider uppercase md:text-7xl'>ISSUE ARCHIVE</h1>
+			<div className='relative z-10 container mx-auto mb-24 max-w-7xl px-4 text-center'>
+				<ComicPop
+					initial={{ opacity: 0, scale: 0.8, y: -50 }}
+					animate={{ opacity: 1, scale: 1, y: 0 }}
+					className='relative z-10 inline-block'>
+					<div className='silk-hero-badge'>
+						<h1 className='silk-hero-badge-text'>ISSUE ARCHIVE</h1>
 					</div>
 				</ComicPop>
-				<ComicPop
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					delay={0.2}
-					className='mt-6 text-xl font-black tracking-wide text-gray-400 uppercase'>
-					Select an issue to read details
-				</ComicPop>
+				<p className='mx-auto mt-8 max-w-3xl text-2xl font-black tracking-wide text-white uppercase text-shadow-sm'>
+					&quot;Secure data repositories & project dossiers&quot;
+				</p>
 			</div>
 
 			{/* Issues Grid */}

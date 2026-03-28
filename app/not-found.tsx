@@ -27,7 +27,7 @@ export default function NotFound() {
 				</ComicPop>
 
 				<ComicPop delay={0.4}>
-					<div className='relative mx-auto mb-10 max-w-2xl -rotate-1 transform border-4 border-black bg-white p-6 text-black shadow-[8px_8px_0px_0px_rgba(255,50,50,1)]'>
+					<div className='silk-section-label relative mx-auto mb-10 max-w-2xl bg-white p-6 shadow-[8px_8px_0px_0px_hsl(355,85%,60%)]'>
 						<h2 className='mb-2 text-4xl font-black uppercase md:text-5xl'>ISSUE NOT FOUND!</h2>
 						<p className='text-lg text-gray-800 md:text-xl'>
 							It seems this page has been stolen by a supervillain... or maybe it never existed!
@@ -39,9 +39,7 @@ export default function NotFound() {
 				</ComicPop>
 
 				<ComicPop delay={0.6}>
-					<Button
-						asChild
-						className='bg-primary border-4 border-white px-12 py-8 text-2xl font-black text-white shadow-[6px_6px_0px_0px_white] transition-all hover:bg-white hover:text-black hover:shadow-[10px_10px_0px_0px_white]'>
+					<Button asChild className='silk-button-tactical-primary px-12 py-8 text-2xl font-black'>
 						<Link href='/'>RETURN TO BASE</Link>
 					</Button>
 				</ComicPop>

@@ -9,6 +9,7 @@ import { issuesData } from '@/common/data/issue'
 import { AffiliationItem } from '@/common/interface'
 import ComicPop from '@/components/motion/ComicPop'
 import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import { formatAffiliationDuration, isCurrentPosition } from '@/lib/utils'
 
 interface AffiliationCardProps {
@@ -26,7 +27,7 @@ const AffiliationCard: React.FC<AffiliationCardProps> = ({ item, index }) => {
 
 	return (
 		<ComicPop delay={index * 0.1} className='h-full'>
-			<div className='comic-panel bg-card group relative flex h-full flex-col border-4 border-white shadow-[8px_8px_0px_0px_white] transition-all duration-300 hover:-translate-y-2 hover:shadow-[12px_12px_0px_0px_rgba(255,50,50,1)]'>
+			<div className='silk-card-interactive group relative flex h-full flex-col'>
 				{/* Image Section / Logo Section */}
 				<div className='relative flex aspect-video items-center justify-center overflow-hidden border-b-4 border-white bg-white p-8'>
 					{item.affiliation.logo ?
@@ -98,9 +99,9 @@ const AffiliationCard: React.FC<AffiliationCardProps> = ({ item, index }) => {
 
 						<div className='pt-2'>
 							<Link href={`/affiliation/${item.id}` as Route} className='block w-full'>
-								<button className='hover:bg-primary w-full transform cursor-pointer border-2 border-black bg-white px-4 py-2 text-lg font-black tracking-tight text-black uppercase transition-all hover:-translate-y-1 hover:text-white hover:shadow-[4px_4px_0px_0px_white]'>
+								<Button className='silk-button-tactical-white w-full text-lg font-black tracking-tight'>
 									MISSION BRIEF
-								</button>
+								</Button>
 							</Link>
 						</div>
 					</div>

@@ -5,7 +5,6 @@ import { Icon } from '@iconify/react'
 import { getDynamicAbilities } from '@/common/data/ability/dynamicAbilities'
 import ComicPop from '@/components/motion/ComicPop'
 import { AbilityCard } from '@/components/ui/ability-card'
-import { ComicPanel } from '@/components/ui/comic-panel'
 import { cn } from '@/lib/utils'
 
 const AbilityContent: React.FC = () => {
@@ -13,9 +12,19 @@ const AbilityContent: React.FC = () => {
 
 	return (
 		<div className='relative min-h-screen w-full overflow-x-hidden bg-black pt-28 pb-24'>
-			{/* Background Elements */}
-			<div className='comic-halftone pointer-events-none fixed inset-0 z-0 opacity-15'></div>
-			<div className='pointer-events-none fixed top-0 left-0 z-0 h-full w-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-zinc-900/50 via-black to-black'></div>
+			{/* Global Background Elements */}
+			<div className='pointer-events-none fixed inset-0 z-0 opacity-20'>
+				<div className='absolute inset-0 bg-[radial-gradient(circle_at_center,var(--color-primary)_1px,transparent_1px)] bg-size-[24px_24px]'></div>
+				{/* Top Right Web */}
+				<div className='comic-web-pattern absolute top-0 right-0 h-[500px] w-[500px] rotate-12 transform opacity-30'></div>
+				{/* Bottom Left Web */}
+				<div className='comic-web-pattern absolute bottom-0 left-0 h-[500px] w-[500px] scale-x-[-1] -rotate-12 transform opacity-30'></div>
+			</div>
+
+			<div className='pointer-events-none fixed top-0 left-0 z-0 h-full w-full opacity-10'>
+				<div className='bg-primary absolute top-[-20%] right-[-10%] h-[600px] w-[600px] rounded-full blur-[120px]'></div>
+				<div className='absolute bottom-[-10%] left-[-10%] h-[500px] w-[500px] rounded-full bg-white blur-[100px]'></div>
+			</div>
 
 			<div className='relative z-10 container mx-auto max-w-7xl px-4'>
 				{/* Hero Section */}
@@ -23,13 +32,8 @@ const AbilityContent: React.FC = () => {
 					initial={{ opacity: 0, scale: 0.8, y: -50 }}
 					animate={{ opacity: 1, scale: 1, y: 0 }}
 					className='relative mb-24 text-center'>
-					<div className='relative z-10 inline-block'>
-						<div className='bg-primary absolute inset-0 translate-x-2 translate-y-2 skew-x-12'></div>
-						<div className='relative skew-x-12 border-4 border-black bg-white px-10 py-6'>
-							<h1 className='-skew-x-12 transform text-6xl font-black tracking-wider text-black uppercase md:text-8xl'>
-								ABILITIES
-							</h1>
-						</div>
+					<div className='silk-hero-badge'>
+						<h1 className='silk-hero-badge-text'>ABILITIES</h1>
 					</div>
 
 					<p className='mx-auto mt-8 max-w-3xl text-2xl font-black tracking-wide text-white uppercase text-shadow-sm'>
@@ -51,10 +55,10 @@ const AbilityContent: React.FC = () => {
 								initial={{ opacity: 0, x: groupIndex % 2 === 0 ? -100 : 100 }}
 								whileInView={{ opacity: 1, x: 0 }}
 								viewport={{ once: true, margin: '-100px' }}
-								className='relative z-10 w-full flex-shrink-0 md:w-1/3'>
-								<ComicPanel rotate={groupIndex % 2 === 0 ? -2 : 2} className='border-white bg-zinc-900 p-8'>
+								className='relative z-10 w-full shrink-0 md:w-1/3'>
+								<div className='silk-panel p-8'>
 									{/* Floating Badge */}
-									<div className='bg-primary absolute -top-6 left-1/2 flex h-16 w-16 -translate-x-1/2 rotate-45 items-center justify-center border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]'>
+									<div className='silk-diamond-container'>
 										<Icon icon={abilityGroup.icon} className='h-8 w-8 -rotate-45 text-white' />
 									</div>
 
@@ -64,13 +68,13 @@ const AbilityContent: React.FC = () => {
 										</h2>
 
 										{/* Separation Line */}
-										<div className='via-primary my-4 h-1 w-full bg-gradient-to-r from-transparent to-transparent'></div>
+										<div className='via-primary my-4 h-1 w-full bg-linear-to-r from-transparent to-transparent'></div>
 
 										<p className='font-sans text-sm leading-relaxed text-gray-300 md:text-base'>
 											{abilityGroup.description}
 										</p>
 									</div>
-								</ComicPanel>
+								</div>
 							</ComicPop>
 
 							{/* Abilities Grid - "Masonry" feel */}
@@ -99,7 +103,7 @@ const AbilityContent: React.FC = () => {
 						initial={{ scale: 0.9, opacity: 0 }}
 						whileInView={{ scale: 1, opacity: 1 }}
 						className='inline-block'>
-						<div className='bg-primary rotate-1 border-4 border-white px-8 py-3 text-white transition-transform hover:-rotate-1'>
+						<div className='silk-button-tactical-primary'>
 							<span className='text-2xl font-black tracking-widest'>
 								LVL {new Date().getFullYear() - 2020} || READY FOR ACTION
 							</span>

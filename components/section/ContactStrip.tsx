@@ -52,9 +52,7 @@ export default function ContactStrip() {
 						whileInView={{ scale: 1, opacity: 1 }}
 						viewport={{ once: true }}
 						className='shrink-0'>
-						<Link
-							href={`mailto:${personalData.contact.email}`}
-							className='comic-button bg-primary inline-flex items-center gap-2 border-4 border-white px-8 py-4 text-sm font-black tracking-widest text-white uppercase shadow-[6px_6px_0px_0px_white] transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-[3px_3px_0px_0px_white]'>
+						<Link href={`mailto:${personalData.contact.email}`} className='silk-button-tactical'>
 							<Icon icon='material-symbols:mail' className='h-5 w-5' />
 							SEND EMAIL
 						</Link>

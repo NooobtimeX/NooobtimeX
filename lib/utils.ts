@@ -26,3 +26,27 @@ export function formatAffiliationDuration(startDate: string, endDate?: string): 
 
 	return `${startMonth} ${startYear} - ${endMonth} ${endYear}`
 }
+
+/**
+ * Converts a string into a URL-friendly slug.
+ * Example: "Next.js" -> "next-js"
+ */
+export function slugify(text: string): string {
+	return text
+		.toString()
+		.toLowerCase()
+		.trim()
+		.replace(/\s+/g, '-') // Replace spaces with -
+		.replace(/[^\w-]+/g, '-') // Replace all non-word chars with - (handles . in Next.js)
+		.replace(/--+/g, '-') // Replace multiple - with single -
+		.replace(/^-+/, '') // Trim - from start
+		.replace(/-+$/, '') // Trim - from end
+}
+
+/**
+ * Reverses a slug back into a display-friendly name (best effort)
+ * Note: This is mainly used for mapping back to the data objects.
+ */
+export function unslugify(slug: string): string {
+	return slug.replace(/-/g, ' ').replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase())
+}

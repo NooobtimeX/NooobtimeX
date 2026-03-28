@@ -2,18 +2,16 @@
 
 import React from 'react'
 import type { Route } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Icon } from '@iconify/react'
-import { ArrowLeftIcon, ExternalLinkIcon } from 'lucide-react'
 import { affiliationData } from '@/common/data/affiliation'
 import { issuesData } from '@/common/data/issue'
 import AffiliationCard from '@/components/affiliation/AffiliationCard'
 import ImageGallery from '@/components/issue/ImageGallery'
 import IssueCard from '@/components/issue/IssueCard'
-import IssueThumbnail from '@/components/issue/IssueThumbnail'
 import ComicPop from '@/components/motion/ComicPop'
-import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 interface IssueDetailContentProps {
@@ -41,100 +39,100 @@ const IssueDetailContent: React.FC<IssueDetailContentProps> = ({ id }) => {
 
 	return (
 		<div className='relative min-h-screen w-full overflow-x-hidden bg-black pt-24 pb-20'>
-			{/* Background */}
-			<div className='comic-halftone pointer-events-none fixed inset-0 opacity-20'></div>
+			{/* Global Background Elements */}
+			<div className='pointer-events-none fixed inset-0 z-0 opacity-20'>
+				<div className='absolute inset-0 bg-[radial-gradient(circle_at_center,var(--color-primary)_1px,transparent_1px)] bg-size-[24px_24px]'></div>
+				{/* Top Right Web */}
+				<div className='comic-web-pattern absolute top-0 right-0 h-[500px] w-[500px] rotate-12 transform opacity-30'></div>
+				{/* Bottom Left Web */}
+				<div className='comic-web-pattern absolute bottom-0 left-0 h-[500px] w-[500px] scale-x-[-1] -rotate-12 transform opacity-30'></div>
+			</div>
 
-			{/* Navigation */}
-			<section className='relative z-20 mb-8'>
-				<div className='container mx-auto px-4'>
-					<ComicPop initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
-						<Button
-							asChild
-							className='h-12 rounded-none border-2 border-black bg-white px-6 text-xl font-black text-black uppercase shadow-[4px_4px_0px_0px_white] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-zinc-200 hover:shadow-[2px_2px_0px_0px_white]'>
-							<Link href='/issue' className='flex items-center gap-2'>
-								<ArrowLeftIcon className='h-5 w-5' />
-								BACK TO ARCHIVE
-							</Link>
-						</Button>
-					</ComicPop>
+			<div className='pointer-events-none fixed top-0 left-0 z-0 h-full w-full opacity-10'>
+				<div className='bg-primary absolute top-[-20%] right-[-10%] h-[600px] w-[600px] rounded-full blur-[120px]'></div>
+				<div className='absolute bottom-[-10%] left-[-10%] h-[500px] w-[500px] rounded-full bg-white blur-[100px]'></div>
+			</div>
+
+			<div className='relative z-10 container mx-auto max-w-7xl px-4'>
+				{/* Breadcrumb Navigation */}
+				<div className='relative z-20 mb-12'>
+					<nav className='flex items-center gap-2 text-[10px] font-black tracking-widest text-zinc-500 uppercase'>
+						<Link href={'/' as Route} className='hover:text-primary transition-colors'>
+							COMMAND CENTER
+						</Link>
+						<Icon icon='material-symbols:chevron-right' className='h-3 w-3' />
+						<Link href={'/issue' as Route} className='hover:text-primary transition-colors'>
+							ISSUE ARCHIVE
+						</Link>
+						<Icon icon='material-symbols:chevron-right' className='h-3 w-3' />
+						<span className='text-white'>{issue.title}</span>
+					</nav>
 				</div>
-			</section>
 
-			{/* Hero Section */}
-			<section className='relative mb-16'>
-				<div className='relative z-10 container mx-auto px-4'>
-					<div className='grid items-start gap-12 lg:grid-cols-2'>
-						{/* Left Column - Cover Art */}
-						<ComicPop
-							initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
-							animate={{ opacity: 1, scale: 1, rotate: -1 }}
-							className='group perspective-1000 relative'>
-							<div className='relative border-4 border-white bg-black shadow-[12px_12px_0px_0px_rgba(255,255,255,1)] transition-all duration-300 hover:rotate-0 hover:shadow-[8px_8px_0px_0px_rgba(255,50,50,1)]'>
-								{/* Badge */}
-								<div className='bg-primary absolute top-0 right-0 z-20 border-b-4 border-l-4 border-black px-4 py-2 text-xl font-black text-white'>
-									ISSUE #{String(issuesData.length - issuesData.findIndex(p => p.id === issue.id)).padStart(3, '0')}
-								</div>
-
-								<div className='relative aspect-video overflow-hidden'>
-									<IssueThumbnail
-										src={issue.images.banner}
-										alt={issue.title}
-										title={issue.title}
-										className='object-cover'
-									/>
-								</div>
+				{/* Hero Section (Hero Hub DNA) */}
+				<section className='mb-20 grid gap-12 lg:grid-cols-[1.2fr_1fr]'>
+					<ComicPop initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }}>
+						<div className='silk-banner'>
+							<div className='bg-primary absolute top-0 right-0 z-20 border-b-4 border-l-4 border-black px-4 py-2 text-xl font-black text-white'>
+								ISSUE #{String(issuesData.length - issuesData.findIndex(p => p.id === issue.id)).padStart(3, '0')}
 							</div>
-						</ComicPop>
+							<div className='aspect-video overflow-hidden'>
+								<Image
+									src={issue.images.banner}
+									alt={issue.title}
+									fill
+									className='object-cover transition-transform duration-700 hover:scale-105'
+								/>
+							</div>
+							<div className='comic-halftone pointer-events-none absolute inset-0 opacity-20'></div>
+						</div>
+					</ComicPop>
 
-						{/* Right Column - Issue Info */}
-						<ComicPop initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} delay={0.2} className='space-y-8'>
-							<div className='bg-card relative space-y-6 border-4 border-white p-8 shadow-[8px_8px_0px_0px_white]'>
-								<div className='bg-primary absolute -top-3 -left-3 z-20 h-6 w-6 rotate-45 transform border-2 border-black'></div>
+					<div className='flex flex-col justify-center gap-6'>
+						<ComicPop delay={0.2}>
+							<div className='silk-badge mb-6'>
+								<h1 className='silk-badge-text text-3xl md:text-5xl'>{issue.title}</h1>
+							</div>
 
-								<h1 className='text-5xl leading-[0.9] font-black tracking-wide wrap-break-word text-white uppercase md:text-6xl lg:text-7xl'>
-									{issue.title}
-								</h1>
-
-								<div className='h-1 w-full bg-white/20'></div>
-
-								<p className='text-muted-foreground text-xl leading-relaxed'>{issue.description}</p>
-
-								{/* Action Buttons */}
-								<div className='flex flex-col gap-4 pt-4 sm:flex-row'>
-									{issue.links.live && (
-										<Button
-											asChild
-											size='lg'
-											className='comic-button bg-primary h-14 border-2 border-white px-8 text-xl text-white shadow-[4px_4px_0px_0px_white] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_white]'>
-											<Link
-												href={issue.links.live as Route}
-												target='_blank'
-												rel='noopener noreferrer'
-												className='flex items-center gap-2'>
-												<ExternalLinkIcon className='h-5 w-5' />
-												LIVE DEMO
-											</Link>
-										</Button>
-									)}
+							<div className='space-y-4'>
+								<div className='flex items-center gap-4'>
+									<div className='silk-marker-vertical'></div>
+									<h2 className='text-2xl font-black text-white uppercase'>INTELLIGENCE BRIEF</h2>
 								</div>
+								<p className='max-w-xl text-xl leading-relaxed font-medium text-zinc-400 italic'>{issue.description}</p>
+							</div>
+
+							<div className='mt-8 flex flex-wrap gap-4'>
+								{issue.links.live && (
+									<Link
+										href={issue.links.live as Route}
+										target='_blank'
+										rel='noopener noreferrer'
+										className='silk-button-tactical'>
+										<Icon icon='material-symbols:open-in-new' className='h-5 w-5' />
+										LIVE CASE STUDY
+									</Link>
+								)}
 							</div>
 						</ComicPop>
 					</div>
-				</div>
-			</section>
+				</section>
 
-			{/* Detailed Information */}
-			<section className='relative mb-20'>
-				<div className='relative z-10 container mx-auto px-4'>
-					<div className='grid items-start gap-8 lg:grid-cols-3'>
-						{/* Left Panel - Gallery & Affiliation */}
-						<div className='space-y-8 lg:col-span-2'>
-							{/* Issue Gallery */}
+				{/* Detailed Grid Layout */}
+				<div className='grid items-start gap-12 lg:grid-cols-3'>
+					{/* Main Content Area (2/3) */}
+					<div className='space-y-20 lg:col-span-2'>
+						{/* Visual Evidence Archive */}
+						<section className='space-y-8'>
+							<div className='silk-grid-header'>
+								<div className='flex items-center gap-6'>
+									<h3 className='silk-grid-header-title'>VISUAL EVIDENCE</h3>
+								</div>
+								<div className='mx-8 hidden h-px grow bg-zinc-800 opacity-30 md:block'></div>
+							</div>
+
 							<ComicPop initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} delay={0.3}>
-								<div className='bg-card border-4 border-white p-2 shadow-[8px_8px_0px_0px_white]'>
-									<div className='mb-4 border-b-2 border-white/20 bg-black p-4'>
-										<h2 className='text-3xl font-black tracking-wide text-white uppercase'>VISUAL EVIDENCE</h2>
-									</div>
+								<div className='silk-panel p-2'>
 									<div className='space-y-6'>
 										{issue.images.photos && issue.images.photos.length > 0 && (
 											<div className='space-y-4'>
@@ -144,43 +142,47 @@ const IssueDetailContent: React.FC<IssueDetailContentProps> = ({ id }) => {
 									</div>
 								</div>
 							</ComicPop>
+						</section>
 
-							{/* Bind Company / Affiliation */}
-							{linkedAffiliation && (
+						{/* Affiliation Reference */}
+						{linkedAffiliation && (
+							<section className='space-y-8'>
+								<div className='silk-grid-header'>
+									<div className='flex items-center gap-6'>
+										<h3 className='silk-grid-header-title'>BIND AFFILIATION</h3>
+									</div>
+									<div className='mx-8 hidden h-px grow bg-zinc-800 opacity-30 md:block'></div>
+								</div>
+
 								<ComicPop initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} delay={0.4}>
-									<div className='bg-card border-4 border-white p-6 shadow-[8px_8px_0px_0px_white]'>
-										<div className='mb-6 flex items-center gap-4'>
-											<div className='bg-primary h-8 w-3 border-2 border-black'></div>
-											<h2 className='text-3xl font-black tracking-wide text-white uppercase'>
-												BIND COMPANY / AFFILIATION
-											</h2>
-										</div>
+									<div className='silk-panel p-6'>
 										<div className='max-w-md'>
 											<AffiliationCard item={linkedAffiliation} index={0} />
 										</div>
 									</div>
 								</ComicPop>
-							)}
+							</section>
+						)}
+					</div>
+
+					{/* Sidebar (1/3) */}
+					<aside className='sticky top-24 space-y-8'>
+						<div className='silk-grid-header'>
+							<h3 className='silk-grid-header-title'>TECHNICAL STACK</h3>
 						</div>
 
-						{/* Abilities - Right Panel */}
-						<ComicPop initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} delay={0.5} className='space-y-6'>
-							<div className='bg-card sticky top-24 transform border-4 border-white p-6 shadow-[8px_8px_0px_0px_white]'>
-								<h2 className='border-primary mb-8 border-b-4 pb-2 text-3xl font-black tracking-wide text-white uppercase'>
-									ABILITIES
-								</h2>
+						<ComicPop initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} delay={0.5}>
+							<div className='silk-panel p-6'>
 								<div className='space-y-8'>
-									{Object.entries(groupedAbilities).map(([category, abilities], catIndex) => (
+									{Object.entries(groupedAbilities).map(([category, abilities]) => (
 										<div key={category} className='space-y-4'>
 											<h4 className='text-primary text-xl font-black tracking-widest uppercase'>{category}</h4>
 											<div className='grid grid-cols-1 gap-3'>
 												{abilities.map((ability, index) => (
-													<ComicPop
+													<Link
 														key={index}
-														initial={{ opacity: 0, x: 20 }}
-														animate={{ opacity: 1, x: 0 }}
-														delay={0.6 + (catIndex * abilities.length + index) * 0.1}
-														className='hover:border-primary flex items-center gap-4 border-2 border-zinc-800 bg-black p-3 transition-colors'>
+														href={`/ability/${ability.name.toLowerCase().replace(/ /g, '-')}` as Route}
+														className='hover:border-primary hover:bg-primary/10 group flex items-center gap-4 border-2 border-zinc-800 bg-black p-3 transition-colors'>
 														<div
 															className={cn(
 																'flex items-center justify-center',
@@ -194,7 +196,7 @@ const IssueDetailContent: React.FC<IssueDetailContentProps> = ({ id }) => {
 														<div>
 															<h4 className='text-lg font-black tracking-wide text-white uppercase'>{ability.name}</h4>
 														</div>
-													</ComicPop>
+													</Link>
 												))}
 											</div>
 										</div>
@@ -202,25 +204,21 @@ const IssueDetailContent: React.FC<IssueDetailContentProps> = ({ id }) => {
 								</div>
 							</div>
 						</ComicPop>
-					</div>
+					</aside>
 				</div>
-			</section>
 
-			{/* Related Issues */}
-			<section className='relative pb-20'>
-				<div className='relative z-10 container mx-auto px-4'>
-					<div className='my-16 border-t-4 border-white opacity-50'></div>
-
+				{/* Footer Discovery Navigation */}
+				<section className='mt-32 border-t border-zinc-900 pt-20'>
 					<ComicPop className='mb-12 text-center'>
-						<div className='mb-8 inline-block rotate-1 transform border-4 border-black bg-white px-8 py-3 text-black shadow-[8px_8px_0px_0px_white]'>
-							<h2 className='text-3xl font-black tracking-wider uppercase md:text-5xl'>MEANWHILE...</h2>
+						<div className='silk-section-label mb-8'>
+							<h2 className='silk-section-label-text'>MEANWHILE...</h2>
 						</div>
 						<p className='text-muted-foreground text-xl font-black tracking-wide uppercase'>
 							Check out these other issues
 						</p>
 					</ComicPop>
 
-					<div className='grid gap-8 md:grid-cols-2 lg:grid-cols-3'>
+					<div className='mb-16 grid gap-8 text-left md:grid-cols-2 lg:grid-cols-3'>
 						{issuesData
 							.filter(p => p.id !== issue.id)
 							.slice(0, 3)
@@ -234,8 +232,15 @@ const IssueDetailContent: React.FC<IssueDetailContentProps> = ({ id }) => {
 								/>
 							))}
 					</div>
-				</div>
-			</section>
+
+					<div className='flex justify-center'>
+						<Link href={'/issue' as Route} className='silk-button-tactical'>
+							<Icon icon='material-symbols:arrow-back' className='h-5 w-5' />
+							BACK TO ARCHIVE
+						</Link>
+					</div>
+				</section>
+			</div>
 		</div>
 	)
 }

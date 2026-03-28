@@ -231,6 +231,111 @@
 		background-color: hsl(var(--primary));
 		color: white;
 	}
+
+	/* Silk Design System Utilities */
+	.silk-panel {
+		@apply border-4 border-white bg-zinc-950 shadow-[8px_8px_0px_0px_white];
+	}
+
+	.silk-banner {
+		@apply relative border-4 border-white bg-zinc-950 shadow-[12px_12px_0px_0px_white] transition-all hover:shadow-[12px_12px_0px_0px_hsl(355,85%,60%)];
+	}
+
+	.silk-card-interactive {
+		@apply bg-card border-4 border-white shadow-[8px_8px_0px_0px_white] transition-all duration-300 hover:-translate-y-2 hover:shadow-[12px_12px_0px_0px_hsl(355,85%,60%)];
+	}
+
+	.silk-card-featured {
+		@apply border-4 border-white bg-black shadow-[12px_12px_0px_0px_white] transition-all duration-300 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[8px_8px_0px_0px_hsl(355,85%,60%)];
+	}
+
+	.silk-badge {
+		@apply bg-primary inline-block skew-x-12 border-4 border-black px-6 py-2;
+	}
+
+	.silk-badge-text {
+		@apply -skew-x-12 font-black text-white uppercase;
+	}
+
+	.silk-item-mini {
+		@apply flex items-center justify-center gap-2 border-2 border-white bg-black px-3 py-3 shadow-[4px_4px_0px_0px_white] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_white];
+	}
+
+	.silk-item-mini-primary {
+		@apply bg-primary flex items-center justify-center gap-2 border-2 border-white px-3 py-3 font-black shadow-[4px_4px_0px_0px_white] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_white];
+	}
+
+	.silk-dialog {
+		@apply bg-background fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-none border-4 border-white p-6 shadow-[12px_12px_0px_0px_white] outline-none sm:max-w-lg;
+	}
+
+	.silk-speech-bubble {
+		@apply relative rounded-[50%_20%_60%_30%] border-4 border-black bg-white px-6 py-3 text-xl font-black text-black shadow-[4px_4px_0px_0px_white];
+	}
+
+	.silk-speech-bubble-arrow {
+		@apply absolute -bottom-2 left-6 h-4 w-4 rotate-45 transform border-r-4 border-b-4 border-black bg-white;
+	}
+
+	.silk-button-tactical {
+		@apply inline-flex items-center gap-2 border-4 border-white px-8 py-4 text-sm font-black font-bold tracking-wider tracking-widest text-white uppercase shadow-[6px_6px_0px_0px_white] transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-[3px_3px_0px_0px_white] active:scale-95;
+	}
+
+	.silk-button-tactical-white {
+		@apply inline-flex items-center justify-center border-4 border-black bg-white font-bold tracking-wider text-black uppercase shadow-[6px_6px_0px_0px_hsl(355,85%,60%)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[3px_3px_0px_0px_hsl(355,85%,60%)] active:scale-95;
+	}
+
+	.silk-button-tactical-outline {
+		@apply inline-flex items-center justify-center border-4 border-white bg-transparent font-bold tracking-wider text-white uppercase shadow-[6px_6px_0px_0px_white] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-white hover:text-black hover:shadow-[3px_3px_0px_0px_white] active:scale-95;
+	}
+
+	.silk-button-tactical-primary {
+		@apply bg-primary inline-flex items-center gap-2 border-4 border-white px-8 py-4 text-sm font-black font-bold tracking-wider tracking-widest text-white uppercase shadow-[6px_6px_0px_0px_white] transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-[3px_3px_0px_0px_white] active:scale-95;
+	}
+
+	.silk-section-label {
+		@apply inline-block rotate-1 border-4 border-black bg-white px-8 py-3 shadow-[6px_6px_0px_0px_white];
+	}
+
+	.silk-section-label-text {
+		@apply text-3xl font-black tracking-wider text-black uppercase md:text-5xl;
+	}
+
+	.silk-hero-badge {
+		@apply before:bg-primary relative z-10 inline-block skew-x-12 border-4 border-black bg-white px-10 py-6 before:absolute before:inset-0 before:-z-10 before:translate-x-2 before:translate-y-2;
+	}
+
+	.silk-hero-badge-text {
+		@apply -skew-x-12 transform text-6xl font-black tracking-wider text-black uppercase md:text-8xl;
+	}
+
+	.silk-grid-header {
+		@apply flex items-center justify-between border-b-4 border-zinc-900 pb-8;
+	}
+
+	.silk-grid-header-title {
+		@apply text-3xl font-black tracking-tighter text-white uppercase;
+	}
+
+	.silk-grid-header-stats {
+		@apply text-sm font-black text-zinc-700 uppercase;
+	}
+
+	.silk-marker-vertical {
+		@apply bg-primary h-6 w-2 border-2 border-black;
+	}
+
+	.silk-tag-primary {
+		@apply border-primary bg-primary/10 text-primary border-2 px-3 py-1 text-xs font-black uppercase;
+	}
+
+	.silk-tag-white {
+		@apply border-2 border-white bg-white/5 px-3 py-1 text-xs font-black text-white uppercase;
+	}
+
+	.silk-diamond-container {
+		@apply bg-primary absolute -top-6 left-1/2 flex h-16 w-16 -translate-x-1/2 rotate-45 items-center justify-center border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)];
+	}
 }
 
 /* Silk Theme - Forced Dark Mode Palette */

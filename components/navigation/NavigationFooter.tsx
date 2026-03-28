@@ -13,10 +13,10 @@ const NavigationFooter = () => {
 				<div className='flex flex-col items-center justify-center space-y-8'>
 					{/* The End Graphic */}
 					<div className='group relative'>
-						<h2 className='bg-primary -rotate-2 transform cursor-default border-4 border-black p-4 text-5xl font-black text-white shadow-[6px_6px_0px_0px_white] transition-transform duration-300 select-none hover:scale-105 hover:rotate-0 md:text-8xl md:shadow-[8px_8px_0px_0px_white]'>
-							THE END?
-						</h2>
-						<div className='absolute -top-4 -right-2 rotate-12 animate-pulse border-2 border-black bg-white px-2 py-1 text-sm font-black text-black md:-top-6 md:-right-8 md:px-3 md:text-xl'>
+						<div className='silk-hero-badge'>
+							<h2 className='silk-hero-badge-text text-5xl md:text-8xl'>THE END?</h2>
+						</div>
+						<div className='silk-item-mini-primary absolute -top-4 -right-2 rotate-12 animate-pulse px-2 py-1 text-sm md:-top-6 md:-right-8 md:px-3 md:text-xl'>
 							TO BE CONTINUED...
 						</div>
 					</div>

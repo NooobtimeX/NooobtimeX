@@ -32,7 +32,7 @@ const IssueCard: React.FC<IssueCardProps> = ({ issue, index, variant = 'grid', s
 		return (
 			<ComicPop delay={index * 0.1} className='group relative'>
 				{/* Comic Panel Container - Double Page Spread Style */}
-				<div className='relative overflow-hidden border-4 border-white bg-black shadow-[12px_12px_0px_0px_white] transition-all duration-300 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[8px_8px_0px_0px_rgba(255,50,50,1)]'>
+				<div className='silk-card-featured relative overflow-hidden'>
 					{/* Corner Tag */}
 					<div
 						className={`bg-primary absolute top-0 z-20 border-b-4 border-black px-4 py-2 text-xl font-black text-white ${
@@ -96,9 +96,7 @@ const IssueCard: React.FC<IssueCardProps> = ({ issue, index, variant = 'grid', s
 							</div>
 
 							<div className='mt-auto flex gap-4'>
-								<Button
-									asChild
-									className='h-12 flex-1 border-2 border-black bg-white text-xl font-black tracking-tight text-black uppercase shadow-[4px_4px_0px_0px_rgba(255,50,50,1)] transition-transform hover:scale-105'>
+								<Button asChild className='silk-button-tactical-white h-12 flex-1 text-xl font-black tracking-tight'>
 									<Link href={`/issue/${issue.id}` as Route}>
 										READ ISSUE
 										<ArrowRightIcon className='ml-2 h-5 w-5' />
@@ -114,7 +112,7 @@ const IssueCard: React.FC<IssueCardProps> = ({ issue, index, variant = 'grid', s
 
 	return (
 		<ComicPop delay={index * 0.1} className='h-full'>
-			<div className='comic-panel bg-card group flex h-full flex-col border-4 border-white shadow-[8px_8px_0px_0px_white] transition-all duration-300 hover:-translate-y-2 hover:shadow-[12px_12px_0px_0px_rgba(255,50,50,1)]'>
+			<div className='silk-card-interactive group flex h-full flex-col'>
 				{/* Image Section */}
 				<div className='relative aspect-video overflow-hidden border-b-4 border-white'>
 					<div className='absolute top-2 right-2 z-20 rotate-2 transform border border-white bg-black px-2 text-sm font-black text-white'>
@@ -157,9 +155,7 @@ const IssueCard: React.FC<IssueCardProps> = ({ issue, index, variant = 'grid', s
 							))}
 						</div>
 
-						<Button
-							asChild
-							className='w-full border-2 border-black bg-white text-lg font-black tracking-tight text-black uppercase shadow-[4px_4px_0px_0px_rgba(255,50,50,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(255,50,50,1)]'>
+						<Button asChild className='silk-button-tactical-white w-full text-lg font-black tracking-tight'>
 							<Link href={`/issue/${issue.id}` as Route}>VIEW ISSUE</Link>
 						</Button>
 					</div>

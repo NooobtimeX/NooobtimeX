@@ -7,6 +7,7 @@ import { Icon } from '@iconify/react'
 import { motion } from 'framer-motion'
 import { issuesData } from '@/common/data/issue'
 import ComicPop from '@/components/motion/ComicPop'
+import { cn } from '@/lib/utils'
 
 // Top 3 most recent + "View All" card
 const featured = issuesData.slice(0, 3)
@@ -18,8 +19,8 @@ export default function ProjectMosaic() {
 
 			<div className='relative z-10 container mx-auto max-w-7xl px-4'>
 				<ComicPop className='mb-12 text-center'>
-					<div className='inline-block rotate-1 border-4 border-black bg-white px-8 py-3 shadow-[6px_6px_0px_0px_hsl(355,85%,60%)]'>
-						<h2 className='text-3xl font-black tracking-wider text-black uppercase md:text-5xl'>FEATURED ISSUES</h2>
+					<div className='silk-section-label'>
+						<h2 className='silk-section-label-text'>FEATURED ISSUES</h2>
 					</div>
 				</ComicPop>
 
@@ -34,9 +35,10 @@ export default function ProjectMosaic() {
 								whileInView={{ opacity: 1, y: 0 }}
 								viewport={{ once: true }}
 								transition={{ delay: i * 0.1 }}
-								className={`group relative overflow-hidden border-4 border-white bg-zinc-950 shadow-[6px_6px_0px_0px_white] transition-all hover:shadow-[8px_8px_0px_0px_hsl(355,85%,60%)] ${
-									isStar ? 'lg:col-span-2 lg:flex lg:flex-row' : ''
-								}`}>
+								className={cn(
+									'silk-card-interactive group overflow-hidden',
+									isStar && 'lg:col-span-2 lg:flex lg:flex-row'
+								)}>
 								{/* Banner */}
 								<div
 									className={`relative overflow-hidden border-b-4 border-white lg:border-b-0 ${
@@ -88,9 +90,10 @@ export default function ProjectMosaic() {
 
 									<Link
 										href={`/issue/${project.id}` as Route}
-										className={`comic-button inline-flex items-center gap-2 self-start border-2 border-white bg-transparent font-black tracking-widest text-white uppercase transition-all hover:bg-white hover:text-black ${
-											isStar ? 'px-6 py-2.5 text-xs shadow-[4px_4px_0px_0px_white]' : 'px-3 py-1.5 text-[10px]'
-										}`}>
+										className={cn(
+											'silk-button-tactical-outline self-start',
+											isStar ? 'px-6 py-2.5 text-xs' : 'px-3 py-1.5 text-[10px]'
+										)}>
 										READ CASE STUDY
 										<Icon icon='material-symbols:arrow-forward' className='h-3.5 w-3.5' />
 									</Link>
@@ -107,9 +110,7 @@ export default function ProjectMosaic() {
 					viewport={{ once: true }}
 					transition={{ delay: 0.35 }}
 					className='mt-8 flex justify-center'>
-					<Link
-						href='/issue'
-						className='comic-button inline-flex items-center gap-2 border-4 border-white bg-transparent px-10 py-4 text-sm font-black tracking-widest text-white uppercase shadow-[4px_4px_0px_0px_white] transition-all hover:translate-x-1 hover:translate-y-1 hover:bg-white hover:text-black hover:shadow-[2px_2px_0px_0px_white]'>
+					<Link href='/issue' className='silk-button-tactical-outline px-10 py-4 text-sm'>
 						VIEW ALL {issuesData.length} ISSUES
 						<Icon icon='material-symbols:arrow-forward' className='h-4 w-4' />
 					</Link>

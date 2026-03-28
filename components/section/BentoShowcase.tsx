@@ -34,8 +34,8 @@ export default function BentoShowcase() {
 			<div className='relative z-10 container mx-auto max-w-7xl px-4'>
 				{/* Section Label */}
 				<ComicPop className='mb-12 text-center'>
-					<div className='inline-block -rotate-1 border-4 border-black bg-white px-8 py-3 shadow-[6px_6px_0px_0px_rgba(255,255,255,1)]'>
-						<h2 className='text-3xl font-black tracking-wider text-black uppercase md:text-5xl'>COMMAND CENTER</h2>
+					<div className='silk-section-label'>
+						<h2 className='silk-section-label-text'>COMMAND CENTER</h2>
 					</div>
 				</ComicPop>
 
@@ -47,7 +47,7 @@ export default function BentoShowcase() {
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true }}
 						transition={{ duration: 0.4 }}
-						className='group hover:bg-primary relative col-span-1 flex flex-col justify-between overflow-hidden border-4 border-white bg-zinc-950 p-8 shadow-[8px_8px_0px_0px_rgb(255,255,255)] transition-all hover:shadow-[12px_12px_0px_0px_hsl(355,85%,60%)] md:col-span-2 md:row-span-2'>
+						className='silk-card-interactive group col-span-1 flex flex-col justify-between overflow-hidden p-8 md:col-span-2 md:row-span-2'>
 						{/* Background Burst */}
 						<div className='comic-burst pointer-events-none absolute inset-0 opacity-0 transition-opacity group-hover:opacity-40' />
 						<div className='comic-web-pattern pointer-events-none absolute inset-0 opacity-10 group-hover:opacity-20' />
@@ -68,7 +68,7 @@ export default function BentoShowcase() {
 						<div className='relative z-10 mt-12 flex flex-col gap-4 sm:flex-row sm:items-center'>
 							<Link
 								href={'/cv/presentation' as Route}
-								className='comic-button inline-flex items-center justify-center gap-3 border-4 border-white bg-white px-8 py-4 text-lg font-black tracking-widest text-black uppercase shadow-[6px_6px_0px_0px_hsl(355,85%,60%)] transition-all group-hover:bg-black group-hover:text-white group-hover:shadow-[6px_6px_0px_0px_white]'>
+								className='silk-button-tactical-white px-8 py-4 text-lg font-black tracking-widest group-hover:bg-black group-hover:text-white group-hover:shadow-[6px_6px_0px_0px_white]'>
 								<Icon icon='material-symbols:slideshow' className='h-6 w-6' />
 								START SLIDE DECK
 							</Link>
