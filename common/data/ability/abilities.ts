@@ -195,13 +195,6 @@ export const minio: Ability = {
 	icon: 'simple-icons:minio'
 }
 
-export const n8n: Ability = {
-	name: 'n8n',
-	icon: 'simple-icons:n8n',
-	category: AbilityCategory.Infrastructure,
-	level: AbilityLevel.Expert
-}
-
 export const resend: Ability = {
 	name: 'Resend',
 	icon: 'simple-icons:resend',
@@ -362,7 +355,6 @@ export const orderedAbilities = [
 	googleAds,
 	wordpress,
 	woocommerce,
-	n8n,
 	resend,
 	radixui,
 	framerMotion,

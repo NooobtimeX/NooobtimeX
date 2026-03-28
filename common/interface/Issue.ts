@@ -1,9 +1,9 @@
-import { AffiliationId } from '@/common/enum'
+import { AffiliationId, IssueId } from '@/common/enum'
 import { Ability } from './Ability'
 
 // Issue interface
 export interface Issue {
-	id: string
+	id: IssueId
 	title: string
 	description: string
 	images: {

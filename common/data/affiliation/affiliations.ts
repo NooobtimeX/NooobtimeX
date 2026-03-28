@@ -5,7 +5,7 @@ import type { Affiliation, AffiliationItem } from '@/common/interface'
 // --- Companies/Entities ---
 
 export const ruamsukPlating: Affiliation = {
-	id: 'ruamsuk-plating',
+	id: AffiliationId.EntityRuamsukPlating,
 	name: 'RUAMSUK PLATING LIMITED PARTNERSHIP',
 	logo: assets.logos.rsTrophy,
 	location: Location.PathumthaniThailand,
@@ -13,7 +13,7 @@ export const ruamsukPlating: Affiliation = {
 }
 
 export const jasmineTechnologySolution: Affiliation = {
-	id: 'jasmine-technology-solution',
+	id: AffiliationId.EntityJasmineTechnologySolution,
 	name: 'Jasmine Technology Solution',
 	logo: assets.logos.jasmineTech,
 	location: Location.NonthaburiThailand,
@@ -21,7 +21,7 @@ export const jasmineTechnologySolution: Affiliation = {
 }
 
 export const freelanceWithFriends: Affiliation = {
-	id: 'freelance-blitzwerk',
+	id: AffiliationId.EntityFreelanceBlitzwerk,
 	name: 'Freelance with friends',
 	logo: assets.logos.blitzwerk,
 	location: Location.Remote,
@@ -29,7 +29,7 @@ export const freelanceWithFriends: Affiliation = {
 }
 
 export const personalProjects: Affiliation = {
-	id: 'personal-projects',
+	id: AffiliationId.EntityPersonalProjects,
 	name: 'Personal Projects',
 	logo: assets.logos.nooobtimex, // Use personal logo
 	location: Location.Remote,
@@ -37,9 +37,9 @@ export const personalProjects: Affiliation = {
 }
 
 export const thammasatUniversity: Affiliation = {
-	id: 'thammasat-university',
+	id: AffiliationId.EntityThammasatUniversity,
 	name: 'Thammasat University',
-	logo: assets.logos.qrFood,
+	logo: assets.logos.tuLogo,
 	location: Location.PathumthaniThailand,
 	type: AffiliationEntityType.Company
 }

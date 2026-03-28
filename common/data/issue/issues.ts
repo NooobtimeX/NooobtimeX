@@ -1,5 +1,5 @@
 import { assets } from '@/common/data/assets'
-import { AffiliationId } from '@/common/enum'
+import { AffiliationId, IssueId } from '@/common/enum'
 import type { Issue } from '@/common/interface'
 import {
 	aeo,
@@ -13,7 +13,6 @@ import {
 	googleAnalytics,
 	jsonld,
 	minio,
-	n8n,
 	nextjs,
 	nodejs,
 	nuxtjs,
@@ -25,7 +24,6 @@ import {
 	recharts,
 	redis,
 	render,
-	resend,
 	seo,
 	shadcnui,
 	sse,
@@ -38,7 +36,7 @@ import {
 } from './../ability/abilities'
 
 export const looklookPet: Issue = {
-	id: 'looklook-pet',
+	id: IssueId.LooklookPet,
 	title: 'LOOKLOOK PET',
 	description:
 		'Architected a pet-parent community platform delivering a seamless user experience and integrated reward system. Engineered a robust backend featuring Redis-driven caching to handle complex data queries and reduce API response times.',
@@ -55,7 +53,7 @@ export const looklookPet: Issue = {
 }
 
 export const rsTrophy: Issue = {
-	id: 'rs-trophy',
+	id: IssueId.RsTrophy,
 	title: 'RS TROPHY (rs-trophy.com)',
 	description:
 		'Leading the digital transformation of a legacy business into a definitive "Community Hub" for the Thai awards industry. Architecting the consolidation of fragmented legacy brands into a unified, high-performance system utilizing Bun, Elysia.js, and Next.js. Transitioning toward a Serverless/Zero-Maintenance model with Redis caching and MinIO asset management.',
@@ -90,7 +88,7 @@ export const rsTrophy: Issue = {
 }
 
 export const rsTrophyV1: Issue = {
-	id: 'rs-trophy-v1',
+	id: IssueId.RsTrophyV1,
 	title: 'RS TROPHY (Legacy WordPress)',
 	description:
 		'[LEGACY] The original e-commerce platform for RS TROPHY built on WordPress and WooCommerce. Managed the complete product catalog, customer orders, and digital marketing integrations before the transition to the modern high-performance system.',
@@ -107,7 +105,7 @@ export const rsTrophyV1: Issue = {
 }
 
 export const onlinePokerGame: Issue = {
-	id: 'online-poker-game',
+	id: IssueId.OnlinePokerGame,
 	title: 'Online Poker Game',
 	description:
 		'A real-time multiplayer online poker game featuring Server-Sent Events for live updates. Built with Next.js and PostgreSQL for a seamless, interactive card gaming experience.',
@@ -121,23 +119,8 @@ export const onlinePokerGame: Issue = {
 	linkedAffiliationId: AffiliationId.FreelanceBlitzwerk
 }
 
-export const n8nRailway: Issue = {
-	id: 'n8n-railway',
-	title: 'n8n + Railway',
-	description:
-		'Architected and deployed a self-hosted n8n automation engine on Railway utilizing Docker containers. Developed custom automated workflows to streamline internal business processes, lead management, and cross-platform data synchronization, resulting in a significant reduction in manual operational tasks.',
-	images: {
-		banner: assets.issues.n8nRailway.banner,
-		photos: [assets.issues.n8nRailway.banner]
-	},
-	abilities: [n8n, railway, docker, nodejs, resend],
-	links: {},
-	startDate: '2025-06-15',
-	linkedAffiliationId: AffiliationId.RuamsukPlatingSoftwareEngineerFullTime
-}
-
 export const tencentRailwayMigration: Issue = {
-	id: 'tencent-railway-migration',
+	id: IssueId.TencentRailwayMigration,
 	title: 'Migration from Tencent VM (Prod and UAT split) to Railway',
 	description:
 		'Architected and executed the migration of 15+ microservices from Tencent Cloud VMs to Railway. Optimized deployment workflows by reusing a single Dockerfile with environment-specific configurations for Production and UAT splits. Managed complex environment setups for each service, integrating GitHub for CI/CD and MinIO for object storage.',
@@ -152,7 +135,7 @@ export const tencentRailwayMigration: Issue = {
 }
 
 export const prettierConfig: Issue = {
-	id: 'prettier-config',
+	id: IssueId.PrettierConfig,
 	title: 'Prettier Config Generator',
 	description: 'Generate your .prettierrc file effortlessly with this interactive Prettier configuration tool.',
 	images: {
@@ -168,7 +151,7 @@ export const prettierConfig: Issue = {
 }
 
 export const rsMedal: Issue = {
-	id: 'rs-medal',
+	id: IssueId.RsMedal,
 	title: 'RS Medal (Legacy)',
 	description:
 		'[LEGACY] A medal showcase web application. This project has been succeeded by the unified RS TROPHY (rs-trophy.com) platform to provide a more robust and high-performance experience.',
@@ -185,7 +168,7 @@ export const rsMedal: Issue = {
 }
 
 export const rsAward: Issue = {
-	id: 'rs-award',
+	id: IssueId.RsAward,
 	title: 'RS Award (Legacy)',
 	description:
 		'[LEGACY] A plaque showcase web application. This project has been succeeded by the unified RS TROPHY (rs-trophy.com) platform as part of a major digital transformation.',
@@ -202,7 +185,7 @@ export const rsAward: Issue = {
 }
 
 export const qrFood: Issue = {
-	id: 'qr-food',
+	id: IssueId.QrFood,
 	title: 'QR-Food (Thesis Project)',
 	description:
 		'Developed a comprehensive QR-based food ordering and management system for restaurants. Features include real-time menu browsing, digital ordering, and a dashboard for restaurant owners to manage orders and kitchen workflows.',
@@ -219,7 +202,7 @@ export const qrFood: Issue = {
 }
 
 export const portfolio: Issue = {
-	id: 'portfolio',
+	id: IssueId.Portfolio,
 	title: '🚀 Portfolio – Wongsaphat Puangsorn',
 	description:
 		'A professionalized, high-performance portfolio specialized in modern web development. Features a dynamic comic-book aesthetic, responsive navigation, and real-time data visualization of skills and affiliations.',

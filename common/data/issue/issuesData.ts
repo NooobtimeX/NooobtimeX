@@ -1,7 +1,6 @@
 import type { Issue } from '@/common/interface'
 import {
 	looklookPet,
-	n8nRailway,
 	onlinePokerGame,
 	portfolio,
 	prettierConfig,
@@ -16,7 +15,6 @@ import {
 const issues = [
 	rsTrophy,
 	tencentRailwayMigration,
-	n8nRailway,
 	looklookPet,
 	onlinePokerGame,
 	prettierConfig,

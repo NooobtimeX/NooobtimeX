@@ -1,9 +1,9 @@
-import { EmploymentType, Position } from '@/common/enum'
+import { AffiliationId, EmploymentType, Position } from '@/common/enum'
 import { Affiliation } from './Affiliation'
 
 // AffiliationItem interface
 export interface AffiliationItem {
-	id: string
+	id: AffiliationId
 	affiliation: Affiliation
 	position: Position
 	description: string

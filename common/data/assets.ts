@@ -15,7 +15,8 @@ export const assets = {
 		jasmineTech: '/logo/JTS.png',
 		blitzwerk: '/logo/blitzwerk.png',
 		nooobtimex: '/profile/NooobtimeX.webp',
-		qrFood: '/logo/qr-food.png'
+		qrFood: '/logo/qr-food.png',
+		tuLogo: '/logo/tu-logo.jpg'
 	},
 	issues: {
 		rsTrophy: {
