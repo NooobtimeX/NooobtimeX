@@ -1,3 +1,4 @@
+import { AffiliationCategory } from '@/common/enum'
 import type { AffiliationItem } from '@/common/interface'
 import {
 	freelanceBlitzwerkAffiliation as freelanceBlitzwerk,
@@ -9,7 +10,10 @@ import {
 	thammasatUniversityAffiliation as thammasatUniversity
 } from './affiliations'
 
-const affiliations = [
+const sortDesc = (a: AffiliationItem, b: AffiliationItem) =>
+	new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
+
+const all: AffiliationItem[] = [
 	freelanceBlitzwerk,
 	jasmineTechnologySolution,
 	ruamsukPlatingSoftwareEngineerPartTime,
@@ -19,7 +23,18 @@ const affiliations = [
 	thammasatUniversity
 ]
 
-// Sort affiliations by startDate in descending order (newest first)
-export const affiliationData: AffiliationItem[] = affiliations.sort((a, b) => {
-	return new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
-})
+// All affiliations sorted by startDate (newest first)
+export const affiliationData: AffiliationItem[] = [...all].sort(sortDesc)
+
+// Filtered slices by category
+export const workExperienceData: AffiliationItem[] = all
+	.filter(a => a.category === AffiliationCategory.Work)
+	.sort(sortDesc)
+
+export const educationData: AffiliationItem[] = all
+	.filter(a => a.category === AffiliationCategory.Education)
+	.sort(sortDesc)
+
+export const personalProjectsData: AffiliationItem[] = all
+	.filter(a => a.category === AffiliationCategory.Personal)
+	.sort(sortDesc)

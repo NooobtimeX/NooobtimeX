@@ -1,2 +1,2 @@
 export * from './affiliations'
-export { affiliationData } from './affiliationData'
+export { affiliationData, workExperienceData, educationData, personalProjectsData } from './affiliationData'

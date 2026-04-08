@@ -4,12 +4,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
 import { motion } from 'framer-motion'
-import { affiliationData } from '@/common/data/affiliation'
+import { workExperienceData } from '@/common/data/affiliation'
 import ComicPop from '@/components/motion/ComicPop'
 import { formatAffiliationDuration } from '@/lib/utils'
 
-// Sort oldest → newest for a left-to-right timeline
-const timelineItems = [...affiliationData].sort(
+// Sort oldest → newest for a left-to-right timeline (work only)
+const timelineItems = [...workExperienceData].sort(
 	(a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime()
 )
 

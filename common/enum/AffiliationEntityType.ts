@@ -1,3 +1,5 @@
 export enum AffiliationEntityType {
-	Company = 'Company'
+	Company = 'Company',
+	University = 'University',
+	Personal = 'Personal'
 }

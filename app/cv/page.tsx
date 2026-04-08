@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { Icon } from '@iconify/react'
 import { QRCodeSVG } from 'qrcode.react'
 import { getDynamicAbilities } from '@/common/data/ability/dynamicAbilities'
-import { affiliationData } from '@/common/data/affiliation'
+import { affiliationData, workExperienceData } from '@/common/data/affiliation'
 import { issuesData } from '@/common/data/issue'
 import { personalData } from '@/common/data/personal'
 import { AbilityCategory, AffiliationId } from '@/common/enum'
@@ -17,10 +17,9 @@ export default function CVPage() {
 		window.print()
 	}
 
-	// Split affiliations for pagination (Max 3 per page)
-	const workExperiences = affiliationData
-	const page2Affiliations = workExperiences.slice(0, 3)
-	const page3Affiliations = workExperiences.slice(3)
+	// Split work-only affiliations for pagination (Max 3 per page in the CV)
+	const page2Affiliations = workExperienceData.slice(0, 3)
+	const page3Affiliations = workExperienceData.slice(3)
 
 	// Projects: 11 total. 4 per page = 3 pages of projects.
 	// Page 4: Projects 0-4

@@ -1,6 +1,7 @@
 // Export all enums from their respective files
 export { AbilityCategory } from './AbilityCategory'
 export { AbilityLevel } from './AbilityLevel'
+export { AffiliationCategory } from './AffiliationCategory'
 export { AffiliationEntityType } from './AffiliationEntityType'
 export { AffiliationId } from './AffiliationId'
 export { IssueId } from './IssueId'

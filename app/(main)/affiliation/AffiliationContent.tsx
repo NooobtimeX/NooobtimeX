@@ -1,15 +1,20 @@
 'use client'
 
 import React from 'react'
-import { affiliationData } from '@/common/data/affiliation'
-import { AffiliationEntityType } from '@/common/enum'
+import { educationData, personalProjectsData, workExperienceData } from '@/common/data/affiliation'
 import AffiliationCard from '@/components/affiliation/AffiliationCard'
 import ComicPop from '@/components/motion/ComicPop'
 
-const AffiliationContent: React.FC = () => {
-	// Filter for Company type affiliations
-	const companiesData = affiliationData.filter(item => item.affiliation.type === AffiliationEntityType.Company)
+const SectionHeader = ({ title, count }: { title: string; count: number }) => (
+	<div className='mb-10 flex items-center gap-6'>
+		<div className='silk-marker-vertical' />
+		<h2 className='text-2xl font-black tracking-widest text-white uppercase'>{title}</h2>
+		<div className='mx-4 hidden h-px flex-1 bg-white/10 md:block' />
+		<span className='text-primary text-xs font-black tracking-[0.3em] uppercase opacity-60'>{count} RECORDS</span>
+	</div>
+)
 
+const AffiliationContent: React.FC = () => {
 	return (
 		<div className='relative min-h-screen w-full overflow-x-hidden bg-black pt-24 pb-20'>
 			{/* Global Background Elements */}
@@ -36,18 +41,45 @@ const AffiliationContent: React.FC = () => {
 						<h1 className='silk-hero-badge-text'>AFFILIATIONS</h1>
 					</div>
 					<p className='mx-auto mt-8 max-w-3xl text-2xl font-black tracking-wide text-white uppercase text-shadow-sm'>
-						&quot;Strategic career history & professional alliances&quot;
+						&quot;Strategic career history &amp; professional alliances&quot;
 					</p>
 				</ComicPop>
 
-				{/* Grid */}
-				<section className='relative pb-20'>
-					<div className='grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-10 lg:grid-cols-3'>
-						{companiesData.map((item, index) => (
-							<AffiliationCard key={item.id} item={item} index={index} />
-						))}
-					</div>
-				</section>
+				{/* Work Experience */}
+				{workExperienceData.length > 0 && (
+					<section className='mb-24'>
+						<SectionHeader title='Work Experience' count={workExperienceData.length} />
+						<div className='grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-10 lg:grid-cols-3'>
+							{workExperienceData.map((item, index) => (
+								<AffiliationCard key={item.id} item={item} index={index} />
+							))}
+						</div>
+					</section>
+				)}
+
+				{/* Education */}
+				{educationData.length > 0 && (
+					<section className='mb-24'>
+						<SectionHeader title='Education' count={educationData.length} />
+						<div className='grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-10 lg:grid-cols-3'>
+							{educationData.map((item, index) => (
+								<AffiliationCard key={item.id} item={item} index={index} />
+							))}
+						</div>
+					</section>
+				)}
+
+				{/* Personal Projects */}
+				{personalProjectsData.length > 0 && (
+					<section className='pb-20'>
+						<SectionHeader title='Personal Projects' count={personalProjectsData.length} />
+						<div className='grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-10 lg:grid-cols-3'>
+							{personalProjectsData.map((item, index) => (
+								<AffiliationCard key={item.id} item={item} index={index} />
+							))}
+						</div>
+					</section>
+				)}
 			</div>
 		</div>
 	)
