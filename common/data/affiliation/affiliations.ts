@@ -73,7 +73,8 @@ export const jasmineTechnologySolutionAffiliation: AffiliationItem = {
 		'Microservices Management: Orchestrate and maintain over 20 concurrent microservices for the LOOKLOOKPET application. CI/CD & Infrastructure: Architected and deployed a robust CI/CD pipeline managing Dockerized services on Railway. Agile Leadership: Partner directly with the Product Owner to define strategic project milestones.',
 	type: EmploymentType.FullTime,
 	category: AffiliationCategory.Work,
-	startDate: '2025-06-01'
+	startDate: '2025-07-16',
+	endDate: '2026-05-31'
 }
 
 export const ruamsukPlatingSoftwareEngineerPartTime: AffiliationItem = {
