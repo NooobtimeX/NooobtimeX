@@ -6,12 +6,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Icon } from '@iconify/react'
-import { affiliationData } from '@/common/data/affiliation'
-import { issuesData } from '@/common/data/issue'
 import AffiliationCard from '@/components/affiliation/AffiliationCard'
 import IssueCard from '@/components/issue/IssueCard'
 import ComicPop from '@/components/motion/ComicPop'
 import { formatAffiliationDuration } from '@/lib/utils'
+import { affiliationData, issuesData } from '@/common'
 
 interface AffiliationDetailContentProps {
 	id: string

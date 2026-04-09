@@ -1,6 +1,6 @@
 import { Icon } from '@iconify/react'
 import { motion } from 'framer-motion'
-import { personalData } from '@/common/data/personal'
+import { personalData } from '@/common'
 
 export function IntroSlide() {
 	return (

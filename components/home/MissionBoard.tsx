@@ -6,12 +6,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
 import { motion } from 'framer-motion'
-import { getDynamicAbilities } from '@/common/data/ability/dynamicAbilities'
-import { workExperienceData } from '@/common/data/affiliation'
-import { issuesData } from '@/common/data/issue'
 import { formatAffiliationDuration } from '@/lib/utils'
+import { getDynamicAbilities, issuesData, workExperienceData } from '@/common'
 
-const abilityGroups = getDynamicAbilities()
+const abilityGroups = getDynamicAbilities(issuesData)
 
 // ── ACTIVE OPS (work experience timeline) ──────────────────────────
 function ActiveOps() {

@@ -1,4 +1,3 @@
-import { assets } from '@/common/data/assets'
 import {
 	AffiliationCategory,
 	AffiliationEntityType,
@@ -6,8 +5,9 @@ import {
 	EmploymentType,
 	Location,
 	Position
-} from '@/common/enum'
-import type { Affiliation, AffiliationItem } from '@/common/interface'
+} from '@/common/enums'
+import type { Affiliation, AffiliationItem } from '@/common/interfaces'
+import { assets } from './assets'
 
 // --- Entities ---
 
@@ -133,3 +133,34 @@ export const thammasatUniversityAffiliation: AffiliationItem = {
 	startDate: '2021-06-01',
 	endDate: '2025-06-30'
 }
+
+// --- Data Aggregation & Logic ---
+
+const sortDesc = (a: AffiliationItem, b: AffiliationItem) =>
+	new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
+
+const all: AffiliationItem[] = [
+	freelanceBlitzwerkAffiliation,
+	jasmineTechnologySolutionAffiliation,
+	ruamsukPlatingSoftwareEngineerPartTime,
+	ruamsukPlatingSoftwareEngineerFullTime,
+	ruamsukPlatingTechnicalAdvisor,
+	personalProjectsAffiliation,
+	thammasatUniversityAffiliation
+]
+
+// All affiliations sorted by startDate (newest first)
+export const affiliationData: AffiliationItem[] = [...all].sort(sortDesc)
+
+// Filtered slices by category
+export const workExperienceData: AffiliationItem[] = all
+	.filter(a => a.category === AffiliationCategory.Work)
+	.sort(sortDesc)
+
+export const educationData: AffiliationItem[] = all
+	.filter(a => a.category === AffiliationCategory.Education)
+	.sort(sortDesc)
+
+export const personalProjectsData: AffiliationItem[] = all
+	.filter(a => a.category === AffiliationCategory.Personal)
+	.sort(sortDesc)

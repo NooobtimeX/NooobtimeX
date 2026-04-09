@@ -1,10 +1,9 @@
 import { Icon } from '@iconify/react'
 import { motion } from 'framer-motion'
-import { issuesData } from '@/common/data/issue'
-import { AffiliationId, IssueId } from '@/common/enum'
-import type { AffiliationItem } from '@/common/interface'
 import { SlideId } from '@/components/cv/PresentationView'
 import { formatAffiliationDuration } from '@/lib/utils'
+import { AffiliationId, IssueId, issuesData } from '@/common'
+import type { AffiliationItem } from '@/common'
 
 export function ExperienceSlide({
 	exp,

@@ -1,8 +1,8 @@
 import { Icon } from '@iconify/react'
 import { motion } from 'framer-motion'
-import { AffiliationId, IssueId } from '@/common/enum'
-import type { AffiliationItem, Issue } from '@/common/interface'
 import { SlideId } from '@/components/cv/PresentationView'
+import { AffiliationId, IssueId } from '@/common'
+import type { AffiliationItem, Issue } from '@/common'
 
 export function FoundationalJourneySlide({
 	tu,

@@ -1,8 +1,8 @@
 import React from 'react'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { orderedAbilities } from '@/common/data/ability/abilities'
 import { slugify } from '@/lib/utils'
+import { orderedAbilities } from '@/common'
 import AbilityDetailContent from './AbilityDetailContent'
 
 export function generateStaticParams() {

@@ -1,7 +1,6 @@
 import React from 'react'
 import { Metadata } from 'next'
-import { issuesData } from '@/common/data/issue'
-import { personalData } from '@/common/data/personal'
+import { issuesData, personalData } from '@/common'
 import IssueDetailContent from './IssueDetailContent'
 
 interface IssueDetailPageProps {

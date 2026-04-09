@@ -1,5 +1,39 @@
-import { AbilityCategory, AbilityLevel } from '@/common/enum'
-import type { Ability } from '@/common/interface'
+import { AbilityCategory, AbilityLevel } from '@/common/enums'
+import type { Ability, AbilityGroup, Issue } from '@/common/interfaces'
+
+// --- Category Metadata ---
+
+export const categoryMetadata: Record<
+	AbilityCategory,
+	{ icon: string; description: string; color: string; shadow: string }
+> = {
+	[AbilityCategory.Frontend]: {
+		icon: 'material-symbols:laptop-chromebook',
+		description: 'Modern web development and user interface abilities',
+		color: '#3b82f6', // blue-500
+		shadow: 'rgba(59, 130, 246, 0.5)'
+	},
+	[AbilityCategory.Backend]: {
+		icon: 'material-symbols:database',
+		description: 'Server-side development and database management',
+		color: '#10b981', // emerald-500
+		shadow: 'rgba(16, 185, 129, 0.5)'
+	},
+	[AbilityCategory.Infrastructure]: {
+		icon: 'material-symbols:cloud',
+		description: 'Infrastructure, deployment, and cloud solutions',
+		color: '#8b5cf6', // violet-500
+		shadow: 'rgba(139, 92, 246, 0.5)'
+	},
+	[AbilityCategory.GrowthManagement]: {
+		icon: 'material-symbols:trending-up',
+		description: 'Digital growth, marketing, and project management',
+		color: '#f59e0b', // amber-500
+		shadow: 'rgba(245, 158, 11, 0.5)'
+	}
+}
+
+// --- Ability Definitions ---
 
 // Frontend
 export const nextjs: Ability = {
@@ -324,7 +358,7 @@ export const datefns: Ability = {
 	level: AbilityLevel.Advanced
 }
 
-export const orderedAbilities = [
+export const orderedAbilities: Ability[] = [
 	nextjs,
 	nuxtjs,
 	react,
@@ -366,3 +400,70 @@ export const orderedAbilities = [
 	gtm,
 	datefns
 ]
+
+// --- Dynamic Logic ---
+
+export const getDynamicAbilities = (issuesData: Issue[]): AbilityGroup[] => {
+	const abilityOrderMap = new Map<string, number>()
+	orderedAbilities.forEach((ability, index) => {
+		abilityOrderMap.set(ability.name, index)
+	})
+
+	const allAbilities: Ability[] = []
+	const abilityFrequency = new Map<string, number>()
+
+	// Collect from issues
+	issuesData.forEach(issue => {
+		issue.abilities.forEach(ability => {
+			allAbilities.push(ability)
+			abilityFrequency.set(ability.name, (abilityFrequency.get(ability.name) || 0) + 1)
+		})
+	})
+
+	// Filter unique abilities by name
+	const uniqueAbilitiesMap = new Map<string, Ability>()
+	allAbilities.forEach(ability => {
+		if (!uniqueAbilitiesMap.has(ability.name)) {
+			uniqueAbilitiesMap.set(ability.name, ability)
+		}
+	})
+
+	const uniqueAbilities = Array.from(uniqueAbilitiesMap.values())
+
+	// Group by category
+	const grouped = Object.values(AbilityCategory).map(category => {
+		// Get abilities and sort by manual order first, then frequency
+		const abilitiesInCategory = uniqueAbilities
+			.filter(a => a.category === category)
+			.sort((a, b) => {
+				const orderA = abilityOrderMap.get(a.name) ?? 999
+				const orderB = abilityOrderMap.get(b.name) ?? 999
+
+				if (orderA !== orderB) return orderA - orderB
+
+				const freqA = abilityFrequency.get(a.name) || 0
+				const freqB = abilityFrequency.get(b.name) || 0
+				return freqB - freqA
+			})
+
+		const metadata = categoryMetadata[category]
+
+		// Calculate total frequency for this category to determine group sorting
+		const totalCategoryFrequency = abilitiesInCategory.reduce((sum, a) => sum + (abilityFrequency.get(a.name) || 0), 0)
+
+		// Calculate min order for this category to determine group sorting
+		const minOrder = Math.min(...abilitiesInCategory.map(a => abilityOrderMap.get(a.name) ?? 999))
+
+		return {
+			category,
+			description: metadata.description,
+			icon: metadata.icon,
+			abilities: abilitiesInCategory,
+			totalFrequency: totalCategoryFrequency,
+			minOrder
+		}
+	})
+
+	// Filter out categories with no abilities and sort by minOrder (ascending)
+	return grouped.filter(group => group.abilities.length > 0).sort((a, b) => a.minOrder - b.minOrder)
+}

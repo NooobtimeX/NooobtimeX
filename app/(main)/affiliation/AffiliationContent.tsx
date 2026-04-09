@@ -1,9 +1,9 @@
 'use client'
 
 import React from 'react'
-import { educationData, personalProjectsData, workExperienceData } from '@/common/data/affiliation'
 import AffiliationCard from '@/components/affiliation/AffiliationCard'
 import ComicPop from '@/components/motion/ComicPop'
+import { educationData, personalProjectsData, workExperienceData } from '@/common'
 
 const SectionHeader = ({ title, count }: { title: string; count: number }) => (
 	<div className='mb-10 flex items-center gap-6'>

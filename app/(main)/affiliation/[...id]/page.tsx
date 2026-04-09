@@ -1,6 +1,6 @@
 import React from 'react'
 import { Metadata } from 'next'
-import { affiliationData } from '@/common/data/affiliation'
+import { affiliationData } from '@/common'
 import AffiliationDetailContent from './AffiliationDetailContent'
 
 interface AffiliationDetailPageProps {

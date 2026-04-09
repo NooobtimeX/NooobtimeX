@@ -4,12 +4,11 @@ import type { Route } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
-import { assets } from '@/common/data/assets'
-import MenuItem from '@/common/interface/menuItem'
 import { GlobalSearch } from '@/components/search/GlobalSearch'
 import { ComicPanel } from '@/components/ui/comic-panel'
 import { ComicTooltip } from '@/components/ui/comic-tooltip'
 import { TooltipProvider } from '@/components/ui/tooltip'
+import { MenuItem, assets } from '@/common'
 
 interface NavigationHeaderDesktopProps {
 	menuItems: MenuItem[]

@@ -1,6 +1,5 @@
-import { assets } from '@/common/data/assets'
-import { AffiliationId, IssueId } from '@/common/enum'
-import type { Issue } from '@/common/interface'
+import { AffiliationId, IssueId } from '@/common/enums'
+import type { Issue } from '@/common/interfaces'
 import {
 	aeo,
 	bun,
@@ -33,7 +32,8 @@ import {
 	vercel,
 	woocommerce,
 	wordpress
-} from './../ability/abilities'
+} from './abilities'
+import { assets } from './assets'
 
 export const looklookPet: Issue = {
 	id: IssueId.LooklookPet,
@@ -217,3 +217,20 @@ export const portfolio: Issue = {
 	startDate: '2021-01-01',
 	linkedAffiliationId: AffiliationId.PersonalProjects
 }
+
+const issues = [
+	rsTrophy,
+	tencentRailwayMigration,
+	looklookPet,
+	onlinePokerGame,
+	prettierConfig,
+	rsTrophyV1,
+	rsAward,
+	rsMedal,
+	portfolio,
+	qrFood
+]
+
+export const issuesData: Issue[] = issues.sort((a, b) => {
+	return new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
+})

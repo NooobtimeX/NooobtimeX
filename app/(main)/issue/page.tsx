@@ -1,6 +1,6 @@
 import React from 'react'
 import { Metadata } from 'next'
-import { personalData } from '@/common/data/personal'
+import { personalData } from '@/common'
 import IssueContent from './IssueContent'
 
 export const metadata: Metadata = {

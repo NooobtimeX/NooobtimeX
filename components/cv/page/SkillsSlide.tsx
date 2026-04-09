@@ -1,10 +1,10 @@
 import { Icon } from '@iconify/react'
 import { motion } from 'framer-motion'
-import { getDynamicAbilities } from '@/common/data/ability/dynamicAbilities'
-import type { AbilityGroup } from '@/common/interface'
+import type { AbilityGroup } from '@/common'
+import { getDynamicAbilities, issuesData } from '@/common'
 
 export function SkillsSlide() {
-	const groups = getDynamicAbilities().filter((g: AbilityGroup) =>
+	const groups = getDynamicAbilities(issuesData).filter((g: AbilityGroup) =>
 		['Frontend', 'Backend', 'Infrastructure'].includes(g.category)
 	)
 	return (

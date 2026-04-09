@@ -5,12 +5,11 @@ import type { Route } from 'next'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
 import { ArrowRightIcon } from 'lucide-react'
-import { issuesData } from '@/common/data/issue'
-import { Issue } from '@/common/interface'
 import IssueThumbnail from '@/components/issue/IssueThumbnail'
 import ComicPop from '@/components/motion/ComicPop'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { Issue, issuesData } from '@/common'
 
 interface IssueCardProps {
 	issue: Issue

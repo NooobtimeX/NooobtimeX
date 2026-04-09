@@ -1,8 +1,8 @@
 'use client'
 
-import MenuItem from '@/common/interface/menuItem'
 import NavigationHeaderDesktop from '@/components/navigation/NavigationHeaderDesktop'
 import NavigationHeaderMobile from '@/components/navigation/NavigationHeaderMobile'
+import { MenuItem } from '@/common'
 
 export default function NavigationHeader() {
 	const menuItems: MenuItem[] = [

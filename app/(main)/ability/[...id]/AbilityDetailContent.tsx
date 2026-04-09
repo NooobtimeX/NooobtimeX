@@ -4,10 +4,10 @@ import React from 'react'
 import type { Route } from 'next'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
-import { issuesData } from '@/common/data/issue'
-import type { Ability } from '@/common/interface'
 import IssueCard from '@/components/issue/IssueCard'
 import ComicPop from '@/components/motion/ComicPop'
+import type { Ability } from '@/common'
+import { issuesData } from '@/common'
 
 interface AbilityDetailContentProps {
 	ability: Ability

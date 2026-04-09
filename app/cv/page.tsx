@@ -4,13 +4,18 @@ import React from 'react'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
 import { QRCodeSVG } from 'qrcode.react'
-import { getDynamicAbilities } from '@/common/data/ability/dynamicAbilities'
-import { affiliationData, workExperienceData } from '@/common/data/affiliation'
-import { issuesData } from '@/common/data/issue'
-import { personalData } from '@/common/data/personal'
-import { AbilityCategory, AffiliationId } from '@/common/enum'
-import type { Ability, AbilityGroup } from '@/common/interface'
 import { Button } from '@/components/ui/button'
+import {
+	Ability,
+	AbilityCategory,
+	AbilityGroup,
+	AffiliationId,
+	affiliationData,
+	getDynamicAbilities,
+	issuesData,
+	personalData,
+	workExperienceData
+} from '@/common'
 
 export default function CVPage() {
 	const handlePrint = () => {
@@ -268,7 +273,7 @@ export default function CVPage() {
 									Core Competencies
 								</h2>
 								<div className='grid grid-cols-2 gap-x-6 gap-y-6'>
-									{getDynamicAbilities()
+									{getDynamicAbilities(issuesData)
 										.filter((g: AbilityGroup) => ['Frontend', 'Backend', 'Infrastructure'].includes(g.category))
 										.map((group: AbilityGroup) => {
 											const coreAbilities = group.abilities.filter(a => a.important)

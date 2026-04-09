@@ -1,7 +1,7 @@
 import { Icon } from '@iconify/react'
 import { motion } from 'framer-motion'
-import type { Issue } from '@/common/interface'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
+import type { Issue } from '@/common'
 
 export function ProjectSlide({ project }: { project: Issue }) {
 	const allPhotos = Array.from(new Set([project.images.banner, ...project.images.photos]))

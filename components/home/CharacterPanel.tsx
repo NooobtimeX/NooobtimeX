@@ -5,8 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
 import { motion } from 'framer-motion'
-import { workExperienceData } from '@/common/data/affiliation'
-import { personalData } from '@/common/data/personal'
+import { personalData, workExperienceData } from '@/common'
 
 // Compute age from birthdate
 const age = Math.floor(

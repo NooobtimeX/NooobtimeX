@@ -4,10 +4,9 @@ import React from 'react'
 import type { Route } from 'next'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
-import { categoryMetadata } from '@/common/data/ability/categoryMetadata'
-import { AbilityCategory, AbilityLevel } from '@/common/enum'
 import ComicPop from '@/components/motion/ComicPop'
 import { cn, slugify } from '@/lib/utils'
+import { AbilityCategory, AbilityLevel, categoryMetadata } from '@/common'
 
 interface AbilityCardProps {
 	name: string

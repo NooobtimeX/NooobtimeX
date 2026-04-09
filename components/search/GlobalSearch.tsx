@@ -5,10 +5,6 @@ import type { Route } from 'next'
 import { useRouter } from 'next/navigation'
 import { Icon } from '@iconify/react'
 import Fuse from 'fuse.js'
-import { orderedAbilities } from '@/common/data/ability'
-import { affiliationData } from '@/common/data/affiliation'
-import { issuesData } from '@/common/data/issue'
-import { AffiliationCategory } from '@/common/enum'
 import {
 	CommandDialog,
 	CommandEmpty,
@@ -19,6 +15,7 @@ import {
 	CommandSeparator
 } from '@/components/ui/command'
 import { cn } from '@/lib/utils'
+import { AffiliationCategory, affiliationData, issuesData, orderedAbilities } from '@/common'
 
 export function GlobalSearch() {
 	const [open, setOpen] = useState(false)

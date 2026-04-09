@@ -5,12 +5,11 @@ import type { Route } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
-import { issuesData } from '@/common/data/issue'
-import { AffiliationItem } from '@/common/interface'
 import ComicPop from '@/components/motion/ComicPop'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { formatAffiliationDuration, isCurrentPosition } from '@/lib/utils'
+import { AffiliationItem, issuesData } from '@/common'
 
 interface AffiliationCardProps {
 	item: AffiliationItem

@@ -1,7 +1,7 @@
 import { FaFacebook, FaGithub } from 'react-icons/fa'
-import { assets } from '@/common/data/assets'
-import { SocialPlatform } from '@/common/enum'
-import type { PersonalData } from '@/common/interface'
+import { SocialPlatform } from '@/common/enums'
+import type { PersonalData } from '@/common/interfaces'
+import { assets } from './assets'
 
 export const personalData: PersonalData = {
 	name: 'WONGSAPHAT PUANGSORN',

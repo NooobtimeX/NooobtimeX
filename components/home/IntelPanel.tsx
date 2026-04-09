@@ -4,13 +4,10 @@ import type { Route } from 'next'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
 import { motion } from 'framer-motion'
-import { getDynamicAbilities } from '@/common/data/ability/dynamicAbilities'
-import { workExperienceData } from '@/common/data/affiliation'
-import { issuesData } from '@/common/data/issue'
-import { personalData } from '@/common/data/personal'
 import { formatAffiliationDuration } from '@/lib/utils'
+import { getDynamicAbilities, issuesData, personalData, workExperienceData } from '@/common'
 
-const totalTech = getDynamicAbilities().flatMap(g => g.abilities).length
+const totalTech = getDynamicAbilities(issuesData).flatMap(g => g.abilities).length
 const yearsActive = new Date().getFullYear() - 2021
 
 // ── STAT BOX ──────────────────────────────────────────────────────
