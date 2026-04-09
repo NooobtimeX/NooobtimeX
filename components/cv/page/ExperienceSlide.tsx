@@ -2,7 +2,7 @@ import { Icon } from '@iconify/react'
 import { motion } from 'framer-motion'
 import { SlideId } from '@/components/cv/PresentationView'
 import { formatAffiliationDuration } from '@/lib/utils'
-import { AffiliationId, IssueId, issuesData } from '@/common'
+import { ExperienceId, IssueId, issuesData } from '@/common'
 import type { AffiliationItem } from '@/common'
 
 export function ExperienceSlide({
@@ -10,9 +10,9 @@ export function ExperienceSlide({
 	goToId
 }: {
 	exp: AffiliationItem
-	goToId: (id: SlideId | AffiliationId | IssueId) => void
+	goToId: (id: SlideId | ExperienceId | IssueId) => void
 }) {
-	const linkedProjects = issuesData.filter(p => p.linkedAffiliationId === exp.id)
+	const linkedProjects = issuesData.filter(p => p.linkedAffiliationId === exp.affiliation.id)
 	const allAbilities = Array.from(new Map(linkedProjects.flatMap(p => p.abilities).map(a => [a.name, a])).values())
 	return (
 		<div className='flex h-full flex-col justify-center gap-4 px-6 py-6 md:gap-5 md:px-16 md:py-10'>

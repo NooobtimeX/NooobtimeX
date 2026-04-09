@@ -1,4 +1,3 @@
-import { FaFacebook, FaGithub } from 'react-icons/fa'
 import { SocialPlatform } from '@/common/enums'
 import type { PersonalData } from '@/common/interfaces'
 import { assets } from './assets'
@@ -28,13 +27,13 @@ export const personalData: PersonalData = {
 		{
 			platform: SocialPlatform.GitHub,
 			url: 'https://github.com/NooobtimeX',
-			icon: FaGithub,
+			icon: 'simple-icons:github',
 			username: 'NooobtimeX'
 		},
 		{
 			platform: SocialPlatform.Website,
 			url: 'https://nooobtimex.me',
-			icon: FaFacebook,
+			icon: 'simple-icons:facebook',
 			username: 'nooobtimex.me'
 		}
 	]

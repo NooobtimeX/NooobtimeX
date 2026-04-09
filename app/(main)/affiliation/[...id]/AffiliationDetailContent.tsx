@@ -25,7 +25,7 @@ const AffiliationDetailContent: React.FC<AffiliationDetailContentProps> = ({ id 
 
 	const { affiliation, position, description, startDate, endDate, type } = affiliationItem
 
-	const relatedIssues = issuesData.filter(issue => issue.linkedAffiliationId === affiliationItem.id)
+	const relatedIssues = issuesData.filter(issue => issue.linkedAffiliationId === affiliationItem.affiliation.id)
 
 	const projectAbilities = relatedIssues.flatMap(issue => issue.abilities)
 	const uniqueAbilities = Array.from(new Map(projectAbilities.map(a => [a.name, a])).values())

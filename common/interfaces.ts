@@ -1,11 +1,11 @@
-import { IconType } from 'react-icons'
 import {
 	AbilityCategory,
 	AbilityLevel,
-	AffiliationCategory,
-	AffiliationEntityType,
-	AffiliationId,
 	EmploymentType,
+	EntityId,
+	EntityType,
+	ExperienceCategory,
+	ExperienceId,
 	IssueId,
 	Location,
 	Position,
@@ -13,12 +13,6 @@ import {
 } from './enums'
 
 // --- Base Interfaces ---
-
-export interface IconInfo {
-	name: string
-	icon: IconType // Direct icon component from react-icons
-	description?: string
-}
 
 export interface IconObject {
 	name: string
@@ -35,7 +29,7 @@ export interface MenuItem {
 export interface SocialLink {
 	platform: SocialPlatform
 	url: string
-	icon: IconType
+	icon: string // Icon name for @iconify/react
 	username?: string
 }
 
@@ -55,25 +49,24 @@ export interface AbilityGroup {
 	description: string
 	icon: string // Icon name for @iconify/react
 	abilities: Ability[]
-	totalFrequency?: number
 }
 
 export interface Affiliation {
-	id: AffiliationId // concise logical ID, e.g. "blitzwerk", "jasmine", "university"
+	id: EntityId // concise logical ID for the entity
 	name: string
 	logo?: string
 	location: Location
-	type: AffiliationEntityType
+	type: EntityType
 	url?: string
 }
 
 export interface AffiliationItem {
-	id: AffiliationId
+	id: ExperienceId
 	affiliation: Affiliation
 	position: Position
 	description: string
 	type: EmploymentType
-	category: AffiliationCategory
+	category: ExperienceCategory
 	startDate: string
 	endDate?: string
 }
@@ -92,7 +85,7 @@ export interface Issue {
 	}
 	startDate: string // YYYY-MM-DD
 	endDate?: string // YYYY-MM-DD or undefined if ongoing/single release
-	linkedAffiliationId?: AffiliationId // ID of the Affiliation this issue belongs to
+	linkedAffiliationId?: EntityId // ID of the Entity this issue belongs to
 }
 
 export interface PersonalData {
@@ -111,11 +104,4 @@ export interface PersonalData {
 	}
 	birthDate: string
 	socialLinks: SocialLink[]
-}
-
-export interface PortfolioData {
-	personal: PersonalData
-	issues: Issue[]
-	abilities: Ability[]
-	affiliations: AffiliationItem[]
 }

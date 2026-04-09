@@ -15,7 +15,7 @@ import {
 	CommandSeparator
 } from '@/components/ui/command'
 import { cn } from '@/lib/utils'
-import { AffiliationCategory, affiliationData, issuesData, orderedAbilities } from '@/common'
+import { ExperienceCategory, affiliationData, issuesData, orderedAbilities } from '@/common'
 
 export function GlobalSearch() {
 	const [open, setOpen] = useState(false)
@@ -43,8 +43,8 @@ export function GlobalSearch() {
 			type: a.category,
 			href: `/affiliation/${a.id}`,
 			icon:
-				a.category === AffiliationCategory.Education ? 'material-symbols:school'
-				: a.category === AffiliationCategory.Personal ? 'material-symbols:person'
+				a.category === ExperienceCategory.Education ? 'material-symbols:school'
+				: a.category === ExperienceCategory.Personal ? 'material-symbols:person'
 				: 'material-symbols:domain'
 		}))
 	]
@@ -132,7 +132,7 @@ export function GlobalSearch() {
 
 					<CommandGroup heading='Experience'>
 						{results
-							.filter(r => r.type === AffiliationCategory.Work)
+							.filter(r => r.type === ExperienceCategory.Work)
 							.map(result => (
 								<CommandItem key={result.id} onSelect={() => onSelect(result.href)} className='flex items-center gap-3'>
 									<Icon icon={result.icon} className='text-primary h-4 w-4' />
@@ -145,7 +145,7 @@ export function GlobalSearch() {
 
 					<CommandGroup heading='Education'>
 						{results
-							.filter(r => r.type === AffiliationCategory.Education)
+							.filter(r => r.type === ExperienceCategory.Education)
 							.map(result => (
 								<CommandItem key={result.id} onSelect={() => onSelect(result.href)} className='flex items-center gap-3'>
 									<Icon icon={result.icon} className='text-primary h-4 w-4' />
@@ -158,7 +158,7 @@ export function GlobalSearch() {
 
 					<CommandGroup heading='Personal'>
 						{results
-							.filter(r => r.type === AffiliationCategory.Personal)
+							.filter(r => r.type === ExperienceCategory.Personal)
 							.map(result => (
 								<CommandItem key={result.id} onSelect={() => onSelect(result.href)} className='flex items-center gap-3'>
 									<Icon icon={result.icon} className='text-primary h-4 w-4' />

@@ -9,7 +9,7 @@ import {
 	Ability,
 	AbilityCategory,
 	AbilityGroup,
-	AffiliationId,
+	EntityId,
 	affiliationData,
 	getDynamicAbilities,
 	issuesData,
@@ -34,9 +34,9 @@ export default function CVPage() {
 	const page5Projects = issuesData.slice(4, 8)
 	const page6Projects = issuesData.slice(8)
 
-	const getCompanyName = (id?: AffiliationId) => {
+	const getCompanyName = (id?: EntityId) => {
 		if (!id) return null
-		const aff = affiliationData.find(a => a.id === id)
+		const aff = affiliationData.find(a => a.affiliation.id === id)
 		return aff?.affiliation.name || null
 	}
 
@@ -391,7 +391,7 @@ export default function CVPage() {
 								<div className='flex flex-wrap gap-1.5'>
 									{(() => {
 										const projectAbilities = issuesData
-											.filter(issue => issue.linkedAffiliationId === aff.id)
+											.filter(issue => issue.linkedAffiliationId === aff.affiliation.id)
 											.flatMap(issue => issue.abilities)
 										const uniqueAbilities = Array.from(new Map(projectAbilities.map(a => [a.name, a])).values()).sort(
 											sortAbilities
@@ -462,7 +462,7 @@ export default function CVPage() {
 										<div className='mt-6 flex flex-wrap gap-1.5'>
 											{(() => {
 												const projectAbilities = issuesData
-													.filter(issue => issue.linkedAffiliationId === aff.id)
+													.filter(issue => issue.linkedAffiliationId === aff.affiliation.id)
 													.flatMap(issue => issue.abilities)
 												const uniqueAbilities = Array.from(
 													new Map(projectAbilities.map(a => [a.name, a])).values()

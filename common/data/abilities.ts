@@ -1,5 +1,5 @@
 import { AbilityCategory, AbilityLevel } from '@/common/enums'
-import type { Ability, AbilityGroup, Issue } from '@/common/interfaces'
+import type { Ability } from '@/common/interfaces'
 
 // --- Category Metadata ---
 
@@ -36,7 +36,7 @@ export const categoryMetadata: Record<
 // --- Ability Definitions ---
 
 // Frontend
-export const nextjs: Ability = {
+const nextjs: Ability = {
 	name: 'Next.js',
 	icon: 'logos:nextjs-icon',
 	category: AbilityCategory.Frontend,
@@ -44,14 +44,14 @@ export const nextjs: Ability = {
 	important: true
 }
 
-export const nuxtjs: Ability = {
+const nuxtjs: Ability = {
 	name: 'Nuxt.js',
 	icon: 'logos:nuxt-icon',
 	category: AbilityCategory.Frontend,
 	level: AbilityLevel.Advanced
 }
 
-export const react: Ability = {
+const react: Ability = {
 	name: 'React',
 	icon: 'logos:react',
 	category: AbilityCategory.Frontend,
@@ -59,7 +59,7 @@ export const react: Ability = {
 	important: true
 }
 
-export const typescript: Ability = {
+const typescript: Ability = {
 	name: 'TypeScript',
 	icon: 'logos:typescript-icon',
 	category: AbilityCategory.Frontend,
@@ -67,7 +67,7 @@ export const typescript: Ability = {
 	important: true
 }
 
-export const tailwindcss: Ability = {
+const tailwindcss: Ability = {
 	name: 'Tailwind CSS',
 	icon: 'logos:tailwindcss-icon',
 	category: AbilityCategory.Frontend,
@@ -75,7 +75,7 @@ export const tailwindcss: Ability = {
 	important: true
 }
 
-export const shadcnui: Ability = {
+const shadcnui: Ability = {
 	name: 'Shadcn/ui',
 	icon: 'simple-icons:shadcnui',
 	category: AbilityCategory.Frontend,
@@ -83,7 +83,7 @@ export const shadcnui: Ability = {
 	important: true
 }
 
-export const css: Ability = {
+const css: Ability = {
 	name: 'CSS',
 	icon: 'logos:css-3',
 	category: AbilityCategory.Frontend,
@@ -91,7 +91,7 @@ export const css: Ability = {
 }
 
 // Backend
-export const nodejs: Ability = {
+const nodejs: Ability = {
 	name: 'Node.js',
 	icon: 'logos:nodejs-icon',
 	category: AbilityCategory.Backend,
@@ -99,28 +99,28 @@ export const nodejs: Ability = {
 	important: true
 }
 
-export const nestjs: Ability = {
+const nestjs: Ability = {
 	name: 'Nest.js',
 	icon: 'logos:nestjs',
 	category: AbilityCategory.Backend,
 	level: AbilityLevel.Advanced
 }
 
-export const nats: Ability = {
+const nats: Ability = {
 	name: 'NATS',
 	icon: 'logos:nats-icon',
 	category: AbilityCategory.Backend,
 	level: AbilityLevel.Intermediate
 }
 
-export const python: Ability = {
+const python: Ability = {
 	name: 'Python',
 	icon: 'logos:python',
 	category: AbilityCategory.Backend,
 	level: AbilityLevel.Intermediate
 }
 
-export const elysia: Ability = {
+const elysia: Ability = {
 	name: 'Elysia.js',
 	category: AbilityCategory.Backend,
 	level: AbilityLevel.Intermediate,
@@ -128,21 +128,21 @@ export const elysia: Ability = {
 	important: true
 }
 
-export const sse: Ability = {
+const sse: Ability = {
 	name: 'SSE',
 	icon: 'material-symbols:stream',
 	category: AbilityCategory.Backend,
 	level: AbilityLevel.Intermediate
 }
 
-export const bun: Ability = {
+const bun: Ability = {
 	name: 'Bun.js',
 	icon: 'logos:bun',
 	category: AbilityCategory.Backend,
 	level: AbilityLevel.Intermediate
 }
 
-export const postgresql: Ability = {
+const postgresql: Ability = {
 	name: 'PostgreSQL',
 	icon: 'logos:postgresql',
 	category: AbilityCategory.Backend,
@@ -150,7 +150,7 @@ export const postgresql: Ability = {
 	important: true
 }
 
-export const mongodb: Ability = {
+const mongodb: Ability = {
 	name: 'MongoDB',
 	icon: 'logos:mongodb-icon',
 	category: AbilityCategory.Backend,
@@ -158,7 +158,7 @@ export const mongodb: Ability = {
 	important: true
 }
 
-export const prisma: Ability = {
+const prisma: Ability = {
 	name: 'Prisma',
 	icon: 'logos:prisma',
 	category: AbilityCategory.Backend,
@@ -166,7 +166,7 @@ export const prisma: Ability = {
 	whiteBg: true
 }
 
-export const redis: Ability = {
+const redis: Ability = {
 	name: 'Redis',
 	icon: 'logos:redis',
 	category: AbilityCategory.Backend,
@@ -174,7 +174,7 @@ export const redis: Ability = {
 	important: true
 }
 
-export const supabase: Ability = {
+const supabase: Ability = {
 	name: 'Supabase',
 	icon: 'logos:supabase-icon',
 	category: AbilityCategory.Backend,
@@ -182,7 +182,7 @@ export const supabase: Ability = {
 }
 
 // Infrastructure
-export const vercel: Ability = {
+const vercel: Ability = {
 	name: 'Vercel',
 	icon: 'logos:vercel-icon',
 	category: AbilityCategory.Infrastructure,
@@ -191,14 +191,14 @@ export const vercel: Ability = {
 	important: true
 }
 
-export const railway: Ability = {
+const railway: Ability = {
 	name: 'Railway',
 	icon: 'simple-icons:railway',
 	category: AbilityCategory.Infrastructure,
 	level: AbilityLevel.Intermediate
 }
 
-export const docker: Ability = {
+const docker: Ability = {
 	name: 'Docker',
 	icon: 'logos:docker-icon',
 	category: AbilityCategory.Infrastructure,
@@ -206,14 +206,14 @@ export const docker: Ability = {
 	important: true
 }
 
-export const render: Ability = {
+const render: Ability = {
 	name: 'Render',
 	icon: 'simple-icons:render',
 	category: AbilityCategory.Infrastructure,
 	level: AbilityLevel.Intermediate
 }
 
-export const github: Ability = {
+const github: Ability = {
 	name: 'Git/GitHub',
 	icon: 'logos:github-icon',
 	category: AbilityCategory.Infrastructure,
@@ -222,14 +222,14 @@ export const github: Ability = {
 	important: true
 }
 
-export const minio: Ability = {
+const minio: Ability = {
 	name: 'MinIO',
 	category: AbilityCategory.Infrastructure,
 	level: AbilityLevel.Intermediate,
 	icon: 'simple-icons:minio'
 }
 
-export const resend: Ability = {
+const resend: Ability = {
 	name: 'Resend',
 	icon: 'simple-icons:resend',
 	category: AbilityCategory.Infrastructure,
@@ -237,56 +237,56 @@ export const resend: Ability = {
 }
 
 // Growth & Management
-export const seo: Ability = {
+const seo: Ability = {
 	name: 'SEO',
 	icon: 'material-symbols:search',
 	category: AbilityCategory.GrowthManagement,
 	level: AbilityLevel.Advanced
 }
 
-export const aeo: Ability = {
+const aeo: Ability = {
 	name: 'AEO',
 	icon: 'material-symbols:auto-awesome',
 	category: AbilityCategory.GrowthManagement,
 	level: AbilityLevel.Advanced
 }
 
-export const geo: Ability = {
+const geo: Ability = {
 	name: 'GEO',
 	icon: 'material-symbols:public',
 	category: AbilityCategory.GrowthManagement,
 	level: AbilityLevel.Intermediate
 }
 
-export const jsonld: Ability = {
+const jsonld: Ability = {
 	name: 'JSON-LD',
 	icon: 'material-symbols:data-object',
 	category: AbilityCategory.GrowthManagement,
 	level: AbilityLevel.Advanced
 }
 
-export const googleAnalytics: Ability = {
+const googleAnalytics: Ability = {
 	name: 'Google Analytics',
 	icon: 'logos:google-analytics',
 	category: AbilityCategory.GrowthManagement,
 	level: AbilityLevel.Intermediate
 }
 
-export const googleAds: Ability = {
+const googleAds: Ability = {
 	name: 'Google Ads',
 	icon: 'logos:google-ads',
 	category: AbilityCategory.GrowthManagement,
 	level: AbilityLevel.Intermediate
 }
 
-export const wordpress: Ability = {
+const wordpress: Ability = {
 	name: 'WordPress',
 	icon: 'simple-icons:wordpress',
 	category: AbilityCategory.GrowthManagement,
 	level: AbilityLevel.Expert
 }
 
-export const woocommerce: Ability = {
+const woocommerce: Ability = {
 	name: 'WooCommerce',
 	icon: 'simple-icons:woocommerce',
 	category: AbilityCategory.GrowthManagement,
@@ -294,42 +294,42 @@ export const woocommerce: Ability = {
 }
 
 // UI & Animation
-export const radixui: Ability = {
+const radixui: Ability = {
 	name: 'Radix UI',
 	icon: 'simple-icons:radixui',
 	category: AbilityCategory.Frontend,
 	level: AbilityLevel.Advanced
 }
 
-export const framerMotion: Ability = {
+const framerMotion: Ability = {
 	name: 'Framer Motion',
 	icon: 'logos:framer',
 	category: AbilityCategory.Frontend,
 	level: AbilityLevel.Advanced
 }
 
-export const emblaCarousel: Ability = {
+const emblaCarousel: Ability = {
 	name: 'Embla Carousel',
 	icon: 'carbon:carousel-horizontal',
 	category: AbilityCategory.Frontend,
 	level: AbilityLevel.Intermediate
 }
 
-export const lucide: Ability = {
+const lucide: Ability = {
 	name: 'Lucide Icons',
 	icon: 'lucide:box',
 	category: AbilityCategory.Frontend,
 	level: AbilityLevel.Expert
 }
 
-export const heroicons: Ability = {
+const heroicons: Ability = {
 	name: 'Heroicons',
 	icon: 'logos:heroicons',
 	category: AbilityCategory.Frontend,
 	level: AbilityLevel.Expert
 }
 
-export const reactIcons: Ability = {
+const reactIcons: Ability = {
 	name: 'React Icons',
 	icon: 'logos:react',
 	category: AbilityCategory.Frontend,
@@ -337,25 +337,71 @@ export const reactIcons: Ability = {
 }
 
 // Data & Analytics
-export const recharts: Ability = {
+const recharts: Ability = {
 	name: 'Recharts',
 	icon: 'simple-icons:recharts',
 	category: AbilityCategory.Frontend,
 	level: AbilityLevel.Advanced
 }
 
-export const gtm: Ability = {
+const gtm: Ability = {
 	name: 'Google Tag Manager',
 	icon: 'logos:google-tag-manager',
 	category: AbilityCategory.GrowthManagement,
 	level: AbilityLevel.Advanced
 }
 
-export const datefns: Ability = {
+const datefns: Ability = {
 	name: 'date-fns',
 	icon: 'logos:javascript',
 	category: AbilityCategory.Frontend,
 	level: AbilityLevel.Advanced
+}
+
+export const skills = {
+	nextjs,
+	nuxtjs,
+	react,
+	typescript,
+	tailwindcss,
+	shadcnui,
+	css,
+	nodejs,
+	nestjs,
+	nats,
+	python,
+	elysia,
+	sse,
+	bun,
+	postgresql,
+	mongodb,
+	prisma,
+	redis,
+	supabase,
+	vercel,
+	railway,
+	docker,
+	render,
+	github,
+	minio,
+	resend,
+	seo,
+	aeo,
+	geo,
+	jsonld,
+	googleAnalytics,
+	googleAds,
+	wordpress,
+	woocommerce,
+	radixui,
+	framerMotion,
+	emblaCarousel,
+	lucide,
+	heroicons,
+	reactIcons,
+	recharts,
+	gtm,
+	datefns
 }
 
 export const orderedAbilities: Ability[] = [
@@ -400,70 +446,3 @@ export const orderedAbilities: Ability[] = [
 	gtm,
 	datefns
 ]
-
-// --- Dynamic Logic ---
-
-export const getDynamicAbilities = (issuesData: Issue[]): AbilityGroup[] => {
-	const abilityOrderMap = new Map<string, number>()
-	orderedAbilities.forEach((ability, index) => {
-		abilityOrderMap.set(ability.name, index)
-	})
-
-	const allAbilities: Ability[] = []
-	const abilityFrequency = new Map<string, number>()
-
-	// Collect from issues
-	issuesData.forEach(issue => {
-		issue.abilities.forEach(ability => {
-			allAbilities.push(ability)
-			abilityFrequency.set(ability.name, (abilityFrequency.get(ability.name) || 0) + 1)
-		})
-	})
-
-	// Filter unique abilities by name
-	const uniqueAbilitiesMap = new Map<string, Ability>()
-	allAbilities.forEach(ability => {
-		if (!uniqueAbilitiesMap.has(ability.name)) {
-			uniqueAbilitiesMap.set(ability.name, ability)
-		}
-	})
-
-	const uniqueAbilities = Array.from(uniqueAbilitiesMap.values())
-
-	// Group by category
-	const grouped = Object.values(AbilityCategory).map(category => {
-		// Get abilities and sort by manual order first, then frequency
-		const abilitiesInCategory = uniqueAbilities
-			.filter(a => a.category === category)
-			.sort((a, b) => {
-				const orderA = abilityOrderMap.get(a.name) ?? 999
-				const orderB = abilityOrderMap.get(b.name) ?? 999
-
-				if (orderA !== orderB) return orderA - orderB
-
-				const freqA = abilityFrequency.get(a.name) || 0
-				const freqB = abilityFrequency.get(b.name) || 0
-				return freqB - freqA
-			})
-
-		const metadata = categoryMetadata[category]
-
-		// Calculate total frequency for this category to determine group sorting
-		const totalCategoryFrequency = abilitiesInCategory.reduce((sum, a) => sum + (abilityFrequency.get(a.name) || 0), 0)
-
-		// Calculate min order for this category to determine group sorting
-		const minOrder = Math.min(...abilitiesInCategory.map(a => abilityOrderMap.get(a.name) ?? 999))
-
-		return {
-			category,
-			description: metadata.description,
-			icon: metadata.icon,
-			abilities: abilitiesInCategory,
-			totalFrequency: totalCategoryFrequency,
-			minOrder
-		}
-	})
-
-	// Filter out categories with no abilities and sort by minOrder (ascending)
-	return grouped.filter(group => group.abilities.length > 0).sort((a, b) => a.minOrder - b.minOrder)
-}

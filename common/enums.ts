@@ -12,27 +12,27 @@ export enum AbilityLevel {
 	Expert = 'Expert'
 }
 
-export enum AffiliationCategory {
+export enum ExperienceCategory {
 	Work = 'work',
 	Education = 'education',
 	Personal = 'personal'
 }
 
-export enum AffiliationEntityType {
+export enum EntityType {
 	Company = 'Company',
 	University = 'University',
 	Personal = 'Personal'
 }
 
-export enum AffiliationId {
-	// --- Entities (Companies / Institutions) ---
-	EntityJasmineTechnologySolution = 'jasmine-technology-solution',
-	EntityRuamsukPlating = 'ruamsuk-plating',
-	EntityFreelanceBlitzwerk = 'freelance-blitzwerk',
-	EntityPersonalProjects = 'personal-projects',
-	EntityThammasatUniversity = 'thammasat-university',
+export enum EntityId {
+	JasmineTechnologySolution = 'jasmine-technology-solution',
+	RuamsukPlating = 'ruamsuk-plating',
+	FreelanceBlitzwerk = 'freelance-blitzwerk',
+	PersonalProjects = 'personal-projects',
+	ThammasatUniversity = 'thammasat-university'
+}
 
-	// --- Experience Roles (Time-specific) ---
+export enum ExperienceId {
 	JasmineTechnologySolution = 'jasmine-tech',
 	FreelanceBlitzwerk = 'freelance-blitzwerk-role',
 	RuamsukPlatingSoftwareEngineerPartTime = 'ruamsuk-software-engineer-part-time',

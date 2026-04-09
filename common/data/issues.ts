@@ -1,38 +1,7 @@
-import { AffiliationId, IssueId } from '@/common/enums'
+import { EntityId, IssueId } from '@/common/enums'
 import type { Issue } from '@/common/interfaces'
-import {
-	aeo,
-	bun,
-	docker,
-	elysia,
-	framerMotion,
-	geo,
-	github,
-	googleAds,
-	googleAnalytics,
-	jsonld,
-	minio,
-	nextjs,
-	nodejs,
-	nuxtjs,
-	postgresql,
-	prisma,
-	radixui,
-	railway,
-	react,
-	recharts,
-	redis,
-	render,
-	seo,
-	shadcnui,
-	sse,
-	supabase,
-	tailwindcss,
-	typescript,
-	vercel,
-	woocommerce,
-	wordpress
-} from './abilities'
+import { sortByDateDesc } from '@/common/utils'
+import { skills } from './abilities'
 import { assets } from './assets'
 
 export const looklookPet: Issue = {
@@ -44,12 +13,22 @@ export const looklookPet: Issue = {
 		banner: assets.issues.looklookPet.banner,
 		photos: [assets.issues.looklookPet.banner]
 	},
-	abilities: [nextjs, vercel, tailwindcss, shadcnui, googleAds, seo, aeo, geo, jsonld],
+	abilities: [
+		skills.nextjs,
+		skills.vercel,
+		skills.tailwindcss,
+		skills.shadcnui,
+		skills.googleAds,
+		skills.seo,
+		skills.aeo,
+		skills.geo,
+		skills.jsonld
+	],
 	links: {
 		live: 'https://looklook-pet.com'
 	},
 	startDate: '2024-05-01',
-	linkedAffiliationId: AffiliationId.JasmineTechnologySolution
+	linkedAffiliationId: EntityId.JasmineTechnologySolution
 }
 
 export const rsTrophy: Issue = {
@@ -62,29 +41,29 @@ export const rsTrophy: Issue = {
 		photos: [assets.issues.rsTrophy.banner]
 	},
 	abilities: [
-		bun,
-		elysia,
-		nextjs,
-		react,
-		typescript,
-		redis,
-		minio,
-		tailwindcss,
-		shadcnui,
-		docker,
-		vercel,
-		googleAds,
-		googleAnalytics,
-		seo,
-		aeo,
-		geo,
-		jsonld
+		skills.bun,
+		skills.elysia,
+		skills.nextjs,
+		skills.react,
+		skills.typescript,
+		skills.redis,
+		skills.minio,
+		skills.tailwindcss,
+		skills.shadcnui,
+		skills.docker,
+		skills.vercel,
+		skills.googleAds,
+		skills.googleAnalytics,
+		skills.seo,
+		skills.aeo,
+		skills.geo,
+		skills.jsonld
 	],
 	links: {
 		live: 'https://rs-trophy.com'
 	},
 	startDate: '2026-03-01',
-	linkedAffiliationId: AffiliationId.RuamsukPlatingTechnicalAdvisor
+	linkedAffiliationId: EntityId.RuamsukPlating
 }
 
 export const rsTrophyV1: Issue = {
@@ -96,12 +75,12 @@ export const rsTrophyV1: Issue = {
 		banner: assets.issues.rsTrophyV1.banner,
 		photos: [assets.issues.rsTrophyV1.banner]
 	},
-	abilities: [wordpress, woocommerce, seo, googleAnalytics, googleAds],
+	abilities: [skills.wordpress, skills.woocommerce, skills.seo, skills.googleAnalytics, skills.googleAds],
 	links: {
 		live: 'https://rs-trophy.com'
 	},
 	startDate: '2023-01-01',
-	linkedAffiliationId: AffiliationId.RuamsukPlatingSoftwareEngineerPartTime
+	linkedAffiliationId: EntityId.RuamsukPlating
 }
 
 export const onlinePokerGame: Issue = {
@@ -113,10 +92,10 @@ export const onlinePokerGame: Issue = {
 		banner: assets.issues.onlinePokerGame.banner,
 		photos: [...assets.issues.onlinePokerGame.gallery]
 	},
-	abilities: [nextjs, prisma, render, tailwindcss, sse, postgresql],
+	abilities: [skills.nextjs, skills.prisma, skills.render, skills.tailwindcss, skills.sse, skills.postgresql],
 	links: {},
 	startDate: '2025-03-01',
-	linkedAffiliationId: AffiliationId.FreelanceBlitzwerk
+	linkedAffiliationId: EntityId.FreelanceBlitzwerk
 }
 
 export const tencentRailwayMigration: Issue = {
@@ -128,10 +107,10 @@ export const tencentRailwayMigration: Issue = {
 		banner: assets.issues.tencentRailwayMigration.banner,
 		photos: [assets.issues.tencentRailwayMigration.banner]
 	},
-	abilities: [docker, railway, nodejs, github, minio],
+	abilities: [skills.docker, skills.railway, skills.nodejs, skills.github, skills.minio],
 	links: {},
 	startDate: '2025-11-01',
-	linkedAffiliationId: AffiliationId.JasmineTechnologySolution
+	linkedAffiliationId: EntityId.JasmineTechnologySolution
 }
 
 export const prettierConfig: Issue = {
@@ -142,12 +121,12 @@ export const prettierConfig: Issue = {
 		banner: assets.issues.prettierConfig.banner,
 		photos: [assets.issues.prettierConfig.banner]
 	},
-	abilities: [nextjs, vercel, tailwindcss],
+	abilities: [skills.nextjs, skills.vercel, skills.tailwindcss],
 	links: {
 		live: 'https://prettier-config-generator.com/'
 	},
 	startDate: '2025-07-09',
-	linkedAffiliationId: AffiliationId.PersonalProjects
+	linkedAffiliationId: EntityId.PersonalProjects
 }
 
 export const rsMedal: Issue = {
@@ -159,12 +138,12 @@ export const rsMedal: Issue = {
 		banner: assets.issues.rsMedal.banner,
 		photos: [assets.issues.rsMedal.banner]
 	},
-	abilities: [nextjs, vercel, tailwindcss, shadcnui, googleAds],
+	abilities: [skills.nextjs, skills.vercel, skills.tailwindcss, skills.shadcnui, skills.googleAds],
 	links: {
 		live: 'https://www.rs-medal.com'
 	},
 	startDate: '2022-08-01',
-	linkedAffiliationId: AffiliationId.RuamsukPlatingSoftwareEngineerPartTime
+	linkedAffiliationId: EntityId.RuamsukPlating
 }
 
 export const rsAward: Issue = {
@@ -176,12 +155,12 @@ export const rsAward: Issue = {
 		banner: assets.issues.rsAward.banner,
 		photos: [assets.issues.rsAward.banner]
 	},
-	abilities: [nextjs, vercel, tailwindcss, shadcnui, googleAds],
+	abilities: [skills.nextjs, skills.vercel, skills.tailwindcss, skills.shadcnui, skills.googleAds],
 	links: {
 		live: 'https://www.rs-award.com'
 	},
 	startDate: '2022-03-01',
-	linkedAffiliationId: AffiliationId.RuamsukPlatingSoftwareEngineerPartTime
+	linkedAffiliationId: EntityId.RuamsukPlating
 }
 
 export const qrFood: Issue = {
@@ -193,12 +172,12 @@ export const qrFood: Issue = {
 		banner: assets.issues.qrFood.banner,
 		photos: [assets.issues.qrFood.banner]
 	},
-	abilities: [nuxtjs, tailwindcss, prisma, supabase, postgresql, vercel],
+	abilities: [skills.nuxtjs, skills.tailwindcss, skills.prisma, skills.supabase, skills.postgresql, skills.vercel],
 	links: {
 		live: 'https://github.com/NooobtimeX/QR-Food'
 	},
 	startDate: '2023-11-01',
-	linkedAffiliationId: AffiliationId.ThammasatUniversity
+	linkedAffiliationId: EntityId.ThammasatUniversity
 }
 
 export const portfolio: Issue = {
@@ -210,12 +189,23 @@ export const portfolio: Issue = {
 		banner: assets.issues.portfolio.banner,
 		photos: [assets.issues.portfolio.banner]
 	},
-	abilities: [nextjs, tailwindcss, radixui, framerMotion, recharts, typescript, seo, aeo, geo, jsonld],
+	abilities: [
+		skills.nextjs,
+		skills.tailwindcss,
+		skills.radixui,
+		skills.framerMotion,
+		skills.recharts,
+		skills.typescript,
+		skills.seo,
+		skills.aeo,
+		skills.geo,
+		skills.jsonld
+	],
 	links: {
 		live: 'https://github.com/NooobtimeX/NooobtimeX'
 	},
 	startDate: '2021-01-01',
-	linkedAffiliationId: AffiliationId.PersonalProjects
+	linkedAffiliationId: EntityId.PersonalProjects
 }
 
 const issues = [
@@ -231,6 +221,4 @@ const issues = [
 	qrFood
 ]
 
-export const issuesData: Issue[] = issues.sort((a, b) => {
-	return new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
-})
+export const issuesData: Issue[] = issues.sort(sortByDateDesc)

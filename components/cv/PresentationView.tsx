@@ -3,7 +3,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Icon } from '@iconify/react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { AffiliationId, affiliationData, issuesData, personalData } from '@/common'
+import { ExperienceId, affiliationData, issuesData, personalData } from '@/common'
 import { ActSlide } from './page/ActSlide'
 import { ExperienceSlide } from './page/ExperienceSlide'
 import { FoundationalJourneySlide } from './page/FoundationalJourneySlide'
@@ -61,12 +61,12 @@ export default function PresentationView({ onExit }: PresentationViewProps) {
 		render: () => <ActSlide act='Act I' title='The Foundations' sub='University & Early Impact' />
 	})
 
-	const tuExp = affiliationData.find(a => a.id === AffiliationId.ThammasatUniversity)
-	const rsPartTime = affiliationData.find(a => a.id === AffiliationId.RuamsukPlatingSoftwareEngineerPartTime)
+	const tuExp = affiliationData.find(a => a.id === ExperienceId.ThammasatUniversity)
+	const rsPartTime = affiliationData.find(a => a.id === ExperienceId.RuamsukPlatingSoftwareEngineerPartTime)
 
 	if (tuExp && rsPartTime) {
-		const qrProject = issuesData.find(p => p.linkedAffiliationId === tuExp.id)
-		const rsProject = issuesData.find(p => p.linkedAffiliationId === rsPartTime.id)
+		const qrProject = issuesData.find(p => p.linkedAffiliationId === tuExp.affiliation.id)
+		const rsProject = issuesData.find(p => p.linkedAffiliationId === rsPartTime.affiliation.id)
 
 		slides.push({
 			id: SlideId.FoundationalJourney,
@@ -128,9 +128,9 @@ export default function PresentationView({ onExit }: PresentationViewProps) {
 
 	const act2Exps = affiliationData.filter(a =>
 		[
-			AffiliationId.JasmineTechnologySolution,
-			AffiliationId.FreelanceBlitzwerk,
-			AffiliationId.RuamsukPlatingSoftwareEngineerFullTime
+			ExperienceId.JasmineTechnologySolution,
+			ExperienceId.FreelanceBlitzwerk,
+			ExperienceId.RuamsukPlatingSoftwareEngineerFullTime
 		].includes(a.id)
 	)
 	act2Exps.forEach(exp => {
@@ -150,7 +150,7 @@ export default function PresentationView({ onExit }: PresentationViewProps) {
 				/>
 			)
 		})
-		const projects = issuesData.filter(p => p.linkedAffiliationId === exp.id)
+		const projects = issuesData.filter(p => p.linkedAffiliationId === exp.affiliation.id)
 		projects.forEach(project => {
 			slides.push({
 				id: project.id,
@@ -174,7 +174,7 @@ export default function PresentationView({ onExit }: PresentationViewProps) {
 		render: () => <ActSlide act='Act III' title='Strategic Leadership' sub='Technical Advising & Scale' />
 	})
 
-	const act3Exps = affiliationData.filter(a => [AffiliationId.RuamsukPlatingTechnicalAdvisor].includes(a.id))
+	const act3Exps = affiliationData.filter(a => [ExperienceId.RuamsukPlatingTechnicalAdvisor].includes(a.id))
 	act3Exps.forEach(exp => {
 		slides.push({
 			id: exp.id,
@@ -192,7 +192,7 @@ export default function PresentationView({ onExit }: PresentationViewProps) {
 				/>
 			)
 		})
-		const projects = issuesData.filter(p => p.linkedAffiliationId === exp.id)
+		const projects = issuesData.filter(p => p.linkedAffiliationId === exp.affiliation.id)
 		projects.forEach(project => {
 			slides.push({
 				id: project.id,
@@ -217,9 +217,9 @@ export default function PresentationView({ onExit }: PresentationViewProps) {
 		render: () => <ActSlide act='Act IV' title='Technical Innovation' sub='Labs & Open Source Ecosystem' />
 	})
 
-	const personalExp = affiliationData.find(a => a.id === AffiliationId.PersonalProjects)
+	const personalExp = affiliationData.find(a => a.id === ExperienceId.PersonalProjects)
 	if (personalExp) {
-		const projects = issuesData.filter(p => p.linkedAffiliationId === personalExp.id)
+		const projects = issuesData.filter(p => p.linkedAffiliationId === personalExp.affiliation.id)
 		projects.forEach(project => {
 			slides.push({
 				id: project.id,

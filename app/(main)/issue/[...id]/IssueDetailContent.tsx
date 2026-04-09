@@ -24,7 +24,7 @@ const IssueDetailContent: React.FC<IssueDetailContentProps> = ({ id }) => {
 		notFound()
 	}
 
-	const linkedAffiliation = affiliationData.find(a => a.id === issue.linkedAffiliationId)
+	const linkedAffiliation = affiliationData.find(a => a.affiliation.id === issue.linkedAffiliationId)
 
 	const groupedAbilities = issue.abilities.reduce(
 		(acc, ability) => {

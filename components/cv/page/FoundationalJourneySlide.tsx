@@ -1,7 +1,7 @@
 import { Icon } from '@iconify/react'
 import { motion } from 'framer-motion'
 import { SlideId } from '@/components/cv/PresentationView'
-import { AffiliationId, IssueId } from '@/common'
+import { ExperienceId, IssueId } from '@/common'
 import type { AffiliationItem, Issue } from '@/common'
 
 export function FoundationalJourneySlide({
@@ -15,7 +15,7 @@ export function FoundationalJourneySlide({
 	rs: AffiliationItem
 	qrProject?: Issue
 	rsProject?: Issue
-	goToId: (id: SlideId | AffiliationId | IssueId) => void
+	goToId: (id: SlideId | ExperienceId | IssueId) => void
 }) {
 	return (
 		<div className='flex h-full flex-col justify-center gap-4 px-6 py-6 md:gap-8 md:px-16 md:py-10'>

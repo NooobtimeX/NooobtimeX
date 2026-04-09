@@ -20,7 +20,7 @@ const AffiliationCard: React.FC<AffiliationCardProps> = ({ item, index }) => {
 	const isCurrent = isCurrentPosition(item.endDate)
 
 	const projectAbilities = issuesData
-		.filter(issue => issue.linkedAffiliationId === item.id)
+		.filter(issue => issue.linkedAffiliationId === item.affiliation.id)
 		.flatMap(issue => issue.abilities)
 	const uniqueAbilities = Array.from(new Map(projectAbilities.map(a => [a.name, a])).values())
 

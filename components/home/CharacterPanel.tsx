@@ -121,7 +121,7 @@ export default function CharacterPanel() {
 						target='_blank'
 						rel='noopener noreferrer'
 						className='hover:border-primary hover:bg-primary/10 flex items-center gap-3 border-2 border-zinc-800 px-3 py-2 text-zinc-500 transition-all hover:text-white'>
-						<s.icon className='h-4 w-4 shrink-0' />
+						<Icon icon={s.icon} className='h-4 w-4 shrink-0' />
 						<span className='text-[11px] font-black uppercase'>{s.username}</span>
 						<Icon icon='material-symbols:arrow-forward' className='ml-auto h-3 w-3' />
 					</Link>
