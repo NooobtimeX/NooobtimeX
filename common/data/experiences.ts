@@ -1,57 +1,13 @@
+import { EmploymentType, ExperienceCategory, ExperienceId, Position } from '../enums'
+import type { AffiliationItem } from '../interfaces'
+import { sortByDateDesc } from '../utils'
 import {
-	EmploymentType,
-	EntityId,
-	EntityType,
-	ExperienceCategory,
-	ExperienceId,
-	Location,
-	Position
-} from '@/common/enums'
-import type { Affiliation, AffiliationItem } from '@/common/interfaces'
-import { sortByDateDesc } from '@/common/utils'
-import { assets } from './assets'
-
-// --- Entities ---
-
-export const ruamsukPlating: Affiliation = {
-	id: EntityId.RuamsukPlating,
-	name: 'RUAMSUK PLATING LIMITED PARTNERSHIP',
-	logo: assets.logos.rsTrophy,
-	location: Location.PathumthaniThailand,
-	type: EntityType.Company
-}
-
-export const jasmineTechnologySolution: Affiliation = {
-	id: EntityId.JasmineTechnologySolution,
-	name: 'Jasmine Technology Solution',
-	logo: assets.logos.jasmineTech,
-	location: Location.NonthaburiThailand,
-	type: EntityType.Company
-}
-
-export const freelanceWithFriends: Affiliation = {
-	id: EntityId.FreelanceBlitzwerk,
-	name: 'Freelance with friends',
-	logo: assets.logos.blitzwerk,
-	location: Location.Remote,
-	type: EntityType.Company
-}
-
-export const personalProjects: Affiliation = {
-	id: EntityId.PersonalProjects,
-	name: 'Personal Projects',
-	logo: assets.logos.nooobtimex,
-	location: Location.Remote,
-	type: EntityType.Personal
-}
-
-export const thammasatUniversity: Affiliation = {
-	id: EntityId.ThammasatUniversity,
-	name: 'Thammasat University',
-	logo: assets.logos.tuLogo,
-	location: Location.PathumthaniThailand,
-	type: EntityType.University
-}
+	freelanceWithFriends,
+	jasmineTechnologySolution,
+	personalProjects,
+	ruamsukPlating,
+	thammasatUniversity
+} from './entities'
 
 // --- Experiences/Roles ---
 
@@ -149,7 +105,7 @@ const all: AffiliationItem[] = [
 ]
 
 // All affiliations sorted by startDate (newest first)
-export const affiliationData: AffiliationItem[] = [...all].sort(sortByDateDesc)
+export const experiencesData: AffiliationItem[] = [...all].sort(sortByDateDesc)
 
 // Filtered slices by category
 export const workExperienceData: AffiliationItem[] = all
@@ -163,3 +119,6 @@ export const educationData: AffiliationItem[] = all
 export const personalProjectsData: AffiliationItem[] = all
 	.filter(a => a.category === ExperienceCategory.Personal)
 	.sort(sortByDateDesc)
+
+// Backward compatibility aliasing
+export const affiliationData = experiencesData

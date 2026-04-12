@@ -5,10 +5,10 @@ import { Icon } from '@iconify/react'
 import ComicPop from '@/components/motion/ComicPop'
 import { AbilityCard } from '@/components/ui/ability-card'
 import { cn } from '@/lib/utils'
-import { getDynamicAbilities, issuesData } from '@/common'
+import { AbilityCategory, abilitiesData, categoryMetadata, getDynamicAbilities, issuesData } from '@/common'
 
 const AbilityContent: React.FC = () => {
-	const abilitiesData = getDynamicAbilities(issuesData)
+	const dynamicAbilities = getDynamicAbilities(issuesData, categoryMetadata, abilitiesData)
 
 	return (
 		<div className='relative min-h-screen w-full overflow-x-hidden bg-black pt-28 pb-24'>
@@ -41,9 +41,8 @@ const AbilityContent: React.FC = () => {
 					</p>
 				</ComicPop>
 
-				{/* Staggered Grid Layout */}
 				<div className='flex flex-col gap-24'>
-					{abilitiesData.map((abilityGroup, groupIndex) => (
+					{dynamicAbilities.map((abilityGroup, groupIndex) => (
 						<div
 							key={abilityGroup.category}
 							className={cn(
@@ -64,7 +63,7 @@ const AbilityContent: React.FC = () => {
 
 									<div className='mt-8 space-y-4 text-center'>
 										<h2 className='text-4xl leading-none font-black tracking-wide text-white uppercase md:text-5xl'>
-											{abilityGroup.category}
+											{abilityGroup.label}
 										</h2>
 
 										{/* Separation Line */}
@@ -86,8 +85,7 @@ const AbilityContent: React.FC = () => {
 											index={idx}
 											name={ability.name}
 											icon={ability.icon}
-											level={ability.level}
-											category={ability.category}
+											category={ability.category as AbilityCategory}
 											whiteBg={ability.whiteBg}
 										/>
 									))}

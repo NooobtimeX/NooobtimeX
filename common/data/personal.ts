@@ -1,5 +1,5 @@
-import { SocialPlatform } from '@/common/enums'
-import type { PersonalData } from '@/common/interfaces'
+import { SocialPlatform } from '../enums'
+import type { PersonalData } from '../interfaces'
 import { assets } from './assets'
 
 export const personalData: PersonalData = {

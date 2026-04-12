@@ -1,6 +1,9 @@
+/**
+ * Core interfaces and types for the NooobtimeX project.
+ * All domain models and shared data structures are defined here.
+ */
 import {
 	AbilityCategory,
-	AbilityLevel,
 	EmploymentType,
 	EntityId,
 	EntityType,
@@ -14,18 +17,21 @@ import {
 
 // --- Base Interfaces ---
 
+/** Shared icon object using Iconify icons */
 export interface IconObject {
 	name: string
 	icon: string // Icon name for @iconify/react
 	description: string
 }
 
+/** Navigation menu item structure */
 export interface MenuItem {
 	title: string
 	href: string
 	icon: IconObject
 }
 
+/** Social media link configuration */
 export interface SocialLink {
 	platform: SocialPlatform
 	url: string
@@ -35,22 +41,25 @@ export interface SocialLink {
 
 // --- Domain Interfaces ---
 
+/** Individual technical ability or skill */
 export interface Ability {
 	name: string
 	category: AbilityCategory
-	level: AbilityLevel
 	icon: string // Icon name for @iconify/react
 	whiteBg?: boolean
 	important?: boolean
 }
 
+/** Grouped abilities for display by category */
 export interface AbilityGroup {
-	category: string
+	category: AbilityCategory
+	label: string
 	description: string
 	icon: string // Icon name for @iconify/react
 	abilities: Ability[]
 }
 
+/** An organization, university, or entity */
 export interface Affiliation {
 	id: EntityId // concise logical ID for the entity
 	name: string
@@ -60,6 +69,7 @@ export interface Affiliation {
 	url?: string
 }
 
+/** A specific role or experience period at an affiliation */
 export interface AffiliationItem {
 	id: ExperienceId
 	affiliation: Affiliation
@@ -71,6 +81,7 @@ export interface AffiliationItem {
 	endDate?: string
 }
 
+/** A project, milestone, or significant achievement */
 export interface Issue {
 	id: IssueId
 	title: string
@@ -88,6 +99,7 @@ export interface Issue {
 	linkedAffiliationId?: EntityId // ID of the Entity this issue belongs to
 }
 
+/** Global personal information and settings */
 export interface PersonalData {
 	name: string
 	title: string

@@ -2,11 +2,11 @@ import React from 'react'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { slugify } from '@/lib/utils'
-import { orderedAbilities } from '@/common'
+import { abilitiesData } from '@/common'
 import AbilityDetailContent from './AbilityDetailContent'
 
 export function generateStaticParams() {
-	return orderedAbilities.map(ability => ({
+	return abilitiesData.map(ability => ({
 		id: [slugify(ability.name)]
 	}))
 }
@@ -18,7 +18,7 @@ interface PageProps {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
 	const { id } = await params
 	const slug = id[0]
-	const ability = orderedAbilities.find(a => slugify(a.name) === slug)
+	const ability = abilitiesData.find(a => slugify(a.name) === slug)
 
 	if (!ability) return { title: 'Ability Not Found' }
 
@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function AbilityDetailPage({ params }: PageProps) {
 	const { id } = await params
 	const slug = id[0]
-	const ability = orderedAbilities.find(a => slugify(a.name) === slug)
+	const ability = abilitiesData.find(a => slugify(a.name) === slug)
 
 	if (!ability) {
 		notFound()

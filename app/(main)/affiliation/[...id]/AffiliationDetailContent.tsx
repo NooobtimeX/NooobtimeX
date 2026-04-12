@@ -10,14 +10,14 @@ import AffiliationCard from '@/components/affiliation/AffiliationCard'
 import IssueCard from '@/components/issue/IssueCard'
 import ComicPop from '@/components/motion/ComicPop'
 import { formatAffiliationDuration } from '@/lib/utils'
-import { affiliationData, issuesData } from '@/common'
+import { categoryMetadata, experiencesData, issuesData } from '@/common'
 
 interface AffiliationDetailContentProps {
 	id: string
 }
 
 const AffiliationDetailContent: React.FC<AffiliationDetailContentProps> = ({ id }) => {
-	const affiliationItem = affiliationData.find(a => a.id === id)
+	const affiliationItem = experiencesData.find(a => a.id === id)
 
 	if (!affiliationItem) {
 		notFound()
@@ -32,9 +32,10 @@ const AffiliationDetailContent: React.FC<AffiliationDetailContentProps> = ({ id 
 
 	const groupedAbilities = uniqueAbilities.reduce(
 		(acc, ability) => {
-			const category = ability.category || 'Other'
-			if (!acc[category]) acc[category] = []
-			acc[category].push(ability)
+			const categoryId = ability.category
+			const categoryLabel = categoryMetadata[categoryId]?.label || categoryId || 'Other'
+			if (!acc[categoryLabel]) acc[categoryLabel] = []
+			acc[categoryLabel].push(ability)
 			return acc
 		},
 		{} as Record<string, typeof uniqueAbilities>
@@ -217,7 +218,7 @@ const AffiliationDetailContent: React.FC<AffiliationDetailContentProps> = ({ id 
 					</ComicPop>
 
 					<div className='mb-16 grid gap-8 text-left md:grid-cols-2 lg:grid-cols-3'>
-						{affiliationData
+						{experiencesData
 							.filter(a => a.id !== affiliationItem.id)
 							.slice(0, 3)
 							.map((relatedItem, index) => (

@@ -1,7 +1,7 @@
-import { EntityId, IssueId } from '@/common/enums'
-import type { Issue } from '@/common/interfaces'
-import { sortByDateDesc } from '@/common/utils'
-import { skills } from './abilities'
+import { EntityId, IssueId } from '../enums'
+import type { Issue } from '../interfaces'
+import { sortByDateDesc } from '../utils'
+import { abilitiesMap } from './abilities'
 import { assets } from './assets'
 
 export const looklookPet: Issue = {
@@ -14,15 +14,15 @@ export const looklookPet: Issue = {
 		photos: [assets.issues.looklookPet.banner]
 	},
 	abilities: [
-		skills.nextjs,
-		skills.vercel,
-		skills.tailwindcss,
-		skills.shadcnui,
-		skills.googleAds,
-		skills.seo,
-		skills.aeo,
-		skills.geo,
-		skills.jsonld
+		abilitiesMap.nextjs,
+		abilitiesMap.vercel,
+		abilitiesMap.tailwindcss,
+		abilitiesMap.shadcnui,
+		abilitiesMap.googleAds,
+		abilitiesMap.seo,
+		abilitiesMap.aeo,
+		abilitiesMap.geo,
+		abilitiesMap.jsonld
 	],
 	links: {
 		live: 'https://looklook-pet.com'
@@ -41,23 +41,23 @@ export const rsTrophy: Issue = {
 		photos: [assets.issues.rsTrophy.banner]
 	},
 	abilities: [
-		skills.bun,
-		skills.elysia,
-		skills.nextjs,
-		skills.react,
-		skills.typescript,
-		skills.redis,
-		skills.minio,
-		skills.tailwindcss,
-		skills.shadcnui,
-		skills.docker,
-		skills.vercel,
-		skills.googleAds,
-		skills.googleAnalytics,
-		skills.seo,
-		skills.aeo,
-		skills.geo,
-		skills.jsonld
+		abilitiesMap.bun,
+		abilitiesMap.elysia,
+		abilitiesMap.nextjs,
+		abilitiesMap.react,
+		abilitiesMap.typescript,
+		abilitiesMap.redis,
+		abilitiesMap.minio,
+		abilitiesMap.tailwindcss,
+		abilitiesMap.shadcnui,
+		abilitiesMap.docker,
+		abilitiesMap.vercel,
+		abilitiesMap.googleAds,
+		abilitiesMap.googleAnalytics,
+		abilitiesMap.seo,
+		abilitiesMap.aeo,
+		abilitiesMap.geo,
+		abilitiesMap.jsonld
 	],
 	links: {
 		live: 'https://rs-trophy.com'
@@ -75,7 +75,13 @@ export const rsTrophyV1: Issue = {
 		banner: assets.issues.rsTrophyV1.banner,
 		photos: [assets.issues.rsTrophyV1.banner]
 	},
-	abilities: [skills.wordpress, skills.woocommerce, skills.seo, skills.googleAnalytics, skills.googleAds],
+	abilities: [
+		abilitiesMap.wordpress,
+		abilitiesMap.woocommerce,
+		abilitiesMap.seo,
+		abilitiesMap.googleAnalytics,
+		abilitiesMap.googleAds
+	],
 	links: {
 		live: 'https://rs-trophy.com'
 	},
@@ -92,7 +98,14 @@ export const onlinePokerGame: Issue = {
 		banner: assets.issues.onlinePokerGame.banner,
 		photos: [...assets.issues.onlinePokerGame.gallery]
 	},
-	abilities: [skills.nextjs, skills.prisma, skills.render, skills.tailwindcss, skills.sse, skills.postgresql],
+	abilities: [
+		abilitiesMap.nextjs,
+		abilitiesMap.prisma,
+		abilitiesMap.render,
+		abilitiesMap.tailwindcss,
+		abilitiesMap.sse,
+		abilitiesMap.postgresql
+	],
 	links: {},
 	startDate: '2025-03-01',
 	linkedAffiliationId: EntityId.FreelanceBlitzwerk
@@ -107,7 +120,7 @@ export const tencentRailwayMigration: Issue = {
 		banner: assets.issues.tencentRailwayMigration.banner,
 		photos: [assets.issues.tencentRailwayMigration.banner]
 	},
-	abilities: [skills.docker, skills.railway, skills.nodejs, skills.github, skills.minio],
+	abilities: [abilitiesMap.docker, abilitiesMap.railway, abilitiesMap.nodejs, abilitiesMap.github, abilitiesMap.minio],
 	links: {},
 	startDate: '2025-11-01',
 	linkedAffiliationId: EntityId.JasmineTechnologySolution
@@ -121,7 +134,7 @@ export const prettierConfig: Issue = {
 		banner: assets.issues.prettierConfig.banner,
 		photos: [assets.issues.prettierConfig.banner]
 	},
-	abilities: [skills.nextjs, skills.vercel, skills.tailwindcss],
+	abilities: [abilitiesMap.nextjs, abilitiesMap.vercel, abilitiesMap.tailwindcss],
 	links: {
 		live: 'https://prettier-config-generator.com/'
 	},
@@ -138,7 +151,13 @@ export const rsMedal: Issue = {
 		banner: assets.issues.rsMedal.banner,
 		photos: [assets.issues.rsMedal.banner]
 	},
-	abilities: [skills.nextjs, skills.vercel, skills.tailwindcss, skills.shadcnui, skills.googleAds],
+	abilities: [
+		abilitiesMap.nextjs,
+		abilitiesMap.vercel,
+		abilitiesMap.tailwindcss,
+		abilitiesMap.shadcnui,
+		abilitiesMap.googleAds
+	],
 	links: {
 		live: 'https://www.rs-medal.com'
 	},
@@ -155,7 +174,13 @@ export const rsAward: Issue = {
 		banner: assets.issues.rsAward.banner,
 		photos: [assets.issues.rsAward.banner]
 	},
-	abilities: [skills.nextjs, skills.vercel, skills.tailwindcss, skills.shadcnui, skills.googleAds],
+	abilities: [
+		abilitiesMap.nextjs,
+		abilitiesMap.vercel,
+		abilitiesMap.tailwindcss,
+		abilitiesMap.shadcnui,
+		abilitiesMap.googleAds
+	],
 	links: {
 		live: 'https://www.rs-award.com'
 	},
@@ -172,7 +197,14 @@ export const qrFood: Issue = {
 		banner: assets.issues.qrFood.banner,
 		photos: [assets.issues.qrFood.banner]
 	},
-	abilities: [skills.nuxtjs, skills.tailwindcss, skills.prisma, skills.supabase, skills.postgresql, skills.vercel],
+	abilities: [
+		abilitiesMap.nuxtjs,
+		abilitiesMap.tailwindcss,
+		abilitiesMap.prisma,
+		abilitiesMap.supabase,
+		abilitiesMap.postgresql,
+		abilitiesMap.vercel
+	],
 	links: {
 		live: 'https://github.com/NooobtimeX/QR-Food'
 	},
@@ -190,16 +222,16 @@ export const portfolio: Issue = {
 		photos: [assets.issues.portfolio.banner]
 	},
 	abilities: [
-		skills.nextjs,
-		skills.tailwindcss,
-		skills.radixui,
-		skills.framerMotion,
-		skills.recharts,
-		skills.typescript,
-		skills.seo,
-		skills.aeo,
-		skills.geo,
-		skills.jsonld
+		abilitiesMap.nextjs,
+		abilitiesMap.tailwindcss,
+		abilitiesMap.radixui,
+		abilitiesMap.framerMotion,
+		abilitiesMap.recharts,
+		abilitiesMap.typescript,
+		abilitiesMap.seo,
+		abilitiesMap.aeo,
+		abilitiesMap.geo,
+		abilitiesMap.jsonld
 	],
 	links: {
 		live: 'https://github.com/NooobtimeX/NooobtimeX'

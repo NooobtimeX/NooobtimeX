@@ -11,7 +11,7 @@ import ImageGallery from '@/components/issue/ImageGallery'
 import IssueCard from '@/components/issue/IssueCard'
 import ComicPop from '@/components/motion/ComicPop'
 import { cn } from '@/lib/utils'
-import { affiliationData, issuesData } from '@/common'
+import { categoryMetadata, experiencesData, issuesData } from '@/common'
 
 interface IssueDetailContentProps {
 	id: string
@@ -24,13 +24,14 @@ const IssueDetailContent: React.FC<IssueDetailContentProps> = ({ id }) => {
 		notFound()
 	}
 
-	const linkedAffiliation = affiliationData.find(a => a.affiliation.id === issue.linkedAffiliationId)
+	const linkedAffiliation = experiencesData.find(a => a.affiliation.id === issue.linkedAffiliationId)
 
 	const groupedAbilities = issue.abilities.reduce(
 		(acc, ability) => {
-			const category = ability.category || 'Other'
-			if (!acc[category]) acc[category] = []
-			acc[category].push(ability)
+			const categoryId = ability.category
+			const categoryLabel = categoryMetadata[categoryId]?.label || categoryId || 'Other'
+			if (!acc[categoryLabel]) acc[categoryLabel] = []
+			acc[categoryLabel].push(ability)
 			return acc
 		},
 		{} as Record<string, typeof issue.abilities>

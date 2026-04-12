@@ -5,9 +5,16 @@ import Link from 'next/link'
 import { Icon } from '@iconify/react'
 import { motion } from 'framer-motion'
 import { formatAffiliationDuration } from '@/lib/utils'
-import { getDynamicAbilities, issuesData, personalData, workExperienceData } from '@/common'
+import {
+	abilitiesData,
+	categoryMetadata,
+	getDynamicAbilities,
+	issuesData,
+	personalData,
+	workExperienceData
+} from '@/common'
 
-const totalTech = getDynamicAbilities(issuesData).flatMap(g => g.abilities).length
+const totalTech = getDynamicAbilities(issuesData, categoryMetadata, abilitiesData).flatMap(g => g.abilities).length
 const yearsActive = new Date().getFullYear() - 2021
 
 // ── STAT BOX ──────────────────────────────────────────────────────

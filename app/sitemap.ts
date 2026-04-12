@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next'
-import { affiliationData, issuesData } from '@/common'
+import { experiencesData, issuesData } from '@/common'
 
 const domain = 'https://nooobtimex.me'
 
@@ -31,7 +31,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		}
 	]
 
-	const affiliationRoutes: MetadataRoute.Sitemap = affiliationData.map(item => ({
+	const affiliationRoutes: MetadataRoute.Sitemap = experiencesData.map(item => ({
 		url: `${domain}/affiliation/${item.id}`,
 		lastModified: new Date(),
 		changeFrequency: 'monthly',

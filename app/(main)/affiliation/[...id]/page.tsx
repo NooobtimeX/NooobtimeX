@@ -1,6 +1,6 @@
 import React from 'react'
 import { Metadata } from 'next'
-import { affiliationData } from '@/common'
+import { experiencesData } from '@/common'
 import AffiliationDetailContent from './AffiliationDetailContent'
 
 interface AffiliationDetailPageProps {
@@ -10,7 +10,7 @@ interface AffiliationDetailPageProps {
 }
 
 export async function generateStaticParams() {
-	return affiliationData.map(post => ({
+	return experiencesData.map(post => ({
 		id: [post.id]
 	}))
 }
@@ -18,7 +18,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: AffiliationDetailPageProps): Promise<Metadata> {
 	const resolvedParams = await params
 	const id = resolvedParams.id?.[0]
-	const affiliationItem = affiliationData.find(a => a.id === id)
+	const affiliationItem = experiencesData.find(a => a.id === id)
 
 	if (!affiliationItem) {
 		return {

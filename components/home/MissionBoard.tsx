@@ -7,9 +7,9 @@ import Link from 'next/link'
 import { Icon } from '@iconify/react'
 import { motion } from 'framer-motion'
 import { formatAffiliationDuration } from '@/lib/utils'
-import { getDynamicAbilities, issuesData, workExperienceData } from '@/common'
+import { abilitiesData, categoryMetadata, getDynamicAbilities, issuesData, workExperienceData } from '@/common'
 
-const abilityGroups = getDynamicAbilities(issuesData)
+const abilityGroups = getDynamicAbilities(issuesData, categoryMetadata, abilitiesData)
 
 // ── ACTIVE OPS (work experience timeline) ──────────────────────────
 function ActiveOps() {
@@ -134,7 +134,7 @@ function SkillLoadout() {
 								'border-white bg-white text-black'
 							:	'border-zinc-700 bg-transparent text-zinc-500 hover:border-zinc-500 hover:text-zinc-300'
 						}`}>
-						{g.category}
+						{g.label}
 					</button>
 				))}
 			</div>
@@ -163,7 +163,7 @@ function SkillLoadout() {
 					<div key={g.category}>
 						<div className='mb-1.5 flex items-center gap-2'>
 							<Icon icon={g.icon} className='text-primary h-3.5 w-3.5' />
-							<span className='text-[9px] font-black tracking-[0.3em] text-zinc-600 uppercase'>{g.category}</span>
+							<span className='text-[9px] font-black tracking-[0.3em] text-zinc-600 uppercase'>{g.label}</span>
 						</div>
 						<div className='flex flex-wrap gap-1'>
 							{g.abilities.map(a => (

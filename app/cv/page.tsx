@@ -10,7 +10,9 @@ import {
 	AbilityCategory,
 	AbilityGroup,
 	EntityId,
+	abilitiesData,
 	affiliationData,
+	categoryMetadata,
 	getDynamicAbilities,
 	issuesData,
 	personalData,
@@ -273,7 +275,7 @@ export default function CVPage() {
 									Core Competencies
 								</h2>
 								<div className='grid grid-cols-2 gap-x-6 gap-y-6'>
-									{getDynamicAbilities(issuesData)
+									{getDynamicAbilities(issuesData, categoryMetadata, abilitiesData)
 										.filter((g: AbilityGroup) => ['Frontend', 'Backend', 'Infrastructure'].includes(g.category))
 										.map((group: AbilityGroup) => {
 											const coreAbilities = group.abilities.filter(a => a.important)

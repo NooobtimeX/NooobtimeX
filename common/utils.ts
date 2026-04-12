@@ -1,11 +1,15 @@
-import { categoryMetadata, orderedAbilities } from './data/abilities'
 import { AbilityCategory } from './enums'
 import type { Ability, AbilityGroup, Issue } from './interfaces'
 
 /**
  * Group and sort abilities dynamically based on their usage in issues.
+ * This is a pure function that requires category metadata and base ability order.
  */
-export const getDynamicAbilities = (issuesData: Issue[]): AbilityGroup[] => {
+export const getDynamicAbilities = (
+	issuesData: Issue[],
+	categoryMetadata: Record<string, { label?: string; icon: string; description: string }>,
+	orderedAbilities: Ability[]
+): AbilityGroup[] => {
 	const abilityOrderMap = new Map<string, number>()
 	orderedAbilities.forEach((ability, index) => {
 		abilityOrderMap.set(ability.name, index)
@@ -32,8 +36,8 @@ export const getDynamicAbilities = (issuesData: Issue[]): AbilityGroup[] => {
 
 	const uniqueAbilities = Array.from(uniqueAbilitiesMap.values())
 
-	// Group by category
-	const grouped = Object.values(AbilityCategory).map(category => {
+	// Group by category using the keys from categoryMetadata (stable source of truth)
+	const grouped = Object.keys(categoryMetadata).map(category => {
 		const abilitiesInCategory = uniqueAbilities
 			.filter(a => a.category === category)
 			.sort((a, b) => {
@@ -48,10 +52,14 @@ export const getDynamicAbilities = (issuesData: Issue[]): AbilityGroup[] => {
 
 		const metadata = categoryMetadata[category]
 		const totalCategoryFrequency = abilitiesInCategory.reduce((sum, a) => sum + (abilityFrequency.get(a.name) || 0), 0)
-		const minOrder = Math.min(...abilitiesInCategory.map(a => abilityOrderMap.get(a.name) ?? 999))
+		const minOrder =
+			abilitiesInCategory.length > 0 ?
+				Math.min(...abilitiesInCategory.map(a => abilityOrderMap.get(a.name) ?? 999))
+			:	999
 
 		return {
-			category,
+			category: category as AbilityCategory,
+			label: metadata.label || category,
 			description: metadata.description,
 			icon: metadata.icon,
 			abilities: abilitiesInCategory,
@@ -69,8 +77,12 @@ export const getDynamicAbilities = (issuesData: Issue[]): AbilityGroup[] => {
 	)
 }
 
+interface HasStartDate {
+	startDate: string
+}
+
 /**
  * Standard desc date sorting for items with a startDate property.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const sortByDateDesc = (a: any, b: any) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
+export const sortByDateDesc = (a: HasStartDate, b: HasStartDate) =>
+	new Date(b.startDate).getTime() - new Date(a.startDate).getTime()

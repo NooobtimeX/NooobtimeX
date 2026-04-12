@@ -1,15 +1,8 @@
 export enum AbilityCategory {
-	Frontend = 'Frontend',
-	Backend = 'Backend',
-	Infrastructure = 'Infrastructure',
-	GrowthManagement = 'Growth & Management'
-}
-
-export enum AbilityLevel {
-	Beginner = 'Beginner',
-	Intermediate = 'Intermediate',
-	Advanced = 'Advanced',
-	Expert = 'Expert'
+	Frontend = 'frontend',
+	Backend = 'backend',
+	Infrastructure = 'infrastructure',
+	GrowthManagement = 'growth-management'
 }
 
 export enum ExperienceCategory {
@@ -19,9 +12,9 @@ export enum ExperienceCategory {
 }
 
 export enum EntityType {
-	Company = 'Company',
-	University = 'University',
-	Personal = 'Personal'
+	Company = 'company',
+	University = 'university',
+	Personal = 'personal'
 }
 
 export enum EntityId {
@@ -64,28 +57,28 @@ export enum IssueId {
 }
 
 export enum Location {
-	Remote = 'Remote',
-	BangkokThailand = 'Bangkok, Thailand',
-	NonthaburiThailand = 'Nonthaburi, Thailand',
-	PathumthaniThailand = 'Pathumthani, Thailand'
+	Remote = 'remote',
+	BangkokThailand = 'bangkok-thailand',
+	NonthaburiThailand = 'nonthaburi-thailand',
+	PathumthaniThailand = 'pathumthani-thailand'
 }
 
 export enum Position {
-	FullStackDeveloper = 'Full Stack Developer',
-	SoftwareEngineer = 'Software Engineer',
-	Developer = 'Developer',
-	Advisor = 'Advisor',
-	TechnicalAdvisor = 'Technical Advisor',
-	CollegeStudent = 'College Student'
+	FullStackDeveloper = 'full-stack-developer',
+	SoftwareEngineer = 'software-engineer',
+	Developer = 'developer',
+	Advisor = 'advisor',
+	TechnicalAdvisor = 'technical-advisor',
+	CollegeStudent = 'college-student'
 }
 
 export enum SocialPlatform {
-	GitHub = 'GitHub',
-	LinkedIn = 'LinkedIn',
-	Twitter = 'Twitter',
-	Instagram = 'Instagram',
-	Discord = 'Discord',
-	YouTube = 'YouTube',
-	Website = 'Website',
-	Email = 'Email'
+	GitHub = 'github',
+	LinkedIn = 'linkedin',
+	Twitter = 'twitter',
+	Instagram = 'instagram',
+	Discord = 'discord',
+	YouTube = 'youtube',
+	Website = 'website',
+	Email = 'email'
 }

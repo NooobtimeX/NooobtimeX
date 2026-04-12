@@ -71,7 +71,6 @@ export default function AbilityDetailContent({ ability }: AbilityDetailContentPr
 
 							<div className='mb-8 flex flex-wrap gap-3'>
 								<div className='silk-tag-primary font-black uppercase'>{ability.category}</div>
-								<div className='silk-tag-white'>LEVEL: {ability.level}</div>
 							</div>
 
 							<div className='space-y-4'>
