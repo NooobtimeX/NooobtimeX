@@ -35,7 +35,7 @@ export default function NavigationHeaderMobile({ menuItems }: NavigationHeaderMo
 				<Link href={'/' as Route}>
 					<div className='silk-item-mini flex cursor-pointer'>
 						<Image
-							src={assets.personal.favicon}
+							src={assets.personal.logo}
 							alt='NooobtimeX'
 							className='rounded-full border border-white'
 							width={24}

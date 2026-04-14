@@ -27,7 +27,7 @@ export default function NavigationHeaderDesktop({ menuItems }: NavigationHeaderD
 					<Link href='/' className='relative z-10'>
 						<div className='relative h-10 w-10 overflow-hidden rounded-full border-2 border-white shadow-[0_0_10px_rgba(255,50,50,0.5)] transition-all group-hover/logo:shadow-[0_0_20px_rgba(255,50,50,0.8)]'>
 							<Image
-								src={assets.personal.favicon}
+								src={assets.personal.logo}
 								alt='Portfolio Logo'
 								className='object-cover'
 								width={40}

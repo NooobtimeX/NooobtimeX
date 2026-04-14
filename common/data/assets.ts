@@ -5,16 +5,17 @@
 
 export const assets = {
 	personal: {
-		avatar: '/profile/NooobtimeX.webp',
+		avatar: '/logo/logo.jpg',
 		ogImage: '/og-image.jpg',
 		favicon: '/favicon.ico',
+		logo: '/logo/logo.jpg',
 		appleTouch: '/apple-touch-icon.png'
 	},
 	logos: {
 		rsTrophy: '/logo/RSTROPHY.png',
 		jasmineTech: '/logo/JTS.png',
 		blitzwerk: '/logo/blitzwerk.png',
-		nooobtimex: '/profile/NooobtimeX.webp',
+		nooobtimex: '/logo/logo.jpg',
 		qrFood: '/logo/qr-food.png',
 		tuLogo: '/logo/tu-logo.jpg'
 	},
