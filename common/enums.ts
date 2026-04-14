@@ -30,7 +30,7 @@ export enum ExperienceId {
 	FreelanceBlitzwerk = 'freelance-blitzwerk-role',
 	RuamsukPlatingSoftwareEngineerPartTime = 'ruamsuk-software-engineer-part-time',
 	RuamsukPlatingSoftwareEngineerFullTime = 'ruamsuk-software-engineer-full-time',
-	RuamsukPlatingTechnicalAdvisor = 'ruamsuk-technical-advisor',
+	RuamsukPlatingSoftwareEngineerFullTime2 = 'ruamsuk-software-engineer-full-time-2',
 	PersonalProjects = 'personal-projects-role',
 	ThammasatUniversity = 'thammasat-university-role'
 }

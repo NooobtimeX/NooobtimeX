@@ -59,15 +59,15 @@ export const ruamsukPlatingSoftwareEngineerFullTime: AffiliationItem = {
 	endDate: '2025-07-15'
 }
 
-export const ruamsukPlatingTechnicalAdvisor: AffiliationItem = {
-	id: ExperienceId.RuamsukPlatingTechnicalAdvisor,
+export const ruamsukPlatingSoftwareEngineerFullTime2: AffiliationItem = {
+	id: ExperienceId.RuamsukPlatingSoftwareEngineerFullTime2,
 	affiliation: ruamsukPlating,
-	position: Position.TechnicalAdvisor,
+	position: Position.SoftwareEngineer,
 	description:
-		'Strategic Advisory & Engineering Lead: Providing high-level technical guidance and architectural oversight for the RS TROPHY ecosystem. Taking end-to-end ownership of the technical strategy, infrastructure scaling, and long-term technology roadmaps as the sole technical architect for the organization.',
-	type: EmploymentType.Contract,
+		'Full Stack & SEO: Drove full-stack web application development while integrating targeted SEO and online marketing strategies. Digital Transformation: Led digital organizational transformation, modernizing legacy workflows to increase operational efficiency.',
+	type: EmploymentType.FullTime,
 	category: ExperienceCategory.Work,
-	startDate: '2026-01-01'
+	startDate: '2026-06-01'
 }
 
 export const personalProjectsAffiliation: AffiliationItem = {
@@ -99,7 +99,7 @@ const all: AffiliationItem[] = [
 	jasmineTechnologySolutionAffiliation,
 	ruamsukPlatingSoftwareEngineerPartTime,
 	ruamsukPlatingSoftwareEngineerFullTime,
-	ruamsukPlatingTechnicalAdvisor,
+	ruamsukPlatingSoftwareEngineerFullTime2,
 	personalProjectsAffiliation,
 	thammasatUniversityAffiliation
 ]
