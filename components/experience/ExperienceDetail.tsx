@@ -6,8 +6,8 @@ import CyberTag from '@/components/cyber/CyberTag'
 import MotionReveal from '@/components/cyber/MotionReveal'
 import NeonPanel from '@/components/cyber/NeonPanel'
 import ProjectCard from '@/components/projects/ProjectCard'
-import { formatExperienceDuration, isCurrentPosition } from '@/lib/utils'
-import { type ExperienceItem, projectsData } from '@/common'
+import { cn, formatExperienceDuration } from '@/lib/utils'
+import { ExperienceCategory, type ExperienceItem, experiencesData, projectsData } from '@/common'
 
 interface ExperienceDetailProps {
 	item: ExperienceItem
@@ -19,8 +19,18 @@ const humanize = (value: string) =>
 		.map(w => w.charAt(0).toUpperCase() + w.slice(1))
 		.join(' ')
 
+const categoryAccent: Record<ExperienceCategory, string> = {
+	[ExperienceCategory.Work]: 'text-cyber-cyan',
+	[ExperienceCategory.Education]: 'text-cyber-yellow',
+	[ExperienceCategory.Personal]: 'text-cyber-magenta'
+}
+
 const ExperienceDetail: React.FC<ExperienceDetailProps> = ({ item }) => {
-	const current = isCurrentPosition(item.endDate)
+	// Active-today role (started, not yet ended).
+	const now = new Date()
+	const isNow =
+		experiencesData.find(r => new Date(r.startDate) <= now && (!r.endDate || new Date(r.endDate) >= now))?.id
+		=== item.id
 	const relatedProjects = projectsData.filter(p => p.linkedOrganizationId === item.organization.id)
 
 	return (
@@ -28,10 +38,14 @@ const ExperienceDetail: React.FC<ExperienceDetailProps> = ({ item }) => {
 			<Link
 				href='/experience'
 				className='text-muted-foreground hover:text-cyber-cyan inline-flex items-center gap-2 font-mono text-xs tracking-widest uppercase transition-colors'>
-				<Icon icon='mdi:arrow-left' className='size-4' /> All Experience
+				<Icon icon='mdi:arrow-left' className='size-4' /> Career Trace
 			</Link>
 
-			<NeonPanel className='clip-notch mt-6 flex flex-col gap-5 p-6 sm:flex-row sm:items-center'>
+			<NeonPanel
+				className={cn(
+					'clip-notch mt-6 flex flex-col gap-5 p-6 sm:flex-row sm:items-center',
+					isNow && 'neon-panel-yellow'
+				)}>
 				{item.organization.logo && (
 					<span className='relative size-16 shrink-0 overflow-hidden rounded-sm bg-white/90'>
 						<Image
@@ -44,6 +58,7 @@ const ExperienceDetail: React.FC<ExperienceDetailProps> = ({ item }) => {
 					</span>
 				)}
 				<div className='flex-1'>
+					<span className='text-cyber-cyan font-mono text-xs tracking-[0.3em] uppercase'>// Service Record</span>
 					<h1 className='font-display text-3xl font-bold tracking-wide uppercase md:text-4xl'>
 						{humanize(item.position)}
 					</h1>
@@ -52,9 +67,9 @@ const ExperienceDetail: React.FC<ExperienceDetailProps> = ({ item }) => {
 						{formatExperienceDuration(item.startDate, item.endDate)}
 					</p>
 				</div>
-				{current && (
-					<span className='bg-cyber-yellow self-start px-2 py-0.5 font-mono text-[0.6rem] font-bold tracking-widest text-black uppercase'>
-						Active
+				{isNow && (
+					<span className='bg-cyber-yellow now-pulse self-start px-2 py-0.5 font-mono text-[0.6rem] font-bold tracking-widest text-black uppercase'>
+						Now
 					</span>
 				)}
 			</NeonPanel>
@@ -70,7 +85,9 @@ const ExperienceDetail: React.FC<ExperienceDetailProps> = ({ item }) => {
 			</div>
 
 			<section className='mt-8'>
-				<h2 className='text-cyber-cyan font-mono text-xs tracking-[0.3em] uppercase'>// Summary</h2>
+				<h2 className={cn('font-mono text-xs tracking-[0.3em] uppercase', categoryAccent[item.category])}>
+					// Summary
+				</h2>
 				<p className='text-muted-foreground mt-3 leading-relaxed'>{item.description}</p>
 				{item.organization.url && (
 					<a
@@ -86,7 +103,7 @@ const ExperienceDetail: React.FC<ExperienceDetailProps> = ({ item }) => {
 			{relatedProjects.length > 0 && (
 				<section className='mt-10'>
 					<div className='mb-6 flex items-center gap-3'>
-						<h2 className='font-display text-xl font-bold tracking-wide uppercase'>Related Projects</h2>
+						<h2 className='font-display text-xl font-bold tracking-wide uppercase'>Linked Gigs</h2>
 						<span className='bg-border h-px flex-1' />
 						<span className='text-muted-foreground font-mono text-xs'>{relatedProjects.length}</span>
 					</div>

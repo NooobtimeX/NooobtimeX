@@ -31,5 +31,5 @@ export default async function SkillDetailPage({ params }: PageProps) {
 
 	if (!ability) notFound()
 
-	return <SkillDetail ability={ability} />
+	return <SkillDetail skill={ability} />
 }
