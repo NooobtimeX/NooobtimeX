@@ -250,17 +250,20 @@ export const skillById = Object.fromEntries(skillsData.map(s => [s.id, s])) as R
 
 /** Hand-picked core stack, surfaced on the home page + CV. Edit this list to curate. */
 export const featuredSkills: Skill[] = [
+	// frontend
+	typescript,
 	nextjs,
 	react,
-	typescript,
 	tailwindcss,
-	shadcnui,
+	// backend
 	nodejs,
+	nestjs,
 	elysia,
+	bun,
 	mongodb,
 	postgresql,
 	redis,
+	// infrastructure
 	docker,
-	vercel,
-	github
+	vercel
 ]

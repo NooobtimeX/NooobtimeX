@@ -9,10 +9,9 @@ import CyberTag from '@/components/cyber/CyberTag'
 import CyberTooltip from '@/components/cyber/CyberTooltip'
 import GlitchText from '@/components/cyber/GlitchText'
 import MotionReveal from '@/components/cyber/MotionReveal'
-import NeonPanel from '@/components/cyber/NeonPanel'
 import SectionHeader from '@/components/cyber/SectionHeader'
 import ProjectCard from '@/components/projects/ProjectCard'
-import { formatExperienceDuration, slugify } from '@/lib/utils'
+import { cn, formatExperienceDuration } from '@/lib/utils'
 import { featuredProjects, featuredSkills, personalData, workExperienceData } from '@/common'
 
 const formatPosition = (position: string) =>
@@ -29,8 +28,10 @@ const HomeContent: React.FC = () => {
 	const current =
 		workExperienceData.find(r => new Date(r.startDate) <= now && (!r.endDate || new Date(r.endDate) >= now))
 		?? workExperienceData[0]
+	const nowId = current?.id
+	const latestRoles = workExperienceData.slice(0, 3)
 	const featured = featuredProjects
-	const homeSkills = featuredSkills.slice(0, 12)
+	const homeSkills = featuredSkills
 
 	return (
 		<div className='mx-auto max-w-7xl px-4 md:px-6'>
@@ -123,33 +124,65 @@ const HomeContent: React.FC = () => {
 				</div>
 			</section>
 
-			{/* CURRENT OP */}
-			{current && (
-				<MotionReveal>
-					<NeonPanel className='clip-notch flex flex-col gap-4 p-6 md:flex-row md:items-center md:justify-between'>
-						<div>
-							<span className='text-cyber-cyan font-mono text-xs tracking-[0.3em] uppercase'>Current Operation</span>
-							<h3 className='font-display mt-1 text-2xl font-bold tracking-wide'>
-								{formatPosition(current.position)}
-								<span className='text-cyber-yellow'> @ {current.organization.name}</span>
-							</h3>
-							<p className='text-muted-foreground mt-1 font-mono text-xs tracking-wider uppercase'>
-								{formatExperienceDuration(current.startDate, current.endDate)}
-							</p>
-						</div>
+			{/* CAREER */}
+			<section className='mt-20'>
+				<SectionHeader
+					code='01'
+					title='Career'
+					subtitle='Current role and recent history.'
+					action={
 						<Link
-							href={`/experience/${current.id}` as never}
-							className='text-cyber-cyan hover:text-cyber-yellow flex items-center gap-2 font-mono text-xs tracking-widest uppercase transition-colors'>
-							Details <Icon icon='mdi:arrow-right' className='size-4' />
+							href='/experience'
+							className='text-cyber-cyan hover:text-cyber-yellow hidden font-mono text-xs tracking-widest uppercase transition-colors md:block'>
+							All →
 						</Link>
-					</NeonPanel>
-				</MotionReveal>
-			)}
+					}
+				/>
+				<div className='mt-8 space-y-3'>
+					{latestRoles.map((role, i) => (
+						<MotionReveal key={role.id} delay={i * 0.06}>
+							<Link
+								href={`/experience/${role.id}` as never}
+								className='group neon-panel clip-notch-sm hover:border-cyber-yellow/60 flex items-center gap-4 p-4 transition-colors'>
+								{role.organization.logo && (
+									<span className='relative size-11 shrink-0 overflow-hidden rounded-sm bg-white/90'>
+										<Image
+											src={role.organization.logo}
+											alt={role.organization.name}
+											fill
+											sizes='44px'
+											className='object-contain p-1'
+										/>
+									</span>
+								)}
+								<div className='min-w-0 flex-1'>
+									<h3 className='font-display group-hover:text-cyber-yellow text-lg font-bold tracking-wide transition-colors'>
+										{formatPosition(role.position)}
+										<span className='text-cyber-yellow'> @ {role.organization.name}</span>
+									</h3>
+									<p className='text-muted-foreground mt-0.5 font-mono text-xs tracking-wider uppercase'>
+										{formatExperienceDuration(role.startDate, role.endDate)}
+									</p>
+								</div>
+								{role.id === nowId && (
+									<span className='bg-cyber-yellow now-pulse shrink-0 px-2 py-0.5 font-mono text-[0.6rem] font-bold tracking-widest text-black uppercase'>
+										Now
+									</span>
+								)}
+								<Icon
+									icon='mdi:arrow-right'
+									className='text-muted-foreground group-hover:text-cyber-yellow size-5 shrink-0 transition-colors'
+								/>
+							</Link>
+						</MotionReveal>
+					))}
+				</div>
+			</section>
 
 			{/* FEATURED PROJECTS */}
 			<section className='mt-20'>
 				<SectionHeader
-					code='01'
+					code='02'
 					title='Featured Projects'
 					subtitle='Selected builds — full-stack systems shipped end to end.'
 					action={
@@ -169,24 +202,41 @@ const HomeContent: React.FC = () => {
 				</div>
 			</section>
 
-			{/* CORE SKILLS */}
+			{/* CORE STACK */}
 			<section className='mt-20'>
-				<SectionHeader code='02' title='Stack' subtitle='Primary tools in active rotation.' />
-				<div className='mt-8 flex flex-wrap gap-2'>
-					{homeSkills.map(a => (
+				<SectionHeader
+					code='03'
+					title='Stack'
+					subtitle='Core tools in active rotation.'
+					action={
 						<Link
-							key={a.name}
-							href={`/skills/${slugify(a.name)}` as never}
-							className='neon-panel clip-notch-sm hover:border-cyber-yellow/60 flex items-center gap-2 px-3 py-2 transition-colors'>
-							<Icon icon={a.icon} className='size-5' />
-							<span className='text-sm font-semibold'>{a.name}</span>
+							href='/skills'
+							className='text-cyber-cyan hover:text-cyber-yellow hidden font-mono text-xs tracking-widest uppercase transition-colors md:block'>
+							All →
 						</Link>
+					}
+				/>
+				<div className='mt-8 grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7'>
+					{homeSkills.map((s, i) => (
+						<MotionReveal key={s.id} delay={(i % 7) * 0.04}>
+							<Link
+								href={`/skills/${s.id}` as never}
+								className='group neon-panel clip-notch-sm hover:border-cyber-yellow/60 flex aspect-square flex-col items-center justify-center gap-2 p-3 text-center transition-colors'>
+								<span className={cn('flex size-9 items-center justify-center', s.whiteBg && 'rounded-sm bg-white/90')}>
+									<Icon icon={s.icon} className='size-8' />
+								</span>
+								<span className='group-hover:text-cyber-yellow text-[0.7rem] leading-tight font-semibold transition-colors'>
+									{s.name}
+								</span>
+							</Link>
+						</MotionReveal>
 					))}
-				</div>
-				<div className='mt-6'>
-					<CyberButton href='/skills' variant='ghost' size='sm'>
-						View full arsenal <Icon icon='mdi:arrow-right' />
-					</CyberButton>
+					<Link
+						href='/skills'
+						className='border-cyber-cyan/30 text-muted-foreground hover:border-cyber-yellow/60 hover:text-cyber-yellow clip-notch-sm flex aspect-square flex-col items-center justify-center gap-1 border border-dashed text-center transition-colors'>
+						<Icon icon='mdi:dots-horizontal' className='size-6' />
+						<span className='font-mono text-[0.6rem] tracking-widest uppercase'>All</span>
+					</Link>
 				</div>
 			</section>
 		</div>

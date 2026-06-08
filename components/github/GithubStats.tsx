@@ -89,7 +89,7 @@ const GithubStats = async () => {
 	return (
 		<section className='mx-auto mt-20 max-w-7xl px-4 pb-4 md:px-6'>
 			<SectionHeader
-				code='03'
+				code='04'
 				title='GitHub'
 				subtitle='Live contribution activity, refreshed daily.'
 				action={
