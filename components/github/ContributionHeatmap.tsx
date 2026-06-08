@@ -55,57 +55,60 @@ const ContributionHeatmap: React.FC<ContributionHeatmapProps> = ({ contributions
 
 	return (
 		<div className='overflow-x-auto pb-1'>
-			<div className='inline-flex gap-2'>
-				{/* weekday labels */}
-				<div className='text-muted-foreground flex flex-col gap-1 pt-5 font-mono text-[0.55rem]'>
-					{['', 'Mon', '', 'Wed', '', 'Fri', ''].map((d, i) => (
-						<span key={i} className='flex h-3 items-center leading-none'>
-							{d}
-						</span>
-					))}
-				</div>
-
-				<div>
-					{/* month labels */}
-					<div
-						className='text-muted-foreground relative mb-1 h-4 font-mono text-[0.55rem]'
-						style={{ width: gridWidth }}>
-						{monthMarks.map(m => (
-							<span key={`${m.week}-${m.label}`} className='absolute top-0' style={{ left: m.week * STEP }}>
-								{m.label}
+			{/* centers on desktop (when it fits); scrolls left-aligned on mobile */}
+			<div className='mx-auto w-fit'>
+				<div className='flex gap-2'>
+					{/* weekday labels */}
+					<div className='text-muted-foreground flex flex-col gap-1 pt-5 font-mono text-[0.55rem]'>
+						{['', 'Mon', '', 'Wed', '', 'Fri', ''].map((d, i) => (
+							<span key={i} className='flex h-3 items-center leading-none'>
+								{d}
 							</span>
 						))}
 					</div>
 
-					{/* week columns */}
-					<div className='flex gap-1'>
-						{weeks.map((week, wi) => (
-							<div key={wi} className='flex flex-col gap-1'>
-								{Array.from({ length: 7 }).map((_, di) => {
-									const day = week[di]
-									if (!day) return <span key={di} className='size-3' />
-									return (
-										<span
-											key={di}
-											title={`${day.date}: ${day.count} contribution${day.count === 1 ? '' : 's'}`}
-											className='size-3 rounded-[2px]'
-											style={{ backgroundColor: SCALE[day.level] ?? SCALE[0] }}
-										/>
-									)
-								})}
-							</div>
-						))}
+					<div>
+						{/* month labels */}
+						<div
+							className='text-muted-foreground relative mb-1 h-4 font-mono text-[0.55rem]'
+							style={{ width: gridWidth }}>
+							{monthMarks.map(m => (
+								<span key={`${m.week}-${m.label}`} className='absolute top-0' style={{ left: m.week * STEP }}>
+									{m.label}
+								</span>
+							))}
+						</div>
+
+						{/* week columns */}
+						<div className='flex gap-1'>
+							{weeks.map((week, wi) => (
+								<div key={wi} className='flex flex-col gap-1'>
+									{Array.from({ length: 7 }).map((_, di) => {
+										const day = week[di]
+										if (!day) return <span key={di} className='size-3' />
+										return (
+											<span
+												key={di}
+												title={`${day.date}: ${day.count} contribution${day.count === 1 ? '' : 's'}`}
+												className='size-3 rounded-[2px]'
+												style={{ backgroundColor: SCALE[day.level] ?? SCALE[0] }}
+											/>
+										)
+									})}
+								</div>
+							))}
+						</div>
+
+						{/* legend — right-aligned under the grid */}
+						<div className='text-muted-foreground mt-3 flex items-center justify-end gap-1.5 font-mono text-[0.6rem] tracking-wider uppercase'>
+							Less
+							{SCALE.map((c, i) => (
+								<span key={i} className='size-3 rounded-[2px]' style={{ backgroundColor: c }} />
+							))}
+							More
+						</div>
 					</div>
 				</div>
-			</div>
-
-			{/* legend */}
-			<div className='text-muted-foreground mt-3 flex items-center gap-1.5 pl-8 font-mono text-[0.6rem] tracking-wider uppercase'>
-				Less
-				{SCALE.map((c, i) => (
-					<span key={i} className='size-3 rounded-[2px]' style={{ backgroundColor: c }} />
-				))}
-				More
 			</div>
 		</div>
 	)
