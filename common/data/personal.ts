@@ -1,13 +1,11 @@
-import { SocialPlatform } from '../enums'
 import type { PersonalData } from '../interfaces'
-import { assets } from './assets'
 
 export const personalData: PersonalData = {
 	name: 'WONGSAPHAT PUANGSORN',
 	title: 'Software Developer',
 	tagline:
 		'Forward-thinking Software Developer specializing in modern JavaScript/TypeScript ecosystems and high-performance system design.',
-	avatar: assets.personal.avatar,
+	avatar: '/logo/logo.jpg',
 	birthDate: '2003-04-19',
 	about: {
 		bio: 'Enthusiastic and dedicated developer focused on transforming business requirements into clean, sustainable code. I am passionate about mastering modern infrastructure and am seeking a collaborative engineering culture where I can contribute to high-performance systems while learning from senior mentors.',
@@ -25,13 +23,13 @@ export const personalData: PersonalData = {
 	},
 	socialLinks: [
 		{
-			platform: SocialPlatform.GitHub,
+			platform: 'github',
 			url: 'https://github.com/NooobtimeX',
 			icon: 'simple-icons:github',
 			username: 'NooobtimeX'
 		},
 		{
-			platform: SocialPlatform.Website,
+			platform: 'website',
 			url: 'https://nooobtimex.me',
 			icon: 'simple-icons:facebook',
 			username: 'nooobtimex.me'

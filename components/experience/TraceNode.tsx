@@ -17,9 +17,9 @@ const humanize = (value: string) =>
 		.join(' ')
 
 const categoryAccent: Record<ExperienceCategory, string> = {
-	[ExperienceCategory.Work]: 'text-cyber-cyan border-cyber-cyan/55',
-	[ExperienceCategory.Education]: 'text-cyber-yellow border-cyber-yellow/55',
-	[ExperienceCategory.Personal]: 'text-cyber-magenta border-cyber-magenta/55'
+	work: 'text-cyber-cyan border-cyber-cyan/55',
+	education: 'text-cyber-yellow border-cyber-yellow/55',
+	personal: 'text-cyber-magenta border-cyber-magenta/55'
 }
 
 const TraceNode: React.FC<TraceNodeProps> = ({ item, side, isNow }) => {

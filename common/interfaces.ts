@@ -1,35 +1,18 @@
 /**
- * Core interfaces and types for the NooobtimeX project.
- * All domain models and shared data structures are defined here.
+ * Core interfaces for the NooobtimeX project. All domain models live here.
  */
 import {
 	EmploymentType,
 	EntityId,
 	EntityType,
 	ExperienceCategory,
-	ExperienceId,
 	Location,
 	Position,
-	ProjectId,
 	SkillCategory,
 	SocialPlatform
 } from './enums'
 
-// --- Base Interfaces ---
-
-/** Shared icon object using Iconify icons */
-export interface IconObject {
-	name: string
-	icon: string // Icon name for @iconify/react
-	description: string
-}
-
-/** Navigation menu item structure */
-export interface MenuItem {
-	title: string
-	href: string
-	icon: IconObject
-}
+// --- Base ---
 
 /** Social media link configuration */
 export interface SocialLink {
@@ -39,10 +22,11 @@ export interface SocialLink {
 	username?: string
 }
 
-// --- Domain Interfaces ---
+// --- Domain ---
 
-/** Individual technical ability or skill */
+/** A technical skill */
 export interface Skill {
+	id: string // url-safe id, e.g. 'next-js'
 	name: string
 	category: SkillCategory
 	icon: string // Icon name for @iconify/react
@@ -50,18 +34,9 @@ export interface Skill {
 	important?: boolean
 }
 
-/** Grouped skills for display by category */
-export interface SkillGroup {
-	category: SkillCategory
-	label: string
-	description: string
-	icon: string // Icon name for @iconify/react
-	skills: Skill[]
-}
-
 /** An organization, university, or entity */
 export interface Organization {
-	id: EntityId // concise logical ID for the entity
+	id: EntityId
 	name: string
 	logo?: string
 	location: Location
@@ -69,9 +44,9 @@ export interface Organization {
 	url?: string
 }
 
-/** A specific role or experience period at an organization */
+/** A role/experience period at an organization */
 export interface ExperienceItem {
-	id: ExperienceId
+	id: string // url-safe id
 	organization: Organization
 	position: Position
 	description: string
@@ -81,25 +56,25 @@ export interface ExperienceItem {
 	endDate?: string
 }
 
-/** A project, milestone, or significant achievement */
+/** A project / build */
 export interface Project {
-	id: ProjectId
+	id: string // url-safe id
 	title: string
 	description: string
 	images: {
-		banner: string // Used for issue detail page header and card previews
-		photos: string[] // Gallery of issue screenshots/photos
+		banner: string
+		photos: string[]
 	}
 	skills: Skill[]
 	links: {
 		live?: string
 	}
 	startDate: string // YYYY-MM-DD
-	endDate?: string // YYYY-MM-DD or undefined if ongoing/single release
-	linkedOrganizationId?: EntityId // ID of the Entity this issue belongs to
+	endDate?: string // YYYY-MM-DD, or undefined if ongoing
+	linkedOrganizationId?: EntityId
 }
 
-/** Global personal information and settings */
+/** Global personal information */
 export interface PersonalData {
 	name: string
 	title: string

@@ -21,12 +21,7 @@ const humanize = (value: string) =>
 		.map(w => w.charAt(0).toUpperCase() + w.slice(1))
 		.join(' ')
 
-const CATEGORY_ORDER: SkillCategory[] = [
-	SkillCategory.Frontend,
-	SkillCategory.Backend,
-	SkillCategory.Infrastructure,
-	SkillCategory.GrowthManagement
-]
+const CATEGORY_ORDER: SkillCategory[] = ['frontend', 'backend', 'infrastructure', 'growth-management']
 
 export default function CVPage() {
 	const handlePrint = () => window.print()

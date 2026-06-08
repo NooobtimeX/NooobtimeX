@@ -1,53 +1,43 @@
-import { EntityId, EntityType, Location } from '../enums'
 import type { Organization } from '../interfaces'
-import { assets } from './assets'
 
 export const ruamsukPlating: Organization = {
-	id: EntityId.RuamsukPlating,
+	id: 'ruamsuk-plating',
 	name: 'RUAMSUK PLATING LIMITED PARTNERSHIP',
-	logo: assets.logos.rsTrophy,
-	location: Location.PathumthaniThailand,
-	type: EntityType.Company
+	logo: '/logo/RSTROPHY.png',
+	location: 'pathumthani-thailand',
+	type: 'company'
 }
 
 export const jasmineTechnologySolution: Organization = {
-	id: EntityId.JasmineTechnologySolution,
+	id: 'jasmine-technology-solution',
 	name: 'Jasmine Technology Solution',
-	logo: assets.logos.jasmineTech,
-	location: Location.NonthaburiThailand,
-	type: EntityType.Company
+	logo: '/logo/JTS.png',
+	location: 'nonthaburi-thailand',
+	type: 'company'
 }
 
 export const freelanceWithFriends: Organization = {
-	id: EntityId.FreelanceBlitzwerk,
+	id: 'freelance-blitzwerk',
 	name: 'Freelance with friends',
-	logo: assets.logos.blitzwerk,
-	location: Location.Remote,
-	type: EntityType.Company
+	logo: '/logo/blitzwerk.png',
+	location: 'remote',
+	type: 'company'
 }
 
 export const personalProjects: Organization = {
-	id: EntityId.PersonalProjects,
+	id: 'personal-projects',
 	name: 'Personal Projects',
-	logo: assets.logos.nooobtimex,
-	location: Location.Remote,
-	type: EntityType.Personal
+	logo: '/logo/logo.jpg',
+	location: 'remote',
+	type: 'personal'
 }
 
 export const thammasatUniversity: Organization = {
-	id: EntityId.ThammasatUniversity,
+	id: 'thammasat-university',
 	name: 'Thammasat University',
-	logo: assets.logos.tuLogo,
-	location: Location.PathumthaniThailand,
-	type: EntityType.University
-}
-
-export const entitiesMap = {
-	ruamsukPlating,
-	jasmineTechnologySolution,
-	freelanceWithFriends,
-	personalProjects,
-	thammasatUniversity
+	logo: '/logo/tu-logo.jpg',
+	location: 'pathumthani-thailand',
+	type: 'university'
 }
 
 export const entitiesData: Organization[] = [

@@ -92,12 +92,7 @@ const PresentationView: React.FC<PresentationViewProps> = ({ onExit }) => {
 						Core Stack
 					</h2>
 					<div className='mt-6 grid gap-5 sm:grid-cols-2'>
-						{[
-							SkillCategory.Frontend,
-							SkillCategory.Backend,
-							SkillCategory.Infrastructure,
-							SkillCategory.GrowthManagement
-						].map(cat => {
+						{(['frontend', 'backend', 'infrastructure', 'growth-management'] as SkillCategory[]).map(cat => {
 							const items = skillsData.filter(a => a.category === cat && a.important)
 							if (!items.length) return null
 							return (

@@ -5,12 +5,7 @@ import SectionHeader from '@/components/cyber/SectionHeader'
 import SkillNode from '@/components/skills/SkillNode'
 import { SkillCategory, categoryMetadata, skillsData } from '@/common'
 
-const ORDER: SkillCategory[] = [
-	SkillCategory.Frontend,
-	SkillCategory.Backend,
-	SkillCategory.Infrastructure,
-	SkillCategory.GrowthManagement
-]
+const ORDER: SkillCategory[] = ['frontend', 'backend', 'infrastructure', 'growth-management']
 
 const SkillsContent: React.FC = () => {
 	return (
