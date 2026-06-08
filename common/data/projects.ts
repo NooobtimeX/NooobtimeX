@@ -17,16 +17,22 @@ export const looklookPet: Project = {
 		skillsMap.typescript,
 		skillsMap.nextjs,
 		skillsMap.react,
+		skillsMap.reactNative,
 		skillsMap.tailwindcss,
 		skillsMap.radixui,
+		skillsMap.tanstackQuery,
 		skillsMap.nestjs,
 		skillsMap.nodejs,
 		skillsMap.nats,
 		skillsMap.mongodb,
+		skillsMap.mongoose,
 		skillsMap.redis,
+		skillsMap.bullmq,
+		skillsMap.medusa,
 		skillsMap.docker,
 		skillsMap.railway,
 		skillsMap.github,
+		skillsMap.cloudflareR2,
 		skillsMap.seo
 	],
 	links: {
@@ -52,9 +58,11 @@ export const rsTrophy: Project = {
 		skillsMap.react,
 		skillsMap.typescript,
 		skillsMap.mongodb,
+		skillsMap.mongoose,
 		skillsMap.redis,
 		skillsMap.docker,
 		skillsMap.railway,
+		skillsMap.cloudflareR2,
 		skillsMap.tailwindcss,
 		skillsMap.shadcnui,
 		skillsMap.googleAds,
@@ -99,6 +107,8 @@ export const onlinePokerGame: Project = {
 	},
 	skills: [
 		skillsMap.nextjs,
+		skillsMap.react,
+		skillsMap.typescript,
 		skillsMap.prisma,
 		skillsMap.render,
 		skillsMap.tailwindcss,
@@ -112,15 +122,26 @@ export const onlinePokerGame: Project = {
 
 export const prettierConfig: Project = {
 	id: ProjectId.PrettierConfig,
-	title: 'Prettier Config Generator',
-	description: 'Generate your .prettierrc file effortlessly with this interactive Prettier configuration tool.',
+	title: 'Prettier Config',
+	description:
+		'The fastest way to build, share, and try a Prettier configuration — visually, in the browser. Runs the official prettier/standalone fully client-side for instant live formatting, with a CodeMirror 6 editor spanning JS/TS, CSS, HTML, JSON, Markdown, Vue, and more, plus shareable URL-encoded configs and i18n. Built on Next.js, React, TypeScript, and Tailwind CSS v4 with shadcn/ui on Base UI.',
 	images: {
 		banner: assets.issues.prettierConfig.banner,
 		photos: [assets.issues.prettierConfig.banner]
 	},
-	skills: [skillsMap.nextjs, skillsMap.vercel, skillsMap.tailwindcss],
+	skills: [
+		skillsMap.nextjs,
+		skillsMap.react,
+		skillsMap.typescript,
+		skillsMap.tailwindcss,
+		skillsMap.shadcnui,
+		skillsMap.baseui,
+		skillsMap.codemirror,
+		skillsMap.prettier,
+		skillsMap.vercel
+	],
 	links: {
-		live: 'https://prettier-config-generator.com/'
+		live: 'https://prettier-config.dev'
 	},
 	startDate: '2025-07-09',
 	linkedOrganizationId: EntityId.PersonalProjects
@@ -135,7 +156,15 @@ export const rsMedal: Project = {
 		banner: assets.issues.rsMedal.banner,
 		photos: [assets.issues.rsMedal.banner]
 	},
-	skills: [skillsMap.nextjs, skillsMap.vercel, skillsMap.tailwindcss, skillsMap.shadcnui, skillsMap.googleAds],
+	skills: [
+		skillsMap.nextjs,
+		skillsMap.react,
+		skillsMap.typescript,
+		skillsMap.tailwindcss,
+		skillsMap.shadcnui,
+		skillsMap.vercel,
+		skillsMap.googleAds
+	],
 	links: {
 		live: 'https://www.rs-medal.com'
 	},
@@ -152,7 +181,15 @@ export const rsAward: Project = {
 		banner: assets.issues.rsAward.banner,
 		photos: [assets.issues.rsAward.banner]
 	},
-	skills: [skillsMap.nextjs, skillsMap.vercel, skillsMap.tailwindcss, skillsMap.shadcnui, skillsMap.googleAds],
+	skills: [
+		skillsMap.nextjs,
+		skillsMap.react,
+		skillsMap.typescript,
+		skillsMap.tailwindcss,
+		skillsMap.shadcnui,
+		skillsMap.vercel,
+		skillsMap.googleAds
+	],
 	links: {
 		live: 'https://www.rs-award.com'
 	},
@@ -171,6 +208,7 @@ export const qrFood: Project = {
 	},
 	skills: [
 		skillsMap.nuxtjs,
+		skillsMap.typescript,
 		skillsMap.tailwindcss,
 		skillsMap.prisma,
 		skillsMap.supabase,
@@ -199,6 +237,9 @@ export const portfolio: Project = {
 		skillsMap.react,
 		skillsMap.tailwindcss,
 		skillsMap.shadcnui,
+		skillsMap.baseui,
+		skillsMap.emblaCarousel,
+		skillsMap.bun,
 		skillsMap.vercel,
 		skillsMap.seo,
 		skillsMap.aeo,

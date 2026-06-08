@@ -319,6 +319,61 @@ const datefns: Skill = {
 	category: SkillCategory.Frontend
 }
 
+// --- Newly added skills (placeholder icons — TODO: replace with custom image) ---
+const prettier: Skill = {
+	name: 'Prettier',
+	icon: 'logos:prettier', // TODO: custom image
+	category: SkillCategory.Frontend
+}
+
+const codemirror: Skill = {
+	name: 'CodeMirror',
+	icon: 'simple-icons:codemirror', // TODO: custom image
+	category: SkillCategory.Frontend
+}
+
+const baseui: Skill = {
+	name: 'Base UI',
+	icon: 'mdi:cube-outline', // TODO: custom image
+	category: SkillCategory.Frontend
+}
+
+const tanstackQuery: Skill = {
+	name: 'TanStack Query',
+	icon: 'logos:react-query-icon', // TODO: custom image
+	category: SkillCategory.Frontend
+}
+
+const reactNative: Skill = {
+	name: 'React Native',
+	icon: 'tabler:brand-react-native', // TODO: custom image
+	category: SkillCategory.Frontend
+}
+
+const mongoose: Skill = {
+	name: 'Mongoose',
+	icon: 'simple-icons:mongoose', // TODO: custom image
+	category: SkillCategory.Backend
+}
+
+const bullmq: Skill = {
+	name: 'BullMQ',
+	icon: 'mdi:format-list-numbered', // TODO: custom image
+	category: SkillCategory.Backend
+}
+
+const medusa: Skill = {
+	name: 'Medusa',
+	icon: 'simple-icons:medusa', // TODO: custom image
+	category: SkillCategory.Backend
+}
+
+const cloudflareR2: Skill = {
+	name: 'Cloudflare R2',
+	icon: 'simple-icons:cloudflare', // TODO: custom image
+	category: SkillCategory.Infrastructure
+}
+
 export const skillsMap = {
 	nextjs,
 	nuxtjs,
@@ -362,7 +417,16 @@ export const skillsMap = {
 	reactIcons,
 	recharts,
 	gtm,
-	datefns
+	datefns,
+	prettier,
+	codemirror,
+	baseui,
+	tanstackQuery,
+	reactNative,
+	mongoose,
+	bullmq,
+	medusa,
+	cloudflareR2
 }
 
 // Deprecated: Use skillsMap instead. Keeping for backward compatibility during transition.
@@ -408,7 +472,19 @@ export const skillsData: Skill[] = [
 	heroicons,
 	reactIcons,
 	gtm,
-	datefns
+	datefns,
+	aeo,
+	geo,
+	jsonld,
+	prettier,
+	codemirror,
+	baseui,
+	tanstackQuery,
+	reactNative,
+	mongoose,
+	bullmq,
+	medusa,
+	cloudflareR2
 ]
 
 // Deprecated: Use skillsData instead.
