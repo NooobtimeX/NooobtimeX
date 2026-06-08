@@ -99,8 +99,8 @@ const ContributionHeatmap: React.FC<ContributionHeatmapProps> = ({ contributions
 							))}
 						</div>
 
-						{/* legend — right-aligned under the grid */}
-						<div className='text-muted-foreground mt-3 flex items-center justify-end gap-1.5 font-mono text-[0.6rem] tracking-wider uppercase'>
+						{/* legend — centered under the grid */}
+						<div className='text-muted-foreground mt-3 flex items-center justify-center gap-1.5 font-mono text-[0.6rem] tracking-wider uppercase'>
 							Less
 							{SCALE.map((c, i) => (
 								<span key={i} className='size-3 rounded-[2px]' style={{ backgroundColor: c }} />
