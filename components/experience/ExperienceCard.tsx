@@ -21,7 +21,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ item }) => {
 	return (
 		<Link
 			href={`/experience/${item.id}` as never}
-			className='group neon-panel clip-notch hover:border-cyber-yellow/60 flex flex-col gap-3 p-4 transition-colors'>
+			className='group neon-panel clip-notch hover:border-cyber-yellow/60 flex h-full flex-col gap-3 p-4 transition-colors'>
 			<div className='flex items-start gap-3'>
 				{item.affiliation.logo && (
 					<span className='relative size-11 shrink-0 overflow-hidden rounded-sm bg-white/90'>

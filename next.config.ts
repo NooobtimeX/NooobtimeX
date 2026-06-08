@@ -10,13 +10,15 @@ const nextConfig: NextConfig = {
 	},
 	typedRoutes: true,
 	async redirects() {
+		// Only single-segment detail routes are redirected. Deeper paths (e.g.
+		// /issue/<slug>/banner.png) are public image assets and must NOT redirect.
 		return [
 			{ source: '/issue', destination: '/projects', permanent: true },
-			{ source: '/issue/:path*', destination: '/projects/:path*', permanent: true },
+			{ source: '/issue/:id', destination: '/projects/:id', permanent: true },
 			{ source: '/ability', destination: '/skills', permanent: true },
-			{ source: '/ability/:path*', destination: '/skills/:path*', permanent: true },
+			{ source: '/ability/:id', destination: '/skills/:id', permanent: true },
 			{ source: '/affiliation', destination: '/experience', permanent: true },
-			{ source: '/affiliation/:path*', destination: '/experience/:path*', permanent: true }
+			{ source: '/affiliation/:id', destination: '/experience/:id', permanent: true }
 		]
 	},
 	async headers() {

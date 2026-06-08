@@ -16,7 +16,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index = 0 }) => {
 	return (
 		<Link
 			href={`/projects/${project.id}` as never}
-			className='group neon-panel clip-notch hover:border-cyber-yellow/60 relative flex flex-col overflow-hidden transition-colors'>
+			className='group neon-panel clip-notch hover:border-cyber-yellow/60 relative flex h-full flex-col overflow-hidden transition-colors'>
 			{/* Banner */}
 			<div className='border-border/60 relative aspect-[16/9] w-full overflow-hidden border-b'>
 				<Image
