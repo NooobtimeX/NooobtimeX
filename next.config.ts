@@ -13,6 +13,9 @@ const nextConfig: NextConfig = {
 		// Only single-segment detail routes are redirected. Deeper paths (e.g.
 		// /issue/<slug>/banner.png) are public image assets and must NOT redirect.
 		return [
+			// Removed project — folded into LOOKLOOK PET
+			{ source: '/projects/tencent-railway-migration', destination: '/projects', permanent: true },
+			{ source: '/issue/tencent-railway-migration', destination: '/projects', permanent: true },
 			{ source: '/issue', destination: '/projects', permanent: true },
 			{ source: '/issue/:id', destination: '/projects/:id', permanent: true },
 			{ source: '/ability', destination: '/skills', permanent: true },

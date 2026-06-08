@@ -29,7 +29,7 @@ const HomeContent: React.FC = () => {
 		workExperienceData.find(r => new Date(r.startDate) <= now && (!r.endDate || new Date(r.endDate) >= now))
 		?? workExperienceData[0]
 	const featured = projectsData.slice(0, 3)
-	const coreSkills = skillsData.filter(a => a.important).slice(0, 12)
+	const featuredSkills = skillsData.filter(a => a.important).slice(0, 12)
 
 	return (
 		<div className='mx-auto max-w-7xl px-4 md:px-6'>
@@ -165,9 +165,9 @@ const HomeContent: React.FC = () => {
 
 			{/* CORE SKILLS */}
 			<section className='mt-20'>
-				<SectionHeader code='02' title='Core Stack' subtitle='Primary tools in active rotation.' />
+				<SectionHeader code='02' title='Stack' subtitle='Primary tools in active rotation.' />
 				<div className='mt-8 flex flex-wrap gap-2'>
-					{coreSkills.map(a => (
+					{featuredSkills.map(a => (
 						<Link
 							key={a.name}
 							href={`/skills/${slugify(a.name)}` as never}

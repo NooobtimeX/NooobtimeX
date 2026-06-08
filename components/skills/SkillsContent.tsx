@@ -13,14 +13,12 @@ const ORDER: SkillCategory[] = [
 ]
 
 const SkillsContent: React.FC = () => {
-	const coreCount = skillsData.filter(s => s.important).length
-
 	return (
 		<div className='mx-auto max-w-7xl px-4 py-12 md:px-6 md:py-16'>
 			<SectionHeader
 				code='02'
 				title='Skill Tree'
-				subtitle={`${skillsData.length} perks · ${coreCount} core · 4 attribute branches`}
+				subtitle={`${skillsData.length} skills wired across 4 branches by how they connect.`}
 			/>
 
 			{/* Desktop: node graph */}

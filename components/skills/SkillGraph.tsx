@@ -229,10 +229,7 @@ const SkillGraph: React.FC = () => {
 									key={s.name}
 									ref={setNode(s.name)}
 									href={`/skills/${slugify(s.name)}` as never}
-									className={cn(
-										'perk-node clip-notch-sm group bg-background flex items-center gap-2 px-3 py-2',
-										s.important && 'perk-node-core'
-									)}>
+									className='perk-node clip-notch-sm group bg-background flex items-center gap-2 px-3 py-2'>
 									<span
 										className={cn(
 											'flex size-5 shrink-0 items-center justify-center',
@@ -243,9 +240,6 @@ const SkillGraph: React.FC = () => {
 									<span className='group-hover:text-cyber-yellow text-xs font-semibold whitespace-nowrap transition-colors'>
 										{s.name}
 									</span>
-									{s.important && (
-										<span className='text-cyber-yellow ml-0.5 font-mono text-[0.5rem] tracking-widest'>★</span>
-									)}
 								</Link>
 							))}
 						</div>

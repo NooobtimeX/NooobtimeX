@@ -8,7 +8,7 @@ export const looklookPet: Project = {
 	id: ProjectId.LooklookPet,
 	title: 'LOOKLOOK PET',
 	description:
-		'Architected a pet-parent community platform delivering a seamless user experience and integrated reward system. Engineered a robust backend featuring Redis-driven caching to handle complex data queries and reduce API response times.',
+		'Architected a pet-parent community platform delivering a seamless user experience and an integrated reward system, with a robust backend using Redis-driven caching to cut API response times on complex queries. Led the infrastructure migration of 15+ microservices from Tencent Cloud VMs to Railway — reusing a single Dockerfile with environment-specific configs for Production and UAT, wired through GitHub CI/CD. Migrated object storage from Tencent COS to Cloudflare R2 for cheaper, S3-compatible asset delivery.',
 	images: {
 		banner: assets.issues.looklookPet.banner,
 		photos: [assets.issues.looklookPet.banner]
@@ -18,6 +18,10 @@ export const looklookPet: Project = {
 		skillsMap.vercel,
 		skillsMap.tailwindcss,
 		skillsMap.shadcnui,
+		skillsMap.nodejs,
+		skillsMap.docker,
+		skillsMap.railway,
+		skillsMap.github,
 		skillsMap.googleAds,
 		skillsMap.seo,
 		skillsMap.aeo,
@@ -105,21 +109,6 @@ export const onlinePokerGame: Project = {
 	linkedOrganizationId: EntityId.FreelanceBlitzwerk
 }
 
-export const tencentRailwayMigration: Project = {
-	id: ProjectId.TencentRailwayMigration,
-	title: 'Migration from Tencent VM (Prod and UAT split) to Railway',
-	description:
-		'Architected and executed the migration of 15+ microservices from Tencent Cloud VMs to Railway. Optimized deployment workflows by reusing a single Dockerfile with environment-specific configurations for Production and UAT splits. Managed complex environment setups for each service, integrating GitHub for CI/CD and MinIO for object storage.',
-	images: {
-		banner: assets.issues.tencentRailwayMigration.banner,
-		photos: [assets.issues.tencentRailwayMigration.banner]
-	},
-	skills: [skillsMap.docker, skillsMap.railway, skillsMap.nodejs, skillsMap.github, skillsMap.minio],
-	links: {},
-	startDate: '2025-11-01',
-	linkedOrganizationId: EntityId.JasmineTechnologySolution
-}
-
 export const prettierConfig: Project = {
 	id: ProjectId.PrettierConfig,
 	title: 'Prettier Config Generator',
@@ -198,7 +187,7 @@ export const portfolio: Project = {
 	id: ProjectId.Portfolio,
 	title: '🚀 Portfolio – Wongsaphat Puangsorn',
 	description:
-		'A professionalized, high-performance portfolio specialized in modern web development. Features a dynamic comic-book aesthetic, responsive navigation, and real-time data visualization of skills and affiliations.',
+		'A high-performance personal portfolio with a Cyberpunk 2077–inspired interface — an interactive skill-dependency graph, a gig-style project board, and a career-trace timeline. Built on Next.js with a fully custom design system.',
 	images: {
 		banner: assets.issues.portfolio.banner,
 		photos: [assets.issues.portfolio.banner]
@@ -207,8 +196,7 @@ export const portfolio: Project = {
 		skillsMap.nextjs,
 		skillsMap.tailwindcss,
 		skillsMap.radixui,
-		skillsMap.framerMotion,
-		skillsMap.recharts,
+		skillsMap.shadcnui,
 		skillsMap.typescript,
 		skillsMap.seo,
 		skillsMap.aeo,
@@ -222,17 +210,6 @@ export const portfolio: Project = {
 	linkedOrganizationId: EntityId.PersonalProjects
 }
 
-const issues = [
-	rsTrophy,
-	tencentRailwayMigration,
-	looklookPet,
-	onlinePokerGame,
-	prettierConfig,
-	rsTrophyV1,
-	rsAward,
-	rsMedal,
-	portfolio,
-	qrFood
-]
+const issues = [rsTrophy, looklookPet, onlinePokerGame, prettierConfig, rsTrophyV1, rsAward, rsMedal, portfolio, qrFood]
 
 export const projectsData: Project[] = issues.sort(sortByDateDesc)

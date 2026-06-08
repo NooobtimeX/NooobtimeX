@@ -30,37 +30,24 @@ const SkillDetail: React.FC<SkillDetailProps> = ({ skill }) => {
 				<Icon icon='mdi:arrow-left' className='size-4' /> Skill Tree
 			</Link>
 
-			{/* Perk header node */}
-			<NeonPanel className={cn('clip-notch mt-6 flex items-center gap-5 p-6', skill.important && 'neon-panel-yellow')}>
+			{/* Skill header node */}
+			<NeonPanel className='clip-notch mt-6 flex items-center gap-5 p-6'>
 				<span
 					className={cn(
 						'perk-node clip-notch-sm flex size-20 shrink-0 items-center justify-center',
-						skill.important && 'perk-node-core',
 						skill.whiteBg && 'bg-white/90'
 					)}>
 					<Icon icon={skill.icon} className='size-12' />
 				</span>
 				<div>
-					<span className='text-cyber-cyan font-mono text-xs tracking-[0.3em] uppercase'>
-						// Perk · {meta.label} branch
-					</span>
+					<span className='text-cyber-cyan font-mono text-xs tracking-[0.3em] uppercase'>// {meta.label} branch</span>
 					<h1 className='font-display text-3xl font-bold tracking-wide uppercase md:text-5xl'>{skill.name}</h1>
-					{skill.important && (
-						<span className='bg-cyber-yellow mt-2 inline-block px-2 py-0.5 font-mono text-[0.6rem] font-bold tracking-widest text-black uppercase'>
-							Core Perk
-						</span>
-					)}
 				</div>
 			</NeonPanel>
 
 			{/* Stat readout */}
-			<NeonPanel className='clip-notch-sm mt-6 grid grid-cols-2 gap-4 p-4 sm:grid-cols-3'>
+			<NeonPanel className='clip-notch-sm mt-6 grid grid-cols-2 gap-4 p-4'>
 				<StatCell label='Branch'>{meta.label}</StatCell>
-				<StatCell label='Class'>
-					<span className={skill.important ? 'text-cyber-yellow' : 'text-muted-foreground'}>
-						{skill.important ? 'Core' : 'Standard'}
-					</span>
-				</StatCell>
 				<StatCell label='Deployed'>
 					<span className='text-cyber-cyan'>{deployedIn.length} gigs</span>
 				</StatCell>
