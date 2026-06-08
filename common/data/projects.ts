@@ -188,7 +188,7 @@ export const portfolio: Project = {
 	id: ProjectId.Portfolio,
 	title: '🚀 Portfolio – Wongsaphat Puangsorn',
 	description:
-		'This site — a Cyberpunk 2077–inspired portfolio built on Next.js (App Router, Turbopack) with a fully custom Tailwind v4 design system and shadcn/ui on Base UI. Features a ⌘K command palette, a gig-board project journal, a vertical career-trace timeline, and a print-ready CV with a slide-presentation mode. Containerized with Docker and deployed on Railway.',
+		'This site — a Cyberpunk 2077–inspired portfolio built on Next.js (App Router, Turbopack) with a fully custom Tailwind v4 design system and shadcn/ui on Base UI. Features a ⌘K command palette, a gig-board project journal, a vertical career-trace timeline, and a print-ready CV with a slide-presentation mode. Deployed on Vercel.',
 	images: {
 		banner: assets.issues.portfolio.banner,
 		photos: [assets.issues.portfolio.banner]
@@ -199,8 +199,7 @@ export const portfolio: Project = {
 		skillsMap.react,
 		skillsMap.tailwindcss,
 		skillsMap.shadcnui,
-		skillsMap.docker,
-		skillsMap.railway,
+		skillsMap.vercel,
 		skillsMap.seo,
 		skillsMap.aeo,
 		skillsMap.geo,
