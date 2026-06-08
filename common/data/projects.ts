@@ -17,7 +17,7 @@ export const looklookPet: Project = {
 		skillsMap.typescript,
 		skillsMap.nextjs,
 		skillsMap.react,
-		skillsMap.reactNative,
+		skillsMap.flutter,
 		skillsMap.tailwindcss,
 		skillsMap.radixui,
 		skillsMap.tanstackQuery,

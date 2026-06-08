@@ -344,9 +344,9 @@ const tanstackQuery: Skill = {
 	category: SkillCategory.Frontend
 }
 
-const reactNative: Skill = {
-	name: 'React Native',
-	icon: 'tabler:brand-react-native',
+const flutter: Skill = {
+	name: 'Flutter',
+	icon: 'logos:flutter',
 	category: SkillCategory.Frontend
 }
 
@@ -422,7 +422,7 @@ export const skillsMap = {
 	codemirror,
 	baseui,
 	tanstackQuery,
-	reactNative,
+	flutter,
 	mongoose,
 	bullmq,
 	medusa,
@@ -480,7 +480,7 @@ export const skillsData: Skill[] = [
 	codemirror,
 	baseui,
 	tanstackQuery,
-	reactNative,
+	flutter,
 	mongoose,
 	bullmq,
 	medusa,
