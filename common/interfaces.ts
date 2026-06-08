@@ -31,7 +31,6 @@ export interface Skill {
 	category: SkillCategory
 	icon: string // Icon name for @iconify/react
 	whiteBg?: boolean
-	important?: boolean
 }
 
 /** An organization, university, or entity */

@@ -12,7 +12,7 @@ import NeonPanel from '@/components/cyber/NeonPanel'
 import SectionHeader from '@/components/cyber/SectionHeader'
 import ProjectCard from '@/components/projects/ProjectCard'
 import { formatExperienceDuration, slugify } from '@/lib/utils'
-import { personalData, projectsData, skillsData, workExperienceData } from '@/common'
+import { featuredSkills, personalData, projectsData, workExperienceData } from '@/common'
 
 const formatPosition = (position: string) =>
 	position
@@ -29,7 +29,7 @@ const HomeContent: React.FC = () => {
 		workExperienceData.find(r => new Date(r.startDate) <= now && (!r.endDate || new Date(r.endDate) >= now))
 		?? workExperienceData[0]
 	const featured = projectsData.slice(0, 3)
-	const featuredSkills = skillsData.filter(a => a.important).slice(0, 12)
+	const homeSkills = featuredSkills.slice(0, 12)
 
 	return (
 		<div className='mx-auto max-w-7xl px-4 md:px-6'>
@@ -167,7 +167,7 @@ const HomeContent: React.FC = () => {
 			<section className='mt-20'>
 				<SectionHeader code='02' title='Stack' subtitle='Primary tools in active rotation.' />
 				<div className='mt-8 flex flex-wrap gap-2'>
-					{featuredSkills.map(a => (
+					{homeSkills.map(a => (
 						<Link
 							key={a.name}
 							href={`/skills/${slugify(a.name)}` as never}

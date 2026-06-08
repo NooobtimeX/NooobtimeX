@@ -5,7 +5,14 @@ import { Icon } from '@iconify/react'
 import { AnimatePresence, motion } from 'framer-motion'
 import GlitchText from '@/components/cyber/GlitchText'
 import { formatExperienceDuration } from '@/lib/utils'
-import { SkillCategory, categoryMetadata, personalData, projectsData, skillsData, workExperienceData } from '@/common'
+import {
+	SkillCategory,
+	categoryMetadata,
+	featuredSkills,
+	personalData,
+	projectsData,
+	workExperienceData
+} from '@/common'
 
 const humanize = (value: string) =>
 	value
@@ -93,7 +100,7 @@ const PresentationView: React.FC<PresentationViewProps> = ({ onExit }) => {
 					</h2>
 					<div className='mt-6 grid gap-5 sm:grid-cols-2'>
 						{(['frontend', 'backend', 'infrastructure', 'growth-management'] as SkillCategory[]).map(cat => {
-							const items = skillsData.filter(a => a.category === cat && a.important)
+							const items = featuredSkills.filter(a => a.category === cat)
 							if (!items.length) return null
 							return (
 								<div key={cat} className='neon-panel clip-notch-sm p-4'>

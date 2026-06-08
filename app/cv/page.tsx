@@ -9,9 +9,9 @@ import {
 	SkillCategory,
 	categoryMetadata,
 	educationData,
+	featuredSkills,
 	personalData,
 	projectsData,
-	skillsData,
 	workExperienceData
 } from '@/common'
 
@@ -180,7 +180,7 @@ export default function CVPage() {
 					<div className='grid gap-4 sm:grid-cols-2'>
 						{CATEGORY_ORDER.map(cat => {
 							const meta = categoryMetadata[cat]
-							const items = skillsData.filter(a => a.category === cat && a.important)
+							const items = featuredSkills.filter(a => a.category === cat)
 							if (items.length === 0) return null
 							return (
 								<div key={cat}>

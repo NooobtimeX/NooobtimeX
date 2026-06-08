@@ -6,6 +6,7 @@ import ScanlineOverlay from '@/components/cyber/ScanlineOverlay'
 import { ThemeProvider } from '@/components/theme-provider'
 import { TooltipProvider } from '@/components/ui/tooltip'
 import { cn } from '@/lib/utils'
+import { assets } from '@/common'
 import './globals.css'
 
 const rajdhani = Rajdhani({
@@ -62,7 +63,7 @@ export const metadata: Metadata = {
 		siteName: 'Wongsaphat Puangsorn Portfolio',
 		images: [
 			{
-				url: '/og-image.jpg', // We should probably add an OG image later if it doesn't exist, but referencing it here is good practice
+				url: assets.site.ogImage,
 				width: 1200,
 				height: 630,
 				alt: 'Wongsaphat Puangsorn Portfolio'
@@ -75,11 +76,11 @@ export const metadata: Metadata = {
 		description:
 			'Specializing in modern web development, I turn ideas into seamless digital affiliations by building robust web applications.',
 		creator: '@NooobtimeX', // Assuming this handle based on github, can be updated
-		images: ['/og-image.jpg']
+		images: [assets.site.ogImage]
 	},
 	icons: {
-		icon: '/favicon.ico',
-		apple: '/apple-touch-icon.png'
+		icon: assets.site.favicon,
+		apple: assets.site.appleTouch
 	},
 	robots: {
 		index: true,

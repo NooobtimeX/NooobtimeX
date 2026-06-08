@@ -18,31 +18,27 @@ const nextjs = skill({
 	id: 'next-js',
 	name: 'Next.js',
 	icon: 'logos:nextjs-icon',
-	category: 'frontend',
-	important: true
+	category: 'frontend'
 })
 const nuxtjs = skill({ id: 'nuxt-js', name: 'Nuxt.js', icon: 'logos:nuxt-icon', category: 'frontend' })
-const react = skill({ id: 'react', name: 'React', icon: 'logos:react', category: 'frontend', important: true })
+const react = skill({ id: 'react', name: 'React', icon: 'logos:react', category: 'frontend' })
 const typescript = skill({
 	id: 'typescript',
 	name: 'TypeScript',
 	icon: 'logos:typescript-icon',
-	category: 'frontend',
-	important: true
+	category: 'frontend'
 })
 const tailwindcss = skill({
 	id: 'tailwind-css',
 	name: 'Tailwind CSS',
 	icon: 'logos:tailwindcss-icon',
-	category: 'frontend',
-	important: true
+	category: 'frontend'
 })
 const shadcnui = skill({
 	id: 'shadcn-ui',
 	name: 'Shadcn/ui',
 	icon: 'simple-icons:shadcnui',
-	category: 'frontend',
-	important: true
+	category: 'frontend'
 })
 const css = skill({ id: 'css', name: 'CSS', icon: 'logos:css-3', category: 'frontend' })
 const radixui = skill({ id: 'radix-ui', name: 'Radix UI', icon: 'simple-icons:radixui', category: 'frontend' })
@@ -79,8 +75,7 @@ const nodejs = skill({
 	id: 'node-js',
 	name: 'Node.js',
 	icon: 'logos:nodejs-icon',
-	category: 'backend',
-	important: true
+	category: 'backend'
 })
 const nestjs = skill({ id: 'nest-js', name: 'Nest.js', icon: 'logos:nestjs', category: 'backend' })
 const nats = skill({ id: 'nats', name: 'NATS', icon: 'logos:nats-icon', category: 'backend' })
@@ -89,8 +84,7 @@ const elysia = skill({
 	id: 'elysia-js',
 	name: 'Elysia.js',
 	icon: 'material-symbols:flash-on',
-	category: 'backend',
-	important: true
+	category: 'backend'
 })
 const sse = skill({ id: 'sse', name: 'SSE', icon: 'material-symbols:stream', category: 'backend' })
 const bun = skill({ id: 'bun-js', name: 'Bun.js', icon: 'logos:bun', category: 'backend' })
@@ -98,19 +92,17 @@ const postgresql = skill({
 	id: 'postgresql',
 	name: 'PostgreSQL',
 	icon: 'logos:postgresql',
-	category: 'backend',
-	important: true
+	category: 'backend'
 })
 const mongodb = skill({
 	id: 'mongodb',
 	name: 'MongoDB',
 	icon: 'logos:mongodb-icon',
-	category: 'backend',
-	important: true
+	category: 'backend'
 })
 const mongoose = skill({ id: 'mongoose', name: 'Mongoose', icon: 'simple-icons:mongoose', category: 'backend' })
 const prisma = skill({ id: 'prisma', name: 'Prisma', icon: 'logos:prisma', category: 'backend', whiteBg: true })
-const redis = skill({ id: 'redis', name: 'Redis', icon: 'logos:redis', category: 'backend', important: true })
+const redis = skill({ id: 'redis', name: 'Redis', icon: 'logos:redis', category: 'backend' })
 const supabase = skill({ id: 'supabase', name: 'Supabase', icon: 'logos:supabase-icon', category: 'backend' })
 const bullmq = skill({ id: 'bullmq', name: 'BullMQ', icon: 'mdi:format-list-numbered', category: 'backend' })
 const medusa = skill({ id: 'medusa', name: 'Medusa', icon: 'simple-icons:medusa', category: 'backend' })
@@ -121,16 +113,14 @@ const vercel = skill({
 	name: 'Vercel',
 	icon: 'logos:vercel-icon',
 	category: 'infrastructure',
-	whiteBg: true,
-	important: true
+	whiteBg: true
 })
 const railway = skill({ id: 'railway', name: 'Railway', icon: 'simple-icons:railway', category: 'infrastructure' })
 const docker = skill({
 	id: 'docker',
 	name: 'Docker',
 	icon: 'logos:docker-icon',
-	category: 'infrastructure',
-	important: true
+	category: 'infrastructure'
 })
 const render = skill({ id: 'render', name: 'Render', icon: 'simple-icons:render', category: 'infrastructure' })
 const github = skill({
@@ -138,8 +128,7 @@ const github = skill({
 	name: 'Git/GitHub',
 	icon: 'logos:github-icon',
 	category: 'infrastructure',
-	whiteBg: true,
-	important: true
+	whiteBg: true
 })
 const minio = skill({ id: 'minio', name: 'MinIO', icon: 'simple-icons:minio', category: 'infrastructure' })
 const resend = skill({ id: 'resend', name: 'Resend', icon: 'simple-icons:resend', category: 'infrastructure' })
@@ -258,3 +247,20 @@ export const skillsData: Skill[] = allSkills
 
 /** Lookup a skill by id (used to resolve a project's skill ids). */
 export const skillById = Object.fromEntries(skillsData.map(s => [s.id, s])) as Record<SkillId, Skill>
+
+/** Hand-picked core stack, surfaced on the home page + CV. Edit this list to curate. */
+export const featuredSkills: Skill[] = [
+	nextjs,
+	react,
+	typescript,
+	tailwindcss,
+	shadcnui,
+	nodejs,
+	elysia,
+	mongodb,
+	postgresql,
+	redis,
+	docker,
+	vercel,
+	github
+]

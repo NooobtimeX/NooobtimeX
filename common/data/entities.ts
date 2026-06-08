@@ -1,9 +1,10 @@
 import type { Organization } from '../interfaces'
+import { assets } from './assets'
 
 export const ruamsukPlating: Organization = {
 	id: 'ruamsuk-plating',
 	name: 'RUAMSUK PLATING LIMITED PARTNERSHIP',
-	logo: '/logo/RSTROPHY.png',
+	logo: assets.logos.rsTrophy,
 	location: 'pathumthani-thailand',
 	type: 'company'
 }
@@ -11,7 +12,7 @@ export const ruamsukPlating: Organization = {
 export const jasmineTechnologySolution: Organization = {
 	id: 'jasmine-technology-solution',
 	name: 'Jasmine Technology Solution',
-	logo: '/logo/JTS.png',
+	logo: assets.logos.jasmineTech,
 	location: 'nonthaburi-thailand',
 	type: 'company'
 }
@@ -19,7 +20,7 @@ export const jasmineTechnologySolution: Organization = {
 export const freelanceWithFriends: Organization = {
 	id: 'freelance-blitzwerk',
 	name: 'Freelance with friends',
-	logo: '/logo/blitzwerk.png',
+	logo: assets.logos.blitzwerk,
 	location: 'remote',
 	type: 'company'
 }
@@ -27,7 +28,7 @@ export const freelanceWithFriends: Organization = {
 export const personalProjects: Organization = {
 	id: 'personal-projects',
 	name: 'Personal Projects',
-	logo: '/logo/logo.jpg',
+	logo: assets.logos.nooobtimex,
 	location: 'remote',
 	type: 'personal'
 }
@@ -35,7 +36,7 @@ export const personalProjects: Organization = {
 export const thammasatUniversity: Organization = {
 	id: 'thammasat-university',
 	name: 'Thammasat University',
-	logo: '/logo/tu-logo.jpg',
+	logo: assets.logos.tuLogo,
 	location: 'pathumthani-thailand',
 	type: 'university'
 }
