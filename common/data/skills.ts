@@ -248,19 +248,30 @@ export const skillsData: Skill[] = allSkills
 /** Lookup a skill by id (used to resolve a project's skill ids). */
 export const skillById = Object.fromEntries(skillsData.map(s => [s.id, s])) as Record<SkillId, Skill>
 
-/** Hand-picked core stack, surfaced on the home page + CV. Edit this list to curate. */
+/** Hand-picked core stack (21), surfaced on the home page + CV. Edit this list to curate. */
 export const featuredSkills: Skill[] = [
+	// frontend
+	typescript,
 	nextjs,
 	react,
-	typescript,
+	nuxtjs,
 	tailwindcss,
 	shadcnui,
+	radixui,
+	// backend
 	nodejs,
+	nestjs,
 	elysia,
+	bun,
+	nats,
 	mongodb,
 	postgresql,
 	redis,
+	prisma,
+	// infrastructure
 	docker,
 	vercel,
-	github
+	railway,
+	github,
+	cloudflareR2
 ]
