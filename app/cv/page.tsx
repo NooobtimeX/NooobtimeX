@@ -180,7 +180,7 @@ export default function CVPage() {
 							<p
 								className='mt-2 font-mono text-2xl font-black tracking-widest uppercase'
 								style={{ color: ACCENT, WebkitPrintColorAdjust: 'exact' }}>
-								Product Lead
+								Developer
 							</p>
 							<div className='mt-6 flex flex-wrap gap-6 font-bold'>
 								<div className='flex items-center gap-2 text-[12px] uppercase'>

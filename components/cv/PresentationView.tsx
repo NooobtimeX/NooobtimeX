@@ -36,7 +36,7 @@ const PresentationView: React.FC<PresentationViewProps> = ({ onExit }) => {
 						{personalData.name}
 					</h1>
 					<GlitchText
-						text='Product Lead'
+						text='Developer'
 						className='neon-text-yellow font-display mt-4 inline-block text-2xl font-bold tracking-[0.3em] uppercase md:text-4xl'
 					/>
 					<p className='text-muted-foreground mx-auto mt-6 max-w-2xl text-base md:text-lg'>{personalData.tagline}</p>

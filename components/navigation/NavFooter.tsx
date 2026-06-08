@@ -19,7 +19,7 @@ const NavFooter: React.FC = () => {
 						Nooobtime<span className='text-cyber-yellow'>X</span>
 					</p>
 					<p className='text-muted-foreground mt-1 font-mono text-xs tracking-wider'>
-						{personalData.name} // Product Lead
+						{personalData.name} // Developer
 					</p>
 				</div>
 

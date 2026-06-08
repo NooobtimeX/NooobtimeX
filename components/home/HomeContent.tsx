@@ -52,7 +52,7 @@ const HomeContent: React.FC = () => {
 						<div className='mt-4 flex items-center gap-3'>
 							<span className='bg-cyber-yellow h-6 w-1' />
 							<GlitchText
-								text='Product Lead'
+								text='Developer'
 								className='neon-text-yellow font-display text-2xl font-bold tracking-widest uppercase md:text-3xl'
 							/>
 						</div>
