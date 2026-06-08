@@ -413,3 +413,59 @@
 		animation: none !important;
 	}
 }
+
+/* ============================================================
+ * Game-UI utilities: perk lanes, gig journal, career trace
+ * ============================================================ */
+@layer utilities {
+	/* Vertical neon connector spine (skill lanes + career trace) */
+	.spine-line {
+		background: linear-gradient(
+			to bottom,
+			transparent,
+			color-mix(in oklch, var(--cyber-cyan), transparent 55%) 8%,
+			color-mix(in oklch, var(--cyber-cyan), transparent 55%) 92%,
+			transparent
+		);
+	}
+
+	/* Skill perk node */
+	.perk-node {
+		background: color-mix(in oklch, var(--card), transparent 5%);
+		border: 1px solid color-mix(in oklch, var(--cyber-cyan), transparent 60%);
+		transition: all 0.18s ease;
+	}
+	.perk-node:hover {
+		border-color: var(--cyber-cyan);
+		box-shadow: 0 0 16px color-mix(in oklch, var(--cyber-cyan), transparent 65%);
+	}
+	.perk-node-core {
+		border-color: color-mix(in oklch, var(--cyber-yellow), transparent 45%);
+		box-shadow: 0 0 14px color-mix(in oklch, var(--cyber-yellow), transparent 75%);
+	}
+	.perk-node-core:hover {
+		border-color: var(--cyber-yellow);
+		box-shadow: 0 0 22px color-mix(in oklch, var(--cyber-yellow), transparent 55%);
+	}
+
+	/* Selected gig row */
+	.gig-row-active {
+		background: color-mix(in oklch, var(--cyber-yellow), transparent 92%);
+		border-color: color-mix(in oklch, var(--cyber-yellow), transparent 45%) !important;
+	}
+
+	/* NOW pulse marker (career trace) */
+	.now-pulse {
+		animation: now-pulse 1.8s ease-in-out infinite;
+	}
+}
+
+@keyframes now-pulse {
+	0%,
+	100% {
+		box-shadow: 0 0 0 0 color-mix(in oklch, var(--cyber-yellow), transparent 30%);
+	}
+	50% {
+		box-shadow: 0 0 0 8px color-mix(in oklch, var(--cyber-yellow), transparent 100%);
+	}
+}
