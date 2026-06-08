@@ -25,15 +25,13 @@ const HomeContent: React.FC = () => {
 	// by startDate desc, so find() returns the latest active role and auto-advances
 	// once a future role's start date arrives.
 	const now = new Date()
-	const current =
-		workExperienceData.find(r => new Date(r.startDate) <= now && (!r.endDate || new Date(r.endDate) >= now))
-		?? workExperienceData[0]
+	// Only roles that have already started — cut future-dated ones.
+	const started = workExperienceData.filter(r => new Date(r.startDate) <= now)
+	// Active role = ongoing or not-yet-ended; else the most recent started role.
+	const current = started.find(r => !r.endDate || new Date(r.endDate) >= now) ?? started[0]
 	const nowId = current?.id
 	// Lead with the current role, then the next most-recent ones.
-	const latestRoles = (
-		current ?
-			[current, ...workExperienceData.filter(r => r.id !== current.id)]
-		:	workExperienceData).slice(0, 3)
+	const latestRoles = (current ? [current, ...started.filter(r => r.id !== current.id)] : started).slice(0, 3)
 	const featured = featuredProjects
 	const homeSkills = featuredSkills
 
@@ -165,7 +163,7 @@ const HomeContent: React.FC = () => {
 										<span className='text-cyber-yellow'> @ {role.organization.name}</span>
 									</h3>
 									<p className='text-muted-foreground mt-0.5 font-mono text-xs tracking-wider uppercase'>
-										{formatExperienceDuration(role.startDate, role.endDate)}
+										{formatExperienceDuration(role.startDate, role.id === nowId ? undefined : role.endDate)}
 									</p>
 								</div>
 								{role.id === nowId && (
