@@ -4,19 +4,11 @@ import React from 'react'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
 import { cn, slugify } from '@/lib/utils'
-import { SkillCategory, categoryMetadata, skillsData } from '@/common'
-
-const ORDER: SkillCategory[] = [
-	SkillCategory.Frontend,
-	SkillCategory.Backend,
-	SkillCategory.Infrastructure,
-	SkillCategory.GrowthManagement
-]
+import { type Skill, SkillCategory, skillsData } from '@/common'
 
 /**
- * Curated tech relationships: [from -> to] meaning "from enables / leads to / is
- * used with to". Drawn as directed edges (arrow at the target). Names must match
- * skillsData names exactly.
+ * Curated tech relationships: [from, to] = "from enables / leads to / is used with to".
+ * Only these pairs get a line — unrelated skills are never wired together.
  */
 const EDGES: [string, string][] = [
 	// Frontend
@@ -44,6 +36,8 @@ const EDGES: [string, string][] = [
 	['Elysia.js', 'SSE'],
 	['Elysia.js', 'Prisma'],
 	['Nest.js', 'Prisma'],
+	['Nest.js', 'NATS'],
+	['Nest.js', 'MongoDB'],
 	['Prisma', 'PostgreSQL'],
 	['Prisma', 'MongoDB'],
 	['PostgreSQL', 'Supabase'],
@@ -67,127 +61,158 @@ const EDGES: [string, string][] = [
 	['WordPress', 'SEO']
 ]
 
-/** Vertical ordering within a column (lower rank = closer to the top / foundation). */
-const RANK: Record<string, number> = {
-	'TypeScript': 0,
-	'CSS': 0,
-	'Git/GitHub': 0,
-	'Python': 0,
-	'SEO': 0,
-	'WordPress': 0,
-	'React': 1,
-	'Node.js': 1,
-	'Bun.js': 1,
-	'Tailwind CSS': 1,
-	'Radix UI': 1,
-	'Docker': 1,
-	'JSON-LD': 1,
-	'AEO': 1,
-	'GEO': 1,
-	'Google Tag Manager': 1,
-	'WooCommerce': 1,
-	'Next.js': 2,
-	'Nuxt.js': 2,
-	'Nest.js': 2,
-	'Elysia.js': 2,
-	'Shadcn/ui': 2,
-	'Prisma': 2,
-	'Framer Motion': 2,
-	'Embla Carousel': 2,
-	'NATS': 2,
-	'SSE': 2,
-	'date-fns': 2,
-	'Google Analytics': 2,
-	'PostgreSQL': 3,
-	'MongoDB': 3,
-	'Redis': 3,
-	'Lucide Icons': 3,
-	'Heroicons': 3,
-	'React Icons': 3,
-	'Recharts': 3,
-	'Vercel': 3,
-	'MinIO': 3,
-	'Resend': 3,
-	'Google Ads': 3,
-	'Supabase': 4,
-	'Railway': 4,
-	'Render': 4
+const CAT_BORDER: Record<SkillCategory, string> = {
+	[SkillCategory.Frontend]: 'border-cyber-cyan/60',
+	[SkillCategory.Backend]: 'border-cyber-yellow/60',
+	[SkillCategory.Infrastructure]: 'border-cyber-magenta/60',
+	[SkillCategory.GrowthManagement]: 'border-cyber-green/60'
 }
 
-const rankOf = (name: string) => RANK[name] ?? 5
+const VW = 1200
+const VH = 820
+
+type Pt = { x: number; y: number }
 
 /**
- * Desktop skill graph: skills grouped in 4 category columns (ordered foundation →
- * advanced), wired together by curated tech-dependency edges with direction arrows.
- * Edges are SVG curves measured from real node centers (recomputed on resize).
+ * Deterministic Fruchterman-Reingold layout. Pure (no DOM, no randomness) so it
+ * produces the same result on server and client — connected skills pull into
+ * clusters; unconnected skills drift apart on their own.
  */
-const SkillGraph: React.FC = () => {
-	const containerRef = React.useRef<HTMLDivElement>(null)
-	const nodes = React.useRef<Map<string, HTMLElement | null>>(new Map())
-	const [paths, setPaths] = React.useState<string[]>([])
-	const [size, setSize] = React.useState({ w: 0, h: 0 })
+function computeLayout(): Record<string, Pt> {
+	const names = skillsData.map(s => s.name)
+	const N = names.length
+	const idx = new Map(names.map((n, i) => [n, i]))
+	const pos: Pt[] = names.map((_, i) => {
+		// sunflower seed (deterministic)
+		const a = i * 2.399963
+		const r = (Math.sqrt(i + 0.5) / Math.sqrt(N)) * 360
+		return { x: VW / 2 + r * Math.cos(a), y: VH / 2 + r * Math.sin(a) }
+	})
 
-	const setNode = (id: string) => (el: HTMLElement | null) => {
-		nodes.current.set(id, el)
+	const edges = EDGES.map(([a, b]) => [idx.get(a)!, idx.get(b)!] as const).filter(([a, b]) => a != null && b != null)
+
+	const area = VW * VH
+	const k = 0.85 * Math.sqrt(area / N)
+	let temp = VW * 0.12
+	const ITERS = 360
+
+	for (let it = 0; it < ITERS; it++) {
+		const disp: Pt[] = names.map(() => ({ x: 0, y: 0 }))
+
+		// repulsion (all pairs)
+		for (let i = 0; i < N; i++) {
+			for (let j = i + 1; j < N; j++) {
+				let dx = pos[i].x - pos[j].x
+				let dy = pos[i].y - pos[j].y
+				const d = Math.hypot(dx, dy) || 0.01
+				const f = (k * k) / d
+				dx /= d
+				dy /= d
+				disp[i].x += dx * f
+				disp[i].y += dy * f
+				disp[j].x -= dx * f
+				disp[j].y -= dy * f
+			}
+		}
+
+		// attraction (edges)
+		for (const [a, b] of edges) {
+			let dx = pos[a].x - pos[b].x
+			let dy = pos[a].y - pos[b].y
+			const d = Math.hypot(dx, dy) || 0.01
+			const f = (d * d) / k
+			dx = (dx / d) * f
+			dy = (dy / d) * f
+			disp[a].x -= dx
+			disp[a].y -= dy
+			disp[b].x += dx
+			disp[b].y += dy
+		}
+
+		// gravity toward center (keeps disconnected clusters from fleeing)
+		for (let i = 0; i < N; i++) {
+			disp[i].x += (VW / 2 - pos[i].x) * 0.012
+			disp[i].y += (VH / 2 - pos[i].y) * 0.012
+		}
+
+		// integrate, limited by temperature, clamped to box
+		for (let i = 0; i < N; i++) {
+			const d = Math.hypot(disp[i].x, disp[i].y) || 0.01
+			pos[i].x += (disp[i].x / d) * Math.min(d, temp)
+			pos[i].y += (disp[i].y / d) * Math.min(d, temp)
+			pos[i].x = Math.max(60, Math.min(VW - 60, pos[i].x))
+			pos[i].y = Math.max(40, Math.min(VH - 40, pos[i].y))
+		}
+		temp *= 0.96
 	}
 
-	React.useLayoutEffect(() => {
-		const measure = () => {
-			const container = containerRef.current
-			if (!container) return
-			const c = container.getBoundingClientRect()
-			if (c.width === 0) return
-
-			const anchor = (id: string, edge: 'top' | 'bottom') => {
-				const el = nodes.current.get(id)
-				if (!el) return null
-				const r = el.getBoundingClientRect()
-				return { x: r.left + r.width / 2 - c.left, y: (edge === 'top' ? r.top : r.bottom) - c.top }
+	// collision relaxation to reduce label overlap
+	for (let pass = 0; pass < 60; pass++) {
+		for (let i = 0; i < N; i++) {
+			for (let j = i + 1; j < N; j++) {
+				let dx = pos[i].x - pos[j].x
+				let dy = pos[i].y - pos[j].y
+				const d = Math.hypot(dx, dy) || 0.01
+				const min = 96
+				if (d < min) {
+					const push = (min - d) / 2
+					dx /= d
+					dy /= d
+					pos[i].x += dx * push
+					pos[i].y += dy * push
+					pos[j].x -= dx * push
+					pos[j].y -= dy * push
+				}
 			}
-
-			const curve = (a: { x: number; y: number }, b: { x: number; y: number }) => {
-				const k = Math.max(20, Math.abs(b.y - a.y) * 0.4)
-				return `M ${a.x} ${a.y} C ${a.x} ${a.y + k}, ${b.x} ${b.y - k}, ${b.x} ${b.y}`
-			}
-
-			const next: string[] = []
-			for (const [from, to] of EDGES) {
-				const a = anchor(from, 'bottom')
-				const b = anchor(to, 'top')
-				if (a && b) next.push(curve(a, b))
-			}
-
-			setPaths(next)
-			setSize({ w: c.width, h: c.height })
 		}
+	}
 
-		measure()
-		const container = containerRef.current
-		const ro = new ResizeObserver(() => measure())
-		if (container) ro.observe(container)
-		window.addEventListener('resize', measure)
-		const fonts = (document as Document & { fonts?: { ready: Promise<unknown> } }).fonts
-		fonts?.ready.then(() => measure())
-		return () => {
-			ro.disconnect()
-			window.removeEventListener('resize', measure)
+	// normalize to fill the box with padding
+	const xs = pos.map(p => p.x)
+	const ys = pos.map(p => p.y)
+	const minX = Math.min(...xs)
+	const maxX = Math.max(...xs)
+	const minY = Math.min(...ys)
+	const maxY = Math.max(...ys)
+	const pad = 70
+	const sx = (VW - 2 * pad) / (maxX - minX || 1)
+	const sy = (VH - 2 * pad) / (maxY - minY || 1)
+
+	const out: Record<string, Pt> = {}
+	names.forEach((n, i) => {
+		out[n] = { x: pad + (pos[i].x - minX) * sx, y: pad + (pos[i].y - minY) * sy }
+	})
+	return out
+}
+
+const SkillGraph: React.FC = () => {
+	const positions = React.useMemo(() => computeLayout(), [])
+	const [hovered, setHovered] = React.useState<string | null>(null)
+
+	const adjacency = React.useMemo(() => {
+		const m = new Map<string, Set<string>>()
+		for (const [a, b] of EDGES) {
+			if (!m.has(a)) m.set(a, new Set())
+			if (!m.has(b)) m.set(b, new Set())
+			m.get(a)!.add(b)
+			m.get(b)!.add(a)
 		}
+		return m
 	}, [])
 
+	const isDimNode = (s: Skill) => hovered != null && hovered !== s.name && !adjacency.get(hovered)?.has(s.name)
+
 	return (
-		<div ref={containerRef} className='relative'>
-			{/* edges */}
+		<div className='relative w-full' style={{ aspectRatio: `${VW} / ${VH}` }}>
 			<svg
-				className='pointer-events-none absolute inset-0 z-0'
-				width={size.w}
-				height={size.h}
-				viewBox={`0 0 ${size.w} ${size.h}`}
+				className='absolute inset-0 h-full w-full'
+				viewBox={`0 0 ${VW} ${VH}`}
 				fill='none'
 				style={{ filter: 'drop-shadow(0 0 3px color-mix(in oklch, var(--cyber-cyan), transparent 60%))' }}>
 				<defs>
 					<linearGradient id='edge' x1='0' y1='0' x2='0' y2='1'>
-						<stop offset='0%' stopColor='var(--cyber-yellow)' stopOpacity='0.65' />
-						<stop offset='100%' stopColor='var(--cyber-cyan)' stopOpacity='0.5' />
+						<stop offset='0%' stopColor='var(--cyber-yellow)' stopOpacity='0.7' />
+						<stop offset='100%' stopColor='var(--cyber-cyan)' stopOpacity='0.55' />
 					</linearGradient>
 					<marker
 						id='arrow'
@@ -200,52 +225,55 @@ const SkillGraph: React.FC = () => {
 						<path d='M0 0 L8 4 L0 8 z' fill='var(--cyber-cyan)' />
 					</marker>
 				</defs>
-				{paths.map((d, i) => (
-					<path key={i} d={d} stroke='url(#edge)' strokeWidth={1.5} markerEnd='url(#arrow)' />
-				))}
-			</svg>
-
-			{/* nodes */}
-			<div className='relative z-10 grid grid-cols-4 gap-x-6'>
-				{ORDER.map((cat, idx) => {
-					const meta = categoryMetadata[cat]
-					const items = skillsData
-						.filter(s => s.category === cat)
-						.slice()
-						.sort((a, b) => rankOf(a.name) - rankOf(b.name))
+				{EDGES.map(([from, to], i) => {
+					const a = positions[from]
+					const b = positions[to]
+					if (!a || !b) return null
+					const active = hovered != null && (hovered === from || hovered === to)
+					const dim = hovered != null && !active
+					const mx = (a.x + b.x) / 2
 					return (
-						<div key={cat} className='flex flex-col items-center gap-7'>
-							{/* hub header */}
-							<div className='perk-node-core clip-notch-sm bg-background flex flex-col items-center gap-1 px-3 py-3 text-center'>
-								<Icon icon={meta.icon} className='text-cyber-yellow size-6' />
-								<span className='font-display text-xs font-bold tracking-widest uppercase'>{meta.label}</span>
-								<span className='text-muted-foreground font-mono text-[0.55rem] tracking-widest uppercase'>
-									{String(idx + 1).padStart(2, '0')} · {items.length}
-								</span>
-							</div>
-
-							{items.map(s => (
-								<Link
-									key={s.name}
-									ref={setNode(s.name)}
-									href={`/skills/${slugify(s.name)}` as never}
-									className='perk-node clip-notch-sm group bg-background flex items-center gap-2 px-3 py-2'>
-									<span
-										className={cn(
-											'flex size-5 shrink-0 items-center justify-center',
-											s.whiteBg && 'rounded-sm bg-white/90'
-										)}>
-										<Icon icon={s.icon} className='size-5' />
-									</span>
-									<span className='group-hover:text-cyber-yellow text-xs font-semibold whitespace-nowrap transition-colors'>
-										{s.name}
-									</span>
-								</Link>
-							))}
-						</div>
+						<path
+							key={i}
+							d={`M ${a.x} ${a.y} C ${mx} ${a.y}, ${mx} ${b.y}, ${b.x} ${b.y}`}
+							stroke={active ? 'var(--cyber-yellow)' : 'url(#edge)'}
+							strokeWidth={active ? 2.2 : 1.4}
+							markerEnd='url(#arrow)'
+							style={{ opacity: dim ? 0.06 : 1, transition: 'opacity 0.15s' }}
+						/>
 					)
 				})}
-			</div>
+			</svg>
+
+			{skillsData.map(s => {
+				const p = positions[s.name]
+				if (!p) return null
+				return (
+					<Link
+						key={s.name}
+						href={`/skills/${slugify(s.name)}` as never}
+						onMouseEnter={() => setHovered(s.name)}
+						onMouseLeave={() => setHovered(null)}
+						className={cn(
+							'perk-node clip-notch-sm group bg-background absolute z-10 flex -translate-x-1/2 -translate-y-1/2 items-center gap-1.5 px-2.5 py-1.5',
+							CAT_BORDER[s.category]
+						)}
+						style={{
+							left: `${(p.x / VW) * 100}%`,
+							top: `${(p.y / VH) * 100}%`,
+							opacity: isDimNode(s) ? 0.28 : 1,
+							transition: 'opacity 0.15s'
+						}}>
+						<span
+							className={cn('flex size-4 shrink-0 items-center justify-center', s.whiteBg && 'rounded-sm bg-white/90')}>
+							<Icon icon={s.icon} className='size-4' />
+						</span>
+						<span className='group-hover:text-cyber-yellow text-[0.7rem] font-semibold whitespace-nowrap transition-colors'>
+							{s.name}
+						</span>
+					</Link>
+				)
+			})}
 		</div>
 	)
 }

@@ -8,25 +8,26 @@ export const looklookPet: Project = {
 	id: ProjectId.LooklookPet,
 	title: 'LOOKLOOK PET',
 	description:
-		'Architected a pet-parent community platform delivering a seamless user experience and an integrated reward system, with a robust backend using Redis-driven caching to cut API response times on complex queries. Led the infrastructure migration of 15+ microservices from Tencent Cloud VMs to Railway — reusing a single Dockerfile with environment-specific configs for Production and UAT, wired through GitHub CI/CD. Migrated object storage from Tencent COS to Cloudflare R2 for cheaper, S3-compatible asset delivery.',
+		'Architected and scaled a multi-service pet-parent community marketplace — 15+ NestJS microservices communicating over NATS, backed by MongoDB with Redis caching and BullMQ job queues, fronted by Next.js + Radix web apps and a Medusa commerce layer. Led the infrastructure migration from Tencent Cloud VMs to Railway, running a single Dockerfile across Production and UAT via environment config wired through GitHub CI/CD, and migrated object storage from Tencent COS to Cloudflare R2 for cheaper, S3-compatible asset delivery.',
 	images: {
 		banner: assets.issues.looklookPet.banner,
 		photos: [assets.issues.looklookPet.banner]
 	},
 	skills: [
+		skillsMap.typescript,
 		skillsMap.nextjs,
-		skillsMap.vercel,
+		skillsMap.react,
 		skillsMap.tailwindcss,
-		skillsMap.shadcnui,
+		skillsMap.radixui,
+		skillsMap.nestjs,
 		skillsMap.nodejs,
+		skillsMap.nats,
+		skillsMap.mongodb,
+		skillsMap.redis,
 		skillsMap.docker,
 		skillsMap.railway,
 		skillsMap.github,
-		skillsMap.googleAds,
-		skillsMap.seo,
-		skillsMap.aeo,
-		skillsMap.geo,
-		skillsMap.jsonld
+		skillsMap.seo
 	],
 	links: {
 		live: 'https://looklook-pet.com'
