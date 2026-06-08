@@ -40,7 +40,7 @@ export const rsTrophy: Project = {
 	id: ProjectId.RsTrophy,
 	title: 'RS TROPHY (rs-trophy.com)',
 	description:
-		'Leading the digital transformation of a legacy business into a definitive "Community Hub" for the Thai awards industry. Architecting the consolidation of fragmented legacy brands into a unified, high-performance system utilizing Bun, Elysia.js, and Next.js. Transitioning toward a Serverless/Zero-Maintenance model with Redis caching and MinIO asset management.',
+		'A unified e-commerce and management platform for custom trophies, plaques, and medals — consolidating fragmented legacy brands into one high-performance system. Built as a Bun monorepo: a localized, SEO-optimized Next.js storefront, a real-time ElysiaJS API, and an admin console that share Mongoose schemas and types through a common workspace package. Runs on MongoDB with Redis caching and Cloudflare R2 object storage, containerized with Docker and deployed on Railway — and ships an AI copilot for natural-language shopping assistance.',
 	images: {
 		banner: assets.issues.rsTrophy.banner,
 		photos: [assets.issues.rsTrophy.banner]
@@ -51,12 +51,12 @@ export const rsTrophy: Project = {
 		skillsMap.nextjs,
 		skillsMap.react,
 		skillsMap.typescript,
+		skillsMap.mongodb,
 		skillsMap.redis,
-		skillsMap.minio,
+		skillsMap.docker,
+		skillsMap.railway,
 		skillsMap.tailwindcss,
 		skillsMap.shadcnui,
-		skillsMap.docker,
-		skillsMap.vercel,
 		skillsMap.googleAds,
 		skillsMap.googleAnalytics,
 		skillsMap.seo,
@@ -188,17 +188,19 @@ export const portfolio: Project = {
 	id: ProjectId.Portfolio,
 	title: '🚀 Portfolio – Wongsaphat Puangsorn',
 	description:
-		'A high-performance personal portfolio with a Cyberpunk 2077–inspired interface — an interactive skill-dependency graph, a gig-style project board, and a career-trace timeline. Built on Next.js with a fully custom design system.',
+		'This site — a Cyberpunk 2077–inspired portfolio built on Next.js (App Router, Turbopack) with a fully custom Tailwind v4 design system and shadcn/ui on Base UI. Features a ⌘K command palette, a gig-board project journal, a vertical career-trace timeline, and a print-ready CV with a slide-presentation mode. Containerized with Docker and deployed on Railway.',
 	images: {
 		banner: assets.issues.portfolio.banner,
 		photos: [assets.issues.portfolio.banner]
 	},
 	skills: [
-		skillsMap.nextjs,
-		skillsMap.tailwindcss,
-		skillsMap.radixui,
-		skillsMap.shadcnui,
 		skillsMap.typescript,
+		skillsMap.nextjs,
+		skillsMap.react,
+		skillsMap.tailwindcss,
+		skillsMap.shadcnui,
+		skillsMap.docker,
+		skillsMap.railway,
 		skillsMap.seo,
 		skillsMap.aeo,
 		skillsMap.geo,

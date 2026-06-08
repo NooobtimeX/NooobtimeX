@@ -1,7 +1,7 @@
 import React from 'react'
 import { Icon } from '@iconify/react'
+import MotionReveal from '@/components/cyber/MotionReveal'
 import SectionHeader from '@/components/cyber/SectionHeader'
-import SkillGraph from '@/components/skills/SkillGraph'
 import SkillNode from '@/components/skills/SkillNode'
 import { SkillCategory, categoryMetadata, skillsData } from '@/common'
 
@@ -17,17 +17,11 @@ const SkillsContent: React.FC = () => {
 		<div className='mx-auto max-w-7xl px-4 py-12 md:px-6 md:py-16'>
 			<SectionHeader
 				code='02'
-				title='Skill Tree'
-				subtitle={`${skillsData.length} skills wired across 4 branches by how they connect.`}
+				title='Skills'
+				subtitle={`${skillsData.length} skills across frontend, backend, infrastructure, and growth.`}
 			/>
 
-			{/* Desktop: node graph */}
-			<div className='mt-14 hidden lg:block'>
-				<SkillGraph />
-			</div>
-
-			{/* Mobile / tablet: stacked lanes */}
-			<div className='mt-10 space-y-10 lg:hidden'>
+			<div className='mt-12 space-y-12'>
 				{ORDER.map((category, idx) => {
 					const meta = categoryMetadata[category]
 					const items = skillsData.filter(s => s.category === category)
@@ -35,7 +29,7 @@ const SkillsContent: React.FC = () => {
 
 					return (
 						<section key={category}>
-							<div className='mb-4 flex items-center gap-3'>
+							<div className='mb-5 flex items-center gap-3'>
 								<span className='text-cyber-cyan font-mono text-xs tracking-[0.3em] uppercase'>
 									{String(idx + 1).padStart(2, '0')}
 								</span>
@@ -44,9 +38,12 @@ const SkillsContent: React.FC = () => {
 								<span className='bg-border h-px flex-1' />
 								<span className='text-muted-foreground font-mono text-xs'>{items.length}</span>
 							</div>
-							<div className='grid grid-cols-1 gap-3 sm:grid-cols-2'>
-								{items.map(skill => (
-									<SkillNode key={skill.name} skill={skill} />
+
+							<div className='grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5'>
+								{items.map((skill, i) => (
+									<MotionReveal key={skill.name} delay={(i % 5) * 0.04}>
+										<SkillNode skill={skill} />
+									</MotionReveal>
 								))}
 							</div>
 						</section>
