@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 	creator: 'Wongsaphat Puangsorn',
 	publisher: 'Wongsaphat Puangsorn',
 	description:
-		'Portfolio | Wongsaphat Puangsorn - Specializing in modern web development, I turn ideas into seamless digital affiliations by building robust web applications using the latest abilities.',
+		'Portfolio | Wongsaphat Puangsorn - Specializing in modern web development, I turn ideas into seamless digital affiliations by building robust web applications using the latest skills.',
 	keywords: [
 		'Wongsaphat Puangsorn',
 		'NooobtimeX',

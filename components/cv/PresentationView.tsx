@@ -4,15 +4,8 @@ import React from 'react'
 import { Icon } from '@iconify/react'
 import { AnimatePresence, motion } from 'framer-motion'
 import GlitchText from '@/components/cyber/GlitchText'
-import { formatAffiliationDuration } from '@/lib/utils'
-import {
-	AbilityCategory,
-	abilitiesData,
-	categoryMetadata,
-	issuesData,
-	personalData,
-	workExperienceData
-} from '@/common'
+import { formatExperienceDuration } from '@/lib/utils'
+import { SkillCategory, categoryMetadata, personalData, projectsData, skillsData, workExperienceData } from '@/common'
 
 const humanize = (value: string) =>
 	value
@@ -77,10 +70,10 @@ const PresentationView: React.FC<PresentationViewProps> = ({ onExit }) => {
 								<div className='flex flex-wrap items-baseline justify-between gap-2'>
 									<h3 className='font-display text-lg font-bold tracking-wide uppercase'>
 										{humanize(item.position)}
-										<span className='text-cyber-yellow'> @ {item.affiliation.name}</span>
+										<span className='text-cyber-yellow'> @ {item.organization.name}</span>
 									</h3>
 									<span className='text-muted-foreground font-mono text-[0.7rem] uppercase'>
-										{formatAffiliationDuration(item.startDate, item.endDate)}
+										{formatExperienceDuration(item.startDate, item.endDate)}
 									</span>
 								</div>
 								<p className='text-muted-foreground mt-2 line-clamp-2 text-sm'>{item.description}</p>
@@ -100,12 +93,12 @@ const PresentationView: React.FC<PresentationViewProps> = ({ onExit }) => {
 					</h2>
 					<div className='mt-6 grid gap-5 sm:grid-cols-2'>
 						{[
-							AbilityCategory.Frontend,
-							AbilityCategory.Backend,
-							AbilityCategory.Infrastructure,
-							AbilityCategory.GrowthManagement
+							SkillCategory.Frontend,
+							SkillCategory.Backend,
+							SkillCategory.Infrastructure,
+							SkillCategory.GrowthManagement
 						].map(cat => {
-							const items = abilitiesData.filter(a => a.category === cat && a.important)
+							const items = skillsData.filter(a => a.category === cat && a.important)
 							if (!items.length) return null
 							return (
 								<div key={cat} className='neon-panel clip-notch-sm p-4'>
@@ -136,7 +129,7 @@ const PresentationView: React.FC<PresentationViewProps> = ({ onExit }) => {
 						Selected Projects
 					</h2>
 					<div className='mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
-						{issuesData.slice(0, 6).map(p => (
+						{projectsData.slice(0, 6).map(p => (
 							<div key={p.id} className='neon-panel clip-notch-sm p-4'>
 								<h3 className='font-display font-bold tracking-wide uppercase'>{p.title}</h3>
 								<p className='text-muted-foreground mt-1 line-clamp-3 text-xs'>{p.description}</p>

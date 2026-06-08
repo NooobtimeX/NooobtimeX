@@ -11,8 +11,8 @@ import MotionReveal from '@/components/cyber/MotionReveal'
 import NeonPanel from '@/components/cyber/NeonPanel'
 import SectionHeader from '@/components/cyber/SectionHeader'
 import ProjectCard from '@/components/projects/ProjectCard'
-import { formatAffiliationDuration, slugify } from '@/lib/utils'
-import { abilitiesData, issuesData, personalData, workExperienceData } from '@/common'
+import { formatExperienceDuration, slugify } from '@/lib/utils'
+import { personalData, projectsData, skillsData, workExperienceData } from '@/common'
 
 const formatPosition = (position: string) =>
 	position
@@ -28,8 +28,8 @@ const HomeContent: React.FC = () => {
 	const current =
 		workExperienceData.find(r => new Date(r.startDate) <= now && (!r.endDate || new Date(r.endDate) >= now))
 		?? workExperienceData[0]
-	const featured = issuesData.slice(0, 3)
-	const coreSkills = abilitiesData.filter(a => a.important).slice(0, 12)
+	const featured = projectsData.slice(0, 3)
+	const coreSkills = skillsData.filter(a => a.important).slice(0, 12)
 
 	return (
 		<div className='mx-auto max-w-7xl px-4 md:px-6'>
@@ -125,10 +125,10 @@ const HomeContent: React.FC = () => {
 							<span className='text-cyber-cyan font-mono text-xs tracking-[0.3em] uppercase'>Current Operation</span>
 							<h3 className='font-display mt-1 text-2xl font-bold tracking-wide'>
 								{formatPosition(current.position)}
-								<span className='text-cyber-yellow'> @ {current.affiliation.name}</span>
+								<span className='text-cyber-yellow'> @ {current.organization.name}</span>
 							</h3>
 							<p className='text-muted-foreground mt-1 font-mono text-xs tracking-wider uppercase'>
-								{formatAffiliationDuration(current.startDate, current.endDate)}
+								{formatExperienceDuration(current.startDate, current.endDate)}
 							</p>
 						</div>
 						<Link

@@ -1,4 +1,4 @@
-export enum AbilityCategory {
+export enum SkillCategory {
 	Frontend = 'frontend',
 	Backend = 'backend',
 	Infrastructure = 'infrastructure',
@@ -43,7 +43,7 @@ export enum EmploymentType {
 	Contract = 'contract'
 }
 
-export enum IssueId {
+export enum ProjectId {
 	LooklookPet = 'looklook-pet',
 	RsTrophy = 'rs-trophy',
 	RsTrophyV1 = 'rs-trophy-v1',

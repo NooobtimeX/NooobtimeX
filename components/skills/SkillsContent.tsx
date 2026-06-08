@@ -5,13 +5,13 @@ import { Icon } from '@iconify/react'
 import MotionReveal from '@/components/cyber/MotionReveal'
 import SectionHeader from '@/components/cyber/SectionHeader'
 import SkillCard from '@/components/skills/SkillCard'
-import { AbilityCategory, abilitiesData, categoryMetadata } from '@/common'
+import { SkillCategory, categoryMetadata, skillsData } from '@/common'
 
-const ORDER: AbilityCategory[] = [
-	AbilityCategory.Frontend,
-	AbilityCategory.Backend,
-	AbilityCategory.Infrastructure,
-	AbilityCategory.GrowthManagement
+const ORDER: SkillCategory[] = [
+	SkillCategory.Frontend,
+	SkillCategory.Backend,
+	SkillCategory.Infrastructure,
+	SkillCategory.GrowthManagement
 ]
 
 const SkillsContent: React.FC = () => {
@@ -20,13 +20,13 @@ const SkillsContent: React.FC = () => {
 			<SectionHeader
 				code='02'
 				title='Skills'
-				subtitle={`${abilitiesData.length} capabilities across the full stack and beyond.`}
+				subtitle={`${skillsData.length} capabilities across the full stack and beyond.`}
 			/>
 
 			<div className='mt-10 space-y-12'>
 				{ORDER.map((category, idx) => {
 					const meta = categoryMetadata[category]
-					const items = abilitiesData.filter(a => a.category === category)
+					const items = skillsData.filter(a => a.category === category)
 					if (items.length === 0) return null
 
 					return (

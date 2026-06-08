@@ -5,15 +5,15 @@ import MotionReveal from '@/components/cyber/MotionReveal'
 import NeonPanel from '@/components/cyber/NeonPanel'
 import ProjectCard from '@/components/projects/ProjectCard'
 import { cn } from '@/lib/utils'
-import { type Ability, categoryMetadata, issuesData } from '@/common'
+import { type Skill, categoryMetadata, projectsData } from '@/common'
 
 interface SkillDetailProps {
-	ability: Ability
+	ability: Skill
 }
 
 const SkillDetail: React.FC<SkillDetailProps> = ({ ability }) => {
 	const meta = categoryMetadata[ability.category]
-	const usedIn = issuesData.filter(p => p.abilities.some(a => a.name === ability.name))
+	const usedIn = projectsData.filter(p => p.skills.some(a => a.name === ability.name))
 
 	return (
 		<div className='mx-auto max-w-5xl px-4 py-10 md:px-6'>

@@ -4,14 +4,14 @@ import React from 'react'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
 import { QRCodeSVG } from 'qrcode.react'
-import { formatAffiliationDuration } from '@/lib/utils'
+import { formatExperienceDuration } from '@/lib/utils'
 import {
-	AbilityCategory,
-	abilitiesData,
+	SkillCategory,
 	categoryMetadata,
 	educationData,
-	issuesData,
 	personalData,
+	projectsData,
+	skillsData,
 	workExperienceData
 } from '@/common'
 
@@ -21,11 +21,11 @@ const humanize = (value: string) =>
 		.map(w => w.charAt(0).toUpperCase() + w.slice(1))
 		.join(' ')
 
-const CATEGORY_ORDER: AbilityCategory[] = [
-	AbilityCategory.Frontend,
-	AbilityCategory.Backend,
-	AbilityCategory.Infrastructure,
-	AbilityCategory.GrowthManagement
+const CATEGORY_ORDER: SkillCategory[] = [
+	SkillCategory.Frontend,
+	SkillCategory.Backend,
+	SkillCategory.Infrastructure,
+	SkillCategory.GrowthManagement
 ]
 
 export default function CVPage() {
@@ -139,10 +139,10 @@ export default function CVPage() {
 								<div className='flex flex-wrap items-baseline justify-between gap-2'>
 									<h3 className='text-lg font-bold tracking-wide uppercase print:text-black'>
 										{humanize(item.position)}
-										<span className='text-cyber-yellow print:text-black'> — {item.affiliation.name}</span>
+										<span className='text-cyber-yellow print:text-black'> — {item.organization.name}</span>
 									</h3>
 									<span className='text-muted-foreground font-mono text-[0.7rem] tracking-wider uppercase print:text-black'>
-										{formatAffiliationDuration(item.startDate, item.endDate)}
+										{formatExperienceDuration(item.startDate, item.endDate)}
 									</span>
 								</div>
 								<p className='text-muted-foreground mt-2 text-sm leading-relaxed print:text-black'>
@@ -165,9 +165,9 @@ export default function CVPage() {
 									key={item.id}
 									className='neon-panel clip-notch-sm p-4 print:border print:border-black/30 print:bg-white print:shadow-none'>
 									<div className='flex flex-wrap items-baseline justify-between gap-2'>
-										<h3 className='font-bold tracking-wide uppercase print:text-black'>{item.affiliation.name}</h3>
+										<h3 className='font-bold tracking-wide uppercase print:text-black'>{item.organization.name}</h3>
 										<span className='text-muted-foreground font-mono text-[0.7rem] tracking-wider uppercase print:text-black'>
-											{formatAffiliationDuration(item.startDate, item.endDate)}
+											{formatExperienceDuration(item.startDate, item.endDate)}
 										</span>
 									</div>
 									<p className='text-muted-foreground mt-1 text-sm print:text-black'>{item.description}</p>
@@ -185,7 +185,7 @@ export default function CVPage() {
 					<div className='grid gap-4 sm:grid-cols-2'>
 						{CATEGORY_ORDER.map(cat => {
 							const meta = categoryMetadata[cat]
-							const items = abilitiesData.filter(a => a.category === cat && a.important)
+							const items = skillsData.filter(a => a.category === cat && a.important)
 							if (items.length === 0) return null
 							return (
 								<div key={cat}>
@@ -214,7 +214,7 @@ export default function CVPage() {
 						Selected Projects
 					</h2>
 					<div className='grid gap-4 sm:grid-cols-2'>
-						{issuesData.map(project => (
+						{projectsData.map(project => (
 							<div
 								key={project.id}
 								className='cv-section neon-panel clip-notch-sm flex flex-col p-3 print:border print:border-black/30 print:bg-white print:shadow-none'>
@@ -223,7 +223,7 @@ export default function CVPage() {
 									{project.description}
 								</p>
 								<div className='mt-2 flex flex-wrap gap-1'>
-									{project.abilities.slice(0, 6).map(a => (
+									{project.skills.slice(0, 6).map(a => (
 										<Icon key={a.name} icon={a.icon} aria-label={a.name} className='size-3.5' />
 									))}
 								</div>

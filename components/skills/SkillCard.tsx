@@ -2,10 +2,10 @@ import React from 'react'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
 import { cn, slugify } from '@/lib/utils'
-import type { Ability } from '@/common'
+import type { Skill } from '@/common'
 
 interface SkillCardProps {
-	ability: Ability
+	ability: Skill
 }
 
 const SkillCard: React.FC<SkillCardProps> = ({ ability }) => {

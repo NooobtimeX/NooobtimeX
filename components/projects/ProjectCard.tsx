@@ -3,10 +3,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
 import { cn } from '@/lib/utils'
-import type { Issue } from '@/common'
+import type { Project } from '@/common'
 
 interface ProjectCardProps {
-	project: Issue
+	project: Project
 	index?: number
 }
 
@@ -43,11 +43,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index = 0 }) => {
 				<p className='text-muted-foreground line-clamp-3 text-sm leading-relaxed'>{project.description}</p>
 
 				<div className='mt-auto flex flex-wrap items-center gap-1.5 pt-2'>
-					{project.abilities.slice(0, 5).map(a => (
+					{project.skills.slice(0, 5).map(a => (
 						<Icon key={a.name} icon={a.icon} aria-label={a.name} className='size-4' />
 					))}
-					{project.abilities.length > 5 && (
-						<span className='text-muted-foreground font-mono text-[0.65rem]'>+{project.abilities.length - 5}</span>
+					{project.skills.length > 5 && (
+						<span className='text-muted-foreground font-mono text-[0.65rem]'>+{project.skills.length - 5}</span>
 					)}
 				</div>
 			</div>

@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: ExperienceDetailPageProps): P
 	if (!item) return { title: 'Experience Not Found' }
 
 	return {
-		title: `${item.position} @ ${item.affiliation.name} | Experience | ${personalData.name}`,
+		title: `${item.position} @ ${item.organization.name} | Experience | ${personalData.name}`,
 		description: item.description
 	}
 }

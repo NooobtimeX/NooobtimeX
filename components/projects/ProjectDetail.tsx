@@ -6,17 +6,17 @@ import CyberButton from '@/components/cyber/CyberButton'
 import NeonPanel from '@/components/cyber/NeonPanel'
 import ProjectGallery from '@/components/projects/ProjectGallery'
 import { slugify } from '@/lib/utils'
-import { type Issue, experiencesData } from '@/common'
+import { type Project, experiencesData } from '@/common'
 
 interface ProjectDetailProps {
-	project: Issue
+	project: Project
 }
 
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
 	const year = new Date(project.startDate).getFullYear()
 	const linkedRole =
-		project.linkedAffiliationId ?
-			experiencesData.find(e => e.affiliation.id === project.linkedAffiliationId)
+		project.linkedOrganizationId ?
+			experiencesData.find(e => e.organization.id === project.linkedOrganizationId)
 		:	undefined
 	const extraPhotos = project.images.photos.filter(p => p !== project.images.banner)
 
@@ -76,7 +76,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
 					<NeonPanel className='clip-notch-sm p-4'>
 						<h3 className='text-cyber-cyan mb-3 font-mono text-xs tracking-widest uppercase'>Stack</h3>
 						<div className='flex flex-wrap gap-2'>
-							{project.abilities.map(a => (
+							{project.skills.map(a => (
 								<Link
 									key={a.name}
 									href={`/skills/${slugify(a.name)}` as never}
@@ -90,12 +90,12 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
 
 					{linkedRole && (
 						<NeonPanel className='clip-notch-sm p-4'>
-							<h3 className='text-cyber-cyan mb-2 font-mono text-xs tracking-widest uppercase'>Affiliation</h3>
+							<h3 className='text-cyber-cyan mb-2 font-mono text-xs tracking-widest uppercase'>Organization</h3>
 							<Link
 								href={`/experience/${linkedRole.id}` as never}
 								className='hover:text-cyber-yellow flex items-center gap-2 text-sm transition-colors'>
 								<Icon icon='mdi:briefcase-outline' className='size-4' />
-								{linkedRole.affiliation.name}
+								{linkedRole.organization.name}
 							</Link>
 						</NeonPanel>
 					)}

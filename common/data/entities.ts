@@ -1,8 +1,8 @@
 import { EntityId, EntityType, Location } from '../enums'
-import type { Affiliation } from '../interfaces'
+import type { Organization } from '../interfaces'
 import { assets } from './assets'
 
-export const ruamsukPlating: Affiliation = {
+export const ruamsukPlating: Organization = {
 	id: EntityId.RuamsukPlating,
 	name: 'RUAMSUK PLATING LIMITED PARTNERSHIP',
 	logo: assets.logos.rsTrophy,
@@ -10,7 +10,7 @@ export const ruamsukPlating: Affiliation = {
 	type: EntityType.Company
 }
 
-export const jasmineTechnologySolution: Affiliation = {
+export const jasmineTechnologySolution: Organization = {
 	id: EntityId.JasmineTechnologySolution,
 	name: 'Jasmine Technology Solution',
 	logo: assets.logos.jasmineTech,
@@ -18,7 +18,7 @@ export const jasmineTechnologySolution: Affiliation = {
 	type: EntityType.Company
 }
 
-export const freelanceWithFriends: Affiliation = {
+export const freelanceWithFriends: Organization = {
 	id: EntityId.FreelanceBlitzwerk,
 	name: 'Freelance with friends',
 	logo: assets.logos.blitzwerk,
@@ -26,7 +26,7 @@ export const freelanceWithFriends: Affiliation = {
 	type: EntityType.Company
 }
 
-export const personalProjects: Affiliation = {
+export const personalProjects: Organization = {
 	id: EntityId.PersonalProjects,
 	name: 'Personal Projects',
 	logo: assets.logos.nooobtimex,
@@ -34,7 +34,7 @@ export const personalProjects: Affiliation = {
 	type: EntityType.Personal
 }
 
-export const thammasatUniversity: Affiliation = {
+export const thammasatUniversity: Organization = {
 	id: EntityId.ThammasatUniversity,
 	name: 'Thammasat University',
 	logo: assets.logos.tuLogo,
@@ -50,7 +50,7 @@ export const entitiesMap = {
 	thammasatUniversity
 }
 
-export const entitiesData: Affiliation[] = [
+export const entitiesData: Organization[] = [
 	ruamsukPlating,
 	jasmineTechnologySolution,
 	freelanceWithFriends,

@@ -1,34 +1,34 @@
-import { AbilityCategory } from '../enums'
-import type { Ability } from '../interfaces'
+import { SkillCategory } from '../enums'
+import type { Skill } from '../interfaces'
 
 // --- Category Metadata ---
 
 export const categoryMetadata: Record<
-	AbilityCategory,
+	SkillCategory,
 	{ label: string; icon: string; description: string; color: string; shadow: string }
 > = {
-	[AbilityCategory.Frontend]: {
+	[SkillCategory.Frontend]: {
 		label: 'Frontend',
 		icon: 'material-symbols:laptop-chromebook',
-		description: 'Modern web development and user interface abilities',
+		description: 'Modern web development and user interface skills',
 		color: '#3b82f6', // blue-500
 		shadow: 'rgba(59, 130, 246, 0.5)'
 	},
-	[AbilityCategory.Backend]: {
+	[SkillCategory.Backend]: {
 		label: 'Backend',
 		icon: 'material-symbols:database',
 		description: 'Server-side development and database management',
 		color: '#10b981', // emerald-500
 		shadow: 'rgba(16, 185, 129, 0.5)'
 	},
-	[AbilityCategory.Infrastructure]: {
+	[SkillCategory.Infrastructure]: {
 		label: 'Infrastructure',
 		icon: 'material-symbols:cloud',
 		description: 'Infrastructure, deployment, and cloud solutions',
 		color: '#8b5cf6', // violet-500
 		shadow: 'rgba(139, 92, 246, 0.5)'
 	},
-	[AbilityCategory.GrowthManagement]: {
+	[SkillCategory.GrowthManagement]: {
 		label: 'Growth & Management',
 		icon: 'material-symbols:trending-up',
 		description: 'Digital growth, marketing, and project management',
@@ -37,289 +37,289 @@ export const categoryMetadata: Record<
 	}
 }
 
-// --- Ability Definitions ---
+// --- Skill Definitions ---
 
 // Frontend
-const nextjs: Ability = {
+const nextjs: Skill = {
 	name: 'Next.js',
 	icon: 'logos:nextjs-icon',
-	category: AbilityCategory.Frontend,
+	category: SkillCategory.Frontend,
 	important: true
 }
 
-const nuxtjs: Ability = {
+const nuxtjs: Skill = {
 	name: 'Nuxt.js',
 	icon: 'logos:nuxt-icon',
-	category: AbilityCategory.Frontend
+	category: SkillCategory.Frontend
 }
 
-const react: Ability = {
+const react: Skill = {
 	name: 'React',
 	icon: 'logos:react',
-	category: AbilityCategory.Frontend,
+	category: SkillCategory.Frontend,
 	important: true
 }
 
-const typescript: Ability = {
+const typescript: Skill = {
 	name: 'TypeScript',
 	icon: 'logos:typescript-icon',
-	category: AbilityCategory.Frontend,
+	category: SkillCategory.Frontend,
 	important: true
 }
 
-const tailwindcss: Ability = {
+const tailwindcss: Skill = {
 	name: 'Tailwind CSS',
 	icon: 'logos:tailwindcss-icon',
-	category: AbilityCategory.Frontend,
+	category: SkillCategory.Frontend,
 	important: true
 }
 
-const shadcnui: Ability = {
+const shadcnui: Skill = {
 	name: 'Shadcn/ui',
 	icon: 'simple-icons:shadcnui',
-	category: AbilityCategory.Frontend,
+	category: SkillCategory.Frontend,
 	important: true
 }
 
-const css: Ability = {
+const css: Skill = {
 	name: 'CSS',
 	icon: 'logos:css-3',
-	category: AbilityCategory.Frontend
+	category: SkillCategory.Frontend
 }
 
 // Backend
-const nodejs: Ability = {
+const nodejs: Skill = {
 	name: 'Node.js',
 	icon: 'logos:nodejs-icon',
-	category: AbilityCategory.Backend,
+	category: SkillCategory.Backend,
 	important: true
 }
 
-const nestjs: Ability = {
+const nestjs: Skill = {
 	name: 'Nest.js',
 	icon: 'logos:nestjs',
-	category: AbilityCategory.Backend
+	category: SkillCategory.Backend
 }
 
-const nats: Ability = {
+const nats: Skill = {
 	name: 'NATS',
 	icon: 'logos:nats-icon',
-	category: AbilityCategory.Backend
+	category: SkillCategory.Backend
 }
 
-const python: Ability = {
+const python: Skill = {
 	name: 'Python',
 	icon: 'logos:python',
-	category: AbilityCategory.Backend
+	category: SkillCategory.Backend
 }
 
-const elysia: Ability = {
+const elysia: Skill = {
 	name: 'Elysia.js',
-	category: AbilityCategory.Backend,
+	category: SkillCategory.Backend,
 	icon: 'material-symbols:flash-on',
 	important: true
 }
 
-const sse: Ability = {
+const sse: Skill = {
 	name: 'SSE',
 	icon: 'material-symbols:stream',
-	category: AbilityCategory.Backend
+	category: SkillCategory.Backend
 }
 
-const bun: Ability = {
+const bun: Skill = {
 	name: 'Bun.js',
 	icon: 'logos:bun',
-	category: AbilityCategory.Backend
+	category: SkillCategory.Backend
 }
 
-const postgresql: Ability = {
+const postgresql: Skill = {
 	name: 'PostgreSQL',
 	icon: 'logos:postgresql',
-	category: AbilityCategory.Backend,
+	category: SkillCategory.Backend,
 	important: true
 }
 
-const mongodb: Ability = {
+const mongodb: Skill = {
 	name: 'MongoDB',
 	icon: 'logos:mongodb-icon',
-	category: AbilityCategory.Backend,
+	category: SkillCategory.Backend,
 	important: true
 }
 
-const prisma: Ability = {
+const prisma: Skill = {
 	name: 'Prisma',
 	icon: 'logos:prisma',
-	category: AbilityCategory.Backend,
+	category: SkillCategory.Backend,
 	whiteBg: true
 }
 
-const redis: Ability = {
+const redis: Skill = {
 	name: 'Redis',
 	icon: 'logos:redis',
-	category: AbilityCategory.Backend,
+	category: SkillCategory.Backend,
 	important: true
 }
 
-const supabase: Ability = {
+const supabase: Skill = {
 	name: 'Supabase',
 	icon: 'logos:supabase-icon',
-	category: AbilityCategory.Backend
+	category: SkillCategory.Backend
 }
 
 // Infrastructure
-const vercel: Ability = {
+const vercel: Skill = {
 	name: 'Vercel',
 	icon: 'logos:vercel-icon',
-	category: AbilityCategory.Infrastructure,
+	category: SkillCategory.Infrastructure,
 	whiteBg: true,
 	important: true
 }
 
-const railway: Ability = {
+const railway: Skill = {
 	name: 'Railway',
 	icon: 'simple-icons:railway',
-	category: AbilityCategory.Infrastructure
+	category: SkillCategory.Infrastructure
 }
 
-const docker: Ability = {
+const docker: Skill = {
 	name: 'Docker',
 	icon: 'logos:docker-icon',
-	category: AbilityCategory.Infrastructure,
+	category: SkillCategory.Infrastructure,
 	important: true
 }
 
-const render: Ability = {
+const render: Skill = {
 	name: 'Render',
 	icon: 'simple-icons:render',
-	category: AbilityCategory.Infrastructure
+	category: SkillCategory.Infrastructure
 }
 
-const github: Ability = {
+const github: Skill = {
 	name: 'Git/GitHub',
 	icon: 'logos:github-icon',
-	category: AbilityCategory.Infrastructure,
+	category: SkillCategory.Infrastructure,
 	whiteBg: true,
 	important: true
 }
 
-const minio: Ability = {
+const minio: Skill = {
 	name: 'MinIO',
-	category: AbilityCategory.Infrastructure,
+	category: SkillCategory.Infrastructure,
 	icon: 'simple-icons:minio'
 }
 
-const resend: Ability = {
+const resend: Skill = {
 	name: 'Resend',
 	icon: 'simple-icons:resend',
-	category: AbilityCategory.Infrastructure
+	category: SkillCategory.Infrastructure
 }
 
 // Growth & Management
-const seo: Ability = {
+const seo: Skill = {
 	name: 'SEO',
 	icon: 'material-symbols:search',
-	category: AbilityCategory.GrowthManagement
+	category: SkillCategory.GrowthManagement
 }
 
-const aeo: Ability = {
+const aeo: Skill = {
 	name: 'AEO',
 	icon: 'material-symbols:auto-awesome',
-	category: AbilityCategory.GrowthManagement
+	category: SkillCategory.GrowthManagement
 }
 
-const geo: Ability = {
+const geo: Skill = {
 	name: 'GEO',
 	icon: 'material-symbols:public',
-	category: AbilityCategory.GrowthManagement
+	category: SkillCategory.GrowthManagement
 }
 
-const jsonld: Ability = {
+const jsonld: Skill = {
 	name: 'JSON-LD',
 	icon: 'material-symbols:data-object',
-	category: AbilityCategory.GrowthManagement
+	category: SkillCategory.GrowthManagement
 }
 
-const googleAnalytics: Ability = {
+const googleAnalytics: Skill = {
 	name: 'Google Analytics',
 	icon: 'logos:google-analytics',
-	category: AbilityCategory.GrowthManagement
+	category: SkillCategory.GrowthManagement
 }
 
-const googleAds: Ability = {
+const googleAds: Skill = {
 	name: 'Google Ads',
 	icon: 'logos:google-ads',
-	category: AbilityCategory.GrowthManagement
+	category: SkillCategory.GrowthManagement
 }
 
-const wordpress: Ability = {
+const wordpress: Skill = {
 	name: 'WordPress',
 	icon: 'simple-icons:wordpress',
-	category: AbilityCategory.GrowthManagement
+	category: SkillCategory.GrowthManagement
 }
 
-const woocommerce: Ability = {
+const woocommerce: Skill = {
 	name: 'WooCommerce',
 	icon: 'simple-icons:woocommerce',
-	category: AbilityCategory.GrowthManagement
+	category: SkillCategory.GrowthManagement
 }
 
 // UI & Animation
-const radixui: Ability = {
+const radixui: Skill = {
 	name: 'Radix UI',
 	icon: 'simple-icons:radixui',
-	category: AbilityCategory.Frontend
+	category: SkillCategory.Frontend
 }
 
-const framerMotion: Ability = {
+const framerMotion: Skill = {
 	name: 'Framer Motion',
 	icon: 'logos:framer',
-	category: AbilityCategory.Frontend
+	category: SkillCategory.Frontend
 }
 
-const emblaCarousel: Ability = {
+const emblaCarousel: Skill = {
 	name: 'Embla Carousel',
 	icon: 'carbon:carousel-horizontal',
-	category: AbilityCategory.Frontend
+	category: SkillCategory.Frontend
 }
 
-const lucide: Ability = {
+const lucide: Skill = {
 	name: 'Lucide Icons',
 	icon: 'lucide:box',
-	category: AbilityCategory.Frontend
+	category: SkillCategory.Frontend
 }
 
-const heroicons: Ability = {
+const heroicons: Skill = {
 	name: 'Heroicons',
 	icon: 'logos:heroicons',
-	category: AbilityCategory.Frontend
+	category: SkillCategory.Frontend
 }
 
-const reactIcons: Ability = {
+const reactIcons: Skill = {
 	name: 'React Icons',
 	icon: 'logos:react',
-	category: AbilityCategory.Frontend
+	category: SkillCategory.Frontend
 }
 
 // Data & Analytics
-const recharts: Ability = {
+const recharts: Skill = {
 	name: 'Recharts',
 	icon: 'simple-icons:recharts',
-	category: AbilityCategory.Frontend
+	category: SkillCategory.Frontend
 }
 
-const gtm: Ability = {
+const gtm: Skill = {
 	name: 'Google Tag Manager',
 	icon: 'logos:google-tag-manager',
-	category: AbilityCategory.GrowthManagement
+	category: SkillCategory.GrowthManagement
 }
 
-const datefns: Ability = {
+const datefns: Skill = {
 	name: 'date-fns',
 	icon: 'logos:javascript',
-	category: AbilityCategory.Frontend
+	category: SkillCategory.Frontend
 }
 
-export const abilitiesMap = {
+export const skillsMap = {
 	nextjs,
 	nuxtjs,
 	react,
@@ -365,10 +365,10 @@ export const abilitiesMap = {
 	datefns
 }
 
-// Deprecated: Use abilitiesMap instead. Keeping for backward compatibility during transition.
-export const skills = abilitiesMap
+// Deprecated: Use skillsMap instead. Keeping for backward compatibility during transition.
+export const skills = skillsMap
 
-export const abilitiesData: Ability[] = [
+export const skillsData: Skill[] = [
 	nextjs,
 	nuxtjs,
 	react,
@@ -411,5 +411,5 @@ export const abilitiesData: Ability[] = [
 	datefns
 ]
 
-// Deprecated: Use abilitiesData instead.
-export const orderedAbilities = abilitiesData
+// Deprecated: Use skillsData instead.
+export const orderedSkills = skillsData

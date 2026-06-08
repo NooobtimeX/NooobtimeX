@@ -1,5 +1,5 @@
 import { EmploymentType, ExperienceCategory, ExperienceId, Position } from '../enums'
-import type { AffiliationItem } from '../interfaces'
+import type { ExperienceItem } from '../interfaces'
 import { sortByDateDesc } from '../utils'
 import {
 	freelanceWithFriends,
@@ -11,9 +11,9 @@ import {
 
 // --- Experiences/Roles ---
 
-export const freelanceBlitzwerkAffiliation: AffiliationItem = {
+export const freelanceBlitzwerkExperience: ExperienceItem = {
 	id: ExperienceId.FreelanceBlitzwerk,
-	affiliation: freelanceWithFriends,
+	organization: freelanceWithFriends,
 	position: Position.FullStackDeveloper,
 	description:
 		'Collaborated on end-to-end web development projects, delivering scalable solutions tailored to client needs.',
@@ -23,9 +23,9 @@ export const freelanceBlitzwerkAffiliation: AffiliationItem = {
 	endDate: '2025-12-31'
 }
 
-export const jasmineTechnologySolutionAffiliation: AffiliationItem = {
+export const jasmineTechnologySolutionExperience: ExperienceItem = {
 	id: ExperienceId.JasmineTechnologySolution,
-	affiliation: jasmineTechnologySolution,
+	organization: jasmineTechnologySolution,
 	position: Position.Developer,
 	description:
 		'Microservices Management: Orchestrate and maintain over 20 concurrent microservices for the LOOKLOOKPET application. CI/CD & Infrastructure: Architected and deployed a robust CI/CD pipeline managing Dockerized services on Railway. Agile Leadership: Partner directly with the Product Owner to define strategic project milestones.',
@@ -35,9 +35,9 @@ export const jasmineTechnologySolutionAffiliation: AffiliationItem = {
 	endDate: '2026-07-31'
 }
 
-export const ruamsukPlatingSoftwareEngineerPartTime: AffiliationItem = {
+export const ruamsukPlatingSoftwareEngineerPartTime: ExperienceItem = {
 	id: ExperienceId.RuamsukPlatingSoftwareEngineerPartTime,
-	affiliation: ruamsukPlating,
+	organization: ruamsukPlating,
 	position: Position.SoftwareEngineer,
 	description:
 		'Full Stack & SEO: Drove full-stack web application development while integrating targeted SEO and online marketing strategies. Digital Transformation: Led digital organizational transformation, modernizing legacy workflows to increase operational efficiency.',
@@ -47,9 +47,9 @@ export const ruamsukPlatingSoftwareEngineerPartTime: AffiliationItem = {
 	endDate: '2025-05-31'
 }
 
-export const ruamsukPlatingSoftwareEngineerFullTime: AffiliationItem = {
+export const ruamsukPlatingSoftwareEngineerFullTime: ExperienceItem = {
 	id: ExperienceId.RuamsukPlatingSoftwareEngineerFullTime,
-	affiliation: ruamsukPlating,
+	organization: ruamsukPlating,
 	position: Position.SoftwareEngineer,
 	description:
 		'Full Stack & SEO: Drove full-stack web application development while integrating targeted SEO and online marketing strategies. Digital Transformation: Led digital organizational transformation, modernizing legacy workflows to increase operational efficiency.',
@@ -59,9 +59,9 @@ export const ruamsukPlatingSoftwareEngineerFullTime: AffiliationItem = {
 	endDate: '2025-07-15'
 }
 
-export const ruamsukPlatingProductLead: AffiliationItem = {
+export const ruamsukPlatingProductLead: ExperienceItem = {
 	id: ExperienceId.RuamsukPlatingProductLead,
-	affiliation: ruamsukPlating,
+	organization: ruamsukPlating,
 	position: Position.ProductLead,
 	description:
 		'Solo Full Stack Ownership: Single-handedly delivered end-to-end web application projects, owning every stage from architecture to deployment. Product & Design Leadership: Acted as sole PM, PO, and UI/UX designer, authoring all project documentation independently. Supply Chain & AI Automation: Built supply chain solutions and AI automation workflows, and served as PM for a no-code web application. Finance Optimization: Worked directly with the accountant to streamline and optimize financial processes.',
@@ -70,9 +70,9 @@ export const ruamsukPlatingProductLead: AffiliationItem = {
 	startDate: '2026-08-01'
 }
 
-export const personalProjectsAffiliation: AffiliationItem = {
+export const personalProjectsExperience: ExperienceItem = {
 	id: ExperienceId.PersonalProjects,
-	affiliation: personalProjects,
+	organization: personalProjects,
 	position: Position.Developer,
 	description: 'Developing and maintaining high-impact personal projects and open-source contributions.',
 	type: EmploymentType.Freelance,
@@ -80,9 +80,9 @@ export const personalProjectsAffiliation: AffiliationItem = {
 	startDate: '2024-10-10'
 }
 
-export const thammasatUniversityAffiliation: AffiliationItem = {
+export const thammasatUniversityExperience: ExperienceItem = {
 	id: ExperienceId.ThammasatUniversity,
-	affiliation: thammasatUniversity,
+	organization: thammasatUniversity,
 	position: Position.CollegeStudent,
 	description:
 		'Bachelor of Science in Computer Science. Specialized in full-stack development and system architecture through various academic and research projects.',
@@ -94,31 +94,31 @@ export const thammasatUniversityAffiliation: AffiliationItem = {
 
 // --- Data Aggregation & Logic ---
 
-const all: AffiliationItem[] = [
-	freelanceBlitzwerkAffiliation,
-	jasmineTechnologySolutionAffiliation,
+const all: ExperienceItem[] = [
+	freelanceBlitzwerkExperience,
+	jasmineTechnologySolutionExperience,
 	ruamsukPlatingSoftwareEngineerPartTime,
 	ruamsukPlatingSoftwareEngineerFullTime,
 	ruamsukPlatingProductLead,
-	personalProjectsAffiliation,
-	thammasatUniversityAffiliation
+	personalProjectsExperience,
+	thammasatUniversityExperience
 ]
 
 // All affiliations sorted by startDate (newest first)
-export const experiencesData: AffiliationItem[] = [...all].sort(sortByDateDesc)
+export const experiencesData: ExperienceItem[] = [...all].sort(sortByDateDesc)
 
 // Filtered slices by category
-export const workExperienceData: AffiliationItem[] = all
+export const workExperienceData: ExperienceItem[] = all
 	.filter(a => a.category === ExperienceCategory.Work)
 	.sort(sortByDateDesc)
 
-export const educationData: AffiliationItem[] = all
+export const educationData: ExperienceItem[] = all
 	.filter(a => a.category === ExperienceCategory.Education)
 	.sort(sortByDateDesc)
 
-export const personalProjectsData: AffiliationItem[] = all
+export const personalProjectsData: ExperienceItem[] = all
 	.filter(a => a.category === ExperienceCategory.Personal)
 	.sort(sortByDateDesc)
 
 // Backward compatibility aliasing
-export const affiliationData = experiencesData
+export const experienceData = experiencesData

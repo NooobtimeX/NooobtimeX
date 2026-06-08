@@ -1,33 +1,33 @@
-import { AbilityCategory } from './enums'
-import type { Ability, AbilityGroup, Issue } from './interfaces'
+import { SkillCategory } from './enums'
+import type { Project, Skill, SkillGroup } from './interfaces'
 
 /**
- * Group and sort abilities dynamically based on their usage in issues.
+ * Group and sort skills dynamically based on their usage in issues.
  * This is a pure function that requires category metadata and base ability order.
  */
-export const getDynamicAbilities = (
-	issuesData: Issue[],
+export const getDynamicSkills = (
+	projectsData: Project[],
 	categoryMetadata: Record<string, { label?: string; icon: string; description: string }>,
-	orderedAbilities: Ability[]
-): AbilityGroup[] => {
+	orderedSkills: Skill[]
+): SkillGroup[] => {
 	const abilityOrderMap = new Map<string, number>()
-	orderedAbilities.forEach((ability, index) => {
+	orderedSkills.forEach((ability, index) => {
 		abilityOrderMap.set(ability.name, index)
 	})
 
-	const allAbilities: Ability[] = []
+	const allAbilities: Skill[] = []
 	const abilityFrequency = new Map<string, number>()
 
 	// Collect from issues
-	issuesData.forEach(issue => {
-		issue.abilities.forEach(ability => {
+	projectsData.forEach(issue => {
+		issue.skills.forEach(ability => {
 			allAbilities.push(ability)
 			abilityFrequency.set(ability.name, (abilityFrequency.get(ability.name) || 0) + 1)
 		})
 	})
 
-	// Filter unique abilities by name
-	const uniqueAbilitiesMap = new Map<string, Ability>()
+	// Filter unique skills by name
+	const uniqueAbilitiesMap = new Map<string, Skill>()
 	allAbilities.forEach(ability => {
 		if (!uniqueAbilitiesMap.has(ability.name)) {
 			uniqueAbilitiesMap.set(ability.name, ability)
@@ -58,11 +58,11 @@ export const getDynamicAbilities = (
 			:	999
 
 		return {
-			category: category as AbilityCategory,
+			category: category as SkillCategory,
 			label: metadata.label || category,
 			description: metadata.description,
 			icon: metadata.icon,
-			abilities: abilitiesInCategory,
+			skills: abilitiesInCategory,
 			totalFrequency: totalCategoryFrequency,
 			minOrder
 		}
@@ -70,7 +70,7 @@ export const getDynamicAbilities = (
 
 	return (
 		grouped
-			.filter(group => group.abilities.length > 0)
+			.filter(group => group.skills.length > 0)
 			.sort((a, b) => a.minOrder - b.minOrder)
 			// eslint-disable-next-line @typescript-eslint/no-unused-vars
 			.map(({ totalFrequency, minOrder, ...group }) => group)

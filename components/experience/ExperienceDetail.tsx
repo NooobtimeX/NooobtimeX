@@ -6,11 +6,11 @@ import CyberTag from '@/components/cyber/CyberTag'
 import MotionReveal from '@/components/cyber/MotionReveal'
 import NeonPanel from '@/components/cyber/NeonPanel'
 import ProjectCard from '@/components/projects/ProjectCard'
-import { formatAffiliationDuration, isCurrentPosition } from '@/lib/utils'
-import { type AffiliationItem, issuesData } from '@/common'
+import { formatExperienceDuration, isCurrentPosition } from '@/lib/utils'
+import { type ExperienceItem, projectsData } from '@/common'
 
 interface ExperienceDetailProps {
-	item: AffiliationItem
+	item: ExperienceItem
 }
 
 const humanize = (value: string) =>
@@ -21,7 +21,7 @@ const humanize = (value: string) =>
 
 const ExperienceDetail: React.FC<ExperienceDetailProps> = ({ item }) => {
 	const current = isCurrentPosition(item.endDate)
-	const relatedProjects = issuesData.filter(p => p.linkedAffiliationId === item.affiliation.id)
+	const relatedProjects = projectsData.filter(p => p.linkedOrganizationId === item.organization.id)
 
 	return (
 		<div className='mx-auto max-w-4xl px-4 py-10 md:px-6'>
@@ -32,11 +32,11 @@ const ExperienceDetail: React.FC<ExperienceDetailProps> = ({ item }) => {
 			</Link>
 
 			<NeonPanel className='clip-notch mt-6 flex flex-col gap-5 p-6 sm:flex-row sm:items-center'>
-				{item.affiliation.logo && (
+				{item.organization.logo && (
 					<span className='relative size-16 shrink-0 overflow-hidden rounded-sm bg-white/90'>
 						<Image
-							src={item.affiliation.logo}
-							alt={item.affiliation.name}
+							src={item.organization.logo}
+							alt={item.organization.name}
 							fill
 							sizes='64px'
 							className='object-contain p-1.5'
@@ -47,9 +47,9 @@ const ExperienceDetail: React.FC<ExperienceDetailProps> = ({ item }) => {
 					<h1 className='font-display text-3xl font-bold tracking-wide uppercase md:text-4xl'>
 						{humanize(item.position)}
 					</h1>
-					<p className='text-cyber-yellow text-lg'>{item.affiliation.name}</p>
+					<p className='text-cyber-yellow text-lg'>{item.organization.name}</p>
 					<p className='text-muted-foreground mt-1 font-mono text-xs tracking-wider uppercase'>
-						{formatAffiliationDuration(item.startDate, item.endDate)}
+						{formatExperienceDuration(item.startDate, item.endDate)}
 					</p>
 				</div>
 				{current && (
@@ -62,7 +62,7 @@ const ExperienceDetail: React.FC<ExperienceDetailProps> = ({ item }) => {
 			<div className='mt-6 flex flex-wrap gap-2'>
 				<CyberTag icon='mdi:briefcase-outline'>{humanize(item.type)}</CyberTag>
 				<CyberTag icon='mdi:map-marker-outline' tone='yellow'>
-					{humanize(item.affiliation.location)}
+					{humanize(item.organization.location)}
 				</CyberTag>
 				<CyberTag icon='mdi:shape-outline' tone='magenta'>
 					{humanize(item.category)}
@@ -72,9 +72,9 @@ const ExperienceDetail: React.FC<ExperienceDetailProps> = ({ item }) => {
 			<section className='mt-8'>
 				<h2 className='text-cyber-cyan font-mono text-xs tracking-[0.3em] uppercase'>// Summary</h2>
 				<p className='text-muted-foreground mt-3 leading-relaxed'>{item.description}</p>
-				{item.affiliation.url && (
+				{item.organization.url && (
 					<a
-						href={item.affiliation.url}
+						href={item.organization.url}
 						target='_blank'
 						rel='noopener noreferrer'
 						className='text-cyber-cyan hover:text-cyber-yellow mt-4 inline-flex items-center gap-2 font-mono text-xs tracking-widest uppercase transition-colors'>

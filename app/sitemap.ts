@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 import { slugify } from '@/lib/utils'
-import { experiencesData, issuesData } from '@/common'
-import { abilitiesData } from '@/common'
+import { experiencesData, projectsData } from '@/common'
+import { skillsData } from '@/common'
 
 const domain = 'https://nooobtimex.me'
 
@@ -16,14 +16,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		{ url: `${domain}/cv`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 }
 	]
 
-	const projectRoutes: MetadataRoute.Sitemap = issuesData.map(item => ({
+	const projectRoutes: MetadataRoute.Sitemap = projectsData.map(item => ({
 		url: `${domain}/projects/${item.id}`,
 		lastModified: now,
 		changeFrequency: 'monthly',
 		priority: 0.7
 	}))
 
-	const skillRoutes: MetadataRoute.Sitemap = abilitiesData.map(item => ({
+	const skillRoutes: MetadataRoute.Sitemap = skillsData.map(item => ({
 		url: `${domain}/skills/${slugify(item.name)}`,
 		lastModified: now,
 		changeFrequency: 'monthly',

@@ -3,15 +3,15 @@
  * All domain models and shared data structures are defined here.
  */
 import {
-	AbilityCategory,
 	EmploymentType,
 	EntityId,
 	EntityType,
 	ExperienceCategory,
 	ExperienceId,
-	IssueId,
 	Location,
 	Position,
+	ProjectId,
+	SkillCategory,
 	SocialPlatform
 } from './enums'
 
@@ -42,25 +42,25 @@ export interface SocialLink {
 // --- Domain Interfaces ---
 
 /** Individual technical ability or skill */
-export interface Ability {
+export interface Skill {
 	name: string
-	category: AbilityCategory
+	category: SkillCategory
 	icon: string // Icon name for @iconify/react
 	whiteBg?: boolean
 	important?: boolean
 }
 
-/** Grouped abilities for display by category */
-export interface AbilityGroup {
-	category: AbilityCategory
+/** Grouped skills for display by category */
+export interface SkillGroup {
+	category: SkillCategory
 	label: string
 	description: string
 	icon: string // Icon name for @iconify/react
-	abilities: Ability[]
+	skills: Skill[]
 }
 
 /** An organization, university, or entity */
-export interface Affiliation {
+export interface Organization {
 	id: EntityId // concise logical ID for the entity
 	name: string
 	logo?: string
@@ -69,10 +69,10 @@ export interface Affiliation {
 	url?: string
 }
 
-/** A specific role or experience period at an affiliation */
-export interface AffiliationItem {
+/** A specific role or experience period at an organization */
+export interface ExperienceItem {
 	id: ExperienceId
-	affiliation: Affiliation
+	organization: Organization
 	position: Position
 	description: string
 	type: EmploymentType
@@ -82,21 +82,21 @@ export interface AffiliationItem {
 }
 
 /** A project, milestone, or significant achievement */
-export interface Issue {
-	id: IssueId
+export interface Project {
+	id: ProjectId
 	title: string
 	description: string
 	images: {
 		banner: string // Used for issue detail page header and card previews
 		photos: string[] // Gallery of issue screenshots/photos
 	}
-	abilities: Ability[]
+	skills: Skill[]
 	links: {
 		live?: string
 	}
 	startDate: string // YYYY-MM-DD
 	endDate?: string // YYYY-MM-DD or undefined if ongoing/single release
-	linkedAffiliationId?: EntityId // ID of the Entity this issue belongs to
+	linkedOrganizationId?: EntityId // ID of the Entity this issue belongs to
 }
 
 /** Global personal information and settings */
