@@ -186,7 +186,7 @@ const HomeContent: React.FC = () => {
 			<section className='mt-20'>
 				<SectionHeader
 					code='02'
-					title='Featured Projects'
+					title='Projects'
 					subtitle='Selected builds — full-stack systems shipped end to end.'
 					action={
 						<Link
@@ -209,7 +209,7 @@ const HomeContent: React.FC = () => {
 			<section className='mt-20'>
 				<SectionHeader
 					code='03'
-					title='Stack'
+					title='Skills'
 					subtitle='Core tools in active rotation.'
 					action={
 						<Link

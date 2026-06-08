@@ -5,9 +5,10 @@ import Container from '@/components/cyber/Container'
 import { personalData } from '@/common'
 
 const LINKS = [
+	{ label: 'Career', href: '/experience' },
 	{ label: 'Projects', href: '/projects' },
 	{ label: 'Skills', href: '/skills' },
-	{ label: 'Experience', href: '/experience' },
+	{ label: 'GitHub', href: '/github' },
 	{ label: 'CV', href: '/cv' }
 ] as const
 

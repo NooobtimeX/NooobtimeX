@@ -21,9 +21,10 @@ interface GlobalSearchProps {
 
 const NAV = [
 	{ label: 'Home', href: '/', icon: 'mdi:home-variant-outline' },
+	{ label: 'Career', href: '/experience', icon: 'mdi:timeline-text-outline' },
 	{ label: 'Projects', href: '/projects', icon: 'mdi:folder-multiple-outline' },
 	{ label: 'Skills', href: '/skills', icon: 'mdi:chip' },
-	{ label: 'Experience', href: '/experience', icon: 'mdi:timeline-text-outline' },
+	{ label: 'GitHub', href: '/github', icon: 'simple-icons:github' },
 	{ label: 'CV', href: '/cv', icon: 'mdi:file-account-outline' }
 ] as const
 

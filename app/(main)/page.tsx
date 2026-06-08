@@ -1,6 +1,7 @@
 import React from 'react'
 import { Metadata } from 'next'
 import GithubStats from '@/components/github/GithubStats'
+import CvTeaser from '@/components/home/CvTeaser'
 import HomeContent from '@/components/home/HomeContent'
 import { personalData } from '@/common'
 
@@ -28,7 +29,8 @@ const Home: React.FC = () => {
 		<>
 			<script type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 			<HomeContent />
-			<GithubStats />
+			<GithubStats variant='home' />
+			<CvTeaser />
 		</>
 	)
 }

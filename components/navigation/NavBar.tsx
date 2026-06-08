@@ -11,10 +11,11 @@ import { cn } from '@/lib/utils'
 
 const LINKS = [
 	{ label: 'Home', href: '/', code: '00' },
-	{ label: 'Projects', href: '/projects', code: '01' },
-	{ label: 'Skills', href: '/skills', code: '02' },
-	{ label: 'Experience', href: '/experience', code: '03' },
-	{ label: 'CV', href: '/cv', code: '04' }
+	{ label: 'Career', href: '/experience', code: '01' },
+	{ label: 'Projects', href: '/projects', code: '02' },
+	{ label: 'Skills', href: '/skills', code: '03' },
+	{ label: 'GitHub', href: '/github', code: '04' },
+	{ label: 'CV', href: '/cv', code: '05' }
 ] as const
 
 const isActive = (pathname: string, href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href))
