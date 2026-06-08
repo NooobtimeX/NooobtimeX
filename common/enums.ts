@@ -30,7 +30,7 @@ export enum ExperienceId {
 	FreelanceBlitzwerk = 'freelance-blitzwerk-role',
 	RuamsukPlatingSoftwareEngineerPartTime = 'ruamsuk-software-engineer-part-time',
 	RuamsukPlatingSoftwareEngineerFullTime = 'ruamsuk-software-engineer-full-time',
-	RuamsukPlatingSoftwareEngineerFullTime2 = 'ruamsuk-software-engineer-full-time-2',
+	RuamsukPlatingProductLead = 'ruamsuk-product-lead',
 	PersonalProjects = 'personal-projects-role',
 	ThammasatUniversity = 'thammasat-university-role'
 }
@@ -65,6 +65,7 @@ export enum Location {
 
 export enum Position {
 	FullStackDeveloper = 'full-stack-developer',
+	ProductLead = 'product-lead',
 	SoftwareEngineer = 'software-engineer',
 	Developer = 'developer',
 	Advisor = 'advisor',

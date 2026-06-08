@@ -32,7 +32,7 @@ export const jasmineTechnologySolutionAffiliation: AffiliationItem = {
 	type: EmploymentType.FullTime,
 	category: ExperienceCategory.Work,
 	startDate: '2025-07-16',
-	endDate: '2026-05-31'
+	endDate: '2026-07-31'
 }
 
 export const ruamsukPlatingSoftwareEngineerPartTime: AffiliationItem = {
@@ -59,15 +59,15 @@ export const ruamsukPlatingSoftwareEngineerFullTime: AffiliationItem = {
 	endDate: '2025-07-15'
 }
 
-export const ruamsukPlatingSoftwareEngineerFullTime2: AffiliationItem = {
-	id: ExperienceId.RuamsukPlatingSoftwareEngineerFullTime2,
+export const ruamsukPlatingProductLead: AffiliationItem = {
+	id: ExperienceId.RuamsukPlatingProductLead,
 	affiliation: ruamsukPlating,
-	position: Position.SoftwareEngineer,
+	position: Position.ProductLead,
 	description:
-		'Full Stack & SEO: Drove full-stack web application development while integrating targeted SEO and online marketing strategies. Digital Transformation: Led digital organizational transformation, modernizing legacy workflows to increase operational efficiency.',
+		'Solo Full Stack Ownership: Single-handedly delivered end-to-end web application projects, owning every stage from architecture to deployment. Product & Design Leadership: Acted as sole PM, PO, and UI/UX designer, authoring all project documentation independently. Supply Chain & AI Automation: Built supply chain solutions and AI automation workflows, and served as PM for a no-code web application. Finance Optimization: Worked directly with the accountant to streamline and optimize financial processes.',
 	type: EmploymentType.FullTime,
 	category: ExperienceCategory.Work,
-	startDate: '2026-06-01'
+	startDate: '2026-08-01'
 }
 
 export const personalProjectsAffiliation: AffiliationItem = {
@@ -99,7 +99,7 @@ const all: AffiliationItem[] = [
 	jasmineTechnologySolutionAffiliation,
 	ruamsukPlatingSoftwareEngineerPartTime,
 	ruamsukPlatingSoftwareEngineerFullTime,
-	ruamsukPlatingSoftwareEngineerFullTime2,
+	ruamsukPlatingProductLead,
 	personalProjectsAffiliation,
 	thammasatUniversityAffiliation
 ]

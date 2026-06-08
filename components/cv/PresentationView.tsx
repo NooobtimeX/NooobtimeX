@@ -174,7 +174,7 @@ export default function PresentationView({ onExit }: PresentationViewProps) {
 		render: () => <ActSlide act='Act III' title='Strategic Leadership' sub='Technical Advising & Scale' />
 	})
 
-	const act3Exps = affiliationData.filter(a => [ExperienceId.RuamsukPlatingSoftwareEngineerFullTime2].includes(a.id))
+	const act3Exps = affiliationData.filter(a => [ExperienceId.RuamsukPlatingProductLead].includes(a.id))
 	act3Exps.forEach(exp => {
 		slides.push({
 			id: exp.id,
