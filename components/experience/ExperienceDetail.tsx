@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
+import Container from '@/components/cyber/Container'
 import CyberTag from '@/components/cyber/CyberTag'
 import MotionReveal from '@/components/cyber/MotionReveal'
 import NeonPanel from '@/components/cyber/NeonPanel'
@@ -34,7 +35,7 @@ const ExperienceDetail: React.FC<ExperienceDetailProps> = ({ item }) => {
 	const relatedProjects = projectsData.filter(p => p.linkedOrganizationId === item.organization.id)
 
 	return (
-		<div className='mx-auto max-w-4xl px-4 py-10 md:px-6'>
+		<Container className='py-10'>
 			<Link
 				href='/experience'
 				className='text-muted-foreground hover:text-cyber-cyan inline-flex items-center gap-2 font-mono text-xs tracking-widest uppercase transition-colors'>
@@ -107,16 +108,16 @@ const ExperienceDetail: React.FC<ExperienceDetailProps> = ({ item }) => {
 						<span className='bg-border h-px flex-1' />
 						<span className='text-muted-foreground font-mono text-xs'>{relatedProjects.length}</span>
 					</div>
-					<div className='grid gap-5 sm:grid-cols-2'>
+					<div className='grid gap-5 sm:grid-cols-2 lg:grid-cols-3'>
 						{relatedProjects.map((p, i) => (
-							<MotionReveal key={p.id} delay={(i % 2) * 0.08}>
+							<MotionReveal key={p.id} delay={(i % 3) * 0.08}>
 								<ProjectCard project={p} index={i} />
 							</MotionReveal>
 						))}
 					</div>
 				</section>
 			)}
-		</div>
+		</Container>
 	)
 }
 

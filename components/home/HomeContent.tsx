@@ -4,6 +4,7 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
+import Container from '@/components/cyber/Container'
 import CyberButton from '@/components/cyber/CyberButton'
 import CyberTag from '@/components/cyber/CyberTag'
 import CyberTooltip from '@/components/cyber/CyberTooltip'
@@ -36,7 +37,7 @@ const HomeContent: React.FC = () => {
 	const homeSkills = featuredSkills
 
 	return (
-		<div className='mx-auto max-w-7xl px-4 md:px-6'>
+		<Container>
 			{/* HERO */}
 			<section className='relative overflow-hidden py-16 md:py-24'>
 				<div className='cyber-grid pointer-events-none absolute inset-0 -z-10 opacity-40' />
@@ -241,7 +242,7 @@ const HomeContent: React.FC = () => {
 					</Link>
 				</div>
 			</section>
-		</div>
+		</Container>
 	)
 }
 
