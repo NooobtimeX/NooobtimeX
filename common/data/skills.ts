@@ -322,47 +322,56 @@ const datefns: Skill = {
 // --- Tooling, ORM, queues, storage, mobile ---
 const prettier: Skill = {
 	name: 'Prettier',
-	icon: 'logos:prettier'	category: SkillCategory.Frontend
+	icon: 'logos:prettier',
+	category: SkillCategory.Frontend
 }
 
 const codemirror: Skill = {
 	name: 'CodeMirror',
-	icon: 'simple-icons:codemirror'	category: SkillCategory.Frontend
+	icon: 'simple-icons:codemirror',
+	category: SkillCategory.Frontend
 }
 
 const baseui: Skill = {
 	name: 'Base UI',
-	icon: 'mdi:cube-outline'	category: SkillCategory.Frontend
+	icon: 'mdi:cube-outline',
+	category: SkillCategory.Frontend
 }
 
 const tanstackQuery: Skill = {
 	name: 'TanStack Query',
-	icon: 'logos:react-query-icon'	category: SkillCategory.Frontend
+	icon: 'logos:react-query-icon',
+	category: SkillCategory.Frontend
 }
 
 const reactNative: Skill = {
 	name: 'React Native',
-	icon: 'tabler:brand-react-native'	category: SkillCategory.Frontend
+	icon: 'tabler:brand-react-native',
+	category: SkillCategory.Frontend
 }
 
 const mongoose: Skill = {
 	name: 'Mongoose',
-	icon: 'simple-icons:mongoose'	category: SkillCategory.Backend
+	icon: 'simple-icons:mongoose',
+	category: SkillCategory.Backend
 }
 
 const bullmq: Skill = {
 	name: 'BullMQ',
-	icon: 'mdi:format-list-numbered'	category: SkillCategory.Backend
+	icon: 'mdi:format-list-numbered',
+	category: SkillCategory.Backend
 }
 
 const medusa: Skill = {
 	name: 'Medusa',
-	icon: 'simple-icons:medusa'	category: SkillCategory.Backend
+	icon: 'simple-icons:medusa',
+	category: SkillCategory.Backend
 }
 
 const cloudflareR2: Skill = {
 	name: 'Cloudflare R2',
-	icon: 'simple-icons:cloudflare'	category: SkillCategory.Infrastructure
+	icon: 'simple-icons:cloudflare',
+	category: SkillCategory.Infrastructure
 }
 
 export const skillsMap = {
