@@ -1,7 +1,7 @@
 import React from 'react'
 import { Metadata } from 'next'
+import HomeContent from '@/components/home/HomeContent'
 import { personalData } from '@/common'
-import HomeContent from './HomeContent'
 
 export const metadata: Metadata = {
 	title: `${personalData.name} - Portfolio`,

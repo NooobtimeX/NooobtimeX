@@ -1,19 +1,28 @@
 import React from 'react'
 import type { Metadata } from 'next'
-import { Noto_Sans, Noto_Sans_Thai } from 'next/font/google'
+import { JetBrains_Mono, Noto_Sans_Thai, Rajdhani } from 'next/font/google'
 import { GoogleTagManager } from '@next/third-parties/google'
+import ScanlineOverlay from '@/components/cyber/ScanlineOverlay'
 import { ThemeProvider } from '@/components/theme-provider'
+import { TooltipProvider } from '@/components/ui/tooltip'
+import { cn } from '@/lib/utils'
 import './globals.css'
 
-const notoTabs = Noto_Sans({
+const rajdhani = Rajdhani({
 	subsets: ['latin'],
-	weight: ['100', '300', '400', '500', '700', '900'],
-	variable: '--font-noto-sans'
+	weight: ['300', '400', '500', '600', '700'],
+	variable: '--font-rajdhani'
+})
+
+const jetbrains = JetBrains_Mono({
+	subsets: ['latin'],
+	weight: ['400', '500', '700'],
+	variable: '--font-jetbrains'
 })
 
 const notoThai = Noto_Sans_Thai({
 	subsets: ['thai', 'latin'],
-	weight: ['100', '300', '400', '500', '700', '900'],
+	weight: ['300', '400', '500', '700'],
 	variable: '--font-noto-thai'
 })
 
@@ -94,20 +103,22 @@ export default function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang='en' className={`dark ${notoTabs.variable} ${notoThai.variable}`} suppressHydrationWarning>
+		<html
+			lang='en'
+			className={cn('dark', rajdhani.variable, jetbrains.variable, notoThai.variable)}
+			suppressHydrationWarning>
 			<GoogleTagManager gtmId='GTM-5PVXPTWP' />
-			<body className='bg-background text-foreground selection:bg-primary font-noto antialiased selection:text-white'>
-				{/* Global Comic Texture Overlay */}
-				<div className='comic-texture pointer-events-none fixed inset-0 z-50 opacity-30 mix-blend-overlay'></div>
-
+			<body className='bg-background text-foreground font-sans antialiased'>
 				<ThemeProvider
 					attribute='class'
 					defaultTheme='dark'
 					forcedTheme='dark'
 					enableSystem={false}
 					disableTransitionOnChange>
-					{children}
+					<TooltipProvider>{children}</TooltipProvider>
 				</ThemeProvider>
+				{/* Global cyberpunk scanline + vignette overlay */}
+				<ScanlineOverlay />
 			</body>
 		</html>
 	)

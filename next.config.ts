@@ -9,6 +9,16 @@ const nextConfig: NextConfig = {
 		qualities: [100]
 	},
 	typedRoutes: true,
+	async redirects() {
+		return [
+			{ source: '/issue', destination: '/projects', permanent: true },
+			{ source: '/issue/:path*', destination: '/projects/:path*', permanent: true },
+			{ source: '/ability', destination: '/skills', permanent: true },
+			{ source: '/ability/:path*', destination: '/skills/:path*', permanent: true },
+			{ source: '/affiliation', destination: '/experience', permanent: true },
+			{ source: '/affiliation/:path*', destination: '/experience/:path*', permanent: true }
+		]
+	},
 	async headers() {
 		return [
 			{
