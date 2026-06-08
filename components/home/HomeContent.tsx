@@ -13,7 +13,7 @@ import NeonPanel from '@/components/cyber/NeonPanel'
 import SectionHeader from '@/components/cyber/SectionHeader'
 import ProjectCard from '@/components/projects/ProjectCard'
 import { formatExperienceDuration, slugify } from '@/lib/utils'
-import { featuredSkills, personalData, projectsData, workExperienceData } from '@/common'
+import { featuredProjects, featuredSkills, personalData, workExperienceData } from '@/common'
 
 const formatPosition = (position: string) =>
 	position
@@ -29,7 +29,7 @@ const HomeContent: React.FC = () => {
 	const current =
 		workExperienceData.find(r => new Date(r.startDate) <= now && (!r.endDate || new Date(r.endDate) >= now))
 		?? workExperienceData[0]
-	const featured = projectsData.slice(0, 3)
+	const featured = featuredProjects
 	const homeSkills = featuredSkills.slice(0, 12)
 
 	return (
