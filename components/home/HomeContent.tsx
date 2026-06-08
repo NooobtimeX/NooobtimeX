@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { Icon } from '@iconify/react'
 import CyberButton from '@/components/cyber/CyberButton'
 import CyberTag from '@/components/cyber/CyberTag'
+import CyberTooltip from '@/components/cyber/CyberTooltip'
 import GlitchText from '@/components/cyber/GlitchText'
 import MotionReveal from '@/components/cyber/MotionReveal'
 import NeonPanel from '@/components/cyber/NeonPanel'
@@ -80,16 +81,21 @@ const HomeContent: React.FC = () => {
 								<Icon icon='mdi:file-account-outline' />
 								View CV
 							</CyberButton>
+						</div>
+
+						{/* Socials */}
+						<div className='mt-6 flex flex-wrap items-center gap-2'>
 							{personalData.socialLinks.map(s => (
-								<a
-									key={s.platform}
-									href={s.url}
-									target='_blank'
-									rel='noopener noreferrer'
-									aria-label={s.platform}
-									className='border-border text-muted-foreground hover:border-cyber-cyan/60 hover:text-cyber-cyan flex size-11 items-center justify-center border transition-colors'>
-									<Icon icon={s.icon} className='size-5' />
-								</a>
+								<CyberTooltip key={s.platform} label={s.platform}>
+									<a
+										href={s.url}
+										target={s.platform === 'email' ? undefined : '_blank'}
+										rel='noopener noreferrer'
+										aria-label={s.platform}
+										className='border-border text-muted-foreground hover:border-cyber-cyan/60 hover:text-cyber-cyan hover:bg-cyber-cyan/[0.06] flex size-11 items-center justify-center border transition-colors'>
+										<Icon icon={s.icon} className='size-5' />
+									</a>
+								</CyberTooltip>
 							))}
 						</div>
 					</div>

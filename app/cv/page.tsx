@@ -307,15 +307,15 @@ export default function CVPage() {
 									style={{ color: ACCENT, WebkitPrintColorAdjust: 'exact' }}>
 									Contact
 								</h2>
-								<div className='space-y-4'>
-									<div className='flex items-center gap-3 text-[11px] font-black tracking-tight uppercase'>
-										<Icon icon='simple-icons:github' className='h-5 w-5 text-black' />
-										<span>github.com/nooobtimex</span>
-									</div>
-									<div className='flex items-center gap-3 text-[11px] font-black tracking-tight uppercase'>
-										<Icon icon='simple-icons:linkedin' className='h-5 w-5' style={{ color: ACCENT }} />
-										<span>Wongsaphat Puangsorn</span>
-									</div>
+								<div className='space-y-3'>
+									{personalData.socialLinks.map(s => (
+										<div
+											key={s.platform}
+											className='flex items-center gap-3 text-[11px] font-black tracking-tight uppercase'>
+											<Icon icon={s.icon} className='h-5 w-5 shrink-0' style={{ color: ACCENT }} />
+											<span className='truncate'>{s.username}</span>
+										</div>
+									))}
 								</div>
 							</section>
 						</aside>

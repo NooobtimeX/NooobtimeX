@@ -30,9 +30,33 @@ export const personalData: PersonalData = {
 			username: 'NooobtimeX'
 		},
 		{
+			platform: 'linkedin',
+			url: 'https://www.linkedin.com/in/nooobtimex',
+			icon: 'simple-icons:linkedin',
+			username: 'nooobtimex'
+		},
+		{
+			platform: 'youtube',
+			url: 'https://www.youtube.com/@nooobtimex',
+			icon: 'simple-icons:youtube',
+			username: '@nooobtimex'
+		},
+		{
+			platform: 'instagram',
+			url: 'https://www.instagram.com/nooobtimex',
+			icon: 'simple-icons:instagram',
+			username: 'nooobtimex'
+		},
+		{
+			platform: 'email',
+			url: 'mailto:nooobtimex@gmail.com',
+			icon: 'simple-icons:gmail',
+			username: 'nooobtimex@gmail.com'
+		},
+		{
 			platform: 'website',
 			url: 'https://nooobtimex.me',
-			icon: 'simple-icons:facebook',
+			icon: 'mdi:web',
 			username: 'nooobtimex.me'
 		}
 	]
