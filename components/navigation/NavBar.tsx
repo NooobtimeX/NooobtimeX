@@ -4,6 +4,7 @@ import React from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Icon } from '@iconify/react'
+import Container from '@/components/cyber/Container'
 import GlobalSearch from '@/components/search/GlobalSearch'
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { cn } from '@/lib/utils'
@@ -37,7 +38,7 @@ const NavBar: React.FC = () => {
 	return (
 		<>
 			<header className='border-cyber-cyan/25 bg-background/80 sticky top-0 z-50 border-b backdrop-blur-md'>
-				<div className='mx-auto flex h-14 max-w-7xl items-center justify-between gap-4 px-4 md:px-6'>
+				<Container className='flex h-14 items-center justify-between gap-4'>
 					{/* Handle */}
 					<Link href='/' className='group flex items-center gap-2'>
 						<span className='bg-cyber-yellow inline-block size-2.5 animate-pulse' />
@@ -112,7 +113,7 @@ const NavBar: React.FC = () => {
 							</SheetContent>
 						</Sheet>
 					</div>
-				</div>
+				</Container>
 			</header>
 
 			<GlobalSearch open={searchOpen} onOpenChange={setSearchOpen} />

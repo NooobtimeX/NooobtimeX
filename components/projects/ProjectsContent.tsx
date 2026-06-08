@@ -1,4 +1,5 @@
 import React from 'react'
+import Container from '@/components/cyber/Container'
 import MotionReveal from '@/components/cyber/MotionReveal'
 import SectionHeader from '@/components/cyber/SectionHeader'
 import ProjectCard from '@/components/projects/ProjectCard'
@@ -6,7 +7,7 @@ import { projectsData } from '@/common'
 
 const ProjectsContent: React.FC = () => {
 	return (
-		<div className='mx-auto max-w-7xl px-4 py-12 md:px-6 md:py-16'>
+		<Container className='py-12 md:py-16'>
 			<SectionHeader
 				code='01'
 				title='Projects'
@@ -20,7 +21,7 @@ const ProjectsContent: React.FC = () => {
 					</MotionReveal>
 				))}
 			</div>
-		</div>
+		</Container>
 	)
 }
 

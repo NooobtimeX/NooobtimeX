@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
+import Container from '@/components/cyber/Container'
 import { personalData } from '@/common'
 
 const LINKS = [
@@ -24,7 +25,7 @@ const PLATFORM_LABEL: Record<string, string> = {
 const NavFooter: React.FC = () => {
 	return (
 		<footer className='border-cyber-cyan/20 bg-background relative z-10 mt-20 border-t'>
-			<div className='mx-auto grid max-w-7xl gap-10 px-4 py-12 md:grid-cols-[1.4fr_1fr_1.6fr] md:px-6'>
+			<Container className='grid gap-10 py-12 md:grid-cols-[1.4fr_1fr_1.6fr]'>
 				{/* Brand */}
 				<div>
 					<p className='font-display text-2xl font-bold tracking-widest uppercase'>
@@ -78,7 +79,7 @@ const NavFooter: React.FC = () => {
 						))}
 					</div>
 				</div>
-			</div>
+			</Container>
 
 			<div className='border-border/50 text-muted-foreground border-t px-4 py-4 text-center font-mono text-[0.65rem] tracking-widest uppercase md:px-6'>
 				© {new Date().getFullYear()} {personalData.name} — All systems operational

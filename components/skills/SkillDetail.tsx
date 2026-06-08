@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
+import Container from '@/components/cyber/Container'
 import MotionReveal from '@/components/cyber/MotionReveal'
 import NeonPanel from '@/components/cyber/NeonPanel'
 import ProjectCard from '@/components/projects/ProjectCard'
@@ -23,7 +24,7 @@ const SkillDetail: React.FC<SkillDetailProps> = ({ skill }) => {
 	const deployedIn = projectsData.filter(p => p.skills.some(s => s.name === skill.name))
 
 	return (
-		<div className='mx-auto max-w-5xl px-4 py-10 md:px-6'>
+		<Container className='py-10'>
 			<Link
 				href='/skills'
 				className='text-muted-foreground hover:text-cyber-cyan inline-flex items-center gap-2 font-mono text-xs tracking-widest uppercase transition-colors'>
@@ -70,7 +71,7 @@ const SkillDetail: React.FC<SkillDetailProps> = ({ skill }) => {
 					</div>
 				:	<p className='text-muted-foreground font-mono text-sm'>No public gigs tagged with this perk yet.</p>}
 			</section>
-		</div>
+		</Container>
 	)
 }
 

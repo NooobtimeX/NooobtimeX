@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import Container from '@/components/cyber/Container'
 import MotionReveal from '@/components/cyber/MotionReveal'
 import SectionHeader from '@/components/cyber/SectionHeader'
 import TraceNode from '@/components/experience/TraceNode'
@@ -14,7 +15,7 @@ const ExperienceContent: React.FC = () => {
 	)?.id
 
 	return (
-		<div className='mx-auto max-w-5xl px-4 py-12 md:px-6 md:py-16'>
+		<Container className='py-12 md:py-16'>
 			<SectionHeader
 				code='03'
 				title='Career Trace'
@@ -33,7 +34,7 @@ const ExperienceContent: React.FC = () => {
 					))}
 				</div>
 			</div>
-		</div>
+		</Container>
 	)
 }
 

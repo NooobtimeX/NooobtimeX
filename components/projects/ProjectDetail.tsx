@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
+import Container from '@/components/cyber/Container'
 import CyberButton from '@/components/cyber/CyberButton'
 import NeonPanel from '@/components/cyber/NeonPanel'
 import ProjectGallery from '@/components/projects/ProjectGallery'
@@ -32,7 +33,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
 	const extraPhotos = project.images.photos.filter(p => p !== project.images.banner)
 
 	return (
-		<div className='mx-auto max-w-5xl px-4 py-10 md:px-6'>
+		<Container className='py-10'>
 			<Link
 				href='/projects'
 				className='text-muted-foreground hover:text-cyber-cyan inline-flex items-center gap-2 font-mono text-xs tracking-widest uppercase transition-colors'>
@@ -126,7 +127,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
 					)}
 				</aside>
 			</div>
-		</div>
+		</Container>
 	)
 }
 

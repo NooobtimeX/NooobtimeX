@@ -1,5 +1,6 @@
 import React from 'react'
 import { Icon } from '@iconify/react'
+import Container from '@/components/cyber/Container'
 import NeonPanel from '@/components/cyber/NeonPanel'
 import SectionHeader from '@/components/cyber/SectionHeader'
 import ContributionHeatmap, { type ContributionDay } from '@/components/github/ContributionHeatmap'
@@ -87,7 +88,7 @@ const GithubStats = async () => {
 	]
 
 	return (
-		<section className='mx-auto mt-20 max-w-7xl px-4 pb-4 md:px-6'>
+		<Container as='section' className='mt-20 pb-4'>
 			<SectionHeader
 				code='04'
 				title='GitHub'
@@ -116,7 +117,7 @@ const GithubStats = async () => {
 			<NeonPanel className='clip-notch mt-5 p-5'>
 				<ContributionHeatmap contributions={contrib.days} />
 			</NeonPanel>
-		</section>
+		</Container>
 	)
 }
 
