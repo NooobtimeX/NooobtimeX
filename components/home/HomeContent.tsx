@@ -29,7 +29,11 @@ const HomeContent: React.FC = () => {
 		workExperienceData.find(r => new Date(r.startDate) <= now && (!r.endDate || new Date(r.endDate) >= now))
 		?? workExperienceData[0]
 	const nowId = current?.id
-	const latestRoles = workExperienceData.slice(0, 3)
+	// Lead with the current role, then the next most-recent ones.
+	const latestRoles = (
+		current ?
+			[current, ...workExperienceData.filter(r => r.id !== current.id)]
+		:	workExperienceData).slice(0, 3)
 	const featured = featuredProjects
 	const homeSkills = featuredSkills
 
