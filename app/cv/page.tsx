@@ -4,16 +4,18 @@ import React from 'react'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
 import { QRCodeSVG } from 'qrcode.react'
-import { formatExperienceDuration } from '@/lib/utils'
 import {
-	SkillCategory,
+	type Skill,
+	type SkillCategory,
 	categoryMetadata,
-	educationData,
+	experiencesData,
 	featuredSkills,
 	personalData,
 	projectsData,
 	workExperienceData
 } from '@/common'
+
+const ACCENT = '#FF003C'
 
 const humanize = (value: string) =>
 	value
@@ -21,212 +23,447 @@ const humanize = (value: string) =>
 		.map(w => w.charAt(0).toUpperCase() + w.slice(1))
 		.join(' ')
 
-const CATEGORY_ORDER: SkillCategory[] = ['frontend', 'backend', 'infrastructure', 'growth-management']
-
 export default function CVPage() {
 	const handlePrint = () => window.print()
 
+	// Work-only experience, paginated (max 3 per page)
+	const page2Experience = workExperienceData.slice(0, 3)
+	const page3Experience = workExperienceData.slice(3)
+
+	// Projects, 4 per page
+	const page4Projects = projectsData.slice(0, 4)
+	const page5Projects = projectsData.slice(4, 8)
+	const page6Projects = projectsData.slice(8)
+
+	const getCompanyName = (id?: string) => {
+		if (!id) return null
+		return experiencesData.find(e => e.organization.id === id)?.organization.name ?? null
+	}
+
+	const categoryOrder: Record<string, number> = {
+		'frontend': 1,
+		'backend': 2,
+		'infrastructure': 3,
+		'growth-management': 4
+	}
+
+	const sortSkills = (a: Skill, b: Skill) => (categoryOrder[a.category] || 99) - (categoryOrder[b.category] || 99)
+
 	return (
-		<div className='cv-root bg-background text-foreground min-h-screen py-10 print:bg-white print:py-0'>
+		<div className='min-h-screen bg-zinc-100 py-10 font-sans text-black print:bg-white print:py-0'>
 			<style jsx global>{`
+				#cv-page-1,
+				#cv-page-2,
+				#cv-page-3,
+				#cv-page-4,
+				#cv-page-5,
+				#cv-page-6 {
+					font-family:
+						ui-sans-serif,
+						system-ui,
+						-apple-system,
+						BlinkMacSystemFont,
+						'Segoe UI',
+						Roboto,
+						'Helvetica Neue',
+						Arial,
+						sans-serif !important;
+				}
+				#cv-page-1 :is(h1, h2, h3, h4),
+				#cv-page-2 :is(h1, h2, h3, h4),
+				#cv-page-3 :is(h1, h2, h3, h4),
+				#cv-page-4 :is(h1, h2, h3, h4),
+				#cv-page-5 :is(h1, h2, h3, h4),
+				#cv-page-6 :is(h1, h2, h3, h4) {
+					font-family:
+						ui-sans-serif,
+						system-ui,
+						-apple-system,
+						BlinkMacSystemFont,
+						'Segoe UI',
+						Roboto,
+						'Helvetica Neue',
+						Arial,
+						sans-serif !important;
+					text-shadow: none !important;
+					letter-spacing: normal !important;
+					text-transform: uppercase !important;
+				}
+
 				@media print {
 					@page {
-						margin: 14mm;
+						margin: 0;
 						size: A4 portrait;
 					}
 					html,
 					body {
-						background: #fff !important;
+						background: white !important;
+						width: 210mm;
+						height: 100%;
+						margin: 0 !important;
+						padding: 0 !important;
 						-webkit-print-color-adjust: exact !important;
 						print-color-adjust: exact !important;
 					}
-					.cv-section {
-						break-inside: avoid;
+					#cv-page-1,
+					#cv-page-2,
+					#cv-page-3,
+					#cv-page-4,
+					#cv-page-5 {
+						page-break-after: always !important;
+					}
+					#cv-page-1,
+					#cv-page-2,
+					#cv-page-3,
+					#cv-page-4,
+					#cv-page-5,
+					#cv-page-6 {
+						margin: 0 !important;
+						border: none !important;
+						box-shadow: none !important;
+						width: 210mm !important;
+						height: 296.9mm !important;
+						padding: 14mm !important;
+						break-inside: avoid !important;
+						display: flex !important;
+						flex-direction: column !important;
+						background: white !important;
+						overflow: hidden !important;
+					}
+					img {
+						filter: none !important;
+						-webkit-print-color-adjust: exact !important;
+					}
+				}
+
+				.cv-page-container {
+					transform-origin: top center;
+				}
+				@media (max-width: 210mm) {
+					.cv-page-container {
+						transform: scale(calc((100vw - 32px) / 210mm));
+						margin-bottom: calc(297mm * (calc((100vw - 32px) / 210mm) - 1));
 					}
 				}
 			`}</style>
 
 			{/* Controls */}
-			<div className='mx-auto mb-8 flex max-w-[820px] flex-wrap items-center justify-between gap-3 px-4 print:hidden'>
+			<div className='sticky top-0 z-30 mb-8 flex flex-col items-center justify-center gap-4 bg-zinc-100/80 p-4 backdrop-blur-md md:relative md:flex-row md:bg-transparent md:p-0 print:hidden'>
+				<button
+					onClick={handlePrint}
+					style={{ backgroundColor: ACCENT }}
+					className='flex w-full items-center justify-center gap-2 px-6 py-6 text-lg font-bold tracking-tight text-white uppercase transition-transform active:scale-95 md:w-auto md:px-10 md:py-7 md:text-xl'>
+					<Icon icon='material-symbols:print' className='h-6 w-6 md:h-7 md:w-7' />
+					Print Premium Color CV (A4)
+				</button>
 				<Link
-					href='/'
-					className='text-muted-foreground hover:text-cyber-cyan inline-flex items-center gap-2 font-mono text-xs tracking-widest uppercase transition-colors'>
-					<Icon icon='mdi:arrow-left' className='size-4' /> Home
+					href='/cv/presentation'
+					className='flex w-full items-center justify-center gap-2 border-2 border-zinc-800 bg-zinc-950 px-6 py-6 text-lg font-bold tracking-tight text-white uppercase transition-transform hover:bg-zinc-900 active:scale-95 md:w-auto md:px-10 md:py-7 md:text-xl'>
+					<Icon icon='material-symbols:slideshow' className='h-6 w-6 md:h-7 md:w-7' style={{ color: ACCENT }} />
+					Presentation Mode
 				</Link>
-				<div className='flex gap-3'>
-					<button
-						onClick={handlePrint}
-						className='bg-cyber-yellow clip-notch-sm hover:bg-cyber-yellow/80 inline-flex items-center gap-2 px-4 py-2.5 font-mono text-xs font-semibold tracking-widest text-black uppercase transition-colors'>
-						<Icon icon='mdi:printer' className='size-4' /> Print / PDF
-					</button>
-					<Link
-						href='/cv/presentation'
-						className='border-cyber-cyan/60 text-cyber-cyan clip-notch-sm hover:bg-cyber-cyan/10 inline-flex items-center gap-2 border px-4 py-2.5 font-mono text-xs font-semibold tracking-widest uppercase transition-colors'>
-						<Icon icon='mdi:presentation' className='size-4' /> Present
-					</Link>
-				</div>
 			</div>
 
-			{/* Document */}
-			<article className='mx-auto max-w-[820px] space-y-6 px-4 print:max-w-none print:space-y-5 print:px-0'>
-				{/* Header */}
-				<header className='cv-section neon-panel clip-notch flex items-start justify-between gap-6 p-6 print:border print:border-black print:bg-white print:shadow-none'>
-					<div>
-						<h1 className='font-display text-4xl leading-none font-bold tracking-tight uppercase md:text-5xl print:text-black'>
-							{personalData.name}
-						</h1>
-						<p className='neon-text-yellow mt-2 font-mono text-lg font-bold tracking-widest uppercase print:text-black print:[text-shadow:none]'>
-							Product Lead
-						</p>
-						<div className='text-muted-foreground mt-4 flex flex-wrap gap-x-5 gap-y-1 font-mono text-xs print:text-black'>
-							<span className='inline-flex items-center gap-1.5'>
-								<Icon icon='mdi:email-outline' className='text-cyber-cyan size-4 print:text-black' />
-								{personalData.contact.email}
-							</span>
-							<span className='inline-flex items-center gap-1.5'>
-								<Icon icon='mdi:map-marker-outline' className='text-cyber-cyan size-4 print:text-black' />
-								{personalData.contact.location}
-							</span>
-							<span className='inline-flex items-center gap-1.5'>
-								<Icon icon='mdi:web' className='text-cyber-cyan size-4 print:text-black' />
-								nooobtimex.me
-							</span>
-						</div>
-					</div>
-					<div className='flex shrink-0 flex-col items-center gap-1'>
-						<div className='bg-white p-1'>
-							<QRCodeSVG value='https://nooobtimex.me' size={72} fgColor='#050507' bgColor='#ffffff' />
-						</div>
-						<span className='text-muted-foreground font-mono text-[0.55rem] tracking-widest uppercase print:text-black'>
-							Scan
-						</span>
-					</div>
-				</header>
-
-				{/* Summary */}
-				<section className='cv-section neon-panel clip-notch p-6 print:border print:border-black print:bg-white print:shadow-none'>
-					<h2 className='text-cyber-cyan font-mono text-xs tracking-[0.3em] uppercase print:text-black'>
-						// Professional Summary
-					</h2>
-					<p className='text-muted-foreground mt-3 text-sm leading-relaxed print:text-black'>
-						{personalData.about.bio}
-					</p>
-					<ul className='mt-4 grid gap-2 sm:grid-cols-2'>
-						{personalData.about.highlights.map((h, i) => (
-							<li key={i} className='flex gap-2 text-xs leading-snug'>
-								<span className='bg-cyber-yellow mt-1 size-1.5 shrink-0 print:bg-black' />
-								<span className='print:text-black'>{h}</span>
-							</li>
-						))}
-					</ul>
-				</section>
-
-				{/* Experience */}
-				<section className='cv-section'>
-					<h2 className='font-display border-cyber-cyan/40 mb-4 border-b pb-2 text-2xl font-bold tracking-wide uppercase print:border-black print:text-black'>
-						Experience
-					</h2>
-					<div className='space-y-4'>
-						{workExperienceData.map(item => (
-							<div
-								key={item.id}
-								className='cv-section neon-panel clip-notch-sm p-4 print:border print:border-black/30 print:bg-white print:shadow-none'>
-								<div className='flex flex-wrap items-baseline justify-between gap-2'>
-									<h3 className='text-lg font-bold tracking-wide uppercase print:text-black'>
-										{humanize(item.position)}
-										<span className='text-cyber-yellow print:text-black'> — {item.organization.name}</span>
-									</h3>
-									<span className='text-muted-foreground font-mono text-[0.7rem] tracking-wider uppercase print:text-black'>
-										{formatExperienceDuration(item.startDate, item.endDate)}
-									</span>
+			{/* A4 pages */}
+			<div className='flex flex-col items-center gap-10 px-4 md:px-0'>
+				{/* PAGE 1 — Branding & core info */}
+				<div
+					id='cv-page-1'
+					className='cv-page-container mx-auto mb-10 flex h-[297mm] w-[210mm] flex-col overflow-hidden border border-black/5 bg-white p-[14mm] shadow-lg print:mb-0 print:border-0 print:shadow-none'>
+					<header
+						className='mb-8 flex flex-row items-center justify-between border-b-4 pb-8'
+						style={{ borderColor: ACCENT, WebkitPrintColorAdjust: 'exact' }}>
+						<div className='flex-1'>
+							<h1 className='text-6xl leading-[0.85] font-black tracking-tighter text-black uppercase'>
+								{personalData.name}
+							</h1>
+							<p
+								className='mt-2 font-mono text-2xl font-black tracking-widest uppercase'
+								style={{ color: ACCENT, WebkitPrintColorAdjust: 'exact' }}>
+								Product Lead
+							</p>
+							<div className='mt-6 flex flex-wrap gap-6 font-bold'>
+								<div className='flex items-center gap-2 text-[12px] uppercase'>
+									<Icon icon='material-symbols:mail' className='h-4 w-4' style={{ color: ACCENT }} />
+									{personalData.contact.email}
 								</div>
-								<p className='text-muted-foreground mt-2 text-sm leading-relaxed print:text-black'>
-									{item.description}
-								</p>
+								<div className='flex items-center gap-2 text-[12px] text-gray-700 uppercase'>
+									<Icon icon='material-symbols:location-on' className='h-4 w-4' style={{ color: ACCENT }} />
+									{personalData.contact.location}
+								</div>
+								<div className='flex items-center gap-2 text-[12px] text-gray-700 uppercase'>
+									<Icon icon='material-symbols:language' className='h-4 w-4' style={{ color: ACCENT }} />
+									nooobtimex.me
+								</div>
 							</div>
+						</div>
+						<div className='flex flex-col items-center gap-2'>
+							<QRCodeSVG value='https://nooobtimex.me' size={80} fgColor={ACCENT} />
+							<span
+								className='text-[8px] font-black tracking-widest uppercase opacity-60'
+								style={{ color: ACCENT, WebkitPrintColorAdjust: 'exact' }}>
+								Portfolio Scan
+							</span>
+						</div>
+					</header>
+
+					<div className='grid grid-cols-[1.6fr_1fr] gap-12 overflow-hidden'>
+						<div className='space-y-8'>
+							<section>
+								<h2
+									className='mb-4 flex items-center gap-2 border-b-2 pb-1.5 text-2xl font-black tracking-tight uppercase'
+									style={{ borderColor: ACCENT, WebkitPrintColorAdjust: 'exact' }}>
+									Professional Summary
+								</h2>
+								<p className='text-[14px] leading-relaxed font-medium text-gray-700'>{personalData.about.bio}</p>
+							</section>
+
+							<section>
+								<h2
+									className='mb-4 flex items-center gap-2 border-b-2 pb-1.5 text-2xl font-black tracking-tight uppercase'
+									style={{ borderColor: ACCENT, WebkitPrintColorAdjust: 'exact' }}>
+									Academic Background
+								</h2>
+								<div
+									className='relative pl-5 before:absolute before:top-1.5 before:left-0 before:h-[calc(100%-6px)] before:w-1.5'
+									style={{ WebkitPrintColorAdjust: 'exact' }}>
+									<span
+										className='absolute top-1.5 left-0 h-[calc(100%-6px)] w-1.5'
+										style={{ backgroundColor: ACCENT }}
+									/>
+									<h3 className='text-lg font-black text-black uppercase'>B.S. Computer Science</h3>
+									<p className='text-sm font-bold text-gray-500 uppercase'>Thammasat University</p>
+									<p
+										className='mt-0.5 text-xs font-black uppercase opacity-80'
+										style={{ color: ACCENT, WebkitPrintColorAdjust: 'exact' }}>
+										2021 – 2025
+									</p>
+								</div>
+							</section>
+
+							<section>
+								<h2
+									className='mb-4 flex items-center gap-2 border-b-2 pb-1.5 text-2xl font-black tracking-tight uppercase'
+									style={{ borderColor: ACCENT, WebkitPrintColorAdjust: 'exact' }}>
+									Core Competencies
+								</h2>
+								<div className='grid grid-cols-2 gap-x-6 gap-y-6'>
+									{(['frontend', 'backend', 'infrastructure'] as SkillCategory[]).map(cat => {
+										const core = featuredSkills.filter(s => s.category === cat)
+										if (core.length === 0) return null
+										return (
+											<div key={cat}>
+												<h3 className='mb-2 text-[10px] font-black tracking-[0.2em] text-black uppercase opacity-40'>
+													{categoryMetadata[cat].label}
+												</h3>
+												<div className='flex flex-wrap gap-1.5'>
+													{core.map(s => (
+														<span
+															key={s.name}
+															className='flex items-center gap-1 border-2 px-2 py-0.5 text-[9px] font-black uppercase'
+															style={{
+																borderColor: `${ACCENT}33`,
+																backgroundColor: `${ACCENT}0d`,
+																color: ACCENT,
+																WebkitPrintColorAdjust: 'exact'
+															}}>
+															<Icon icon={s.icon} className='h-3 w-3' style={{ color: ACCENT }} />
+															{s.name}
+														</span>
+													))}
+												</div>
+											</div>
+										)
+									})}
+								</div>
+							</section>
+						</div>
+
+						<aside
+							className='space-y-10 border-l-2 pl-10'
+							style={{ borderColor: `${ACCENT}1a`, WebkitPrintColorAdjust: 'exact' }}>
+							<section>
+								<h2
+									className='mb-4 text-xs font-black tracking-[0.2em] uppercase'
+									style={{ color: ACCENT, WebkitPrintColorAdjust: 'exact' }}>
+									Key Highlights
+								</h2>
+								<ul className='space-y-4'>
+									{personalData.about.highlights.map((h, i) => (
+										<li key={i} className='flex gap-3 text-[12px] leading-snug'>
+											<span
+												className='mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full'
+												style={{ backgroundColor: ACCENT, WebkitPrintColorAdjust: 'exact' }}
+											/>
+											<span className='font-bold tracking-tight text-black uppercase'>{h}</span>
+										</li>
+									))}
+								</ul>
+							</section>
+
+							<section>
+								<h2
+									className='mb-4 text-xs font-black tracking-[0.2em] uppercase'
+									style={{ color: ACCENT, WebkitPrintColorAdjust: 'exact' }}>
+									Contact
+								</h2>
+								<div className='space-y-4'>
+									<div className='flex items-center gap-3 text-[11px] font-black tracking-tight uppercase'>
+										<Icon icon='simple-icons:github' className='h-5 w-5 text-black' />
+										<span>github.com/nooobtimex</span>
+									</div>
+									<div className='flex items-center gap-3 text-[11px] font-black tracking-tight uppercase'>
+										<Icon icon='simple-icons:linkedin' className='h-5 w-5' style={{ color: ACCENT }} />
+										<span>Wongsaphat Puangsorn</span>
+									</div>
+								</div>
+							</section>
+						</aside>
+					</div>
+				</div>
+
+				{/* PAGE 2 — Experience (I) */}
+				<div
+					id='cv-page-2'
+					className='cv-page-container mx-auto mb-10 flex h-[297mm] w-[210mm] flex-col overflow-hidden border border-black/5 bg-white p-[14mm] shadow-lg print:mb-0 print:border-0 print:shadow-none'>
+					<h2 className='mb-8 border-b-2 border-black pb-2 text-3xl font-black tracking-tight uppercase'>
+						Professional Experience
+					</h2>
+					<div className='space-y-10'>
+						{page2Experience.map(item => (
+							<ExperienceBlock key={item.id} item={item} accent={ACCENT} sortSkills={sortSkills} />
 						))}
 					</div>
-				</section>
+				</div>
 
-				{/* Education */}
-				{educationData.length > 0 && (
-					<section className='cv-section'>
-						<h2 className='font-display border-cyber-cyan/40 mb-4 border-b pb-2 text-2xl font-bold tracking-wide uppercase print:border-black print:text-black'>
-							Education
+				{/* PAGE 3 — Experience (II) */}
+				<div
+					id='cv-page-3'
+					className='cv-page-container mx-auto mb-10 flex h-[297mm] w-[210mm] flex-col overflow-hidden border border-black/5 bg-white p-[14mm] shadow-lg print:mb-0 print:border-0 print:shadow-none'>
+					{page3Experience.length > 0 && (
+						<section className='mb-10'>
+							<h2 className='mb-8 border-b-2 border-black pb-2 text-3xl font-black tracking-tight uppercase'>
+								Experience (Continued)
+							</h2>
+							<div className='space-y-10'>
+								{page3Experience.map(item => (
+									<ExperienceBlock key={item.id} item={item} accent={ACCENT} sortSkills={sortSkills} />
+								))}
+							</div>
+						</section>
+					)}
+				</div>
+
+				{/* PAGES 4–6 — Selected Projects */}
+				{[
+					{ id: 'cv-page-4', title: 'Selected Projects (I)', list: page4Projects },
+					{ id: 'cv-page-5', title: 'Selected Projects (II)', list: page5Projects },
+					{ id: 'cv-page-6', title: 'Selected Projects (Final)', list: page6Projects }
+				].map(page => (
+					<div
+						key={page.id}
+						id={page.id}
+						className='cv-page-container mx-auto mb-10 flex h-[297mm] w-[210mm] flex-col overflow-hidden border border-black/5 bg-white p-[14mm] shadow-lg last:mb-0 print:mb-0 print:border-0 print:shadow-none'>
+						<h2 className='mb-10 border-b-2 border-black pb-2 text-3xl font-black tracking-tight uppercase'>
+							{page.title}
 						</h2>
-						<div className='space-y-3'>
-							{educationData.map(item => (
-								<div
-									key={item.id}
-									className='neon-panel clip-notch-sm p-4 print:border print:border-black/30 print:bg-white print:shadow-none'>
-									<div className='flex flex-wrap items-baseline justify-between gap-2'>
-										<h3 className='font-bold tracking-wide uppercase print:text-black'>{item.organization.name}</h3>
-										<span className='text-muted-foreground font-mono text-[0.7rem] tracking-wider uppercase print:text-black'>
-											{formatExperienceDuration(item.startDate, item.endDate)}
-										</span>
+						<div className='grid grid-cols-2 gap-6 overflow-hidden'>
+							{page.list.map(project => (
+								<div key={project.id} className='flex flex-col border border-gray-100 bg-zinc-50/20 p-4 shadow-sm'>
+									<div className='mb-4 aspect-video overflow-hidden border border-gray-100'>
+										{/* eslint-disable-next-line @next/next/no-img-element */}
+										<img src={project.images.banner} alt={project.title} className='h-full w-full object-cover' />
 									</div>
-									<p className='text-muted-foreground mt-1 text-sm print:text-black'>{item.description}</p>
+									<h3 className='mb-1 line-clamp-1 text-xl font-black tracking-tight text-black uppercase'>
+										{project.title}
+									</h3>
+									{getCompanyName(project.linkedOrganizationId) && (
+										<p
+											className='mb-3 text-[9px] font-black tracking-[0.15em] uppercase opacity-80'
+											style={{ color: ACCENT, WebkitPrintColorAdjust: 'exact' }}>
+											{getCompanyName(project.linkedOrganizationId)}
+										</p>
+									)}
+									<p className='mb-4 line-clamp-6 text-[12px] leading-normal font-medium text-gray-600'>
+										{project.description}
+									</p>
+									<div className='mt-auto flex flex-wrap gap-1.5 border-t border-gray-50 pt-3'>
+										{[...project.skills]
+											.sort(sortSkills)
+											.slice(0, 5)
+											.map(s => (
+												<span
+													key={s.name}
+													className='flex items-center gap-1 rounded border px-1.5 py-0.5 text-[8px] font-black uppercase'
+													style={{
+														borderColor: `${ACCENT}33`,
+														backgroundColor: `${ACCENT}0d`,
+														color: ACCENT,
+														WebkitPrintColorAdjust: 'exact'
+													}}>
+													<Icon icon={s.icon} className='h-2.5 w-2.5 opacity-60' />
+													{s.name}
+												</span>
+											))}
+									</div>
 								</div>
 							))}
 						</div>
-					</section>
-				)}
-
-				{/* Skills */}
-				<section className='cv-section'>
-					<h2 className='font-display border-cyber-cyan/40 mb-4 border-b pb-2 text-2xl font-bold tracking-wide uppercase print:border-black print:text-black'>
-						Core Competencies
-					</h2>
-					<div className='grid gap-4 sm:grid-cols-2'>
-						{CATEGORY_ORDER.map(cat => {
-							const meta = categoryMetadata[cat]
-							const items = featuredSkills.filter(a => a.category === cat)
-							if (items.length === 0) return null
-							return (
-								<div key={cat}>
-									<h3 className='text-muted-foreground mb-2 font-mono text-[0.7rem] tracking-[0.2em] uppercase print:text-black'>
-										{meta.label}
-									</h3>
-									<div className='flex flex-wrap gap-1.5'>
-										{items.map(a => (
-											<span
-												key={a.name}
-												className='border-border inline-flex items-center gap-1 border px-2 py-0.5 text-[0.7rem] print:border-black/40 print:text-black'>
-												<Icon icon={a.icon} className='size-3' />
-												{a.name}
-											</span>
-										))}
-									</div>
-								</div>
-							)
-						})}
 					</div>
-				</section>
+				))}
+			</div>
+		</div>
+	)
+}
 
-				{/* Projects */}
-				<section className='cv-section'>
-					<h2 className='font-display border-cyber-cyan/40 mb-4 border-b pb-2 text-2xl font-bold tracking-wide uppercase print:border-black print:text-black'>
-						Selected Projects
-					</h2>
-					<div className='grid gap-4 sm:grid-cols-2'>
-						{projectsData.map(project => (
-							<div
-								key={project.id}
-								className='cv-section neon-panel clip-notch-sm flex flex-col p-3 print:border print:border-black/30 print:bg-white print:shadow-none'>
-								<h3 className='font-bold tracking-wide uppercase print:text-black'>{project.title}</h3>
-								<p className='text-muted-foreground mt-1 line-clamp-3 text-xs leading-relaxed print:text-black'>
-									{project.description}
-								</p>
-								<div className='mt-2 flex flex-wrap gap-1'>
-									{project.skills.slice(0, 6).map(a => (
-										<Icon key={a.name} icon={a.icon} aria-label={a.name} className='size-3.5' />
-									))}
-								</div>
-							</div>
-						))}
-					</div>
-				</section>
-			</article>
+// --- Experience block (shared by pages 2 & 3) ---
+
+interface ExperienceBlockProps {
+	item: (typeof workExperienceData)[number]
+	accent: string
+	sortSkills: (a: Skill, b: Skill) => number
+}
+
+const ExperienceBlock: React.FC<ExperienceBlockProps> = ({ item, accent, sortSkills }) => {
+	const projectSkills = projectsData.filter(p => p.linkedOrganizationId === item.organization.id).flatMap(p => p.skills)
+	const uniqueSkills = Array.from(new Map(projectSkills.map(s => [s.name, s])).values()).sort(sortSkills)
+
+	return (
+		<div className='relative break-inside-avoid pl-10' style={{ WebkitPrintColorAdjust: 'exact' }}>
+			<span className='absolute top-2 left-0 h-full w-1.5' style={{ backgroundColor: accent }} />
+			<h3 className='mb-1 text-2xl font-black tracking-tight text-black uppercase'>{item.organization.name}</h3>
+			<p
+				className='mb-3 text-lg font-black tracking-tight uppercase'
+				style={{ color: accent, WebkitPrintColorAdjust: 'exact' }}>
+				{humanize(item.position)}
+			</p>
+			<div className='mb-4 flex items-center gap-4'>
+				<span
+					className='px-3 py-1 text-[11px] font-black text-white uppercase'
+					style={{ backgroundColor: accent, WebkitPrintColorAdjust: 'exact' }}>
+					{new Date(item.startDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })} –{' '}
+					{item.endDate ?
+						new Date(item.endDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
+					:	'Present'}
+				</span>
+				<span
+					className='border-2 px-2 py-0.5 text-[10px] font-bold uppercase'
+					style={{ borderColor: `${accent}4d`, backgroundColor: `${accent}0d`, color: accent }}>
+					{humanize(item.type)}
+				</span>
+			</div>
+			<p className='mb-6 line-clamp-4 text-[14px] leading-relaxed font-medium text-gray-700'>{item.description}</p>
+			<div className='flex flex-wrap gap-1.5'>
+				{uniqueSkills.slice(0, 10).map(s => (
+					<span
+						key={s.name}
+						className='flex items-center gap-1 border-2 border-gray-100 bg-gray-50 px-2 py-0.5 text-[9px] font-black text-gray-400 uppercase'
+						style={{ WebkitPrintColorAdjust: 'exact' }}>
+						<Icon icon={s.icon} className='h-3 w-3' style={{ color: `${accent}66` }} />
+						{s.name}
+					</span>
+				))}
+			</div>
 		</div>
 	)
 }
