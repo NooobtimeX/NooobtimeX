@@ -1,373 +1,244 @@
 'use client'
 
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React from 'react'
 import { Icon } from '@iconify/react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { ExperienceId, affiliationData, issuesData, personalData } from '@/common'
-import { ActSlide } from './page/ActSlide'
-import { ExperienceSlide } from './page/ExperienceSlide'
-import { FoundationalJourneySlide } from './page/FoundationalJourneySlide'
-// Modular Slide Components
-import { IntroSlide } from './page/IntroSlide'
-import { ProjectSlide } from './page/ProjectSlide'
-import { SkillsSlide } from './page/SkillsSlide'
-import { slideVariants, swipePower, swipeThreshold } from './page/animations'
+import GlitchText from '@/components/cyber/GlitchText'
+import { formatExperienceDuration } from '@/lib/utils'
+import {
+	SkillCategory,
+	categoryMetadata,
+	featuredSkills,
+	personalData,
+	projectsData,
+	workExperienceData
+} from '@/common'
+
+const humanize = (value: string) =>
+	value
+		.split('-')
+		.map(w => w.charAt(0).toUpperCase() + w.slice(1))
+		.join(' ')
 
 interface PresentationViewProps {
 	onExit: () => void
 }
 
-export enum SlideId {
-	Intro = 'intro',
-	Act1 = 'act-1',
-	Act2 = 'act-2',
-	Act3 = 'act-3',
-	Act4 = 'act-4',
-	FoundationalJourney = 'foundational-journey',
-	Skills = 'skills'
-}
-
-// ─── Slide type ───────────────────────────────────────────────────────────────
-interface Slide {
-	id: string // Can be SlideId, AffiliationId, or IssueId
-	label: string
-	group?: string
-	act?: string
-	type: 'intro' | 'experience' | 'project' | 'skills' | 'act'
-	render: () => React.ReactNode
-}
-
-// ─── Main ─────────────────────────────────────────────────────────────────────
-export default function PresentationView({ onExit }: PresentationViewProps) {
-	const [current, setCurrent] = useState(0)
-	const [direction, setDirection] = useState(1)
-	const containerRef = useRef<HTMLDivElement>(null)
-
-	const go = useCallback(
-		(next: number, totalSlides: number) => {
-			if (next < 0 || next >= totalSlides) return
-			setDirection(next > current ? 1 : -1)
-			setCurrent(next)
+const PresentationView: React.FC<PresentationViewProps> = ({ onExit }) => {
+	const slides: { code: string; title: string; render: () => React.ReactNode }[] = [
+		{
+			code: '00',
+			title: 'Intro',
+			render: () => (
+				<div className='text-center'>
+					<p className='text-cyber-cyan font-mono text-sm tracking-[0.4em] uppercase'>// Portfolio_v2.077</p>
+					<h1 className='font-display mt-4 text-5xl font-bold tracking-tight uppercase md:text-8xl'>
+						{personalData.name}
+					</h1>
+					<GlitchText
+						text='Developer'
+						className='neon-text-yellow font-display mt-4 inline-block text-2xl font-bold tracking-[0.3em] uppercase md:text-4xl'
+					/>
+					<p className='text-muted-foreground mx-auto mt-6 max-w-2xl text-base md:text-lg'>{personalData.tagline}</p>
+				</div>
+			)
 		},
-		[current]
-	)
-
-	const slides: Slide[] = [{ id: SlideId.Intro, label: 'Intro', type: 'intro', render: () => <IntroSlide /> }]
-
-	slides.push({
-		id: SlideId.Act1,
-		label: 'Act I',
-		type: 'act',
-		render: () => <ActSlide act='Act I' title='The Foundations' sub='University & Early Impact' />
-	})
-
-	const tuExp = affiliationData.find(a => a.id === ExperienceId.ThammasatUniversity)
-	const rsPartTime = affiliationData.find(a => a.id === ExperienceId.RuamsukPlatingSoftwareEngineerPartTime)
-
-	if (tuExp && rsPartTime) {
-		const qrProject = issuesData.find(p => p.linkedAffiliationId === tuExp.affiliation.id)
-		const rsProject = issuesData.find(p => p.linkedAffiliationId === rsPartTime.affiliation.id)
-
-		slides.push({
-			id: SlideId.FoundationalJourney,
-			label: 'First Era',
-			group: 'Act I',
-			act: 'I: Foundational',
-			type: 'experience',
+		{
+			code: '01',
+			title: 'Profile',
 			render: () => (
-				<FoundationalJourneySlide
-					tu={tuExp}
-					rs={rsPartTime}
-					qrProject={qrProject}
-					rsProject={rsProject}
-					goToId={(id: string) => {
-						const idx = slides.findIndex(s => s.id === id)
-						if (idx !== -1) go(idx, slides.length)
-					}}
-				/>
+				<div className='mx-auto max-w-3xl'>
+					<h2 className='font-display neon-text-cyan text-3xl font-bold tracking-wide uppercase md:text-5xl'>
+						Profile
+					</h2>
+					<p className='text-muted-foreground mt-6 text-lg leading-relaxed'>{personalData.about.bio}</p>
+					<ul className='mt-6 grid gap-3 sm:grid-cols-2'>
+						{personalData.about.highlights.map((h, i) => (
+							<li key={i} className='flex gap-2'>
+								<span className='bg-cyber-yellow mt-2 size-1.5 shrink-0' />
+								<span className='text-sm'>{h}</span>
+							</li>
+						))}
+					</ul>
+				</div>
 			)
-		})
-
-		if (qrProject) {
-			slides.push({
-				id: qrProject.id,
-				label: qrProject.title
-					.replace(/^🚀\s*/, '')
-					.split(' ')
-					.slice(0, 2)
-					.join(' '),
-				group: 'Thammasat',
-				act: 'I: Foundational',
-				type: 'project',
-				render: () => <ProjectSlide project={qrProject} />
-			})
-		}
-
-		if (rsProject) {
-			slides.push({
-				id: rsProject.id,
-				label: rsProject.title
-					.replace(/^🚀\s*/, '')
-					.split(' ')
-					.slice(0, 2)
-					.join(' '),
-				group: 'Ruamsuk',
-				act: 'I: Foundational',
-				type: 'project',
-				render: () => <ProjectSlide project={rsProject} />
-			})
-		}
-	}
-
-	slides.push({
-		id: SlideId.Act2,
-		label: 'Act II',
-		type: 'act',
-		render: () => <ActSlide act='Act II' title='Engineering Excellence' sub='Scaling & Microservices' />
-	})
-
-	const act2Exps = affiliationData.filter(a =>
-		[
-			ExperienceId.JasmineTechnologySolution,
-			ExperienceId.FreelanceBlitzwerk,
-			ExperienceId.RuamsukPlatingSoftwareEngineerFullTime
-		].includes(a.id)
-	)
-	act2Exps.forEach(exp => {
-		slides.push({
-			id: exp.id,
-			label: exp.affiliation.name.split(' ').slice(0, 2).join(' '),
-			group: exp.affiliation.name,
-			act: 'II: Excellence',
-			type: 'experience',
+		},
+		{
+			code: '02',
+			title: 'Experience',
 			render: () => (
-				<ExperienceSlide
-					exp={exp}
-					goToId={(id: string) => {
-						const idx = slides.findIndex(s => s.id === id)
-						if (idx !== -1) go(idx, slides.length)
-					}}
-				/>
+				<div className='mx-auto max-w-3xl'>
+					<h2 className='font-display neon-text-cyan text-3xl font-bold tracking-wide uppercase md:text-5xl'>
+						Experience
+					</h2>
+					<div className='mt-6 space-y-4'>
+						{workExperienceData.slice(0, 4).map(item => (
+							<div key={item.id} className='neon-panel clip-notch-sm p-4'>
+								<div className='flex flex-wrap items-baseline justify-between gap-2'>
+									<h3 className='font-display text-lg font-bold tracking-wide uppercase'>
+										{humanize(item.position)}
+										<span className='text-cyber-yellow'> @ {item.organization.name}</span>
+									</h3>
+									<span className='text-muted-foreground font-mono text-[0.7rem] uppercase'>
+										{formatExperienceDuration(item.startDate, item.endDate)}
+									</span>
+								</div>
+								<p className='text-muted-foreground mt-2 line-clamp-2 text-sm'>{item.description}</p>
+							</div>
+						))}
+					</div>
+				</div>
 			)
-		})
-		const projects = issuesData.filter(p => p.linkedAffiliationId === exp.affiliation.id)
-		projects.forEach(project => {
-			slides.push({
-				id: project.id,
-				label: project.title
-					.replace(/^🚀\s*/, '')
-					.split(' ')
-					.slice(0, 2)
-					.join(' '),
-				group: exp.affiliation.name,
-				act: 'II: Excellence',
-				type: 'project',
-				render: () => <ProjectSlide project={project} />
-			})
-		})
-	})
-
-	slides.push({
-		id: SlideId.Act3,
-		label: 'Act III',
-		type: 'act',
-		render: () => <ActSlide act='Act III' title='Strategic Leadership' sub='Technical Advising & Scale' />
-	})
-
-	const act3Exps = affiliationData.filter(a => [ExperienceId.RuamsukPlatingProductLead].includes(a.id))
-	act3Exps.forEach(exp => {
-		slides.push({
-			id: exp.id,
-			label: exp.affiliation.name.split(' ').slice(0, 2).join(' '),
-			group: exp.affiliation.name,
-			act: 'III: Strategy',
-			type: 'experience',
+		},
+		{
+			code: '03',
+			title: 'Stack',
 			render: () => (
-				<ExperienceSlide
-					exp={exp}
-					goToId={(id: string) => {
-						const idx = slides.findIndex(s => s.id === id)
-						if (idx !== -1) go(idx, slides.length)
-					}}
-				/>
+				<div className='mx-auto max-w-4xl'>
+					<h2 className='font-display neon-text-cyan text-3xl font-bold tracking-wide uppercase md:text-5xl'>
+						Core Stack
+					</h2>
+					<div className='mt-6 grid gap-5 sm:grid-cols-2'>
+						{(['frontend', 'backend', 'infrastructure', 'growth-management'] as SkillCategory[]).map(cat => {
+							const items = featuredSkills.filter(a => a.category === cat)
+							if (!items.length) return null
+							return (
+								<div key={cat} className='neon-panel clip-notch-sm p-4'>
+									<h3 className='text-cyber-yellow mb-3 font-mono text-xs tracking-widest uppercase'>
+										{categoryMetadata[cat].label}
+									</h3>
+									<div className='flex flex-wrap gap-2'>
+										{items.map(a => (
+											<span key={a.name} className='inline-flex items-center gap-1.5 text-sm'>
+												<Icon icon={a.icon} className='size-4' />
+												{a.name}
+											</span>
+										))}
+									</div>
+								</div>
+							)
+						})}
+					</div>
+				</div>
 			)
-		})
-		const projects = issuesData.filter(p => p.linkedAffiliationId === exp.affiliation.id)
-		projects.forEach(project => {
-			slides.push({
-				id: project.id,
-				label: project.title
-					.replace(/^🚀\s*/, '')
-					.split(' ')
-					.slice(0, 2)
-					.join(' '),
-				group: exp.affiliation.name,
-				act: 'III: Strategy',
-				type: 'project',
-				render: () => <ProjectSlide project={project} />
-			})
-		})
-	})
-
-	// ─── ACT IV: TECHNICAL INNOVATION ────────────────────────────────────────
-	slides.push({
-		id: SlideId.Act4,
-		label: 'Act IV',
-		type: 'act',
-		render: () => <ActSlide act='Act IV' title='Technical Innovation' sub='Labs & Open Source Ecosystem' />
-	})
-
-	const personalExp = affiliationData.find(a => a.id === ExperienceId.PersonalProjects)
-	if (personalExp) {
-		const projects = issuesData.filter(p => p.linkedAffiliationId === personalExp.affiliation.id)
-		projects.forEach(project => {
-			slides.push({
-				id: project.id,
-				label: project.title
-					.replace(/^🚀\s*/, '')
-					.split(' ')
-					.slice(0, 2)
-					.join(' '),
-				group: 'Innovation',
-				act: 'IV: ecosystem',
-				type: 'project',
-				render: () => <ProjectSlide project={project} />
-			})
-		})
-	}
-
-	// ─── THE END ─────────────────────────────────────────────────────────────
-	slides.push({ id: SlideId.Skills, label: 'Ecosystem', type: 'skills', render: () => <SkillsSlide /> })
-
-	const goByIndex = useCallback((next: number) => go(next, slides.length), [go, slides.length])
-
-	useEffect(() => {
-		const handler = (e: KeyboardEvent) => {
-			if (e.key === 'ArrowRight' || e.key === ' ') goByIndex(current + 1)
-			if (e.key === 'ArrowLeft') goByIndex(current - 1)
-			if (e.key === 'Escape') onExit()
+		},
+		{
+			code: '04',
+			title: 'Projects',
+			render: () => (
+				<div className='mx-auto max-w-4xl'>
+					<h2 className='font-display neon-text-cyan text-3xl font-bold tracking-wide uppercase md:text-5xl'>
+						Selected Projects
+					</h2>
+					<div className='mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
+						{projectsData.slice(0, 6).map(p => (
+							<div key={p.id} className='neon-panel clip-notch-sm p-4'>
+								<h3 className='font-display font-bold tracking-wide uppercase'>{p.title}</h3>
+								<p className='text-muted-foreground mt-1 line-clamp-3 text-xs'>{p.description}</p>
+							</div>
+						))}
+					</div>
+				</div>
+			)
+		},
+		{
+			code: '05',
+			title: 'Contact',
+			render: () => (
+				<div className='text-center'>
+					<h2 className='font-display neon-text-yellow text-4xl font-bold tracking-wide uppercase md:text-6xl'>
+						Let&apos;s build
+					</h2>
+					<div className='mt-8 flex flex-col items-center gap-3 font-mono text-sm'>
+						<span className='inline-flex items-center gap-2'>
+							<Icon icon='mdi:email-outline' className='text-cyber-cyan size-5' />
+							{personalData.contact.email}
+						</span>
+						<span className='inline-flex items-center gap-2'>
+							<Icon icon='mdi:web' className='text-cyber-cyan size-5' /> nooobtimex.me
+						</span>
+					</div>
+				</div>
+			)
 		}
-		window.addEventListener('keydown', handler)
-		return () => window.removeEventListener('keydown', handler)
-	}, [current, goByIndex, onExit])
+	]
 
-	useEffect(() => {
-		containerRef.current?.requestFullscreen?.().catch(() => {})
-		return () => {
-			if (document.fullscreenElement) document.exitFullscreen().catch(() => {})
+	const [index, setIndex] = React.useState(0)
+	const next = React.useCallback(() => setIndex(i => Math.min(i + 1, slides.length - 1)), [slides.length])
+	const prev = React.useCallback(() => setIndex(i => Math.max(i - 1, 0)), [])
+
+	React.useEffect(() => {
+		const onKey = (e: KeyboardEvent) => {
+			if (e.key === 'ArrowRight' || e.key === ' ') next()
+			else if (e.key === 'ArrowLeft') prev()
+			else if (e.key === 'Escape') onExit()
 		}
-	}, [])
+		window.addEventListener('keydown', onKey)
+		return () => window.removeEventListener('keydown', onKey)
+	}, [next, prev, onExit])
 
-	const currentSlide = slides[current]
+	const slide = slides[index]
 
 	return (
-		<div
-			ref={containerRef}
-			className='relative flex h-screen w-screen flex-col overflow-hidden bg-zinc-950 font-sans text-white md:h-screen lg:h-screen'
-			style={{ height: '100dvh' }}>
+		<div className='bg-background fixed inset-0 z-[200] flex flex-col'>
+			<div className='cyber-grid pointer-events-none absolute inset-0 opacity-20' />
+
 			{/* Top bar */}
-			<div className='relative z-10 flex shrink-0 items-center justify-between border-b border-zinc-800 px-4 py-2 md:px-8 md:py-3'>
-				<div className='flex shrink-0 items-center gap-2 md:gap-3'>
-					<span className='h-2 w-2 bg-red-600 md:h-2.5 md:w-2.5' />
-					<span className='text-[10px] font-black tracking-widest text-zinc-400 uppercase md:text-xs'>
-						{personalData.name}
-					</span>
-				</div>
-
-				{/* Breadcrumb / Act Indicator */}
-				<div className='flex items-center gap-1.5 text-[9px] text-zinc-500 md:gap-3 md:text-sm'>
-					{currentSlide.act && (
-						<>
-							<span className='font-black text-red-500 underline decoration-red-600/50 underline-offset-4'>
-								{currentSlide.act}
-							</span>
-							<span className='text-zinc-700'>›</span>
-						</>
-					)}
-					<span className='max-w-[100px] truncate font-bold text-zinc-400 md:max-w-none'>
-						{currentSlide.group || currentSlide.label}
-					</span>
-					{currentSlide.type === 'project' && (
-						<>
-							<span className='text-zinc-700 md:hidden'>›</span>
-							<span className='hidden text-zinc-700 md:inline'>/</span>
-							<span className='max-w-[100px] truncate font-medium text-white md:max-w-none'>{currentSlide.label}</span>
-						</>
-					)}
-				</div>
-
+			<div className='relative z-10 flex items-center justify-between px-6 py-4'>
+				<span className='text-cyber-cyan font-mono text-xs tracking-[0.3em] uppercase'>
+					{slide.code} // {slide.title}
+				</span>
 				<button
 					onClick={onExit}
-					className='flex shrink-0 items-center gap-1 text-[10px] font-black tracking-widest text-zinc-500 uppercase transition-colors hover:text-red-500 md:gap-2 md:text-xs'>
-					<Icon icon='material-symbols:close' className='h-3.5 w-3.5 md:h-4 md:w-4' />
-					Exit
+					className='text-muted-foreground hover:text-cyber-magenta inline-flex items-center gap-2 font-mono text-xs tracking-widest uppercase transition-colors'>
+					Exit <Icon icon='mdi:close' className='size-4' />
 				</button>
 			</div>
 
-			{/* Slide content — fills remaining height, overflow hidden on container */}
-			<div className='relative min-h-0 flex-1 overflow-hidden'>
-				<AnimatePresence mode='wait' custom={direction}>
+			{/* Slide */}
+			<div className='relative z-10 flex flex-1 items-center justify-center px-6 pb-20'>
+				<AnimatePresence mode='wait'>
 					<motion.div
-						key={current}
-						custom={direction}
-						variants={slideVariants}
-						initial='enter'
-						animate='center'
-						exit='exit'
-						drag='x'
-						dragConstraints={{ left: 0, right: 0 }}
-						dragElastic={0.2}
-						onDragEnd={(_, info) => {
-							const swipe = swipePower(info.offset.x, info.velocity.x)
-							if (swipe < -swipeThreshold) goByIndex(current + 1)
-							if (swipe > swipeThreshold) goByIndex(current - 1)
-						}}
-						transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-						className='absolute inset-0 overflow-hidden'>
-						{currentSlide.render()}
+						key={index}
+						initial={{ opacity: 0, y: 24 }}
+						animate={{ opacity: 1, y: 0 }}
+						exit={{ opacity: 0, y: -24 }}
+						transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+						className='w-full'>
+						{slide.render()}
 					</motion.div>
 				</AnimatePresence>
 			</div>
 
-			{/* Bottom nav */}
-			<div className='relative z-10 flex shrink-0 items-center justify-between border-t border-zinc-800 px-4 py-2 md:px-8 md:py-4'>
+			{/* Controls */}
+			<div className='absolute right-0 bottom-0 left-0 z-10 flex items-center justify-between px-6 py-5'>
 				<button
-					onClick={() => goByIndex(current - 1)}
-					disabled={current === 0}
-					className='flex items-center gap-1 text-[10px] font-black tracking-widest text-zinc-500 uppercase transition-colors hover:text-white disabled:opacity-20 md:gap-2 md:text-xs'>
-					<Icon icon='material-symbols:arrow-back' className='h-3.5 w-3.5 md:h-4 md:w-4' />
-					Prev
+					onClick={prev}
+					disabled={index === 0}
+					className='border-border text-muted-foreground hover:text-cyber-cyan flex size-10 items-center justify-center border transition-colors disabled:opacity-30'>
+					<Icon icon='mdi:chevron-left' className='size-6' />
 				</button>
 
-				<div className='flex items-center gap-2 md:gap-3'>
-					<span className='text-[10px] text-zinc-600 md:text-xs'>
-						{current + 1} / {slides.length}
-					</span>
-					<div className='hidden gap-1 md:flex'>
-						{slides.map((s, i) => (
-							<button
-								key={i}
-								onClick={() => goByIndex(i)}
-								title={s.label}
-								className={`h-1.5 transition-all ${
-									i === current ? 'w-6 bg-red-600'
-									: s.type === 'experience' ? 'w-2 bg-zinc-600'
-									: s.type === 'project' ? 'w-1.5 bg-zinc-700'
-									: 'w-2 bg-zinc-600'
-								}`}
-							/>
-						))}
-					</div>
+				<div className='flex gap-2'>
+					{slides.map((_, i) => (
+						<button
+							key={i}
+							onClick={() => setIndex(i)}
+							aria-label={`Slide ${i + 1}`}
+							className={i === index ? 'bg-cyber-yellow h-1.5 w-6' : 'bg-border hover:bg-cyber-cyan/50 h-1.5 w-6'}
+						/>
+					))}
 				</div>
 
 				<button
-					onClick={() => goByIndex(current + 1)}
-					disabled={current === slides.length - 1}
-					className='flex items-center gap-1 text-[10px] font-black tracking-widest text-zinc-500 uppercase transition-colors hover:text-white disabled:opacity-20 md:gap-2 md:text-xs'>
-					Next
-					<Icon icon='material-symbols:arrow-forward' className='h-4 w-4 md:h-4 md:w-4' />
+					onClick={next}
+					disabled={index === slides.length - 1}
+					className='border-border text-muted-foreground hover:text-cyber-cyan flex size-10 items-center justify-center border transition-colors disabled:opacity-30'>
+					<Icon icon='mdi:chevron-right' className='size-6' />
 				</button>
 			</div>
 		</div>
 	)
 }
+
+export default PresentationView

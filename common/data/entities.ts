@@ -1,56 +1,47 @@
-import { EntityId, EntityType, Location } from '../enums'
-import type { Affiliation } from '../interfaces'
+import type { Organization } from '../interfaces'
 import { assets } from './assets'
 
-export const ruamsukPlating: Affiliation = {
-	id: EntityId.RuamsukPlating,
+export const ruamsukPlating: Organization = {
+	id: 'ruamsuk-plating',
 	name: 'RUAMSUK PLATING LIMITED PARTNERSHIP',
 	logo: assets.logos.rsTrophy,
-	location: Location.PathumthaniThailand,
-	type: EntityType.Company
+	location: 'pathumthani-thailand',
+	type: 'company'
 }
 
-export const jasmineTechnologySolution: Affiliation = {
-	id: EntityId.JasmineTechnologySolution,
+export const jasmineTechnologySolution: Organization = {
+	id: 'jasmine-technology-solution',
 	name: 'Jasmine Technology Solution',
 	logo: assets.logos.jasmineTech,
-	location: Location.NonthaburiThailand,
-	type: EntityType.Company
+	location: 'nonthaburi-thailand',
+	type: 'company'
 }
 
-export const freelanceWithFriends: Affiliation = {
-	id: EntityId.FreelanceBlitzwerk,
+export const freelanceWithFriends: Organization = {
+	id: 'freelance-blitzwerk',
 	name: 'Freelance with friends',
 	logo: assets.logos.blitzwerk,
-	location: Location.Remote,
-	type: EntityType.Company
+	location: 'remote',
+	type: 'company'
 }
 
-export const personalProjects: Affiliation = {
-	id: EntityId.PersonalProjects,
+export const personalProjects: Organization = {
+	id: 'personal-projects',
 	name: 'Personal Projects',
 	logo: assets.logos.nooobtimex,
-	location: Location.Remote,
-	type: EntityType.Personal
+	location: 'remote',
+	type: 'personal'
 }
 
-export const thammasatUniversity: Affiliation = {
-	id: EntityId.ThammasatUniversity,
+export const thammasatUniversity: Organization = {
+	id: 'thammasat-university',
 	name: 'Thammasat University',
 	logo: assets.logos.tuLogo,
-	location: Location.PathumthaniThailand,
-	type: EntityType.University
+	location: 'pathumthani-thailand',
+	type: 'university'
 }
 
-export const entitiesMap = {
-	ruamsukPlating,
-	jasmineTechnologySolution,
-	freelanceWithFriends,
-	personalProjects,
-	thammasatUniversity
-}
-
-export const entitiesData: Affiliation[] = [
+export const entitiesData: Organization[] = [
 	ruamsukPlating,
 	jasmineTechnologySolution,
 	freelanceWithFriends,
