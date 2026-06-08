@@ -235,6 +235,12 @@ const HomeContent: React.FC = () => {
 							</Link>
 						</MotionReveal>
 					))}
+					<Link
+						href='/skills'
+						className='border-cyber-cyan/30 text-muted-foreground hover:border-cyber-yellow/60 hover:text-cyber-yellow clip-notch-sm flex aspect-square flex-col items-center justify-center gap-1 border border-dashed text-center transition-colors'>
+						<Icon icon='mdi:dots-horizontal' className='size-6' />
+						<span className='font-mono text-[0.6rem] tracking-widest uppercase'>All</span>
+					</Link>
 				</div>
 			</section>
 		</div>
