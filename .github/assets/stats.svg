@@ -1,0 +1,43 @@
+<svg viewBox="0 0 1000 250" width="1000" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GitHub stats: 2 stars, 4 repos, 2 followers, 3,241 contributions in the last year">
+	<style>
+.display { font-family: 'Avenir Next Condensed', 'Bahnschrift', 'Arial Narrow', Impact, 'Liberation Sans Narrow', sans-serif; font-weight: 700; }
+.mono { font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace; }
+.blink { animation: blink 1.4s infinite steps(1, end); }
+@keyframes blink { 0%, 70% { opacity: 1; } 71%, 100% { opacity: 0.2; } }
+</style>
+	<defs>
+		<clipPath id="panel-clip"><polygon points="19,1 999,1 999,231 981,249 1,249 1,19" /></clipPath>
+		<pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="4" height="1.5" fill="#000000" opacity="0.22" /></pattern>
+	</defs>
+	<polygon points="19,1 999,1 999,231 981,249 1,249 1,19" fill="#050507" />
+	<g clip-path="url(#panel-clip)">
+		<text class="mono" x="36" y="46" font-size="18" letter-spacing="3" fill="#00F0FF">SYS.DIAGNOSTICS // NOOOBTIMEX</text>
+		<circle cx="890" cy="41" r="4" fill="#39FF14" class="blink" />
+		<text class="mono blink" x="964" y="46" font-size="14" letter-spacing="2" fill="#39FF14" text-anchor="end">ONLINE</text>
+		<text class="display" x="36" y="110" font-size="44" fill="#FCEE0A">2</text>
+		<text class="mono" x="36" y="132" font-size="13" fill="#E6FBFF" opacity="0.5">STARS_EARNED</text>
+		<text class="display" x="266" y="110" font-size="44" fill="#FCEE0A">4</text>
+		<text class="mono" x="266" y="132" font-size="13" fill="#E6FBFF" opacity="0.5">PUBLIC_REPOS</text>
+		<text class="display" x="36" y="186" font-size="44" fill="#FCEE0A">2</text>
+		<text class="mono" x="36" y="208" font-size="13" fill="#E6FBFF" opacity="0.5">FOLLOWERS</text>
+		<text class="display" x="266" y="186" font-size="44" fill="#FCEE0A">3,241</text>
+		<text class="mono" x="266" y="208" font-size="13" fill="#E6FBFF" opacity="0.5">CONTRIBUTIONS_365D</text>
+		<line x1="520" y1="76" x2="520" y2="222" stroke="#1B2A33" stroke-width="2" />
+		<text class="mono" x="552" y="92" font-size="13" letter-spacing="2" fill="#E6FBFF" opacity="0.5">TOP_LANGUAGES</text>
+		<text class="mono" x="552" y="118" font-size="16" fill="#E6FBFF">TYPESCRIPT</text>
+		<text class="mono" x="964" y="118" font-size="16" fill="#FCEE0A" text-anchor="end" font-weight="700">78.9%</text>
+		<rect x="552" y="126" width="412" height="9" fill="#0A0C11" stroke="#1B2A33" stroke-width="1" />
+		<rect x="552" y="126" width="325.08" height="9" fill="#FCEE0A" />
+		<text class="mono" x="552" y="162" font-size="16" fill="#E6FBFF">VUE</text>
+		<text class="mono" x="964" y="162" font-size="16" fill="#00F0FF" text-anchor="end" font-weight="700">18.4%</text>
+		<rect x="552" y="170" width="412" height="9" fill="#0A0C11" stroke="#1B2A33" stroke-width="1" />
+		<rect x="552" y="170" width="75.7" height="9" fill="#00F0FF" />
+		<text class="mono" x="552" y="206" font-size="16" fill="#E6FBFF">CSS</text>
+		<text class="mono" x="964" y="206" font-size="16" fill="#FF003C" text-anchor="end" font-weight="700">2.7%</text>
+		<rect x="552" y="214" width="412" height="9" fill="#0A0C11" stroke="#1B2A33" stroke-width="1" />
+		<rect x="552" y="214" width="11.22" height="9" fill="#FF003C" />
+		<rect x="0" y="0" width="1000" height="250" fill="url(#scanlines)" />
+	</g>
+	<polygon points="19,1 999,1 999,231 981,249 1,249 1,19" fill="none" stroke="#1B2A33" stroke-width="2" />
+	<path d="M16 30 V16 H30" fill="none" stroke="#00F0FF" stroke-width="2.5" /><path d="M984 220 V234 H970" fill="none" stroke="#00F0FF" stroke-width="2.5" />
+</svg>

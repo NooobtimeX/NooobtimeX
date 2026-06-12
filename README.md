@@ -1,105 +1,97 @@
+<!-- All visuals are self-generated SVGs — see scripts/readme/ (bun run readme:assets). -->
+<!-- Stats refresh daily via .github/workflows/readme-assets.yml -->
+
 <div align="center">
 
 <img src=".github/assets/header.svg" alt="NOOOBTIMEX — Wongsaphat Puangsorn, Software Developer" width="100%" />
 
-<br/>
-<br/>
-
-<img src="https://img.shields.io/badge/LOC-PAK_KRET_·_NONTHABURI-00F0FF?style=for-the-badge&labelColor=050507" alt="Location" />
-<img src="https://img.shields.io/badge/STATUS-AVAILABLE-39FF14?style=for-the-badge&labelColor=050507" alt="Available" />
-<img src="https://img.shields.io/badge/LANG-TH_%2F_EN-FF003C?style=for-the-badge&labelColor=050507" alt="Languages" />
+<img src=".github/assets/chips.svg" alt="Pak Kret · Nonthaburi — Available — TH/EN" />
 
 </div>
 
-<br/>
+<!-- 00 // IDENTITY -->
 
-## `00 //` IDENTITY\_
+<img src=".github/assets/section-00-identity.svg" alt="00 // IDENTITY" width="100%" />
 
 <div align="center">
 
 **Forward-thinking Software Developer specializing in modern JavaScript/TypeScript
 ecosystems and high-performance system design.**
 
-⚡ This repo is the source of my Cyberpunk-2077-themed portfolio →
-**[nooobtimex.me](https://nooobtimex.me)**
+⚡ This repo is the source of my Cyberpunk-2077-themed portfolio → **[nooobtimex.me](https://nooobtimex.me)**
 
 <br/>
 
-[<img src="https://img.shields.io/badge/▶_VIEW_PORTFOLIO-FCEE0A?style=for-the-badge&labelColor=FCEE0A" alt="View Portfolio" />](https://nooobtimex.me)
-[<img src="https://img.shields.io/badge/▷_VIEW_CV-00F0FF?style=for-the-badge&labelColor=00F0FF" alt="View CV" />](https://nooobtimex.me/cv)
+[<img src=".github/assets/btn-portfolio.svg" alt="View Portfolio" />](https://nooobtimex.me)
+[<img src=".github/assets/btn-cv.svg" alt="View CV" />](https://nooobtimex.me/cv)
 
 </div>
 
-<br/>
+<!-- 01 // CAREER_TRACE -->
 
-## `01 //` ARSENAL\_
+<img src=".github/assets/section-01-career-trace.svg" alt="01 // CAREER TRACE" width="100%" />
+
+<img src=".github/assets/career.svg" alt="Career timeline 2021 to now: Product Lead and Software Engineer at Ruamsuk Plating, Developer at Jasmine Technology Solution, freelance work, and a Computer Science degree at Thammasat University" width="100%" />
 
 <div align="center">
 
-<img src="https://img.shields.io/badge/TypeScript-050507?style=for-the-badge&logo=typescript&logoColor=FCEE0A" alt="TypeScript" />
-<img src="https://img.shields.io/badge/Next.js-050507?style=for-the-badge&logo=nextdotjs&logoColor=FCEE0A" alt="Next.js" />
-<img src="https://img.shields.io/badge/React-050507?style=for-the-badge&logo=react&logoColor=FCEE0A" alt="React" />
-<img src="https://img.shields.io/badge/Bun-050507?style=for-the-badge&logo=bun&logoColor=FCEE0A" alt="Bun" />
-<img src="https://img.shields.io/badge/Node.js-050507?style=for-the-badge&logo=nodedotjs&logoColor=FCEE0A" alt="Node.js" />
-
-<img src="https://img.shields.io/badge/ElysiaJS-050507?style=for-the-badge" alt="ElysiaJS" />
-<img src="https://img.shields.io/badge/NestJS-050507?style=for-the-badge&logo=nestjs&logoColor=00F0FF" alt="NestJS" />
-<img src="https://img.shields.io/badge/MongoDB-050507?style=for-the-badge&logo=mongodb&logoColor=00F0FF" alt="MongoDB" />
-<img src="https://img.shields.io/badge/Redis-050507?style=for-the-badge&logo=redis&logoColor=00F0FF" alt="Redis" />
-<img src="https://img.shields.io/badge/PostgreSQL-050507?style=for-the-badge&logo=postgresql&logoColor=00F0FF" alt="PostgreSQL" />
-<img src="https://img.shields.io/badge/Prisma-050507?style=for-the-badge&logo=prisma&logoColor=00F0FF" alt="Prisma" />
-
-<img src="https://img.shields.io/badge/Tailwind_CSS-050507?style=for-the-badge&logo=tailwindcss&logoColor=39FF14" alt="Tailwind CSS" />
-<img src="https://img.shields.io/badge/Docker-050507?style=for-the-badge&logo=docker&logoColor=39FF14" alt="Docker" />
-<img src="https://img.shields.io/badge/Railway-050507?style=for-the-badge&logo=railway&logoColor=39FF14" alt="Railway" />
-<img src="https://img.shields.io/badge/Vercel-050507?style=for-the-badge&logo=vercel&logoColor=39FF14" alt="Vercel" />
-<img src="https://img.shields.io/badge/Cloudflare-050507?style=for-the-badge&logo=cloudflare&logoColor=39FF14" alt="Cloudflare" />
+[<img src=".github/assets/btn-career.svg" alt="Full career trace on nooobtimex.me" />](https://nooobtimex.me/experience)
 
 </div>
 
-<br/>
+<!-- 02 // GIGS -->
 
-## `02 //` GIGS\_
+<img src=".github/assets/section-02-gigs.svg" alt="02 // GIGS" width="100%" />
+
+[<img src=".github/assets/gig-rs-trophy.svg" alt="RS TROPHY — e-commerce + AI shopping copilot for custom trophies and medals — rs-trophy.com" width="100%" />](https://rs-trophy.com)
+[<img src=".github/assets/gig-looklook-pet.svg" alt="LOOKLOOK PET — pet-parent community marketplace, 15+ microservices — looklook.pet" width="100%" />](https://looklook.pet)
+[<img src=".github/assets/gig-prettier-config.svg" alt="PRETTIER CONFIG — visual Prettier playground, fully client-side — prettier-config.dev" width="100%" />](https://prettier-config.dev)
+[<img src=".github/assets/gig-portfolio.svg" alt="PORTFOLIO V2.077 — this repo, Cyberpunk-2077-themed Next.js portfolio — nooobtimex.me" width="100%" />](https://nooobtimex.me)
 
 <div align="center">
 
-| GIG                     | BRIEF                                                                                                                                                     | STATUS                                                                                                                                        |
-| :---------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------- |
-| 🏆 **RS TROPHY**        | E-commerce + AI shopping copilot for custom trophies, plaques & medals — Bun monorepo · Next.js 16 · ElysiaJS · MongoDB · Redis · Cloudflare R2 · Railway | [![LIVE](https://img.shields.io/badge/●_LIVE-rs--trophy.com-FCEE0A?style=for-the-badge&labelColor=050507)](https://rs-trophy.com)             |
-| 🐾 **LOOKLOOK PET**     | Pet-parent community marketplace — 15+ microservices · NestJS · NATS · Next.js · MongoDB · BullMQ                                                         | [![LIVE](https://img.shields.io/badge/●_LIVE-looklook.pet-FCEE0A?style=for-the-badge&labelColor=050507)](https://looklook.pet)                |
-| ⚙️ **PRETTIER CONFIG**  | Visual Prettier playground — fully client-side · CodeMirror 6 · shareable URL configs · 20-language i18n                                                  | [![LIVE](https://img.shields.io/badge/●_LIVE-prettier--config.dev-FCEE0A?style=for-the-badge&labelColor=050507)](https://prettier-config.dev) |
-| 🌃 **PORTFOLIO_V2.077** | This repo — Cyberpunk-2077-themed portfolio · Next.js 16 · Tailwind v4 · ⌘K command palette · print-ready CV                                              | [![LIVE](https://img.shields.io/badge/●_LIVE-nooobtimex.me-FCEE0A?style=for-the-badge&labelColor=050507)](https://nooobtimex.me)              |
+[<img src=".github/assets/btn-gigs.svg" alt="All gigs on nooobtimex.me" />](https://nooobtimex.me/projects)
 
 </div>
 
-<br/>
+<!-- 03 // ARSENAL -->
 
-## `03 //` STATS\_
+<img src=".github/assets/section-03-arsenal.svg" alt="03 // ARSENAL" width="100%" />
+
+<img src=".github/assets/arsenal.svg" alt="Skill arsenal: distribution across frontend, backend, infrastructure, and growth categories with featured tools" width="100%" />
 
 <div align="center">
 
-<img src="https://github-readme-stats-sigma-five.vercel.app/api?username=NooobtimeX&show_icons=true&hide_border=false&border_radius=0&bg_color=050507&title_color=FCEE0A&icon_color=00F0FF&text_color=E6FBFF&border_color=1B2A33&count_private=true" alt="GitHub Stats" height="170" />
-<img src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=NooobtimeX&layout=compact&hide_border=false&border_radius=0&bg_color=050507&title_color=FCEE0A&text_color=E6FBFF&border_color=1B2A33&count_private=true" alt="Most Used Languages" height="170" />
+[<img src=".github/assets/btn-arsenal.svg" alt="Full arsenal on nooobtimex.me" />](https://nooobtimex.me/skills)
 
 </div>
 
-<br/>
+<!-- 04 // GITHUB_FEED -->
 
-## `04 //` COMMS\_
+<img src=".github/assets/section-04-github-feed.svg" alt="04 // GITHUB FEED" width="100%" />
+
+<img src=".github/assets/stats.svg" alt="GitHub stats: stars, public repos, followers, contributions in the last year, and top languages" width="100%" />
+
+<img src=".github/assets/contributions.svg" alt="Contribution heatmap and weekly pulse, last 365 days" width="100%" />
 
 <div align="center">
 
-[<img src="https://img.shields.io/badge/GitHub-050507?style=for-the-badge&logo=github&logoColor=FCEE0A" alt="GitHub" />](https://github.com/NooobtimeX)
-[<img src="https://img.shields.io/badge/LinkedIn-050507?style=for-the-badge&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwRjBGRiI%2BPHRleHQgeD0iMTIiIHk9IjE4IiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNiIgZm9udC13ZWlnaHQ9ImJvbGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiPmluPC90ZXh0Pjwvc3ZnPg%3D%3D" alt="LinkedIn" />](https://www.linkedin.com/in/nooobtimex)
-[<img src="https://img.shields.io/badge/YouTube-050507?style=for-the-badge&logo=youtube&logoColor=FF003C" alt="YouTube" />](https://www.youtube.com/@nooobtimex)
-[<img src="https://img.shields.io/badge/Instagram-050507?style=for-the-badge&logo=instagram&logoColor=B026FF" alt="Instagram" />](https://www.instagram.com/nooobtimex)
-[<img src="https://img.shields.io/badge/Email-050507?style=for-the-badge&logo=gmail&logoColor=FF003C" alt="Email" />](mailto:nooobtimex@gmail.com)
-[<img src="https://img.shields.io/badge/Website-050507?style=for-the-badge&logo=googlechrome&logoColor=00F0FF" alt="Website" />](https://nooobtimex.me)
+[<img src=".github/assets/btn-github.svg" alt="Deep stats on nooobtimex.me" />](https://nooobtimex.me/github)
 
-<br/>
-<br/>
+</div>
 
-<img src="https://komarev.com/ghpvc/?username=NooobtimeX&label=PROFILE+VIEWS&color=fcee0a&style=flat-square" alt="Profile Views" />
+<!-- 05 // COMMS -->
+
+<img src=".github/assets/section-05-comms.svg" alt="05 // COMMS" width="100%" />
+
+<div align="center">
+
+[<img src=".github/assets/comms-github.svg" alt="GitHub" />](https://github.com/NooobtimeX)
+[<img src=".github/assets/comms-linkedin.svg" alt="LinkedIn" />](https://www.linkedin.com/in/nooobtimex)
+[<img src=".github/assets/comms-youtube.svg" alt="YouTube" />](https://www.youtube.com/@nooobtimex)
+[<img src=".github/assets/comms-instagram.svg" alt="Instagram" />](https://www.instagram.com/nooobtimex)
+[<img src=".github/assets/comms-email.svg" alt="Email" />](mailto:nooobtimex@gmail.com)
+[<img src=".github/assets/comms-website.svg" alt="Website" />](https://nooobtimex.me)
 
 <br/>
 <br/>
