@@ -1,10 +1,7 @@
 import React from 'react'
+import type { ContributionDay } from '@/lib/github'
 
-export interface ContributionDay {
-	date: string
-	count: number
-	level: number
-}
+export type { ContributionDay }
 
 interface ContributionHeatmapProps {
 	contributions: ContributionDay[]
