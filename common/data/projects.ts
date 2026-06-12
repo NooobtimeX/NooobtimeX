@@ -34,7 +34,7 @@ export const looklookPet: ProjectDef = {
 		'cloudflare-r2',
 		'seo'
 	],
-	links: { live: 'https://looklook-pet.com' },
+	links: { live: 'https://looklook.pet' },
 	startDate: '2024-05-01',
 	linkedOrganizationId: 'jasmine-technology-solution'
 }
