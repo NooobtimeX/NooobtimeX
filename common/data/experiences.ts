@@ -70,7 +70,7 @@ export const personalProjectsExperience: ExperienceItem = {
 	description: 'Developing and maintaining high-impact personal projects and open-source contributions.',
 	type: 'freelance',
 	category: 'personal',
-	startDate: '2024-10-10'
+	startDate: '2021-06-01'
 }
 
 // --- Aggregation ---
