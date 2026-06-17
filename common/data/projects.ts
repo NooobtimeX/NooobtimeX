@@ -179,7 +179,34 @@ export const portfolio: ProjectDef = {
 	linkedOrganizationId: 'personal-projects'
 }
 
+export const monomaxEplPortal: ProjectDef = {
+	id: 'monomax-epl-portal',
+	title: 'MONOMax EPL Licensing Portal',
+	description:
+		'A full-stack SaaS platform that issues and verifies English Premier League commercial-broadcast licenses for Thai venues — restaurants, hotels, and pubs. Business owners sign in with email OTP, register their company and each physical venue with its screen count, and the system automatically provisions the required MONOMax Sports Premium accounts while guaranteeing each account is bound to a single active venue. Admins review submissions and issue a verifiable digital certificate (with QR code) per venue. Built with Next.js 16 (App Router) and React 19 in strict TypeScript, MongoDB/Mongoose for data, Tailwind CSS v4 with shadcn/ui, validation shared across client and server, document uploads to cloud object storage, transactional email, and an interactive map venue picker — containerized with Docker and shipped through a GitHub Actions CI/CD pipeline. Delivered as a focused 3-day sprint.',
+	images: {
+		banner: assets.projects.monomaxEplPortal.banner,
+		photos: [assets.projects.monomaxEplPortal.banner]
+	},
+	skills: [
+		'next-js',
+		'react',
+		'typescript',
+		'mongodb',
+		'mongoose',
+		'tailwind-css',
+		'shadcn-ui',
+		'recharts',
+		'docker',
+		'git-github'
+	],
+	links: {},
+	startDate: '2026-06-15',
+	linkedOrganizationId: 'jasmine-technology-solution'
+}
+
 const defs: ProjectDef[] = [
+	monomaxEplPortal,
 	rsTrophy,
 	looklookPet,
 	onlinePokerGame,
@@ -197,7 +224,7 @@ export const projectsData: Project[] = defs
 	.sort(sortByDateDesc)
 
 /** Hand-picked projects for the home page (in this order). Edit to curate. */
-const featuredProjectIds = ['rs-trophy', 'looklook-pet', 'prettier-config']
+const featuredProjectIds = ['monomax-epl-portal', 'rs-trophy', 'looklook-pet', 'prettier-config']
 export const featuredProjects: Project[] = featuredProjectIds
 	.map(id => projectsData.find(p => p.id === id))
 	.filter((p): p is Project => Boolean(p))
