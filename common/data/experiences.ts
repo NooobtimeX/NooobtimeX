@@ -31,7 +31,7 @@ export const jasmineTechnologySolutionExperience: ExperienceItem = {
 export const ruamsukPlatingSoftwareEngineerPartTime: ExperienceItem = {
 	id: 'ruamsuk-software-engineer-part-time',
 	organization: ruamsukPlating,
-	position: 'software-engineer',
+	position: 'developer',
 	description:
 		'Full Stack & SEO: Drove full-stack web application development while integrating targeted SEO and online marketing strategies. Digital Transformation: Led digital organizational transformation, modernizing legacy workflows to increase operational efficiency.',
 	type: 'part-time',
