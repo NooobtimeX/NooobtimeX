@@ -20,7 +20,6 @@ export type Position =
 	| 'developer'
 	| 'advisor'
 	| 'technical-advisor'
-	| 'college-student'
 
 export type SocialPlatform =
 	| 'github'

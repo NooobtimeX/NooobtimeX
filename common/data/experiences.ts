@@ -1,12 +1,6 @@
 import type { ExperienceItem } from '../interfaces'
 import { sortByDateDesc } from '../utils'
-import {
-	freelanceWithFriends,
-	jasmineTechnologySolution,
-	personalProjects,
-	ruamsukPlating,
-	thammasatUniversity
-} from './entities'
+import { freelanceWithFriends, jasmineTechnologySolution, personalProjects, ruamsukPlating } from './entities'
 
 // --- Roles ---
 
@@ -79,18 +73,6 @@ export const personalProjectsExperience: ExperienceItem = {
 	startDate: '2024-10-10'
 }
 
-export const thammasatUniversityExperience: ExperienceItem = {
-	id: 'thammasat-university-role',
-	organization: thammasatUniversity,
-	position: 'college-student',
-	description:
-		'Bachelor of Science in Computer Science. Specialized in full-stack development and system architecture through various academic and research projects.',
-	type: 'full-time',
-	category: 'education',
-	startDate: '2021-06-01',
-	endDate: '2025-06-30'
-}
-
 // --- Aggregation ---
 
 const all: ExperienceItem[] = [
@@ -99,8 +81,7 @@ const all: ExperienceItem[] = [
 	ruamsukPlatingSoftwareEngineerPartTime,
 	ruamsukPlatingSoftwareEngineerFullTime,
 	ruamsukPlatingProductLead,
-	personalProjectsExperience,
-	thammasatUniversityExperience
+	personalProjectsExperience
 ]
 
 export const experiencesData: ExperienceItem[] = [...all].sort(sortByDateDesc)

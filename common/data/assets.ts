@@ -16,7 +16,6 @@ export const assets = {
 		jasmineTech: '/logo/JTS.webp',
 		blitzwerk: '/logo/blitzwerk.webp',
 		nooobtimex: '/logo/logo.webp',
-		qrFood: '/logo/qr-food.webp',
 		tuLogo: '/logo/tu-logo.webp'
 	},
 	projects: {
@@ -34,7 +33,6 @@ export const assets = {
 		prettierConfig: { banner: '/issue/prettier-config/banner.webp' },
 		rsMedal: { banner: '/issue/rs-medal/banner.webp' },
 		rsAward: { banner: '/issue/rs-award/banner.webp' },
-		qrFood: { banner: '/issue/qr-food/banner.webp' },
 		portfolio: { banner: '/logo/logo.webp' },
 		monomaxEplPortal: { banner: '/issue/monomax-epl-portal/banner.webp' }
 	}

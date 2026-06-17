@@ -139,18 +139,6 @@ export const rsAward: ProjectDef = {
 	linkedOrganizationId: 'ruamsuk-plating'
 }
 
-export const qrFood: ProjectDef = {
-	id: 'qr-food',
-	title: 'QR-Food (Thesis Project)',
-	description:
-		'Developed a comprehensive QR-based food ordering and management system for restaurants. Features include real-time menu browsing, digital ordering, and a dashboard for restaurant owners to manage orders and kitchen workflows.',
-	images: { banner: assets.projects.qrFood.banner, photos: [assets.projects.qrFood.banner] },
-	skills: ['nuxt-js', 'typescript', 'tailwind-css', 'prisma', 'supabase', 'postgresql', 'vercel'],
-	links: { live: 'https://github.com/NooobtimeX/QR-Food' },
-	startDate: '2023-11-01',
-	linkedOrganizationId: 'thammasat-university'
-}
-
 export const portfolio: ProjectDef = {
 	id: 'portfolio',
 	title: '🚀 Portfolio – Wongsaphat Puangsorn',
@@ -211,8 +199,7 @@ const defs: ProjectDef[] = [
 	rsTrophyV1,
 	rsAward,
 	rsMedal,
-	portfolio,
-	qrFood
+	portfolio
 ]
 
 // Resolve skill ids → Skill objects, then sort newest first.
