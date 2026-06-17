@@ -27,11 +27,11 @@
 		<text class="mono" x="552" y="118" font-size="16" fill="#E6FBFF">TYPESCRIPT</text>
 		<text class="mono" x="964" y="118" font-size="16" fill="#FCEE0A" text-anchor="end" font-weight="700">80.2%</text>
 		<rect x="552" y="126" width="412" height="9" fill="#0A0C11" stroke="#1B2A33" stroke-width="1" />
-		<rect x="552" y="126" width="330.45" height="9" fill="#FCEE0A" />
+		<rect x="552" y="126" width="330.44" height="9" fill="#FCEE0A" />
 		<text class="mono" x="552" y="162" font-size="16" fill="#E6FBFF">VUE</text>
 		<text class="mono" x="964" y="162" font-size="16" fill="#00F0FF" text-anchor="end" font-weight="700">17.7%</text>
 		<rect x="552" y="170" width="412" height="9" fill="#0A0C11" stroke="#1B2A33" stroke-width="1" />
-		<rect x="552" y="170" width="73.01" height="9" fill="#00F0FF" />
+		<rect x="552" y="170" width="73.02" height="9" fill="#00F0FF" />
 		<text class="mono" x="552" y="206" font-size="16" fill="#E6FBFF">CSS</text>
 		<text class="mono" x="964" y="206" font-size="16" fill="#FF003C" text-anchor="end" font-weight="700">2.1%</text>
 		<rect x="552" y="214" width="412" height="9" fill="#0A0C11" stroke="#1B2A33" stroke-width="1" />
