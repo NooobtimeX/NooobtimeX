@@ -64,8 +64,8 @@ export const metadata: Metadata = {
 		images: [
 			{
 				url: assets.site.ogImage,
-				width: 1200,
-				height: 630,
+				width: 1467,
+				height: 1468,
 				alt: 'Wongsaphat Puangsorn Portfolio'
 			}
 		]
@@ -79,8 +79,8 @@ export const metadata: Metadata = {
 		images: [assets.site.ogImage]
 	},
 	icons: {
-		icon: assets.site.favicon,
-		apple: assets.site.appleTouch
+		icon: assets.site.logo,
+		apple: assets.site.logo
 	},
 	robots: {
 		index: true,

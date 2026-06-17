@@ -1,13 +1,11 @@
 /**
  * Centralized asset map — the single place to edit any static image path.
- * Referenced by the data layer and app metadata. Photos are WebP; favicon /
- * apple-touch / og-image stay in legacy formats for icon & social compatibility.
+ * Referenced by the data layer and app metadata. All images are WebP; icons
+ * and the social card are served from the brand logo via Next.js metadata.
  */
 export const assets = {
 	site: {
-		ogImage: '/og-image.jpg',
-		favicon: '/favicon.ico',
-		appleTouch: '/apple-touch-icon.png',
+		ogImage: '/logo/logo.webp',
 		logo: '/logo/logo.webp'
 	},
 	personal: {
@@ -37,7 +35,7 @@ export const assets = {
 		rsMedal: { banner: '/issue/rs-medal/banner.webp' },
 		rsAward: { banner: '/issue/rs-award/banner.webp' },
 		qrFood: { banner: '/issue/qr-food/banner.webp' },
-		portfolio: { banner: '/issue/portfolio/banner.webp' },
+		portfolio: { banner: '/logo/logo.webp' },
 		monomaxEplPortal: { banner: '/issue/monomax-epl-portal/banner.webp' }
 	}
 } as const
