@@ -100,7 +100,6 @@ const mongodb = skill({
 	icon: 'logos:mongodb-icon',
 	category: 'backend'
 })
-const mongoose = skill({ id: 'mongoose', name: 'Mongoose', icon: 'simple-icons:mongoose', category: 'backend' })
 const prisma = skill({ id: 'prisma', name: 'Prisma', icon: 'logos:prisma', category: 'backend', whiteBg: true })
 const redis = skill({ id: 'redis', name: 'Redis', icon: 'logos:redis', category: 'backend' })
 const supabase = skill({ id: 'supabase', name: 'Supabase', icon: 'logos:supabase-icon', category: 'backend' })
@@ -213,7 +212,6 @@ const allSkills = [
 	bun,
 	postgresql,
 	mongodb,
-	mongoose,
 	prisma,
 	redis,
 	supabase,
