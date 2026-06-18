@@ -13,13 +13,7 @@ export type EmploymentType = 'volunteer' | 'freelance' | 'part-time' | 'full-tim
 
 export type Location = 'remote' | 'bangkok-thailand' | 'nonthaburi-thailand' | 'pathumthani-thailand'
 
-export type Position =
-	| 'full-stack-developer'
-	| 'product-lead'
-	| 'software-engineer'
-	| 'developer'
-	| 'advisor'
-	| 'technical-advisor'
+export type Position = 'product-lead' | 'developer'
 
 export type SocialPlatform =
 	| 'github'

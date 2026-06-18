@@ -7,7 +7,7 @@ import { freelanceWithFriends, jasmineTechnologySolution, personalProjects, ruam
 export const freelanceBlitzwerkExperience: ExperienceItem = {
 	id: 'freelance-blitzwerk-role',
 	organization: freelanceWithFriends,
-	position: 'full-stack-developer',
+	position: 'developer',
 	description:
 		'Collaborated on end-to-end web development projects, delivering scalable solutions tailored to client needs.',
 	type: 'freelance',
@@ -40,10 +40,10 @@ export const ruamsukPlatingSoftwareEngineerPartTime: ExperienceItem = {
 	endDate: '2025-05-31'
 }
 
-export const ruamsukPlatingSoftwareEngineerFullTime: ExperienceItem = {
+export const ruamsukPlatingDeveloperFullTime: ExperienceItem = {
 	id: 'ruamsuk-software-engineer-full-time',
 	organization: ruamsukPlating,
-	position: 'software-engineer',
+	position: 'developer',
 	description:
 		'Full Stack & SEO: Drove full-stack web application development while integrating targeted SEO and online marketing strategies. Digital Transformation: Led digital organizational transformation, modernizing legacy workflows to increase operational efficiency.',
 	type: 'full-time',
@@ -79,7 +79,7 @@ const all: ExperienceItem[] = [
 	freelanceBlitzwerkExperience,
 	jasmineTechnologySolutionExperience,
 	ruamsukPlatingSoftwareEngineerPartTime,
-	ruamsukPlatingSoftwareEngineerFullTime,
+	ruamsukPlatingDeveloperFullTime,
 	ruamsukPlatingProductLead,
 	personalProjectsExperience
 ]
