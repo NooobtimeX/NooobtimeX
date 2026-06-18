@@ -34,6 +34,8 @@ export const assets = {
 		rsMedal: { banner: '/issue/rs-medal/banner.webp' },
 		rsAward: { banner: '/issue/rs-award/banner.webp' },
 		portfolio: { banner: '/logo/logo.webp' },
-		monomaxEplPortal: { banner: '/issue/monomax-epl-portal/banner.webp' }
+		monomaxEplPortal: { banner: '/issue/monomax-epl-portal/banner.webp' },
+		looklookPartnerPortal: { banner: '/issue/looklook-pet/banner.webp' },
+		looklookMercur: { banner: '/issue/looklook-pet/banner.webp' }
 	}
 } as const

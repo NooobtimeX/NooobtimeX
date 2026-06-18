@@ -10,7 +10,7 @@ export const looklookPet: ProjectDef = {
 	id: 'looklook-pet',
 	title: 'LOOKLOOK PET',
 	description:
-		'Architected and scaled a multi-service pet-parent community marketplace — 15+ NestJS microservices communicating over NATS, backed by MongoDB with Redis caching and BullMQ job queues, fronted by Next.js + Radix web apps and a Medusa commerce layer. Led the infrastructure migration from Tencent Cloud VMs to Railway, running a single Dockerfile across Production and UAT via environment config wired through GitHub CI/CD, and migrated object storage from Tencent COS to Cloudflare R2 for cheaper, S3-compatible asset delivery.',
+		'Architected and scaled a multi-service pet-parent community marketplace — 15+ NestJS microservices communicating over NATS, backed by MongoDB with Redis caching and BullMQ job queues, fronted by Next.js + Radix web apps and a Medusa commerce layer. Led the infrastructure migration from Tencent Cloud VMs to Railway, running a single Dockerfile across Production and UAT via environment config wired through GitHub CI/CD, and migrated object storage from Tencent COS to Cloudflare R2 for cheaper, S3-compatible asset delivery. Within the platform, led the partner-facing B2B portal (partner.looklook.pet) and took over sole ownership of the Medusa/Mercur multi-vendor marketplace after the senior engineer left.',
 	images: { banner: assets.projects.looklookPet.banner, photos: [assets.projects.looklookPet.banner] },
 	skills: [
 		'typescript',
@@ -27,6 +27,7 @@ export const looklookPet: ProjectDef = {
 		'redis',
 		'bullmq',
 		'medusa',
+		'mercur',
 		'docker',
 		'railway',
 		'git-github',
@@ -197,10 +198,75 @@ export const monomaxEplPortal: ProjectDef = {
 	linkedOrganizationId: 'jasmine-technology-solution'
 }
 
+export const looklookPartnerPortal: ProjectDef = {
+	id: 'looklook-partner-portal',
+	title: 'LOOKLOOK PET — Partner Portal',
+	description:
+		'Lead developer of the B2B partner portal for the LOOKLOOK PET platform — the self-service console where venues and brands manage their presence. Built and owned the majority of the codebase (~55% of commits across roughly 11 months) and drove the feature set end to end: venue management with a claim-an-unlisted-place flow, coupons / deals / rewards with redemption tracking, announcements and a redesigned notification center, role-based team management with email search, a partner verification and access-request workflow, profile and payment settings, avatar upload with crop + WebP resize, an analytics dashboard, and multilingual SEO (sitemap + hreflang). Next.js 15 (App Router), React 19, Tailwind v4, Radix UI, and TanStack Query on the front; NestJS 11 with MongoDB/Mongoose, Redis, BullMQ, and NATS behind a Swagger API secured by better-auth — unified by a custom design-token system, containerized with Docker, and deployed on Railway.',
+	images: {
+		banner: assets.projects.looklookPartnerPortal.banner,
+		photos: [assets.projects.looklookPartnerPortal.banner]
+	},
+	skills: [
+		'next-js',
+		'react',
+		'typescript',
+		'tailwind-css',
+		'radix-ui',
+		'tanstack-query',
+		'better-auth',
+		'nest-js',
+		'node-js',
+		'mongodb',
+		'redis',
+		'bullmq',
+		'nats',
+		'docker',
+		'railway',
+		'git-github',
+		'seo'
+	],
+	links: { live: 'https://partner.looklook.pet' },
+	startDate: '2025-06-18',
+	linkedOrganizationId: 'jasmine-technology-solution'
+}
+
+export const looklookMercur: ProjectDef = {
+	id: 'looklook-mercur-marketplace',
+	title: 'LOOKLOOK Marketplace (Mercur)',
+	description:
+		'A B2B2C multi-vendor marketplace for LOOKLOOK PET, built on Medusa.js 2 and the Mercur framework across four surfaces — API backend, customer storefront, admin panel, and vendor panel. Took over as sole maintainer after the senior engineer departed, delivering 100+ commits over 4+ months of solo ownership. Shipped a workflow-based refund system, dual-mode product expiration (relative days vs. fixed date), a robust inventory system with automatic stock-location linking, order management with one-click redemption and CSV export (Asia/Bangkok time, MinIO-backed), sales-channel filtering, seller custom slugs / profiles / ranking, bulk admin actions, and a Medusa Sprint-46 upgrade — plus bilingual TH/EN deals, atop Omise (Thai PSP) payments, vendor commissions and payouts, product reviews, and Algolia search.',
+	images: {
+		banner: assets.projects.looklookMercur.banner,
+		photos: [assets.projects.looklookMercur.banner]
+	},
+	skills: [
+		'medusa',
+		'mercur',
+		'typescript',
+		'react',
+		'next-js',
+		'postgresql',
+		'omise',
+		'algolia',
+		'minio',
+		'resend',
+		'redis',
+		'docker',
+		'railway',
+		'git-github'
+	],
+	links: { live: 'https://looklook.pet' },
+	startDate: '2026-02-17',
+	linkedOrganizationId: 'jasmine-technology-solution'
+}
+
 const defs: ProjectDef[] = [
 	monomaxEplPortal,
 	rsTrophy,
 	looklookPet,
+	looklookPartnerPortal,
+	looklookMercur,
 	onlinePokerGame,
 	prettierConfig,
 	rsTrophyV1,

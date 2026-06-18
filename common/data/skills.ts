@@ -120,6 +120,7 @@ const betterAuth = skill({
 	icon: 'material-symbols:shield-lock',
 	category: 'backend'
 })
+const mercur = skill({ id: 'mercur', name: 'Mercur', icon: 'material-symbols:storefront', category: 'backend' })
 
 // --- Infrastructure ---
 const vercel = skill({
@@ -154,6 +155,8 @@ const cloudflareR2 = skill({
 })
 const awsS3 = skill({ id: 'aws-s3', name: 'AWS S3', icon: 'logos:aws-s3', category: 'infrastructure' })
 const mailgun = skill({ id: 'mailgun', name: 'Mailgun', icon: 'simple-icons:mailgun', category: 'infrastructure' })
+const omise = skill({ id: 'omise', name: 'Omise', icon: 'material-symbols:payments', category: 'infrastructure' })
+const algolia = skill({ id: 'algolia', name: 'Algolia', icon: 'logos:algolia', category: 'infrastructure' })
 
 // --- Growth & Management ---
 const seo = skill({ id: 'seo', name: 'SEO', icon: 'material-symbols:search', category: 'growth-management' })
@@ -239,6 +242,7 @@ const allSkills = [
 	medusa,
 	zod,
 	betterAuth,
+	mercur,
 	// infrastructure
 	vercel,
 	railway,
@@ -250,6 +254,8 @@ const allSkills = [
 	cloudflareR2,
 	awsS3,
 	mailgun,
+	omise,
+	algolia,
 	// growth & management
 	seo,
 	aeo,
