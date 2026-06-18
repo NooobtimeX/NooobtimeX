@@ -28,7 +28,7 @@ export const jasmineTechnologySolutionExperience: ExperienceItem = {
 	endDate: '2026-07-31'
 }
 
-export const ruamsukPlatingSoftwareEngineerPartTime: ExperienceItem = {
+export const ruamsukPlatingDevelopereerPartTime: ExperienceItem = {
 	id: 'ruamsuk-software-engineer-part-time',
 	organization: ruamsukPlating,
 	position: 'developer',
@@ -52,10 +52,10 @@ export const ruamsukPlatingDeveloperFullTime: ExperienceItem = {
 	endDate: '2025-07-15'
 }
 
-export const ruamsukPlatingProductLead: ExperienceItem = {
-	id: 'ruamsuk-product-lead',
+export const ruamsukPlatingProductEngineer: ExperienceItem = {
+	id: 'ruamsuk-product-engineer',
 	organization: ruamsukPlating,
-	position: 'product-lead',
+	position: 'product-engineer',
 	description:
 		'Solo Full Stack Ownership: Single-handedly delivered end-to-end web application projects, owning every stage from architecture to deployment. Product & Design Leadership: Acted as sole PM, PO, and UI/UX designer, authoring all project documentation independently. Supply Chain & AI Automation: Built supply chain solutions and AI automation workflows, and served as PM for a no-code web application. Finance Optimization: Worked directly with the accountant to streamline and optimize financial processes.',
 	type: 'full-time',
@@ -78,9 +78,9 @@ export const personalProjectsExperience: ExperienceItem = {
 const all: ExperienceItem[] = [
 	freelanceBlitzwerkExperience,
 	jasmineTechnologySolutionExperience,
-	ruamsukPlatingSoftwareEngineerPartTime,
+	ruamsukPlatingDevelopereerPartTime,
 	ruamsukPlatingDeveloperFullTime,
-	ruamsukPlatingProductLead,
+	ruamsukPlatingProductEngineer,
 	personalProjectsExperience
 ]
 
