@@ -12,7 +12,7 @@
 	<polygon points="15,1 999,1 999,105 985,119 1,119 1,15" fill="#050507" />
 	<g clip-path="url(#panel-clip)">
 		<rect x="0" y="0" width="6" height="120" fill="#FCEE0A" opacity="0.85" />
-		<text class="display" x="976" y="104" font-size="96" fill="#E6FBFF" text-anchor="end" opacity="0.07">04</text>
+		<text class="display" x="976" y="104" font-size="96" fill="#E6FBFF" text-anchor="end" opacity="0.07">05</text>
 		<text class="display" x="36" y="52" font-size="32" letter-spacing="2" fill="#FCEE0A">PORTFOLIO_V2.077</text>
 		<text class="mono" x="36" y="87" font-size="17" fill="#E6FBFF" opacity="0.55">THIS REPO · CYBERPUNK-2077-THEMED NEXT.JS PORTFOLIO</text>
 		<circle cx="769.2" cy="41" r="4" fill="#39FF14" class="pulse" />

@@ -69,6 +69,14 @@ const codemirror = skill({
 	icon: 'simple-icons:codemirror',
 	category: 'frontend'
 })
+const reactHookForm = skill({
+	id: 'react-hook-form',
+	name: 'React Hook Form',
+	icon: 'simple-icons:reacthookform',
+	category: 'frontend'
+})
+const leaflet = skill({ id: 'leaflet', name: 'Leaflet', icon: 'simple-icons:leaflet', category: 'frontend' })
+const vitest = skill({ id: 'vitest', name: 'Vitest', icon: 'logos:vitest', category: 'frontend' })
 
 // --- Backend ---
 const nodejs = skill({
@@ -105,6 +113,13 @@ const redis = skill({ id: 'redis', name: 'Redis', icon: 'logos:redis', category:
 const supabase = skill({ id: 'supabase', name: 'Supabase', icon: 'logos:supabase-icon', category: 'backend' })
 const bullmq = skill({ id: 'bullmq', name: 'BullMQ', icon: 'mdi:format-list-numbered', category: 'backend' })
 const medusa = skill({ id: 'medusa', name: 'Medusa', icon: 'simple-icons:medusa', category: 'backend' })
+const zod = skill({ id: 'zod', name: 'Zod', icon: 'simple-icons:zod', category: 'backend' })
+const betterAuth = skill({
+	id: 'better-auth',
+	name: 'Better Auth',
+	icon: 'material-symbols:shield-lock',
+	category: 'backend'
+})
 
 // --- Infrastructure ---
 const vercel = skill({
@@ -137,6 +152,8 @@ const cloudflareR2 = skill({
 	icon: 'simple-icons:cloudflare',
 	category: 'infrastructure'
 })
+const awsS3 = skill({ id: 'aws-s3', name: 'AWS S3', icon: 'logos:aws-s3', category: 'infrastructure' })
+const mailgun = skill({ id: 'mailgun', name: 'Mailgun', icon: 'simple-icons:mailgun', category: 'infrastructure' })
 
 // --- Growth & Management ---
 const seo = skill({ id: 'seo', name: 'SEO', icon: 'material-symbols:search', category: 'growth-management' })
@@ -202,6 +219,9 @@ const allSkills = [
 	flutter,
 	prettier,
 	codemirror,
+	reactHookForm,
+	leaflet,
+	vitest,
 	// backend
 	nodejs,
 	nestjs,
@@ -217,6 +237,8 @@ const allSkills = [
 	supabase,
 	bullmq,
 	medusa,
+	zod,
+	betterAuth,
 	// infrastructure
 	vercel,
 	railway,
@@ -226,6 +248,8 @@ const allSkills = [
 	minio,
 	resend,
 	cloudflareR2,
+	awsS3,
+	mailgun,
 	// growth & management
 	seo,
 	aeo,

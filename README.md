@@ -43,6 +43,7 @@ ecosystems and high-performance system design.**
 
 <img src=".github/assets/section-02-gigs.svg" alt="02 // GIGS" width="100%" />
 
+[<img src=".github/assets/gig-monomax-epl-portal.svg" alt="MONOMAX EPL — EPL broadcast-license SaaS for Thai venues, per-venue QR certificates — nooobtimex.me" width="100%" />](https://nooobtimex.me/projects/monomax-epl-portal)
 [<img src=".github/assets/gig-rs-trophy.svg" alt="RS TROPHY — e-commerce + AI shopping copilot for custom trophies and medals — rs-trophy.com" width="100%" />](https://rs-trophy.com)
 [<img src=".github/assets/gig-looklook-pet.svg" alt="LOOKLOOK PET — pet-parent community marketplace, 15+ microservices — looklook.pet" width="100%" />](https://looklook.pet)
 [<img src=".github/assets/gig-prettier-config.svg" alt="PRETTIER CONFIG — visual Prettier playground, fully client-side — prettier-config.dev" width="100%" />](https://prettier-config.dev)

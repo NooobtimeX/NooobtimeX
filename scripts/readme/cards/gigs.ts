@@ -33,6 +33,14 @@ export interface GigSpec {
 
 export const GIGS: GigSpec[] = [
 	{
+		id: 'monomax-epl-portal',
+		file: 'gig-monomax-epl-portal.svg',
+		title: 'MONOMAX EPL',
+		blurb: 'EPL BROADCAST-LICENSE SAAS · PER-VENUE QR CERTIFICATES',
+		domain: 'nooobtimex.me',
+		href: 'https://nooobtimex.me/projects/monomax-epl-portal'
+	},
+	{
 		id: 'rs-trophy',
 		file: 'gig-rs-trophy.svg',
 		title: 'RS TROPHY',

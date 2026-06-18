@@ -169,7 +169,7 @@ export const monomaxEplPortal: ProjectDef = {
 	id: 'monomax-epl-portal',
 	title: 'MONOMax EPL Licensing Portal',
 	description:
-		'A full-stack SaaS platform that issues and verifies English Premier League commercial-broadcast licenses for Thai venues — restaurants, hotels, and pubs. Business owners sign in with email OTP, register their company and each physical venue with its screen count, and the system automatically provisions the required MONOMax Sports Premium accounts while guaranteeing each account is bound to a single active venue. Admins review submissions and issue a verifiable digital certificate (with QR code) per venue. Built with Next.js 16 (App Router) and React 19 in strict TypeScript, MongoDB for data, Tailwind CSS v4 with shadcn/ui, validation shared across client and server, document uploads to cloud object storage, transactional email, and an interactive map venue picker — containerized with Docker and shipped through a GitHub Actions CI/CD pipeline. Delivered as a focused 3-day sprint.',
+		'A full-stack SaaS platform that issues and verifies English Premier League commercial-broadcast licenses for Thai venues — restaurants, hotels, and pubs. Business owners sign in with email OTP, register their company and each physical venue with its screen count, and the system provisions the required MONOMax Sports Premium accounts while guaranteeing — enforced at the database level — that every account is bound to a single active venue. Admins review submissions in a dedicated console with its own auth realm and issue a verifiable digital certificate, complete with an in-house-generated QR code, for each approved venue. Built with Next.js 16 (App Router) and React 19 in strict TypeScript: two isolated better-auth realms for users and admins, MongoDB/Mongoose, zod schemas validated identically on client and server with react-hook-form, an interactive Leaflet venue-map picker, presigned document uploads to S3-compatible object storage, transactional email, and Tailwind v4 with shadcn/ui. Containerized with Docker and shipped through a GitHub Actions → GHCR → cloud-VM (Caddy) CI/CD pipeline, with PDPA-conscious data residency. Delivered as a focused 3-day sprint.',
 	images: {
 		banner: assets.projects.monomaxEplPortal.banner,
 		photos: [assets.projects.monomaxEplPortal.banner]
@@ -179,9 +179,16 @@ export const monomaxEplPortal: ProjectDef = {
 		'react',
 		'typescript',
 		'mongodb',
+		'better-auth',
+		'zod',
+		'react-hook-form',
 		'tailwind-css',
 		'shadcn-ui',
+		'leaflet',
+		'aws-s3',
+		'mailgun',
 		'recharts',
+		'vitest',
 		'docker',
 		'git-github'
 	],
