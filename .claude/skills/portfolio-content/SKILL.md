@@ -10,10 +10,16 @@ description: >-
 
 # Portfolio content
 
-All site content lives in the `common/` data layer and is barrel-exported from
-`@/common`. Pages/components only render this data — so a content change is a
-data-file edit, almost never a component edit. Match the **tabs** indentation and
-the existing const-per-item style.
+The task recipes for adding/editing site content. All content lives in the
+`common/` data layer and is barrel-exported from `@/common`; pages only render it,
+so a content change is a data-file edit, almost never a component edit. Match the
+**tabs** indentation and the existing const-per-item style.
+
+This skill is the "how do I add my new …" entry point. For the underlying type-safety
+rules (the `skill()`/`SkillId` invariant, the `assets` map, `ProjectDef` resolution),
+see [`/common-conventions`](../common-conventions/SKILL.md); for routing/pages see
+[`/app-conventions`](../app-conventions/SKILL.md); for UI components see the rule
+[`.claude/rules/design-system.md`](../../rules/design-system.md).
 
 ## Map: what lives where
 
@@ -60,10 +66,12 @@ the existing const-per-item style.
 
 ## Invariants (do not skip)
 
-- **Never** hardcode an image path outside `assets.ts`.
-- **Never** widen the `skill()` literal — `SkillId` is derived from `allSkills`;
-  a non-literal entry breaks type safety for every project's `skills`.
-- New enums/types go in `enums.ts` as a **string-literal union**, not a TS `enum`.
+The canonical rules live in [`/common-conventions`](../common-conventions/SKILL.md)
+§3–4. The short version:
+
+- **Never** hardcode an image path outside `assets.ts` (§4).
+- **Never** widen the `skill()` literal — `SkillId` is derived from `allSkills` (§3).
+- New enums/types go in `enums.ts` as a **string-literal union**, not a TS `enum` (§2).
 - Don't edit a page/component to show new content — wire it through the data list it already maps over.
 
 ## Finish — the gate
