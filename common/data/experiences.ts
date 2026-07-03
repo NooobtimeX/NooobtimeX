@@ -21,7 +21,7 @@ export const jasmineTechnologySolutionExperience: ExperienceItem = {
 	organization: jasmineTechnologySolution,
 	position: 'developer',
 	description:
-		'Microservices Management: Orchestrate and maintain over 20 concurrent microservices for the LOOKLOOKPET application. CI/CD & Infrastructure: Architected and deployed a robust CI/CD pipeline managing Dockerized services on Railway. Agile Leadership: Partner directly with the Product Owner to define strategic project milestones.',
+		'Full-Stack Platform Ownership: Led full-stack development of the LOOKLOOK PET platform across storefront, B2B partner console, and Medusa-based Mercur marketplace. Microservices & Checkout: Managed 20+ NestJS microservices communicating over NATS, and built a custom native payment UI featuring client-side Omise card tokenization, inline PromptPay QR polling, and card-lock promotions. Team & Claim Workflows: Owned the B2B portal (~55% commits) delivering organization switchers, dynamic roles, and claim-an-unlisted-place verification logic. Infrastructure: Maintained Dockerized services on Railway via GitHub CI/CD, and migrated storage to Cloudflare R2.',
 	type: 'full-time',
 	category: 'work',
 	startDate: '2025-07-16',

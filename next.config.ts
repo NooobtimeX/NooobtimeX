@@ -16,6 +16,8 @@ const nextConfig: NextConfig = {
 			// Removed project — folded into LOOKLOOK PET
 			{ source: '/projects/tencent-railway-migration', destination: '/projects', permanent: true },
 			{ source: '/issue/tencent-railway-migration', destination: '/projects', permanent: true },
+			{ source: '/projects/looklook-partner-portal', destination: '/projects/looklook-pet', permanent: true },
+			{ source: '/projects/looklook-mercur-marketplace', destination: '/projects/looklook-pet', permanent: true },
 			{ source: '/issue', destination: '/projects', permanent: true },
 			{ source: '/issue/:id', destination: '/projects/:id', permanent: true },
 			{ source: '/ability', destination: '/skills', permanent: true },
