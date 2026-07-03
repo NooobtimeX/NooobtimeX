@@ -43,7 +43,7 @@ function CommandDialog({
 			<DialogContent
 				className={cn('top-1/3 translate-y-0 overflow-hidden rounded-3xl! p-0', className)}
 				showCloseButton={showCloseButton}>
-				{children}
+				<Command className='rounded-none! bg-transparent'>{children}</Command>
 			</DialogContent>
 		</Dialog>
 	)
