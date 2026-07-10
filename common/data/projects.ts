@@ -38,7 +38,8 @@ export const looklookPet: ProjectDef = {
 		'railway',
 		'git-github',
 		'cloudflare-r2',
-		'seo'
+		'seo',
+		'google-tag-manager'
 	],
 	links: { live: 'https://looklook.pet' },
 	startDate: '2025-07-16',
@@ -69,7 +70,8 @@ export const rsTrophy: ProjectDef = {
 		'seo',
 		'aeo',
 		'geo',
-		'json-ld'
+		'json-ld',
+		'google-tag-manager'
 	],
 	links: { live: 'https://rs-trophy.com' },
 	startDate: '2026-03-01',
@@ -82,7 +84,7 @@ export const rsTrophyV1: ProjectDef = {
 	description:
 		'[LEGACY] The original e-commerce platform for RS TROPHY built on WordPress and WooCommerce. Managed the complete product catalog, customer orders, and digital marketing integrations before the transition to the modern high-performance system.',
 	images: { banner: assets.projects.rsTrophyV1.banner, photos: [assets.projects.rsTrophyV1.banner] },
-	skills: ['wordpress', 'woocommerce', 'seo', 'google-analytics', 'google-ads'],
+	skills: ['wordpress', 'woocommerce', 'seo', 'google-analytics', 'google-ads', 'google-tag-manager'],
 	links: { live: 'https://rs-trophy.com' },
 	startDate: '2023-01-01',
 	linkedOrganizationId: 'ruamsuk-plating'
@@ -115,7 +117,8 @@ export const prettierConfig: ProjectDef = {
 		'base-ui',
 		'codemirror',
 		'prettier',
-		'vercel'
+		'vercel',
+		'google-tag-manager'
 	],
 	links: { live: 'https://prettier-config.dev' },
 	startDate: '2025-07-09',
@@ -128,7 +131,7 @@ export const rsMedal: ProjectDef = {
 	description:
 		'[LEGACY] A medal showcase web application. This project has been succeeded by the unified RS TROPHY (rs-trophy.com) platform to provide a more robust and high-performance experience.',
 	images: { banner: assets.projects.rsMedal.banner, photos: [assets.projects.rsMedal.banner] },
-	skills: ['next-js', 'react', 'typescript', 'tailwind-css', 'shadcn-ui', 'vercel', 'google-ads'],
+	skills: ['next-js', 'react', 'typescript', 'tailwind-css', 'shadcn-ui', 'vercel', 'google-ads', 'google-tag-manager'],
 	links: { live: 'https://www.rs-medal.com' },
 	startDate: '2022-08-01',
 	linkedOrganizationId: 'ruamsuk-plating'
@@ -140,7 +143,7 @@ export const rsAward: ProjectDef = {
 	description:
 		'[LEGACY] A plaque showcase web application. This project has been succeeded by the unified RS TROPHY (rs-trophy.com) platform as part of a major digital transformation.',
 	images: { banner: assets.projects.rsAward.banner, photos: [assets.projects.rsAward.banner] },
-	skills: ['next-js', 'react', 'typescript', 'tailwind-css', 'shadcn-ui', 'vercel', 'google-ads'],
+	skills: ['next-js', 'react', 'typescript', 'tailwind-css', 'shadcn-ui', 'vercel', 'google-ads', 'google-tag-manager'],
 	links: { live: 'https://www.rs-award.com' },
 	startDate: '2022-03-01',
 	linkedOrganizationId: 'ruamsuk-plating'
@@ -165,7 +168,8 @@ export const portfolio: ProjectDef = {
 		'seo',
 		'aeo',
 		'geo',
-		'json-ld'
+		'json-ld',
+		'google-tag-manager'
 	],
 	links: { live: 'https://github.com/NooobtimeX/NooobtimeX' },
 	startDate: '2021-01-01',

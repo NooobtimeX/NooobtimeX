@@ -20,7 +20,6 @@ const nextjs = skill({
 	icon: 'logos:nextjs-icon',
 	category: 'frontend'
 })
-const nuxtjs = skill({ id: 'nuxt-js', name: 'Nuxt.js', icon: 'logos:nuxt-icon', category: 'frontend' })
 const react = skill({ id: 'react', name: 'React', icon: 'logos:react', category: 'frontend' })
 const typescript = skill({
 	id: 'typescript',
@@ -40,10 +39,8 @@ const shadcnui = skill({
 	icon: 'simple-icons:shadcnui',
 	category: 'frontend'
 })
-const css = skill({ id: 'css', name: 'CSS', icon: 'logos:css-3', category: 'frontend' })
 const radixui = skill({ id: 'radix-ui', name: 'Radix UI', icon: 'simple-icons:radixui', category: 'frontend' })
 const baseui = skill({ id: 'base-ui', name: 'Base UI', icon: 'mdi:cube-outline', category: 'frontend' })
-const framerMotion = skill({ id: 'framer-motion', name: 'Framer Motion', icon: 'logos:framer', category: 'frontend' })
 const emblaCarousel = skill({
 	id: 'embla-carousel',
 	name: 'Embla Carousel',
@@ -56,11 +53,7 @@ const tanstackQuery = skill({
 	icon: 'logos:react-query-icon',
 	category: 'frontend'
 })
-const lucide = skill({ id: 'lucide-icons', name: 'Lucide Icons', icon: 'lucide:box', category: 'frontend' })
-const heroicons = skill({ id: 'heroicons', name: 'Heroicons', icon: 'logos:heroicons', category: 'frontend' })
-const reactIcons = skill({ id: 'react-icons', name: 'React Icons', icon: 'logos:react', category: 'frontend' })
 const recharts = skill({ id: 'recharts', name: 'Recharts', icon: 'simple-icons:recharts', category: 'frontend' })
-const datefns = skill({ id: 'date-fns', name: 'date-fns', icon: 'logos:javascript', category: 'frontend' })
 const flutter = skill({ id: 'flutter', name: 'Flutter', icon: 'logos:flutter', category: 'frontend' })
 const prettier = skill({ id: 'prettier', name: 'Prettier', icon: 'logos:prettier', category: 'frontend' })
 const codemirror = skill({
@@ -87,7 +80,6 @@ const nodejs = skill({
 })
 const nestjs = skill({ id: 'nest-js', name: 'Nest.js', icon: 'logos:nestjs', category: 'backend' })
 const nats = skill({ id: 'nats', name: 'NATS', icon: 'logos:nats-icon', category: 'backend' })
-const python = skill({ id: 'python', name: 'Python', icon: 'logos:python', category: 'backend' })
 const elysia = skill({
 	id: 'elysia-js',
 	name: 'Elysia.js',
@@ -110,7 +102,6 @@ const mongodb = skill({
 })
 const prisma = skill({ id: 'prisma', name: 'Prisma', icon: 'logos:prisma', category: 'backend', whiteBg: true })
 const redis = skill({ id: 'redis', name: 'Redis', icon: 'logos:redis', category: 'backend' })
-const supabase = skill({ id: 'supabase', name: 'Supabase', icon: 'logos:supabase-icon', category: 'backend' })
 const bullmq = skill({ id: 'bullmq', name: 'BullMQ', icon: 'mdi:format-list-numbered', category: 'backend' })
 const medusa = skill({ id: 'medusa', name: 'Medusa', icon: 'simple-icons:medusa', category: 'backend' })
 const zod = skill({ id: 'zod', name: 'Zod', icon: 'simple-icons:zod', category: 'backend' })
@@ -203,22 +194,15 @@ const woocommerce = skill({
 const allSkills = [
 	// frontend
 	nextjs,
-	nuxtjs,
 	react,
 	typescript,
 	tailwindcss,
 	shadcnui,
-	css,
 	radixui,
 	baseui,
-	framerMotion,
 	emblaCarousel,
 	tanstackQuery,
-	lucide,
-	heroicons,
-	reactIcons,
 	recharts,
-	datefns,
 	flutter,
 	prettier,
 	codemirror,
@@ -229,7 +213,6 @@ const allSkills = [
 	nodejs,
 	nestjs,
 	nats,
-	python,
 	elysia,
 	sse,
 	bun,
@@ -237,7 +220,6 @@ const allSkills = [
 	mongodb,
 	prisma,
 	redis,
-	supabase,
 	bullmq,
 	medusa,
 	zod,
@@ -282,7 +264,6 @@ export const featuredSkills: Skill[] = [
 	typescript,
 	nextjs,
 	react,
-	nuxtjs,
 	tailwindcss,
 	shadcnui,
 	radixui,
