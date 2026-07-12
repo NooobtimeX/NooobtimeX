@@ -70,7 +70,13 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
 
 			{/* Meta row */}
 			<NeonPanel className='clip-notch-sm mt-6 grid grid-cols-2 gap-4 p-4 sm:grid-cols-4'>
-				<MetaCell label='Client'>{client?.name ?? 'Independent'}</MetaCell>
+				<MetaCell label='Client'>
+					{client ?
+						<Link href={`/companies/${client.id}` as never} className='hover:text-cyber-yellow transition-colors'>
+							{client.name}
+						</Link>
+					:	'Independent'}
+				</MetaCell>
 				<MetaCell label='Tier'>
 					<span className='text-cyber-magenta'>{'▲'.repeat(tier)}</span>
 				</MetaCell>
@@ -137,18 +143,19 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
 							</h3>
 							<div className='space-y-3'>
 								{linkedRoles.map(role => (
-									<Link
-										key={role.id}
-										href={`/career/${role.id}` as never}
-										className='hover:text-cyber-yellow block text-sm transition-colors'>
-										<span className='flex items-center gap-2'>
+									<div key={role.id}>
+										<Link
+											href={`/career/${role.id}` as never}
+											className='hover:text-cyber-yellow flex items-center gap-2 text-sm transition-colors'>
 											<Icon icon='mdi:account-tie-outline' className='size-4 shrink-0' />
 											{humanize(role.position)}
-										</span>
-										<span className='text-muted-foreground mt-0.5 block pl-6 font-mono text-[0.65rem] tracking-wider uppercase'>
+										</Link>
+										<Link
+											href={`/companies/${role.organization.id}` as never}
+											className='text-muted-foreground hover:text-cyber-cyan mt-0.5 block pl-6 font-mono text-[0.65rem] tracking-wider uppercase transition-colors'>
 											{role.organization.name} · {formatExperienceDuration(role.startDate, role.endDate)}
-										</span>
-									</Link>
+										</Link>
+									</div>
 								))}
 							</div>
 						</NeonPanel>

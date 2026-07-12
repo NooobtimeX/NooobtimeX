@@ -64,7 +64,11 @@ const ExperienceDetail: React.FC<ExperienceDetailProps> = ({ item }) => {
 					<h1 className='font-display text-3xl font-bold tracking-wide uppercase md:text-4xl'>
 						{humanize(item.position)}
 					</h1>
-					<p className='text-cyber-yellow text-lg'>{item.organization.name}</p>
+					<Link
+						href={`/companies/${item.organization.id}` as never}
+						className='text-cyber-yellow hover:text-cyber-cyan inline-block text-lg transition-colors'>
+						{item.organization.name}
+					</Link>
 					<p className='text-muted-foreground mt-1 font-mono text-xs tracking-wider uppercase'>
 						{formatExperienceDuration(item.startDate, item.endDate)}
 					</p>
