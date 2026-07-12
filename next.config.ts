@@ -18,6 +18,11 @@ const nextConfig: NextConfig = {
 			{ source: '/issue/tencent-railway-migration', destination: '/projects', permanent: true },
 			{ source: '/projects/looklook-partner-portal', destination: '/projects/looklook-pet', permanent: true },
 			{ source: '/projects/looklook-mercur-marketplace', destination: '/projects/looklook-pet', permanent: true },
+			// Removed project — legacy WordPress build merged into the unified RS TROPHY entry
+			{ source: '/projects/rs-trophy-v1', destination: '/projects/rs-trophy', permanent: true },
+			{ source: '/issue/rs-trophy-v1', destination: '/projects/rs-trophy', permanent: true },
+			// Renamed experience id — Product Engineer role became CTO
+			{ source: '/experience/ruamsuk-product-engineer', destination: '/experience/ruamsuk-cto', permanent: true },
 			{ source: '/issue', destination: '/projects', permanent: true },
 			{ source: '/issue/:id', destination: '/projects/:id', permanent: true },
 			{ source: '/ability', destination: '/skills', permanent: true },
