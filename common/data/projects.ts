@@ -243,7 +243,72 @@ export const onlinePokerGame: ProjectDef = {
 	skills: ['next-js', 'react', 'typescript', 'prisma', 'render', 'tailwind-css', 'sse', 'postgresql'],
 	links: {},
 	startDate: '2025-03-01',
-	linkedOrganizationId: 'freelance-blitzwerk'
+	linkedOrganizationId: 'freelance-blitzwerk',
+	timeline: [
+		{
+			date: '2025-06-09',
+			title: "Kickoff — TypeScript Texas Hold'em on Next.js",
+			description:
+				"Started a real-time multiplayer Texas Hold'em project on Next.js with a component-driven UI and strict TypeScript.",
+			icon: 'mdi:cards-playing-outline'
+		},
+		{
+			date: '2025-06-11',
+			title: 'Engine — Test-Driven Hand Evaluator',
+			description: 'Built the poker hand-evaluation engine test-first, with dedicated unit suites for ranking logic.',
+			icon: 'mdi:cards'
+		},
+		{
+			date: '2025-06-11',
+			title: 'Realtime — Rooms over Server-Sent Events',
+			description: 'Streamed live room state to every player over Server-Sent Events.',
+			icon: 'mdi:broadcast'
+		},
+		{
+			date: '2025-06-12',
+			title: 'Core — Showdown & Deck Logic',
+			description: 'Implemented showdown resolution and deck management with full unit-test coverage.',
+			icon: 'mdi:test-tube'
+		},
+		{
+			date: '2025-07-05',
+			title: 'Refactor — Modular Pot / Position / Betting Managers',
+			description: 'Refactored the game engine into dedicated pot, position, and betting modules.',
+			icon: 'mdi:cog-outline'
+		},
+		{
+			date: '2025-08-05',
+			title: 'Auth — Session-Based Authentication',
+			description: 'Added session-based authentication for players and rooms.',
+			icon: 'mdi:shield-key-outline'
+		},
+		{
+			date: '2025-08-29',
+			title: 'Odds — Monte Carlo Win-Probability',
+			description: 'Built a Monte Carlo simulation for live hand-odds and win-probability estimates.',
+			icon: 'mdi:chart-bell-curve-cumulative'
+		},
+		{
+			date: '2025-09-07',
+			title: 'Multiplayer — Lobby & Configurable Rooms',
+			description: 'Delivered the multiplayer lobby with a create-room flow and host-configurable seat limits.',
+			icon: 'mdi:account-group-outline'
+		},
+		{
+			date: '2025-10-27',
+			title: 'Tournament — Winner Mode + Spectator Roles',
+			description:
+				'Introduced tournament mode with viewer and player-elimination roles and a pre-showdown card-reveal phase.',
+			icon: 'mdi:trophy-outline'
+		},
+		{
+			date: '2026-02-03',
+			title: 'Scale-Out — Docker, Job Queue & Redis Realtime',
+			description:
+				'Re-architected for scale — containerized deploy with a BullMQ job queue, persisted game logs, and Redis-backed realtime with retries.',
+			icon: 'simple-icons:redis'
+		}
+	]
 }
 
 export const prettierConfig: ProjectDef = {
@@ -266,7 +331,59 @@ export const prettierConfig: ProjectDef = {
 	],
 	links: { live: 'https://prettier-config.dev' },
 	startDate: '2025-07-09',
-	linkedOrganizationId: 'personal-projects'
+	linkedOrganizationId: 'personal-projects',
+	timeline: [
+		{
+			date: '2025-05-09',
+			title: 'Foundation — Next.js Config Playground',
+			description: 'Laid the Next.js foundation for a browser-based Prettier configuration builder.',
+			icon: 'simple-icons:prettier'
+		},
+		{
+			date: '2025-08-24',
+			title: 'i18n — Internationalization Introduced',
+			description: 'Introduced internationalization with locale-aware routing.',
+			icon: 'mdi:translate'
+		},
+		{
+			date: '2025-09-06',
+			title: 'Launch — prettier-config.dev',
+			description: 'Settled on the prettier-config.dev domain with centralized metadata and lint tooling.',
+			icon: 'mdi:web'
+		},
+		{
+			date: '2026-01-09',
+			title: 'Rebuild — Metadata-Driven Config Generator',
+			description: 'Rebuilt the UI around an option-metadata-driven config generator.',
+			icon: 'mdi:cog-outline'
+		},
+		{
+			date: '2026-05-05',
+			title: 'i18n — 15 Locales + hreflang Sitemap',
+			description: 'Scaled to fifteen locales with a dynamic multi-language sitemap and hreflang SEO.',
+			icon: 'mdi:earth'
+		},
+		{
+			date: '2026-05-27',
+			title: 'Engine — Version Picker + Schema Options + Diff',
+			description:
+				'Auto-generated options from the Prettier schema for any selected version, with a GitHub-style diff preview.',
+			icon: 'mdi:file-compare'
+		},
+		{
+			date: '2026-05-29',
+			title: 'Editor — Multi-Parser CodeMirror + Shareable URLs',
+			description:
+				'Shipped a multi-parser CodeMirror editor with URL-encoded shareable configs and existing-config import.',
+			icon: 'simple-icons:codemirror'
+		},
+		{
+			date: '2026-05-30',
+			title: 'Extensibility — Presets + Third-Party Plugins',
+			description: 'Added one-click preset configs and a third-party plugin system.',
+			icon: 'mdi:puzzle-outline'
+		}
+	]
 }
 
 export const rsMedal: ProjectDef = {
@@ -317,7 +434,74 @@ export const portfolio: ProjectDef = {
 	],
 	links: { live: 'https://github.com/NooobtimeX/NooobtimeX' },
 	startDate: '2021-01-01',
-	linkedOrganizationId: 'personal-projects'
+	linkedOrganizationId: 'personal-projects',
+	timeline: [
+		{
+			date: '2025-08-25',
+			title: 'Inception — Repo + Personal Profile Scaffold',
+			description: 'Bootstrapped the repository as a personal GitHub profile with the first structured content.',
+			icon: 'mdi:rocket-launch-outline'
+		},
+		{
+			date: '2025-12-23',
+			title: 'GitHub Profile — Automated README System',
+			description:
+				'Built an automated profile README with scheduled workflows for activity stats and a contribution snake.',
+			icon: 'simple-icons:github'
+		},
+		{
+			date: '2026-02-03',
+			title: 'Pivot — Static Profile → Full Web App',
+			description: 'Pivoted from a static profile into a statically-generated Next.js web app with a performance pass.',
+			icon: 'simple-icons:nextdotjs'
+		},
+		{
+			date: '2026-03-25',
+			title: 'Content — CV, Global Search & Presentation Mode',
+			description: 'Shipped a print-ready CV page, site-wide command-palette search, and a slide-presentation mode.',
+			icon: 'mdi:file-document-outline'
+		},
+		{
+			date: '2026-04-09',
+			title: 'Revamp — Home UI + Component-Library Migration',
+			description: 'Revamped the home page and migrated the UI onto a headless component library.',
+			icon: 'mdi:home-outline'
+		},
+		{
+			date: '2026-06-08',
+			title: 'Redesign — Cyberpunk Design System',
+			description:
+				'Rebuilt the entire site on a custom Cyberpunk 2077–inspired design system — neon signal colors, notched HUD panels, glitch and scanline accents.',
+			icon: 'mdi:palette-outline'
+		},
+		{
+			date: '2026-06-08',
+			title: 'Skills — Force-Directed Skill Graph + Game-UI Pages',
+			description:
+				'Modeled skills as a connected node graph wired by real tech dependencies, with game-style detail pages for skills, projects, and roles.',
+			icon: 'mdi:graph-outline'
+		},
+		{
+			date: '2026-06-08',
+			title: 'GitHub Stats — Token-Free Coding Stats (ISR)',
+			description:
+				'Added a dedicated GitHub stats page with contribution insights, fetched token-free and cached with incremental static regeneration.',
+			icon: 'mdi:chart-box-outline'
+		},
+		{
+			date: '2026-06-12',
+			title: 'Tooling — Self-Owned SVG README Generator',
+			description:
+				'Replaced third-party badge services with a self-owned SVG asset generator, refreshed on a scheduled CI cron.',
+			icon: 'mdi:cog-outline'
+		},
+		{
+			date: '2026-07-12',
+			title: 'Feature — Per-Project Milestone Timelines',
+			description: 'Shipped a reusable milestone-timeline component so every project can tell its build story.',
+			icon: 'mdi:timeline-check-outline'
+		}
+	]
 }
 
 export const monomaxEplPortal: ProjectDef = {
