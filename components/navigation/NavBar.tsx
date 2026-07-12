@@ -14,8 +14,9 @@ const LINKS = [
 	{ label: 'Career', href: '/career', code: '01' },
 	{ label: 'Projects', href: '/projects', code: '02' },
 	{ label: 'Skills', href: '/skills', code: '03' },
-	{ label: 'GitHub', href: '/github', code: '04' },
-	{ label: 'CV', href: '/cv', code: '05' }
+	{ label: 'Companies', href: '/companies', code: '04' },
+	{ label: 'GitHub', href: '/github', code: '05' },
+	{ label: 'CV', href: '/cv', code: '06' }
 ] as const
 
 const isActive = (pathname: string, href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href))

@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 import { slugify } from '@/lib/utils'
-import { experiencesData, projectsData } from '@/common'
+import { entitiesData, experiencesData, projectsData } from '@/common'
 import { skillsData } from '@/common'
 
 const domain = 'https://nooobtimex.me'
@@ -13,6 +13,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		{ url: `${domain}/projects`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
 		{ url: `${domain}/skills`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
 		{ url: `${domain}/career`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+		{ url: `${domain}/companies`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
 		{ url: `${domain}/github`, lastModified: now, changeFrequency: 'weekly', priority: 0.6 },
 		{ url: `${domain}/cv`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 }
 	]
@@ -38,5 +39,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		priority: 0.6
 	}))
 
-	return [...staticRoutes, ...projectRoutes, ...skillRoutes, ...experienceRoutes]
+	const companyRoutes: MetadataRoute.Sitemap = entitiesData.map(item => ({
+		url: `${domain}/companies/${item.id}`,
+		lastModified: now,
+		changeFrequency: 'monthly',
+		priority: 0.6
+	}))
+
+	return [...staticRoutes, ...projectRoutes, ...skillRoutes, ...experienceRoutes, ...companyRoutes]
 }

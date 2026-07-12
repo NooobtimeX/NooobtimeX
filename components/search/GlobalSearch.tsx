@@ -12,7 +12,7 @@ import {
 	CommandList
 } from '@/components/ui/command'
 import { slugify } from '@/lib/utils'
-import { experiencesData, projectsData, skillsData } from '@/common'
+import { entitiesData, experiencesData, projectsData, skillsData } from '@/common'
 
 interface GlobalSearchProps {
 	open: boolean
@@ -24,6 +24,7 @@ const NAV = [
 	{ label: 'Career', href: '/career', icon: 'mdi:timeline-text-outline' },
 	{ label: 'Projects', href: '/projects', icon: 'mdi:folder-multiple-outline' },
 	{ label: 'Skills', href: '/skills', icon: 'mdi:chip' },
+	{ label: 'Companies', href: '/companies', icon: 'mdi:domain' },
 	{ label: 'GitHub', href: '/github', icon: 'simple-icons:github' },
 	{ label: 'CV', href: '/cv', icon: 'mdi:file-account-outline' }
 ] as const
@@ -74,17 +75,26 @@ const GlobalSearch: React.FC<GlobalSearchProps> = ({ open, onOpenChange }) => {
 					))}
 				</CommandGroup>
 
-				<CommandGroup heading='Experience'>
+				<CommandGroup heading='Career'>
 					{experiencesData.map(e => (
 						<CommandItem
 							key={e.id}
-							value={`experience ${e.position} ${e.organization.name}`}
+							value={`career ${e.position} ${e.organization.name}`}
 							onSelect={() => go(`/career/${e.id}`)}>
 							<Icon icon='mdi:briefcase-outline' className='text-cyber-cyan size-4' />
 							<span className='truncate'>
 								{e.organization.name}
 								<span className='text-muted-foreground'> — {e.position}</span>
 							</span>
+						</CommandItem>
+					))}
+				</CommandGroup>
+
+				<CommandGroup heading='Companies'>
+					{entitiesData.map(o => (
+						<CommandItem key={o.id} value={`company ${o.name}`} onSelect={() => go(`/companies/${o.id}`)}>
+							<Icon icon='mdi:domain' className='text-cyber-yellow size-4' />
+							<span className='truncate'>{o.name}</span>
 						</CommandItem>
 					))}
 				</CommandGroup>
