@@ -89,7 +89,7 @@ const SkillDetail: React.FC<SkillDetailProps> = ({ skill }) => {
 						{fieldRecord.map(({ role, gigs }, i) => (
 							<MotionReveal key={role.id} delay={(i % 2) * 0.06}>
 								<Link
-									href={`/experience/${role.id}` as never}
+									href={`/career/${role.id}` as never}
 									className='group neon-panel clip-notch-sm hover:border-cyber-yellow/60 block p-4 transition-colors'>
 									<div className='flex items-start justify-between gap-2'>
 										<div className='min-w-0'>

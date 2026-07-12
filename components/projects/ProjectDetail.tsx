@@ -139,7 +139,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
 								{linkedRoles.map(role => (
 									<Link
 										key={role.id}
-										href={`/experience/${role.id}` as never}
+										href={`/career/${role.id}` as never}
 										className='hover:text-cyber-yellow block text-sm transition-colors'>
 										<span className='flex items-center gap-2'>
 											<Icon icon='mdi:account-tie-outline' className='size-4 shrink-0' />

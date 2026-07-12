@@ -12,7 +12,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		{ url: `${domain}`, lastModified: now, changeFrequency: 'monthly', priority: 1 },
 		{ url: `${domain}/projects`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
 		{ url: `${domain}/skills`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
-		{ url: `${domain}/experience`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+		{ url: `${domain}/career`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
 		{ url: `${domain}/github`, lastModified: now, changeFrequency: 'weekly', priority: 0.6 },
 		{ url: `${domain}/cv`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 }
 	]
@@ -32,7 +32,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	}))
 
 	const experienceRoutes: MetadataRoute.Sitemap = experiencesData.map(item => ({
-		url: `${domain}/experience/${item.id}`,
+		url: `${domain}/career/${item.id}`,
 		lastModified: now,
 		changeFrequency: 'monthly',
 		priority: 0.6

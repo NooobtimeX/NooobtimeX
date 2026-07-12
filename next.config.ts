@@ -22,13 +22,16 @@ const nextConfig: NextConfig = {
 			{ source: '/projects/rs-trophy-v1', destination: '/projects/rs-trophy', permanent: true },
 			{ source: '/issue/rs-trophy-v1', destination: '/projects/rs-trophy', permanent: true },
 			// Renamed experience id — Product Engineer role became CTO
-			{ source: '/experience/ruamsuk-product-engineer', destination: '/experience/ruamsuk-cto', permanent: true },
+			{ source: '/experience/ruamsuk-product-engineer', destination: '/career/ruamsuk-cto', permanent: true },
+			// Career section moved — /experience/* now lives at /career/*
+			{ source: '/experience', destination: '/career', permanent: true },
+			{ source: '/experience/:id', destination: '/career/:id', permanent: true },
 			{ source: '/issue', destination: '/projects', permanent: true },
 			{ source: '/issue/:id', destination: '/projects/:id', permanent: true },
 			{ source: '/ability', destination: '/skills', permanent: true },
 			{ source: '/ability/:id', destination: '/skills/:id', permanent: true },
-			{ source: '/affiliation', destination: '/experience', permanent: true },
-			{ source: '/affiliation/:id', destination: '/experience/:id', permanent: true }
+			{ source: '/affiliation', destination: '/career', permanent: true },
+			{ source: '/affiliation/:id', destination: '/career/:id', permanent: true }
 		]
 	},
 	async headers() {

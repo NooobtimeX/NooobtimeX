@@ -135,7 +135,7 @@ const HomeContent: React.FC = () => {
 					subtitle='Current role and recent history.'
 					action={
 						<Link
-							href='/experience'
+							href='/career'
 							className='text-cyber-cyan hover:text-cyber-yellow hidden font-mono text-xs tracking-widest uppercase transition-colors md:block'>
 							All →
 						</Link>
@@ -145,7 +145,7 @@ const HomeContent: React.FC = () => {
 					{latestRoles.map((role, i) => (
 						<MotionReveal key={role.id} delay={i * 0.06}>
 							<Link
-								href={`/experience/${role.id}` as never}
+								href={`/career/${role.id}` as never}
 								className='group neon-panel clip-notch-sm hover:border-cyber-yellow/60 flex items-center gap-4 p-4 transition-colors'>
 								{role.organization.logo && (
 									<span className='relative size-11 shrink-0 overflow-hidden rounded-sm bg-white/90'>

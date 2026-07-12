@@ -38,7 +38,7 @@ const ExperienceDetail: React.FC<ExperienceDetailProps> = ({ item }) => {
 	return (
 		<Container className='py-10'>
 			<Link
-				href='/experience'
+				href='/career'
 				className='text-muted-foreground hover:text-cyber-cyan inline-flex items-center gap-2 font-mono text-xs tracking-widest uppercase transition-colors'>
 				<Icon icon='mdi:arrow-left' className='size-4' /> Career Trace
 			</Link>

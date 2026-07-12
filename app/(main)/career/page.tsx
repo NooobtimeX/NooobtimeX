@@ -4,7 +4,7 @@ import ExperienceContent from '@/components/experience/ExperienceContent'
 import { personalData } from '@/common'
 
 export const metadata: Metadata = {
-	title: `Experience | ${personalData.name}`,
+	title: `Career | ${personalData.name}`,
 	description: 'Professional roles, education, and personal projects across the timeline.'
 }
 

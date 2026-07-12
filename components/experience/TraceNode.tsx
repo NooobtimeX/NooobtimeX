@@ -45,7 +45,7 @@ const TraceNode: React.FC<TraceNodeProps> = ({ item, side, isNow }) => {
 			{/* Card on the chosen side */}
 			<div className={cn('lg:col-start-1', side === 'right' && 'lg:col-start-2')}>
 				<Link
-					href={`/experience/${item.id}` as never}
+					href={`/career/${item.id}` as never}
 					className='group neon-panel clip-notch-sm hover:border-cyber-yellow/60 block p-4 transition-colors'>
 					<div className='flex items-start justify-between gap-2'>
 						<div className='min-w-0'>

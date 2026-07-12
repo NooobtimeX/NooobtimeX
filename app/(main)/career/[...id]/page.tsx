@@ -16,10 +16,10 @@ export async function generateMetadata({ params }: ExperienceDetailPageProps): P
 	const { id } = await params
 	const item = experiencesData.find(a => a.id === id?.[0])
 
-	if (!item) return { title: 'Experience Not Found' }
+	if (!item) return { title: 'Career Entry Not Found' }
 
 	return {
-		title: `${item.position} @ ${item.organization.name} | Experience | ${personalData.name}`,
+		title: `${item.position} @ ${item.organization.name} | Career | ${personalData.name}`,
 		description: item.description
 	}
 }

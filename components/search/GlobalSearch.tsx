@@ -21,7 +21,7 @@ interface GlobalSearchProps {
 
 const NAV = [
 	{ label: 'Home', href: '/', icon: 'mdi:home-variant-outline' },
-	{ label: 'Career', href: '/experience', icon: 'mdi:timeline-text-outline' },
+	{ label: 'Career', href: '/career', icon: 'mdi:timeline-text-outline' },
 	{ label: 'Projects', href: '/projects', icon: 'mdi:folder-multiple-outline' },
 	{ label: 'Skills', href: '/skills', icon: 'mdi:chip' },
 	{ label: 'GitHub', href: '/github', icon: 'simple-icons:github' },
@@ -79,7 +79,7 @@ const GlobalSearch: React.FC<GlobalSearchProps> = ({ open, onOpenChange }) => {
 						<CommandItem
 							key={e.id}
 							value={`experience ${e.position} ${e.organization.name}`}
-							onSelect={() => go(`/experience/${e.id}`)}>
+							onSelect={() => go(`/career/${e.id}`)}>
 							<Icon icon='mdi:briefcase-outline' className='text-cyber-cyan size-4' />
 							<span className='truncate'>
 								{e.organization.name}
