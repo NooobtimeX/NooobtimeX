@@ -122,7 +122,7 @@ export const rsTrophy: ProjectDef = {
 	id: 'rs-trophy',
 	title: 'RS TROPHY (rs-trophy.com)',
 	description:
-		'A unified e-commerce and management platform for custom trophies, plaques, and medals — consolidating fragmented legacy brands into one high-performance system. Built as a Bun monorepo: a localized, SEO-optimized Next.js storefront, a real-time ElysiaJS API, and an admin console that share Mongoose schemas and types through a common workspace package. Runs on MongoDB with Redis caching and Cloudflare R2 object storage, containerized with Docker and deployed on Railway — and ships an AI copilot for natural-language shopping assistance.',
+		'A unified e-commerce and management platform for custom trophies, plaques, and medals — consolidating fragmented sibling brands into one high-performance system. Built as a Bun monorepo: a localized, SEO-optimized Next.js storefront, a real-time ElysiaJS API, and an admin console that share Mongoose schemas and types through a common workspace package. Runs on MongoDB with Redis caching and Cloudflare R2 object storage, containerized with Docker and deployed on Railway — and ships an AI copilot for natural-language shopping assistance. The platform evolved from an original WordPress + WooCommerce storefront into this unified Bun monorepo.',
 	images: { banner: assets.projects.rsTrophy.banner, photos: [assets.projects.rsTrophy.banner] },
 	skills: [
 		'bun-js',
@@ -143,12 +143,40 @@ export const rsTrophy: ProjectDef = {
 		'aeo',
 		'geo',
 		'json-ld',
-		'google-tag-manager'
+		'google-tag-manager',
+		'wordpress',
+		'woocommerce'
 	],
 	links: { live: 'https://rs-trophy.com' },
-	startDate: '2026-03-01',
+	startDate: '2023-01-01',
 	linkedOrganizationId: 'ruamsuk-plating',
 	timeline: [
+		{
+			date: '2023-01-01',
+			title: 'Discovery & Setup — WordPress + WooCommerce Foundation',
+			description:
+				'Stood up the original storefront on WordPress and WooCommerce — hosting, theme, and commerce plugin stack.',
+			icon: 'simple-icons:woocommerce'
+		},
+		{
+			date: '2023-02-01',
+			title: 'Design — Storefront Theme & Catalog UX',
+			description: 'Designed the storefront theme and catalog browsing experience.',
+			icon: 'mdi:palette-outline'
+		},
+		{
+			date: '2023-03-01',
+			title: 'Development — Catalog, Cart & Marketing Integrations',
+			description: 'Built the product catalog, cart and checkout flows, and marketing integrations.',
+			icon: 'mdi:hammer-screwdriver'
+		},
+		{
+			date: '2023-04-01',
+			title: 'Launch — SEO, Analytics & Go-Live',
+			description:
+				'Went live with on-page SEO, analytics, and ad tracking — the storefront that ran until the modern rebuild.',
+			icon: 'mdi:rocket-launch-outline'
+		},
 		{
 			date: '2026-05-06',
 			title: 'Foundation — Bun Monorepo, Railway from Day One',
@@ -220,18 +248,6 @@ export const rsTrophy: ProjectDef = {
 			icon: 'mdi:database-search-outline'
 		}
 	]
-}
-
-export const rsTrophyV1: ProjectDef = {
-	id: 'rs-trophy-v1',
-	title: 'RS TROPHY (Legacy WordPress)',
-	description:
-		'[LEGACY] The original e-commerce platform for RS TROPHY built on WordPress and WooCommerce. Managed the complete product catalog, customer orders, and digital marketing integrations before the transition to the modern high-performance system.',
-	images: { banner: assets.projects.rsTrophyV1.banner, photos: [assets.projects.rsTrophyV1.banner] },
-	skills: ['wordpress', 'woocommerce', 'seo', 'google-analytics', 'google-ads', 'google-tag-manager'],
-	links: { live: 'https://rs-trophy.com' },
-	startDate: '2023-01-01',
-	linkedOrganizationId: 'ruamsuk-plating'
 }
 
 export const onlinePokerGame: ProjectDef = {
@@ -388,26 +404,148 @@ export const prettierConfig: ProjectDef = {
 
 export const rsMedal: ProjectDef = {
 	id: 'rs-medal',
-	title: 'RS Medal (Legacy)',
+	title: 'RS Medal',
 	description:
-		'[LEGACY] A medal showcase web application. This project has been succeeded by the unified RS TROPHY (rs-trophy.com) platform to provide a more robust and high-performance experience.',
+		'A medal showcase and catalog web app — first built on WordPress, later remade as a localized Next.js application with structured data and a reusable product data model.',
 	images: { banner: assets.projects.rsMedal.banner, photos: [assets.projects.rsMedal.banner] },
-	skills: ['next-js', 'react', 'typescript', 'tailwind-css', 'shadcn-ui', 'vercel', 'google-ads', 'google-tag-manager'],
+	skills: [
+		'wordpress',
+		'next-js',
+		'react',
+		'typescript',
+		'tailwind-css',
+		'shadcn-ui',
+		'vercel',
+		'google-ads',
+		'google-tag-manager'
+	],
 	links: { live: 'https://www.rs-medal.com' },
 	startDate: '2022-08-01',
-	linkedOrganizationId: 'ruamsuk-plating'
+	linkedOrganizationId: 'ruamsuk-plating',
+	timeline: [
+		{
+			date: '2022-08-01',
+			title: 'Discovery & Setup — WordPress Foundation',
+			description: 'Scoped the catalog and stood up the WordPress foundation — hosting, theme base, and plugin stack.',
+			icon: 'simple-icons:wordpress'
+		},
+		{
+			date: '2022-09-01',
+			title: 'Design — Brand-Aligned Catalog Theme',
+			description: 'Designed a brand-aligned theme and information architecture for the medal catalog.',
+			icon: 'mdi:palette-outline'
+		},
+		{
+			date: '2022-10-01',
+			title: 'Development — Catalog & CMS Content',
+			description: 'Built out the product catalog, content pages, and CMS workflows.',
+			icon: 'mdi:hammer-screwdriver'
+		},
+		{
+			date: '2022-11-01',
+			title: 'Launch — SEO, Analytics & Go-Live',
+			description: 'Went live with on-page SEO, analytics, and ad tracking wired in.',
+			icon: 'mdi:rocket-launch-outline'
+		},
+		{
+			date: '2025-05-30',
+			title: 'Next.js Remake — Localized Storefront Foundation',
+			description:
+				'Began the ground-up Next.js remake — a localized, statically-optimized showcase replacing the WordPress build.',
+			icon: 'simple-icons:nextdotjs'
+		},
+		{
+			date: '2025-06-06',
+			title: 'Content & SEO — Blog System + JSON-LD',
+			description: 'Added a blog system with structured data (JSON-LD), sitemap, and SEO fixes.',
+			icon: 'mdi:post-outline'
+		},
+		{
+			date: '2025-06-23',
+			title: 'Catalog — Product Landing Pages + Reusable Data',
+			description: 'Shipped product landing pages with a reusable product data model and customer-logo carousel.',
+			icon: 'mdi:view-grid-outline'
+		},
+		{
+			date: '2026-02-25',
+			title: 'Redesign — UI Overhaul + WebP Optimization',
+			description: 'Refreshed the UI design and moved imagery to WebP for faster loads.',
+			icon: 'mdi:palette-swatch-outline'
+		}
+	]
 }
 
 export const rsAward: ProjectDef = {
 	id: 'rs-award',
-	title: 'RS Award (Legacy)',
+	title: 'RS Award',
 	description:
-		'[LEGACY] A plaque showcase web application. This project has been succeeded by the unified RS TROPHY (rs-trophy.com) platform as part of a major digital transformation.',
+		'A plaque and award showcase web app — first built on WordPress, later remade as a localized Next.js application with SEO/AEO structured data and client-side search.',
 	images: { banner: assets.projects.rsAward.banner, photos: [assets.projects.rsAward.banner] },
-	skills: ['next-js', 'react', 'typescript', 'tailwind-css', 'shadcn-ui', 'vercel', 'google-ads', 'google-tag-manager'],
+	skills: [
+		'wordpress',
+		'next-js',
+		'react',
+		'typescript',
+		'tailwind-css',
+		'shadcn-ui',
+		'vercel',
+		'google-ads',
+		'google-tag-manager'
+	],
 	links: { live: 'https://www.rs-award.com' },
 	startDate: '2022-03-01',
-	linkedOrganizationId: 'ruamsuk-plating'
+	linkedOrganizationId: 'ruamsuk-plating',
+	timeline: [
+		{
+			date: '2022-03-01',
+			title: 'Discovery & Setup — WordPress Foundation',
+			description: 'Scoped the plaque and award catalog and stood up the WordPress foundation.',
+			icon: 'simple-icons:wordpress'
+		},
+		{
+			date: '2022-04-01',
+			title: 'Design — Brand-Aligned Showcase Theme',
+			description: 'Designed a brand-aligned showcase theme and site structure.',
+			icon: 'mdi:palette-outline'
+		},
+		{
+			date: '2022-05-01',
+			title: 'Development — Catalog & CMS Content',
+			description: 'Built the award catalog, content pages, and CMS workflows.',
+			icon: 'mdi:hammer-screwdriver'
+		},
+		{
+			date: '2022-06-01',
+			title: 'Launch — SEO, Analytics & Go-Live',
+			description: 'Went live with on-page SEO, analytics, and ad tracking.',
+			icon: 'mdi:rocket-launch-outline'
+		},
+		{
+			date: '2025-12-04',
+			title: 'Next.js Remake — Foundation + SEO',
+			description:
+				'Kicked off the Next.js remake with SEO metadata, structured data, robots, and sitemap from day one.',
+			icon: 'simple-icons:nextdotjs'
+		},
+		{
+			date: '2026-01-28',
+			title: 'Data — Prisma/Postgres → MongoDB',
+			description: 'Migrated the data layer from Prisma/Postgres to MongoDB mid-build.',
+			icon: 'simple-icons:mongodb'
+		},
+		{
+			date: '2026-01-30',
+			title: 'Design — New Design System + Thai Localization',
+			description: 'Adopted a new design system with motion primitives and localized the UI to Thai.',
+			icon: 'mdi:palette-swatch-outline'
+		},
+		{
+			date: '2026-02-10',
+			title: 'SEO/AEO — Product Pages + Client-Side Search',
+			description: 'Shipped product pages with SEO/AEO structured data, client-side search, and a Dockerized deploy.',
+			icon: 'mdi:magnify'
+		}
+	]
 }
 
 export const portfolio: ProjectDef = {
@@ -613,7 +751,6 @@ const defs: ProjectDef[] = [
 	looklookPet,
 	onlinePokerGame,
 	prettierConfig,
-	rsTrophyV1,
 	rsAward,
 	rsMedal,
 	portfolio

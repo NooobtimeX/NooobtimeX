@@ -20,7 +20,6 @@ export const assets = {
 	},
 	projects: {
 		rsTrophy: { banner: '/issue/rs-trophy/banner.webp' },
-		rsTrophyV1: { banner: '/issue/rs-trophy-v1/banner.webp' },
 		looklookPet: { banner: '/issue/looklook-pet/banner.webp' },
 		onlinePokerGame: {
 			banner: '/issue/online-poker-game/banner.webp',
