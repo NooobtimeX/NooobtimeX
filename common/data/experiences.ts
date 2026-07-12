@@ -52,12 +52,12 @@ export const ruamsukPlatingDeveloperFullTime: ExperienceItem = {
 	endDate: '2025-07-15'
 }
 
-export const ruamsukPlatingProductEngineer: ExperienceItem = {
-	id: 'ruamsuk-product-engineer',
+export const ruamsukPlatingCto: ExperienceItem = {
+	id: 'ruamsuk-cto',
 	organization: ruamsukPlating,
-	position: 'product-engineer',
+	position: 'chief-technology-officer',
 	description:
-		'Solo Full Stack Ownership: Single-handedly delivered end-to-end web application projects, owning every stage from architecture to deployment. Product & Design Leadership: Acted as sole PM, PO, and UI/UX designer, authoring all project documentation independently. Supply Chain & AI Automation: Built supply chain solutions and AI automation workflows, and served as PM for a no-code web application. Finance Optimization: Worked directly with the accountant to streamline and optimize financial processes.',
+		'Total Technology Ownership: As CTO, own every technology decision and system in the company end-to-end — from setting the technical strategy to single-handedly delivering each software project from architecture to deployment. Full-Stack & Infrastructure: Build and run all web applications, services, cloud infrastructure, CI/CD, and reliability. IT, Hardware & Systems: Handle all non-software technology as well — IT support, hardware, networking, device and equipment setup, and technology procurement and vendor management across the office and factory floor. Product & Design Leadership: Act as sole PM, PO, and UI/UX designer, authoring all product documentation and roadmaps. AI, Automation & Data: Build AI automation workflows, supply chain solutions, and internal tooling that streamline operations across the business. Cross-Functional Impact: Partner directly with finance and operations to digitize and optimize every process — the single point of ownership for everything technical the company runs on.',
 	type: 'full-time',
 	category: 'work',
 	startDate: '2026-08-01'
@@ -80,7 +80,7 @@ const all: ExperienceItem[] = [
 	jasmineTechnologySolutionExperience,
 	ruamsukPlatingDevelopereerPartTime,
 	ruamsukPlatingDeveloperFullTime,
-	ruamsukPlatingProductEngineer,
+	ruamsukPlatingCto,
 	personalProjectsExperience
 ]
 
