@@ -35,9 +35,10 @@ export default function CVPage() {
 	const page5Projects = projectsData.slice(4, 8)
 	const page6Projects = projectsData.slice(8)
 
-	const getCompanyName = (id?: string) => {
-		if (!id) return null
-		return experiencesData.find(e => e.organization.id === id)?.organization.name ?? null
+	const getCompanyName = (roleIds?: readonly string[]) => {
+		const primary = roleIds?.[0]
+		if (!primary) return null
+		return experiencesData.find(e => e.id === primary)?.organization.name ?? null
 	}
 
 	const categoryOrder: Record<string, number> = {
@@ -377,11 +378,11 @@ export default function CVPage() {
 									<h3 className='mb-1 line-clamp-1 text-xl font-black tracking-tight text-black uppercase'>
 										{project.title}
 									</h3>
-									{getCompanyName(project.linkedOrganizationId) && (
+									{getCompanyName(project.linkedExperienceIds) && (
 										<p
 											className='mb-3 text-[9px] font-black tracking-[0.15em] uppercase opacity-80'
 											style={{ color: ACCENT, WebkitPrintColorAdjust: 'exact' }}>
-											{getCompanyName(project.linkedOrganizationId)}
+											{getCompanyName(project.linkedExperienceIds)}
 										</p>
 									)}
 									<p className='mb-4 line-clamp-6 text-[12px] leading-normal font-medium text-gray-600'>
@@ -425,7 +426,7 @@ interface ExperienceBlockProps {
 }
 
 const ExperienceBlock: React.FC<ExperienceBlockProps> = ({ item, accent, sortSkills }) => {
-	const projectSkills = projectsData.filter(p => p.linkedOrganizationId === item.organization.id).flatMap(p => p.skills)
+	const projectSkills = projectsData.filter(p => p.linkedExperienceIds?.includes(item.id)).flatMap(p => p.skills)
 	const uniqueSkills = Array.from(new Map(projectSkills.map(s => [s.name, s])).values()).sort(sortSkills)
 
 	return (

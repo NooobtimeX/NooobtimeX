@@ -43,7 +43,7 @@ export const looklookPet: ProjectDef = {
 	],
 	links: { live: 'https://looklook.pet' },
 	startDate: '2025-07-16',
-	linkedOrganizationId: 'jasmine-technology-solution',
+	linkedExperienceIds: ['jasmine-tech'],
 	timeline: [
 		{
 			date: '2025-10-30',
@@ -149,7 +149,7 @@ export const rsTrophy: ProjectDef = {
 	],
 	links: { live: 'https://rs-trophy.com' },
 	startDate: '2023-01-01',
-	linkedOrganizationId: 'ruamsuk-plating',
+	linkedExperienceIds: ['ruamsuk-software-engineer-part-time', 'ruamsuk-cto'],
 	timeline: [
 		{
 			date: '2023-01-01',
@@ -259,7 +259,7 @@ export const onlinePokerGame: ProjectDef = {
 	skills: ['next-js', 'react', 'typescript', 'prisma', 'render', 'tailwind-css', 'sse', 'postgresql'],
 	links: {},
 	startDate: '2025-03-01',
-	linkedOrganizationId: 'freelance-blitzwerk',
+	linkedExperienceIds: ['freelance-blitzwerk-role'],
 	timeline: [
 		{
 			date: '2025-06-09',
@@ -347,7 +347,7 @@ export const prettierConfig: ProjectDef = {
 	],
 	links: { live: 'https://prettier-config.dev' },
 	startDate: '2025-07-09',
-	linkedOrganizationId: 'personal-projects',
+	linkedExperienceIds: ['personal-projects-role'],
 	timeline: [
 		{
 			date: '2025-05-09',
@@ -421,7 +421,7 @@ export const rsMedal: ProjectDef = {
 	],
 	links: { live: 'https://www.rs-medal.com' },
 	startDate: '2022-08-01',
-	linkedOrganizationId: 'ruamsuk-plating',
+	linkedExperienceIds: ['ruamsuk-software-engineer-part-time', 'ruamsuk-software-engineer-full-time'],
 	timeline: [
 		{
 			date: '2022-08-01',
@@ -494,7 +494,7 @@ export const rsAward: ProjectDef = {
 	],
 	links: { live: 'https://www.rs-award.com' },
 	startDate: '2022-03-01',
-	linkedOrganizationId: 'ruamsuk-plating',
+	linkedExperienceIds: ['ruamsuk-software-engineer-part-time', 'ruamsuk-software-engineer-full-time'],
 	timeline: [
 		{
 			date: '2022-03-01',
@@ -572,7 +572,7 @@ export const portfolio: ProjectDef = {
 	],
 	links: { live: 'https://github.com/NooobtimeX/NooobtimeX' },
 	startDate: '2021-01-01',
-	linkedOrganizationId: 'personal-projects',
+	linkedExperienceIds: ['personal-projects-role'],
 	timeline: [
 		{
 			date: '2025-08-25',
@@ -671,7 +671,7 @@ export const monomaxEplPortal: ProjectDef = {
 	],
 	links: {},
 	startDate: '2026-06-15',
-	linkedOrganizationId: 'jasmine-technology-solution',
+	linkedExperienceIds: ['jasmine-tech'],
 	timeline: [
 		{
 			date: '2026-06-15',

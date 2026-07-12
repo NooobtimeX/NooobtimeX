@@ -32,7 +32,8 @@ const ExperienceDetail: React.FC<ExperienceDetailProps> = ({ item }) => {
 	const isNow =
 		experiencesData.find(r => new Date(r.startDate) <= now && (!r.endDate || new Date(r.endDate) >= now))?.id
 		=== item.id
-	const relatedProjects = projectsData.filter(p => p.linkedOrganizationId === item.organization.id)
+	// Only gigs delivered under THIS role — not everything at the organization.
+	const relatedProjects = projectsData.filter(p => p.linkedExperienceIds?.includes(item.id))
 
 	return (
 		<Container className='py-10'>

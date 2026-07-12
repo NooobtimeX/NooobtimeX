@@ -7,8 +7,8 @@ import CyberButton from '@/components/cyber/CyberButton'
 import NeonPanel from '@/components/cyber/NeonPanel'
 import ProjectGallery from '@/components/projects/ProjectGallery'
 import ProjectTimeline from '@/components/projects/ProjectTimeline'
-import { slugify } from '@/lib/utils'
-import { type Project, entitiesData, experiencesData } from '@/common'
+import { formatExperienceDuration, slugify } from '@/lib/utils'
+import { type Project, experiencesData } from '@/common'
 
 interface ProjectDetailProps {
 	project: Project
@@ -21,16 +21,22 @@ const MetaCell: React.FC<{ label: string; children: React.ReactNode }> = ({ labe
 	</div>
 )
 
+const humanize = (value: string) =>
+	value
+		.split('-')
+		.map(w => w.charAt(0).toUpperCase() + w.slice(1))
+		.join(' ')
+
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
 	const year = new Date(project.startDate).getFullYear()
 	const live = !!project.links.live
 	const tier = Math.min(3, Math.max(1, Math.ceil(project.skills.length / 4)))
-	const client =
-		project.linkedOrganizationId ? entitiesData.find(o => o.id === project.linkedOrganizationId) : undefined
-	const linkedRole =
-		project.linkedOrganizationId ?
-			experiencesData.find(e => e.organization.id === project.linkedOrganizationId)
-		:	undefined
+	// Role(s) this project was delivered under — primary role first.
+	const linkedRoles = (project.linkedExperienceIds ?? []).flatMap(id => {
+		const role = experiencesData.find(e => e.id === id)
+		return role ? [role] : []
+	})
+	const client = linkedRoles[0]?.organization
 	const extraPhotos = project.images.photos.filter(p => p !== project.images.banner)
 
 	return (
@@ -124,15 +130,27 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
 						</div>
 					</NeonPanel>
 
-					{linkedRole && (
+					{linkedRoles.length > 0 && (
 						<NeonPanel className='clip-notch-sm p-4'>
-							<h3 className='text-cyber-cyan mb-2 font-mono text-xs tracking-widest uppercase'>Client</h3>
-							<Link
-								href={`/experience/${linkedRole.id}` as never}
-								className='hover:text-cyber-yellow flex items-center gap-2 text-sm transition-colors'>
-								<Icon icon='mdi:account-tie-outline' className='size-4' />
-								{linkedRole.organization.name}
-							</Link>
+							<h3 className='text-cyber-cyan mb-2 font-mono text-xs tracking-widest uppercase'>
+								{linkedRoles.length > 1 ? 'Roles' : 'Role'}
+							</h3>
+							<div className='space-y-3'>
+								{linkedRoles.map(role => (
+									<Link
+										key={role.id}
+										href={`/experience/${role.id}` as never}
+										className='hover:text-cyber-yellow block text-sm transition-colors'>
+										<span className='flex items-center gap-2'>
+											<Icon icon='mdi:account-tie-outline' className='size-4 shrink-0' />
+											{humanize(role.position)}
+										</span>
+										<span className='text-muted-foreground mt-0.5 block pl-6 font-mono text-[0.65rem] tracking-wider uppercase'>
+											{role.organization.name} · {formatExperienceDuration(role.startDate, role.endDate)}
+										</span>
+									</Link>
+								))}
+							</div>
 						</NeonPanel>
 					)}
 				</aside>

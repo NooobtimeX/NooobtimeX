@@ -25,10 +25,19 @@ export type SocialPlatform =
 	| 'website'
 	| 'email'
 
-/** Organization ids — referenced by projects (`linkedOrganizationId`). */
+/** Organization ids — referenced by `Organization.id`. */
 export type EntityId =
 	| 'jasmine-technology-solution'
 	| 'ruamsuk-plating'
 	| 'freelance-blitzwerk'
 	| 'personal-projects'
 	| 'thammasat-university'
+
+/** Experience/role ids — referenced by projects (`linkedExperienceIds`). */
+export type ExperienceId =
+	| 'jasmine-tech'
+	| 'ruamsuk-software-engineer-part-time'
+	| 'ruamsuk-software-engineer-full-time'
+	| 'ruamsuk-cto'
+	| 'freelance-blitzwerk-role'
+	| 'personal-projects-role'

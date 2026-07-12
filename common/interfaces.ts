@@ -6,6 +6,7 @@ import {
 	EntityId,
 	EntityType,
 	ExperienceCategory,
+	ExperienceId,
 	Location,
 	Position,
 	SkillCategory,
@@ -45,7 +46,7 @@ export interface Organization {
 
 /** A role/experience period at an organization */
 export interface ExperienceItem {
-	id: string // url-safe id
+	id: ExperienceId // url-safe id
 	organization: Organization
 	position: Position
 	description: string
@@ -78,7 +79,8 @@ export interface Project {
 	}
 	startDate: string // YYYY-MM-DD
 	endDate?: string // YYYY-MM-DD, or undefined if ongoing
-	linkedOrganizationId?: EntityId
+	/** Role(s) this project was delivered under — primary role first. */
+	linkedExperienceIds?: ExperienceId[]
 	timeline?: Milestone[]
 }
 
