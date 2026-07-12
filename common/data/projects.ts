@@ -179,9 +179,9 @@ export const rsTrophy: ProjectDef = {
 		},
 		{
 			date: '2026-05-13',
-			title: 'Consolidation — rs-medal.com + rs-award.com → One Platform',
+			title: 'Consolidation — Legacy WordPress Sibling Sites → One Platform',
 			description:
-				'Scraped and imported the legacy WordPress sites rs-medal.com and rs-award.com — for awards manufacturer Ruam Suk Plating (est. 2006) — into one unified platform, with legacy category redirects.',
+				'Scraped and imported two legacy WordPress sibling sites into one unified platform, with legacy category-page redirects preserved.',
 			icon: 'simple-icons:wordpress'
 		},
 		{
@@ -349,7 +349,78 @@ export const monomaxEplPortal: ProjectDef = {
 	],
 	links: {},
 	startDate: '2026-06-15',
-	linkedOrganizationId: 'jasmine-technology-solution'
+	linkedOrganizationId: 'jasmine-technology-solution',
+	timeline: [
+		{
+			date: '2026-06-15',
+			title: 'Replatform — Firebase SPA → Next.js 16 Full-Stack',
+			description:
+				'Re-architected a client-built Firebase single-page prototype into a Next.js 16 App Router full-stack application in strict TypeScript.',
+			icon: 'simple-icons:nextdotjs'
+		},
+		{
+			date: '2026-06-15',
+			title: 'CI/CD — GitHub Actions → GHCR → Dockerized Cloud VM',
+			description:
+				'Wired a config-as-code pipeline — GitHub Actions builds and pushes a Docker image to GHCR, then deploys to a cloud VM behind Caddy auto-HTTPS.',
+			icon: 'simple-icons:githubactions'
+		},
+		{
+			date: '2026-06-16',
+			title: 'Auth — Two Isolated Realms, Email-OTP + 2FA',
+			description:
+				'Built two isolated authentication realms (customer and admin) with email-OTP sign-in and 2FA, moving off the initial NextAuth scaffold to better-auth.',
+			icon: 'mdi:shield-key-outline'
+		},
+		{
+			date: '2026-06-16',
+			title: 'Certificate Engine — Per-Venue Approval + Branded E-Cert Email',
+			description:
+				'Built the licensing-certificate engine — per-venue admin approval that issues a verifiable digital certificate, delivered by branded transactional email.',
+			icon: 'mdi:certificate-outline'
+		},
+		{
+			date: '2026-06-16',
+			title: 'In-House QR Verification',
+			description:
+				'Replaced an external QR web service with in-house QR generation for tamper-checkable certificate verification.',
+			icon: 'mdi:qrcode'
+		},
+		{
+			date: '2026-06-16',
+			title: 'Geospatial Data Model — GeoJSON Places + 2dsphere',
+			description:
+				'Modeled venues as GeoJSON points with a 2dsphere index and a database-enforced constraint binding each provisioned account to a single active venue.',
+			icon: 'mdi:map-marker-radius-outline'
+		},
+		{
+			date: '2026-06-17',
+			title: 'Admin Command Center — Company-First Console + Excel Export',
+			description:
+				'Built a company-first admin command center with dashboards, paginated data tables, and styled Excel export.',
+			icon: 'mdi:view-dashboard-outline'
+		},
+		{
+			date: '2026-06-17',
+			title: 'Data Migration — Historical Import Pipeline',
+			description:
+				'Built a historical data-migration pipeline — an offline transform step feeding a gated, previewed web import with change diffs.',
+			icon: 'mdi:database-import-outline'
+		},
+		{
+			date: '2026-07-03',
+			title: 'Integration — Partner Account-Verification API',
+			description:
+				"Integrated the partner's commercial account-verification API with admin-side sync and reconciliation.",
+			icon: 'mdi:api'
+		},
+		{
+			date: '2026-07-04',
+			title: 'Admin Export Wizard — Filters + Column Picker',
+			description: 'Shipped an admin export wizard with custom filters and a column picker for tailored data exports.',
+			icon: 'mdi:file-export-outline'
+		}
+	]
 }
 
 const defs: ProjectDef[] = [
