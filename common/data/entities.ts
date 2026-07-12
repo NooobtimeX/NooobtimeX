@@ -6,7 +6,9 @@ export const ruamsukPlating: Organization = {
 	name: 'RUAMSUK PLATING LIMITED PARTNERSHIP',
 	logo: assets.logos.rsTrophy,
 	location: 'pathumthani-thailand',
-	type: 'company'
+	type: 'company',
+	description:
+		'Thai awards manufacturer behind the RS TROPHY, RS Medal, and RS Award storefronts — custom trophies, plaques, and medals, with the entire technology stack built and run in house.'
 }
 
 export const jasmineTechnologySolution: Organization = {
@@ -14,7 +16,9 @@ export const jasmineTechnologySolution: Organization = {
 	name: 'Jasmine Technology Solution',
 	logo: assets.logos.jasmineTech,
 	location: 'nonthaburi-thailand',
-	type: 'company'
+	type: 'company',
+	description:
+		'Software solutions company — home of the LOOKLOOK PET platform work: storefront, B2B partner console, microservices, and multi-vendor marketplace.'
 }
 
 export const freelanceWithFriends: Organization = {
@@ -22,7 +26,8 @@ export const freelanceWithFriends: Organization = {
 	name: 'Freelance with friends',
 	logo: assets.logos.blitzwerk,
 	location: 'remote',
-	type: 'company'
+	type: 'company',
+	description: 'A small freelance collective delivering end-to-end web projects, from scoping to deployment.'
 }
 
 export const personalProjects: Organization = {
@@ -30,7 +35,8 @@ export const personalProjects: Organization = {
 	name: 'Personal Projects',
 	logo: assets.logos.nooobtimex,
 	location: 'remote',
-	type: 'personal'
+	type: 'personal',
+	description: 'The umbrella for self-directed builds, experiments, tooling, and open-source work.'
 }
 
 export const thammasatUniversity: Organization = {
@@ -38,7 +44,8 @@ export const thammasatUniversity: Organization = {
 	name: 'Thammasat University',
 	logo: assets.logos.tuLogo,
 	location: 'pathumthani-thailand',
-	type: 'university'
+	type: 'university',
+	description: "One of Thailand's leading universities — where the engineering foundation was laid."
 }
 
 export const entitiesData: Organization[] = [

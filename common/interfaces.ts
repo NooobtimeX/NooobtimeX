@@ -42,6 +42,8 @@ export interface Organization {
 	location: Location
 	type: EntityType
 	url?: string
+	/** Short blurb shown on the company page. */
+	description?: string
 }
 
 /** A role/experience period at an organization */
