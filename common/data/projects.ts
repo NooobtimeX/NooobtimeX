@@ -147,7 +147,79 @@ export const rsTrophy: ProjectDef = {
 	],
 	links: { live: 'https://rs-trophy.com' },
 	startDate: '2026-03-01',
-	linkedOrganizationId: 'ruamsuk-plating'
+	linkedOrganizationId: 'ruamsuk-plating',
+	timeline: [
+		{
+			date: '2026-05-06',
+			title: 'Foundation — Bun Monorepo, Railway from Day One',
+			description:
+				'Bootstrapped a Bun workspace monorepo — storefront, admin, ElysiaJS API, and shared UI + type packages — Railway-targeted with standalone output from the very first commit.',
+			icon: 'simple-icons:bun'
+		},
+		{
+			date: '2026-05-07',
+			title: 'AI — OpenRouter Streaming Agent + MCP Tool Suite',
+			description:
+				'Built a custom high-performance OpenRouter streaming AI agent with a multi-tool MCP server, powering natural-language shopping assistance across the storefront and admin console.',
+			icon: 'mdi:robot-outline'
+		},
+		{
+			date: '2026-05-09',
+			title: 'i18n — next-intl TH/EN + Shared UI Workspace',
+			description:
+				'Rolled out next-intl Thai/English localization and extracted the shadcn component set into a shared @rs-trophy/ui workspace package.',
+			icon: 'mdi:translate'
+		},
+		{
+			date: '2026-05-12',
+			title: 'Design — Navy + Gold Token System',
+			description:
+				'Established a luxury navy-and-gold design-token system with the Anuphan typeface, replacing hardcoded values with a single themed source in the shared UI kit.',
+			icon: 'mdi:palette-outline'
+		},
+		{
+			date: '2026-05-13',
+			title: 'Consolidation — rs-medal.com + rs-award.com → One Platform',
+			description:
+				'Scraped and imported the legacy WordPress sites rs-medal.com and rs-award.com — for awards manufacturer Ruam Suk Plating (est. 2006) — into one unified platform, with legacy category redirects.',
+			icon: 'simple-icons:wordpress'
+		},
+		{
+			date: '2026-06-04',
+			title: 'Storage — MinIO → Cloudflare R2',
+			description:
+				'Migrated object storage from MinIO to Cloudflare R2 behind a provider-agnostic S3 layer, adding a streaming proxy and a separate private bucket for PII.',
+			icon: 'simple-icons:cloudflare'
+		},
+		{
+			date: '2026-06-07',
+			title: 'Type Safety — End-to-End Eden Treaty Data Layer',
+			description:
+				'Migrated the entire web and admin data layer to type-safe Eden Treaty against the ElysiaJS API, plus production hardening — fail-fast secrets, graceful shutdown, health checks, and rate limiting.',
+			icon: 'simple-icons:typescript'
+		},
+		{
+			date: '2026-06-10',
+			title: 'Launch — Live in Production on Railway + Cloudflare',
+			description:
+				'Shipped the platform to production on Railway with Cloudflare, folding the canonical-domain redirector into the monorepo.',
+			icon: 'simple-icons:railway'
+		},
+		{
+			date: '2026-06-22',
+			title: 'Social — Autopilot Multi-Channel Publishing Suite',
+			description:
+				'Built an autopilot social-media suite — OAuth channels for Facebook, Instagram, YouTube and TikTok, AI content generation with brand voice, a drag-to-schedule calendar, and engagement-metrics dashboards.',
+			icon: 'mdi:bullhorn-outline'
+		},
+		{
+			date: '2026-07-02',
+			title: 'Search — Semantic Vector Search',
+			description:
+				'Added semantic vector search over product and article embeddings (BullMQ embed queues), wired into both the storefront AI chat and the admin assistant.',
+			icon: 'mdi:database-search-outline'
+		}
+	]
 }
 
 export const rsTrophyV1: ProjectDef = {
