@@ -5,8 +5,14 @@ import Container from '@/components/cyber/Container'
 import MotionReveal from '@/components/cyber/MotionReveal'
 import NeonPanel from '@/components/cyber/NeonPanel'
 import ProjectCard from '@/components/projects/ProjectCard'
-import { cn } from '@/lib/utils'
-import { type Skill, categoryMetadata, projectsData } from '@/common'
+import { cn, formatExperienceDuration } from '@/lib/utils'
+import { type Skill, categoryMetadata, experiencesData, projectsData } from '@/common'
+
+const humanize = (value: string) =>
+	value
+		.split('-')
+		.map(w => w.charAt(0).toUpperCase() + w.slice(1))
+		.join(' ')
 
 interface SkillDetailProps {
 	skill: Skill
@@ -22,6 +28,17 @@ const StatCell: React.FC<{ label: string; children: React.ReactNode }> = ({ labe
 const SkillDetail: React.FC<SkillDetailProps> = ({ skill }) => {
 	const meta = categoryMetadata[skill.category]
 	const deployedIn = projectsData.filter(p => p.skills.some(s => s.name === skill.name))
+
+	// Roles that fielded this skill (via linked projects), oldest first — the
+	// earliest is where the skill was first put to work.
+	const fieldRecord = experiencesData
+		.filter(role => deployedIn.some(p => p.linkedExperienceIds?.includes(role.id)))
+		.sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime())
+		.map(role => ({
+			role,
+			gigs: deployedIn.filter(p => p.linkedExperienceIds?.includes(role.id))
+		}))
+	const firstFielded = fieldRecord[0]?.role
 
 	return (
 		<Container className='py-10'>
@@ -47,12 +64,56 @@ const SkillDetail: React.FC<SkillDetailProps> = ({ skill }) => {
 			</NeonPanel>
 
 			{/* Stat readout */}
-			<NeonPanel className='clip-notch-sm mt-6 grid grid-cols-2 gap-4 p-4'>
+			<NeonPanel className='clip-notch-sm mt-6 grid grid-cols-2 gap-4 p-4 sm:grid-cols-4'>
 				<StatCell label='Branch'>{meta.label}</StatCell>
 				<StatCell label='Deployed'>
 					<span className='text-cyber-cyan'>{deployedIn.length} gigs</span>
 				</StatCell>
+				<StatCell label='First Fielded'>
+					{firstFielded ?
+						<span className='text-cyber-yellow'>{new Date(firstFielded.startDate).getFullYear()}</span>
+					:	'—'}
+				</StatCell>
+				<StatCell label='Roles'>{fieldRecord.length}</StatCell>
 			</NeonPanel>
+
+			{/* Field record — which role first put this skill to work, and every role since */}
+			{fieldRecord.length > 0 && (
+				<section className='mt-10'>
+					<div className='mb-6 flex items-center gap-3'>
+						<h2 className='font-display text-xl font-bold tracking-wide uppercase'>Field Record</h2>
+						<span className='bg-border h-px flex-1' />
+						<span className='text-muted-foreground font-mono text-xs'>{fieldRecord.length}</span>
+					</div>
+					<div className='grid gap-4 sm:grid-cols-2'>
+						{fieldRecord.map(({ role, gigs }, i) => (
+							<MotionReveal key={role.id} delay={(i % 2) * 0.06}>
+								<Link
+									href={`/experience/${role.id}` as never}
+									className='group neon-panel clip-notch-sm hover:border-cyber-yellow/60 block p-4 transition-colors'>
+									<div className='flex items-start justify-between gap-2'>
+										<div className='min-w-0'>
+											<h3 className='group-hover:text-cyber-yellow leading-tight font-bold tracking-wide uppercase transition-colors'>
+												{humanize(role.position)}
+											</h3>
+											<p className='text-cyber-cyan truncate text-sm'>{role.organization.name}</p>
+										</div>
+										{i === 0 && (
+											<span className='bg-cyber-yellow shrink-0 px-2 py-0.5 font-mono text-[0.6rem] font-bold tracking-widest text-black uppercase'>
+												First Contact
+											</span>
+										)}
+									</div>
+									<p className='text-muted-foreground mt-2 font-mono text-[0.65rem] tracking-wider uppercase'>
+										{formatExperienceDuration(role.startDate, role.endDate)} · {gigs.length}{' '}
+										{gigs.length === 1 ? 'gig' : 'gigs'}
+									</p>
+								</Link>
+							</MotionReveal>
+						))}
+					</div>
+				</section>
+			)}
 
 			<section className='mt-10'>
 				<div className='mb-6 flex items-center gap-3'>
