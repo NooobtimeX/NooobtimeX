@@ -1,0 +1,60 @@
+import React from 'react'
+import { Icon } from '@iconify/react'
+import MotionReveal from '@/components/cyber/MotionReveal'
+import { cn, formatMilestoneDate } from '@/lib/utils'
+import { type Milestone } from '@/common'
+
+interface ProjectTimelineProps {
+	items: Milestone[]
+}
+
+const ProjectTimeline: React.FC<ProjectTimelineProps> = ({ items }) => {
+	return (
+		<div className='relative'>
+			{/* Central spine */}
+			<span className='spine-line absolute top-0 bottom-0 left-5 w-px' />
+
+			<div className='space-y-6'>
+				{items.map((m, i) => {
+					const isLatest = i === items.length - 1
+					return (
+						<MotionReveal key={m.title} delay={(i % 2) * 0.06}>
+							<div className='relative pl-14'>
+								{/* Station marker on the spine */}
+								<span
+									className={cn(
+										'bg-background absolute top-3 left-5 z-10 flex size-9 -translate-x-1/2 items-center justify-center rounded-full border',
+										isLatest ? 'now-pulse border-cyber-yellow' : 'border-cyber-cyan/60'
+									)}>
+									{m.icon ?
+										<Icon icon={m.icon} className={cn('size-4', isLatest ? 'text-cyber-yellow' : 'text-cyber-cyan')} />
+									:	<span className='bg-cyber-cyan size-2 rotate-45' />}
+								</span>
+
+								{/* Milestone card */}
+								<div className='neon-panel clip-notch-sm p-4'>
+									<div className='flex items-start justify-between gap-2'>
+										<h3 className='text-base leading-tight font-bold tracking-wide uppercase'>{m.title}</h3>
+										{isLatest && (
+											<span className='bg-cyber-yellow shrink-0 px-2 py-0.5 font-mono text-[0.6rem] font-bold tracking-widest text-black uppercase'>
+												Now
+											</span>
+										)}
+									</div>
+									<p className='text-cyber-cyan mt-2 font-mono text-[0.65rem] tracking-wider uppercase'>
+										{formatMilestoneDate(m.date)}
+									</p>
+									{m.description && (
+										<p className='text-muted-foreground mt-2 text-sm leading-relaxed'>{m.description}</p>
+									)}
+								</div>
+							</div>
+						</MotionReveal>
+					)
+				})}
+			</div>
+		</div>
+	)
+}
+
+export default ProjectTimeline

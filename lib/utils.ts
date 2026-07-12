@@ -27,6 +27,11 @@ export function formatExperienceDuration(startDate: string, endDate?: string): s
 	return `${startMonth} ${startYear} - ${endMonth} ${endYear}`
 }
 
+// Format a single milestone date as e.g. "Jun 2026"
+export function formatMilestoneDate(date: string): string {
+	return new Date(date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
+}
+
 /**
  * Converts a string into a URL-friendly slug.
  * Example: "Next.js" -> "next-js"

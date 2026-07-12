@@ -43,7 +43,79 @@ export const looklookPet: ProjectDef = {
 	],
 	links: { live: 'https://looklook.pet' },
 	startDate: '2025-07-16',
-	linkedOrganizationId: 'jasmine-technology-solution'
+	linkedOrganizationId: 'jasmine-technology-solution',
+	timeline: [
+		{
+			date: '2025-10-30',
+			title: 'Transport — NATS Message Bus → HTTP Service Calls',
+			description:
+				'Replaced the NATS/JetStream message bus with direct HTTP service calls for the internal BFF-to-service transport, simplifying the request path.',
+			icon: 'mdi:transit-connection-variant'
+		},
+		{
+			date: '2025-11-07',
+			title: 'Hosting — Tencent Cloud VM → Railway + Docker',
+			description:
+				'Retired the self-managed Tencent Cloud VMs and their CircleCI + SSH pipelines for Railway across the fleet, deploying every service from a Dockerfile as config-as-code.',
+			icon: 'simple-icons:railway'
+		},
+		{
+			date: '2025-12-08',
+			title: 'Marketplace — Medusa v2 Multi-Vendor Standup',
+			description:
+				'Stood up the Medusa v2 multi-vendor marketplace (Mercur) on Railway with Nixpacks, MinIO object storage, and a custom payment provider.',
+			icon: 'mdi:storefront-outline'
+		},
+		{
+			date: '2026-02-09',
+			title: 'Payments — Omise Webhooks, Refunds, Native Checkout',
+			description:
+				'Hardened the Omise payment system — webhook signature security, an async event queue, refunds, and native card / PromptPay / mobile-banking checkout.',
+			icon: 'mdi:credit-card-outline'
+		},
+		{
+			date: '2026-03-09',
+			title: 'Auth — Clerk → Better Auth (Partner Portal + BFF)',
+			description:
+				'Migrated the B2B partner portal and its NestJS BFF from Clerk to Better Auth end-to-end — re-architecting session handling behind a proxy and adapting the Mongoose layer to Better Auth string IDs.',
+			icon: 'mdi:shield-key-outline'
+		},
+		{
+			date: '2026-05-25',
+			title: 'Content — Headless WordPress → MongoDB',
+			description:
+				'Cut the storefront and every BFF off headless WordPress (Faust + Apollo) onto a native MongoDB content model — the WordPress chapter, closed.',
+			icon: 'simple-icons:mongodb'
+		},
+		{
+			date: '2026-06-02',
+			title: 'Media Storage — Tencent COS → Cloudflare R2',
+			description:
+				'Swapped the Tencent COS SDK for the AWS S3 SDK against Cloudflare R2 behind a StorageService abstraction — a runtime provider flip with zero downstream code changes.',
+			icon: 'simple-icons:cloudflare'
+		},
+		{
+			date: '2026-06-18',
+			title: 'Marketplace — Medusa Sprint 46 + Bilingual TH/EN Templates',
+			description:
+				'Upgraded the marketplace to Medusa Sprint 46 and shipped a bilingual TH/EN deal-template system (title, description, T&C, per-language apply).',
+			icon: 'mdi:translate'
+		},
+		{
+			date: '2026-06-26',
+			title: 'Video Pipeline — Range Streaming + Faster Transcode',
+			description:
+				'Added HTTP Range video streaming, browser-universal MP4 playback, and a faster ffmpeg transcode baked into the runtime image.',
+			icon: 'mdi:play-box-outline'
+		},
+		{
+			date: '2026-07-07',
+			title: 'Architecture — 15 Polyrepos → Turborepo Monorepo',
+			description:
+				'Consolidated ~15 standalone repos into one Turborepo — every app plus a shared @looklookpet/common workspace package, with per-service Railway config and a single cached build graph.',
+			icon: 'simple-icons:turborepo'
+		}
+	]
 }
 
 export const rsTrophy: ProjectDef = {

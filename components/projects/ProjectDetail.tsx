@@ -6,6 +6,7 @@ import Container from '@/components/cyber/Container'
 import CyberButton from '@/components/cyber/CyberButton'
 import NeonPanel from '@/components/cyber/NeonPanel'
 import ProjectGallery from '@/components/projects/ProjectGallery'
+import ProjectTimeline from '@/components/projects/ProjectTimeline'
 import { slugify } from '@/lib/utils'
 import { type Project, entitiesData, experiencesData } from '@/common'
 
@@ -80,6 +81,15 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
 						<h2 className='text-cyber-cyan font-mono text-xs tracking-[0.3em] uppercase'>// Brief</h2>
 						<p className='text-muted-foreground mt-3 leading-relaxed'>{project.description}</p>
 					</section>
+
+					{project.timeline && project.timeline.length > 0 && (
+						<section>
+							<h2 className='text-cyber-cyan font-mono text-xs tracking-[0.3em] uppercase'>// Timeline</h2>
+							<div className='mt-6'>
+								<ProjectTimeline items={project.timeline} />
+							</div>
+						</section>
+					)}
 
 					{extraPhotos.length > 0 && (
 						<section>

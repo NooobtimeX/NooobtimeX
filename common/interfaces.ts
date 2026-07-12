@@ -55,6 +55,14 @@ export interface ExperienceItem {
 	endDate?: string
 }
 
+/** A single milestone on a project's evolution timeline */
+export interface Milestone {
+	date: string // YYYY-MM-DD
+	title: string
+	description?: string
+	icon?: string // Iconify name, e.g. 'simple-icons:cloudflare'
+}
+
 /** A project / build */
 export interface Project {
 	id: string // url-safe id
@@ -71,6 +79,7 @@ export interface Project {
 	startDate: string // YYYY-MM-DD
 	endDate?: string // YYYY-MM-DD, or undefined if ongoing
 	linkedOrganizationId?: EntityId
+	timeline?: Milestone[]
 }
 
 /** Global personal information */
