@@ -67,9 +67,7 @@ repo-wide.
 const vitest = skill({ id: 'vitest', name: 'Vitest', icon: 'logos:vitest', category: 'frontend' })
 // …then add `vitest` to the `allSkills` tuple (in its category group).
 // ❌ WRONG — widening kills SkillId
-const skills: Skill[] = [
-	/* … */
-]
+const skills: Skill[] = [/* … */]
 ```
 
 `skillsData` = `allSkills`; `skillById` is the id→`Skill` lookup; `featuredSkills`

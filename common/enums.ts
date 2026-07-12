@@ -16,14 +16,7 @@ export type Location = 'remote' | 'bangkok-thailand' | 'nonthaburi-thailand' | '
 export type Position = 'chief-technology-officer' | 'developer'
 
 export type SocialPlatform =
-	| 'github'
-	| 'linkedin'
-	| 'twitter'
-	| 'instagram'
-	| 'discord'
-	| 'youtube'
-	| 'website'
-	| 'email'
+	'github' | 'linkedin' | 'twitter' | 'instagram' | 'discord' | 'youtube' | 'website' | 'email'
 
 /** Organization ids — referenced by `Organization.id`. */
 export type EntityId =
