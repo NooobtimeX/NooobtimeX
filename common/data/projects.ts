@@ -671,6 +671,8 @@ export const monomaxEplPortal: ProjectDef = {
 	],
 	links: {},
 	startDate: '2026-06-15',
+	clientOrganizationId: 'monomax',
+	viaOrganizationId: 'jas-tv',
 	linkedExperienceIds: ['jasmine-tech'],
 	timeline: [
 		{

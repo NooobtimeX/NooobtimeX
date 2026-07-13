@@ -83,6 +83,10 @@ export interface Project {
 	endDate?: string // YYYY-MM-DD, or undefined if ongoing
 	/** Role(s) this project was delivered under — primary role first. */
 	linkedExperienceIds?: ExperienceId[]
+	/** Client/partner the work was delivered for — overrides the role-derived "Client". */
+	clientOrganizationId?: EntityId
+	/** Org the work was seconded to / delivered via — a credit, not an employer. */
+	viaOrganizationId?: EntityId
 	timeline?: Milestone[]
 }
 

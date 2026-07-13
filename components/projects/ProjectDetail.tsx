@@ -8,7 +8,7 @@ import NeonPanel from '@/components/cyber/NeonPanel'
 import ProjectGallery from '@/components/projects/ProjectGallery'
 import ProjectTimeline from '@/components/projects/ProjectTimeline'
 import { formatExperienceDuration, slugify } from '@/lib/utils'
-import { type Project, experiencesData } from '@/common'
+import { type Project, entitiesData, experiencesData } from '@/common'
 
 interface ProjectDetailProps {
 	project: Project
@@ -36,7 +36,12 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
 		const role = experiencesData.find(e => e.id === id)
 		return role ? [role] : []
 	})
-	const client = linkedRoles[0]?.organization
+	// Explicit client/partner wins; otherwise fall back to the delivering role's org.
+	const client =
+		(project.clientOrganizationId ? entitiesData.find(e => e.id === project.clientOrganizationId) : undefined)
+		?? linkedRoles[0]?.organization
+	// Org the work was seconded to / delivered via — a credit, not an employer.
+	const via = project.viaOrganizationId ? entitiesData.find(e => e.id === project.viaOrganizationId) : undefined
 	const extraPhotos = project.images.photos.filter(p => p !== project.images.banner)
 
 	return (
@@ -77,6 +82,13 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
 						</Link>
 					:	'Independent'}
 				</MetaCell>
+				{via && (
+					<MetaCell label='Seconded To'>
+						<Link href={`/companies/${via.id}` as never} className='hover:text-cyber-yellow transition-colors'>
+							{via.name}
+						</Link>
+					</MetaCell>
+				)}
 				<MetaCell label='Tier'>
 					<span className='text-cyber-magenta'>{'▲'.repeat(tier)}</span>
 				</MetaCell>

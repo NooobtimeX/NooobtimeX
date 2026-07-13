@@ -21,6 +21,26 @@ export const jasmineTechnologySolution: Organization = {
 		'Software solutions company — home of the LOOKLOOK PET platform work: storefront, B2B partner console, microservices, and multi-vendor marketplace.'
 }
 
+export const jasTv: Organization = {
+	id: 'jas-tv',
+	name: 'JAS TV',
+	location: 'nonthaburi-thailand',
+	type: 'company',
+	url: 'https://www.jasmine.com/en/our-business/jas-tv',
+	description:
+		"Jasmine International's Premier League broadcast arm — holder of the exclusive English Premier League and Emirates FA Cup rights for Thailand, Laos, and Cambodia (seasons 2025/26–2030/31)."
+}
+
+export const monomax: Organization = {
+	id: 'monomax',
+	name: 'MONOMax',
+	location: 'bangkok-thailand',
+	type: 'company',
+	url: 'https://www.monomax.me',
+	description:
+		"Mono Group streaming platform (Mono Next PCL). MONOMax Sports Premium is JAS's marketing and distribution partner for the Premier League — the platform the EPL licensing portal provisions venue accounts for."
+}
+
 export const freelanceWithFriends: Organization = {
 	id: 'freelance-blitzwerk',
 	name: 'Freelance with friends',
@@ -51,6 +71,8 @@ export const thammasatUniversity: Organization = {
 export const entitiesData: Organization[] = [
 	ruamsukPlating,
 	jasmineTechnologySolution,
+	jasTv,
+	monomax,
 	freelanceWithFriends,
 	personalProjects,
 	thammasatUniversity

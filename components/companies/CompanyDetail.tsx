@@ -31,7 +31,12 @@ const CompanyDetail: React.FC<CompanyDetailProps> = ({ organization }) => {
 	// Roles held here (newest first, matching experiencesData order).
 	const roles = experiencesData.filter(e => e.organization.id === organization.id)
 	// Gigs delivered under any of those roles.
-	const gigs = projectsData.filter(p => p.linkedExperienceIds?.some(id => roles.some(r => r.id === id)))
+	const gigs = projectsData.filter(
+		p =>
+			p.clientOrganizationId === organization.id
+			|| p.viaOrganizationId === organization.id
+			|| p.linkedExperienceIds?.some(id => roles.some(r => r.id === id))
+	)
 	// Skill rollup across those gigs (unique by name).
 	const skills = Array.from(new Map(gigs.flatMap(g => g.skills).map(s => [s.name, s])).values())
 	// Tenure span: earliest role start → latest end (Present if any role is open).

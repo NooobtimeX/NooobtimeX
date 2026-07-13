@@ -20,7 +20,12 @@ const groups: { type: EntityType; label: string }[] = [
 
 const CompanyCard: React.FC<{ org: Organization; index: number }> = ({ org, index }) => {
 	const roles = experiencesData.filter(e => e.organization.id === org.id)
-	const gigs = projectsData.filter(p => p.linkedExperienceIds?.some(id => roles.some(r => r.id === id)))
+	const gigs = projectsData.filter(
+		p =>
+			p.clientOrganizationId === org.id
+			|| p.viaOrganizationId === org.id
+			|| p.linkedExperienceIds?.some(id => roles.some(r => r.id === id))
+	)
 
 	return (
 		<MotionReveal delay={(index % 3) * 0.08}>

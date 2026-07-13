@@ -21,6 +21,8 @@ export type SocialPlatform =
 /** Organization ids — referenced by `Organization.id`. */
 export type EntityId =
 	| 'jasmine-technology-solution'
+	| 'jas-tv'
+	| 'monomax'
 	| 'ruamsuk-plating'
 	| 'freelance-blitzwerk'
 	| 'personal-projects'
