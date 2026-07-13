@@ -27,9 +27,35 @@ const StatCell: React.FC<{ label: string; children: React.ReactNode }> = ({ labe
 	</div>
 )
 
+const InfoRow: React.FC<{ icon: string; label: string; children: React.ReactNode }> = ({ icon, label, children }) => (
+	<div className='border-cyber-cyan/40 bg-cyber-cyan/[0.04] flex items-start gap-3 border-l-2 p-3'>
+		<Icon icon={icon} className='text-cyber-cyan mt-0.5 size-4 shrink-0' />
+		<div className='min-w-0'>
+			<p className='text-muted-foreground font-mono text-[0.6rem] tracking-widest uppercase'>{label}</p>
+			<p className='mt-0.5 text-sm font-semibold'>{children}</p>
+		</div>
+	</div>
+)
+
+/** Dossier attributes, each with its own icon — rendered only when present on the org. */
+const DOSSIER_FIELDS: {
+	key: 'industry' | 'founded' | 'headquarters' | 'size' | 'parentGroup' | 'stockTicker'
+	label: string
+	icon: string
+}[] = [
+	{ key: 'industry', label: 'Industry', icon: 'mdi:office-building-outline' },
+	{ key: 'founded', label: 'Founded', icon: 'mdi:calendar-star' },
+	{ key: 'headquarters', label: 'Headquarters', icon: 'mdi:map-marker-outline' },
+	{ key: 'size', label: 'Size', icon: 'mdi:account-group-outline' },
+	{ key: 'parentGroup', label: 'Parent Group', icon: 'mdi:sitemap-outline' },
+	{ key: 'stockTicker', label: 'Ticker', icon: 'mdi:chart-line-variant' }
+]
+
 const CompanyDetail: React.FC<CompanyDetailProps> = ({ organization }) => {
 	// Roles held here (newest first, matching experiencesData order).
 	const roles = experiencesData.filter(e => e.organization.id === organization.id)
+	// Dossier rows present on this org (each field carries its own icon).
+	const dossier = DOSSIER_FIELDS.filter(f => organization[f.key])
 	// Gigs delivered under any of those roles.
 	const gigs = projectsData.filter(
 		p =>
@@ -87,6 +113,53 @@ const CompanyDetail: React.FC<CompanyDetailProps> = ({ organization }) => {
 					</a>
 				)}
 			</div>
+
+			{dossier.length > 0 && (
+				<>
+					<h2 className='text-cyber-cyan mt-8 font-mono text-xs tracking-[0.3em] uppercase'>// Dossier</h2>
+					<NeonPanel className='clip-notch-sm mt-3 grid grid-cols-1 gap-3 p-4 sm:grid-cols-2'>
+						{dossier.map(f => (
+							<InfoRow key={f.key} icon={f.icon} label={f.label}>
+								{organization[f.key]}
+							</InfoRow>
+						))}
+					</NeonPanel>
+				</>
+			)}
+
+			{organization.about && (
+				<section className='mt-8'>
+					<h2 className='text-cyber-cyan font-mono text-xs tracking-[0.3em] uppercase'>// About</h2>
+					<p className='text-muted-foreground mt-3 leading-relaxed'>{organization.about}</p>
+				</section>
+			)}
+
+			{organization.products && organization.products.length > 0 && (
+				<section className='mt-8'>
+					<h2 className='text-cyber-cyan font-mono text-xs tracking-[0.3em] uppercase'>// Products &amp; Brands</h2>
+					<div className='mt-3 flex flex-wrap gap-2'>
+						{organization.products.map(p => (
+							<CyberTag key={p} icon='mdi:package-variant-closed' tone='yellow'>
+								{p}
+							</CyberTag>
+						))}
+					</div>
+				</section>
+			)}
+
+			{organization.highlights && organization.highlights.length > 0 && (
+				<section className='mt-8'>
+					<h2 className='text-cyber-cyan font-mono text-xs tracking-[0.3em] uppercase'>// Field Notes</h2>
+					<ul className='mt-3 space-y-2'>
+						{organization.highlights.map(h => (
+							<li key={h} className='text-muted-foreground flex items-start gap-2 text-sm leading-relaxed'>
+								<Icon icon='mdi:star-four-points-outline' className='text-cyber-magenta mt-1 size-3.5 shrink-0' />
+								<span>{h}</span>
+							</li>
+						))}
+					</ul>
+				</section>
+			)}
 
 			{/* Stat readout */}
 			<NeonPanel className='clip-notch-sm mt-6 grid grid-cols-2 gap-4 p-4 sm:grid-cols-4'>

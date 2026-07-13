@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: CompanyDetailPageProps): Prom
 
 	return {
 		title: `${org.name} | Companies | ${personalData.name}`,
-		description: org.description ?? `Roles and projects at ${org.name}.`
+		description: org.about ?? org.description ?? `Roles and projects at ${org.name}.`
 	}
 }
 

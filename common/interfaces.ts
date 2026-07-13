@@ -42,8 +42,26 @@ export interface Organization {
 	location: Location
 	type: EntityType
 	url?: string
-	/** Short blurb shown on the company page. */
+	/** Short blurb shown on the company card. */
 	description?: string
+	// --- Detailed dossier (company detail page) — all optional, render when present ---
+	/** Longer multi-sentence write-up. */
+	about?: string
+	industry?: string
+	/** Founding / established year, e.g. '1995'. */
+	founded?: string
+	/** Specific HQ, e.g. 'Pak Kret, Nonthaburi, Thailand'. */
+	headquarters?: string
+	/** Scale descriptor, e.g. 'SET-listed public company'. */
+	size?: string
+	/** Parent company / group, e.g. 'Jasmine International PCL (SET: JAS)'. */
+	parentGroup?: string
+	/** Stock listing, e.g. 'SET: JTS'. */
+	stockTicker?: string
+	/** Notable products / brands / services. */
+	products?: string[]
+	/** Short notable facts. */
+	highlights?: string[]
 }
 
 /** A role/experience period at an organization */

@@ -45,6 +45,7 @@ const CompanyCard: React.FC<{ org: Organization; index: number }> = ({ org, inde
 						<p className='text-muted-foreground font-mono text-[0.65rem] tracking-wider uppercase'>
 							{humanize(org.location)}
 						</p>
+						{org.industry && <p className='text-cyber-cyan/70 mt-0.5 truncate text-[0.7rem]'>{org.industry}</p>}
 					</div>
 				</div>
 				{org.description && (
