@@ -17,6 +17,10 @@ export function formatExperienceDuration(startDate: string, endDate?: string): s
 	const startYear = start.getFullYear()
 
 	if (!endDate) {
+		// A role that hasn't started yet reads as upcoming, not ongoing.
+		if (start.getTime() > Date.now()) {
+			return `Starts ${startMonth} ${startYear}`
+		}
 		return `${startMonth} ${startYear} - Present`
 	}
 
@@ -30,6 +34,14 @@ export function formatExperienceDuration(startDate: string, endDate?: string): s
 // Format a single milestone date as e.g. "Jun 2026"
 export function formatMilestoneDate(date: string): string {
 	return new Date(date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
+}
+
+/** Format a kebab-case position id for display, e.g. 'chief-technology-officer' → 'Chief Technology Officer'. */
+export function formatPosition(position: string): string {
+	return position
+		.split('-')
+		.map(w => w.charAt(0).toUpperCase() + w.slice(1))
+		.join(' ')
 }
 
 /**
