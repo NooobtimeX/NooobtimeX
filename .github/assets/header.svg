@@ -46,7 +46,7 @@
 		<line x1="60" y1="184" x2="220" y2="184" stroke="#FCEE0A" stroke-width="2" />
 
 		<rect x="60" y="206" width="6" height="30" fill="#FCEE0A" />
-		<text class="mono" x="80" y="228" font-size="19" letter-spacing="4" fill="#E6FBFF">WONGSAPHAT PUANGSORN // SOFTWARE DEVELOPER</text>
+		<text class="mono" x="80" y="228" font-size="19" letter-spacing="4" fill="#E6FBFF">WONGSAPHAT PUANGSORN // CHIEF TECHNOLOGY OFFICER</text>
 		<text class="mono" x="80" y="258" font-size="13" letter-spacing="2" fill="#E6FBFF" opacity="0.5">TYPESCRIPT ECOSYSTEMS · HIGH-PERFORMANCE SYSTEM DESIGN</text>
 
 		<g class="bars">
