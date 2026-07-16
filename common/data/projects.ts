@@ -11,7 +11,9 @@ export const looklookPet: ProjectDef = {
 	title: 'LOOKLOOK PET Platform',
 	description:
 		'Architect and lead full-stack developer of the LOOKLOOK PET platform — a multi-surface pet-parent community and B2B2C multi-vendor marketplace. Owned the ecosystem end-to-end across three core scopes: (1) **Core Storefront & Microservices**: Scaled 15+ NestJS services over NATS (backed by MongoDB, Redis, and BullMQ) and fronted by a Next.js storefront. Designed a custom native payment UI with client-side Omise tokenization, inline PromptPay QR polling, card-lock promotional gating, and migrated headless WordPress to MongoDB with TipTap HTML rendering. (2) **B2B Partner Portal**: Built and owned ~55% of the console codebase, developing claim-an-unlisted-place flows, team switcher management with dynamic roles, analytics panels with CSV orders export, and custom Lottie route loaders. (3) **Mercur Multi-Vendor Marketplace**: Served as sole maintainer of the Medusa.js 2 marketplace and seller panels, upgrading to Sprint-46, building a workflow-based refund system, and launching bilingual TH/EN deal templates. Deployed on Railway with Docker and Cloudflare R2.',
-	images: { banner: assets.projects.looklookPet.banner, photos: [assets.projects.looklookPet.banner] },
+	resumeSummary:
+		'Multi-surface pet-parent marketplace & B2B2C platform — 15+ NestJS microservices, a custom Omise / PromptPay checkout, a partner console, and a Medusa v2 multi-vendor marketplace. Next.js / MongoDB on Railway.',
+	images: { banner: assets.projects.looklookPet.banner, photos: [...assets.projects.looklookPet.gallery] },
 	skills: [
 		'typescript',
 		'next-js',
@@ -123,6 +125,8 @@ export const rsTrophy: ProjectDef = {
 	title: 'RS TROPHY (rs-trophy.com)',
 	description:
 		'A unified e-commerce and management platform for custom trophies, plaques, and medals — consolidating fragmented sibling brands into one high-performance system. Built as a Bun monorepo: a localized, SEO-optimized Next.js storefront, a real-time ElysiaJS API, and an admin console that share Mongoose schemas and types through a common workspace package. Runs on MongoDB with Redis caching and Cloudflare R2 object storage, containerized with Docker and deployed on Railway — and ships an AI copilot for natural-language shopping assistance. The platform evolved from an original WordPress + WooCommerce storefront into this unified Bun monorepo.',
+	resumeSummary:
+		'Unified e-commerce + admin platform for a custom-awards manufacturer, consolidating fragmented brands into one Bun monorepo — SEO storefront, ElysiaJS API, and an AI shopping copilot. MongoDB / Redis on Railway.',
 	images: { banner: assets.projects.rsTrophy.banner, photos: [assets.projects.rsTrophy.banner] },
 	skills: [
 		'bun-js',
@@ -647,6 +651,8 @@ export const monomaxEplPortal: ProjectDef = {
 	title: 'MONOMax EPL Licensing Portal',
 	description:
 		'A full-stack SaaS platform that issues and verifies English Premier League commercial-broadcast licenses for Thai venues — restaurants, hotels, and pubs. Business owners sign in with email OTP, register their company and each physical venue with its screen count, and the system provisions the required MONOMax Sports Premium accounts while guaranteeing — enforced at the database level — that every account is bound to a single active venue. Admins review submissions in a dedicated console with its own auth realm and issue a verifiable digital certificate, complete with an in-house-generated QR code, for each approved venue. Built with Next.js 16 (App Router) and React 19 in strict TypeScript: two isolated better-auth realms for users and admins, MongoDB/Mongoose, zod schemas validated identically on client and server with react-hook-form, an interactive Leaflet venue-map picker, presigned document uploads to S3-compatible object storage, transactional email, and Tailwind v4 with shadcn/ui. Containerized with Docker and shipped through a GitHub Actions → GHCR → cloud-VM (Caddy) CI/CD pipeline, with PDPA-conscious data residency. Delivered as a focused 3-day sprint.',
+	resumeSummary:
+		'Full-stack SaaS issuing & verifying English Premier League broadcast licenses for Thai venues — dual isolated auth realms, a geospatial venue model, and in-house QR e-certificates. Next.js 16 / MongoDB, Dockerized CI/CD. Built in a 3-day sprint.',
 	images: {
 		banner: assets.projects.monomaxEplPortal.banner,
 		photos: [assets.projects.monomaxEplPortal.banner]

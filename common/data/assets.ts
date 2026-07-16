@@ -20,7 +20,20 @@ export const assets = {
 	},
 	projects: {
 		rsTrophy: { banner: '/issue/rs-trophy/banner.webp' },
-		looklookPet: { banner: '/issue/looklook-pet/banner.webp' },
+		looklookPet: {
+			banner: '/issue/looklook-pet/banner.webp',
+			gallery: [
+				'/issue/looklook-pet/banner.webp',
+				'/issue/looklook-pet/photo-1.webp',
+				'/issue/looklook-pet/photo-2.webp',
+				'/issue/looklook-pet/photo-3.webp',
+				'/issue/looklook-pet/photo-4.webp',
+				'/issue/looklook-pet/photo-5.webp',
+				'/issue/looklook-pet/photo-6.webp',
+				'/issue/looklook-pet/photo-7.webp',
+				'/issue/looklook-pet/photo-8.webp'
+			]
+		},
 		onlinePokerGame: {
 			banner: '/issue/online-poker-game/banner.webp',
 			gallery: [
