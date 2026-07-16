@@ -13,7 +13,7 @@ import MotionReveal from '@/components/cyber/MotionReveal'
 import SectionHeader from '@/components/cyber/SectionHeader'
 import ProjectCard from '@/components/projects/ProjectCard'
 import { cn, formatExperienceDuration } from '@/lib/utils'
-import { featuredProjects, featuredSkills, personalData, workExperienceData } from '@/common'
+import { featuredProjects, featuredSkills, latestRole, personalData, workExperienceData } from '@/common'
 
 const formatPosition = (position: string) =>
 	position
@@ -22,17 +22,14 @@ const formatPosition = (position: string) =>
 		.join(' ')
 
 const HomeContent: React.FC = () => {
-	// Current role = the one active *today* (started, not yet ended). Data is sorted
-	// by startDate desc, so find() returns the latest active role and auto-advances
-	// once a future role's start date arrives.
+	// Show the most recent roles, including any future-dated (not-yet-started) one — data is
+	// sorted by startDate desc, so the latest role (e.g. an upcoming CTO) leads.
 	const now = new Date()
-	// Only roles that have already started — cut future-dated ones.
-	const started = workExperienceData.filter(r => new Date(r.startDate) <= now)
-	// Active role = ongoing or not-yet-ended; else the most recent started role.
-	const current = started.find(r => !r.endDate || new Date(r.endDate) >= now) ?? started[0]
-	const nowId = current?.id
-	// Lead with the current role, then the next most-recent ones.
-	const latestRoles = (current ? [current, ...started.filter(r => r.id !== current.id)] : started).slice(0, 3)
+	const latestRoles = workExperienceData.slice(0, 3)
+	// "Now" marks the role active today (started, not yet ended), if any.
+	const nowId = workExperienceData.find(
+		r => new Date(r.startDate) <= now && (!r.endDate || new Date(r.endDate) >= now)
+	)?.id
 	const featured = featuredProjects
 	const homeSkills = featuredSkills
 
@@ -57,7 +54,7 @@ const HomeContent: React.FC = () => {
 						<div className='mt-4 flex items-center gap-3'>
 							<span className='bg-cyber-yellow h-6 w-1' />
 							<GlitchText
-								text='Developer'
+								text={formatPosition(latestRole.position)}
 								className='neon-text-yellow font-display text-2xl font-bold tracking-widest uppercase md:text-3xl'
 							/>
 						</div>
@@ -72,9 +69,14 @@ const HomeContent: React.FC = () => {
 								Available
 							</CyberTag>
 							<CyberTag icon='mdi:translate' tone='magenta'>
-								TH / EN
+								{personalData.languages.map(l => l.code.toUpperCase()).join(' / ')}
 							</CyberTag>
 						</div>
+
+						<p className='text-muted-foreground mt-4 flex items-start gap-2 font-mono text-xs tracking-wider'>
+							<Icon icon='mdi:circle' className='text-cyber-green mt-1 size-2 shrink-0' />
+							{personalData.contact.availability}
+						</p>
 
 						<div className='mt-8 flex flex-wrap items-center gap-3'>
 							<CyberButton href='/projects' size='lg'>

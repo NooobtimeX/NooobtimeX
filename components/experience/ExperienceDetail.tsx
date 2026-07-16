@@ -62,7 +62,7 @@ const ExperienceDetail: React.FC<ExperienceDetailProps> = ({ item }) => {
 				<div className='flex-1'>
 					<span className='text-cyber-cyan font-mono text-xs tracking-[0.3em] uppercase'>// Service Record</span>
 					<h1 className='font-display text-3xl font-bold tracking-wide uppercase md:text-4xl'>
-						{humanize(item.position)}
+						{item.credential ?? humanize(item.position)}
 					</h1>
 					<Link
 						href={`/companies/${item.organization.id}` as never}

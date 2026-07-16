@@ -50,7 +50,7 @@ const TraceNode: React.FC<TraceNodeProps> = ({ item, side, isNow }) => {
 					<div className='flex items-start justify-between gap-2'>
 						<div className='min-w-0'>
 							<h3 className='group-hover:text-cyber-yellow text-base leading-tight font-bold tracking-wide uppercase transition-colors'>
-								{humanize(item.position)}
+								{item.credential ?? humanize(item.position)}
 							</h3>
 							<p className='text-cyber-cyan truncate text-sm'>{item.organization.name}</p>
 						</div>
