@@ -60,23 +60,16 @@ export const metadata: Metadata = {
 		title: 'Wongsaphat Puangsorn - Portfolio',
 		description:
 			'Specializing in modern web development, I turn ideas into seamless digital affiliations by building robust web applications.',
-		siteName: 'Wongsaphat Puangsorn Portfolio',
-		images: [
-			{
-				url: assets.site.ogImage,
-				width: 1467,
-				height: 1468,
-				alt: 'Wongsaphat Puangsorn Portfolio'
-			}
-		]
+		siteName: 'Wongsaphat Puangsorn Portfolio'
+		// Social card is generated dynamically by app/opengraph-image.tsx (1200×630).
 	},
 	twitter: {
 		card: 'summary_large_image',
 		title: 'Wongsaphat Puangsorn - Portfolio',
 		description:
 			'Specializing in modern web development, I turn ideas into seamless digital affiliations by building robust web applications.',
-		creator: '@NooobtimeX', // Assuming this handle based on github, can be updated
-		images: [assets.site.ogImage]
+		creator: '@NooobtimeX' // Assuming this handle based on github, can be updated
+		// Twitter falls back to the dynamic app/opengraph-image.tsx card.
 	},
 	icons: {
 		icon: assets.site.logo,
