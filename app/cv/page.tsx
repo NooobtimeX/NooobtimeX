@@ -4,12 +4,17 @@ import React from 'react'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
 import { QRCodeSVG } from 'qrcode.react'
+import { formatExperienceDuration } from '@/lib/utils'
 import {
 	type Skill,
 	type SkillCategory,
 	categoryMetadata,
+	educationData,
+	entitiesData,
 	experiencesData,
+	featuredProjects,
 	featuredSkills,
+	latestRole,
 	personalData,
 	projectsData,
 	workExperienceData
@@ -17,11 +22,24 @@ import {
 
 const ACCENT = '#FF003C'
 
+const website = personalData.socialLinks.find(s => s.platform === 'website')
+const websiteLabel = website?.username ?? 'nooobtimex.me'
+const websiteUrl = website?.url ?? 'https://nooobtimex.me'
+
 const humanize = (value: string) =>
 	value
 		.split('-')
 		.map(w => w.charAt(0).toUpperCase() + w.slice(1))
 		.join(' ')
+
+const stripProtocol = (url: string) => url.replace(/^https?:\/\//, '').replace(/\/+$/, '')
+
+const CvMeta: React.FC<{ label: string; children: React.ReactNode }> = ({ label, children }) => (
+	<div className='border-l-2 pl-2' style={{ borderColor: ACCENT, WebkitPrintColorAdjust: 'exact' }}>
+		<p className='text-[8px] font-black tracking-[0.2em] text-gray-400 uppercase'>{label}</p>
+		<p className='text-[11px] font-black text-black uppercase'>{children}</p>
+	</div>
+)
 
 export default function CVPage() {
 	const handlePrint = () => window.print()
@@ -30,15 +48,18 @@ export default function CVPage() {
 	const page2Experience = workExperienceData.slice(0, 3)
 	const page3Experience = workExperienceData.slice(3)
 
-	// Projects, 4 per page
-	const page4Projects = projectsData.slice(0, 4)
-	const page5Projects = projectsData.slice(4, 8)
-	const page6Projects = projectsData.slice(8)
-
 	const getCompanyName = (roleIds?: readonly string[]) => {
 		const primary = roleIds?.[0]
 		if (!primary) return null
 		return experiencesData.find(e => e.id === primary)?.organization.name ?? null
+	}
+
+	// Client = explicit client org if set (e.g. MONOMax), else the delivering role's organization.
+	const getClientName = (project: (typeof featuredProjects)[number]) => {
+		if (project.clientOrganizationId) {
+			return entitiesData.find(e => e.id === project.clientOrganizationId)?.name ?? null
+		}
+		return getCompanyName(project.linkedExperienceIds)
 	}
 
 	const categoryOrder: Record<string, number> = {
@@ -148,20 +169,22 @@ export default function CVPage() {
 				}
 			`}</style>
 
-			{/* Controls */}
-			<div className='sticky top-0 z-30 mb-8 flex flex-col items-center justify-center gap-4 bg-zinc-100/80 p-4 backdrop-blur-md md:relative md:flex-row md:bg-transparent md:p-0 print:hidden'>
+			{/* Floating controls — always reachable while scrolling the CV pages */}
+			<div className='fixed bottom-4 left-1/2 z-50 flex -translate-x-1/2 gap-3 sm:right-6 sm:bottom-6 sm:left-auto sm:translate-x-0 print:hidden'>
 				<button
 					onClick={handlePrint}
+					title='Print or Save as PDF (A4)'
 					style={{ backgroundColor: ACCENT }}
-					className='flex w-full items-center justify-center gap-2 px-6 py-6 text-lg font-bold tracking-tight text-white uppercase transition-transform active:scale-95 md:w-auto md:px-10 md:py-7 md:text-xl'>
-					<Icon icon='material-symbols:print' className='h-6 w-6 md:h-7 md:w-7' />
-					Print Premium Color CV (A4)
+					className='flex items-center gap-2 px-5 py-3.5 text-sm font-bold tracking-tight text-white uppercase shadow-xl ring-1 shadow-black/40 ring-black/10 transition-transform active:scale-95 sm:px-6 sm:text-base'>
+					<Icon icon='material-symbols:download' className='h-5 w-5' />
+					Download PDF
 				</button>
 				<Link
 					href='/cv/presentation'
-					className='flex w-full items-center justify-center gap-2 border-2 border-zinc-800 bg-zinc-950 px-6 py-6 text-lg font-bold tracking-tight text-white uppercase transition-transform hover:bg-zinc-900 active:scale-95 md:w-auto md:px-10 md:py-7 md:text-xl'>
-					<Icon icon='material-symbols:slideshow' className='h-6 w-6 md:h-7 md:w-7' style={{ color: ACCENT }} />
-					Presentation Mode
+					title='Open presentation mode'
+					className='flex items-center gap-2 border-2 border-zinc-700 bg-zinc-950 px-5 py-3.5 text-sm font-bold tracking-tight text-white uppercase shadow-xl shadow-black/40 transition-colors hover:bg-zinc-900 sm:px-6 sm:text-base'>
+					<Icon icon='material-symbols:slideshow' className='h-5 w-5' style={{ color: ACCENT }} />
+					Presentation
 				</Link>
 			</div>
 
@@ -181,7 +204,7 @@ export default function CVPage() {
 							<p
 								className='mt-2 font-mono text-2xl font-black tracking-widest uppercase'
 								style={{ color: ACCENT, WebkitPrintColorAdjust: 'exact' }}>
-								Developer
+								{humanize(latestRole.position)}
 							</p>
 							<div className='mt-6 flex flex-wrap gap-6 font-bold'>
 								<div className='flex items-center gap-2 text-[12px] uppercase'>
@@ -194,12 +217,12 @@ export default function CVPage() {
 								</div>
 								<div className='flex items-center gap-2 text-[12px] text-gray-700 uppercase'>
 									<Icon icon='material-symbols:language' className='h-4 w-4' style={{ color: ACCENT }} />
-									nooobtimex.me
+									{websiteLabel}
 								</div>
 							</div>
 						</div>
 						<div className='flex flex-col items-center gap-2'>
-							<QRCodeSVG value='https://nooobtimex.me' size={80} fgColor={ACCENT} />
+							<QRCodeSVG value={websiteUrl} size={80} fgColor={ACCENT} />
 							<span
 								className='text-[8px] font-black tracking-widest uppercase opacity-60'
 								style={{ color: ACCENT, WebkitPrintColorAdjust: 'exact' }}>
@@ -225,20 +248,25 @@ export default function CVPage() {
 									style={{ borderColor: ACCENT, WebkitPrintColorAdjust: 'exact' }}>
 									Academic Background
 								</h2>
-								<div
-									className='relative pl-5 before:absolute before:top-1.5 before:left-0 before:h-[calc(100%-6px)] before:w-1.5'
-									style={{ WebkitPrintColorAdjust: 'exact' }}>
-									<span
-										className='absolute top-1.5 left-0 h-[calc(100%-6px)] w-1.5'
-										style={{ backgroundColor: ACCENT }}
-									/>
-									<h3 className='text-lg font-black text-black uppercase'>B.S. Computer Science</h3>
-									<p className='text-sm font-bold text-gray-500 uppercase'>Thammasat University</p>
-									<p
-										className='mt-0.5 text-xs font-black uppercase opacity-80'
-										style={{ color: ACCENT, WebkitPrintColorAdjust: 'exact' }}>
-										2021 – 2025
-									</p>
+								<div className='space-y-5'>
+									{educationData.map(edu => (
+										<div key={edu.id} className='relative pl-5' style={{ WebkitPrintColorAdjust: 'exact' }}>
+											<span
+												className='absolute top-1.5 left-0 h-[calc(100%-6px)] w-1.5'
+												style={{ backgroundColor: ACCENT }}
+											/>
+											<h3 className='text-lg font-black text-black uppercase'>
+												{edu.credential ?? humanize(edu.position)}
+											</h3>
+											<p className='text-sm font-bold text-gray-500 uppercase'>{edu.organization.name}</p>
+											<p
+												className='mt-0.5 text-xs font-black uppercase opacity-80'
+												style={{ color: ACCENT, WebkitPrintColorAdjust: 'exact' }}>
+												{new Date(edu.startDate).getFullYear()} –{' '}
+												{edu.endDate ? new Date(edu.endDate).getFullYear() : 'Present'}
+											</p>
+										</div>
+									))}
 								</div>
 							</section>
 
@@ -306,6 +334,35 @@ export default function CVPage() {
 								<h2
 									className='mb-4 text-xs font-black tracking-[0.2em] uppercase'
 									style={{ color: ACCENT, WebkitPrintColorAdjust: 'exact' }}>
+									Languages
+								</h2>
+								<ul className='space-y-2'>
+									{personalData.languages.map(l => (
+										<li
+											key={l.code}
+											className='flex items-center justify-between gap-2 text-[11px] font-black uppercase'>
+											<span className='text-black'>{l.name}</span>
+											<span className='text-gray-500'>{l.level}</span>
+										</li>
+									))}
+								</ul>
+							</section>
+
+							<section>
+								<h2
+									className='mb-4 text-xs font-black tracking-[0.2em] uppercase'
+									style={{ color: ACCENT, WebkitPrintColorAdjust: 'exact' }}>
+									Availability
+								</h2>
+								<p className='text-[11px] leading-snug font-bold text-gray-700 uppercase'>
+									{personalData.contact.availability}
+								</p>
+							</section>
+
+							<section>
+								<h2
+									className='mb-4 text-xs font-black tracking-[0.2em] uppercase'
+									style={{ color: ACCENT, WebkitPrintColorAdjust: 'exact' }}>
 									Contact
 								</h2>
 								<div className='space-y-3'>
@@ -355,63 +412,111 @@ export default function CVPage() {
 					)}
 				</div>
 
-				{/* PAGES 4–6 — Selected Projects */}
-				{[
-					{ id: 'cv-page-4', title: 'Selected Projects (I)', list: page4Projects },
-					{ id: 'cv-page-5', title: 'Selected Projects (II)', list: page5Projects },
-					{ id: 'cv-page-6', title: 'Selected Projects (Final)', list: page6Projects }
-				].map(page => (
-					<div
-						key={page.id}
-						id={page.id}
-						className='cv-page-container mx-auto mb-10 flex h-[297mm] w-[210mm] flex-col overflow-hidden border border-black/5 bg-white p-[14mm] shadow-lg last:mb-0 print:mb-0 print:border-0 print:shadow-none'>
-						<h2 className='mb-10 border-b-2 border-black pb-2 text-3xl font-black tracking-tight uppercase'>
-							{page.title}
-						</h2>
-						<div className='grid grid-cols-2 gap-6 overflow-hidden'>
-							{page.list.map(project => (
-								<div key={project.id} className='flex flex-col border border-gray-100 bg-zinc-50/20 p-4 shadow-sm'>
-									<div className='mb-4 aspect-video overflow-hidden border border-gray-100'>
-										{/* eslint-disable-next-line @next/next/no-img-element */}
-										<img src={project.images.banner} alt={project.title} className='h-full w-full object-cover' />
-									</div>
-									<h3 className='mb-1 line-clamp-1 text-xl font-black tracking-tight text-black uppercase'>
-										{project.title}
-									</h3>
-									{getCompanyName(project.linkedExperienceIds) && (
-										<p
-											className='mb-3 text-[9px] font-black tracking-[0.15em] uppercase opacity-80'
-											style={{ color: ACCENT, WebkitPrintColorAdjust: 'exact' }}>
-											{getCompanyName(project.linkedExperienceIds)}
-										</p>
-									)}
-									<p className='mb-4 line-clamp-6 text-[12px] leading-normal font-medium text-gray-600'>
-										{project.description}
+				{/* PAGES 4–6 — one full page per flagship project */}
+				{featuredProjects.map((project, i) => {
+					const client = getClientName(project)
+					const via =
+						project.viaOrganizationId ?
+							(entitiesData.find(e => e.id === project.viaOrganizationId)?.name ?? null)
+						:	null
+					const roles = (project.linkedExperienceIds ?? [])
+						.map(id => experiencesData.find(e => e.id === id))
+						.filter((r): r is (typeof experiencesData)[number] => Boolean(r))
+					const status = project.endDate ? 'Completed' : 'Ongoing'
+					return (
+						<div
+							key={project.id}
+							id={`cv-page-${4 + i}`}
+							className='cv-page-container mx-auto mb-10 flex h-[297mm] w-[210mm] flex-col overflow-hidden border border-black/5 bg-white p-[14mm] shadow-lg last:mb-0 print:mb-0 print:border-0 print:shadow-none'>
+							{/* Banner + title */}
+							<div className='relative mb-5 aspect-[16/6] w-full shrink-0 overflow-hidden border border-gray-100'>
+								{/* eslint-disable-next-line @next/next/no-img-element */}
+								<img src={project.images.banner} alt={project.title} className='h-full w-full object-cover' />
+								<div className='absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent' />
+								<div className='absolute bottom-0 left-0 p-5'>
+									<p className='font-mono text-[9px] font-black tracking-[0.3em] text-white/70 uppercase'>
+										// Gig Dossier
 									</p>
-									<div className='mt-auto flex flex-wrap gap-1.5 border-t border-gray-50 pt-3'>
-										{[...project.skills]
-											.sort(sortSkills)
-											.slice(0, 5)
-											.map(s => (
-												<span
-													key={s.name}
-													className='flex items-center gap-1 rounded border px-1.5 py-0.5 text-[8px] font-black uppercase'
-													style={{
-														borderColor: `${ACCENT}33`,
-														backgroundColor: `${ACCENT}0d`,
-														color: ACCENT,
-														WebkitPrintColorAdjust: 'exact'
-													}}>
-													<Icon icon={s.icon} className='h-2.5 w-2.5 opacity-60' />
-													{s.name}
-												</span>
-											))}
-									</div>
+									<h2 className='text-3xl leading-none font-black tracking-tight text-white uppercase'>
+										{project.title}
+									</h2>
 								</div>
-							))}
+							</div>
+
+							{project.resumeSummary && (
+								<p className='mb-4 text-[13px] leading-snug font-bold text-gray-700'>{project.resumeSummary}</p>
+							)}
+
+							{/* Meta strip */}
+							<div
+								className='mb-5 flex flex-wrap gap-x-6 gap-y-3 border-y-2 py-3'
+								style={{ borderColor: `${ACCENT}1a`, WebkitPrintColorAdjust: 'exact' }}>
+								<CvMeta label='Client'>{client ?? 'Independent'}</CvMeta>
+								{via && <CvMeta label='Seconded To'>{via}</CvMeta>}
+								<CvMeta label='Timeline'>{formatExperienceDuration(project.startDate, project.endDate)}</CvMeta>
+								<CvMeta label='Status'>{status}</CvMeta>
+								{project.links.live && <CvMeta label='Live'>{stripProtocol(project.links.live)}</CvMeta>}
+							</div>
+
+							{/* Brief */}
+							<section className='mb-5'>
+								<h3
+									className='mb-2 text-xs font-black tracking-[0.2em] uppercase'
+									style={{ color: ACCENT, WebkitPrintColorAdjust: 'exact' }}>
+									Brief
+								</h3>
+								<p className='text-[13px] leading-relaxed font-medium text-gray-700'>{project.description}</p>
+							</section>
+
+							{/* Role(s) */}
+							{roles.length > 0 && (
+								<section className='mb-5'>
+									<h3
+										className='mb-2 text-xs font-black tracking-[0.2em] uppercase'
+										style={{ color: ACCENT, WebkitPrintColorAdjust: 'exact' }}>
+										{roles.length > 1 ? 'Roles' : 'Role'}
+									</h3>
+									<div className='space-y-1'>
+										{roles.map(r => (
+											<p key={r.id} className='text-[12px] font-black text-black uppercase'>
+												{humanize(r.position)}
+												<span className='font-bold text-gray-500'>
+													{' · '}
+													{r.organization.name} · {formatExperienceDuration(r.startDate, r.endDate)}
+												</span>
+											</p>
+										))}
+									</div>
+								</section>
+							)}
+
+							{/* Tech stack — all */}
+							<section className='mt-auto'>
+								<h3
+									className='mb-3 text-xs font-black tracking-[0.2em] uppercase'
+									style={{ color: ACCENT, WebkitPrintColorAdjust: 'exact' }}>
+									Tech Stack
+								</h3>
+								<div className='flex flex-wrap gap-1.5'>
+									{[...project.skills].sort(sortSkills).map(s => (
+										<span
+											key={s.name}
+											className='flex items-center gap-1 rounded border px-2 py-0.5 text-[9px] font-black uppercase'
+											style={{
+												borderColor: `${ACCENT}33`,
+												backgroundColor: `${ACCENT}0d`,
+												color: ACCENT,
+												WebkitPrintColorAdjust: 'exact'
+											}}>
+											<Icon icon={s.icon} className='h-2.5 w-2.5 opacity-60' />
+											{s.name}
+										</span>
+									))}
+								</div>
+							</section>
 						</div>
-					</div>
-				))}
+					)
+				})}
 			</div>
 		</div>
 	)
