@@ -1,5 +1,6 @@
 /** Hero banner — generated port of the original hand-built header.svg. */
-import { personalData } from '@/common'
+import { formatPosition } from '@/lib/utils'
+import { latestRole, personalData } from '@/common'
 import {
 	C,
 	clipDef,
@@ -21,7 +22,7 @@ const NOTCH = 23
 
 export function renderHeader(): string {
 	const handle = 'NOOOBTIMEX'
-	const subtitle = `${personalData.name.toUpperCase()} // ${personalData.title.toUpperCase()}`
+	const subtitle = `${personalData.name.toUpperCase()} // ${formatPosition(latestRole.position).toUpperCase()}`
 	const tagline = 'TYPESCRIPT ECOSYSTEMS · HIGH-PERFORMANCE SYSTEM DESIGN'
 
 	const dataBars = [
