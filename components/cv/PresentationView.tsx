@@ -8,9 +8,12 @@ import { formatExperienceDuration } from '@/lib/utils'
 import {
 	SkillCategory,
 	categoryMetadata,
+	entitiesData,
+	experiencesData,
+	featuredProjects,
 	featuredSkills,
+	latestRole,
 	personalData,
-	projectsData,
 	workExperienceData
 } from '@/common'
 
@@ -19,6 +22,13 @@ const humanize = (value: string) =>
 		.split('-')
 		.map(w => w.charAt(0).toUpperCase() + w.slice(1))
 		.join(' ')
+
+// Client = explicit client org if set (e.g. MONOMax), else the delivering role's organization.
+const clientName = (p: (typeof featuredProjects)[number]) => {
+	if (p.clientOrganizationId) return entitiesData.find(e => e.id === p.clientOrganizationId)?.name ?? null
+	const roleId = p.linkedExperienceIds?.[0]
+	return roleId ? (experiencesData.find(e => e.id === roleId)?.organization.name ?? null) : null
+}
 
 interface PresentationViewProps {
 	onExit: () => void
@@ -36,7 +46,7 @@ const PresentationView: React.FC<PresentationViewProps> = ({ onExit }) => {
 						{personalData.name}
 					</h1>
 					<GlitchText
-						text='Developer'
+						text={humanize(latestRole.position)}
 						className='neon-text-yellow font-display mt-4 inline-block text-2xl font-bold tracking-[0.3em] uppercase md:text-4xl'
 					/>
 					<p className='text-muted-foreground mx-auto mt-6 max-w-2xl text-base md:text-lg'>{personalData.tagline}</p>
@@ -76,7 +86,7 @@ const PresentationView: React.FC<PresentationViewProps> = ({ onExit }) => {
 							<div key={item.id} className='neon-panel clip-notch-sm p-4'>
 								<div className='flex flex-wrap items-baseline justify-between gap-2'>
 									<h3 className='font-display text-lg font-bold tracking-wide uppercase'>
-										{humanize(item.position)}
+										{item.credential ?? humanize(item.position)}
 										<span className='text-cyber-yellow'> @ {item.organization.name}</span>
 									</h3>
 									<span className='text-muted-foreground font-mono text-[0.7rem] uppercase'>
@@ -122,27 +132,75 @@ const PresentationView: React.FC<PresentationViewProps> = ({ onExit }) => {
 				</div>
 			)
 		},
-		{
-			code: '04',
-			title: 'Projects',
-			render: () => (
-				<div className='mx-auto max-w-4xl'>
-					<h2 className='font-display neon-text-cyan text-3xl font-bold tracking-wide uppercase md:text-5xl'>
-						Selected Projects
-					</h2>
-					<div className='mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
-						{projectsData.slice(0, 6).map(p => (
-							<div key={p.id} className='neon-panel clip-notch-sm p-4'>
-								<h3 className='font-display font-bold tracking-wide uppercase'>{p.title}</h3>
-								<p className='text-muted-foreground mt-1 line-clamp-3 text-xs'>{p.description}</p>
+		...featuredProjects.map((p, idx) => {
+			const client = clientName(p)
+			const via = p.viaOrganizationId ? (entitiesData.find(e => e.id === p.viaOrganizationId)?.name ?? null) : null
+			return {
+				code: String(4 + idx).padStart(2, '0'),
+				title: p.title,
+				render: () => (
+					<div className='mx-auto grid max-h-[80vh] w-full max-w-5xl gap-8 md:grid-cols-[0.95fr_1.05fr]'>
+						{/* Left: banner + meta + grouped tech */}
+						<div className='flex min-h-0 flex-col gap-4 overflow-y-auto pr-1'>
+							<div className='neon-panel clip-notch relative aspect-[16/9] w-full shrink-0 overflow-hidden'>
+								{/* eslint-disable-next-line @next/next/no-img-element */}
+								<img src={p.images.banner} alt={p.title} className='h-full w-full object-cover' />
+								<div className='from-background/90 absolute inset-0 bg-gradient-to-t to-transparent' />
 							</div>
-						))}
+
+							<div className='grid grid-cols-2 gap-3 font-mono text-xs'>
+								<div>
+									<p className='text-cyber-cyan tracking-widest uppercase'>Client</p>
+									<p className='mt-1'>{client ?? 'Independent'}</p>
+								</div>
+								{via && (
+									<div>
+										<p className='text-cyber-cyan tracking-widest uppercase'>Seconded To</p>
+										<p className='mt-1'>{via}</p>
+									</div>
+								)}
+								<div>
+									<p className='text-cyber-cyan tracking-widest uppercase'>Timeline</p>
+									<p className='mt-1'>{formatExperienceDuration(p.startDate, p.endDate)}</p>
+								</div>
+								{p.links.live && (
+									<div>
+										<p className='text-cyber-cyan tracking-widest uppercase'>Live</p>
+										<p className='mt-1'>{p.links.live.replace(/^https?:\/\//, '').replace(/\/+$/, '')}</p>
+									</div>
+								)}
+							</div>
+
+							<div>
+								<p className='text-cyber-yellow mb-2 font-mono text-xs tracking-widest uppercase'>Tech Stack</p>
+								<div className='flex flex-wrap gap-1.5'>
+									{p.skills.map(s => (
+										<span
+											key={s.name}
+											className='border-border inline-flex items-center gap-1 border px-2 py-0.5 text-xs'>
+											<Icon icon={s.icon} className='size-3.5' />
+											{s.name}
+										</span>
+									))}
+								</div>
+							</div>
+						</div>
+
+						{/* Right: title + scrollable description */}
+						<div className='flex min-h-0 flex-col'>
+							<h2 className='font-display neon-text-cyan text-2xl font-bold tracking-wide uppercase md:text-4xl'>
+								{p.title}
+							</h2>
+							<p className='text-muted-foreground mt-4 min-h-0 overflow-y-auto pr-2 text-sm leading-relaxed md:text-base'>
+								{p.description}
+							</p>
+						</div>
 					</div>
-				</div>
-			)
-		},
+				)
+			}
+		}),
 		{
-			code: '05',
+			code: '07',
 			title: 'Contact',
 			render: () => (
 				<div className='text-center'>
@@ -155,7 +213,12 @@ const PresentationView: React.FC<PresentationViewProps> = ({ onExit }) => {
 							{personalData.contact.email}
 						</span>
 						<span className='inline-flex items-center gap-2'>
-							<Icon icon='mdi:web' className='text-cyber-cyan size-5' /> nooobtimex.me
+							<Icon icon='mdi:web' className='text-cyber-cyan size-5' />{' '}
+							{personalData.socialLinks.find(s => s.platform === 'website')?.username ?? 'nooobtimex.me'}
+						</span>
+						<span className='inline-flex items-center gap-2'>
+							<Icon icon='mdi:translate' className='text-cyber-cyan size-5' />
+							{personalData.languages.map(l => `${l.name} (${l.level})`).join(' · ')}
 						</span>
 					</div>
 				</div>
