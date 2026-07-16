@@ -9,14 +9,17 @@ interface ProjectTimelineProps {
 }
 
 const ProjectTimeline: React.FC<ProjectTimelineProps> = ({ items }) => {
+	// Timelines are authored oldest-first; display newest-first so the latest milestone leads.
+	const ordered = [...items].reverse()
+
 	return (
 		<div className='relative'>
 			{/* Central spine */}
 			<span className='spine-line absolute top-0 bottom-0 left-5 w-px' />
 
 			<div className='space-y-6'>
-				{items.map((m, i) => {
-					const isLatest = i === items.length - 1
+				{ordered.map((m, i) => {
+					const isLatest = i === 0
 					return (
 						<MotionReveal key={m.title} delay={(i % 2) * 0.06}>
 							<div className='relative pl-14'>
