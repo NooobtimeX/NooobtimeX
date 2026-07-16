@@ -23,6 +23,14 @@ export interface SocialLink {
 	username?: string
 }
 
+/** A spoken/written language and proficiency */
+export interface Language {
+	name: string // Display name, e.g. 'English'
+	level: string // Proficiency, e.g. 'Native' or 'Professional working'
+	code: string // BCP-47 tag for JSON-LD knowsLanguage, e.g. 'en'
+	icon?: string // Optional icon name for @iconify/react
+}
+
 // --- Domain ---
 
 /** A technical skill */
@@ -69,6 +77,8 @@ export interface ExperienceItem {
 	id: ExperienceId // url-safe id
 	organization: Organization
 	position: Position
+	/** Education-only headline, e.g. 'B.S. Computer Science' — rendered instead of `position`. */
+	credential?: string
 	description: string
 	type: EmploymentType
 	category: ExperienceCategory
@@ -89,6 +99,8 @@ export interface Project {
 	id: string // url-safe id
 	title: string
 	description: string
+	/** Short resume-style blurb (1–2 lines) for the CV / presentation; falls back to `description`. */
+	resumeSummary?: string
 	images: {
 		banner: string
 		photos: string[]
@@ -124,5 +136,6 @@ export interface PersonalData {
 		availability: string
 	}
 	birthDate: string
+	languages: Language[]
 	socialLinks: SocialLink[]
 }

@@ -11,12 +11,11 @@ export type EntityType = 'company' | 'university' | 'personal'
 
 export type EmploymentType = 'volunteer' | 'freelance' | 'part-time' | 'full-time' | 'contract'
 
-export type Location = 'remote' | 'bangkok-thailand' | 'nonthaburi-thailand' | 'pathumthani-thailand'
+export type Location = 'remote' | 'nonthaburi-thailand' | 'pathumthani-thailand'
 
-export type Position = 'chief-technology-officer' | 'developer'
+export type Position = 'chief-technology-officer' | 'developer' | 'student'
 
-export type SocialPlatform =
-	'github' | 'linkedin' | 'twitter' | 'instagram' | 'discord' | 'youtube' | 'website' | 'email'
+export type SocialPlatform = 'github' | 'linkedin' | 'instagram' | 'youtube' | 'website' | 'email'
 
 /** Organization ids — referenced by `Organization.id`. */
 export type EntityId =
@@ -36,3 +35,4 @@ export type ExperienceId =
 	| 'ruamsuk-cto'
 	| 'freelance-blitzwerk-role'
 	| 'personal-projects-role'
+	| 'thammasat-bs-cs'

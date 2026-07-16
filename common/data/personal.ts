@@ -22,6 +22,10 @@ export const personalData: PersonalData = {
 		location: 'Pak Kret District, Nonthaburi',
 		availability: 'Available for Software Developer roles with a focus on growth and modern infrastructure'
 	},
+	languages: [
+		{ name: 'Thai', level: 'Native', code: 'th', icon: 'circle-flags:th' },
+		{ name: 'English', level: 'Professional working', code: 'en', icon: 'circle-flags:uk' }
+	],
 	socialLinks: [
 		{
 			platform: 'github',

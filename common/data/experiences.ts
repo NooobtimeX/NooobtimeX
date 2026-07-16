@@ -1,6 +1,12 @@
 import type { ExperienceItem } from '../interfaces'
 import { sortByDateDesc } from '../utils'
-import { freelanceWithFriends, jasmineTechnologySolution, personalProjects, ruamsukPlating } from './entities'
+import {
+	freelanceWithFriends,
+	jasmineTechnologySolution,
+	personalProjects,
+	ruamsukPlating,
+	thammasatUniversity
+} from './entities'
 
 // --- Roles ---
 
@@ -73,6 +79,21 @@ export const personalProjectsExperience: ExperienceItem = {
 	startDate: '2021-06-01'
 }
 
+// --- Education ---
+
+export const thammasatComputerScience: ExperienceItem = {
+	id: 'thammasat-bs-cs',
+	organization: thammasatUniversity,
+	position: 'student',
+	credential: 'B.S. Computer Science',
+	description:
+		'Bachelor of Science in Computer Science — the engineering foundation across algorithms, data structures, databases, operating systems, and software engineering that underpins the full-stack work.',
+	type: 'full-time',
+	category: 'education',
+	startDate: '2021-08-01',
+	endDate: '2025-06-30'
+}
+
 // --- Aggregation ---
 
 const all: ExperienceItem[] = [
@@ -81,7 +102,8 @@ const all: ExperienceItem[] = [
 	ruamsukPlatingDevelopereerPartTime,
 	ruamsukPlatingDeveloperFullTime,
 	ruamsukPlatingCto,
-	personalProjectsExperience
+	personalProjectsExperience,
+	thammasatComputerScience
 ]
 
 export const experiencesData: ExperienceItem[] = [...all].sort(sortByDateDesc)
@@ -89,3 +111,6 @@ export const experiencesData: ExperienceItem[] = [...all].sort(sortByDateDesc)
 export const workExperienceData: ExperienceItem[] = all.filter(a => a.category === 'work').sort(sortByDateDesc)
 export const educationData: ExperienceItem[] = all.filter(a => a.category === 'education').sort(sortByDateDesc)
 export const personalProjectsData: ExperienceItem[] = all.filter(a => a.category === 'personal').sort(sortByDateDesc)
+
+/** Most recent work role by start date — includes future-dated roles (e.g. an upcoming CTO role). */
+export const latestRole: ExperienceItem = workExperienceData[0]
