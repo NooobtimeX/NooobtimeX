@@ -759,6 +759,58 @@ export const monomaxEplPortal: ProjectDef = {
 	]
 }
 
+export const qrFood: ProjectDef = {
+	id: 'qr-food',
+	title: 'QR Food Platform',
+	description:
+		'A senior thesis project from Thammasat University. Developed a full-stack QR-code ordering and multi-branch restaurant management web application designed to streamline in-restaurant operations and eliminate expensive POS hardware. Key components include: (1) **Customer Table Ordering**: A Nuxt 3 web application enabling customers to scan table-specific QR codes, browse live menus, customize dishes with add-ons, add items to a real-time cart, and place orders directly from their mobile devices. Features integrated support for calling staff and live bill tracking. (2) **Staff & Kitchen Portal**: Features custom views for restaurant staff to take orders directly at the table, manage order queues, track preparation statuses, and process instant table closures with bill printing. (3) **Multi-Branch Admin Console**: An analytical dashboard for owners to manage multiple restaurant branches, configure custom staff roles (owner/staff), toggle menu item availability dynamically per branch, customize food sections and add-on options, and view real-time sales statistics. Built with Nuxt 3, Vue 3, Tailwind CSS, Prisma, PostgreSQL (Supabase), and deployed on Vercel.',
+	resumeSummary:
+		'Full-stack QR-code ordering and multi-branch restaurant management web application. Customers scan QR codes to order and call staff; staff manage table statuses and orders; owners manage branches and view analytics. Nuxt 3 / Vue 3 / Prisma / Supabase / PostgreSQL / Tailwind CSS on Vercel.',
+	images: {
+		banner: assets.projects.qrFood.banner,
+		photos: []
+	},
+	skills: ['vue', 'nuxt-js', 'tailwind-css', 'prisma', 'supabase', 'postgresql', 'docker', 'vercel'],
+	links: {
+		live: 'https://github.com/NooobtimeX/QR-Food'
+	},
+	startDate: '2023-08-01',
+	endDate: '2024-12-24',
+	linkedExperienceIds: ['thammasat-bs-cs'],
+	timeline: [
+		{
+			date: '2023-08-01',
+			title: 'Project Inception & Core Scoping',
+			description:
+				'Defined objectives to replace expensive restaurant POS hardware with QR-code ordering. Designed database schema in Prisma with PostgreSQL (Supabase).',
+			icon: 'mdi:rocket-launch-outline'
+		},
+		{
+			date: '2024-03-15',
+			title: 'Phase 1: QR Ordering & Table Management',
+			description:
+				'Stood up the core Nuxt 3 application with table QR scanning, real-time menu rendering, staff authentication, order management, and a sales dashboard.',
+			icon: 'mdi:qrcode-scan',
+			addedSkills: ['nuxt-js', 'vue', 'tailwind-css', 'prisma', 'supabase', 'postgresql']
+		},
+		{
+			date: '2024-08-10',
+			title: 'Phase 2: Multi-Branch & Real-time Call Staff',
+			description:
+				'Introduced multi-branch architecture allowing dynamic menu toggles per location. Added real-time notification alerts for customer table calls and staff ordering.',
+			icon: 'mdi:storefront-outline'
+		},
+		{
+			date: '2024-12-24',
+			title: 'Final Defense & Thesis Submission',
+			description:
+				'Successfully completed the final defense of the thesis project at Thammasat University, presenting a 38-endpoint system running on Vercel.',
+			icon: 'mdi:school-outline',
+			addedSkills: ['vercel']
+		}
+	]
+}
+
 const defs: ProjectDef[] = [
 	monomaxEplPortal,
 	rsTrophy,
@@ -767,7 +819,8 @@ const defs: ProjectDef[] = [
 	prettierConfig,
 	rsAward,
 	rsMedal,
-	portfolio
+	portfolio,
+	qrFood
 ]
 
 /**

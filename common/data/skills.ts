@@ -71,6 +71,13 @@ const reactHookForm = skill({
 const leaflet = skill({ id: 'leaflet', name: 'Leaflet', icon: 'simple-icons:leaflet', category: 'frontend' })
 const vitest = skill({ id: 'vitest', name: 'Vitest', icon: 'logos:vitest', category: 'frontend' })
 const eslint = skill({ id: 'eslint', name: 'ESLint', icon: 'logos:eslint', category: 'frontend' })
+const vue = skill({ id: 'vue', name: 'Vue.js', icon: 'logos:vue', category: 'frontend' })
+const nuxtjs = skill({
+	id: 'nuxt-js',
+	name: 'Nuxt.js',
+	icon: 'logos:nuxt-icon',
+	category: 'frontend'
+})
 
 // --- Backend ---
 const nodejs = skill({
@@ -120,6 +127,12 @@ const nextauth = skill({
 	category: 'backend'
 })
 const firebase = skill({ id: 'firebase', name: 'Firebase', icon: 'logos:firebase', category: 'backend' })
+const supabase = skill({
+	id: 'supabase',
+	name: 'Supabase',
+	icon: 'logos:supabase-icon',
+	category: 'backend'
+})
 const mercur = skill({ id: 'mercur', name: 'Mercur', icon: 'material-symbols:storefront', category: 'backend' })
 
 // --- Infrastructure ---
@@ -226,6 +239,8 @@ const allSkills = [
 	leaflet,
 	vitest,
 	eslint,
+	vue,
+	nuxtjs,
 	// backend
 	nodejs,
 	nestjs,
@@ -244,6 +259,7 @@ const allSkills = [
 	clerk,
 	nextauth,
 	firebase,
+	supabase,
 	mercur,
 	// infrastructure
 	vercel,

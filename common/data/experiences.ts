@@ -87,7 +87,7 @@ export const thammasatComputerScience: ExperienceItem = {
 	position: 'student',
 	credential: 'B.S. Computer Science',
 	description:
-		'Bachelor of Science in Computer Science — the engineering foundation across algorithms, data structures, databases, operating systems, and software engineering that underpins the full-stack work.',
+		'Bachelor of Science in Computer Science — the engineering foundation across algorithms, data structures, databases, operating systems, and software engineering that underpins the full-stack work. Developed and successfully defended QR Food, a full-stack QR-code ordering and multi-branch restaurant management web application, as the senior thesis project.',
 	type: 'full-time',
 	category: 'education',
 	startDate: '2021-08-01',
