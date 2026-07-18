@@ -174,12 +174,20 @@ const PresentationView: React.FC<PresentationViewProps> = ({ onExit }) => {
 							<div>
 								<p className='text-cyber-yellow mb-2 font-mono text-xs tracking-widest uppercase'>Tech Stack</p>
 								<div className='flex flex-wrap gap-1.5'>
-									{p.skills.map(s => (
+									{p.activeSkills.map(s => (
 										<span
 											key={s.name}
 											className='border-border inline-flex items-center gap-1 border px-2 py-0.5 text-xs'>
 											<Icon icon={s.icon} className='size-3.5' />
 											{s.name}
+										</span>
+									))}
+									{p.retiredSkills.map(s => (
+										<span
+											key={s.name}
+											className='border-border/40 text-muted-foreground inline-flex items-center gap-1 border px-2 py-0.5 text-xs opacity-60'>
+											<Icon icon={s.icon} className='size-3.5' />
+											<span className='line-through'>{s.name}</span>
 										</span>
 									))}
 								</div>

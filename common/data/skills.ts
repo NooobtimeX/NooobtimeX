@@ -70,6 +70,7 @@ const reactHookForm = skill({
 })
 const leaflet = skill({ id: 'leaflet', name: 'Leaflet', icon: 'simple-icons:leaflet', category: 'frontend' })
 const vitest = skill({ id: 'vitest', name: 'Vitest', icon: 'logos:vitest', category: 'frontend' })
+const eslint = skill({ id: 'eslint', name: 'ESLint', icon: 'logos:eslint', category: 'frontend' })
 
 // --- Backend ---
 const nodejs = skill({
@@ -111,6 +112,14 @@ const betterAuth = skill({
 	icon: 'material-symbols:shield-lock',
 	category: 'backend'
 })
+const clerk = skill({ id: 'clerk', name: 'Clerk', icon: 'simple-icons:clerk', category: 'backend' })
+const nextauth = skill({
+	id: 'nextauth',
+	name: 'NextAuth',
+	icon: 'simple-icons:auth0',
+	category: 'backend'
+})
+const firebase = skill({ id: 'firebase', name: 'Firebase', icon: 'logos:firebase', category: 'backend' })
 const mercur = skill({ id: 'mercur', name: 'Mercur', icon: 'material-symbols:storefront', category: 'backend' })
 
 // --- Infrastructure ---
@@ -129,6 +138,13 @@ const docker = skill({
 	category: 'infrastructure'
 })
 const render = skill({ id: 'render', name: 'Render', icon: 'simple-icons:render', category: 'infrastructure' })
+const tencentCloud = skill({
+	id: 'tencent-cloud',
+	name: 'Tencent Cloud',
+	icon: 'simple-icons:tencentqq',
+	category: 'infrastructure'
+})
+const circleci = skill({ id: 'circleci', name: 'CircleCI', icon: 'simple-icons:circleci', category: 'infrastructure' })
 const github = skill({
 	id: 'git-github',
 	name: 'Git/GitHub',
@@ -209,6 +225,7 @@ const allSkills = [
 	reactHookForm,
 	leaflet,
 	vitest,
+	eslint,
 	// backend
 	nodejs,
 	nestjs,
@@ -224,12 +241,17 @@ const allSkills = [
 	medusa,
 	zod,
 	betterAuth,
+	clerk,
+	nextauth,
+	firebase,
 	mercur,
 	// infrastructure
 	vercel,
 	railway,
 	docker,
 	render,
+	tencentCloud,
+	circleci,
 	github,
 	minio,
 	resend,

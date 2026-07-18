@@ -1,10 +1,25 @@
-import type { Project } from '../interfaces'
+import type { Milestone, Project } from '../interfaces'
 import { sortByDateDesc } from '../utils'
 import { assets } from './assets'
 import { type SkillId, skillById } from './skills'
 
-/** Authoring shape: list skills by id (typed + autocompleted); resolved below. */
-type ProjectDef = Omit<Project, 'skills'> & { skills: SkillId[] }
+/** Authoring shape for a milestone: skill deltas by id (resolved to Skill[] below). */
+type MilestoneDef = Omit<Milestone, 'addedSkills' | 'removedSkills'> & {
+	addedSkills?: SkillId[]
+	removedSkills?: SkillId[]
+}
+
+/**
+ * Authoring shape: list the STARTING stack by id (typed + autocompleted). The active/retired
+ * split and the full roster are derived from the timeline's add/remove events (see resolver below).
+ */
+type ProjectDef = Omit<Project, 'skills' | 'activeSkills' | 'retiredSkills' | 'timeline'> & {
+	skills: SkillId[]
+	timeline?: MilestoneDef[]
+}
+
+/** Tooling used on every project — always active, never retired, so it lives here not per-project. */
+const commonTooling: SkillId[] = ['typescript', 'git-github', 'prettier', 'eslint']
 
 export const looklookPet: ProjectDef = {
 	id: 'looklook-pet',
@@ -14,34 +29,28 @@ export const looklookPet: ProjectDef = {
 	resumeSummary:
 		'Multi-surface pet-parent marketplace & B2B2C platform — 15+ NestJS microservices, a custom Omise / PromptPay checkout, a partner console, and a Medusa v2 multi-vendor marketplace. Next.js / MongoDB on Railway.',
 	images: { banner: assets.projects.looklookPet.banner, photos: [...assets.projects.looklookPet.gallery] },
+	// Starting stack (2025-07-16). Later tech is introduced via timeline events; retired tech is
+	// flagged there too. Common tooling (TypeScript/Git/Prettier/ESLint) is added by the resolver.
 	skills: [
-		'typescript',
 		'next-js',
 		'react',
 		'flutter',
 		'tailwind-css',
 		'radix-ui',
 		'tanstack-query',
-		'better-auth',
 		'nest-js',
 		'node-js',
 		'nats',
 		'mongodb',
 		'redis',
 		'bullmq',
-		'medusa',
-		'mercur',
-		'postgresql',
 		'omise',
-		'algolia',
-		'minio',
-		'resend',
-		'docker',
-		'railway',
-		'git-github',
-		'cloudflare-r2',
 		'seo',
-		'google-tag-manager'
+		'google-tag-manager',
+		'clerk',
+		'wordpress',
+		'tencent-cloud',
+		'circleci'
 	],
 	links: { live: 'https://looklook.pet' },
 	startDate: '2025-07-16',
@@ -52,21 +61,25 @@ export const looklookPet: ProjectDef = {
 			title: 'Transport — NATS Message Bus → HTTP Service Calls',
 			description:
 				'Replaced the NATS/JetStream message bus with direct HTTP service calls for the internal BFF-to-service transport, simplifying the request path.',
-			icon: 'mdi:transit-connection-variant'
+			icon: 'mdi:transit-connection-variant',
+			removedSkills: ['nats']
 		},
 		{
 			date: '2025-11-07',
 			title: 'Hosting — Tencent Cloud VM → Railway + Docker',
 			description:
 				'Retired the self-managed Tencent Cloud VMs and their CircleCI + SSH pipelines for Railway across the fleet, deploying every service from a Dockerfile as config-as-code.',
-			icon: 'simple-icons:railway'
+			icon: 'simple-icons:railway',
+			addedSkills: ['railway', 'docker'],
+			removedSkills: ['tencent-cloud', 'circleci']
 		},
 		{
 			date: '2025-12-08',
 			title: 'Marketplace — Medusa v2 Multi-Vendor Standup',
 			description:
 				'Stood up the Medusa v2 multi-vendor marketplace (Mercur) on Railway with Nixpacks, MinIO object storage, and a custom payment provider.',
-			icon: 'mdi:storefront-outline'
+			icon: 'mdi:storefront-outline',
+			addedSkills: ['medusa', 'mercur', 'minio', 'postgresql', 'algolia', 'resend']
 		},
 		{
 			date: '2026-02-09',
@@ -80,21 +93,25 @@ export const looklookPet: ProjectDef = {
 			title: 'Auth — Clerk → Better Auth (Partner Portal + BFF)',
 			description:
 				'Migrated the B2B partner portal and its NestJS BFF from Clerk to Better Auth end-to-end — re-architecting session handling behind a proxy and adapting the Mongoose layer to Better Auth string IDs.',
-			icon: 'mdi:shield-key-outline'
+			icon: 'mdi:shield-key-outline',
+			addedSkills: ['better-auth'],
+			removedSkills: ['clerk']
 		},
 		{
 			date: '2026-05-25',
 			title: 'Content — Headless WordPress → MongoDB',
 			description:
 				'Cut the storefront and every BFF off headless WordPress (Faust + Apollo) onto a native MongoDB content model — the WordPress chapter, closed.',
-			icon: 'simple-icons:mongodb'
+			icon: 'simple-icons:mongodb',
+			removedSkills: ['wordpress']
 		},
 		{
 			date: '2026-06-02',
 			title: 'Media Storage — Tencent COS → Cloudflare R2',
 			description:
 				'Swapped the Tencent COS SDK for the AWS S3 SDK against Cloudflare R2 behind a StorageService abstraction — a runtime provider flip with zero downstream code changes.',
-			icon: 'simple-icons:cloudflare'
+			icon: 'simple-icons:cloudflare',
+			addedSkills: ['cloudflare-r2', 'aws-s3']
 		},
 		{
 			date: '2026-06-18',
@@ -128,29 +145,9 @@ export const rsTrophy: ProjectDef = {
 	resumeSummary:
 		'Unified e-commerce + admin platform for a custom-awards manufacturer, consolidating fragmented brands into one Bun monorepo — SEO storefront, ElysiaJS API, and an AI shopping copilot. MongoDB / Redis on Railway.',
 	images: { banner: assets.projects.rsTrophy.banner, photos: [assets.projects.rsTrophy.banner] },
-	skills: [
-		'bun-js',
-		'elysia-js',
-		'next-js',
-		'react',
-		'typescript',
-		'mongodb',
-		'redis',
-		'docker',
-		'railway',
-		'cloudflare-r2',
-		'tailwind-css',
-		'shadcn-ui',
-		'google-ads',
-		'google-analytics',
-		'seo',
-		'aeo',
-		'geo',
-		'json-ld',
-		'google-tag-manager',
-		'wordpress',
-		'woocommerce'
-	],
+	// Starting stack (2023) — the original WordPress + WooCommerce storefront. The 2026 Bun monorepo
+	// rebuild is introduced via timeline events, which also retire the legacy WordPress stack.
+	skills: ['wordpress', 'woocommerce', 'seo', 'google-analytics', 'google-ads'],
 	links: { live: 'https://rs-trophy.com' },
 	startDate: '2023-01-01',
 	linkedExperienceIds: ['ruamsuk-software-engineer-part-time', 'ruamsuk-cto'],
@@ -186,7 +183,24 @@ export const rsTrophy: ProjectDef = {
 			title: 'Foundation — Bun Monorepo, Railway from Day One',
 			description:
 				'Bootstrapped a Bun workspace monorepo — storefront, admin, ElysiaJS API, and shared UI + type packages — Railway-targeted with standalone output from the very first commit.',
-			icon: 'simple-icons:bun'
+			icon: 'simple-icons:bun',
+			addedSkills: [
+				'bun-js',
+				'elysia-js',
+				'next-js',
+				'react',
+				'mongodb',
+				'redis',
+				'docker',
+				'railway',
+				'tailwind-css',
+				'shadcn-ui',
+				'minio',
+				'aeo',
+				'geo',
+				'json-ld',
+				'google-tag-manager'
+			]
 		},
 		{
 			date: '2026-05-07',
@@ -214,14 +228,17 @@ export const rsTrophy: ProjectDef = {
 			title: 'Consolidation — Legacy WordPress Sibling Sites → One Platform',
 			description:
 				'Scraped and imported two legacy WordPress sibling sites into one unified platform, with legacy category-page redirects preserved.',
-			icon: 'simple-icons:wordpress'
+			icon: 'simple-icons:wordpress',
+			removedSkills: ['wordpress', 'woocommerce']
 		},
 		{
 			date: '2026-06-04',
 			title: 'Storage — MinIO → Cloudflare R2',
 			description:
 				'Migrated object storage from MinIO to Cloudflare R2 behind a provider-agnostic S3 layer, adding a streaming proxy and a separate private bucket for PII.',
-			icon: 'simple-icons:cloudflare'
+			icon: 'simple-icons:cloudflare',
+			addedSkills: ['cloudflare-r2'],
+			removedSkills: ['minio']
 		},
 		{
 			date: '2026-06-07',
@@ -260,7 +277,8 @@ export const onlinePokerGame: ProjectDef = {
 	description:
 		'A real-time multiplayer online poker game featuring Server-Sent Events for live updates. Built with Next.js and PostgreSQL for a seamless, interactive card gaming experience.',
 	images: { banner: assets.projects.onlinePokerGame.banner, photos: [...assets.projects.onlinePokerGame.gallery] },
-	skills: ['next-js', 'react', 'typescript', 'prisma', 'render', 'tailwind-css', 'sse', 'postgresql'],
+	// Starting stack — realtime (SSE) and the scale-out stack (Docker/BullMQ/Redis) arrive via events.
+	skills: ['next-js', 'react', 'prisma', 'render', 'tailwind-css', 'postgresql'],
 	links: {},
 	startDate: '2025-03-01',
 	linkedExperienceIds: ['freelance-blitzwerk-role'],
@@ -282,7 +300,8 @@ export const onlinePokerGame: ProjectDef = {
 			date: '2025-06-11',
 			title: 'Realtime — Rooms over Server-Sent Events',
 			description: 'Streamed live room state to every player over Server-Sent Events.',
-			icon: 'mdi:broadcast'
+			icon: 'mdi:broadcast',
+			addedSkills: ['sse']
 		},
 		{
 			date: '2025-06-12',
@@ -326,7 +345,8 @@ export const onlinePokerGame: ProjectDef = {
 			title: 'Scale-Out — Docker, Job Queue & Redis Realtime',
 			description:
 				'Re-architected for scale — containerized deploy with a BullMQ job queue, persisted game logs, and Redis-backed realtime with retries.',
-			icon: 'simple-icons:redis'
+			icon: 'simple-icons:redis',
+			addedSkills: ['docker', 'bullmq', 'redis']
 		}
 	]
 }
@@ -337,18 +357,8 @@ export const prettierConfig: ProjectDef = {
 	description:
 		'The fastest way to build, share, and try a Prettier configuration — visually, in the browser. Runs the official prettier/standalone fully client-side for instant live formatting, with a CodeMirror 6 editor spanning JS/TS, CSS, HTML, JSON, Markdown, Vue, and more, plus shareable URL-encoded configs and i18n. Built on Next.js, React, TypeScript, and Tailwind CSS v4 with shadcn/ui on Base UI.',
 	images: { banner: assets.projects.prettierConfig.banner, photos: [assets.projects.prettierConfig.banner] },
-	skills: [
-		'next-js',
-		'react',
-		'typescript',
-		'tailwind-css',
-		'shadcn-ui',
-		'base-ui',
-		'codemirror',
-		'prettier',
-		'vercel',
-		'google-tag-manager'
-	],
+	// Starting stack — the UI libraries, editor, and analytics are introduced via timeline events.
+	skills: ['next-js', 'react', 'tailwind-css', 'vercel'],
 	links: { live: 'https://prettier-config.dev' },
 	startDate: '2025-07-09',
 	linkedExperienceIds: ['personal-projects-role'],
@@ -369,13 +379,15 @@ export const prettierConfig: ProjectDef = {
 			date: '2025-09-06',
 			title: 'Launch — prettier-config.dev',
 			description: 'Settled on the prettier-config.dev domain with centralized metadata and lint tooling.',
-			icon: 'mdi:web'
+			icon: 'mdi:web',
+			addedSkills: ['google-tag-manager']
 		},
 		{
 			date: '2026-01-09',
 			title: 'Rebuild — Metadata-Driven Config Generator',
 			description: 'Rebuilt the UI around an option-metadata-driven config generator.',
-			icon: 'mdi:cog-outline'
+			icon: 'mdi:cog-outline',
+			addedSkills: ['shadcn-ui', 'base-ui']
 		},
 		{
 			date: '2026-05-05',
@@ -395,7 +407,8 @@ export const prettierConfig: ProjectDef = {
 			title: 'Editor — Multi-Parser CodeMirror + Shareable URLs',
 			description:
 				'Shipped a multi-parser CodeMirror editor with URL-encoded shareable configs and existing-config import.',
-			icon: 'simple-icons:codemirror'
+			icon: 'simple-icons:codemirror',
+			addedSkills: ['codemirror']
 		},
 		{
 			date: '2026-05-30',
@@ -412,17 +425,8 @@ export const rsMedal: ProjectDef = {
 	description:
 		'A medal showcase and catalog web app — first built on WordPress, later remade as a localized Next.js application with structured data and a reusable product data model.',
 	images: { banner: assets.projects.rsMedal.banner, photos: [assets.projects.rsMedal.banner] },
-	skills: [
-		'wordpress',
-		'next-js',
-		'react',
-		'typescript',
-		'tailwind-css',
-		'shadcn-ui',
-		'vercel',
-		'google-ads',
-		'google-tag-manager'
-	],
+	// Starting stack (2022 WordPress). The Next.js remake — and WordPress's retirement — are events.
+	skills: ['wordpress', 'seo', 'google-ads'],
 	links: { live: 'https://www.rs-medal.com' },
 	startDate: '2022-08-01',
 	linkedExperienceIds: ['ruamsuk-software-engineer-part-time', 'ruamsuk-software-engineer-full-time'],
@@ -456,13 +460,16 @@ export const rsMedal: ProjectDef = {
 			title: 'Next.js Remake — Localized Storefront Foundation',
 			description:
 				'Began the ground-up Next.js remake — a localized, statically-optimized showcase replacing the WordPress build.',
-			icon: 'simple-icons:nextdotjs'
+			icon: 'simple-icons:nextdotjs',
+			addedSkills: ['next-js', 'react', 'tailwind-css', 'shadcn-ui', 'vercel', 'google-tag-manager'],
+			removedSkills: ['wordpress']
 		},
 		{
 			date: '2025-06-06',
 			title: 'Content & SEO — Blog System + JSON-LD',
 			description: 'Added a blog system with structured data (JSON-LD), sitemap, and SEO fixes.',
-			icon: 'mdi:post-outline'
+			icon: 'mdi:post-outline',
+			addedSkills: ['json-ld']
 		},
 		{
 			date: '2025-06-23',
@@ -485,17 +492,9 @@ export const rsAward: ProjectDef = {
 	description:
 		'A plaque and award showcase web app — first built on WordPress, later remade as a localized Next.js application with SEO/AEO structured data and client-side search.',
 	images: { banner: assets.projects.rsAward.banner, photos: [assets.projects.rsAward.banner] },
-	skills: [
-		'wordpress',
-		'next-js',
-		'react',
-		'typescript',
-		'tailwind-css',
-		'shadcn-ui',
-		'vercel',
-		'google-ads',
-		'google-tag-manager'
-	],
+	// Starting stack (2022 WordPress). The Next.js remake, the Prisma/Postgres → MongoDB migration,
+	// and WordPress's retirement are all recorded as timeline events below.
+	skills: ['wordpress', 'seo', 'google-ads'],
 	links: { live: 'https://www.rs-award.com' },
 	startDate: '2022-03-01',
 	linkedExperienceIds: ['ruamsuk-software-engineer-part-time', 'ruamsuk-software-engineer-full-time'],
@@ -529,13 +528,26 @@ export const rsAward: ProjectDef = {
 			title: 'Next.js Remake — Foundation + SEO',
 			description:
 				'Kicked off the Next.js remake with SEO metadata, structured data, robots, and sitemap from day one.',
-			icon: 'simple-icons:nextdotjs'
+			icon: 'simple-icons:nextdotjs',
+			addedSkills: [
+				'next-js',
+				'react',
+				'tailwind-css',
+				'shadcn-ui',
+				'vercel',
+				'prisma',
+				'postgresql',
+				'google-tag-manager'
+			],
+			removedSkills: ['wordpress']
 		},
 		{
 			date: '2026-01-28',
 			title: 'Data — Prisma/Postgres → MongoDB',
 			description: 'Migrated the data layer from Prisma/Postgres to MongoDB mid-build.',
-			icon: 'simple-icons:mongodb'
+			icon: 'simple-icons:mongodb',
+			addedSkills: ['mongodb'],
+			removedSkills: ['prisma', 'postgresql']
 		},
 		{
 			date: '2026-01-30',
@@ -547,7 +559,8 @@ export const rsAward: ProjectDef = {
 			date: '2026-02-10',
 			title: 'SEO/AEO — Product Pages + Client-Side Search',
 			description: 'Shipped product pages with SEO/AEO structured data, client-side search, and a Dockerized deploy.',
-			icon: 'mdi:magnify'
+			icon: 'mdi:magnify',
+			addedSkills: ['aeo', 'json-ld', 'docker']
 		}
 	]
 }
@@ -558,22 +571,8 @@ export const portfolio: ProjectDef = {
 	description:
 		'This site — a Cyberpunk 2077–inspired portfolio built on Next.js (App Router, Turbopack) with a fully custom Tailwind v4 design system and shadcn/ui on Base UI. Features a ⌘K command palette, a gig-board project journal, a vertical career-trace timeline, and a print-ready CV with a slide-presentation mode. Deployed on Vercel.',
 	images: { banner: assets.projects.portfolio.banner, photos: [assets.projects.portfolio.banner] },
-	skills: [
-		'typescript',
-		'next-js',
-		'react',
-		'tailwind-css',
-		'shadcn-ui',
-		'base-ui',
-		'embla-carousel',
-		'bun-js',
-		'vercel',
-		'seo',
-		'aeo',
-		'geo',
-		'json-ld',
-		'google-tag-manager'
-	],
+	// Starting stack — a static profile that grew into a full web app via the timeline events below.
+	skills: ['next-js', 'tailwind-css', 'seo'],
 	links: { live: 'https://github.com/NooobtimeX/NooobtimeX' },
 	startDate: '2021-01-01',
 	linkedExperienceIds: ['personal-projects-role'],
@@ -595,26 +594,30 @@ export const portfolio: ProjectDef = {
 			date: '2026-02-03',
 			title: 'Pivot — Static Profile → Full Web App',
 			description: 'Pivoted from a static profile into a statically-generated Next.js web app with a performance pass.',
-			icon: 'simple-icons:nextdotjs'
+			icon: 'simple-icons:nextdotjs',
+			addedSkills: ['react', 'shadcn-ui', 'bun-js', 'vercel']
 		},
 		{
 			date: '2026-03-25',
 			title: 'Content — CV, Global Search & Presentation Mode',
 			description: 'Shipped a print-ready CV page, site-wide command-palette search, and a slide-presentation mode.',
-			icon: 'mdi:file-document-outline'
+			icon: 'mdi:file-document-outline',
+			addedSkills: ['aeo', 'geo', 'json-ld', 'google-tag-manager']
 		},
 		{
 			date: '2026-04-09',
 			title: 'Revamp — Home UI + Component-Library Migration',
 			description: 'Revamped the home page and migrated the UI onto a headless component library.',
-			icon: 'mdi:home-outline'
+			icon: 'mdi:home-outline',
+			addedSkills: ['base-ui']
 		},
 		{
 			date: '2026-06-08',
 			title: 'Redesign — Cyberpunk Design System',
 			description:
 				'Rebuilt the entire site on a custom Cyberpunk 2077–inspired design system — neon signal colors, notched HUD panels, glitch and scanline accents.',
-			icon: 'mdi:palette-outline'
+			icon: 'mdi:palette-outline',
+			addedSkills: ['embla-carousel']
 		},
 		{
 			date: '2026-06-08',
@@ -657,12 +660,11 @@ export const monomaxEplPortal: ProjectDef = {
 		banner: assets.projects.monomaxEplPortal.banner,
 		photos: [assets.projects.monomaxEplPortal.banner]
 	},
+	// Starting stack — the client's Firebase SPA + a NextAuth scaffold, both retired via events below.
 	skills: [
 		'next-js',
 		'react',
-		'typescript',
 		'mongodb',
-		'better-auth',
 		'zod',
 		'react-hook-form',
 		'tailwind-css',
@@ -673,7 +675,8 @@ export const monomaxEplPortal: ProjectDef = {
 		'recharts',
 		'vitest',
 		'docker',
-		'git-github'
+		'firebase',
+		'nextauth'
 	],
 	links: {},
 	startDate: '2026-06-15',
@@ -686,7 +689,8 @@ export const monomaxEplPortal: ProjectDef = {
 			title: 'Replatform — Firebase SPA → Next.js 16 Full-Stack',
 			description:
 				'Re-architected a client-built Firebase single-page prototype into a Next.js 16 App Router full-stack application in strict TypeScript.',
-			icon: 'simple-icons:nextdotjs'
+			icon: 'simple-icons:nextdotjs',
+			removedSkills: ['firebase']
 		},
 		{
 			date: '2026-06-15',
@@ -700,7 +704,9 @@ export const monomaxEplPortal: ProjectDef = {
 			title: 'Auth — Two Isolated Realms, Email-OTP + 2FA',
 			description:
 				'Built two isolated authentication realms (customer and admin) with email-OTP sign-in and 2FA, moving off the initial NextAuth scaffold to better-auth.',
-			icon: 'mdi:shield-key-outline'
+			icon: 'mdi:shield-key-outline',
+			addedSkills: ['better-auth'],
+			removedSkills: ['nextauth']
 		},
 		{
 			date: '2026-06-16',
@@ -764,10 +770,51 @@ const defs: ProjectDef[] = [
 	portfolio
 ]
 
-// Resolve skill ids → Skill objects, then sort newest first.
-export const projectsData: Project[] = defs
-	.map(d => ({ ...d, skills: d.skills.map(id => skillById[id]) }))
-	.sort(sortByDateDesc)
+/**
+ * Event-source each project's skills: fold the timeline (oldest→newest) over the starting stack +
+ * common tooling to derive the currently-active set; the full roster is the union of everything ever
+ * used (start + tooling + every add/remove); retired = roster − active. Milestone id deltas are
+ * resolved to Skill objects for the timeline UI.
+ */
+const resolveProject = (d: ProjectDef): Project => {
+	const events = [...(d.timeline ?? [])].sort((a, b) => a.date.localeCompare(b.date))
+	// Union roster in first-appearance order: starting stack, then timeline deltas, then tooling.
+	const roster: SkillId[] = []
+	const seen = new Set<SkillId>()
+	const see = (id: SkillId) => {
+		if (!seen.has(id)) {
+			seen.add(id)
+			roster.push(id)
+		}
+	}
+	d.skills.forEach(see)
+	for (const m of events) {
+		m.addedSkills?.forEach(see)
+		m.removedSkills?.forEach(see)
+	}
+	commonTooling.forEach(see)
+	// Active = starting stack + tooling, folded through the timeline's adds/removes.
+	const active = new Set<SkillId>([...d.skills, ...commonTooling])
+	for (const m of events) {
+		m.addedSkills?.forEach(id => active.add(id))
+		m.removedSkills?.forEach(id => active.delete(id))
+	}
+	const toSkill = (id: SkillId) => skillById[id]
+	return {
+		...d,
+		skills: roster.map(toSkill),
+		activeSkills: roster.filter(id => active.has(id)).map(toSkill),
+		retiredSkills: roster.filter(id => !active.has(id)).map(toSkill),
+		timeline: d.timeline?.map(m => ({
+			...m,
+			addedSkills: m.addedSkills?.map(toSkill),
+			removedSkills: m.removedSkills?.map(toSkill)
+		}))
+	}
+}
+
+// Resolve each project, then sort newest first.
+export const projectsData: Project[] = defs.map(resolveProject).sort(sortByDateDesc)
 
 /** Hand-picked projects for the home page (in this order). Edit to curate. */
 const featuredProjectIds = ['monomax-epl-portal', 'rs-trophy', 'looklook-pet']

@@ -63,8 +63,8 @@ const CompanyDetail: React.FC<CompanyDetailProps> = ({ organization }) => {
 			|| p.viaOrganizationId === organization.id
 			|| p.linkedExperienceIds?.some(id => roles.some(r => r.id === id))
 	)
-	// Skill rollup across those gigs (unique by name).
-	const skills = Array.from(new Map(gigs.flatMap(g => g.skills).map(s => [s.name, s])).values())
+	// Skill rollup across those gigs (unique by name) — active tech only, retired skills excluded.
+	const skills = Array.from(new Map(gigs.flatMap(g => g.activeSkills).map(s => [s.name, s])).values())
 	// Tenure span: earliest role start → latest end (Present if any role is open).
 	const tenureStart = roles.length > 0 ? roles.reduce((a, b) => (a.startDate < b.startDate ? a : b)).startDate : null
 	const hasOpenRole = roles.some(r => !r.endDate)

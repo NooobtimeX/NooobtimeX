@@ -12,6 +12,8 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, index = 0 }) => {
 	const year = new Date(project.startDate).getFullYear()
+	// Active tech first, retired trailing (dimmed) — capped at 5 icons + overflow count.
+	const shownSkills = [...project.activeSkills, ...project.retiredSkills]
 
 	return (
 		<Link
@@ -43,11 +45,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index = 0 }) => {
 				<p className='text-muted-foreground line-clamp-3 text-sm leading-relaxed'>{project.description}</p>
 
 				<div className='mt-auto flex flex-wrap items-center gap-1.5 pt-2'>
-					{project.skills.slice(0, 5).map(a => (
-						<Icon key={a.name} icon={a.icon} aria-label={a.name} className='size-4' />
+					{shownSkills.slice(0, 5).map((a, i) => (
+						<Icon
+							key={a.name}
+							icon={a.icon}
+							aria-label={i >= project.activeSkills.length ? `${a.name} (retired)` : a.name}
+							className={cn('size-4', i >= project.activeSkills.length && 'opacity-40')}
+						/>
 					))}
-					{project.skills.length > 5 && (
-						<span className='text-muted-foreground font-mono text-[0.65rem]'>+{project.skills.length - 5}</span>
+					{shownSkills.length > 5 && (
+						<span className='text-muted-foreground font-mono text-[0.65rem]'>+{shownSkills.length - 5}</span>
 					)}
 				</div>
 			</div>

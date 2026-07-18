@@ -30,7 +30,7 @@ const humanize = (value: string) =>
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
 	const year = new Date(project.startDate).getFullYear()
 	const live = !!project.links.live
-	const tier = Math.min(3, Math.max(1, Math.ceil(project.skills.length / 4)))
+	const tier = Math.min(3, Math.max(1, Math.ceil(project.activeSkills.length / 4)))
 	// Role(s) this project was delivered under — primary role first.
 	const linkedRoles = (project.linkedExperienceIds ?? []).flatMap(id => {
 		const role = experiencesData.find(e => e.id === id)
@@ -136,13 +136,23 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
 					<NeonPanel className='clip-notch-sm p-4'>
 						<h3 className='text-cyber-cyan mb-3 font-mono text-xs tracking-widest uppercase'>Loadout</h3>
 						<div className='flex flex-wrap gap-2'>
-							{project.skills.map(a => (
+							{project.activeSkills.map(a => (
 								<Link
 									key={a.name}
 									href={`/skills/${slugify(a.name)}` as never}
 									className='border-border hover:border-cyber-cyan/60 flex items-center gap-1.5 border px-2 py-1 text-xs transition-colors'>
 									<Icon icon={a.icon} className='size-4' />
 									{a.name}
+								</Link>
+							))}
+							{project.retiredSkills.map(a => (
+								<Link
+									key={a.name}
+									href={`/skills/${slugify(a.name)}` as never}
+									title='Retired from this project'
+									className='border-border/40 text-muted-foreground hover:border-cyber-magenta/50 flex items-center gap-1.5 border px-2 py-1 text-xs opacity-60 transition-colors'>
+									<Icon icon={a.icon} className='size-4' />
+									<span className='line-through'>{a.name}</span>
 								</Link>
 							))}
 						</div>

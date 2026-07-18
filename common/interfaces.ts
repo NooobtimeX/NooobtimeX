@@ -92,6 +92,10 @@ export interface Milestone {
 	title: string
 	description?: string
 	icon?: string // Iconify name, e.g. 'simple-icons:cloudflare'
+	/** Skills introduced at this milestone — resolved from ids at build time. */
+	addedSkills?: Skill[]
+	/** Skills retired at this milestone — resolved from ids at build time. */
+	removedSkills?: Skill[]
 }
 
 /** A project / build */
@@ -105,7 +109,12 @@ export interface Project {
 		banner: string
 		photos: string[]
 	}
+	/** Full historical roster — every skill ever used (starting stack + all timeline deltas + tooling). */
 	skills: Skill[]
+	/** Currently-active stack — derived by folding the timeline's add/remove events. */
+	activeSkills: Skill[]
+	/** Skills used then dropped (roster − active) — shown but marked retired. */
+	retiredSkills: Skill[]
 	links: {
 		live?: string
 	}

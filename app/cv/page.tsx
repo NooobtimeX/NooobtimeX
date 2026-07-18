@@ -498,7 +498,7 @@ export default function CVPage() {
 									Tech Stack
 								</h3>
 								<div className='flex flex-wrap gap-1.5'>
-									{[...project.skills].sort(sortSkills).map(s => (
+									{[...project.activeSkills].sort(sortSkills).map(s => (
 										<span
 											key={s.name}
 											className='flex items-center gap-1 rounded border px-2 py-0.5 text-[9px] font-black uppercase'
@@ -509,6 +509,19 @@ export default function CVPage() {
 												WebkitPrintColorAdjust: 'exact'
 											}}>
 											<Icon icon={s.icon} className='h-2.5 w-2.5 opacity-60' />
+											{s.name}
+										</span>
+									))}
+									{[...project.retiredSkills].sort(sortSkills).map(s => (
+										<span
+											key={s.name}
+											className='flex items-center gap-1 rounded border px-2 py-0.5 text-[9px] font-black text-gray-400 uppercase line-through'
+											style={{
+												borderColor: '#e5e7eb',
+												backgroundColor: '#f9fafb',
+												WebkitPrintColorAdjust: 'exact'
+											}}>
+											<Icon icon={s.icon} className='h-2.5 w-2.5 opacity-40' />
 											{s.name}
 										</span>
 									))}
@@ -531,7 +544,7 @@ interface ExperienceBlockProps {
 }
 
 const ExperienceBlock: React.FC<ExperienceBlockProps> = ({ item, accent, sortSkills }) => {
-	const projectSkills = projectsData.filter(p => p.linkedExperienceIds?.includes(item.id)).flatMap(p => p.skills)
+	const projectSkills = projectsData.filter(p => p.linkedExperienceIds?.includes(item.id)).flatMap(p => p.activeSkills)
 	const uniqueSkills = Array.from(new Map(projectSkills.map(s => [s.name, s])).values()).sort(sortSkills)
 
 	return (

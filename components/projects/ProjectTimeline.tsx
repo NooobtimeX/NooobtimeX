@@ -50,6 +50,25 @@ const ProjectTimeline: React.FC<ProjectTimelineProps> = ({ items }) => {
 									{m.description && (
 										<p className='text-muted-foreground mt-2 text-sm leading-relaxed'>{m.description}</p>
 									)}
+									{m.addedSkills?.length || m.removedSkills?.length ?
+										<div className='mt-3 flex flex-wrap gap-1.5'>
+											{m.addedSkills?.map(s => (
+												<span
+													key={`add-${s.id}`}
+													className='text-cyber-green border-cyber-green/40 flex items-center gap-1 border px-1.5 py-0.5 font-mono text-[0.65rem] tracking-wide'>
+													<Icon icon={s.icon} className='size-3' />+{s.name}
+												</span>
+											))}
+											{m.removedSkills?.map(s => (
+												<span
+													key={`rm-${s.id}`}
+													className='text-cyber-magenta border-cyber-magenta/40 flex items-center gap-1 border px-1.5 py-0.5 font-mono text-[0.65rem] tracking-wide'>
+													<Icon icon={s.icon} className='size-3' />
+													<span className='line-through'>{s.name}</span>
+												</span>
+											))}
+										</div>
+									:	null}
 								</div>
 							</div>
 						</MotionReveal>
