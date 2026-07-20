@@ -1,5 +1,5 @@
 import React from 'react'
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { JetBrains_Mono, Noto_Sans_Thai, Rajdhani } from 'next/font/google'
 import { GoogleTagManager } from '@next/third-parties/google'
 import ScanlineOverlay from '@/components/cyber/ScanlineOverlay'
@@ -26,6 +26,16 @@ const notoThai = Noto_Sans_Thai({
 	weight: ['300', '400', '500', '700'],
 	variable: '--font-noto-thai'
 })
+
+/**
+ * `viewportFit: 'cover'` is load-bearing, not cosmetic: without it the meta viewport has
+ * no `viewport-fit=cover` and every `env(safe-area-inset-*)` resolves to 0px — which would
+ * silently drop MobileTabBar's labels under the iOS home indicator.
+ */
+export const viewport: Viewport = {
+	viewportFit: 'cover',
+	themeColor: '#FCEE0A'
+}
 
 export const metadata: Metadata = {
 	metadataBase: new URL('https://nooobtimex.me'),

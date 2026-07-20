@@ -5,26 +5,13 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Icon } from '@iconify/react'
 import Container from '@/components/cyber/Container'
+import { NAV_LINKS, isActive } from '@/components/navigation/links'
 import GlobalSearch from '@/components/search/GlobalSearch'
-import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { cn } from '@/lib/utils'
-
-const LINKS = [
-	{ label: 'Home', href: '/', code: '00' },
-	{ label: 'Career', href: '/career', code: '01' },
-	{ label: 'Projects', href: '/projects', code: '02' },
-	{ label: 'Skills', href: '/skills', code: '03' },
-	{ label: 'Companies', href: '/companies', code: '04' },
-	{ label: 'GitHub', href: '/github', code: '05' },
-	{ label: 'CV', href: '/cv', code: '06' }
-] as const
-
-const isActive = (pathname: string, href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href))
 
 const NavBar: React.FC = () => {
 	const pathname = usePathname()
 	const [searchOpen, setSearchOpen] = React.useState(false)
-	const [menuOpen, setMenuOpen] = React.useState(false)
 
 	React.useEffect(() => {
 		const onKey = (e: KeyboardEvent) => {
@@ -51,7 +38,7 @@ const NavBar: React.FC = () => {
 
 					{/* Desktop links */}
 					<nav className='hidden items-center gap-1 md:flex'>
-						{LINKS.map(link => {
+						{NAV_LINKS.map(link => {
 							const active = isActive(pathname, link.href)
 							return (
 								<Link
@@ -69,7 +56,9 @@ const NavBar: React.FC = () => {
 						})}
 					</nav>
 
-					{/* Right controls */}
+					{/* Right controls. On mobile the search icon is the ONLY header control — the
+					    hamburger is gone, replaced by MobileTabBar. Search is what keeps the
+					    non-tab routes (Career, Companies, GitHub, CV) one tap away. */}
 					<div className='flex items-center gap-2'>
 						<button
 							onClick={() => setSearchOpen(true)}
@@ -84,36 +73,6 @@ const NavBar: React.FC = () => {
 							className='text-muted-foreground hover:text-cyber-cyan p-1.5 sm:hidden'>
 							<Icon icon='mdi:magnify' className='size-5' />
 						</button>
-
-						{/* Mobile menu */}
-						<Sheet open={menuOpen} onOpenChange={setMenuOpen}>
-							<SheetTrigger aria-label='Menu' className='text-foreground hover:text-cyber-yellow p-1.5 md:hidden'>
-								<Icon icon='mdi:menu' className='size-6' />
-							</SheetTrigger>
-							<SheetContent side='right' className='border-cyber-cyan/30 bg-background w-72 border-l'>
-								<SheetTitle className='sr-only'>Navigation</SheetTitle>
-								<nav className='mt-10 flex flex-col gap-1 p-4'>
-									{LINKS.map(link => {
-										const active = isActive(pathname, link.href)
-										return (
-											<Link
-												key={link.href}
-												href={link.href}
-												onClick={() => setMenuOpen(false)}
-												className={cn(
-													'flex items-center gap-3 border-l-2 px-4 py-3 font-mono text-sm tracking-widest uppercase transition-colors',
-													active ?
-														'border-cyber-yellow text-cyber-yellow bg-cyber-yellow/5'
-													:	'text-muted-foreground hover:text-foreground border-transparent'
-												)}>
-												<span className='text-cyber-cyan/50'>{link.code}</span>
-												{link.label}
-											</Link>
-										)
-									})}
-								</nav>
-							</SheetContent>
-						</Sheet>
 					</div>
 				</Container>
 			</header>

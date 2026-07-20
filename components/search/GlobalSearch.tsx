@@ -3,6 +3,7 @@
 import React from 'react'
 import { useRouter } from 'next/navigation'
 import { Icon } from '@iconify/react'
+import { NAV_LINKS } from '@/components/navigation/links'
 import {
 	CommandDialog,
 	CommandEmpty,
@@ -18,16 +19,6 @@ interface GlobalSearchProps {
 	open: boolean
 	onOpenChange: (open: boolean) => void
 }
-
-const NAV = [
-	{ label: 'Home', href: '/', icon: 'mdi:home-variant-outline' },
-	{ label: 'Career', href: '/career', icon: 'mdi:timeline-text-outline' },
-	{ label: 'Projects', href: '/projects', icon: 'mdi:folder-multiple-outline' },
-	{ label: 'Skills', href: '/skills', icon: 'mdi:chip' },
-	{ label: 'Companies', href: '/companies', icon: 'mdi:domain' },
-	{ label: 'GitHub', href: '/github', icon: 'simple-icons:github' },
-	{ label: 'CV', href: '/cv', icon: 'mdi:file-account-outline' }
-] as const
 
 const GlobalSearch: React.FC<GlobalSearchProps> = ({ open, onOpenChange }) => {
 	const router = useRouter()
@@ -49,7 +40,7 @@ const GlobalSearch: React.FC<GlobalSearchProps> = ({ open, onOpenChange }) => {
 				<CommandEmpty className='font-mono text-sm'>No matches found.</CommandEmpty>
 
 				<CommandGroup heading='Navigate'>
-					{NAV.map(item => (
+					{NAV_LINKS.map(item => (
 						<CommandItem key={item.href} value={`nav ${item.label}`} onSelect={() => go(item.href)}>
 							<Icon icon={item.icon} className='text-cyber-cyan size-4' />
 							<span className='font-mono uppercase'>{item.label}</span>
