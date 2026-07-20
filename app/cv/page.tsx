@@ -222,7 +222,10 @@ export default function CVPage() {
 							</div>
 						</div>
 						<div className='flex flex-col items-center gap-2'>
-							<QRCodeSVG value={websiteUrl} size={80} fgColor={ACCENT} />
+							{/* Near-black modules on white: the previous ACCENT red reads as near-white under
+							    the 660nm illumination the QR spec verifies against, and marginSize defaults
+							    to 0 — with no quiet zone many scanners never lock on. */}
+							<QRCodeSVG value={websiteUrl} size={80} level='M' fgColor='#111111' marginSize={4} />
 							<span
 								className='text-[8px] font-black tracking-widest uppercase opacity-60'
 								style={{ color: ACCENT, WebkitPrintColorAdjust: 'exact' }}>

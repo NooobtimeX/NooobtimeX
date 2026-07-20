@@ -2,16 +2,8 @@ import React from 'react'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
 import Container from '@/components/cyber/Container'
+import { FOOTER_LINKS } from '@/components/navigation/links'
 import { personalData } from '@/common'
-
-const LINKS = [
-	{ label: 'Career', href: '/career' },
-	{ label: 'Projects', href: '/projects' },
-	{ label: 'Skills', href: '/skills' },
-	{ label: 'Companies', href: '/companies' },
-	{ label: 'GitHub', href: '/github' },
-	{ label: 'CV', href: '/cv' }
-] as const
 
 const PLATFORM_LABEL: Record<string, string> = {
 	github: 'GitHub',
@@ -45,7 +37,7 @@ const NavFooter: React.FC = () => {
 				<div>
 					<h3 className='text-cyber-cyan mb-4 font-mono text-xs tracking-[0.3em] uppercase'>// Navigate</h3>
 					<nav className='flex flex-col gap-2'>
-						{LINKS.map(l => (
+						{FOOTER_LINKS.map(l => (
 							<Link
 								key={l.href}
 								href={l.href}

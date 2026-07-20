@@ -23,6 +23,28 @@ export interface SocialLink {
 	username?: string
 }
 
+/**
+ * A direct messaging channel — business-card style, deliberately separate from
+ * `SocialLink`. Social links are profile URLs and get fed to JSON-LD `sameAs`, the footer
+ * grid and the README generator; a LINE/WeChat handle is none of those things.
+ */
+export interface ContactChannel {
+	id: string // 'phone' | 'whatsapp' | 'line' | 'wechat' — free-form, no union to widen
+	label: string // Display name, e.g. 'WeChat'
+	icon: string // Icon name for @iconify/react
+	/** The handle/number shown on the card and copied to the clipboard. */
+	value: string
+	/** Deep link, when the vendor publishes one. Absent for channels that have none. */
+	url?: string
+	/** Payload to render as a QR — for channels reachable only by scanning. */
+	qr?: string
+	/** Reachable from inside mainland China? Drives the availability badge. */
+	inChina: boolean
+	/** ISO date the `qr` payload was last confirmed working — rendered as a staleness cue. */
+	verifiedOn?: string
+	note?: string
+}
+
 /** A spoken/written language and proficiency */
 export interface Language {
 	name: string // Display name, e.g. 'English'
@@ -143,8 +165,18 @@ export interface PersonalData {
 		email: string
 		location: string
 		availability: string
+		/** Free-text locality for the vCard `ADR`, e.g. 'Nonthaburi'. */
+		locality?: string
+		/** Free-text country for the vCard `ADR`, e.g. 'Thailand'. */
+		country?: string
+		/** ASCII romanised given name — vCard `N` must not depend on the display name. */
+		givenName?: string
+		/** ASCII romanised family name. */
+		familyName?: string
 	}
 	birthDate: string
 	languages: Language[]
 	socialLinks: SocialLink[]
+	/** Direct messaging channels rendered on /contact. Optional — omit an entry to hide it. */
+	contactChannels?: ContactChannel[]
 }

@@ -15,7 +15,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		{ url: `${domain}/career`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
 		{ url: `${domain}/companies`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
 		{ url: `${domain}/github`, lastModified: now, changeFrequency: 'weekly', priority: 0.6 },
-		{ url: `${domain}/cv`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 }
+		{ url: `${domain}/cv`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
+		{ url: `${domain}/contact`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 }
 	]
 
 	const projectRoutes: MetadataRoute.Sitemap = projectsData.map(item => ({

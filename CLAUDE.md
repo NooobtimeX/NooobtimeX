@@ -25,7 +25,7 @@ lib/utils.ts       # cn() + slugify/unslugify/formatExperienceDuration · lib/gi
 | Task  | Command         | Notes                                   |
 | ----- | --------------- | --------------------------------------- |
 | Dev   | `bun run dev`   | serves on **port 1000**                 |
-| Build | `bun run build` | ~79 routes; this is the type-check gate |
+| Build | `bun run build` | ~99 routes; this is the type-check gate |
 | Lint  | `bun run lint`  | `eslint . --fix && prettier . --write`  |
 
 **Definition of done for any code change: `bun run lint` then `bun run build`, both
