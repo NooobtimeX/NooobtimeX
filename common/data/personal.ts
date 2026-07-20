@@ -57,24 +57,24 @@ const contactChannels: ContactChannel[] = [
 
 export const personalData: PersonalData = {
 	name: 'WONGSAPHAT PUANGSORN',
-	title: 'Software Developer',
+	title: 'Chief Technology Officer',
 	tagline:
-		'Forward-thinking Software Developer specializing in modern JavaScript/TypeScript ecosystems and high-performance system design.',
+		'Chief Technology Officer at RS Trophy, owning full-stack engineering and infrastructure end to end — open to select freelance projects on the side.',
 	avatar: assets.personal.avatar,
 	birthDate: '2003-04-19',
 	about: {
-		bio: 'Enthusiastic and dedicated developer focused on transforming business requirements into clean, sustainable code. I am passionate about mastering modern infrastructure and am seeking a collaborative engineering culture where I can contribute to high-performance systems while learning from senior mentors.',
+		bio: 'Enthusiastic and dedicated technologist focused on transforming business requirements into clean, sustainable code. As CTO, I own every technology decision end-to-end — from technical strategy to single-handedly shipping software, infrastructure, and automation across the business. I am passionate about high-performance systems and modern infrastructure, and I take on select freelance projects alongside my full-time role.',
 		highlights: [
-			'Eager to master modern JavaScript/TypeScript ecosystems',
+			'Own end-to-end technology decisions, from strategy to shipped code',
 			'Focused on building robust, high-performance systems',
 			'Committed to clean and sustainable architecture principles',
-			'Passionate about technical growth and collaborative learning'
+			'Open to select freelance projects alongside my full-time role'
 		]
 	},
 	contact: {
 		email: 'nooobtimex@gmail.com',
 		location: 'Pak Kret District, Nonthaburi',
-		availability: 'Available for Software Developer roles with a focus on growth and modern infrastructure',
+		availability: 'Open for freelance and contract software work alongside my full-time role at RS Trophy',
 		locality: 'Pak Kret, Nonthaburi',
 		country: 'Thailand',
 		givenName: 'Wongsaphat',
