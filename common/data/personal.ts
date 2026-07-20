@@ -40,9 +40,9 @@ const contactChannels: ContactChannel[] = [
 		id: 'wechat',
 		label: 'WeChat',
 		icon: 'simple-icons:wechat',
-		// TODO: replace with the real WeChat ID (Me → tap your name → WeChat ID).
-		// This is the fallback path when the QR token below stops working.
-		value: '',
+		// The fallback path when the QR token below stops working — someone can still
+		// search this ID in WeChat manually.
+		value: 'nooobtimex',
 		// Decoded from the owner's personal "add me as friend" QR.
 		// OPAQUE BYTE SEQUENCE — do not normalise, trim, or drop the '?s=2'. Any edit
 		// silently produces a QR that encodes a different string and stops working.
