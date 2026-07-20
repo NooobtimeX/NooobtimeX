@@ -59,23 +59,23 @@ export const personalData: PersonalData = {
 	name: 'WONGSAPHAT PUANGSORN',
 	title: 'Chief Technology Officer',
 	tagline:
-		'Chief Technology Officer at RS Trophy, owning full-stack engineering and infrastructure end to end — freelancing as a software engineer on web app projects on the side.',
+		'Chief Technology Officer at RS Trophy, owning full-stack engineering and infrastructure end to end — freelancing remotely as a software engineer on web app projects on the side.',
 	avatar: assets.personal.avatar,
 	birthDate: '2003-04-19',
 	about: {
-		bio: 'Enthusiastic and dedicated technologist focused on transforming business requirements into clean, sustainable code. As CTO, I own every technology decision end-to-end — from technical strategy to single-handedly shipping software, infrastructure, and automation across the business. I am passionate about high-performance systems and modern infrastructure, and I freelance as a software engineer building web apps alongside my full-time role.',
+		bio: 'Enthusiastic and dedicated technologist focused on transforming business requirements into clean, sustainable code. As CTO, I own every technology decision end-to-end — from technical strategy to single-handedly shipping software, infrastructure, and automation across the business. I am passionate about high-performance systems and modern infrastructure, and I freelance remotely as a software engineer building web apps alongside my full-time role.',
 		highlights: [
 			'Own end-to-end technology decisions, from strategy to shipped code',
 			'Focused on building robust, high-performance systems',
 			'Committed to clean and sustainable architecture principles',
-			'Freelance software engineer for web app projects, alongside my full-time role'
+			'Remote freelance software engineer for web app projects, alongside my full-time role'
 		]
 	},
 	contact: {
 		email: 'nooobtimex@gmail.com',
 		location: 'Pak Kret District, Nonthaburi',
 		availability:
-			'Open for freelance web app software engineering work alongside my full-time role as CTO at RS Trophy',
+			'Open for remote freelance web app software engineering work alongside my full-time role as CTO at RS Trophy',
 		locality: 'Pak Kret, Nonthaburi',
 		country: 'Thailand',
 		givenName: 'Wongsaphat',
