@@ -23,7 +23,6 @@ import {
 const ACCENT = '#FF003C'
 
 const website = personalData.socialLinks.find(s => s.platform === 'website')
-const websiteLabel = website?.username ?? 'nooobtimex.me'
 const websiteUrl = website?.url ?? 'https://nooobtimex.me'
 
 const humanize = (value: string) =>
@@ -33,6 +32,13 @@ const humanize = (value: string) =>
 		.join(' ')
 
 const stripProtocol = (url: string) => url.replace(/^https?:\/\//, '').replace(/\/+$/, '')
+
+// E.164 Thai mobile → grouped display, e.g. +66855877024 → +66 85 587 7024.
+// The data layer keeps E.164 for the vCard/QR; this is presentation-only.
+const formatPhone = (e164?: string) => {
+	const m = e164?.match(/^\+66(\d{2})(\d{3})(\d{4})$/)
+	return m ? `+66 ${m[1]} ${m[2]} ${m[3]}` : (e164 ?? '')
+}
 
 const CvMeta: React.FC<{ label: string; children: React.ReactNode }> = ({ label, children }) => (
 	<div className='border-l-2 pl-2' style={{ borderColor: ACCENT, WebkitPrintColorAdjust: 'exact' }}>
@@ -212,12 +218,12 @@ export default function CVPage() {
 									{personalData.contact.email}
 								</div>
 								<div className='flex items-center gap-2 text-[12px] text-gray-700 uppercase'>
-									<Icon icon='material-symbols:location-on' className='h-4 w-4' style={{ color: ACCENT }} />
-									{personalData.contact.location}
+									<Icon icon='material-symbols:call' className='h-4 w-4' style={{ color: ACCENT }} />
+									{formatPhone(personalData.contact.phone)}
 								</div>
 								<div className='flex items-center gap-2 text-[12px] text-gray-700 uppercase'>
-									<Icon icon='material-symbols:language' className='h-4 w-4' style={{ color: ACCENT }} />
-									{websiteLabel}
+									<Icon icon='material-symbols:location-on' className='h-4 w-4' style={{ color: ACCENT }} />
+									{personalData.contact.location}
 								</div>
 							</div>
 						</div>
@@ -339,16 +345,14 @@ export default function CVPage() {
 									style={{ color: ACCENT, WebkitPrintColorAdjust: 'exact' }}>
 									Languages
 								</h2>
-								<ul className='space-y-2'>
+								<dl className='grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-[11px] font-black uppercase'>
 									{personalData.languages.map(l => (
-										<li
-											key={l.code}
-											className='flex items-center justify-between gap-2 text-[11px] font-black uppercase'>
-											<span className='text-black'>{l.name}</span>
-											<span className='text-gray-500'>{l.level}</span>
-										</li>
+										<React.Fragment key={l.code}>
+											<dt className='text-black'>{l.name}</dt>
+											<dd className='text-gray-500'>{l.level}</dd>
+										</React.Fragment>
 									))}
-								</ul>
+								</dl>
 							</section>
 
 							<section>
