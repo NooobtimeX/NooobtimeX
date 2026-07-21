@@ -65,6 +65,7 @@ const HomeContent: React.FC = () => {
 
 						<div className='mt-6 flex flex-wrap gap-2'>
 							<CyberTag icon='mdi:map-marker-outline'>{personalData.contact.location}</CyberTag>
+							<CyberTag icon='mdi:home-outline'>Remote</CyberTag>
 							<CyberTag icon='mdi:circle' tone='yellow'>
 								Available
 							</CyberTag>

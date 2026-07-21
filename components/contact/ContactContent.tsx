@@ -47,6 +47,7 @@ const ContactContent: React.FC = () => {
 
 			<div className='mt-6 flex flex-wrap gap-2'>
 				<CyberTag icon='mdi:map-marker-outline'>{personalData.contact.location}</CyberTag>
+				<CyberTag icon='mdi:home-outline'>Remote</CyberTag>
 				<CyberTag icon='mdi:translate' tone='magenta'>
 					{personalData.languages.map(l => l.code.toUpperCase()).join(' / ')}
 				</CyberTag>
