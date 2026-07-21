@@ -144,7 +144,7 @@ export const rsTrophy: ProjectDef = {
 		'A unified e-commerce and management platform for custom trophies, plaques, and medals — consolidating fragmented sibling brands into one high-performance system. Built as a Bun monorepo: a localized, SEO-optimized Next.js storefront, a real-time ElysiaJS API, and an admin console that share Mongoose schemas and types through a common workspace package. Runs on MongoDB with Redis caching and Cloudflare R2 object storage, containerized with Docker and deployed on Railway — and ships an AI copilot for natural-language shopping assistance. The platform evolved from an original WordPress + WooCommerce storefront into this unified Bun monorepo.',
 	resumeSummary:
 		'Unified e-commerce + admin platform for a custom-awards manufacturer, consolidating fragmented brands into one Bun monorepo — SEO storefront, ElysiaJS API, and an AI shopping copilot. MongoDB / Redis on Railway.',
-	images: { banner: assets.projects.rsTrophy.banner, photos: [assets.projects.rsTrophy.banner] },
+	images: { banner: assets.projects.rsTrophy.banner, photos: [...assets.projects.rsTrophy.gallery] },
 	// Starting stack (2023) — the original WordPress + WooCommerce storefront. The 2026 Bun monorepo
 	// rebuild is introduced via timeline events, which also retire the legacy WordPress stack.
 	skills: ['wordpress', 'woocommerce', 'seo', 'google-analytics', 'google-ads'],
@@ -416,7 +416,7 @@ export const prettierConfig: ProjectDef = {
 	title: 'Prettier Config',
 	description:
 		'The fastest way to build, share, and try a Prettier configuration — visually, in the browser. Runs the official prettier/standalone fully client-side for instant live formatting, with a CodeMirror 6 editor spanning JS/TS, CSS, HTML, JSON, Markdown, Vue, and more, plus shareable URL-encoded configs and i18n. Built on Next.js, React, TypeScript, and Tailwind CSS v4 with shadcn/ui on Base UI.',
-	images: { banner: assets.projects.prettierConfig.banner, photos: [assets.projects.prettierConfig.banner] },
+	images: { banner: assets.projects.prettierConfig.banner, photos: [...assets.projects.prettierConfig.gallery] },
 	// Starting stack — the UI libraries, editor, and analytics are introduced via timeline events.
 	skills: ['next-js', 'react', 'tailwind-css', 'vercel'],
 	links: { live: 'https://prettier-config.dev' },
@@ -484,7 +484,7 @@ export const rsMedal: ProjectDef = {
 	title: 'RS Medal',
 	description:
 		'A medal showcase and catalog web app — first built on WordPress, later remade as a localized Next.js application with structured data and a reusable product data model.',
-	images: { banner: assets.projects.rsMedal.banner, photos: [assets.projects.rsMedal.banner] },
+	images: { banner: assets.projects.rsMedal.banner, photos: [...assets.projects.rsMedal.gallery] },
 	// Starting stack (2022 WordPress). The Next.js remake — and WordPress's retirement — are events.
 	skills: ['wordpress', 'seo', 'google-ads'],
 	links: { live: 'https://www.rs-medal.com' },
@@ -551,7 +551,7 @@ export const rsAward: ProjectDef = {
 	title: 'RS Award',
 	description:
 		'A plaque and award showcase web app — first built on WordPress, later remade as a localized Next.js application with SEO/AEO structured data and client-side search.',
-	images: { banner: assets.projects.rsAward.banner, photos: [assets.projects.rsAward.banner] },
+	images: { banner: assets.projects.rsAward.banner, photos: [...assets.projects.rsAward.gallery] },
 	// Starting stack (2022 WordPress). The Next.js remake, the Prisma/Postgres → MongoDB migration,
 	// and WordPress's retirement are all recorded as timeline events below.
 	skills: ['wordpress', 'seo', 'google-ads'],
@@ -630,7 +630,7 @@ export const portfolio: ProjectDef = {
 	title: '🚀 Portfolio – Wongsaphat Puangsorn',
 	description:
 		'This site — a Cyberpunk 2077–inspired portfolio built on Next.js (App Router, Turbopack) with a fully custom Tailwind v4 design system and shadcn/ui on Base UI. Features a ⌘K command palette, a gig-board project journal, a vertical career-trace timeline, and a print-ready CV with a slide-presentation mode. Deployed on Vercel.',
-	images: { banner: assets.projects.portfolio.banner, photos: [assets.projects.portfolio.banner] },
+	images: { banner: assets.projects.portfolio.banner, photos: [] },
 	// Starting stack — a static profile that grew into a full web app via the timeline events below.
 	skills: ['next-js', 'tailwind-css', 'seo'],
 	links: { live: 'https://github.com/NooobtimeX/NooobtimeX' },
@@ -718,7 +718,7 @@ export const monomaxEplPortal: ProjectDef = {
 		'Full-stack SaaS issuing & verifying English Premier League broadcast licenses for Thai venues — dual isolated auth realms, a geospatial venue model, and in-house QR e-certificates. Next.js 16 / MongoDB, Dockerized CI/CD. Built in a 3-day sprint.',
 	images: {
 		banner: assets.projects.monomaxEplPortal.banner,
-		photos: [assets.projects.monomaxEplPortal.banner]
+		photos: [...assets.projects.monomaxEplPortal.gallery]
 	},
 	// Starting stack — the client's Firebase SPA + a NextAuth scaffold, both retired via events below.
 	skills: [
@@ -828,7 +828,7 @@ export const qrFood: ProjectDef = {
 		'Full-stack QR-code ordering and multi-branch restaurant management web application. Customers scan QR codes to order and call staff; staff manage table statuses and orders; owners manage branches and view analytics. Nuxt 3 / Vue 3 / Prisma / Supabase / PostgreSQL / Tailwind CSS on Vercel.',
 	images: {
 		banner: assets.projects.qrFood.banner,
-		photos: []
+		photos: [...assets.projects.qrFood.gallery]
 	},
 	skills: ['vue', 'nuxt-js', 'tailwind-css', 'prisma', 'supabase', 'postgresql', 'docker', 'vercel'],
 	links: {
