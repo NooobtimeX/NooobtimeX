@@ -836,7 +836,7 @@ export const qrFood: ProjectDef = {
 	},
 	startDate: '2023-08-01',
 	endDate: '2024-12-24',
-	linkedExperienceIds: ['thammasat-bs-cs'],
+	linkedExperienceIds: ['freelance'],
 	timeline: [
 		{
 			date: '2023-08-01',
