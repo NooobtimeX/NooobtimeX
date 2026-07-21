@@ -41,6 +41,7 @@ export const assets = {
 			]
 		},
 		prettierConfig: { banner: '/issue/prettier-config/banner.webp' },
+		floodProject: { banner: '/issue/flood-project/banner.webp' },
 		rsMedal: { banner: '/issue/rs-medal/banner.webp' },
 		rsAward: { banner: '/issue/rs-award/banner.webp' },
 		portfolio: { banner: '/logo/logo.webp' },

@@ -127,6 +127,7 @@ export const freelance: Organization = {
 	name: 'Freelance',
 	location: 'remote',
 	type: 'company',
+	url: 'https://nooobtimex.me/contact',
 	description: 'Remote freelance web-app engineering, delivered end-to-end from scoping to deployment.',
 	about:
 		'Independent, remote freelance software engineering — building web apps end-to-end for clients, from scoping and design through full-stack build and deployment.',
