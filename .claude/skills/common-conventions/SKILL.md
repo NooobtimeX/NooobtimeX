@@ -105,10 +105,10 @@ url-safe → `/projects/<id>`.
 ## 6. Experiences & entities
 
 - [`common/data/experiences.ts`](../../../common/data/experiences.ts) — author
-  `ExperienceItem` consts (with `category: 'work' | 'education' | 'personal'`,
+  `ExperienceItem` consts (with `category: 'work' | 'education'`,
   `YYYY-MM-DD` dates, omit `endDate` for a current role) and include each in the
   source array → `experiencesData` (sorted desc) plus the
-  `workExperienceData` / `educationData` / `personalProjectsData` slices.
+  `workExperienceData` / `educationData` slices.
 - [`common/data/entities.ts`](../../../common/data/entities.ts) — `Organization`
   consts → `entitiesData`, referenced by a project's `linkedOrganizationId`
   (`EntityId`). Add the org **and** its `EntityId` to [`enums.ts`](../../../common/enums.ts) before linking.
