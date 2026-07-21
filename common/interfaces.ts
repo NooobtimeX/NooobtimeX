@@ -155,6 +155,10 @@ export interface Project {
 export interface PersonalData {
 	name: string
 	title: string
+	/** Freelance-facing headline for the homepage hero — a hireable role, deliberately
+	 *  decoupled from `title`/the career timeline's latest position (e.g. a C-suite
+	 *  title there reads as "not for hire" to a freelance client browsing the hero). */
+	heroRole: string
 	tagline: string
 	avatar: string
 	about: {

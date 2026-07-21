@@ -58,6 +58,7 @@ const contactChannels: ContactChannel[] = [
 export const personalData: PersonalData = {
 	name: 'WONGSAPHAT PUANGSORN',
 	title: 'Chief Technology Officer',
+	heroRole: 'Software Engineer',
 	tagline:
 		'Chief Technology Officer at RS Trophy, owning full-stack engineering and infrastructure end to end — freelancing remotely as a software engineer on web app projects on the side.',
 	avatar: assets.personal.avatar,

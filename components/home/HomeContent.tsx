@@ -13,7 +13,7 @@ import MotionReveal from '@/components/cyber/MotionReveal'
 import SectionHeader from '@/components/cyber/SectionHeader'
 import ProjectCard from '@/components/projects/ProjectCard'
 import { cn, formatExperienceDuration } from '@/lib/utils'
-import { featuredProjects, featuredSkills, latestRole, personalData, workExperienceData } from '@/common'
+import { featuredProjects, featuredSkills, personalData, workExperienceData } from '@/common'
 
 const formatPosition = (position: string) =>
 	position
@@ -54,7 +54,7 @@ const HomeContent: React.FC = () => {
 						<div className='mt-4 flex items-center gap-3'>
 							<span className='bg-cyber-yellow h-6 w-1' />
 							<GlitchText
-								text={formatPosition(latestRole.position)}
+								text={personalData.heroRole}
 								className='neon-text-yellow font-display text-2xl font-bold tracking-widest uppercase md:text-3xl'
 							/>
 						</div>
