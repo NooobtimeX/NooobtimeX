@@ -1,15 +1,15 @@
 import type { ExperienceItem } from '../interfaces'
 import { sortByDateDesc } from '../utils'
-import { freelanceWithFriends, jasmineTechnologySolution, ruamsukPlating, thammasatUniversity } from './entities'
+import { freelance, jasmineTechnologySolution, ruamsukPlating, thammasatUniversity } from './entities'
 
 // --- Roles ---
 
 export const freelanceExperience: ExperienceItem = {
 	id: 'freelance',
-	organization: freelanceWithFriends,
-	position: 'freelance-developer',
+	organization: freelance,
+	position: 'developer',
 	description:
-		'Remote freelance software engineering — building web apps end-to-end, from scoping and design through full-stack delivery and deployment. Work delivered under the Blitzwerk Innovation collective includes a flood / water-level monitoring dashboard (interactive station map, historical charts, CSV export, and role-based accounts) and a real-time multiplayer game. Open to select freelance web-app projects alongside my full-time role.',
+		'Remote freelance software engineering — building web apps end-to-end, from scoping and design through full-stack delivery and deployment. Recent freelance builds include a flood / water-level monitoring dashboard (interactive station map, historical charts, CSV export, and role-based accounts) and a real-time multiplayer game. Open to select freelance web-app projects alongside my full-time role.',
 	type: 'freelance',
 	category: 'work',
 	startDate: '2025-01-01'

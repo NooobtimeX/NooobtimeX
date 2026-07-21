@@ -13,18 +13,13 @@ export type EmploymentType = 'volunteer' | 'freelance' | 'part-time' | 'full-tim
 
 export type Location = 'remote' | 'nonthaburi-thailand' | 'pathumthani-thailand'
 
-export type Position = 'chief-technology-officer' | 'freelance-developer' | 'developer' | 'student'
+export type Position = 'chief-technology-officer' | 'developer' | 'student'
 
 export type SocialPlatform = 'github' | 'linkedin' | 'instagram' | 'youtube' | 'website' | 'email'
 
 /** Organization ids — referenced by `Organization.id`. */
 export type EntityId =
-	| 'jasmine-technology-solution'
-	| 'jas-tv'
-	| 'monomax'
-	| 'ruamsuk-plating'
-	| 'freelance-blitzwerk'
-	| 'thammasat-university'
+	'jasmine-technology-solution' | 'jas-tv' | 'monomax' | 'ruamsuk-plating' | 'freelance' | 'thammasat-university'
 
 /** Experience/role ids — referenced by projects (`linkedExperienceIds`). */
 export type ExperienceId =

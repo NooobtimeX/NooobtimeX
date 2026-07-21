@@ -122,20 +122,18 @@ export const monomax: Organization = {
 	]
 }
 
-export const freelanceWithFriends: Organization = {
-	id: 'freelance-blitzwerk',
-	name: 'Blitzwerk Innovation',
-	logo: assets.logos.blitzwerk,
+export const freelance: Organization = {
+	id: 'freelance',
+	name: 'Freelance',
 	location: 'remote',
 	type: 'company',
-	url: 'https://blitzwerk.dev',
-	description: 'A remote freelance collective delivering end-to-end web apps, from scoping to deployment.',
+	description: 'Remote freelance web-app engineering, delivered end-to-end from scoping to deployment.',
 	about:
-		'Blitzwerk Innovation — a remote freelance collective delivering end-to-end web apps with a small team of friends, from scoping and design through full-stack build and deployment.',
-	industry: 'Freelance web-app collective',
+		'Independent, remote freelance software engineering — building web apps end-to-end for clients, from scoping and design through full-stack build and deployment.',
+	industry: 'Freelance web-app engineering',
 	founded: '2025',
 	headquarters: 'Remote',
-	size: 'Small independent collective',
+	size: 'Independent',
 	parentGroup: 'Independent',
 	products: ['End-to-end web development', 'Full-stack delivery', 'Scoping → deployment'],
 	highlights: [
@@ -179,6 +177,6 @@ export const entitiesData: Organization[] = [
 	jasmineTechnologySolution,
 	jasTv,
 	monomax,
-	freelanceWithFriends,
+	freelance,
 	thammasatUniversity
 ]
