@@ -5,7 +5,7 @@
 
 export type SkillCategory = 'frontend' | 'backend' | 'infrastructure' | 'growth-management'
 
-export type ExperienceCategory = 'work' | 'education' | 'personal'
+export type ExperienceCategory = 'work' | 'education'
 
 export type EntityType = 'company' | 'university' | 'personal'
 
@@ -13,7 +13,7 @@ export type EmploymentType = 'volunteer' | 'freelance' | 'part-time' | 'full-tim
 
 export type Location = 'remote' | 'nonthaburi-thailand' | 'pathumthani-thailand'
 
-export type Position = 'chief-technology-officer' | 'developer' | 'student'
+export type Position = 'chief-technology-officer' | 'freelance-developer' | 'developer' | 'student'
 
 export type SocialPlatform = 'github' | 'linkedin' | 'instagram' | 'youtube' | 'website' | 'email'
 
@@ -24,7 +24,6 @@ export type EntityId =
 	| 'monomax'
 	| 'ruamsuk-plating'
 	| 'freelance-blitzwerk'
-	| 'personal-projects'
 	| 'thammasat-university'
 
 /** Experience/role ids — referenced by projects (`linkedExperienceIds`). */
@@ -33,6 +32,5 @@ export type ExperienceId =
 	| 'ruamsuk-software-engineer-part-time'
 	| 'ruamsuk-software-engineer-full-time'
 	| 'ruamsuk-cto'
-	| 'freelance-blitzwerk-role'
-	| 'personal-projects-role'
+	| 'freelance'
 	| 'thammasat-bs-cs'

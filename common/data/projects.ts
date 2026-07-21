@@ -281,7 +281,7 @@ export const onlinePokerGame: ProjectDef = {
 	skills: ['next-js', 'react', 'prisma', 'render', 'tailwind-css', 'postgresql'],
 	links: {},
 	startDate: '2025-03-01',
-	linkedExperienceIds: ['freelance-blitzwerk-role'],
+	linkedExperienceIds: ['freelance'],
 	timeline: [
 		{
 			date: '2025-06-09',
@@ -361,7 +361,7 @@ export const prettierConfig: ProjectDef = {
 	skills: ['next-js', 'react', 'tailwind-css', 'vercel'],
 	links: { live: 'https://prettier-config.dev' },
 	startDate: '2025-07-09',
-	linkedExperienceIds: ['personal-projects-role'],
+	linkedExperienceIds: ['freelance'],
 	timeline: [
 		{
 			date: '2025-05-09',
@@ -575,7 +575,7 @@ export const portfolio: ProjectDef = {
 	skills: ['next-js', 'tailwind-css', 'seo'],
 	links: { live: 'https://github.com/NooobtimeX/NooobtimeX' },
 	startDate: '2021-01-01',
-	linkedExperienceIds: ['personal-projects-role'],
+	linkedExperienceIds: ['freelance'],
 	timeline: [
 		{
 			date: '2025-08-25',

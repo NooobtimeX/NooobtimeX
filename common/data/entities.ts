@@ -124,14 +124,15 @@ export const monomax: Organization = {
 
 export const freelanceWithFriends: Organization = {
 	id: 'freelance-blitzwerk',
-	name: 'Freelance with friends',
+	name: 'Blitzwerk Innovation',
 	logo: assets.logos.blitzwerk,
 	location: 'remote',
 	type: 'company',
-	description: 'A small freelance collective delivering end-to-end web projects, from scoping to deployment.',
+	url: 'https://blitzwerk.dev',
+	description: 'A remote freelance collective delivering end-to-end web apps, from scoping to deployment.',
 	about:
-		'A small freelance collective delivering end-to-end web projects with a few friends — from scoping and design through full-stack build and deployment.',
-	industry: 'Freelance web-dev collective',
+		'Blitzwerk Innovation — a remote freelance collective delivering end-to-end web apps with a small team of friends, from scoping and design through full-stack build and deployment.',
+	industry: 'Freelance web-app collective',
 	founded: '2025',
 	headquarters: 'Remote',
 	size: 'Small independent collective',
@@ -141,24 +142,6 @@ export const freelanceWithFriends: Organization = {
 		'Collaborative, end-to-end delivery — scoping, build, and ship.',
 		"Scalable web solutions tailored to each client's needs."
 	]
-}
-
-export const personalProjects: Organization = {
-	id: 'personal-projects',
-	name: 'Personal Projects',
-	logo: assets.logos.nooobtimex,
-	location: 'remote',
-	type: 'personal',
-	description: 'The umbrella for self-directed builds, experiments, tooling, and open-source work.',
-	about:
-		'The umbrella for self-directed builds, experiments, developer tooling, and open-source contributions — including this portfolio.',
-	industry: 'Self-directed builds & open source',
-	founded: '2021',
-	headquarters: 'Remote',
-	size: 'Solo',
-	parentGroup: 'Independent',
-	products: ['Open-source tooling', 'Experiments & prototypes', 'This portfolio'],
-	highlights: ['Self-directed builds, experiments, and internal tooling.', 'Ongoing open-source contributions.']
 }
 
 export const thammasatUniversity: Organization = {
@@ -197,6 +180,5 @@ export const entitiesData: Organization[] = [
 	jasTv,
 	monomax,
 	freelanceWithFriends,
-	personalProjects,
 	thammasatUniversity
 ]

@@ -22,8 +22,7 @@ const humanize = (value: string) =>
 
 const categoryAccent: Record<ExperienceCategory, string> = {
 	work: 'text-cyber-cyan',
-	education: 'text-cyber-yellow',
-	personal: 'text-cyber-magenta'
+	education: 'text-cyber-yellow'
 }
 
 const ExperienceDetail: React.FC<ExperienceDetailProps> = ({ item }) => {

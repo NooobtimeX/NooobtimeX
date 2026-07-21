@@ -15,7 +15,6 @@ export const assets = {
 		rsTrophy: '/logo/RSTROPHY.webp',
 		jasmineTech: '/logo/JTS.webp',
 		blitzwerk: '/logo/blitzwerk.webp',
-		nooobtimex: '/logo/logo.webp',
 		tuLogo: '/logo/tu-logo.webp'
 	},
 	projects: {

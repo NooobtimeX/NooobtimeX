@@ -19,7 +19,7 @@ const ExperienceContent: React.FC = () => {
 			<SectionHeader
 				code='03'
 				title='Career Trace'
-				subtitle='Chronological lifepath — roles, education, and self-directed builds.'
+				subtitle='Chronological lifepath — roles, freelance work, and education.'
 			/>
 
 			<div className='relative mt-12'>

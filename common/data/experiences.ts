@@ -1,25 +1,18 @@
 import type { ExperienceItem } from '../interfaces'
 import { sortByDateDesc } from '../utils'
-import {
-	freelanceWithFriends,
-	jasmineTechnologySolution,
-	personalProjects,
-	ruamsukPlating,
-	thammasatUniversity
-} from './entities'
+import { freelanceWithFriends, jasmineTechnologySolution, ruamsukPlating, thammasatUniversity } from './entities'
 
 // --- Roles ---
 
-export const freelanceBlitzwerkExperience: ExperienceItem = {
-	id: 'freelance-blitzwerk-role',
+export const freelanceExperience: ExperienceItem = {
+	id: 'freelance',
 	organization: freelanceWithFriends,
-	position: 'developer',
+	position: 'freelance-developer',
 	description:
-		'Collaborated on end-to-end web development projects, delivering scalable solutions tailored to client needs.',
+		'Remote freelance software engineering — building web apps end-to-end, from scoping and design through full-stack delivery and deployment. Work delivered under the Blitzwerk Innovation collective includes a flood / water-level monitoring dashboard (interactive station map, historical charts, CSV export, and role-based accounts) and a real-time multiplayer game. Open to select freelance web-app projects alongside my full-time role.',
 	type: 'freelance',
 	category: 'work',
-	startDate: '2025-01-01',
-	endDate: '2025-12-31'
+	startDate: '2025-01-01'
 }
 
 export const jasmineTechnologySolutionExperience: ExperienceItem = {
@@ -69,16 +62,6 @@ export const ruamsukPlatingCto: ExperienceItem = {
 	startDate: '2026-08-01'
 }
 
-export const personalProjectsExperience: ExperienceItem = {
-	id: 'personal-projects-role',
-	organization: personalProjects,
-	position: 'developer',
-	description: 'Developing and maintaining high-impact personal projects and open-source contributions.',
-	type: 'freelance',
-	category: 'personal',
-	startDate: '2021-06-01'
-}
-
 // --- Education ---
 
 export const thammasatComputerScience: ExperienceItem = {
@@ -97,12 +80,11 @@ export const thammasatComputerScience: ExperienceItem = {
 // --- Aggregation ---
 
 const all: ExperienceItem[] = [
-	freelanceBlitzwerkExperience,
+	freelanceExperience,
 	jasmineTechnologySolutionExperience,
 	ruamsukPlatingDevelopereerPartTime,
 	ruamsukPlatingDeveloperFullTime,
 	ruamsukPlatingCto,
-	personalProjectsExperience,
 	thammasatComputerScience
 ]
 
@@ -110,7 +92,6 @@ export const experiencesData: ExperienceItem[] = [...all].sort(sortByDateDesc)
 
 export const workExperienceData: ExperienceItem[] = all.filter(a => a.category === 'work').sort(sortByDateDesc)
 export const educationData: ExperienceItem[] = all.filter(a => a.category === 'education').sort(sortByDateDesc)
-export const personalProjectsData: ExperienceItem[] = all.filter(a => a.category === 'personal').sort(sortByDateDesc)
 
 /** Most recent work role by start date — includes future-dated roles (e.g. an upcoming CTO role). */
 export const latestRole: ExperienceItem = workExperienceData[0]

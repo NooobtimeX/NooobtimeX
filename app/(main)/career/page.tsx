@@ -5,7 +5,7 @@ import { personalData } from '@/common'
 
 export const metadata: Metadata = {
 	title: `Career | ${personalData.name}`,
-	description: 'Professional roles, education, and personal projects across the timeline.'
+	description: 'Professional roles, freelance work, and education across the timeline.'
 }
 
 const ExperiencePage: React.FC = () => {
