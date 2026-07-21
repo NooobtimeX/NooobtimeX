@@ -50,7 +50,6 @@ export interface Language {
 	name: string // Display name, e.g. 'English'
 	level: string // Proficiency, e.g. 'Native' or 'Professional working'
 	code: string // BCP-47 tag for JSON-LD knowsLanguage, e.g. 'en'
-	icon?: string // Optional icon name for @iconify/react
 }
 
 // --- Domain ---

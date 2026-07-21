@@ -27,8 +27,7 @@ const BAR_H = 14
 const TYPE_COLOR: Record<string, string> = {
 	'full-time': C.yellow,
 	'part-time': C.cyan,
-	'freelance': C.magenta,
-	'internship': C.green
+	'freelance': C.magenta
 }
 
 interface Row {

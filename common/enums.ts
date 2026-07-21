@@ -7,9 +7,9 @@ export type SkillCategory = 'frontend' | 'backend' | 'infrastructure' | 'growth-
 
 export type ExperienceCategory = 'work' | 'education'
 
-export type EntityType = 'company' | 'university' | 'personal'
+export type EntityType = 'company' | 'university'
 
-export type EmploymentType = 'volunteer' | 'freelance' | 'part-time' | 'full-time' | 'contract'
+export type EmploymentType = 'freelance' | 'part-time' | 'full-time'
 
 export type Location = 'remote' | 'nonthaburi-thailand' | 'pathumthani-thailand'
 

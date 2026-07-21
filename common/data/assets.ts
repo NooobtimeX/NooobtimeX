@@ -5,7 +5,6 @@
  */
 export const assets = {
 	site: {
-		ogImage: '/logo/logo.webp',
 		logo: '/logo/logo.webp'
 	},
 	personal: {

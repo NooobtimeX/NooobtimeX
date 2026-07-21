@@ -84,8 +84,8 @@ export const personalData: PersonalData = {
 		familyName: 'Puangsorn'
 	},
 	languages: [
-		{ name: 'Thai', level: 'Native', code: 'th', icon: 'circle-flags:th' },
-		{ name: 'English', level: 'Professional working', code: 'en', icon: 'circle-flags:uk' }
+		{ name: 'Thai', level: 'Native', code: 'th' },
+		{ name: 'English', level: 'Professional working', code: 'en' }
 	],
 	socialLinks: [
 		{

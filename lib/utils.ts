@@ -5,11 +5,6 @@ export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs))
 }
 
-// Utility function to check if an organization is current (no end date)
-export function isCurrentPosition(endDate?: string): boolean {
-	return !endDate
-}
-
 // Utility function to format date range for organization
 export function formatExperienceDuration(startDate: string, endDate?: string): string {
 	const start = new Date(startDate)
