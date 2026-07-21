@@ -11,15 +11,13 @@ import { latestRole, personalData } from '@/common'
 /**
  * The business-card panel: scan the QR to be offered "Add contact", or download the .vcf.
  *
- * The QR carries a LEAN vCard (no socials, no note) — every extra property pushes the
- * symbol to a higher version, and a denser code is measurably harder to scan off a phone
- * screen. The downloadable file is the rich one.
+ * The QR carries the CORE vCard (name, title, company, phone, email, site) — the fields
+ * people actually use, kept lean so the code stays scannable. The downloadable file adds
+ * the rich extras (address, birthday, socials, photo, note).
  */
 const VCardPanel: React.FC = () => {
 	const org = latestRole?.organization.name
-	// The QR omits ORG on purpose: every property pushes the symbol to a higher version,
-	// and module density is the binding constraint when one phone scans another's screen.
-	const qrPayload = buildVCard(personalData)
+	const qrPayload = buildVCard(personalData, { org })
 	const filePayload = buildVCard(personalData, { rich: true, org })
 
 	const handleDownload = () => {
@@ -41,7 +39,8 @@ const VCardPanel: React.FC = () => {
 			<div>
 				<h3 className='font-display text-2xl font-bold tracking-wide'>Digital Business Card</h3>
 				<p className='text-muted-foreground mt-1 text-sm'>
-					Scan to save me as a contact — name, title, email and site, prefilled.
+					Scan to save me as a contact — name, title, company, phone, email and site. The .vcf download adds socials,
+					birthday and more.
 				</p>
 			</div>
 

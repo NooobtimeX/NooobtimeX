@@ -7,6 +7,17 @@ import type { PersonalData } from '@/common'
  * emit 3.0, and 4.0 import support is inconsistent across Outlook and the Chinese Android
  * skins (MIUI / HarmonyOS / ColorOS) a supplier at Yiwu is most likely to be holding.
  * 3.0 is the version that actually imports everywhere.
+ *
+ * Two payloads come out of `buildVCard`:
+ *   - the CORE (default) is what the QR encodes — the fields people actually use
+ *     (name, title, company, phone, email, site). Kept lean on purpose: QR
+ *     scannability is the binding constraint, so ~≤300 chars and no photo/socials.
+ *   - the RICH set (`rich: true`) is the downloadable .vcf — core plus address,
+ *     nickname, birthday, labelled social links, a hosted photo URL and a note.
+ *     Not size-constrained, but still curated: a photo is linked, never embedded
+ *     (a base64 headshot adds ~10k chars and breaks the QR), and socials are real
+ *     URLs (Apple item-labels degrade to a bare URL elsewhere) because Google
+ *     Contacts silently strips custom `X-` properties.
  */
 
 const CRLF = '\r\n'
@@ -15,22 +26,22 @@ const CRLF = '\r\n'
 const esc = (value: string): string =>
 	value.replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\r?\n/g, '\\n')
 
-/** iOS honours `X-SOCIALPROFILE;type=<service>`; vCard 4's SOCIALPROFILE is not read by 3.0 parsers. */
-const SOCIAL_TYPE: Record<string, string> = {
-	github: 'github',
-	linkedin: 'linkedin',
-	instagram: 'instagram',
-	youtube: 'youtube'
+/** Apple Contacts shows `itemN.URL` + `itemN.X-ABLabel` as a labelled link; others keep the URL. */
+const SOCIAL_LABEL: Record<string, string> = {
+	github: 'GitHub',
+	linkedin: 'LinkedIn',
+	youtube: 'YouTube',
+	instagram: 'Instagram'
 }
 
 export interface VCardOptions {
 	/**
-	 * Include social profiles and the bio note. Leave off for a QR payload — every extra
-	 * property pushes the symbol to a higher version, and a denser code is harder to scan
-	 * off a phone screen held at arm's length.
+	 * Include the rich extras (address, nickname, birthday, socials, photo, note).
+	 * Leave off for the QR payload — every extra property pushes the symbol to a
+	 * higher version, and a denser code is harder to scan off a phone screen.
 	 */
 	rich?: boolean
-	/** Organisation line, when the caller has one to pass. */
+	/** Organisation line — a core field, passed by the caller from the current role. */
 	org?: string
 }
 
@@ -38,8 +49,8 @@ export interface VCardOptions {
 const normalisePhone = (raw: string): string => raw.replace(/^tel:/, '').replace(/[^\d+]/g, '')
 
 const findPhone = (p: PersonalData): string | undefined => {
-	const channel = p.contactChannels?.find(c => c.id === 'phone' || c.id === 'whatsapp')
-	const raw = channel?.url ?? channel?.value
+	// The dedicated field wins; the messaging channels are a fallback.
+	const raw = p.contact.phone ?? p.contactChannels?.find(c => c.id === 'phone' || c.id === 'whatsapp')?.url ?? undefined
 	if (!raw) return undefined
 	const normalised = normalisePhone(raw)
 	return normalised.length > 3 ? normalised : undefined
@@ -62,32 +73,49 @@ export function buildVCard(p: PersonalData, options: VCardOptions = {}): string 
 
 	const lines: string[] = ['BEGIN:VCARD', 'VERSION:3.0']
 
+	// --- CORE (also the QR payload): the fields people actually use ---
 	// FN, N and VERSION are the three MUST properties in RFC 2426.
 	lines.push(`N:${esc(family)};${esc(given)};;;`)
 	lines.push(`FN:${esc(fullName)}`)
 	lines.push(`TITLE:${esc(p.title)}`)
 	if (org) lines.push(`ORG:${esc(org)}`)
-
-	lines.push(`EMAIL;TYPE=INTERNET,PREF:${esc(p.contact.email)}`)
 	if (phone) lines.push(`TEL;TYPE=CELL,VOICE:${esc(phone)}`)
+	lines.push(`EMAIL;TYPE=INTERNET,PREF:${esc(p.contact.email)}`)
 	lines.push(`URL:${esc(websiteUrl(p))}`)
 
-	// ADR has seven components: PO box; extended; street; locality; region; postcode; country.
-	// City and country only — never a street address on a public page.
-	if (p.contact.locality || p.contact.country) {
-		lines.push(`ADR;TYPE=WORK:;;;${esc(p.contact.locality ?? '')};;;${esc(p.contact.country ?? '')}`)
-	}
-
+	// --- RICH extras (.vcf download only) ---
 	if (rich) {
+		const nickname = p.socialLinks.find(s => s.platform === 'github')?.username
+		if (nickname) lines.push(`NICKNAME:${esc(nickname)}`)
+		if (p.birthDate) lines.push(`BDAY:${esc(p.birthDate)}`)
+
+		// ADR has seven components: PO box; extended; street; locality; region; postcode; country.
+		// City and country only — never a street address on a public page.
+		if (p.contact.locality || p.contact.country) {
+			lines.push(`ADR;TYPE=WORK:;;;${esc(p.contact.locality ?? '')};;;${esc(p.contact.country ?? '')}`)
+		}
+
+		// Socials as labelled URLs (Apple item-grouping; a bare URL everywhere else).
+		let item = 0
 		for (const social of p.socialLinks) {
-			const type = SOCIAL_TYPE[social.platform]
-			if (type) lines.push(`X-SOCIALPROFILE;type=${type}:${esc(social.url)}`)
+			const label = SOCIAL_LABEL[social.platform]
+			if (!label) continue
+			item += 1
+			lines.push(`item${item}.URL:${esc(social.url)}`)
+			lines.push(`item${item}.X-ABLabel:${esc(label)}`)
 		}
-		for (const channel of p.contactChannels ?? []) {
-			if (channel.id === 'wechat' && channel.value) lines.push(`X-SOCIALPROFILE;type=wechat:${esc(channel.value)}`)
-			if (channel.id === 'line' && channel.value) lines.push(`X-SOCIALPROFILE;type=line:${esc(channel.value)}`)
-		}
-		lines.push(`NOTE:${esc(p.tagline)}`)
+
+		const wechat = p.contactChannels?.find(c => c.id === 'wechat' && c.value)
+		if (wechat) lines.push(`X-SOCIALPROFILE;type=wechat:${esc(wechat.value)}`)
+
+		// Hosted photo — a URI, never an embedded base64 blob (that would break the QR
+		// and most contact apps won't render webp anyway; this is best-effort).
+		lines.push(`PHOTO;VALUE=URI:${esc(websiteUrl(p) + p.avatar)}`)
+
+		const langs = p.languages.map(l => `${l.name} (${l.level})`).join(', ')
+		const noteParts = [p.tagline, p.contact.availability, `Languages: ${langs}`]
+		if (wechat) noteParts.push(`WeChat: ${wechat.value}`)
+		lines.push(`NOTE:${esc(noteParts.join('\n'))}`)
 	}
 
 	lines.push('END:VCARD')

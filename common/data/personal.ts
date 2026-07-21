@@ -74,6 +74,7 @@ export const personalData: PersonalData = {
 	},
 	contact: {
 		email: 'nooobtimex@gmail.com',
+		phone: '+66855877024',
 		location: 'Pak Kret District, Nonthaburi',
 		availability:
 			'Open for remote freelance web app software engineering work alongside my full-time role as CTO at RS Trophy',
