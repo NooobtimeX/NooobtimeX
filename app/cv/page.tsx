@@ -434,7 +434,7 @@ export default function CVPage() {
 							{/* Banner + title */}
 							<div className='relative mb-5 aspect-[16/6] w-full shrink-0 overflow-hidden border border-gray-100'>
 								{/* eslint-disable-next-line @next/next/no-img-element */}
-								<img src={project.images.banner} alt={project.title} className='h-full w-full object-cover' />
+								<img src={project.images.cover} alt={project.title} className='h-full w-full object-cover' />
 								<div className='absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent' />
 								<div className='absolute bottom-0 left-0 p-5'>
 									<p className='font-mono text-[9px] font-black tracking-[0.3em] text-white/70 uppercase'>

@@ -39,7 +39,7 @@ const ProjectDetailPage: React.FC<ProjectDetailPageProps> = async ({ params }) =
 		'description': project.description,
 		'applicationCategory': 'WebApplication',
 		'operatingSystem': 'Web',
-		'image': `${SITE_URL}${project.images.banner}`,
+		'image': `${SITE_URL}${project.images.cover}`,
 		'datePublished': project.startDate,
 		'author': { '@type': 'Person', 'name': personalData.name, 'url': SITE_URL },
 		'keywords': project.skills.map(s => s.name).join(', '),

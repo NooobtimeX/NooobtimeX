@@ -22,7 +22,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index = 0 }) => {
 			{/* Banner */}
 			<div className='border-border/60 relative aspect-[16/9] w-full overflow-hidden border-b'>
 				<Image
-					src={project.images.banner}
+					src={project.images.cover}
 					alt={project.title}
 					fill
 					sizes='(max-width: 768px) 100vw, 33vw'

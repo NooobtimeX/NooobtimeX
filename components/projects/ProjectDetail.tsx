@@ -42,7 +42,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
 		?? linkedRoles[0]?.organization
 	// Org the work was seconded to / delivered via — a credit, not an employer.
 	const via = project.viaOrganizationId ? entitiesData.find(e => e.id === project.viaOrganizationId) : undefined
-	const extraPhotos = project.images.photos.filter(p => p !== project.images.banner)
+	const extraPhotos = project.images.photos.filter(p => p !== project.images.cover)
 
 	return (
 		<Container className='py-10'>
@@ -55,7 +55,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
 			{/* Banner */}
 			<NeonPanel className='clip-notch relative mt-6 aspect-[16/8] w-full overflow-hidden p-0'>
 				<Image
-					src={project.images.banner}
+					src={project.images.cover}
 					alt={project.title}
 					fill
 					priority

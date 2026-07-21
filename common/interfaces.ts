@@ -128,7 +128,7 @@ export interface Project {
 	/** Short resume-style blurb (1–2 lines) for the CV / presentation; falls back to `description`. */
 	resumeSummary?: string
 	images: {
-		banner: string
+		cover: string
 		photos: string[]
 	}
 	/** Full historical roster — every skill ever used (starting stack + all timeline deltas + tooling). */

@@ -11,7 +11,7 @@ OUT="$1"; QUERY="${2:-}"
 TMP="$(mktemp -d)"
 "$CHROME" --headless=new --disable-gpu --hide-scrollbars --force-device-scale-factor=2 \
   --virtual-time-budget=2500 --window-size=1600,900 --default-background-color=ff06070d \
-  --screenshot="$TMP/shot.png" "file://$DIR/banner-template.html?$QUERY" >/dev/null 2>&1
+  --screenshot="$TMP/shot.png" "file://$DIR/cover-template.html?$QUERY" >/dev/null 2>&1
 cwebp -quiet -resize 1600 900 -q 88 "$TMP/shot.png" -o "$OUT"
 rm -rf "$TMP"
 echo "wrote $OUT ($(du -h "$OUT" | cut -f1))"

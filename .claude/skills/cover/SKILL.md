@@ -1,29 +1,29 @@
 ---
-name: cyber-banner
+name: cover
 description: >-
-  Generate on-brand Cyberpunk project banner images (the 16:9 `cover.webp` hero
+  Generate on-brand Cyberpunk project cover images (the 16:9 `cover.webp` hero
   used on project cards + detail pages) for the NooobtimeX portfolio, without a
   screenshot. Renders a parameterized HTML template with headless Chrome and
-  converts to webp. Use when adding a new project that has no banner, when a
+  converts to webp. Use when adding a new project that has no cover, when a
   project's thumbnail is weak (a logo/placeholder), or when the user asks to
-  "make a banner / cover / thumbnail like the flood-project one". Also documents
+  "make a cover / banner / thumbnail like the flood-project one". Also documents
   moving a real screenshot into the project's gallery so it isn't lost.
 ---
 
-# Cyber banner generator
+# Cover generator
 
-Produces the stylized 1600×900 banners used as each project's `images.banner`
+Produces the stylized 1600×900 covers used as each project's `images.cover`
 (the card thumbnail + detail-page hero). Matches the site's Cyberpunk 2077 theme:
 dark base, neon signal colors, HUD frame, scanlines, a faint per-project motif,
 big glitch-glow title, and a mono stack strip. See the flood-project / rs-trophy
-banners for the look.
+covers for the look.
 
 ## Files (in `assets/`)
 
-- **`banner-template.html`** — the parameterized template. Reads its content from
-  URL query params (so one file renders every banner). Self-contained: system
+- **`cover-template.html`** — the parameterized template. Reads its content from
+  URL query params (so one file renders every cover). Self-contained: system
   fonts only, inline SVG motifs, no network.
-- **`render.sh`** — render one banner: `render.sh <out.webp> "<url-encoded query>"`.
+- **`render.sh`** — render one cover: `render.sh <out.webp> "<url-encoded query>"`.
 
 ## Pipeline
 
@@ -35,7 +35,7 @@ rsvg). One-liner per banner:
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 "$CHROME" --headless=new --disable-gpu --hide-scrollbars --force-device-scale-factor=2 \
   --virtual-time-budget=2500 --window-size=1600,900 --default-background-color=ff06070d \
-  --screenshot=/tmp/b.png "file://<ABS_PATH>/banner-template.html?<QUERY>"
+  --screenshot=/tmp/b.png "file://<ABS_PATH>/cover-template.html?<QUERY>"
 cwebp -quiet -resize 1600 900 -q 88 /tmp/b.png -o public/issue/<id>/cover.webp
 ```
 
@@ -64,12 +64,18 @@ not clones. Match `badgeLvl` to `links.live` (`● Live` vs `● Archived`).
 
 ## Wiring it into the data (`common/data/`)
 
-1. Save the generated file as `public/issue/<id>/cover.webp`.
-2. In `assets.ts` set the project's `banner` to the new cover and **preserve the
-   old screenshot in `gallery`** so it isn't lost:
-   `foo: { banner: '/issue/foo/cover.webp', gallery: ['/issue/foo/banner.webp'] }`.
-3. In `projects.ts` make the detail gallery show the real screenshot(s):
-   `images: { banner: assets.projects.foo.banner, photos: [...assets.projects.foo.gallery] }`.
+Naming convention: the generated hero is always `cover.webp`; real screenshots are
+`photo-1.webp`, `photo-2.webp`, … (primary screenshot first). Everything is `.webp`.
+
+1. Save the generated file as `public/issue/<id>/cover.webp`. If a real screenshot
+   currently sits at `banner.webp`, rename it into the `photo-N.webp` sequence
+   (`git mv`, primary first) so no file is named `banner.webp`.
+2. In `assets.ts` set the project's `cover` to the new file and **keep the
+   screenshot(s) in `gallery`** so nothing is lost:
+   `foo: { cover: '/issue/foo/cover.webp', gallery: ['/issue/foo/photo-1.webp'] }`.
+3. In `projects.ts` show the real screenshot(s) in the detail gallery:
+   `images: { cover: assets.projects.foo.cover, photos: [...assets.projects.foo.gallery] }`
+   (use `photos: []` for a cover-only project with no screenshot).
 4. `bun run lint && bun run build`, then eyeball `/projects` + `/projects/<id>`.
 
 ## Notes
