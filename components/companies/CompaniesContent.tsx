@@ -12,11 +12,7 @@ const humanize = (value: string) =>
 		.map(w => w.charAt(0).toUpperCase() + w.slice(1))
 		.join(' ')
 
-const groups: { type: EntityType; label: string }[] = [
-	{ type: 'company', label: 'Companies' },
-	{ type: 'university', label: 'Education' },
-	{ type: 'personal', label: 'Independent' }
-]
+const groups: { type: EntityType; label: string }[] = [{ type: 'company', label: 'Companies' }]
 
 const CompanyCard: React.FC<{ org: Organization; index: number }> = ({ org, index }) => {
 	const roles = experiencesData.filter(e => e.organization.id === org.id)
@@ -65,7 +61,7 @@ const CompaniesContent: React.FC = () => {
 			<SectionHeader
 				code='05'
 				title='Network'
-				subtitle={`${entitiesData.length} organizations across the career map — employers, collectives, and independent work.`}
+				subtitle={`${entitiesData.length} organizations across the career map — employers and collaborators.`}
 			/>
 
 			{groups.map(group => {

@@ -8,7 +8,7 @@ import MotionReveal from '@/components/cyber/MotionReveal'
 import NeonPanel from '@/components/cyber/NeonPanel'
 import ProjectCard from '@/components/projects/ProjectCard'
 import { cn, formatExperienceDuration } from '@/lib/utils'
-import { ExperienceCategory, type ExperienceItem, experiencesData, projectsData } from '@/common'
+import { ExperienceCategory, type ExperienceItem, entitiesData, experiencesData, projectsData } from '@/common'
 
 interface ExperienceDetailProps {
 	item: ExperienceItem
@@ -33,6 +33,9 @@ const ExperienceDetail: React.FC<ExperienceDetailProps> = ({ item }) => {
 		=== item.id
 	// Only gigs delivered under THIS role — not everything at the organization.
 	const relatedProjects = projectsData.filter(p => p.linkedExperienceIds?.includes(item.id))
+	// Link the org name only when it has a company page — education-only orgs (a
+	// university) live as a const but aren't in `entitiesData`, so they'd 404.
+	const hasCompanyPage = entitiesData.some(o => o.id === item.organization.id)
 
 	return (
 		<Container className='py-10'>
@@ -63,11 +66,13 @@ const ExperienceDetail: React.FC<ExperienceDetailProps> = ({ item }) => {
 					<h1 className='font-display text-3xl font-bold tracking-wide uppercase md:text-4xl'>
 						{item.credential ?? humanize(item.position)}
 					</h1>
-					<Link
-						href={`/companies/${item.organization.id}` as never}
-						className='text-cyber-yellow hover:text-cyber-cyan inline-block text-lg transition-colors'>
-						{item.organization.name}
-					</Link>
+					{hasCompanyPage ?
+						<Link
+							href={`/companies/${item.organization.id}` as never}
+							className='text-cyber-yellow hover:text-cyber-cyan inline-block text-lg transition-colors'>
+							{item.organization.name}
+						</Link>
+					:	<span className='text-cyber-yellow inline-block text-lg'>{item.organization.name}</span>}
 					<p className='text-muted-foreground mt-1 font-mono text-xs tracking-wider uppercase'>
 						{formatExperienceDuration(item.startDate, item.endDate)}
 					</p>

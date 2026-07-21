@@ -173,11 +173,4 @@ export const thammasatUniversity: Organization = {
 	]
 }
 
-export const entitiesData: Organization[] = [
-	ruamsukPlating,
-	jasmineTechnologySolution,
-	jasTv,
-	monomax,
-	freelance,
-	thammasatUniversity
-]
+export const entitiesData: Organization[] = [ruamsukPlating, jasmineTechnologySolution, jasTv, monomax, freelance]
