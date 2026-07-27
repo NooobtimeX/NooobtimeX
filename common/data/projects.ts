@@ -15,6 +15,17 @@ type MilestoneDef = Omit<Milestone, 'addedSkills' | 'removedSkills'> & {
  */
 type ProjectDef = Omit<Project, 'skills' | 'activeSkills' | 'retiredSkills' | 'timeline'> & {
 	skills: SkillId[]
+	/**
+	 * Signature tech, most representative FIRST — the technologies a reader should see to
+	 * understand what this project actually is. Ranked by array position.
+	 *
+	 * Display order is otherwise the order skills happen to be authored in, which nobody
+	 * chose: `rs-trophy` led with three retired-era marketing tools instead of Bun, and
+	 * `looklook-pet` led with Flutter instead of the NestJS its description opens on.
+	 *
+	 * Must name only skills that are ACTIVE for the project — the resolver throws otherwise.
+	 */
+	highlightSkills?: SkillId[]
 	timeline?: MilestoneDef[]
 }
 
@@ -23,11 +34,28 @@ const commonTooling: SkillId[] = ['typescript', 'git-github', 'prettier', 'eslin
 
 export const looklookPet: ProjectDef = {
 	id: 'looklook-pet',
+	accent: '#FF7D5A', // sampled from looklook.pet — coral logo mark
+	// NestJS leads: scope (1) and the resumeSummary both open on "15+ NestJS services".
+	// Railway/Docker/R2 stay together — the description closes on that trio as one clause.
+	highlightSkills: [
+		'nest-js',
+		'medusa',
+		'mercur',
+		'omise',
+		'mongodb',
+		'next-js',
+		'better-auth',
+		'redis',
+		'bullmq',
+		'cloudflare-r2',
+		'railway',
+		'docker'
+	],
 	title: 'LOOKLOOK PET Platform',
 	description:
-		'Architect and lead full-stack developer of the LOOKLOOK PET platform — a multi-surface pet-parent community and B2B2C multi-vendor marketplace. Owned the ecosystem end-to-end across three core scopes: (1) **Core Storefront & Microservices**: Scaled 15+ NestJS services over NATS (backed by MongoDB, Redis, and BullMQ) and fronted by a Next.js storefront. Designed a custom native payment UI with client-side Omise tokenization, inline PromptPay QR polling, card-lock promotional gating, and migrated headless WordPress to MongoDB with TipTap HTML rendering. (2) **B2B Partner Portal**: Built and owned ~55% of the console codebase, developing claim-an-unlisted-place flows, team switcher management with dynamic roles, analytics panels with CSV orders export, and custom Lottie route loaders. (3) **Mercur Multi-Vendor Marketplace**: Served as sole maintainer of the Medusa.js 2 marketplace and seller panels, upgrading to Sprint-46, building a workflow-based refund system, and launching bilingual TH/EN deal templates. Deployed on Railway with Docker and Cloudflare R2.',
+		'Architect and lead full-stack developer of the LOOKLOOK PET platform — a multi-surface pet-parent community and B2B2C multi-vendor marketplace. Owned the ecosystem end-to-end across three core scopes: (1) **Core Storefront & Microservices**: Scaled 15+ NestJS services — first over a NATS message bus, later simplified to direct HTTP service calls — backed by MongoDB, Redis, and BullMQ, and fronted by a Next.js storefront. Designed a custom native payment UI with client-side Omise tokenization, inline PromptPay QR polling, card-lock promotional gating, and migrated headless WordPress to MongoDB with TipTap HTML rendering. (2) **B2B Partner Portal**: Built and owned ~55% of the console codebase, developing claim-an-unlisted-place flows, team switcher management with dynamic roles, analytics panels with CSV orders export, and custom Lottie route loaders. (3) **Mercur Multi-Vendor Marketplace**: Served as sole maintainer of the Medusa.js 2 marketplace and seller panels, upgrading to Sprint-46, building a workflow-based refund system, and launching bilingual TH/EN deal templates. (4) **Customer Mobile App**: Delivered the customer-facing mobile app in Flutter against the same service layer. Deployed on Railway with Docker and Cloudflare R2.',
 	resumeSummary:
-		'Multi-surface pet-parent marketplace & B2B2C platform — 15+ NestJS microservices, a custom Omise / PromptPay checkout, a partner console, and a Medusa v2 multi-vendor marketplace. Next.js / MongoDB on Railway.',
+		'Multi-surface pet-parent marketplace & B2B2C platform — 15+ NestJS microservices, a custom Omise / PromptPay checkout, a partner console, a Flutter customer app, and a Medusa v2 multi-vendor marketplace. Next.js / MongoDB on Railway.',
 	images: { cover: assets.projects.looklookPet.cover, photos: [...assets.projects.looklookPet.gallery] },
 	// Starting stack (2025-07-16). Later tech is introduced via timeline events; retired tech is
 	// flagged there too. Common tooling (TypeScript/Git/Prettier/ESLint) is added by the resolver.
@@ -139,6 +167,9 @@ export const looklookPet: ProjectDef = {
 
 export const rsTrophy: ProjectDef = {
 	id: 'rs-trophy',
+	accent: '#FCEE0A',
+	// Bun leads: "Built as a Bun monorepo" is the organising idea, repeated three times.
+	highlightSkills: ['bun-js', 'elysia-js', 'next-js', 'mongodb', 'cloudflare-r2', 'railway', 'redis', 'docker'],
 	title: 'RS TROPHY',
 	description:
 		'A unified e-commerce and management platform for custom trophies, plaques, and medals — consolidating fragmented sibling brands into one high-performance system. Built as a Bun monorepo: a localized, SEO-optimized Next.js storefront, a real-time ElysiaJS API, and an admin console that share Mongoose schemas and types through a common workspace package. Runs on MongoDB with Redis caching and Cloudflare R2 object storage, containerized with Docker and deployed on Railway — and ships an AI copilot for natural-language shopping assistance. The platform evolved from an original WordPress + WooCommerce storefront into this unified Bun monorepo.',
@@ -273,6 +304,9 @@ export const rsTrophy: ProjectDef = {
 
 export const onlinePokerGame: ProjectDef = {
 	id: 'online-poker-game',
+	accent: '#FF003C',
+	// SSE leads: "featuring Server-Sent Events" is the description's distinguishing clause.
+	highlightSkills: ['sse', 'next-js', 'postgresql', 'redis', 'prisma', 'bullmq'],
 	title: 'Online Poker Game',
 	description:
 		'A real-time multiplayer online poker game featuring Server-Sent Events for live updates. Built with Next.js and PostgreSQL for a seamless, interactive card gaming experience.',
@@ -353,6 +387,9 @@ export const onlinePokerGame: ProjectDef = {
 
 export const floodProject: ProjectDef = {
 	id: 'flood-project',
+	accent: '#00F0FF',
+	// Leaflet + Recharts lead: the map and the threshold charts ARE the product.
+	highlightSkills: ['leaflet', 'recharts', 'prisma', 'nextauth', 'next-js', 'zod'],
 	title: 'Flood Project',
 	description:
 		'A flood and water-level monitoring dashboard for tracking station gauges in real time. Field stations plot on an interactive, marker-clustered Leaflet map; each streams its current water level with historical area/line charts (Recharts) read against a flood threshold, and operators can export readings to CSV. Ships a full account system with role-based user management and an admin dashboard. Built with Next.js 15 (App Router, Turbopack), React 19, and TypeScript on a Prisma data layer, with Tailwind + shadcn/ui, react-hook-form + Zod forms, and NextAuth (bcrypt) auth. Delivered as a focused freelance build.',
@@ -413,6 +450,9 @@ export const floodProject: ProjectDef = {
 
 export const prettierConfig: ProjectDef = {
 	id: 'prettier-config',
+	accent: '#55B3B4', // Prettier's own teal, from the prettier-config.dev icon
+	// CodeMirror leads: the editor is the app's main surface.
+	highlightSkills: ['codemirror', 'next-js', 'base-ui', 'vercel', 'react'],
 	title: 'Prettier Config',
 	description:
 		'The fastest way to build, share, and try a Prettier configuration — visually, in the browser. Runs the official prettier/standalone fully client-side for instant live formatting, with a CodeMirror 6 editor spanning JS/TS, CSS, HTML, JSON, Markdown, Vue, and more, plus shareable URL-encoded configs and i18n. Built on Next.js, React, TypeScript, and Tailwind CSS v4 with shadcn/ui on Base UI.',
@@ -481,6 +521,9 @@ export const prettierConfig: ProjectDef = {
 
 export const rsMedal: ProjectDef = {
 	id: 'rs-medal',
+	accent: '#8AD8FF',
+	// Thin by nature — no DB, no auth. Next.js remake + structured data is the honest story.
+	highlightSkills: ['next-js', 'json-ld', 'seo', 'vercel', 'react'],
 	title: 'RS Medal',
 	description:
 		'A medal showcase and catalog web app — first built on WordPress, later remade as a localized Next.js application with structured data and a reusable product data model.',
@@ -548,6 +591,9 @@ export const rsMedal: ProjectDef = {
 
 export const rsAward: ProjectDef = {
 	id: 'rs-award',
+	accent: '#FFB020',
+	// The Next.js remake is the current identity; SEO/AEO structured data is the differentiator.
+	highlightSkills: ['next-js', 'mongodb', 'aeo', 'json-ld', 'seo', 'vercel'],
 	title: 'RS Award',
 	description:
 		'A plaque and award showcase web app — first built on WordPress, later remade as a localized Next.js application with SEO/AEO structured data and client-side search.',
@@ -627,6 +673,10 @@ export const rsAward: ProjectDef = {
 
 export const portfolio: ProjectDef = {
 	id: 'portfolio',
+	accent: '#FCEE0A',
+	// Tailwind at #2 is deliberate: "a fully custom Tailwind v4 design system" is the product
+	// here, so the highlight overrides the usual demotion of Tailwind as generic scaffolding.
+	highlightSkills: ['next-js', 'tailwind-css', 'base-ui', 'shadcn-ui', 'bun-js', 'embla-carousel', 'vercel'],
 	title: '🚀 Portfolio – Wongsaphat Puangsorn',
 	description:
 		'This site — a Cyberpunk 2077–inspired portfolio built on Next.js (App Router, Turbopack) with a fully custom Tailwind v4 design system and shadcn/ui on Base UI. Features a ⌘K command palette, a gig-board project journal, a vertical career-trace timeline, and a print-ready CV with a slide-presentation mode. Deployed on Vercel.',
@@ -711,6 +761,9 @@ export const portfolio: ProjectDef = {
 
 export const monomaxEplPortal: ProjectDef = {
 	id: 'monomax-epl-portal',
+	accent: '#EE5E25', // sampled from monomax.me — orange-red logo
+	// better-auth leads: "two isolated better-auth realms" is the sharpest architectural claim.
+	highlightSkills: ['better-auth', 'mongodb', 'next-js', 'leaflet', 'docker', 'zod', 'aws-s3'],
 	title: 'MONOMax EPL Licensing Portal',
 	description:
 		'A full-stack SaaS platform that issues and verifies English Premier League commercial-broadcast licenses for Thai venues — restaurants, hotels, and pubs. Business owners sign in with email OTP, register their company and each physical venue with its screen count, and the system provisions the required MONOMax Sports Premium accounts while guaranteeing — enforced at the database level — that every account is bound to a single active venue. Admins review submissions in a dedicated console with its own auth realm and issue a verifiable digital certificate, complete with an in-house-generated QR code, for each approved venue. Built with Next.js 16 (App Router) and React 19 in strict TypeScript: two isolated better-auth realms for users and admins, MongoDB/Mongoose, zod schemas validated identically on client and server with react-hook-form, an interactive Leaflet venue-map picker, presigned document uploads to S3-compatible object storage, transactional email, and Tailwind v4 with shadcn/ui. Containerized with Docker and shipped through a GitHub Actions → GHCR → cloud-VM (Caddy) CI/CD pipeline, with PDPA-conscious data residency. Delivered as a focused 3-day sprint.',
@@ -821,9 +874,12 @@ export const monomaxEplPortal: ProjectDef = {
 
 export const qrFood: ProjectDef = {
 	id: 'qr-food',
+	accent: '#39FF14',
+	// Nuxt/Vue lead: the only project in the portfolio not built on React, so maximally identifying.
+	highlightSkills: ['nuxt-js', 'vue', 'supabase', 'prisma', 'postgresql', 'vercel'],
 	title: 'QR Food Platform',
 	description:
-		'A senior thesis project from Thammasat University. Developed a full-stack QR-code ordering and multi-branch restaurant management web application designed to streamline in-restaurant operations and eliminate expensive POS hardware. Key components include: (1) **Customer Table Ordering**: A Nuxt 3 web application enabling customers to scan table-specific QR codes, browse live menus, customize dishes with add-ons, add items to a real-time cart, and place orders directly from their mobile devices. Features integrated support for calling staff and live bill tracking. (2) **Staff & Kitchen Portal**: Features custom views for restaurant staff to take orders directly at the table, manage order queues, track preparation statuses, and process instant table closures with bill printing. (3) **Multi-Branch Admin Console**: An analytical dashboard for owners to manage multiple restaurant branches, configure custom staff roles (owner/staff), toggle menu item availability dynamically per branch, customize food sections and add-on options, and view real-time sales statistics. Built with Nuxt 3, Vue 3, Tailwind CSS, Prisma, PostgreSQL (Supabase), and deployed on Vercel.',
+		'A senior thesis project from Thammasat University. Developed a full-stack QR-code ordering and multi-branch restaurant management web application designed to streamline in-restaurant operations and eliminate expensive POS hardware. Key components include: (1) **Customer Table Ordering**: A Nuxt 3 web application enabling customers to scan table-specific QR codes, browse live menus, customize dishes with add-ons, add items to a real-time cart, and place orders directly from their mobile devices. Features integrated support for calling staff and live bill tracking. (2) **Staff & Kitchen Portal**: Features custom views for restaurant staff to take orders directly at the table, manage order queues, track preparation statuses, and process instant table closures with bill printing. (3) **Multi-Branch Admin Console**: An analytical dashboard for owners to manage multiple restaurant branches, configure custom staff roles (owner/staff), toggle menu item availability dynamically per branch, customize food sections and add-on options, and view real-time sales statistics. Built with Nuxt 3, Vue 3, Tailwind CSS, Prisma, and PostgreSQL (Supabase), containerized with Docker and deployed on Vercel.',
 	resumeSummary:
 		'Full-stack QR-code ordering and multi-branch restaurant management web application. Customers scan QR codes to order and call staff; staff manage table statuses and orders; owners manage branches and view analytics. Nuxt 3 / Vue 3 / Prisma / Supabase / PostgreSQL / Tailwind CSS on Vercel.',
 	images: {
@@ -831,9 +887,10 @@ export const qrFood: ProjectDef = {
 		photos: [...assets.projects.qrFood.gallery]
 	},
 	skills: ['vue', 'nuxt-js', 'tailwind-css', 'prisma', 'supabase', 'postgresql', 'docker', 'vercel'],
-	links: {
-		live: 'https://github.com/NooobtimeX/QR-Food'
-	},
+	// No link: github.com/NooobtimeX/QR-Food is private (404s for visitors), and private
+	// repos get no link. This also makes the derived status read "Archived", which is
+	// correct for a thesis that was delivered and ended in Dec 2024.
+	links: {},
 	startDate: '2023-08-01',
 	endDate: '2024-12-24',
 	linkedExperienceIds: ['freelance'],
@@ -914,10 +971,45 @@ const resolveProject = (d: ProjectDef): Project => {
 		m.removedSkills?.forEach(id => active.delete(id))
 	}
 	const toSkill = (id: SkillId) => skillById[id]
+
+	// Fail loudly on a highlight that isn't actually active. `SkillId` already catches
+	// typos; what it can't catch is naming a RETIRED skill (e.g. 'nats' on looklook-pet),
+	// which is a perfectly valid id that would silently rank nothing.
+	const highlights = d.highlightSkills ?? []
+	for (const id of highlights) {
+		if (!active.has(id)) {
+			throw new Error(
+				`[projects] "${d.id}" highlights "${id}", which is not in its active stack. `
+					+ `Highlight only active skills — retired ones cannot lead the loadout.`
+			)
+		}
+	}
+
+	/**
+	 * Display order, three tiers: highlighted signature tech first (in the order authored),
+	 * then the rest of the real stack, then `commonTooling` last. Ties keep roster order, so
+	 * the sort is stable and predictable.
+	 *
+	 * A highlight outranks the tooling demotion — that is what lets `portfolio` lead with
+	 * Tailwind, where a custom v4 design system genuinely IS the product, while Tailwind
+	 * stays demoted everywhere else.
+	 */
+	const rank = (id: SkillId): number => {
+		const highlighted = highlights.indexOf(id)
+		if (highlighted !== -1) return highlighted
+		return commonTooling.includes(id) ? 2_000_000 : 1_000_000
+	}
+	const forDisplay = (ids: SkillId[]) =>
+		ids
+			.map((id, i) => ({ id, i }))
+			.sort((a, b) => rank(a.id) - rank(b.id) || a.i - b.i)
+			.map(e => e.id)
+
 	return {
 		...d,
 		skills: roster.map(toSkill),
-		activeSkills: roster.filter(id => active.has(id)).map(toSkill),
+		// Sorted for display; `skills` above stays in first-appearance (historical) order.
+		activeSkills: forDisplay(roster.filter(id => active.has(id))).map(toSkill),
 		retiredSkills: roster.filter(id => !active.has(id)).map(toSkill),
 		timeline: d.timeline?.map(m => ({
 			...m,

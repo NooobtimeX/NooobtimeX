@@ -37,7 +37,7 @@ green.** Run them before declaring work complete.
   so the package script must be run with explicit `bun run`.
 - **Indentation is tabs** (Prettier `useTabs`). Match the surrounding style.
 - **Commit messages** end with:
-  `Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>`
+  `Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>`
   Only commit/push when asked; branch first if on `main` and unsure.
 
 ## Conventions live in skills

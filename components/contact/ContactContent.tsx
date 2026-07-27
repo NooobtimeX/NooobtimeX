@@ -69,10 +69,16 @@ const ContactContent: React.FC = () => {
 					<Icon icon='mdi:circle' className='text-cyber-green mt-1.5 size-2 shrink-0' />
 					{personalData.contact.availability}
 				</p>
-				<CyberButton href={`mailto:${personalData.contact.email}`} external size='lg' className='mt-5'>
-					<Icon icon='mdi:email-outline' />
-					Send an email
-				</CyberButton>
+				<div className='mt-5 flex flex-wrap gap-3'>
+					<CyberButton href={`mailto:${personalData.contact.email}`} external size='lg'>
+						<Icon icon='mdi:email-outline' />
+						Send an email
+					</CyberButton>
+					<CyberButton href='/card/hire' download='nooobtimex-hire-card.png' variant='outline' size='lg'>
+						<Icon icon='mdi:download' />
+						Hire card (1:1)
+					</CyberButton>
+				</div>
 			</NeonPanel>
 
 			{/* SCAN-ME PANELS */}

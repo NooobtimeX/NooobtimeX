@@ -3,23 +3,30 @@
  * fetches in the rendered assets (GitHub camo CSP). Icon names follow the
  * `collection:id` strings already used across common/data.
  */
+import { icons as carbon } from '@iconify-json/carbon'
 import { icons as logos } from '@iconify-json/logos'
 import { icons as materialSymbols } from '@iconify-json/material-symbols'
 import { icons as mdi } from '@iconify-json/mdi'
 import { icons as simpleIcons } from '@iconify-json/simple-icons'
+import { icons as skillIcons } from '@iconify-json/skill-icons'
 import type { IconifyJSON } from '@iconify/types'
 import { getIconData, iconToSVG } from '@iconify/utils'
 import { C, FONT_MONO, px } from './theme'
 
+// Must stay in step with COLLECTIONS in lib/og-assets.ts — a collection missing here
+// silently degrades that icon to a letter tile in the README.
 const COLLECTIONS: Record<string, IconifyJSON> = {
 	'logos': logos,
 	'simple-icons': simpleIcons,
 	'material-symbols': materialSymbols,
-	'mdi': mdi
+	'mdi': mdi,
+	'carbon': carbon,
+	// Full-colour badge marks, for brands `logos` doesn't carry (currently Elysia).
+	'skill-icons': skillIcons
 }
 
 /** Collections whose icons are monochrome `currentColor` and can be tinted. */
-const MONOCHROME = new Set(['simple-icons', 'material-symbols', 'mdi'])
+const MONOCHROME = new Set(['simple-icons', 'material-symbols', 'mdi', 'carbon'])
 
 export interface EmbeddedIcon {
 	width: number

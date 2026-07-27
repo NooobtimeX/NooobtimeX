@@ -1,4 +1,5 @@
 import { ImageResponse } from 'next/og'
+import { OG } from '@/lib/og-assets'
 import { formatPosition } from '@/lib/utils'
 import { latestRole, personalData } from '@/common'
 
@@ -8,8 +9,8 @@ export const alt = `${personalData.name} — ${formatPosition(latestRole.positio
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
-const YELLOW = '#FCEE0A'
-const CYAN = '#00F0FF'
+// Shared with the 1:1 cards in components/og/ so the surfaces cannot drift apart.
+const { yellow: YELLOW, cyan: CYAN } = OG
 
 const websiteLabel = personalData.socialLinks.find(s => s.platform === 'website')?.username ?? 'nooobtimex.me'
 
