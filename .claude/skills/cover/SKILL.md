@@ -59,6 +59,13 @@ All optional; URL-encode values.
 | `badgeSub` | small line under the badge, e.g. `Realtime`.                                                                                                                                                                   |
 | `meta`     | bottom-right, e.g. `FREELANCE // 2025`.                                                                                                                                                                        |
 
+**`accent` now lives in the data layer.** Each project carries an `accent` hex in
+`common/data/projects.ts`; it drives BOTH this cover and the 1:1 share card's chrome
+(`components/og/`). Read it from there rather than re-picking a colour, and when a
+project has a real product behind it, sample the brand off the live site instead of
+inventing one — looklook-pet, prettier-config and monomax-epl-portal were corrected
+this way. Update both this table and `projects.ts` together.
+
 Keep `accent`/`motif` distinct per project so the set reads as a cohesive family,
 not clones. Match `badgeLvl` to `links.live` (`● Live` vs `● Archived`).
 
@@ -89,15 +96,22 @@ Naming convention: the generated hero is always `cover.webp`; real screenshots a
 
 ## Per-project config used for the current set (reuse / tweak these)
 
+`tags` is recorded here on purpose. It used to live ONLY as pixels inside the rendered
+`cover.webp`, so nothing kept it honest — and it drifted: `rs-medal` advertised MongoDB it
+has never used (copy-pasted from `rs-award`), and `looklook-pet` kept advertising NATS for
+months after a milestone retired it. **Tags must name only skills that are ACTIVE for that
+project** — cross-check `activeSkills` in `common/data/projects.ts`, and prefer drawing them
+from that project's `highlightSkills`, which is already the curated signature list.
+
 ```
-monomax-epl-portal  accent #B14FFF  motif qr      title MONOMax|EPL Portal  kicker // LICENSING SAAS   badge ● SaaS
-rs-trophy           accent #FCEE0A  motif trophy  title RS|Trophy           kicker // E-COMMERCE PLATFORM  badge ● Live
-looklook-pet        accent #FF3CAC  motif hex     title LOOKLOOK|Pet        kicker // MARKETPLACE      badge ● Live
-online-poker-game   accent #FF003C  motif cards   title Online|Poker        kicker // REALTIME GAME    badge ● Archived
-flood-project       accent #00F0FF  motif waves   title Flood|Project       kicker // WATER-LEVEL MONITORING
-prettier-config     accent #00F0FF  motif braces  title Prettier|Config     kicker // DEV TOOL         badge ● Live
-rs-medal            accent #8AD8FF  motif rings    title RS|Medal            kicker // E-COMMERCE       badge ● Live
-rs-award            accent #FFB020  motif shield   title RS|Award            kicker // E-COMMERCE       badge ● Live
-portfolio           accent #FCEE0A  motif hex      title Portfolio|v2.077    kicker // PERSONAL SITE    badge ● Live
-qr-food             accent #39FF14  motif qr       title QR|Food             kicker // SENIOR THESIS    badge ● Thesis
+monomax-epl-portal  accent #EE5E25  motif qr       title MONOMax|EPL Portal  kicker // LICENSING SAAS       badge ● SaaS      tags Next.js,MongoDB,Better-Auth,Docker
+rs-trophy           accent #FCEE0A  motif trophy   title RS|Trophy           kicker // E-COMMERCE PLATFORM  badge ● Live      tags Bun,Next.js,Elysia,MongoDB,R2
+looklook-pet        accent #FF7D5A  motif hex      title LOOKLOOK|Pet        kicker // MARKETPLACE          badge ● Live      tags NestJS,Medusa,Omise,Next.js
+online-poker-game   accent #FF003C  motif cards    title Online|Poker        kicker // REALTIME GAME        badge ● Archived  tags Next.js,SSE,PostgreSQL,Redis
+flood-project       accent #00F0FF  motif waves    title Flood|Project       kicker // WATER-LEVEL MONITORING                 tags Next.js,Prisma,Leaflet,Recharts,NextAuth
+prettier-config     accent #55B3B4  motif braces   title Prettier|Config     kicker // DEV TOOL             badge ● Live      tags Next.js,CodeMirror,Tailwind
+rs-medal            accent #8AD8FF  motif rings    title RS|Medal            kicker // E-COMMERCE           badge ● Live      tags Next.js,JSON-LD,SEO
+rs-award            accent #FFB020  motif shield   title RS|Award            kicker // E-COMMERCE           badge ● Live      tags Next.js,MongoDB,SEO
+portfolio           accent #FCEE0A  motif hex      title Portfolio|v2.077    kicker // PERSONAL SITE        badge ● Live      tags Next.js,Tailwind,shadcn,Vercel
+qr-food             accent #39FF14  motif qr       title QR|Food             kicker // SENIOR THESIS        badge ● Thesis    tags Nuxt,Vue,Prisma,Supabase
 ```
