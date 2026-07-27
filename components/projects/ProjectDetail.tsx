@@ -133,6 +133,14 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
 						</CyberButton>
 					)}
 
+					<CyberButton
+						href={`/card/projects/${project.id}`}
+						download={`${project.id}-card.png`}
+						variant='outline'
+						className='w-full'>
+						<Icon icon='mdi:download' /> 1:1 Card
+					</CyberButton>
+
 					<NeonPanel className='clip-notch-sm p-4'>
 						<h3 className='text-cyber-cyan mb-3 font-mono text-xs tracking-widest uppercase'>Loadout</h3>
 						<div className='flex flex-wrap gap-2'>
