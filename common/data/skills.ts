@@ -53,7 +53,9 @@ const tanstackQuery = skill({
 	icon: 'logos:react-query-icon',
 	category: 'frontend'
 })
-const recharts = skill({ id: 'recharts', name: 'Recharts', icon: 'simple-icons:recharts', category: 'frontend' })
+// Simple Icons has no Recharts logo, so this uses a generic chart glyph. The old
+// 'simple-icons:recharts' resolved to nothing and rendered blank everywhere.
+const recharts = skill({ id: 'recharts', name: 'Recharts', icon: 'mdi:chart-line', category: 'frontend' })
 const flutter = skill({ id: 'flutter', name: 'Flutter', icon: 'logos:flutter', category: 'frontend' })
 const prettier = skill({ id: 'prettier', name: 'Prettier', icon: 'logos:prettier', category: 'frontend' })
 const codemirror = skill({
@@ -88,10 +90,13 @@ const nodejs = skill({
 })
 const nestjs = skill({ id: 'nest-js', name: 'Nest.js', icon: 'logos:nestjs', category: 'backend' })
 const nats = skill({ id: 'nats', name: 'NATS', icon: 'logos:nats-icon', category: 'backend' })
+// The real Elysia fox mark. `logos` has no Elysia entry, so this comes from `skill-icons`,
+// whose '-dark' variant is the light-fox-on-dark treatment the official branding uses —
+// the '-light' variant inverts it to a cream tile. Was a generic `flash-on` bolt.
 const elysia = skill({
 	id: 'elysia-js',
 	name: 'Elysia.js',
-	icon: 'material-symbols:flash-on',
+	icon: 'skill-icons:elysia-dark',
 	category: 'backend'
 })
 const sse = skill({ id: 'sse', name: 'SSE', icon: 'material-symbols:stream', category: 'backend' })
