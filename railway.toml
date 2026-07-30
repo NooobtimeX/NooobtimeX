@@ -1,0 +1,31 @@
+[build]
+builder = "DOCKERFILE"
+# Railway: leave the service Root Directory at "/" (repo root) — the Dockerfile
+# expects the repo root as its build context.
+dockerfilePath = "Dockerfile"
+# Allowlist, so the readme-assets workflow committing regenerated SVGs into
+# .github/assets/ does not trigger a pointless site rebuild. Anything the build
+# actually reads has to be listed here.
+watchPatterns = [
+	"app/**",
+	"common/**",
+	"components/**",
+	"lib/**",
+	"public/**",
+	"next.config.ts",
+	"postcss.config.mjs",
+	"tsconfig.json",
+	"components.json",
+	"package.json",
+	"bun.lock",
+	"Dockerfile",
+	"railway.toml"
+]
+
+[deploy]
+# Matches the Dockerfile CMD. The standalone server reads Railway's injected
+# $PORT itself, so no -p flag here (unlike the local `dev`/`start` scripts,
+# which pin port 1000).
+startCommand = "node server.js"
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10
