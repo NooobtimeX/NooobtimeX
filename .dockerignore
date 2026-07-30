@@ -1,0 +1,14 @@
+**/.git
+**/.DS_Store
+**/node_modules
+**/.next
+**/out
+**/build
+**/coverage
+**/.claude
+**/.vercel
+# Never ship local env into the image — a committed PORT would shadow the one
+# Railway injects and the healthcheck would never find the server.
+**/.env
+**/.env.local
+**/*.tsbuildinfo
