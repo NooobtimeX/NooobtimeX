@@ -1,8 +1,8 @@
 # NooobtimeX
 
 Wongsaphat Puangsorn's personal portfolio — a content-driven marketing site with a
-**Cyberpunk 2077** visual theme. Deployed on **Vercel** (no Docker / Railway — those
-were removed).
+**Cyberpunk 2077** visual theme. Deployed on **Railway** via `railway.toml` and the root
+`Dockerfile` (Vercel is no longer a deploy target).
 
 - **Next.js 16** (App Router, Turbopack) · **React 19** · **TypeScript**
 - **Tailwind CSS v4** · **shadcn/ui on Base UI** (`@base-ui/react`)
@@ -30,6 +30,32 @@ lib/utils.ts       # cn() + slugify/unslugify/formatExperienceDuration · lib/gi
 
 **Definition of done for any code change: `bun run lint` then `bun run build`, both
 green.** Run them before declaring work complete.
+
+## Deployment
+
+**Railway is the only deploy target.** It uses `railway.toml` (config-as-code, overrides
+the dashboard) + the root `Dockerfile`, mirroring `rs-trophy.com`:
+
+- **bun builds, node serves.** Stages 1–2 run install and build on `oven/bun:1-slim`;
+  stage 3 serves on `node:24-slim`. Serving on Bun is deliberately avoided — the Next
+  standalone server leaks RSS under Bun's Node-compat HTTP layer (oven-sh/bun#27514),
+  which on a long-lived container reads as a slow OOM.
+- `output: 'standalone'` in `next.config.ts` is what makes stage 3 install-free. It also
+  traces **sharp**, which `/_next/image` needs — image optimization runs in our own
+  container now, so sharp must survive into the runtime stage.
+- **Never let `.env` into the image.** `.dockerignore` excludes it because Next copies
+  `.env` into `.next/standalone/`, and a committed `PORT` there would shadow Railway's
+  injected `$PORT` and hang the healthcheck. Runtime config (e.g. optional
+  `GITHUB_TOKEN`) belongs in Railway service variables, not build args.
+- Railway service **Root Directory stays `/`** — the Dockerfile expects the repo root as
+  its build context. `watchPatterns` is an allowlist so the `readme-assets` workflow
+  committing regenerated `.github/assets/*.svg` doesn't trigger a site rebuild.
+
+Verify a Railway change locally the way Railway runs it — injected port, no `.env`:
+
+```bash
+docker build -t nooobtimex . && docker run --rm -e PORT=7788 -p 7788:7788 nooobtimex
+```
 
 ## Global conventions
 
