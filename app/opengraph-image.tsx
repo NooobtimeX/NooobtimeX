@@ -1,5 +1,5 @@
 import { ImageResponse } from 'next/og'
-import { OG } from '@/lib/og-assets'
+import { OG } from '@/lib/og-palette'
 import { formatPosition } from '@/lib/utils'
 import { latestRole, personalData } from '@/common'
 

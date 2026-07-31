@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import Container from '@/components/cyber/Container'
 import MotionReveal from '@/components/cyber/MotionReveal'
@@ -31,7 +30,13 @@ const CompanyCard: React.FC<{ org: Organization; index: number }> = ({ org, inde
 				<div className='flex items-center gap-4'>
 					{org.logo && (
 						<span className='relative size-12 shrink-0 overflow-hidden rounded-sm bg-white/90'>
-							<Image src={org.logo} alt={org.name} fill sizes='48px' className='object-contain p-1' />
+							<img
+								src={org.logo}
+								alt={org.name}
+								loading='lazy'
+								decoding='async'
+								className='absolute inset-0 size-full object-contain p-1'
+							/>
 						</span>
 					)}
 					<div className='min-w-0'>

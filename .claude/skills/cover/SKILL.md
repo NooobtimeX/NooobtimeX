@@ -87,9 +87,19 @@ Naming convention: the generated hero is always `cover.webp`; real screenshots a
 
 ## Notes
 
-- `next.config.ts` allows only image `qualities: [100]` — don't hand-test optimizer
-  URLs with `q=75` (they 400); the raw `/issue/.../cover.webp` is the source of truth.
-- Cards use `next/image` `object-cover` on a 16:9 box, so 1600×900 is the target.
+- **There is no image optimizer.** `next.config.ts` sets `images: { unoptimized: true }`
+  and the site uses plain `<img>` — `/issue/.../cover.webp` is served byte-for-byte, so
+  it is both the source of truth and what visitors download. (The old
+  `qualities: [100]` / `/_next/image` advice is gone.)
+- **1600×900 is a floor, not just a fit.** Three consumers pin it:
+  `pngDataUri(cover, 1080)` in `app/card/projects/[id]/route.tsx` uses
+  `withoutEnlargement: true`, so anything under 1080 gets stretched into the 1080×608
+  share card and goes quietly blurry; `app/cv/page.tsx` prints covers on A4 at 182 mm
+  (1600 px = 223 DPI); and JSON-LD `image` wants ≥1200. `bun run images:optimize`
+  deliberately leaves covers untouched for this reason — never hand-shrink one.
+- Cards crop `object-cover` on a 16:9 box (`ProjectCard.tsx`), but the **detail hero is
+  `aspect-[16/8]`** (`ProjectDetail.tsx`), which trims ~6% off the top and bottom of a
+  16:9 source. Keep anything load-bearing out of those bands.
 - The template's fonts fall back to macOS system fonts (Avenir Next Condensed /
   Menlo) since Rajdhani/JetBrains-Mono aren't installed — that's expected and looks
   right in raster.

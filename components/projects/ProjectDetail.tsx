@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
 import Container from '@/components/cyber/Container'
@@ -54,13 +53,13 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
 
 			{/* Banner */}
 			<NeonPanel className='clip-notch relative mt-6 aspect-[16/8] w-full overflow-hidden p-0'>
-				<Image
+				<img
 					src={project.images.cover}
 					alt={project.title}
-					fill
-					priority
-					sizes='(max-width: 1024px) 100vw, 1024px'
-					className='object-cover'
+					loading='eager'
+					fetchPriority='high'
+					decoding='async'
+					className='absolute inset-0 size-full object-cover'
 				/>
 				<div className='from-background/95 via-background/30 absolute inset-0 bg-gradient-to-t to-transparent' />
 				<span className='text-cyber-cyan absolute top-3 left-4 font-mono text-[0.65rem] tracking-[0.3em] uppercase'>

@@ -13,7 +13,7 @@
  * brackets instead — the same look as the `.hud-corners` utility.
  */
 import React from 'react'
-import { OG } from '@/lib/og-assets'
+import { OG } from '@/lib/og-palette'
 
 export const CARD_SIZE = 1080
 /** Horizontal gutter; also the corner-bracket inset. */
@@ -191,7 +191,6 @@ export const StackGrid: React.FC<{ icons: StackIcon[]; overflow: number; chip?: 
 					border: `1px solid ${alpha(accent, 0.3)}`,
 					backgroundColor: ic.whiteBg ? '#FFFFFF' : alpha(accent, 0.05)
 				}}>
-				{/* eslint-disable-next-line @next/next/no-img-element -- Satori renders raw <img>; next/image does not exist here. */}
 				<img src={ic.src} width={ic.width} height={ic.height} alt='' />
 			</div>
 		))}

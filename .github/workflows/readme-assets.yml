@@ -10,6 +10,8 @@ on:
       - 'scripts/readme/**'
       - 'common/data/**'
       - 'lib/github.ts'
+      - 'lib/icon-data.ts'
+      - 'lib/og-icons.generated.json'
       - '.github/workflows/readme-assets.yml'
 
 permissions:

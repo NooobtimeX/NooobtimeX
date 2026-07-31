@@ -143,7 +143,6 @@ const PresentationView: React.FC<PresentationViewProps> = ({ onExit }) => {
 						{/* Left: banner + meta + grouped tech */}
 						<div className='flex min-h-0 flex-col gap-4 overflow-y-auto pr-1'>
 							<div className='neon-panel clip-notch relative aspect-[16/9] w-full shrink-0 overflow-hidden'>
-								{/* eslint-disable-next-line @next/next/no-img-element */}
 								<img src={p.images.cover} alt={p.title} className='h-full w-full object-cover' />
 								<div className='from-background/90 absolute inset-0 bg-gradient-to-t to-transparent' />
 							</div>
