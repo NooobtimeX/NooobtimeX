@@ -19,7 +19,8 @@ import {
 	type StackIcon,
 	gridBackground
 } from '@/components/og/card-primitives'
-import { OG, iconDataUri } from '@/lib/og-assets'
+import { iconDataUri } from '@/lib/og-assets'
+import { OG } from '@/lib/og-palette'
 import { featuredSkills, personalData } from '@/common'
 
 const PAD = 72

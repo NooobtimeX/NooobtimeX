@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
 import Container from '@/components/cyber/Container'
@@ -52,12 +51,12 @@ const ExperienceDetail: React.FC<ExperienceDetailProps> = ({ item }) => {
 				)}>
 				{item.organization.logo && (
 					<span className='relative size-16 shrink-0 overflow-hidden rounded-sm bg-white/90'>
-						<Image
+						<img
 							src={item.organization.logo}
 							alt={item.organization.name}
-							fill
-							sizes='64px'
-							className='object-contain p-1.5'
+							loading='lazy'
+							decoding='async'
+							className='absolute inset-0 size-full object-contain p-1.5'
 						/>
 					</span>
 				)}

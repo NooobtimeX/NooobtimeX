@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
 import Container from '@/components/cyber/Container'
@@ -110,13 +109,13 @@ const HomeContent: React.FC = () => {
 					{/* Right: portrait */}
 					<div className='relative order-first mx-auto lg:order-none lg:mx-0'>
 						<div className='neon-panel clip-notch relative size-56 overflow-hidden sm:size-72 lg:size-80'>
-							<Image
+							<img
 								src={personalData.avatar}
 								alt={personalData.name}
-								fill
-								priority
-								sizes='(max-width: 1024px) 18rem, 20rem'
-								className='object-cover'
+								loading='eager'
+								fetchPriority='high'
+								decoding='async'
+								className='absolute inset-0 size-full object-cover'
 							/>
 							<div className='scanlines pointer-events-none absolute inset-0 opacity-30' />
 							<div className='from-background/50 pointer-events-none absolute inset-0 bg-gradient-to-t to-transparent' />
@@ -152,12 +151,12 @@ const HomeContent: React.FC = () => {
 								className='group neon-panel clip-notch-sm hover:border-cyber-yellow/60 flex items-center gap-4 p-4 transition-colors'>
 								{role.organization.logo && (
 									<span className='relative size-11 shrink-0 overflow-hidden rounded-sm bg-white/90'>
-										<Image
+										<img
 											src={role.organization.logo}
 											alt={role.organization.name}
-											fill
-											sizes='44px'
-											className='object-contain p-1'
+											loading='lazy'
+											decoding='async'
+											className='absolute inset-0 size-full object-contain p-1'
 										/>
 									</span>
 								)}

@@ -73,6 +73,13 @@ const skills: Skill[] = [/* … */]
 `skillsData` = `allSkills`; `skillById` is the id→`Skill` lookup; `featuredSkills`
 is a hand-picked curation list. `whiteBg: true` flags a logo that needs a light chip.
 
+**A new or changed `icon:` needs `bun run icons:generate`.** Server-side renderers —
+the Satori social cards and the README SVGs — cannot fetch, so they read a curated
+subset committed at [`lib/og-icons.generated.json`](../../../lib/og-icons.generated.json)
+rather than the 26.7 MB `@iconify-json/*` packages. The same applies to any `icon:` in
+`personal.ts` (social links, contact channels) or a project's `timeline`. Forgetting
+fails `bun run build` with the missing name — see §8.
+
 ## 4. `assets.ts` is the single source of every image path
 
 [`common/data/assets.ts`](../../../common/data/assets.ts) is an `as const` map
@@ -121,10 +128,20 @@ paths come from `assets.*`.
 
 ## 8. Pre-PR checklist
 
+Touched an `icon:` anywhere in `common/data`? Regenerate the subset first:
+
+```bash
+bun run icons:generate
+```
+
+Then the usual gate:
+
 ```bash
 bun run lint && bun run build
 ```
 
 `build` is the type gate — a bad `SkillId`, a missing `assets.*` key, a widened
-`skill()` literal, or a union typo fails here. If you renamed an id/route and the
-types look stale, `rm -rf .next` and rebuild.
+`skill()` literal, or a union typo fails here. It also runs `icons:check` first, which
+fails if `common/data` references an icon missing from
+[`lib/og-icons.generated.json`](../../../lib/og-icons.generated.json). If you renamed an
+id/route and the types look stale, `rm -rf .next` and rebuild.

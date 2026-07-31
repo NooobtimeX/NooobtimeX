@@ -18,15 +18,19 @@ app/
 common/            # the data layer — single source of truth for all content
 components/cyber/   # the design system · plus feature folders + ui/ (shadcn)
 lib/utils.ts       # cn() + slugify/unslugify/formatExperienceDuration · lib/github.ts (token-free ISR)
+lib/icon-data.ts   # server-side icon lookup → lib/og-icons.generated.json (see scripts/icons/)
+scripts/icons/     # generates that subset · the ONLY place @iconify-json/* may be imported
 ```
 
 ## Commands
 
-| Task  | Command         | Notes                                   |
-| ----- | --------------- | --------------------------------------- |
-| Dev   | `bun run dev`   | serves on **port 1000**                 |
-| Build | `bun run build` | ~99 routes; this is the type-check gate |
-| Lint  | `bun run lint`  | `eslint . --fix && prettier . --write`  |
+| Task   | Command                   | Notes                                                                 |
+| ------ | ------------------------- | --------------------------------------------------------------------- |
+| Dev    | `bun run dev`             | serves on **port 1000**                                               |
+| Build  | `bun run build`           | 107 prerendered routes; the type-check gate. Runs `icons:check` first |
+| Lint   | `bun run lint`            | `eslint . --fix && prettier . --write`                                |
+| Icons  | `bun run icons:generate`  | after any `icon:` change in `common/data` — commit the artifact       |
+| Images | `bun run images:optimize` | after adding anything to `public/` — idempotent, commit the result    |
 
 **Definition of done for any code change: `bun run lint` then `bun run build`, both
 green.** Run them before declaring work complete.
@@ -40,9 +44,16 @@ the dashboard) + the root `Dockerfile`, mirroring `rs-trophy.com`:
   stage 3 serves on `node:24-slim`. Serving on Bun is deliberately avoided — the Next
   standalone server leaks RSS under Bun's Node-compat HTTP layer (oven-sh/bun#27514),
   which on a long-lived container reads as a slow OOM.
-- `output: 'standalone'` in `next.config.ts` is what makes stage 3 install-free. It also
-  traces **sharp**, which `/_next/image` needs — image optimization runs in our own
-  container now, so sharp must survive into the runtime stage.
+- `output: 'standalone'` in `next.config.ts` is what makes stage 3 install-free.
+- **The runtime never loads sharp.** `images: { unoptimized: true }` — the site uses
+  plain `<img>`, so there is no `/_next/image` route — and `lib/og-assets.ts` imports
+  sharp lazily inside `pngDataUri`, which only runs while prerendering the OG cards.
+  Keep it that way: a top-level `import sharp` anywhere reachable from `app/` puts
+  libvips back in the container (~23 MB RSS, a 50 MB native cache, and a worker thread
+  per **host** core — libvips reads the host, not the cgroup).
+- `MALLOC_ARENA_MAX` and `NODE_OPTIONS=--max-old-space-size` are set in the runner
+  stage only. Size the heap cap at 0.6–0.75 × the Railway service's memory limit; the
+  builder must stay uncapped, since Turbopack + 107 prerenders is heap-hungry.
 - **Never let `.env` into the image.** `.dockerignore` excludes it because Next copies
   `.env` into `.next/standalone/`, and a committed `PORT` there would shadow Railway's
   injected `$PORT` and hang the healthcheck. Runtime config (e.g. optional

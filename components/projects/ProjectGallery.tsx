@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import Image from 'next/image'
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog'
 
 interface ProjectGalleryProps {
@@ -22,24 +21,35 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ photos, title }) => {
 						key={`${src}-${i}`}
 						onClick={() => setActive(src)}
 						className='neon-panel clip-notch-sm group relative aspect-video overflow-hidden'>
-						<Image
+						<img
 							src={src}
 							alt={`${title} screenshot ${i + 1}`}
-							fill
-							sizes='(max-width: 640px) 50vw, 33vw'
-							className='object-cover opacity-80 transition-all duration-300 group-hover:scale-105 group-hover:opacity-100'
+							loading='lazy'
+							decoding='async'
+							className='absolute inset-0 size-full object-cover opacity-80 transition-all duration-300 group-hover:scale-105 group-hover:opacity-100'
 						/>
 					</button>
 				))}
 			</div>
 
 			<Dialog open={!!active} onOpenChange={open => !open && setActive(null)}>
-				<DialogContent className='border-cyber-cyan/40 bg-popover max-w-4xl rounded-none! border p-2'>
+				{/* `sm:max-w-4xl`, not `max-w-4xl` — the shadcn DialogContent base carries
+				    `sm:max-w-md`, and tailwind-merge keys max-width by modifier set, so a bare
+				    utility cannot displace a prefixed one. A plain `max-w-4xl` here was dead
+				    code above 640px and this "lightbox" opened at 448px on a desktop. */}
+				<DialogContent className='border-cyber-cyan/40 bg-popover rounded-none! border p-2 sm:max-w-4xl'>
 					<DialogTitle className='sr-only'>{title}</DialogTitle>
+					{/* No aspect-video wrapper: `object-contain` inside a fixed 16:9 box letterboxed
+					    the tall phone screenshots (665×1440) down to a ~112px sliver. Letting the
+					    image size itself against a viewport-height cap keeps portraits readable. */}
 					{active && (
-						<div className='relative aspect-video w-full'>
-							<Image src={active} alt={title} fill sizes='100vw' className='object-contain' />
-						</div>
+						<img
+							src={active}
+							alt={title}
+							loading='eager'
+							decoding='async'
+							className='max-h-[85vh] w-full object-contain'
+						/>
 					)}
 				</DialogContent>
 			</Dialog>

@@ -437,7 +437,6 @@ export default function CVPage() {
 							className='cv-page-container mx-auto mb-10 flex h-[297mm] w-[210mm] flex-col overflow-hidden border border-black/5 bg-white p-[14mm] shadow-lg last:mb-0 print:mb-0 print:border-0 print:shadow-none'>
 							{/* Banner + title */}
 							<div className='relative mb-5 aspect-[16/6] w-full shrink-0 overflow-hidden border border-gray-100'>
-								{/* eslint-disable-next-line @next/next/no-img-element */}
 								<img src={project.images.cover} alt={project.title} className='h-full w-full object-cover' />
 								<div className='absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent' />
 								<div className='absolute bottom-0 left-0 p-5'>

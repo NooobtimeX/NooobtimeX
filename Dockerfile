@@ -35,6 +35,18 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
+# glibc (this is Debian) hands each thread its own malloc arena — up to 8 × ncores —
+# and their free lists are rarely returned to the OS. On a many-core Railway host that
+# is tens of MB of RSS the heap profiler cannot see. One process, so 2 arenas is ample.
+ENV MALLOC_ARENA_MAX=2
+
+# Without this, V8 sizes its old-space cap from os.totalmem(), which inside a container
+# usually reports the HOST's memory — so the heap can drift for hundreds of MB before a
+# major GC. Rule of thumb: 0.6–0.75 × the service's memory limit (Railway dashboard →
+# service → Settings). 512 suits any plan here; the served output is prerendered HTML
+# and the live JS heap sits well under 100 MB.
+ENV NODE_OPTIONS=--max-old-space-size=512
+
 # `output: 'standalone'` traces the server's real imports (sharp included, which
 # the /_next/image optimizer needs at runtime). .next/static is never traced and
 # must come across explicitly; public/ currently is copied by Next itself, but

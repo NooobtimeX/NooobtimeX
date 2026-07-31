@@ -20,7 +20,8 @@ import {
 	stripEmoji,
 	truncate
 } from '@/components/og/card-primitives'
-import { OG, iconDataUri } from '@/lib/og-assets'
+import { iconDataUri } from '@/lib/og-assets'
+import { OG } from '@/lib/og-palette'
 import { type Project, entitiesData, experiencesData } from '@/common'
 
 /**
@@ -104,7 +105,6 @@ const ProjectSquareCard: React.FC<ProjectSquareCardProps> = ({ project, cover })
 			<div style={{ position: 'relative', display: 'flex', width: CARD_SIZE, height: COVER_HEIGHT }}>
 				{
 					cover ?
-						// eslint-disable-next-line @next/next/no-img-element -- Satori renders raw <img>; next/image does not exist here.
 						<img src={cover} width={CARD_SIZE} height={COVER_HEIGHT} alt='' style={{ objectFit: 'cover' }} />
 						// Fallback only: with no cover there is nothing to name the project, so the
 						// card prints its own title block instead.

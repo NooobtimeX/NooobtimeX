@@ -2,31 +2,14 @@
  * Embeds iconify icon data as inline SVG at generation time — no external
  * fetches in the rendered assets (GitHub camo CSP). Icon names follow the
  * `collection:id` strings already used across common/data.
+ *
+ * Icons come from the curated subset in `lib/icon-data.ts`, shared with the Satori
+ * cards. Adding a skill means `bun run icons:generate`; until you do, that icon
+ * renders as a letter tile here.
  */
-import { icons as carbon } from '@iconify-json/carbon'
-import { icons as logos } from '@iconify-json/logos'
-import { icons as materialSymbols } from '@iconify-json/material-symbols'
-import { icons as mdi } from '@iconify-json/mdi'
-import { icons as simpleIcons } from '@iconify-json/simple-icons'
-import { icons as skillIcons } from '@iconify-json/skill-icons'
-import type { IconifyJSON } from '@iconify/types'
-import { getIconData, iconToSVG } from '@iconify/utils'
+import { iconToSVG } from '@iconify/utils'
+import { MONOCHROME, resolveIcon } from '@/lib/icon-data'
 import { C, FONT_MONO, px } from './theme'
-
-// Must stay in step with COLLECTIONS in lib/og-assets.ts — a collection missing here
-// silently degrades that icon to a letter tile in the README.
-const COLLECTIONS: Record<string, IconifyJSON> = {
-	'logos': logos,
-	'simple-icons': simpleIcons,
-	'material-symbols': materialSymbols,
-	'mdi': mdi,
-	'carbon': carbon,
-	// Full-colour badge marks, for brands `logos` doesn't carry (currently Elysia).
-	'skill-icons': skillIcons
-}
-
-/** Collections whose icons are monochrome `currentColor` and can be tinted. */
-const MONOCHROME = new Set(['simple-icons', 'material-symbols', 'mdi', 'carbon'])
 
 export interface EmbeddedIcon {
 	width: number
@@ -43,8 +26,11 @@ export function icon(
 	opts: { color?: string; whiteBg?: boolean; fallbackLabel?: string } = {}
 ): EmbeddedIcon {
 	const [collection, id] = name.split(':')
-	const data = COLLECTIONS[collection] ? getIconData(COLLECTIONS[collection], id) : null
+	const data = resolveIcon(name)
 
+	// Unlike `iconDataUri` in lib/og-assets.ts, this degrades instead of throwing:
+	// `readme:assets` runs on a weekly schedule, and one unknown icon should not fail
+	// the whole workflow. `bun run icons:check` is the gate that catches real drift.
 	if (!data) {
 		console.warn(`[icons] missing icon "${name}" — using letter fallback`)
 		const letter = (opts.fallbackLabel ?? id ?? '?').charAt(0).toUpperCase()

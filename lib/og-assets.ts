@@ -7,56 +7,17 @@
  *
  * Two constraints drive everything here:
  *   1. `@iconify/react` resolves icons over the network at RUNTIME. That is useless
- *      to Satori, so icons are read straight out of the `@iconify-json/*` packages
- *      instead — the same trick `scripts/readme/icons.ts` uses for the profile README.
+ *      to Satori, so icons are read from the curated local subset in
+ *      `lib/icon-data.ts` instead — the same source `scripts/readme/icons.ts` uses
+ *      for the profile README.
  *   2. Satori cannot decode WebP, and every image in `public/` is WebP. They are
  *      transcoded to PNG with sharp.
  */
-import { icons as carbon } from '@iconify-json/carbon'
-import { icons as logos } from '@iconify-json/logos'
-import { icons as materialSymbols } from '@iconify-json/material-symbols'
-import { icons as mdi } from '@iconify-json/mdi'
-import { icons as simpleIcons } from '@iconify-json/simple-icons'
-import { icons as skillIcons } from '@iconify-json/skill-icons'
-import type { IconifyJSON } from '@iconify/types'
-import { getIconData, iconToSVG } from '@iconify/utils'
+import { iconToSVG } from '@iconify/utils'
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
-import sharp from 'sharp'
-
-/**
- * Card palette. Mirrors the signal colors in `app/globals.css`, as literal hex —
- * Satori supports neither CSS custom properties nor `color-mix()`.
- */
-export const OG = {
-	yellow: '#FCEE0A',
-	cyan: '#00F0FF',
-	magenta: '#FF003C',
-	green: '#39FF14',
-	bg: '#050507',
-	panel: '#0A0C11',
-	fg: '#E6FBFF',
-	muted: '#7D8A99'
-} as const
-
-/** Icon collections bundled at build time. Keys match the `collection:id` prefix used in `common/data`. */
-const COLLECTIONS: Record<string, IconifyJSON> = {
-	'carbon': carbon,
-	'logos': logos,
-	'material-symbols': materialSymbols,
-	'mdi': mdi,
-	'simple-icons': simpleIcons,
-	// Badge-style, full-colour marks. Carried for brands with no entry in `logos`
-	// (currently Elysia) — prefer `logos` when a bare mark exists there.
-	'skill-icons': skillIcons
-}
-
-/**
- * Collections whose icons are drawn in `currentColor` and therefore need an explicit tint.
- * `skill-icons` is deliberately absent — its icons ship real brand colours, and tinting one
- * would flatten it to a silhouette.
- */
-const MONOCHROME = new Set(['carbon', 'material-symbols', 'mdi', 'simple-icons'])
+import { MONOCHROME, resolveIcon } from '@/lib/icon-data'
+import { OG } from '@/lib/og-palette'
 
 export interface EmbeddedIcon {
 	src: string
@@ -71,17 +32,22 @@ export interface EmbeddedIcon {
  * infer an `<img>`'s intrinsic size — `logos:react` is 72×64, not 64×64, and
  * forcing it square visibly squashes the logo.
  *
- * Returns null for an unknown icon so callers can skip the slot rather than render
- * a broken image. That is a silent gap by design; the build log is the warning.
+ * Throws on an unknown icon rather than skipping the slot. `bun run icons:check`
+ * gates the build and guarantees every name in `common/data` is in the subset, so a
+ * miss here can only be a hard-coded literal that was never generated — and the
+ * alternative is a silent gap on a social card nobody notices until it is shared.
  */
 export function iconDataUri(name: string, opts: { size?: number; color?: string } = {}): EmbeddedIcon | null {
 	const size = opts.size ?? 48
-	const [collection, id] = name.split(':')
-	const data = COLLECTIONS[collection] ? getIconData(COLLECTIONS[collection], id) : null
+	const [collection] = name.split(':')
+	const data = resolveIcon(name)
 
 	if (!data) {
-		console.warn(`[og-assets] unknown icon "${name}" — omitted from card`)
-		return null
+		throw new Error(
+			`[og-assets] unknown icon "${name}" — not in lib/og-icons.generated.json. `
+				+ `If it comes from common/data, run \`bun run icons:generate\`; `
+				+ `otherwise add it to EXTRA_ICONS in scripts/icons/required.ts.`
+		)
 	}
 
 	const rendered = iconToSVG(data, { height: size })
@@ -115,6 +81,12 @@ export function iconDataUri(name: string, opts: { size?: number; color?: string 
  */
 export async function pngDataUri(publicPath: string, width: number): Promise<string | null> {
 	try {
+		// Imported lazily, NOT at module scope. Every card route is `force-static`, so this
+		// only ever runs at build time — but Next 16 preloads all route entries at server
+		// start, and a top-level `import sharp` would therefore drag libvips into the
+		// production container for nothing: ~23 MB RSS on require, plus a 50 MB native
+		// cache and a worker thread per host core.
+		const { default: sharp } = await import('sharp')
 		const file = path.join(process.cwd(), 'public', publicPath.replace(/^\//, ''))
 		const png = await sharp(await readFile(file))
 			.resize({ width, withoutEnlargement: true })

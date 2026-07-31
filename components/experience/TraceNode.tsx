@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { cn, formatExperienceDuration } from '@/lib/utils'
 import { ExperienceCategory, type ExperienceItem } from '@/common'
@@ -31,11 +30,13 @@ const TraceNode: React.FC<TraceNodeProps> = ({ item, side, isNow }) => {
 					isNow ? 'now-pulse border-cyber-yellow' : 'border-cyber-cyan/60'
 				)}>
 				{item.organization.logo ?
-					<Image
+					<img
 						src={item.organization.logo}
 						alt={item.organization.name}
 						width={36}
 						height={36}
+						loading='lazy'
+						decoding='async'
 						className='size-full bg-white/90 object-contain p-1'
 					/>
 				:	<span className='bg-cyber-cyan size-2 rotate-45' />}

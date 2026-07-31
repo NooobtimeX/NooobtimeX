@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
 import { cn } from '@/lib/utils'
@@ -21,12 +20,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index = 0 }) => {
 			className='group neon-panel clip-notch hover:border-cyber-yellow/60 relative flex h-full flex-col overflow-hidden transition-colors'>
 			{/* Banner */}
 			<div className='border-border/60 relative aspect-[16/9] w-full overflow-hidden border-b'>
-				<Image
+				<img
 					src={project.images.cover}
 					alt={project.title}
-					fill
-					sizes='(max-width: 768px) 100vw, 33vw'
-					className='object-cover opacity-80 transition-all duration-500 group-hover:scale-105 group-hover:opacity-100'
+					loading='lazy'
+					decoding='async'
+					className='absolute inset-0 size-full object-cover opacity-80 transition-all duration-500 group-hover:scale-105 group-hover:opacity-100'
 				/>
 				<div className='from-background/90 via-background/20 absolute inset-0 bg-gradient-to-t to-transparent' />
 				<span className='text-cyber-cyan absolute top-2 left-2 font-mono text-[0.65rem] tracking-widest'>
