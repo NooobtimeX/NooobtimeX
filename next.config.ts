@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
 	poweredByHeader: false,
 	// Emits `.next/standalone` — a self-contained server.js plus only the traced
 	// node_modules. That is what lets the Railway image serve from a bare
-	// `node:24-slim` stage with no install step. Required by the deploy: see the
+	// `node:26-slim` stage with no install step. Required by the deploy: see the
 	// Deployment section in CLAUDE.md before changing it.
 	output: 'standalone',
 	// No `next/image` anywhere — every asset in public/ is already WebP at a sane size,

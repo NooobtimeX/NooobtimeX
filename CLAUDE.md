@@ -41,7 +41,7 @@ green.** Run them before declaring work complete.
 the dashboard) + the root `Dockerfile`, mirroring `rs-trophy.com`:
 
 - **bun builds, node serves.** Stages 1–2 run install and build on `oven/bun:1-slim`;
-  stage 3 serves on `node:24-slim`. Serving on Bun is deliberately avoided — the Next
+  stage 3 serves on `node:26-slim`. Serving on Bun is deliberately avoided — the Next
   standalone server leaks RSS under Bun's Node-compat HTTP layer (oven-sh/bun#27514),
   which on a long-lived container reads as a slow OOM.
 - `output: 'standalone'` in `next.config.ts` is what makes stage 3 install-free.
