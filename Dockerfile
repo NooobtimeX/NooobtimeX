@@ -29,7 +29,7 @@ RUN bun run build
 # Node, not Bun: the Next standalone server leaks RSS under Bun's Node-compat
 # HTTP layer (oven-sh/bun#27514 — buffers are freed by GC but never returned to
 # the OS). Bun still installs + builds above; only serving runs on Node.
-FROM node:24-slim AS runner
+FROM node:26-slim AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
