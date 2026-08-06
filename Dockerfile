@@ -3,7 +3,7 @@
 #
 # Bun installs and builds; Node serves. See the runtime stage for why.
 # ─── Stage 1: Install ────────────────────────────────────────────────────────
-FROM oven/bun:1-slim AS installer
+FROM oven/bun:1-slim-baseline AS installer
 WORKDIR /app
 
 # Manifests only, so this layer is cached until dependencies actually change.
@@ -12,7 +12,7 @@ COPY package.json bun.lock ./
 RUN bun install --frozen-lockfile
 
 # ─── Stage 2: Build ──────────────────────────────────────────────────────────
-FROM oven/bun:1-slim AS builder
+FROM oven/bun:1-slim-baseline AS builder
 WORKDIR /app
 
 COPY --from=installer /app/node_modules ./node_modules
