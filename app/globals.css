@@ -415,6 +415,23 @@
 }
 
 /* ============================================================
+ * Focus visibility
+ * ============================================================ */
+
+/*
+ * The stylesheet defined no focus styling at all, leaving keyboard users with the
+ * browser default ring against a near-black background. `:focus-visible` (not `:focus`)
+ * so a mouse click does not leave a ring behind.
+ */
+@layer base {
+	:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+		outline: 2px solid var(--cyber-cyan);
+		outline-offset: 2px;
+		border-radius: 1px;
+	}
+}
+
+/* ============================================================
  * Motion: accessibility and no-JS safety
  * ============================================================ */
 
