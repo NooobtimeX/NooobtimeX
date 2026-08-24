@@ -6,6 +6,8 @@ interface CyberIconProps {
 	/** `collection:id`, e.g. `mdi:home-variant-outline`. Must be in the generated subset. */
 	icon: string
 	className?: string
+	/** Inline colour is load-bearing on the CV, which prints with exact colour adjust. */
+	style?: React.CSSProperties
 }
 
 /**
@@ -27,7 +29,7 @@ interface CyberIconProps {
  * `lib/og-assets.ts`. A silently invisible icon is the failure mode the generate/check
  * pipeline was built to prevent, and `bun run icons:check` already gates the build.
  */
-const CyberIcon: React.FC<CyberIconProps> = ({ icon, className }) => {
+const CyberIcon: React.FC<CyberIconProps> = ({ icon, className, style }) => {
 	const data = resolveIcon(icon)
 
 	if (!data) {
@@ -52,6 +54,7 @@ const CyberIcon: React.FC<CyberIconProps> = ({ icon, className }) => {
 			width='1em'
 			height='1em'
 			className={className}
+			style={style}
 			aria-hidden='true'
 			focusable='false'
 			dangerouslySetInnerHTML={{ __html: body }}

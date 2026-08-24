@@ -1,9 +1,7 @@
-'use client'
-
 import React from 'react'
-import { Icon } from '@iconify/react'
 import CopyButton from '@/components/contact/CopyButton'
 import CyberQR from '@/components/contact/CyberQR'
+import CyberIcon from '@/components/cyber/CyberIcon'
 import NeonPanel from '@/components/cyber/NeonPanel'
 import type { ContactChannel } from '@/common'
 
@@ -27,7 +25,7 @@ const WeChatPanel: React.FC<WeChatPanelProps> = ({ channel }) => {
 		<NeonPanel variant='yellow' corners className='flex flex-col items-center gap-5 p-6 text-center'>
 			<div>
 				<h3 className='font-display flex items-center justify-center gap-2 text-2xl font-bold tracking-wide'>
-					<Icon icon={channel.icon} className='text-cyber-green size-6' />
+					<CyberIcon icon={channel.icon} className='text-cyber-green size-6' />
 					WeChat
 				</h3>
 				<p className='text-muted-foreground mt-1 text-sm'>{channel.note}</p>

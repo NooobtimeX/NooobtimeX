@@ -1,8 +1,6 @@
-'use client'
-
 import React from 'react'
-import { Icon } from '@iconify/react'
 import CopyButton from '@/components/contact/CopyButton'
+import CyberIcon from '@/components/cyber/CyberIcon'
 import CyberTag from '@/components/cyber/CyberTag'
 
 interface ChannelCardProps {
@@ -24,7 +22,7 @@ interface ChannelCardProps {
 const ChannelCard: React.FC<ChannelCardProps> = ({ icon, label, value, url, inChina, note, external = true }) => {
 	return (
 		<div className='border-border hover:border-cyber-cyan/50 clip-notch-sm flex items-center gap-3 border p-3 transition-colors'>
-			<Icon icon={icon} className='text-cyber-cyan size-6 shrink-0' />
+			<CyberIcon icon={icon} className='text-cyber-cyan size-6 shrink-0' />
 
 			<div className='min-w-0 flex-1'>
 				<div className='flex flex-wrap items-center gap-2'>

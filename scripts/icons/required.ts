@@ -33,6 +33,11 @@ import { categoryMetadata, personalData, projectsData, skillsData } from '@/comm
  * and must NOT be added — bundling their icons would grow the payload for nothing.
  */
 const EXTRA_ICONS: string[] = [
+	'material-symbols:call',
+	'material-symbols:download',
+	'material-symbols:location-on',
+	'material-symbols:mail',
+	'material-symbols:slideshow',
 	'mdi:account-multiple-outline',
 	'mdi:account-tie-outline',
 	'mdi:arrow-left',
@@ -41,11 +46,15 @@ const EXTRA_ICONS: string[] = [
 	'mdi:briefcase-outline',
 	'mdi:calendar-check',
 	'mdi:calendar-star',
+	'mdi:cancel',
 	'mdi:chart-line-variant',
+	'mdi:check-circle-outline',
 	'mdi:circle',
+	'mdi:clock-outline',
 	'mdi:domain',
 	'mdi:dots-horizontal',
 	'mdi:download',
+	'mdi:email-outline',
 	'mdi:file-account-outline',
 	'mdi:file-document-outline',
 	'mdi:fire',
