@@ -48,9 +48,34 @@ const ContactContent: React.FC = () => {
 			<div className='mt-6 flex flex-wrap gap-2'>
 				<CyberTag icon='mdi:map-marker-outline'>{personalData.contact.location}</CyberTag>
 				<CyberTag icon='mdi:home-outline'>Remote</CyberTag>
+				<CyberTag icon='mdi:clock-outline'>ICT · UTC+7</CyberTag>
 				<CyberTag icon='mdi:translate' tone='magenta'>
 					{personalData.languages.map(l => l.code.toUpperCase()).join(' / ')}
 				</CyberTag>
+			</div>
+
+			{/* Availability and scope. This is the block that answers the question someone
+			    actually arrives on this page with, so it renders eagerly above the channel
+			    list rather than waiting on a scroll reveal. */}
+			<div className='border-border/60 mt-10 border-t pt-8'>
+				<h2 className='font-display text-xl font-bold tracking-wide uppercase'>Working together</h2>
+				<p className='text-muted-foreground mt-4 max-w-3xl text-base leading-relaxed'>
+					{personalData.contact.availability}. Based in {personalData.contact.location}, Thailand — that is UTC+7, so
+					mornings here overlap the working day across East Asia and Australia, while afternoons and early evenings
+					overlap a full European morning. Work is remote by default, in{' '}
+					{personalData.languages.map(l => l.name).join(' or ')}.
+				</p>
+				<p className='text-muted-foreground mt-4 max-w-3xl text-base leading-relaxed'>
+					The freelance work is web applications taken end to end — scoping and design through full-stack delivery,
+					deployment and the infrastructure underneath. Recent builds include a flood and water-level monitoring
+					dashboard, a real-time multiplayer game, and a QR-code restaurant ordering and multi-branch management
+					platform. Day to day the stack is Next.js and React on the front, Node and Postgres behind it, containerized
+					and shipped through GitHub CI/CD.
+				</p>
+				<p className='text-muted-foreground mt-4 max-w-3xl text-base leading-relaxed'>
+					Email is the fastest route and the one that reaches me wherever I am. The channels below are badged with
+					whether they work inside mainland China.
+				</p>
 			</div>
 
 			{/* PRIMARY — EMAIL. Also eager: it is the page's main call to action and sits

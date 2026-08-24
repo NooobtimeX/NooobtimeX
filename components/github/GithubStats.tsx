@@ -1,8 +1,8 @@
 import React from 'react'
 import type { Route } from 'next'
 import Link from 'next/link'
-import { Icon } from '@iconify/react'
 import Container from '@/components/cyber/Container'
+import CyberIcon from '@/components/cyber/CyberIcon'
 import NeonPanel from '@/components/cyber/NeonPanel'
 import SectionHeader from '@/components/cyber/SectionHeader'
 import ContributionHeatmap from '@/components/github/ContributionHeatmap'
@@ -115,7 +115,9 @@ const GithubStats = async ({ variant = 'page', year = 'last' }: { variant?: 'hom
 
 	return (
 		<Container as='section' className={variant === 'home' ? 'mt-20 pb-4' : 'py-12 md:py-16'}>
+			{/* On home the hero owns the h1; only the standalone /github page promotes this. */}
 			<SectionHeader
+				as={variant === 'home' ? 'h2' : 'h1'}
 				code='04'
 				title='GitHub'
 				subtitle={
@@ -128,17 +130,29 @@ const GithubStats = async ({ variant = 'page', year = 'last' }: { variant?: 'hom
 						<Link
 							href='/github'
 							className='text-cyber-cyan hover:text-cyber-yellow hidden items-center gap-1.5 font-mono text-xs tracking-widest uppercase transition-colors md:inline-flex'>
-							View activity <Icon icon='mdi:arrow-right' className='size-4' />
+							View activity <CyberIcon icon='mdi:arrow-right' className='size-4' />
 						</Link>
 					:	<a
 							href={`https://github.com/${USERNAME}`}
 							target='_blank'
 							rel='noopener noreferrer'
 							className='text-cyber-cyan hover:text-cyber-yellow hidden items-center gap-1.5 font-mono text-xs tracking-widest uppercase transition-colors md:inline-flex'>
-							<Icon icon='simple-icons:github' className='size-4' /> @{USERNAME}
+							<CyberIcon icon='simple-icons:github' className='size-4' /> @{USERNAME}
 						</a>
 				}
 			/>
+
+			{/* Server-rendered framing. Everything below this point is numbers pulled from the
+			    GitHub API, so without it the standalone page ships almost no prose — a crawler
+			    saw a heading, some digits and a heatmap of empty cells. */}
+			{variant === 'page' && (
+				<p className='text-muted-foreground mt-6 max-w-3xl text-base leading-relaxed'>
+					A running record of what actually gets shipped: commits, pull requests and issues across public repositories,
+					refreshed daily. Most of the work behind the projects on this site lives in private repositories, so treat
+					this as a floor rather than a total. Pick a year to see how the shape of the work changed — the heatmap below
+					reads left to right, one column per week.
+				</p>
+			)}
 
 			{variant === 'page' && (
 				<div className='mt-6 flex flex-wrap gap-2'>
@@ -169,7 +183,7 @@ const GithubStats = async ({ variant = 'page', year = 'last' }: { variant?: 'hom
 				}>
 				{stats.map(s => (
 					<NeonPanel key={s.label} className='clip-notch-sm flex flex-col gap-1 p-4'>
-						<Icon icon={s.icon} className='text-cyber-cyan size-4' />
+						<CyberIcon icon={s.icon} className='text-cyber-cyan size-4' />
 						<span className='font-display neon-text-yellow text-2xl leading-none font-bold'>{s.value}</span>
 						<span className='text-muted-foreground font-mono text-[0.6rem] tracking-widest uppercase'>{s.label}</span>
 					</NeonPanel>

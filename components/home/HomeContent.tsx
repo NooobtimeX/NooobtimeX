@@ -1,10 +1,15 @@
-'use client'
-
+/**
+ * A server component. It was `'use client'` only to call `new Date()` for the NOW badge;
+ * that moved to the server (see `currentEntryId`), leaving no hooks, handlers or browser
+ * APIs here. The interactive children — MotionReveal, Icon, CyberTooltip — carry their own
+ * `'use client'`, so the above-the-fold hero no longer drags framer-motion and the whole
+ * data layer into the first-load bundle just to render static markup.
+ */
 import React from 'react'
 import Link from 'next/link'
-import { Icon } from '@iconify/react'
 import Container from '@/components/cyber/Container'
 import CyberButton from '@/components/cyber/CyberButton'
+import CyberIcon from '@/components/cyber/CyberIcon'
 import CyberTag from '@/components/cyber/CyberTag'
 import CyberTooltip from '@/components/cyber/CyberTooltip'
 import GlitchText from '@/components/cyber/GlitchText'
@@ -20,15 +25,15 @@ const formatPosition = (position: string) =>
 		.map(w => w.charAt(0).toUpperCase() + w.slice(1))
 		.join(' ')
 
-const HomeContent: React.FC = () => {
+interface HomeContentProps {
+	/** Resolved on the server — see `currentEntryId` for why it is not computed here. */
+	nowId?: string
+}
+
+const HomeContent: React.FC<HomeContentProps> = ({ nowId }) => {
 	// Show the most recent roles, including any future-dated (not-yet-started) one — data is
 	// sorted by startDate desc, so the latest role (e.g. an upcoming CTO) leads.
-	const now = new Date()
 	const latestRoles = workExperienceData.slice(0, 3)
-	// "Now" marks the role active today (started, not yet ended), if any.
-	const nowId = workExperienceData.find(
-		r => new Date(r.startDate) <= now && (!r.endDate || new Date(r.endDate) >= now)
-	)?.id
 	const featured = featuredProjects
 	const homeSkills = featuredSkills
 
@@ -74,17 +79,17 @@ const HomeContent: React.FC = () => {
 						</div>
 
 						<p className='text-muted-foreground mt-4 flex items-start gap-2 font-mono text-xs tracking-wider'>
-							<Icon icon='mdi:circle' className='text-cyber-green mt-1 size-2 shrink-0' />
+							<CyberIcon icon='mdi:circle' className='text-cyber-green mt-1 size-2 shrink-0' />
 							{personalData.contact.availability}
 						</p>
 
 						<div className='mt-8 flex flex-wrap items-center gap-3'>
 							<CyberButton href='/projects' size='lg'>
-								<Icon icon='mdi:folder-multiple-outline' />
+								<CyberIcon icon='mdi:folder-multiple-outline' />
 								View Projects
 							</CyberButton>
 							<CyberButton href='/cv' variant='outline' size='lg'>
-								<Icon icon='mdi:file-account-outline' />
+								<CyberIcon icon='mdi:file-account-outline' />
 								View CV
 							</CyberButton>
 						</div>
@@ -99,7 +104,7 @@ const HomeContent: React.FC = () => {
 										rel='noopener noreferrer'
 										aria-label={s.platform}
 										className='border-border text-muted-foreground hover:border-cyber-cyan/60 hover:text-cyber-cyan hover:bg-cyber-cyan/[0.06] flex size-11 items-center justify-center border transition-colors'>
-										<Icon icon={s.icon} className='size-5' />
+										<CyberIcon icon={s.icon} className='size-5' />
 									</a>
 								</CyberTooltip>
 							))}
@@ -174,7 +179,7 @@ const HomeContent: React.FC = () => {
 										Now
 									</span>
 								)}
-								<Icon
+								<CyberIcon
 									icon='mdi:arrow-right'
 									className='text-muted-foreground group-hover:text-cyber-yellow size-5 shrink-0 transition-colors'
 								/>
@@ -228,7 +233,7 @@ const HomeContent: React.FC = () => {
 								href={`/skills/${s.id}` as never}
 								className='group neon-panel clip-notch-sm hover:border-cyber-yellow/60 flex aspect-square flex-col items-center justify-center gap-2 p-3 text-center transition-colors'>
 								<span className={cn('flex size-9 items-center justify-center', s.whiteBg && 'rounded-sm bg-white/90')}>
-									<Icon icon={s.icon} className='size-8' />
+									<CyberIcon icon={s.icon} className='size-8' />
 								</span>
 								<span className='group-hover:text-cyber-yellow text-[0.7rem] leading-tight font-semibold transition-colors'>
 									{s.name}
@@ -239,7 +244,7 @@ const HomeContent: React.FC = () => {
 					<Link
 						href='/skills'
 						className='border-cyber-cyan/30 text-muted-foreground hover:border-cyber-yellow/60 hover:text-cyber-yellow clip-notch-sm flex aspect-square flex-col items-center justify-center gap-1 border border-dashed text-center transition-colors'>
-						<Icon icon='mdi:dots-horizontal' className='size-6' />
+						<CyberIcon icon='mdi:dots-horizontal' className='size-6' />
 						<span className='font-mono text-[0.6rem] tracking-widest uppercase'>All</span>
 					</Link>
 				</div>

@@ -32,7 +32,7 @@ export const ruamsukPlatingDevelopereerPartTime: ExperienceItem = {
 	organization: ruamsukPlating,
 	position: 'developer',
 	description:
-		'Full Stack & SEO: Drove full-stack web application development while integrating targeted SEO and online marketing strategies. Digital Transformation: Led digital organizational transformation, modernizing legacy workflows to increase operational efficiency.',
+		"The first four years at RS Trophy, worked part-time alongside the Computer Science degree at Thammasat. Full Stack & SEO: built and iterated the company's web applications while integrating targeted SEO and online-marketing work. Digital Transformation: modernized legacy manual workflows into web-based systems, raising day-to-day operational efficiency.",
 	type: 'part-time',
 	category: 'work',
 	startDate: '2021-08-01',
@@ -44,7 +44,7 @@ export const ruamsukPlatingDeveloperFullTime: ExperienceItem = {
 	organization: ruamsukPlating,
 	position: 'developer',
 	description:
-		'Full Stack & SEO: Drove full-stack web application development while integrating targeted SEO and online marketing strategies. Digital Transformation: Led digital organizational transformation, modernizing legacy workflows to increase operational efficiency.',
+		"Converted to full-time immediately after graduating, ahead of moving to Jasmine Technology Solution that July. Continued the same full-stack and SEO ownership at full capacity, concentrated on the company's web applications and the ongoing move off legacy manual workflows.",
 	type: 'full-time',
 	category: 'work',
 	startDate: '2025-06-01',

@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { Icon } from '@iconify/react'
+import CyberIcon from '@/components/cyber/CyberIcon'
 import { cn } from '@/lib/utils'
 import type { Project } from '@/common'
 
@@ -45,7 +45,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index = 0 }) => {
 
 				<div className='mt-auto flex flex-wrap items-center gap-1.5 pt-2'>
 					{shownSkills.slice(0, 5).map((a, i) => (
-						<Icon
+						<CyberIcon
 							key={a.name}
 							icon={a.icon}
 							aria-label={i >= project.activeSkills.length ? `${a.name} (retired)` : a.name}
@@ -63,7 +63,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index = 0 }) => {
 				<span className={cn('font-mono text-[0.65rem] tracking-widest uppercase', 'text-cyber-cyan')}>
 					{project.links.live ? 'Live' : 'Archived'}
 				</span>
-				<Icon
+				<CyberIcon
 					icon='mdi:arrow-top-right'
 					className='text-muted-foreground group-hover:text-cyber-yellow size-4 transition-colors'
 				/>

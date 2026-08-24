@@ -21,11 +21,51 @@ import { categoryMetadata, personalData, projectsData, skillsData } from '@/comm
 
 /**
  * Escape hatch for names a server-rendered surface hard-codes rather than reading from
- * `common/data`. Empty today: every server-side consumer (the Satori cards in
- * `components/og/`, the README cards in `scripts/readme/cards/`) resolves its icons
- * from the data layer.
+ * `common/data`.
+ *
+ * Populated when `components/cyber/CyberIcon.tsx` landed: the ~35 `<Icon>` sites inside
+ * SERVER components now inline their SVG from this subset instead of fetching from
+ * api.iconify.design after hydration. Those are literals in JSX, not data, so they have
+ * to be listed here — and listed EXPLICITLY, never scanned. A scan is what the doc
+ * comment above rules out, and `icons:check` gating the build is exactly why.
+ *
+ * Client components (NavBar, the ⌘K palette, the CV pages) still use `@iconify/react`
+ * and must NOT be added — bundling their icons would grow the payload for nothing.
  */
-const EXTRA_ICONS: string[] = []
+const EXTRA_ICONS: string[] = [
+	'mdi:account-multiple-outline',
+	'mdi:account-tie-outline',
+	'mdi:arrow-left',
+	'mdi:arrow-right',
+	'mdi:arrow-top-right',
+	'mdi:briefcase-outline',
+	'mdi:calendar-check',
+	'mdi:calendar-star',
+	'mdi:chart-line-variant',
+	'mdi:circle',
+	'mdi:domain',
+	'mdi:dots-horizontal',
+	'mdi:download',
+	'mdi:file-account-outline',
+	'mdi:file-document-outline',
+	'mdi:fire',
+	'mdi:flash',
+	'mdi:folder-multiple-outline',
+	'mdi:home-variant-outline',
+	'mdi:map-marker-outline',
+	'mdi:office-building-outline',
+	'mdi:open-in-new',
+	'mdi:package-variant-closed',
+	'mdi:presentation',
+	'mdi:shape-outline',
+	'mdi:sitemap-outline',
+	'mdi:source-commit',
+	'mdi:source-repository',
+	'mdi:star',
+	'mdi:star-four-points-outline',
+	'mdi:star-outline',
+	'simple-icons:github'
+]
 
 /**
  * Every icon-bearing field in `common/`, sorted and deduped.

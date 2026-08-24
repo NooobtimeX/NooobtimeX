@@ -1,22 +1,44 @@
 'use client'
 
 import React from 'react'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Icon } from '@iconify/react'
 import Container from '@/components/cyber/Container'
 import { NAV_LINKS, isActive } from '@/components/navigation/links'
-import GlobalSearch from '@/components/search/GlobalSearch'
 import { cn } from '@/lib/utils'
+
+/**
+ * Loaded on demand, not with the nav.
+ *
+ * `GlobalSearch` imports `projectsData`, `skillsData`, `experiencesData` and
+ * `entitiesData` and renders a CommandItem for every one of them. NavBar mounts on
+ * every page, so that whole dataset shipped in the first-load bundle for a palette
+ * most visitors never open. `mounted` below keeps the chunk request off the initial
+ * load entirely — it is only requested once the palette is first opened.
+ */
+const GlobalSearch = dynamic(() => import('@/components/search/GlobalSearch'))
 
 const NavBar: React.FC = () => {
 	const pathname = usePathname()
 	const [searchOpen, setSearchOpen] = React.useState(false)
+	// Latches on first open so the palette keeps its mounted state (and its chunk) after
+	// being closed, instead of re-fetching on every ⌘K. Set from the user-intent handlers
+	// rather than an effect on `searchOpen` — React Compiler rejects a synchronous setState
+	// inside an effect, and the effect bought nothing here anyway.
+	const [searchMounted, setSearchMounted] = React.useState(false)
+
+	const openSearch = () => {
+		setSearchMounted(true)
+		setSearchOpen(true)
+	}
 
 	React.useEffect(() => {
 		const onKey = (e: KeyboardEvent) => {
 			if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
 				e.preventDefault()
+				setSearchMounted(true)
 				setSearchOpen(o => !o)
 			}
 		}
@@ -61,14 +83,14 @@ const NavBar: React.FC = () => {
 					    non-tab routes (Career, Companies, GitHub, CV) one tap away. */}
 					<div className='flex items-center gap-2'>
 						<button
-							onClick={() => setSearchOpen(true)}
+							onClick={openSearch}
 							className='border-border text-muted-foreground hover:border-cyber-cyan/50 hover:text-cyber-cyan hidden items-center gap-2 border px-2.5 py-1.5 font-mono text-xs transition-colors sm:flex'>
 							<Icon icon='mdi:magnify' className='size-4' />
 							<span className='tracking-wider uppercase'>Search</span>
 							<kbd className='border-border bg-muted ml-1 border px-1 text-[0.6rem]'>⌘K</kbd>
 						</button>
 						<button
-							onClick={() => setSearchOpen(true)}
+							onClick={openSearch}
 							aria-label='Search'
 							className='text-muted-foreground hover:text-cyber-cyan p-1.5 sm:hidden'>
 							<Icon icon='mdi:magnify' className='size-5' />
@@ -77,7 +99,7 @@ const NavBar: React.FC = () => {
 				</Container>
 			</header>
 
-			<GlobalSearch open={searchOpen} onOpenChange={setSearchOpen} />
+			{searchMounted && <GlobalSearch open={searchOpen} onOpenChange={setSearchOpen} />}
 		</>
 	)
 }

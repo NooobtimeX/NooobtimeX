@@ -61,6 +61,14 @@ export interface Skill {
 	category: SkillCategory
 	icon: string // Icon name for @iconify/react
 	whiteBg?: boolean
+	/**
+	 * What the technology is, in one or two sentences.
+	 *
+	 * Optional so a newly added skill is never blocked on copy. Renders as the intro on
+	 * `/skills/<id>`, which otherwise opens straight into derived stats — the page had no
+	 * prose of its own at all, only the cross-referenced projects beneath it.
+	 */
+	description?: string
 }
 
 /** An organization, university, or entity */

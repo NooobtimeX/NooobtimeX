@@ -24,13 +24,15 @@ scripts/icons/     # generates that subset · the ONLY place @iconify-json/* may
 
 ## Commands
 
-| Task   | Command                   | Notes                                                                 |
-| ------ | ------------------------- | --------------------------------------------------------------------- |
-| Dev    | `bun run dev`             | serves on **port 1000**                                               |
-| Build  | `bun run build`           | 107 prerendered routes; the type-check gate. Runs `icons:check` first |
-| Lint   | `bun run lint`            | `eslint . --fix && prettier . --write`                                |
-| Icons  | `bun run icons:generate`  | after any `icon:` change in `common/data` — commit the artifact       |
-| Images | `bun run images:optimize` | after adding anything to `public/` — idempotent, commit the result    |
+| Task   | Command                   | Notes                                                                    |
+| ------ | ------------------------- | ------------------------------------------------------------------------ |
+| Dev    | `bun run dev`             | serves on **port 1000**                                                  |
+| Build  | `bun run build`           | the type-check gate. `icons:check` → `next build` → `links:check`        |
+| Lint   | `bun run lint`            | `eslint . --fix && prettier . --write`                                   |
+| Icons  | `bun run icons:generate`  | after any `icon:` change in `common/data` — commit the artifact          |
+| Links  | `bun run links:check`     | post-build gate: every internal `href` must resolve. Needs a build first |
+| Images | `bun run images:optimize` | after adding anything to `public/` — idempotent, commit the result       |
+| LLMs   | `bun run llms:generate`   | regenerates `public/llms.txt` from `common/` — commit the artifact       |
 
 **Definition of done for any code change: `bun run lint` then `bun run build`, both
 green.** Run them before declaring work complete.
@@ -76,6 +78,29 @@ docker build -t nooobtimex . && docker run --rm -e PORT=7788 -p 7788:7788 nooobt
 - **Commit messages** end with:
   `Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>`
   Only commit/push when asked; branch first if on `main` and unsure.
+
+## SEO — three invariants the build depends on
+
+These encode bugs that were live on nooobtimex.me and produced **no error anywhere**.
+
+1. **Never set `alternates` in `app/layout.tsx`.** Metadata `alternates` is _inherited_ by
+   every child segment that does not override it, so a root `canonical: '/'` made all 90
+   routes declare themselves duplicates of the home page — the whole site asking Google not
+   to index it. Canonicals come from `pageMetadata()` in [`lib/seo.ts`](lib/seo.ts), which
+   every route calls. It also omits `openGraph.images` on purpose so the file-convention
+   `opengraph-image.tsx` still resolves per segment.
+
+2. **Every `[...id]` route needs `export const dynamicParams = false`.** `app/loading.tsx`
+   streams a shell for any matched route, which flushes response headers at **200**; a
+   later `notFound()` then renders 404 UI inside an already-committed 200. Without
+   `dynamicParams = false`, every mistyped slug is an indexable soft-404 titled "… Not
+   Found".
+
+3. **Detail-route URLs are keyed by `id`, never `slugify(name)`.** They agreed for 60 of 61
+   skills — `Vue.js` slugified to `vue-js` while its id is `vue`, so every Vue link _and
+   the sitemap_ pointed at a 200-status "Skill Not Found" page.
+   [`scripts/links/check.ts`](scripts/links/check.ts) now fails the build on any internal
+   href the build did not emit.
 
 ## Conventions live in skills
 

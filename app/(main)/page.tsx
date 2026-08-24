@@ -1,24 +1,30 @@
 import React from 'react'
-import { Metadata } from 'next'
 import GithubStats from '@/components/github/GithubStats'
 import CvTeaser from '@/components/home/CvTeaser'
 import HomeContent from '@/components/home/HomeContent'
+import JsonLd from '@/components/seo/JsonLd'
+import { PERSON_ID, WEBSITE_ID, personRef, websiteSchema } from '@/lib/schema'
+import { DISPLAY_NAME, SITE_URL, pageMetadata } from '@/lib/seo'
 import { formatPosition } from '@/lib/utils'
-import { educationData, latestRole, personalData, skillsData } from '@/common'
+import { currentEntryId, educationData, latestRole, personalData, skillsData, workExperienceData } from '@/common'
 
-export const metadata: Metadata = {
-	title: `${personalData.name} - Portfolio`,
+export const metadata = pageMetadata({
+	path: '/',
+	title: 'Portfolio',
+	absoluteTitle: `${DISPLAY_NAME} — Full-Stack Software Engineer & CTO`,
 	description: personalData.tagline
-}
-
-const SITE_URL = 'https://nooobtimex.me'
+})
 
 const alma = educationData[0]?.organization
 
 const jsonLd = {
 	'@context': 'https://schema.org',
 	'@type': 'Person',
-	'name': personalData.name,
+	'@id': PERSON_ID,
+	// DISPLAY_NAME, not personalData.name — the latter is ALL CAPS for the HUD headings,
+	// and this string is what surfaces in a knowledge panel or an AI answer.
+	'name': DISPLAY_NAME,
+	'alternateName': 'NooobtimeX',
 	'url': SITE_URL,
 	'image': `${SITE_URL}${personalData.avatar}`,
 	'jobTitle': formatPosition(latestRole.position),
@@ -51,11 +57,23 @@ const jsonLd = {
 	}
 }
 
+const profilePageLd = {
+	'@context': 'https://schema.org',
+	'@type': 'ProfilePage',
+	'url': SITE_URL,
+	'name': `${DISPLAY_NAME} — Portfolio`,
+	'isPartOf': { '@id': WEBSITE_ID },
+	'mainEntity': personRef(),
+	'inLanguage': 'en'
+}
+
 const Home: React.FC = () => {
 	return (
 		<>
-			<script type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-			<HomeContent />
+			<JsonLd data={jsonLd} />
+			<JsonLd data={websiteSchema()} />
+			<JsonLd data={profilePageLd} />
+			<HomeContent nowId={currentEntryId(workExperienceData, new Date())} />
 			<GithubStats variant='home' />
 			<CvTeaser />
 		</>

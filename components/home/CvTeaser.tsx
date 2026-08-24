@@ -1,7 +1,7 @@
 import React from 'react'
-import { Icon } from '@iconify/react'
 import Container from '@/components/cyber/Container'
 import CyberButton from '@/components/cyber/CyberButton'
+import CyberIcon from '@/components/cyber/CyberIcon'
 import NeonPanel from '@/components/cyber/NeonPanel'
 import SectionHeader from '@/components/cyber/SectionHeader'
 
@@ -15,7 +15,7 @@ const CvTeaser: React.FC = () => (
 		<NeonPanel className='clip-notch mt-8 flex flex-col gap-6 p-6 md:flex-row md:items-center md:justify-between'>
 			<div className='flex items-center gap-4'>
 				<span className='perk-node clip-notch-sm flex size-14 shrink-0 items-center justify-center'>
-					<Icon icon='mdi:file-account-outline' className='text-cyber-yellow size-8' />
+					<CyberIcon icon='mdi:file-account-outline' className='text-cyber-yellow size-8' />
 				</span>
 				<div>
 					<h3 className='font-display text-xl font-bold tracking-wide uppercase'>Résumé / CV</h3>
@@ -27,10 +27,10 @@ const CvTeaser: React.FC = () => (
 
 			<div className='flex flex-wrap gap-3'>
 				<CyberButton href='/cv'>
-					<Icon icon='mdi:file-document-outline' /> View CV
+					<CyberIcon icon='mdi:file-document-outline' /> View CV
 				</CyberButton>
 				<CyberButton href='/cv/presentation' variant='outline'>
-					<Icon icon='mdi:presentation' /> Presentation
+					<CyberIcon icon='mdi:presentation' /> Presentation
 				</CyberButton>
 			</div>
 		</NeonPanel>

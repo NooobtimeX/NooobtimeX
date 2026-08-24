@@ -60,9 +60,12 @@ export const metadata: Metadata = {
 		'Fullstack',
 		'Web Developer'
 	],
-	alternates: {
-		canonical: '/'
-	},
+	/**
+	 * NOTE: no `alternates.canonical` here on purpose. `alternates` is inherited by
+	 * every child segment, so a value at this level made all 90 routes declare
+	 * themselves duplicates of the home page. Canonicals are set per route via
+	 * `pageMetadata()` in lib/seo.ts.
+	 */
 	openGraph: {
 		type: 'website',
 		locale: 'en_US',
@@ -113,6 +116,19 @@ export default function RootLayout({
 			suppressHydrationWarning>
 			<GoogleTagManager gtmId='GTM-5PVXPTWP' />
 			<body className='bg-background text-foreground font-sans antialiased'>
+				{/*
+				 * Every `<Icon>` is client-side `@iconify/react`, which fetches its SVG from
+				 * api.iconify.design after mount — the prerendered HTML contains zero inline
+				 * `<svg>`. Preloading the data via `addIcon` does NOT fix that: Icon renders
+				 * `<span></span>` under renderToString even when the icon is registered, so
+				 * SSR'd icons need a different component, not a bigger bundle. Until then this
+				 * origin is a hard runtime dependency, so pay DNS + TLS up front.
+				 *
+				 * Must stay inside <body>: React hoists it to <head>, whereas a <link> placed
+				 * directly under <html> is invalid markup the browser relocates.
+				 */}
+				<link rel='preconnect' href='https://api.iconify.design' crossOrigin='anonymous' />
+				<link rel='dns-prefetch' href='https://api.iconify.design' />
 				<ThemeProvider
 					attribute='class'
 					defaultTheme='dark'

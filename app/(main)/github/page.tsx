@@ -1,11 +1,11 @@
-import { Metadata } from 'next'
 import GithubStats from '@/components/github/GithubStats'
-import { personalData } from '@/common'
+import { pageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
-	title: `GitHub | ${personalData.name}`,
+export const metadata = pageMetadata({
+	path: '/github',
+	title: 'GitHub',
 	description: 'Live GitHub contribution activity — heatmap, streaks, repos, stars, and followers.'
-}
+})
 
 const GithubPage = async ({ searchParams }: { searchParams: Promise<{ year?: string }> }) => {
 	const { year } = await searchParams

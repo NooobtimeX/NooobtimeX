@@ -1,15 +1,16 @@
 import React from 'react'
-import { Metadata } from 'next'
 import ExperienceContent from '@/components/experience/ExperienceContent'
-import { personalData } from '@/common'
+import { pageMetadata } from '@/lib/seo'
+import { currentEntryId, experiencesData } from '@/common'
 
-export const metadata: Metadata = {
-	title: `Career | ${personalData.name}`,
+export const metadata = pageMetadata({
+	path: '/career',
+	title: 'Career',
 	description: 'Professional roles, freelance work, and education across the timeline.'
-}
+})
 
 const ExperiencePage: React.FC = () => {
-	return <ExperienceContent />
+	return <ExperienceContent nowId={currentEntryId(experiencesData, new Date())} />
 }
 
 export default ExperiencePage

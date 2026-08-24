@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
-import { Icon } from '@iconify/react'
 import Container from '@/components/cyber/Container'
+import CyberIcon from '@/components/cyber/CyberIcon'
 import MotionReveal from '@/components/cyber/MotionReveal'
 import NeonPanel from '@/components/cyber/NeonPanel'
 import ProjectCard from '@/components/projects/ProjectCard'
@@ -45,7 +45,7 @@ const SkillDetail: React.FC<SkillDetailProps> = ({ skill }) => {
 			<Link
 				href='/skills'
 				className='text-muted-foreground hover:text-cyber-cyan inline-flex items-center gap-2 font-mono text-xs tracking-widest uppercase transition-colors'>
-				<Icon icon='mdi:arrow-left' className='size-4' /> Skill Tree
+				<CyberIcon icon='mdi:arrow-left' className='size-4' /> Skill Tree
 			</Link>
 
 			{/* Skill header node */}
@@ -55,13 +55,19 @@ const SkillDetail: React.FC<SkillDetailProps> = ({ skill }) => {
 						'perk-node clip-notch-sm flex size-20 shrink-0 items-center justify-center',
 						skill.whiteBg && 'bg-white/90'
 					)}>
-					<Icon icon={skill.icon} className='size-12' />
+					<CyberIcon icon={skill.icon} className='size-12' />
 				</span>
 				<div>
 					<span className='text-cyber-cyan font-mono text-xs tracking-[0.3em] uppercase'>// {meta.label} branch</span>
 					<h1 className='font-display text-3xl font-bold tracking-wide uppercase md:text-5xl'>{skill.name}</h1>
 				</div>
 			</NeonPanel>
+
+			{/* The page's only prose. Everything below is derived from other data, so without
+			    this a skill page opened straight into a stat grid. */}
+			{skill.description && (
+				<p className='text-muted-foreground mt-6 max-w-3xl text-base leading-relaxed'>{skill.description}</p>
+			)}
 
 			{/* Stat readout */}
 			<NeonPanel className='clip-notch-sm mt-6 grid grid-cols-2 gap-4 p-4 sm:grid-cols-4'>

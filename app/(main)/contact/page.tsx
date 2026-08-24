@@ -1,15 +1,14 @@
 import React from 'react'
-import { Metadata } from 'next'
 import ContactContent from '@/components/contact/ContactContent'
+import { SITE_URL, pageMetadata } from '@/lib/seo'
 import { personalData } from '@/common'
 
-export const metadata: Metadata = {
-	title: `Contact | ${personalData.name}`,
+export const metadata = pageMetadata({
+	path: '/contact',
+	title: 'Contact',
 	description:
 		'Get in touch — email, messaging channels with mainland-China availability marked, and a scannable contact card.'
-}
-
-const SITE_URL = 'https://nooobtimex.me'
+})
 
 const jsonLd = {
 	'@context': 'https://schema.org',

@@ -2,6 +2,15 @@ import React from 'react'
 import { Icon } from '@iconify/react'
 import { cn } from '@/lib/utils'
 
+/**
+ * NOTE: deliberately still `@iconify/react`, not `CyberIcon`.
+ *
+ * CyberTag is a shared primitive rendered from CLIENT components too
+ * (`contact/ContactContent.tsx`, `contact/ChannelCard.tsx`). Importing CyberIcon here
+ * would drag `lib/og-icons.generated.json` (~143 KB) into the client bundle — the exact
+ * cost the generate/subset pipeline exists to avoid. Server-only components get the
+ * inlined-SVG treatment; anything reachable from a client boundary stays on the API.
+ */
 interface CyberTagProps {
 	children: React.ReactNode
 	icon?: string
