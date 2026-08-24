@@ -11,6 +11,23 @@ export const SITE_URL = 'https://nooobtimex.me'
 export const DISPLAY_NAME =
 	[personalData.contact.givenName, personalData.contact.familyName].filter(Boolean).join(' ') || personalData.name
 
+/**
+ * Google renders roughly 155–160 characters of a description and drops the rest, so an
+ * untrimmed one wastes the snippet rather than enriching it. Live examples before this
+ * clamp: `/career/ruamsuk-cto` shipped 1032 characters and `/projects/rs-trophy` 646.
+ *
+ * Cuts on a word boundary and appends an ellipsis, so the snippet ends as a phrase
+ * instead of mid-word.
+ */
+const MAX_DESCRIPTION = 155
+
+export function clampDescription(text: string): string {
+	const flat = text.replace(/\s+/g, ' ').trim()
+	if (flat.length <= MAX_DESCRIPTION) return flat
+	const cut = flat.slice(0, MAX_DESCRIPTION)
+	return `${cut.slice(0, cut.lastIndexOf(' ')).replace(/[,;:—-]$/, '')}…`
+}
+
 interface PageMetaInput {
 	/** Route-absolute path, no trailing slash. `/` for home. */
 	path: string
@@ -44,9 +61,21 @@ export function pageMetadata({ path, title, description, absoluteTitle, ogImage 
 	const url = `${SITE_URL}${path === '/' ? '' : path}`
 	const socialTitle = absoluteTitle ?? `${title} | ${DISPLAY_NAME}`
 
+	/*
+	 * Google renders roughly 60 characters of a title. When the page's own title is
+	 * already long the ` | Wongsaphat Puangsorn` suffix is the first thing worth losing —
+	 * it is the least distinguishing part, and it repeats on every page anyway.
+	 * `/career/ruamsuk-cto` was 85 characters because the organisation is stored under its
+	 * full legal name; dropping the suffix there recovers 24 of them.
+	 */
+	const suffixed = `${title} | ${DISPLAY_NAME}`
+	const resolvedTitle = absoluteTitle ?? (suffixed.length > 60 ? title : undefined)
+
+	const clamped = clampDescription(description)
+
 	return {
-		title: absoluteTitle ? { absolute: absoluteTitle } : title,
-		description,
+		title: resolvedTitle ? { absolute: resolvedTitle } : title,
+		description: clamped,
 		alternates: { canonical: path },
 		openGraph: {
 			type: 'website',
@@ -54,7 +83,7 @@ export function pageMetadata({ path, title, description, absoluteTitle, ogImage 
 			siteName: `${DISPLAY_NAME} Portfolio`,
 			url,
 			title: socialTitle,
-			description,
+			description: clamped,
 			...(ogImage && { images: [{ url: ogImage, width: 1200, height: 630, alt: socialTitle }] })
 		},
 		// No `creator` here on purpose: `personalData.socialLinks` lists no X/Twitter
@@ -63,7 +92,7 @@ export function pageMetadata({ path, title, description, absoluteTitle, ogImage 
 		twitter: {
 			card: 'summary_large_image',
 			title: socialTitle,
-			description,
+			description: clamped,
 			...(ogImage && { images: [ogImage] })
 		}
 	}

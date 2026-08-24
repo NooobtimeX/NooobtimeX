@@ -35,7 +35,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 	return pageMetadata({
 		path: `/skills/${skill.id}`,
 		title: `${skill.name} | Skill`,
-		description: `Projects and work powered by ${skill.name}.`
+		// Prefer the real copy; the generic line is only a fallback for a skill with none.
+		description: skill.description ?? `Projects and work powered by ${skill.name}.`
 	})
 }
 
