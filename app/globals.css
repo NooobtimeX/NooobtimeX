@@ -415,6 +415,48 @@
 }
 
 /* ============================================================
+ * Motion: accessibility and no-JS safety
+ * ============================================================ */
+
+/*
+ * Content must never depend on JavaScript to become visible.
+ * `MotionReveal` renders at `opacity: 0` and waits for framer-motion's
+ * IntersectionObserver, so with scripting unavailable — disabled, blocked, or just
+ * failed to load — almost every page below the header is blank. Unsupported browsers
+ * simply skip this block and keep today's behaviour, so the fallback direction is safe.
+ */
+@media (scripting: none) {
+	[data-reveal] {
+		opacity: 1 !important;
+		transform: none !important;
+	}
+}
+
+/*
+ * Honour a reduced-motion request. The theme is deliberately motion-heavy — an infinite
+ * scanline drift over the whole viewport, an RGB-split glitch on the h1 of `/` and
+ * `/contact`, a pulsing NOW badge — and none of it was opting out before.
+ *
+ * Animations are neutralised rather than removed so anything that relies on an
+ * animation's end state still reaches it.
+ */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+
+	[data-reveal] {
+		opacity: 1 !important;
+		transform: none !important;
+	}
+}
+
+/* ============================================================
  * Game-UI utilities: perk lanes, gig journal, career trace
  * ============================================================ */
 @layer utilities {
