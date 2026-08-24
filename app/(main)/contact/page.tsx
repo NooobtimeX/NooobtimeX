@@ -1,6 +1,8 @@
 import React from 'react'
 import ContactContent from '@/components/contact/ContactContent'
-import { SITE_URL, pageMetadata } from '@/lib/seo'
+import JsonLd from '@/components/seo/JsonLd'
+import { PERSON_ID } from '@/lib/schema'
+import { DISPLAY_NAME, SITE_URL, pageMetadata } from '@/lib/seo'
 import { personalData } from '@/common'
 
 export const metadata = pageMetadata({
@@ -14,9 +16,16 @@ const jsonLd = {
 	'@context': 'https://schema.org',
 	'@type': 'ContactPage',
 	'url': `${SITE_URL}/contact`,
+	/*
+	 * `@id` matters more than it looks. Without it this declared a SECOND, unrelated
+	 * Person — a different name (personalData.name is ALL CAPS) with no link back to the
+	 * one on the home page. A parser building an entity graph saw two people. Referencing
+	 * PERSON_ID merges them, which is the whole point of the ids in lib/schema.ts.
+	 */
 	'mainEntity': {
+		'@id': PERSON_ID,
 		'@type': 'Person',
-		'name': personalData.name,
+		'name': DISPLAY_NAME,
 		'url': SITE_URL,
 		'email': `mailto:${personalData.contact.email}`,
 		'address': {
@@ -30,7 +39,7 @@ const jsonLd = {
 const ContactPage: React.FC = () => {
 	return (
 		<>
-			<script type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+			<JsonLd data={jsonLd} />
 			<ContactContent />
 		</>
 	)
