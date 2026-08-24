@@ -5,6 +5,7 @@ import ExperienceDetail from '@/components/experience/ExperienceDetail'
 import JsonLd from '@/components/seo/JsonLd'
 import { breadcrumbSchema } from '@/lib/schema'
 import { pageMetadata } from '@/lib/seo'
+import { formatPosition } from '@/lib/utils'
 import { experiencesData } from '@/common'
 
 interface ExperienceDetailPageProps {
@@ -34,7 +35,7 @@ export async function generateMetadata({ params }: ExperienceDetailPageProps): P
 
 	return pageMetadata({
 		path: `/career/${item.id}`,
-		title: `${item.position} @ ${item.organization.name}`,
+		title: `${formatPosition(item.position)} @ ${item.organization.name}`,
 		description: item.description
 	})
 }
