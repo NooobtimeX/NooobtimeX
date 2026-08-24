@@ -1,9 +1,7 @@
-'use client'
-
 import React from 'react'
-import Link from 'next/link'
-import { Icon } from '@iconify/react'
 import { QRCodeSVG } from 'qrcode.react'
+import CvControls from '@/components/cv/CvControls'
+import CyberIcon from '@/components/cyber/CyberIcon'
 import { formatExperienceDuration } from '@/lib/utils'
 import {
 	type Skill,
@@ -48,8 +46,6 @@ const CvMeta: React.FC<{ label: string; children: React.ReactNode }> = ({ label,
 )
 
 export default function CVPage() {
-	const handlePrint = () => window.print()
-
 	// Work-only experience, paginated (max 3 per page)
 	const page2Experience = workExperienceData.slice(0, 3)
 	const page3Experience = workExperienceData.slice(3)
@@ -79,7 +75,12 @@ export default function CVPage() {
 
 	return (
 		<div className='min-h-screen bg-zinc-100 py-10 font-sans text-black print:bg-white print:py-0'>
-			<style jsx global>{`
+			{/* Plain <style>, not styled-jsx: the latter is client-only, and this CSS is a
+			    static string, so it needs no runtime. Keeping it inline (rather than moving it
+			    to globals.css) keeps the A4 print rules next to the markup they target. */}
+			<style
+				dangerouslySetInnerHTML={{
+					__html: `
 				#cv-page-1,
 				#cv-page-2,
 				#cv-page-3,
@@ -173,26 +174,12 @@ export default function CVPage() {
 						margin-bottom: calc(297mm * (calc((100vw - 32px) / 210mm) - 1));
 					}
 				}
-			`}</style>
+			`
+				}}
+			/>
 
-			{/* Floating controls — always reachable while scrolling the CV pages */}
-			<div className='fixed bottom-4 left-1/2 z-50 flex -translate-x-1/2 gap-3 sm:right-6 sm:bottom-6 sm:left-auto sm:translate-x-0 print:hidden'>
-				<button
-					onClick={handlePrint}
-					title='Print or Save as PDF (A4)'
-					style={{ backgroundColor: ACCENT }}
-					className='flex items-center gap-2 px-5 py-3.5 text-sm font-bold tracking-tight text-white uppercase shadow-xl ring-1 shadow-black/40 ring-black/10 transition-transform active:scale-95 sm:px-6 sm:text-base'>
-					<Icon icon='material-symbols:download' className='h-5 w-5' />
-					Download PDF
-				</button>
-				<Link
-					href='/cv/presentation'
-					title='Open presentation mode'
-					className='flex items-center gap-2 border-2 border-zinc-700 bg-zinc-950 px-5 py-3.5 text-sm font-bold tracking-tight text-white uppercase shadow-xl shadow-black/40 transition-colors hover:bg-zinc-900 sm:px-6 sm:text-base'>
-					<Icon icon='material-symbols:slideshow' className='h-5 w-5' style={{ color: ACCENT }} />
-					Presentation
-				</Link>
-			</div>
+			{/* Client island: the print button needs window.print(). */}
+			<CvControls accent={ACCENT} />
 
 			{/* A4 pages */}
 			<div className='flex flex-col items-center gap-10 px-4 md:px-0'>
@@ -214,15 +201,15 @@ export default function CVPage() {
 							</p>
 							<div className='mt-6 flex flex-wrap gap-6 font-bold'>
 								<div className='flex items-center gap-2 text-[12px] uppercase'>
-									<Icon icon='material-symbols:mail' className='h-4 w-4' style={{ color: ACCENT }} />
+									<CyberIcon icon='material-symbols:mail' className='h-4 w-4' style={{ color: ACCENT }} />
 									{personalData.contact.email}
 								</div>
 								<div className='flex items-center gap-2 text-[12px] text-gray-700 uppercase'>
-									<Icon icon='material-symbols:call' className='h-4 w-4' style={{ color: ACCENT }} />
+									<CyberIcon icon='material-symbols:call' className='h-4 w-4' style={{ color: ACCENT }} />
 									{formatPhone(personalData.contact.phone)}
 								</div>
 								<div className='flex items-center gap-2 text-[12px] text-gray-700 uppercase'>
-									<Icon icon='material-symbols:location-on' className='h-4 w-4' style={{ color: ACCENT }} />
+									<CyberIcon icon='material-symbols:location-on' className='h-4 w-4' style={{ color: ACCENT }} />
 									{personalData.contact.location}
 								</div>
 							</div>
@@ -305,7 +292,7 @@ export default function CVPage() {
 																color: ACCENT,
 																WebkitPrintColorAdjust: 'exact'
 															}}>
-															<Icon icon={s.icon} className='h-3 w-3' style={{ color: ACCENT }} />
+															<CyberIcon icon={s.icon} className='h-3 w-3' style={{ color: ACCENT }} />
 															{s.name}
 														</span>
 													))}
@@ -377,7 +364,7 @@ export default function CVPage() {
 										<div
 											key={s.platform}
 											className='flex items-center gap-3 text-[11px] font-black tracking-tight uppercase'>
-											<Icon icon={s.icon} className='h-5 w-5 shrink-0' style={{ color: ACCENT }} />
+											<CyberIcon icon={s.icon} className='h-5 w-5 shrink-0' style={{ color: ACCENT }} />
 											<span className='truncate'>{s.username}</span>
 										</div>
 									))}
@@ -514,7 +501,7 @@ export default function CVPage() {
 												color: ACCENT,
 												WebkitPrintColorAdjust: 'exact'
 											}}>
-											<Icon icon={s.icon} className='h-2.5 w-2.5 opacity-60' />
+											<CyberIcon icon={s.icon} className='h-2.5 w-2.5 opacity-60' />
 											{s.name}
 										</span>
 									))}
@@ -527,7 +514,7 @@ export default function CVPage() {
 												backgroundColor: '#f9fafb',
 												WebkitPrintColorAdjust: 'exact'
 											}}>
-											<Icon icon={s.icon} className='h-2.5 w-2.5 opacity-40' />
+											<CyberIcon icon={s.icon} className='h-2.5 w-2.5 opacity-40' />
 											{s.name}
 										</span>
 									))}
@@ -584,7 +571,7 @@ const ExperienceBlock: React.FC<ExperienceBlockProps> = ({ item, accent, sortSki
 						key={s.name}
 						className='flex items-center gap-1 border-2 border-gray-100 bg-gray-50 px-2 py-0.5 text-[9px] font-black text-gray-400 uppercase'
 						style={{ WebkitPrintColorAdjust: 'exact' }}>
-						<Icon icon={s.icon} className='h-3 w-3' style={{ color: `${accent}66` }} />
+						<CyberIcon icon={s.icon} className='h-3 w-3' style={{ color: `${accent}66` }} />
 						{s.name}
 					</span>
 				))}

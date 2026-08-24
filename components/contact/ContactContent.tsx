@@ -1,13 +1,11 @@
-'use client'
-
 import React from 'react'
-import { Icon } from '@iconify/react'
 import ChannelCard from '@/components/contact/ChannelCard'
 import CopyButton from '@/components/contact/CopyButton'
 import VCardPanel from '@/components/contact/VCardPanel'
 import WeChatPanel from '@/components/contact/WeChatPanel'
 import Container from '@/components/cyber/Container'
 import CyberButton from '@/components/cyber/CyberButton'
+import CyberIcon from '@/components/cyber/CyberIcon'
 import CyberTag from '@/components/cyber/CyberTag'
 import GlitchText from '@/components/cyber/GlitchText'
 import MotionReveal from '@/components/cyber/MotionReveal'
@@ -91,16 +89,16 @@ const ContactContent: React.FC = () => {
 					<CopyButton value={personalData.contact.email} label='Copy email' />
 				</div>
 				<p className='text-muted-foreground mt-3 flex items-start gap-2 text-sm'>
-					<Icon icon='mdi:circle' className='text-cyber-green mt-1.5 size-2 shrink-0' />
+					<CyberIcon icon='mdi:circle' className='text-cyber-green mt-1.5 size-2 shrink-0' />
 					{personalData.contact.availability}
 				</p>
 				<div className='mt-5 flex flex-wrap gap-3'>
 					<CyberButton href={`mailto:${personalData.contact.email}`} external size='lg'>
-						<Icon icon='mdi:email-outline' />
+						<CyberIcon icon='mdi:email-outline' />
 						Send an email
 					</CyberButton>
 					<CyberButton href='/card/hire' download='nooobtimex-hire-card.png' variant='outline' size='lg'>
-						<Icon icon='mdi:download' />
+						<CyberIcon icon='mdi:download' />
 						Hire card (1:1)
 					</CyberButton>
 				</div>
@@ -157,7 +155,7 @@ const ContactContent: React.FC = () => {
 							target={social.platform === 'email' ? undefined : '_blank'}
 							rel='noopener noreferrer'
 							className='group border-border hover:border-cyber-cyan/60 hover:bg-cyber-cyan/[0.04] clip-notch-sm flex items-center gap-3 border px-4 py-3 transition-colors'>
-							<Icon
+							<CyberIcon
 								icon={social.icon}
 								className='text-muted-foreground group-hover:text-cyber-cyan size-5 shrink-0 transition-colors'
 							/>

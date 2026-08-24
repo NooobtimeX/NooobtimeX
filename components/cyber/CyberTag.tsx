@@ -1,5 +1,5 @@
 import React from 'react'
-import { Icon } from '@iconify/react'
+import CyberIcon from '@/components/cyber/CyberIcon'
 import { cn } from '@/lib/utils'
 
 /**
@@ -35,7 +35,7 @@ const CyberTag: React.FC<CyberTagProps> = ({ children, icon, className, tone = '
 				toneClass[tone],
 				className
 			)}>
-			{icon && <Icon icon={icon} className='size-3' />}
+			{icon && <CyberIcon icon={icon} className='size-3' />}
 			{children}
 		</span>
 	)
