@@ -54,18 +54,39 @@ These are the design-system primitives — reach for them before writing a `<div
 Avoid patterns it rejects — notably hand-rolled `useCallback` / `useMemo` it flags
 as "Compilation Skipped". Write plain components and let the compiler memoize.
 
-## 6. Icons — two paths, and they are not interchangeable
+## 6. Icons — three surfaces, and they are not interchangeable
 
 Store icon names as **strings in the data layer** (e.g. a skill's `icon`), never as
 imported components. Where that string is resolved depends on who renders it:
 
 | Surface                                                                       | Resolver                                         | Reach                                                 |
 | ----------------------------------------------------------------------------- | ------------------------------------------------ | ----------------------------------------------------- |
+| **Server** components                                                         | `<CyberIcon icon="logos:react" />`               | only what is in `lib/og-icons.generated.json`         |
 | **Client** components                                                         | `@iconify/react` — `<Icon icon="logos:react" />` | any icon, fetched from the Iconify API in the browser |
-| **Server** — Satori cards (`components/og/`), README SVGs (`scripts/readme/`) | `resolveIcon()` from `lib/icon-data.ts`          | only what is in `lib/og-icons.generated.json`         |
+| **Server** — Satori cards (`components/og/`), README SVGs (`scripts/readme/`) | `resolveIcon()` / `iconDataUri()` from `lib/`    | only what is in `lib/og-icons.generated.json`         |
 
-Neither can fetch at render time, so the server path reads a **curated local subset**
-(124 icons, ~135 KB) generated from `common/data`.
+**Prefer `CyberIcon` in anything that is not `'use client'`.** It inlines the SVG, so the
+icon is in the prerendered HTML. `@iconify/react`'s `Icon` fetches from
+api.iconify.design _after mount_ — before this component existed the built HTML
+contained **zero** inline `<svg>` across 69 render sites, so every icon was blank until
+a third-party round-trip finished, and absent entirely wherever that host is blocked.
+Preloading the data does not help: `Icon` emits `<span></span>` under `renderToString`
+even when the icon is registered via `addIcon`.
+
+> **Never import `CyberIcon` into anything reachable from a `'use client'` boundary.** It
+> pulls `lib/og-icons.generated.json` (~143 KB) with it. That is why `CyberTag` — a
+> shared primitive rendered from `contact/`'s client components — deliberately stays on
+> `@iconify/react`. Server-only components get inlined SVG; anything a client component
+> can import stays on the API.
+
+A literal icon name hard-coded in a server component must be added to `EXTRA_ICONS` in
+`scripts/icons/required.ts` (an explicit list — never a scan; see that file's rationale)
+and regenerated. `CyberIcon` throws on an unknown name rather than rendering nothing,
+so the failure is loud at build time instead of an invisible icon in production.
+
+None of the server paths can fetch at render time, so they all read the same **curated
+local subset** (154 icons, ~146 KB) — generated from `common/data` plus the
+`EXTRA_ICONS` list, and committed.
 
 > **Never `import { icons } from '@iconify-json/…'` in `app/`, `components/`, or
 > `lib/`.** Those six packages are 26.7 MB / 32,844 icons. They used to be imported by

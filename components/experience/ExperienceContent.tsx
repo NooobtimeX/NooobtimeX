@@ -1,5 +1,7 @@
-'use client'
-
+/**
+ * A server component — see the note on HomeContent. It was `'use client'` purely for the
+ * `new Date()` that picked the NOW node; that now arrives as the `nowId` prop.
+ */
 import React from 'react'
 import Container from '@/components/cyber/Container'
 import MotionReveal from '@/components/cyber/MotionReveal'
@@ -7,16 +9,16 @@ import SectionHeader from '@/components/cyber/SectionHeader'
 import TraceNode from '@/components/experience/TraceNode'
 import { experiencesData } from '@/common'
 
-const ExperienceContent: React.FC = () => {
-	// Active-today role (started, not yet ended). Data is sorted by startDate desc.
-	const now = new Date()
-	const nowId = experiencesData.find(
-		r => new Date(r.startDate) <= now && (!r.endDate || new Date(r.endDate) >= now)
-	)?.id
+interface ExperienceContentProps {
+	/** Resolved on the server — see `currentEntryId` for why it is not computed here. */
+	nowId?: string
+}
 
+const ExperienceContent: React.FC<ExperienceContentProps> = ({ nowId }) => {
 	return (
 		<Container className='py-12 md:py-16'>
 			<SectionHeader
+				as='h1'
 				code='03'
 				title='Career Trace'
 				subtitle='Chronological lifepath — roles, freelance work, and education.'

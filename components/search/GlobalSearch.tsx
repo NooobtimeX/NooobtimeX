@@ -12,7 +12,6 @@ import {
 	CommandItem,
 	CommandList
 } from '@/components/ui/command'
-import { slugify } from '@/lib/utils'
 import { entitiesData, experiencesData, projectsData, skillsData } from '@/common'
 
 interface GlobalSearchProps {
@@ -59,7 +58,7 @@ const GlobalSearch: React.FC<GlobalSearchProps> = ({ open, onOpenChange }) => {
 
 				<CommandGroup heading='Skills'>
 					{skillsData.map(a => (
-						<CommandItem key={a.name} value={`skill ${a.name}`} onSelect={() => go(`/skills/${slugify(a.name)}`)}>
+						<CommandItem key={a.name} value={`skill ${a.name}`} onSelect={() => go(`/skills/${a.id}`)}>
 							<Icon icon={a.icon} className='size-4' />
 							<span>{a.name}</span>
 						</CommandItem>

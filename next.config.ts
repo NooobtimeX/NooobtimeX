@@ -60,6 +60,14 @@ const nextConfig: NextConfig = {
 					{
 						key: 'Referrer-Policy',
 						value: 'strict-origin-when-cross-origin'
+					},
+					{
+						// Cloudflare terminates TLS but was not sending HSTS, so a first visit over
+						// http:// was still a redirect an attacker could sit in front of.
+						// `preload` is deliberately omitted: submitting to the browser preload list
+						// is effectively irreversible, and that is the owner's call, not a default.
+						key: 'Strict-Transport-Security',
+						value: 'max-age=31536000; includeSubDomains'
 					}
 				]
 			}

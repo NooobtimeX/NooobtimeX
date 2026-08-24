@@ -64,6 +64,7 @@ const CompaniesContent: React.FC = () => {
 	return (
 		<Container className='py-10'>
 			<SectionHeader
+				as='h1'
 				code='05'
 				title='Network'
 				subtitle={`${entitiesData.length} organizations across the career map — employers and collaborators.`}

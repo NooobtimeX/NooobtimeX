@@ -1,0 +1,157 @@
+# Wongsaphat Puangsorn
+
+> Chief Technology Officer at RS Trophy, owning full-stack engineering and infrastructure end to end — freelancing remotely as a software engineer on web app projects on the side.
+
+Enthusiastic and dedicated technologist focused on transforming business requirements into clean, sustainable code. As CTO, I own every technology decision end-to-end — from technical strategy to single-handedly shipping software, infrastructure, and automation across the business. I am passionate about high-performance systems and modern infrastructure, and I freelance remotely as a software engineer building web apps alongside my full-time role.
+
+- Site: https://nooobtimex.me
+- Current role: Chief Technology Officer at RUAMSUK PLATING LIMITED PARTNERSHIP
+- Location: Pak Kret District, Nonthaburi
+- Contact: nooobtimex@gmail.com
+- Availability: Open for remote freelance web app software engineering work alongside my full-time role as CTO at RS Trophy
+- Languages: Thai (Native), English (Professional working)
+
+## Highlights
+
+- Own end-to-end technology decisions, from strategy to shipped code
+- Focused on building robust, high-performance systems
+- Committed to clean and sustainable architecture principles
+- Remote freelance software engineer for web app projects, alongside my full-time role
+
+## Experience
+
+### Chief Technology Officer — RUAMSUK PLATING LIMITED PARTNERSHIP (Aug 2026 - Present)
+
+Total Technology Ownership: As CTO, own every technology decision and system in the company end-to-end — from setting the technical strategy to single-handedly delivering each software project from architecture to deployment. Full-Stack & Infrastructure: Build and run all web applications, services, cloud infrastructure, CI/CD, and reliability. IT, Hardware & Systems: Handle all non-software technology as well — IT support, hardware, networking, device and equipment setup, and technology procurement and vendor management across the office and factory floor. Product & Design Leadership: Act as sole PM, PO, and UI/UX designer, authoring all product documentation and roadmaps. AI, Automation & Data: Build AI automation workflows, supply chain solutions, and internal tooling that streamline operations across the business. Cross-Functional Impact: Partner directly with finance and operations to digitize and optimize every process — the single point of ownership for everything technical the company runs on.
+
+Read more: https://nooobtimex.me/career/ruamsuk-cto
+
+### Developer — Jasmine Technology Solution (Jul 2025 - Jul 2026)
+
+Full-Stack Platform Ownership: Led full-stack development of the LOOKLOOK PET platform across storefront, B2B partner console, and Medusa-based Mercur marketplace. Microservices & Checkout: Managed 20+ NestJS microservices communicating over NATS, and built a custom native payment UI featuring client-side Omise card tokenization, inline PromptPay QR polling, and card-lock promotions. Team & Claim Workflows: Owned the B2B portal (~55% commits) delivering organization switchers, dynamic roles, and claim-an-unlisted-place verification logic. Infrastructure: Maintained Dockerized services on Railway via GitHub CI/CD, and migrated storage to Cloudflare R2.
+
+Read more: https://nooobtimex.me/career/jasmine-tech
+
+### Developer — RUAMSUK PLATING LIMITED PARTNERSHIP (Jun 2025 - Jul 2025)
+
+Full Stack & SEO: Drove full-stack web application development while integrating targeted SEO and online marketing strategies. Digital Transformation: Led digital organizational transformation, modernizing legacy workflows to increase operational efficiency.
+
+Read more: https://nooobtimex.me/career/ruamsuk-software-engineer-full-time
+
+### Developer — Freelance (Jan 2024 - Present)
+
+Remote freelance software engineering — building web apps end-to-end, from scoping and design through full-stack delivery and deployment. Recent freelance builds include a flood / water-level monitoring dashboard (interactive station map, historical charts, CSV export, and role-based accounts), a real-time multiplayer game, and a QR-code restaurant ordering & multi-branch management platform. Open to select freelance web-app projects alongside my full-time role.
+
+Read more: https://nooobtimex.me/career/freelance
+
+### Developer — RUAMSUK PLATING LIMITED PARTNERSHIP (Aug 2021 - May 2025)
+
+Full Stack & SEO: Drove full-stack web application development while integrating targeted SEO and online marketing strategies. Digital Transformation: Led digital organizational transformation, modernizing legacy workflows to increase operational efficiency.
+
+Read more: https://nooobtimex.me/career/ruamsuk-software-engineer-part-time
+
+## Education
+
+- Student, Thammasat University (Aug 2021 - Jun 2025)
+
+## Projects
+
+### MONOMax EPL Licensing Portal
+
+A full-stack SaaS platform that issues and verifies English Premier League commercial-broadcast licenses for Thai venues — restaurants, hotels, and pubs. Business owners sign in with email OTP, register their company and each physical venue with its screen count, and the system provisions the required MONOMax Sports Premium accounts while guaranteeing — enforced at the database level — that every account is bound to a single active venue. Admins review submissions in a dedicated console with its own auth realm and issue a verifiable digital certificate, complete with an in-house-generated QR code, for each approved venue. Built with Next.js 16 (App Router) and React 19 in strict TypeScript: two isolated better-auth realms for users and admins, MongoDB/Mongoose, zod schemas validated identically on client and server with react-hook-form, an interactive Leaflet venue-map picker, presigned document uploads to S3-compatible object storage, transactional email, and Tailwind v4 with shadcn/ui. Containerized with Docker and shipped through a GitHub Actions → GHCR → cloud-VM (Caddy) CI/CD pipeline, with PDPA-conscious data residency. Delivered as a focused 3-day sprint.
+
+- Stack: Next.js, React, MongoDB, Zod, React Hook Form, Tailwind CSS, Shadcn/ui, Leaflet, AWS S3, Mailgun, Recharts, Vitest, Docker, Firebase, NextAuth, Better Auth, TypeScript, Git/GitHub, Prettier, ESLint
+- Details: https://nooobtimex.me/projects/monomax-epl-portal
+
+### LOOKLOOK PET Platform
+
+Architect and lead full-stack developer of the LOOKLOOK PET platform — a multi-surface pet-parent community and B2B2C multi-vendor marketplace. Owned the ecosystem end-to-end across three core scopes: (1) **Core Storefront & Microservices**: Scaled 15+ NestJS services — first over a NATS message bus, later simplified to direct HTTP service calls — backed by MongoDB, Redis, and BullMQ, and fronted by a Next.js storefront. Designed a custom native payment UI with client-side Omise tokenization, inline PromptPay QR polling, card-lock promotional gating, and migrated headless WordPress to MongoDB with TipTap HTML rendering. (2) **B2B Partner Portal**: Built and owned ~55% of the console codebase, developing claim-an-unlisted-place flows, team switcher management with dynamic roles, analytics panels with CSV orders export, and custom Lottie route loaders. (3) **Mercur Multi-Vendor Marketplace**: Served as sole maintainer of the Medusa.js 2 marketplace and seller panels, upgrading to Sprint-46, building a workflow-based refund system, and launching bilingual TH/EN deal templates. (4) **Customer Mobile App**: Delivered the customer-facing mobile app in Flutter against the same service layer. Deployed on Railway with Docker and Cloudflare R2.
+
+- Stack: Next.js, React, Flutter, Tailwind CSS, Radix UI, TanStack Query, Nest.js, Node.js, NATS, MongoDB, Redis, BullMQ, Omise, SEO, Google Tag Manager, Clerk, WordPress, Tencent Cloud, CircleCI, Railway, Docker, Medusa, Mercur, MinIO, PostgreSQL, Algolia, Resend, Better Auth, Cloudflare R2, AWS S3, TypeScript, Git/GitHub, Prettier, ESLint
+- Live: https://looklook.pet
+- Details: https://nooobtimex.me/projects/looklook-pet
+
+### Prettier Config
+
+The fastest way to build, share, and try a Prettier configuration — visually, in the browser. Runs the official prettier/standalone fully client-side for instant live formatting, with a CodeMirror 6 editor spanning JS/TS, CSS, HTML, JSON, Markdown, Vue, and more, plus shareable URL-encoded configs and i18n. Built on Next.js, React, TypeScript, and Tailwind CSS v4 with shadcn/ui on Base UI.
+
+- Stack: Next.js, React, Tailwind CSS, Vercel, Google Tag Manager, Shadcn/ui, Base UI, CodeMirror, TypeScript, Git/GitHub, Prettier, ESLint
+- Live: https://prettier-config.dev
+- Details: https://nooobtimex.me/projects/prettier-config
+
+### Online Poker Game
+
+A real-time multiplayer online poker game featuring Server-Sent Events for live updates. Built with Next.js and PostgreSQL for a seamless, interactive card gaming experience.
+
+- Stack: Next.js, React, Prisma, Render, Tailwind CSS, PostgreSQL, SSE, Docker, BullMQ, Redis, TypeScript, Git/GitHub, Prettier, ESLint
+- Details: https://nooobtimex.me/projects/online-poker-game
+
+### Flood Project
+
+A flood and water-level monitoring dashboard for tracking station gauges in real time. Field stations plot on an interactive, marker-clustered Leaflet map; each streams its current water level with historical area/line charts (Recharts) read against a flood threshold, and operators can export readings to CSV. Ships a full account system with role-based user management and an admin dashboard. Built with Next.js 15 (App Router, Turbopack), React 19, and TypeScript on a Prisma data layer, with Tailwind + shadcn/ui, react-hook-form + Zod forms, and NextAuth (bcrypt) auth. Delivered as a focused freelance build.
+
+- Stack: Next.js, React, TypeScript, Tailwind CSS, Shadcn/ui, NextAuth, React Hook Form, Zod, Leaflet, Prisma, Recharts, Git/GitHub, Prettier, ESLint
+- Details: https://nooobtimex.me/projects/flood-project
+
+### QR Food Platform
+
+A senior thesis project from Thammasat University. Developed a full-stack QR-code ordering and multi-branch restaurant management web application designed to streamline in-restaurant operations and eliminate expensive POS hardware. Key components include: (1) **Customer Table Ordering**: A Nuxt 3 web application enabling customers to scan table-specific QR codes, browse live menus, customize dishes with add-ons, add items to a real-time cart, and place orders directly from their mobile devices. Features integrated support for calling staff and live bill tracking. (2) **Staff & Kitchen Portal**: Features custom views for restaurant staff to take orders directly at the table, manage order queues, track preparation statuses, and process instant table closures with bill printing. (3) **Multi-Branch Admin Console**: An analytical dashboard for owners to manage multiple restaurant branches, configure custom staff roles (owner/staff), toggle menu item availability dynamically per branch, customize food sections and add-on options, and view real-time sales statistics. Built with Nuxt 3, Vue 3, Tailwind CSS, Prisma, and PostgreSQL (Supabase), containerized with Docker and deployed on Vercel.
+
+- Stack: Vue.js, Nuxt.js, Tailwind CSS, Prisma, Supabase, PostgreSQL, Docker, Vercel, TypeScript, Git/GitHub, Prettier, ESLint
+- Details: https://nooobtimex.me/projects/qr-food
+
+### RS TROPHY
+
+A unified e-commerce and management platform for custom trophies, plaques, and medals — consolidating fragmented sibling brands into one high-performance system. Built as a Bun monorepo: a localized, SEO-optimized Next.js storefront, a real-time ElysiaJS API, and an admin console that share Mongoose schemas and types through a common workspace package. Runs on MongoDB with Redis caching and Cloudflare R2 object storage, containerized with Docker and deployed on Railway — and ships an AI copilot for natural-language shopping assistance. The platform evolved from an original WordPress + WooCommerce storefront into this unified Bun monorepo.
+
+- Stack: WordPress, WooCommerce, SEO, Google Analytics, Google Ads, Bun.js, Elysia.js, Next.js, React, MongoDB, Redis, Docker, Railway, Tailwind CSS, Shadcn/ui, MinIO, AEO, GEO, JSON-LD, Google Tag Manager, Cloudflare R2, TypeScript, Git/GitHub, Prettier, ESLint
+- Live: https://rs-trophy.com
+- Details: https://nooobtimex.me/projects/rs-trophy
+
+### RS Medal
+
+A medal showcase and catalog web app — first built on WordPress, later remade as a localized Next.js application with structured data and a reusable product data model.
+
+- Stack: WordPress, SEO, Google Ads, Next.js, React, Tailwind CSS, Shadcn/ui, Vercel, Google Tag Manager, JSON-LD, TypeScript, Git/GitHub, Prettier, ESLint
+- Live: https://www.rs-medal.com
+- Details: https://nooobtimex.me/projects/rs-medal
+
+### RS Award
+
+A plaque and award showcase web app — first built on WordPress, later remade as a localized Next.js application with SEO/AEO structured data and client-side search.
+
+- Stack: WordPress, SEO, Google Ads, Next.js, React, Tailwind CSS, Shadcn/ui, Vercel, Prisma, PostgreSQL, Google Tag Manager, MongoDB, AEO, JSON-LD, Docker, TypeScript, Git/GitHub, Prettier, ESLint
+- Live: https://www.rs-award.com
+- Details: https://nooobtimex.me/projects/rs-award
+
+### 🚀 Portfolio – Wongsaphat Puangsorn
+
+This site — a Cyberpunk 2077–inspired portfolio built on Next.js (App Router, Turbopack) with a fully custom Tailwind v4 design system and shadcn/ui on Base UI. Features a ⌘K command palette, a gig-board project journal, a vertical career-trace timeline, and a print-ready CV with a slide-presentation mode. Deployed on Railway.
+
+- Stack: Next.js, Tailwind CSS, SEO, React, Shadcn/ui, Bun.js, Railway, AEO, GEO, JSON-LD, Google Tag Manager, Base UI, Embla Carousel, TypeScript, Git/GitHub, Prettier, ESLint
+- Live: https://github.com/NooobtimeX/NooobtimeX
+- Details: https://nooobtimex.me/projects/portfolio
+
+## Skills
+
+- frontend: Next.js, React, TypeScript, Tailwind CSS, Shadcn/ui, Radix UI, Base UI, Embla Carousel, TanStack Query, Recharts, Flutter, Prettier, CodeMirror, React Hook Form, Leaflet, Vitest, ESLint, Vue.js, Nuxt.js
+- backend: Node.js, Nest.js, NATS, Elysia.js, SSE, Bun.js, PostgreSQL, MongoDB, Prisma, Redis, BullMQ, Medusa, Zod, Better Auth, Clerk, NextAuth, Firebase, Supabase, Mercur
+- infrastructure: Vercel, Railway, Docker, Render, Tencent Cloud, CircleCI, Git/GitHub, MinIO, Resend, Cloudflare R2, AWS S3, Mailgun, Omise, Algolia
+- growth-management: SEO, AEO, GEO, JSON-LD, Google Analytics, Google Ads, Google Tag Manager, WordPress, WooCommerce
+
+## Organizations
+
+- RUAMSUK PLATING LIMITED PARTNERSHIP — Thai awards manufacturer behind the RS TROPHY, RS Medal, and RS Award storefronts — custom trophies, plaques, and medals, with the entire technology stack built and run in house. (https://nooobtimex.me/companies/ruamsuk-plating)
+- Jasmine Technology Solution — Software solutions company — home of the LOOKLOOK PET platform work: storefront, B2B partner console, microservices, and multi-vendor marketplace. (https://nooobtimex.me/companies/jasmine-technology-solution)
+- JAS TV — Jasmine International's internet-TV arm. Its parent group, JAS, holds the exclusive English Premier League & Emirates FA Cup rights for Thailand, Laos, and Cambodia (2025/26–2030/31), distributed via Mono. (https://nooobtimex.me/companies/jas-tv)
+- MONOMax — Mono Group's SVOD streaming platform (Mono Next PCL). MONOMax Sports Premium streams the English Premier League — the platform the EPL licensing portal provisions venue accounts for. (https://nooobtimex.me/companies/monomax)
+- Freelance — Remote freelance web-app engineering, delivered end-to-end from scoping to deployment. (https://nooobtimex.me/companies/freelance)
+
+## Links
+
+- github: https://github.com/NooobtimeX
+- linkedin: https://www.linkedin.com/in/nooobtimex
+- youtube: https://www.youtube.com/@nooobtimex
+- instagram: https://www.instagram.com/nooobtimex
+- email: mailto:nooobtimex@gmail.com
+- website: https://nooobtimex.me

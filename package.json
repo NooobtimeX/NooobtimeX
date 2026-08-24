@@ -6,10 +6,12 @@
 		"node": ">=26"
 	},
 	"scripts": {
-		"build": "bun run icons:check && next build",
+		"build": "bun run icons:check && next build && bun run links:check",
 		"dev": "next dev -p 1000",
 		"icons:check": "bun run scripts/icons/check.ts",
 		"icons:generate": "bun run scripts/icons/generate.ts",
+		"links:check": "bun run scripts/links/check.ts",
+		"llms:generate": "bun run scripts/llms/generate.ts",
 		"images:optimize": "bun run scripts/images/optimize.ts",
 		"lint": "eslint . --fix && prettier . --write",
 		"readme:assets": "bun run scripts/readme/generate.ts",

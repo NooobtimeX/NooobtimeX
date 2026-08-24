@@ -1,12 +1,12 @@
 import React from 'react'
 import Link from 'next/link'
-import { Icon } from '@iconify/react'
 import Container from '@/components/cyber/Container'
+import CyberIcon from '@/components/cyber/CyberIcon'
 import CyberTag from '@/components/cyber/CyberTag'
 import MotionReveal from '@/components/cyber/MotionReveal'
 import NeonPanel from '@/components/cyber/NeonPanel'
 import ProjectCard from '@/components/projects/ProjectCard'
-import { formatExperienceDuration, slugify } from '@/lib/utils'
+import { formatExperienceDuration } from '@/lib/utils'
 import { type Organization, experiencesData, projectsData } from '@/common'
 
 interface CompanyDetailProps {
@@ -28,7 +28,7 @@ const StatCell: React.FC<{ label: string; children: React.ReactNode }> = ({ labe
 
 const InfoRow: React.FC<{ icon: string; label: string; children: React.ReactNode }> = ({ icon, label, children }) => (
 	<div className='border-cyber-cyan/40 bg-cyber-cyan/[0.04] flex items-start gap-3 border-l-2 p-3'>
-		<Icon icon={icon} className='text-cyber-cyan mt-0.5 size-4 shrink-0' />
+		<CyberIcon icon={icon} className='text-cyber-cyan mt-0.5 size-4 shrink-0' />
 		<div className='min-w-0'>
 			<p className='text-muted-foreground font-mono text-[0.6rem] tracking-widest uppercase'>{label}</p>
 			<p className='mt-0.5 text-sm font-semibold'>{children}</p>
@@ -80,7 +80,7 @@ const CompanyDetail: React.FC<CompanyDetailProps> = ({ organization }) => {
 			<Link
 				href='/companies'
 				className='text-muted-foreground hover:text-cyber-cyan inline-flex items-center gap-2 font-mono text-xs tracking-widest uppercase transition-colors'>
-				<Icon icon='mdi:arrow-left' className='size-4' /> Network
+				<CyberIcon icon='mdi:arrow-left' className='size-4' /> Network
 			</Link>
 
 			{/* Company header */}
@@ -158,7 +158,7 @@ const CompanyDetail: React.FC<CompanyDetailProps> = ({ organization }) => {
 					<ul className='mt-3 space-y-2'>
 						{organization.highlights.map(h => (
 							<li key={h} className='text-muted-foreground flex items-start gap-2 text-sm leading-relaxed'>
-								<Icon icon='mdi:star-four-points-outline' className='text-cyber-magenta mt-1 size-3.5 shrink-0' />
+								<CyberIcon icon='mdi:star-four-points-outline' className='text-cyber-magenta mt-1 size-3.5 shrink-0' />
 								<span>{h}</span>
 							</li>
 						))}
@@ -238,9 +238,9 @@ const CompanyDetail: React.FC<CompanyDetailProps> = ({ organization }) => {
 						{skills.map(s => (
 							<Link
 								key={s.name}
-								href={`/skills/${slugify(s.name)}` as never}
+								href={`/skills/${s.id}` as never}
 								className='border-border hover:border-cyber-cyan/60 flex items-center gap-1.5 border px-2 py-1 text-xs transition-colors'>
-								<Icon icon={s.icon} className='size-4' />
+								<CyberIcon icon={s.icon} className='size-4' />
 								{s.name}
 							</Link>
 						))}

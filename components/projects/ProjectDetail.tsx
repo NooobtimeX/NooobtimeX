@@ -1,12 +1,12 @@
 import React from 'react'
 import Link from 'next/link'
-import { Icon } from '@iconify/react'
 import Container from '@/components/cyber/Container'
 import CyberButton from '@/components/cyber/CyberButton'
+import CyberIcon from '@/components/cyber/CyberIcon'
 import NeonPanel from '@/components/cyber/NeonPanel'
 import ProjectGallery from '@/components/projects/ProjectGallery'
 import ProjectTimeline from '@/components/projects/ProjectTimeline'
-import { formatExperienceDuration, slugify } from '@/lib/utils'
+import { formatExperienceDuration } from '@/lib/utils'
 import { type Project, entitiesData, experiencesData } from '@/common'
 
 interface ProjectDetailProps {
@@ -48,7 +48,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
 			<Link
 				href='/projects'
 				className='text-muted-foreground hover:text-cyber-cyan inline-flex items-center gap-2 font-mono text-xs tracking-widest uppercase transition-colors'>
-				<Icon icon='mdi:arrow-left' className='size-4' /> Gig Board
+				<CyberIcon icon='mdi:arrow-left' className='size-4' /> Gig Board
 			</Link>
 
 			{/* Banner */}
@@ -128,7 +128,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
 				<aside className='space-y-6'>
 					{project.links.live && (
 						<CyberButton href={project.links.live} external className='w-full'>
-							<Icon icon='mdi:flash' /> Jack In
+							<CyberIcon icon='mdi:flash' /> Jack In
 						</CyberButton>
 					)}
 
@@ -137,7 +137,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
 						download={`${project.id}-card.png`}
 						variant='outline'
 						className='w-full'>
-						<Icon icon='mdi:download' /> 1:1 Card
+						<CyberIcon icon='mdi:download' /> 1:1 Card
 					</CyberButton>
 
 					<NeonPanel className='clip-notch-sm p-4'>
@@ -146,19 +146,19 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
 							{project.activeSkills.map(a => (
 								<Link
 									key={a.name}
-									href={`/skills/${slugify(a.name)}` as never}
+									href={`/skills/${a.id}` as never}
 									className='border-border hover:border-cyber-cyan/60 flex items-center gap-1.5 border px-2 py-1 text-xs transition-colors'>
-									<Icon icon={a.icon} className='size-4' />
+									<CyberIcon icon={a.icon} className='size-4' />
 									{a.name}
 								</Link>
 							))}
 							{project.retiredSkills.map(a => (
 								<Link
 									key={a.name}
-									href={`/skills/${slugify(a.name)}` as never}
+									href={`/skills/${a.id}` as never}
 									title='Retired from this project'
 									className='border-border/40 text-muted-foreground hover:border-cyber-magenta/50 flex items-center gap-1.5 border px-2 py-1 text-xs opacity-60 transition-colors'>
-									<Icon icon={a.icon} className='size-4' />
+									<CyberIcon icon={a.icon} className='size-4' />
 									<span className='line-through'>{a.name}</span>
 								</Link>
 							))}
@@ -176,7 +176,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
 										<Link
 											href={`/career/${role.id}` as never}
 											className='hover:text-cyber-yellow flex items-center gap-2 text-sm transition-colors'>
-											<Icon icon='mdi:account-tie-outline' className='size-4 shrink-0' />
+											<CyberIcon icon='mdi:account-tie-outline' className='size-4 shrink-0' />
 											{humanize(role.position)}
 										</Link>
 										<Link

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Icon } from '@iconify/react'
+import CyberIcon from '@/components/cyber/CyberIcon'
 import NeonPanel from '@/components/cyber/NeonPanel'
 
 export interface GithubInsightsData {
@@ -72,7 +72,7 @@ const StatCell: React.FC<{ icon: string; label: string; value: React.ReactNode; 
 	sub
 }) => (
 	<NeonPanel className='clip-notch-sm flex flex-col gap-1 p-4'>
-		<Icon icon={icon} className='text-cyber-cyan size-4' />
+		<CyberIcon icon={icon} className='text-cyber-cyan size-4' />
 		<span className='font-display neon-text-yellow text-2xl leading-none font-bold'>{value}</span>
 		<span className='text-muted-foreground font-mono text-[0.6rem] tracking-widest uppercase'>{label}</span>
 		{sub && <span className='text-muted-foreground/70 font-mono text-[0.55rem]'>{sub}</span>}
@@ -151,7 +151,7 @@ const GithubInsights: React.FC<{ data: GithubInsightsData }> = ({ data }) => {
 									<div className='flex shrink-0 items-center gap-3 font-mono text-xs'>
 										{r.language && <span className='text-muted-foreground'>{r.language}</span>}
 										<span className='text-cyber-yellow flex items-center gap-1'>
-											<Icon icon='mdi:star' className='size-3' />
+											<CyberIcon icon='mdi:star' className='size-3' />
 											{r.stars}
 										</span>
 									</div>

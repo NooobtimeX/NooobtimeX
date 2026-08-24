@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
-import { Icon } from '@iconify/react'
 import Container from '@/components/cyber/Container'
+import CyberIcon from '@/components/cyber/CyberIcon'
 import { FOOTER_LINKS } from '@/components/navigation/links'
 import { personalData } from '@/common'
 
@@ -59,7 +59,7 @@ const NavFooter: React.FC = () => {
 								target={s.platform === 'email' ? undefined : '_blank'}
 								rel='noopener noreferrer'
 								className='group border-border hover:border-cyber-cyan/60 hover:bg-cyber-cyan/[0.04] clip-notch-sm flex items-center gap-3 border px-3 py-2.5 transition-colors'>
-								<Icon
+								<CyberIcon
 									icon={s.icon}
 									className='text-muted-foreground group-hover:text-cyber-cyan size-5 shrink-0 transition-colors'
 								/>

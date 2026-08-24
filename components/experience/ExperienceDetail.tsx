@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
-import { Icon } from '@iconify/react'
 import Container from '@/components/cyber/Container'
+import CyberIcon from '@/components/cyber/CyberIcon'
 import CyberTag from '@/components/cyber/CyberTag'
 import MotionReveal from '@/components/cyber/MotionReveal'
 import NeonPanel from '@/components/cyber/NeonPanel'
@@ -41,7 +41,7 @@ const ExperienceDetail: React.FC<ExperienceDetailProps> = ({ item }) => {
 			<Link
 				href='/career'
 				className='text-muted-foreground hover:text-cyber-cyan inline-flex items-center gap-2 font-mono text-xs tracking-widest uppercase transition-colors'>
-				<Icon icon='mdi:arrow-left' className='size-4' /> Career Trace
+				<CyberIcon icon='mdi:arrow-left' className='size-4' /> Career Trace
 			</Link>
 
 			<NeonPanel
@@ -104,7 +104,7 @@ const ExperienceDetail: React.FC<ExperienceDetailProps> = ({ item }) => {
 						target='_blank'
 						rel='noopener noreferrer'
 						className='text-cyber-cyan hover:text-cyber-yellow mt-4 inline-flex items-center gap-2 font-mono text-xs tracking-widest uppercase transition-colors'>
-						<Icon icon='mdi:open-in-new' className='size-4' /> Visit Organization
+						<CyberIcon icon='mdi:open-in-new' className='size-4' /> Visit Organization
 					</a>
 				)}
 			</section>

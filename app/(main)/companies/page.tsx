@@ -1,12 +1,12 @@
 import React from 'react'
-import { Metadata } from 'next'
 import CompaniesContent from '@/components/companies/CompaniesContent'
-import { personalData } from '@/common'
+import { pageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
-	title: `Companies | ${personalData.name}`,
+export const metadata = pageMetadata({
+	path: '/companies',
+	title: 'Companies',
 	description: 'The organizations across the career map — employers, collectives, and independent work.'
-}
+})
 
 const CompaniesPage: React.FC = () => {
 	return <CompaniesContent />

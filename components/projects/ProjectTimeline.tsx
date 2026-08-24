@@ -1,5 +1,5 @@
 import React from 'react'
-import { Icon } from '@iconify/react'
+import CyberIcon from '@/components/cyber/CyberIcon'
 import MotionReveal from '@/components/cyber/MotionReveal'
 import { cn, formatMilestoneDate } from '@/lib/utils'
 import { type Milestone } from '@/common'
@@ -30,7 +30,10 @@ const ProjectTimeline: React.FC<ProjectTimelineProps> = ({ items }) => {
 										isLatest ? 'now-pulse border-cyber-yellow' : 'border-cyber-cyan/60'
 									)}>
 									{m.icon ?
-										<Icon icon={m.icon} className={cn('size-4', isLatest ? 'text-cyber-yellow' : 'text-cyber-cyan')} />
+										<CyberIcon
+											icon={m.icon}
+											className={cn('size-4', isLatest ? 'text-cyber-yellow' : 'text-cyber-cyan')}
+										/>
 									:	<span className='bg-cyber-cyan size-2 rotate-45' />}
 								</span>
 
@@ -56,14 +59,14 @@ const ProjectTimeline: React.FC<ProjectTimelineProps> = ({ items }) => {
 												<span
 													key={`add-${s.id}`}
 													className='text-cyber-green border-cyber-green/40 flex items-center gap-1 border px-1.5 py-0.5 font-mono text-[0.65rem] tracking-wide'>
-													<Icon icon={s.icon} className='size-3' />+{s.name}
+													<CyberIcon icon={s.icon} className='size-3' />+{s.name}
 												</span>
 											))}
 											{m.removedSkills?.map(s => (
 												<span
 													key={`rm-${s.id}`}
 													className='text-cyber-magenta border-cyber-magenta/40 flex items-center gap-1 border px-1.5 py-0.5 font-mono text-[0.65rem] tracking-wide'>
-													<Icon icon={s.icon} className='size-3' />
+													<CyberIcon icon={s.icon} className='size-3' />
 													<span className='line-through'>{s.name}</span>
 												</span>
 											))}
