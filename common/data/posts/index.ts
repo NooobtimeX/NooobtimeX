@@ -18,6 +18,8 @@ import { entitiesData } from '../entities'
 import { experiencesData } from '../experiences'
 import { projectsData } from '../projects'
 import { type SkillId, skillById } from '../skills'
+import { posts2006 } from './2006'
+import { posts2019 } from './2019'
 import { posts2021 } from './2021'
 import { posts2022 } from './2022'
 import { posts2023 } from './2023'
@@ -30,6 +32,11 @@ export * from './inline'
 
 /** Journey-phase metadata — spans mirror the exact dates in `experiences.ts`. */
 export const chapterMetadata: Record<PostChapter, { label: string; span: string; description: string }> = {
+	origins: {
+		label: 'Origins',
+		span: '2006–2021',
+		description: 'Before any of it was a career — a trophy factory founded in 2006, and growing up around it.'
+	},
 	student: {
 		label: 'Student Years',
 		span: '2021–2025',
@@ -113,7 +120,11 @@ const wordCount = (blocks: PostBlock[]): number =>
 		.split(/\s+/)
 		.filter(Boolean).length
 
-/** Build-time "now" — the site is statically prerendered, so this is the deploy date. */
+/**
+ * Build-time "now" — the site is statically prerendered, so this is the deploy date.
+ * One dating rule for the whole journal: `publishedAt` is the real date of the event a
+ * post describes, however far back that goes. The only forbidden direction is forward.
+ */
 const TODAY = new Date().toISOString().slice(0, 10)
 
 const fail = (id: string, msg: string): never => {
@@ -177,7 +188,16 @@ const resolvePost = (d: PostDef): Post => {
 }
 
 /** Registration order — publication order within each year folder's index. */
-const defs: PostDef[] = [...posts2021, ...posts2022, ...posts2023, ...posts2024, ...posts2025, ...posts2026]
+const defs: PostDef[] = [
+	...posts2006,
+	...posts2019,
+	...posts2021,
+	...posts2022,
+	...posts2023,
+	...posts2024,
+	...posts2025,
+	...posts2026
+]
 
 // Registry-level checks: unique ids, and series parts that are 1..n with no gaps.
 {

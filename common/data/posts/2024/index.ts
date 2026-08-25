@@ -1,4 +1,4 @@
-/** Publication order for 2024. Filename === id — the repo's hardest invariant. */
+/** Publication order for 2024 — regenerated from the folder, ordered by (publishedAt, id). */
 import type { PostDef } from '../../../interfaces'
 import { post38EndpointThesisOnVercel } from './38-endpoint-thesis-on-vercel'
 import { multiBranchRestaurantSchemaInPrisma } from './multi-branch-restaurant-schema-in-prisma'
@@ -11,9 +11,9 @@ import { whyNuxtNotNextForMyThesis } from './why-nuxt-not-next-for-my-thesis'
 export const posts2024: PostDef[] = [
 	startingToFreelanceInThirdYear,
 	multiBranchRestaurantSchemaInPrisma,
-	whyNuxtNotNextForMyThesis,
 	tableScopedQrCodes,
-	realtimeCallStaffAlerts,
+	whyNuxtNotNextForMyThesis,
 	perBranchMenuAvailability,
+	realtimeCallStaffAlerts,
 	post38EndpointThesisOnVercel
 ]

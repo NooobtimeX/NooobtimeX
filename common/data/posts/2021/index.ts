@@ -1,4 +1,4 @@
-/** Publication order for 2021. Filename === id — the repo's hardest invariant. */
+/** Publication order for 2021 — regenerated from the folder, ordered by (publishedAt, id). */
 import type { PostDef } from '../../../interfaces'
 import { startedJobAndDegreeSameMonth } from './started-job-and-degree-same-month'
 

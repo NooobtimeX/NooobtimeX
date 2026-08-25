@@ -4,7 +4,7 @@ import type { PostDef } from '../../../interfaces'
 export const solePmPoDesigner: PostDef = {
 	id: 'sole-pm-po-designer',
 	title: 'Sole PM, sole PO, sole designer — and the engineer',
-	publishedAt: '2026-08-24',
+	publishedAt: '2026-08-01',
 	chapter: 'ownership',
 	draft: true
 }

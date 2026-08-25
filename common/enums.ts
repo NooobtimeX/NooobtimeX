@@ -34,7 +34,7 @@ export type ExperienceId =
  * Blog journey chapters — the career phase a post belongs to. Spans mirror the exact
  * dates in `common/data/experiences.ts`; `freelance` runs underneath the others.
  */
-export type PostChapter = 'student' | 'bridge' | 'scale' | 'ownership' | 'freelance'
+export type PostChapter = 'origins' | 'student' | 'bridge' | 'scale' | 'ownership' | 'freelance'
 
 /** Blog topic categories — the technical axis, orthogonal to `PostChapter`. */
 export type PostCategory = 'nextjs' | 'infrastructure' | 'commerce' | 'seo-aeo' | 'engineering'
