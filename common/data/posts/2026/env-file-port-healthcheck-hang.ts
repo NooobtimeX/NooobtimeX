@@ -4,7 +4,7 @@ import type { PostDef } from '../../../interfaces'
 export const envFilePortHealthcheckHang: PostDef = {
 	id: 'env-file-port-healthcheck-hang',
 	title: 'Never let .env into a Next.js standalone image',
-	publishedAt: '2026-07-31',
+	publishedAt: '2026-07-30',
 	chapter: 'freelance',
 	series: { id: 'container-diet', part: 6 },
 	draft: true

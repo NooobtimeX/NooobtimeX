@@ -1,4 +1,4 @@
-/** Publication order for 2023. Filename === id — the repo's hardest invariant. */
+/** Publication order for 2023 — regenerated from the folder, ordered by (publishedAt, id). */
 import type { PostDef } from '../../../interfaces'
 import { onpageSeoForAThaiB2bCatalog } from './onpage-seo-for-a-thai-b2b-catalog'
 import { replacingPosHardwareWithQrOrdering } from './replacing-pos-hardware-with-qr-ordering'

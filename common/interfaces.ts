@@ -206,13 +206,13 @@ export interface PostFaq {
  * - **Full** (no `draft`): every AEO field below is required and validated. Flipping
  *   `draft` off IS publishing — there is no scheduler.
  *
- * `publishedAt` is the real date of the work (a milestone, a commit), never a future
- * date — the resolver throws on a future-dated non-draft.
+ * `publishedAt` is always the real date of the event the post is about — a milestone,
+ * a commit, a role date — never a future date (the resolver throws on one).
  */
 export interface PostDef {
 	id: string // url-safe id — /blog/<id>. NEVER slugify(title); see scripts/links/check.ts.
 	title: string // query-shaped — how someone would SEARCH it, not a clever headline
-	publishedAt: string // YYYY-MM-DD, the real date of the work. Backfill caps at 2026-07-31.
+	publishedAt: string // YYYY-MM-DD — the REAL date of the event this post is about (milestone, commit, role date). Never future; same-day ties sort by registry order.
 	chapter: PostChapter
 	draft?: boolean
 	// --- Required once draft is off (resolvePost enforces) ---

@@ -1,4 +1,4 @@
-/** Publication order for 2025. Filename === id — the repo's hardest invariant. */
+/** Publication order for 2025 — regenerated from the folder, ordered by (publishedAt, id). */
 import type { PostDef } from '../../../interfaces'
 import { automatedGithubProfileReadme } from './automated-github-profile-readme'
 import { blogSystemAndJsonLdForAStorefront } from './blog-system-and-json-ld-for-a-storefront'
@@ -17,6 +17,7 @@ import { replacedNatsWithHttp } from './replaced-nats-with-http'
 import { sessionAuthForGameRooms } from './session-auth-for-game-rooms'
 import { sideProjectInMyNoticePeriod } from './side-project-in-my-notice-period'
 import { sseGameRoomsNotWebsockets } from './sse-game-rooms-not-websockets'
+import { takeHomeExamOverSongkran } from './take-home-exam-over-songkran'
 import { tddPokerHandEvaluator } from './tdd-poker-hand-evaluator'
 import { timeSeriesReadingsSchemaInPrisma } from './time-series-readings-schema-in-prisma'
 import { tournamentModeAndSpectators } from './tournament-mode-and-spectators'
@@ -28,10 +29,11 @@ export const posts2025: PostDef[] = [
 	timeSeriesReadingsSchemaInPrisma,
 	leafletMarkerClusteringStationMap,
 	floodDashboardIn13Days,
+	takeHomeExamOverSongkran,
 	wordpressToNextjsRemakeWhatToKeep,
 	blogSystemAndJsonLdForAStorefront,
-	tddPokerHandEvaluator,
 	sseGameRoomsNotWebsockets,
+	tddPokerHandEvaluator,
 	graduatingIntoAJobIAlreadyHad,
 	modularPotPositionBettingManagers,
 	sideProjectInMyNoticePeriod,
