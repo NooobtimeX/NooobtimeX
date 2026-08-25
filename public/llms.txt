@@ -188,6 +188,24 @@ My portfolio renders live GitHub contributions, repo counts, stars and a byte-ac
 
 Read more: https://nooobtimex.me/blog/token-free-github-stats-isr
 
+### next-intl Thai/English localization with a shared UI workspace
+
+On 2026-05-09, three days into the RS TROPHY monorepo rebuild, I shipped two changes together: next-intl Thai/English routing with Thai as the default locale, and the extraction of the shadcn component set into a shared @rs-trophy/ui workspace package. They shipped together because a bilingual app forces you to decide where strings live, and a copy-pasted component library has no good answer. The rule that came out of it: shared components take strings as props and never call a translation hook themselves.
+
+Read more: https://nooobtimex.me/blog/next-intl-th-en-shared-ui
+
+### Localizing a storefront to Thai while replacing its design system
+
+On 30 January 2026 the RS Award remake got a new design system with motion primitives and a Thai UI in the same milestone. That pairing was deliberate: Thai is a typography constraint before it is a translation job — no spaces between words, marks stacking above and below the baseline, and no italic tradition — so a component kit whose defaults were picked for English breaks in four places at once. The cost of batching them was that I could no longer attribute a regression to one change or the other.
+
+Read more: https://nooobtimex.me/blog/thai-localization-and-a-new-design-system
+
+### Switching from Prisma/Postgres to MongoDB mid-build
+
+On 28 January 2026, fifty-five days into the Next.js remake of RS Award, I ripped out Prisma and PostgreSQL and moved the data layer to MongoDB. The reason was not scale or performance — it was that the content model was still moving, and every shape change cost a migration on a schema I did not yet believe in. A read-mostly catalog is a document store wearing a relational costume. The honest version is that Postgres was not failing; my certainty about the schema was.
+
+Read more: https://nooobtimex.me/blog/prisma-postgres-to-mongodb-mid-build
+
 ### Retiring self-managed VMs and CircleCI + SSH for Railway across a fleet
 
 On 7 November 2025 we retired the self-managed Tencent Cloud VMs behind a 15+ service platform, along with their CircleCI and SSH deploy pipelines, and moved every service to Railway built from its own Dockerfile. The real change was not the hosting bill — it was that the definition of a running service moved from a long-lived machine's accumulated state into a file in the repo. An SSH pipeline deploys to a host you maintain; config-as-code rebuilds the host from the commit.
@@ -211,6 +229,12 @@ Read more: https://nooobtimex.me/blog/sse-game-rooms-not-websockets
 A hand evaluator has a closed specification: nine hand categories, a total order over them, and exactly 2,598,960 distinct five-card hands. That is the profile of a problem where you can write the expected answer before the code, so I built the evaluator on Online Poker Game test-first and let the comparison rules — kickers, the wheel, exact ties that split a pot — arrive as failing tests. It worked because the domain was closed. The same discipline did nothing for the parts of the game where I could not state correct in advance.
 
 Read more: https://nooobtimex.me/blog/tdd-poker-hand-evaluator
+
+### Adding a blog system and JSON-LD to a catalog storefront
+
+On 6 June 2025 I added a blog system, a sitemap and JSON-LD structured data to RS Medal, seven days after starting its ground-up Next.js remake. Moving off WordPress had quietly deleted all three. The structured data was the cheapest piece to build and the one that mattered most — it is a plain object serialised from the same content the page already renders. The blog existed mainly to give that object something true to describe.
+
+Read more: https://nooobtimex.me/blog/blog-system-and-json-ld-for-a-storefront
 
 ### Role-based accounts with NextAuth, bcrypt and Zod — the whole flow
 
