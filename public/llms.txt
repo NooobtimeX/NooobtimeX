@@ -182,6 +182,18 @@ From 2026-08-01 my role description says I act as sole PM, PO, and UI/UX designe
 
 Read more: https://nooobtimex.me/blog/sole-pm-po-designer
 
+### 402 MB to 126 MB: what was actually in my Next.js container
+
+A mostly-static portfolio was holding 402 MB of resident memory. The cause was not traffic or a leak: lib/og-assets.ts imported six full @iconify-json collections at module scope — 32,844 icons, 26.7 MB, of which the site server-renders about a hundred. Turbopack inlined that into two 25 MB server chunks and Next 16 materialised both at boot. The data was provably dead in the page graph; it was reachable only because app/opengraph-image.tsx — a metadata convention Next evaluates for every page — imported an 8-key colour palette from the same module. Splitting that palette into a file with zero imports, and generating a small committed icon subset instead, took it to 126 MB.
+
+Read more: https://nooobtimex.me/blog/container-rss-402-to-126
+
+### Build with Bun, serve with Node: dodging a standalone RSS leak
+
+I install with Bun.js and serve with Node.js, on purpose. The Next standalone server leaks resident memory under Bun's Node-compat HTTP layer (oven-sh/bun#27514), and on a long-lived container that does not look like a leak — it looks like a slow, unexplained OOM days after deploy. So stage 1 installs on oven/bun:1-slim, stages 2 and 3 run on node:26-slim, and the process that actually answers requests is node server.js. The build keeps Bun's speed; the runtime keeps Node's boring memory behaviour.
+
+Read more: https://nooobtimex.me/blog/bun-builds-node-serves
+
 ### Token-free GitHub stats with ISR: no PAT, no rate-limit wall
 
 My portfolio renders live GitHub contributions, repo counts, stars and a byte-accurate language breakdown without a personal access token. Three things make that survivable: the contribution calendar comes from a public third-party endpoint (GitHub's own calendar is GraphQL-only, and GraphQL always needs auth), every fetch is cached for 86400 seconds by Next's ISR, and every fetcher returns null instead of throwing — so a rate-limited request degrades the section rather than breaking the build.
@@ -241,6 +253,12 @@ Read more: https://nooobtimex.me/blog/blog-system-and-json-ld-for-a-storefront
 NextAuth's Credentials provider gives you a session and nothing else — the user lookup, the bcrypt.compare, and the decision to return a user or null are all code you write yourself. I shipped it on day two of a 13-day freelance build with one Zod schema used twice, on the client through React Hook Form for the error messages and again on the server as the actual trust boundary. The harder half was not hashing passwords; it was deciding where a user's role lives once someone can change it from an admin screen.
 
 Read more: https://nooobtimex.me/blog/nextauth-bcrypt-zod-role-accounts
+
+### Designing a multi-branch restaurant schema in Prisma
+
+By 15 March 2024 the first working version of QR Food Platform ran on a Prisma schema I had designed seven months earlier, before a single screen existed. Every table, menu section, add-on and staff role hung off one branchId, so a second restaurant location was a row rather than a migration. The cost was real and I underrated it: for most of the build there was one branch, and every query carried a filter that protected nothing yet.
+
+Read more: https://nooobtimex.me/blog/multi-branch-restaurant-schema-in-prisma
 
 ### Why I built my thesis on Nuxt 3 instead of Next.js
 
