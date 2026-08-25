@@ -44,6 +44,12 @@ interface PageMetaInput {
 	 * the nearest `opengraph-image.tsx` resolve.
 	 */
 	ogImage?: string
+	/**
+	 * Present on blog posts only. Switches `openGraph.type` to `'article'` and carries
+	 * the byline fields. `publishedTime` is the date the URL went public, which for a
+	 * backfilled post is its real milestone date — never a future date.
+	 */
+	article?: { publishedTime: string; modifiedTime?: string; section: string; tags?: string[] }
 }
 
 /**
@@ -57,7 +63,7 @@ interface PageMetaInput {
  * `openGraph.images` is deliberately omitted: the file-convention
  * `app/opengraph-image.tsx` is resolved separately and still applies.
  */
-export function pageMetadata({ path, title, description, absoluteTitle, ogImage }: PageMetaInput): Metadata {
+export function pageMetadata({ path, title, description, absoluteTitle, ogImage, article }: PageMetaInput): Metadata {
 	const url = `${SITE_URL}${path === '/' ? '' : path}`
 	const socialTitle = absoluteTitle ?? `${title} | ${DISPLAY_NAME}`
 
@@ -78,13 +84,24 @@ export function pageMetadata({ path, title, description, absoluteTitle, ogImage 
 		description: clamped,
 		alternates: { canonical: path },
 		openGraph: {
-			type: 'website',
 			locale: 'en_US',
 			siteName: `${DISPLAY_NAME} Portfolio`,
 			url,
 			title: socialTitle,
 			description: clamped,
-			...(ogImage && { images: [{ url: ogImage, width: 1200, height: 630, alt: socialTitle }] })
+			...(ogImage && { images: [{ url: ogImage, width: 1200, height: 630, alt: socialTitle }] }),
+			// Discriminated last so TS narrows the union: article pages carry the byline
+			// fields, everything else stays a plain website node.
+			...(article ?
+				{
+					type: 'article' as const,
+					publishedTime: article.publishedTime,
+					...(article.modifiedTime && { modifiedTime: article.modifiedTime }),
+					authors: [DISPLAY_NAME],
+					section: article.section,
+					...(article.tags && { tags: article.tags })
+				}
+			:	{ type: 'website' as const })
 		},
 		// No `creator` here on purpose: `personalData.socialLinks` lists no X/Twitter
 		// account, so the handle in the root layout is an unverified guess. Asserting a

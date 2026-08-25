@@ -14,7 +14,7 @@ export const categoryMetadata: Record<SkillCategory, { label: string; icon: stri
 		label: 'Backend',
 		icon: 'material-symbols:database',
 		description:
-			'Services and data, from a single Next.js route handler up to 20+ NestJS microservices talking over NATS. Relational and document stores with typed access layers, background queues, caching, real-time transport, schema validation, and the authentication and payment integrations that production systems actually run on.'
+			'Services and data, from a single Next.js route handler up to 15+ NestJS microservices talking over NATS. Relational and document stores with typed access layers, background queues, caching, real-time transport, schema validation, and the authentication and payment integrations that production systems actually run on.'
 	},
 	'infrastructure': {
 		label: 'Infrastructure',
@@ -201,7 +201,7 @@ const nodejs = skill({
 const nestjs = skill({
 	id: 'nest-js',
 	description:
-		'An opinionated Node framework with dependency injection and a module system. The structure behind the 20+ microservices on the LOOKLOOK PET platform.',
+		'An opinionated Node framework with dependency injection and a module system. The structure behind the 15+ microservices on the LOOKLOOK PET platform.',
 	name: 'Nest.js',
 	icon: 'logos:nestjs',
 	category: 'backend'

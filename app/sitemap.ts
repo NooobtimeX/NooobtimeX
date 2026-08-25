@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 import { SITE_URL } from '@/lib/seo'
-import { entitiesData, experiencesData, projectsData, skillsData } from '@/common'
+import { entitiesData, experiencesData, postsData, projectsData, skillsData } from '@/common'
 
 /**
  * Stable `lastModified` on purpose.
@@ -33,11 +33,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		entry('/github', 0.6, 'weekly'),
 		entry('/cv', 0.6),
 		entry('/contact', 0.7),
+		// The journal gets fresh entries between content bumps, so it dates itself.
+		entry('/blog', 0.8, 'weekly'),
 		// Detail routes are keyed by `id` — the same value each route's
 		// `generateStaticParams` emits, so a sitemap URL can never 404.
 		...projectsData.map(p => entry(`/projects/${p.id}`, 0.7)),
 		...skillsData.map(s => entry(`/skills/${s.id}`, 0.5)),
 		...experiencesData.map(e => entry(`/career/${e.id}`, 0.6)),
-		...entitiesData.map(o => entry(`/companies/${o.id}`, 0.6))
+		...entitiesData.map(o => entry(`/companies/${o.id}`, 0.6)),
+		// Posts carry REAL per-post dates — the one deliberate divergence from the frozen
+		// site-wide stamp above, because a post's updatedAt/publishedAt is a content date,
+		// not deploy noise. `postsData` is draft-filtered, so a stub can never enter here.
+		...postsData.map(p => ({
+			url: `${SITE_URL}/blog/${p.id}`,
+			lastModified: new Date(p.updatedAt ?? p.publishedAt),
+			changeFrequency: 'yearly' as const,
+			priority: 0.6
+		}))
 	]
 }

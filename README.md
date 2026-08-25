@@ -31,7 +31,7 @@ ecosystems and high-performance system design.**
 
 <img src=".github/assets/section-01-career-trace.svg" alt="01 // CAREER TRACE" width="100%" />
 
-<img src=".github/assets/career.svg" alt="Career timeline 2021 to now: Product Lead and Software Engineer at Ruamsuk Plating, Developer at Jasmine Technology Solution, and freelance work" width="100%" />
+<img src=".github/assets/career.svg" alt="Career timeline 2021 to now: Chief Technology Officer at Ruamsuk Plating (RS Trophy), Developer at Jasmine Technology Solution, and freelance work" width="100%" />
 
 <div align="center">
 

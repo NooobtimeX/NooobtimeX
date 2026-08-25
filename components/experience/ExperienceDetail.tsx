@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import WrittenAbout from '@/components/blog/WrittenAbout'
 import Container from '@/components/cyber/Container'
 import CyberIcon from '@/components/cyber/CyberIcon'
 import CyberTag from '@/components/cyber/CyberTag'
@@ -7,7 +8,14 @@ import MotionReveal from '@/components/cyber/MotionReveal'
 import NeonPanel from '@/components/cyber/NeonPanel'
 import ProjectCard from '@/components/projects/ProjectCard'
 import { cn, formatExperienceDuration } from '@/lib/utils'
-import { ExperienceCategory, type ExperienceItem, entitiesData, experiencesData, projectsData } from '@/common'
+import {
+	ExperienceCategory,
+	type ExperienceItem,
+	entitiesData,
+	experiencesData,
+	postsByExperience,
+	projectsData
+} from '@/common'
 
 interface ExperienceDetailProps {
 	item: ExperienceItem
@@ -125,6 +133,9 @@ const ExperienceDetail: React.FC<ExperienceDetailProps> = ({ item }) => {
 					</div>
 				</section>
 			)}
+
+			{/* Journal entries from or about this role */}
+			<WrittenAbout posts={postsByExperience[item.id]} />
 		</Container>
 	)
 }

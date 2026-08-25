@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import WrittenAbout from '@/components/blog/WrittenAbout'
 import Container from '@/components/cyber/Container'
 import CyberButton from '@/components/cyber/CyberButton'
 import CyberIcon from '@/components/cyber/CyberIcon'
@@ -7,7 +8,7 @@ import NeonPanel from '@/components/cyber/NeonPanel'
 import ProjectGallery from '@/components/projects/ProjectGallery'
 import ProjectTimeline from '@/components/projects/ProjectTimeline'
 import { formatExperienceDuration } from '@/lib/utils'
-import { type Project, entitiesData, experiencesData } from '@/common'
+import { type Project, entitiesData, experiencesData, postsByProject } from '@/common'
 
 interface ProjectDetailProps {
 	project: Project
@@ -19,6 +20,13 @@ const MetaCell: React.FC<{ label: string; children: React.ReactNode }> = ({ labe
 		<p className='mt-0.5 text-sm font-semibold'>{children}</p>
 	</div>
 )
+
+/**
+ * Education-only orgs (e.g. Thammasat) are deliberately excluded from `entitiesData`,
+ * so they have no /companies page — linking one would be exactly the class of broken
+ * internal href `scripts/links/check.ts` fails the build over. Text, not a Link.
+ */
+const hasCompanyPage = (id: string) => entitiesData.some(e => e.id === id)
 
 const humanize = (value: string) =>
 	value
@@ -76,9 +84,11 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
 			<NeonPanel className='clip-notch-sm mt-6 grid grid-cols-2 gap-4 p-4 sm:grid-cols-4'>
 				<MetaCell label='Client'>
 					{client ?
-						<Link href={`/companies/${client.id}` as never} className='hover:text-cyber-yellow transition-colors'>
-							{client.name}
-						</Link>
+						hasCompanyPage(client.id) ?
+							<Link href={`/companies/${client.id}` as never} className='hover:text-cyber-yellow transition-colors'>
+								{client.name}
+							</Link>
+						:	client.name
 					:	'Independent'}
 				</MetaCell>
 				{via && (
@@ -179,11 +189,16 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
 											<CyberIcon icon='mdi:account-tie-outline' className='size-4 shrink-0' />
 											{humanize(role.position)}
 										</Link>
-										<Link
-											href={`/companies/${role.organization.id}` as never}
-											className='text-muted-foreground hover:text-cyber-cyan mt-0.5 block pl-6 font-mono text-[0.65rem] tracking-wider uppercase transition-colors'>
-											{role.organization.name} · {formatExperienceDuration(role.startDate, role.endDate)}
-										</Link>
+										{hasCompanyPage(role.organization.id) ?
+											<Link
+												href={`/companies/${role.organization.id}` as never}
+												className='text-muted-foreground hover:text-cyber-cyan mt-0.5 block pl-6 font-mono text-[0.65rem] tracking-wider uppercase transition-colors'>
+												{role.organization.name} · {formatExperienceDuration(role.startDate, role.endDate)}
+											</Link>
+										:	<span className='text-muted-foreground mt-0.5 block pl-6 font-mono text-[0.65rem] tracking-wider uppercase'>
+												{role.organization.name} · {formatExperienceDuration(role.startDate, role.endDate)}
+											</span>
+										}
 									</div>
 								))}
 							</div>
@@ -191,6 +206,9 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
 					)}
 				</aside>
 			</div>
+
+			{/* Journal entries that reference this project */}
+			<WrittenAbout posts={postsByProject[project.id]} />
 		</Container>
 	)
 }

@@ -132,7 +132,7 @@ export const freelance: Organization = {
 	about:
 		'Independent, remote freelance software engineering — building web apps end-to-end for clients, from scoping and design through full-stack build and deployment.',
 	industry: 'Freelance web-app engineering',
-	founded: '2025',
+	founded: '2024',
 	headquarters: 'Remote',
 	size: 'Independent',
 	parentGroup: 'Independent',

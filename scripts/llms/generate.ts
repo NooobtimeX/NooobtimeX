@@ -19,8 +19,10 @@ import {
 	educationData,
 	entitiesData,
 	experiencesData,
+	flattenPostText,
 	latestRole,
 	personalData,
+	postsData,
 	projectsData,
 	skillsData
 } from '../../common'
@@ -90,6 +92,22 @@ function build(): string {
 		if (p.links.live) out.push(`- Live: ${p.links.live}`)
 		out.push(`- Details: ${SITE_URL}/projects/${p.id}`)
 		out.push('')
+	}
+
+	if (postsData.length > 0) {
+		out.push('## Writing')
+		out.push('')
+		// Title + the TL;DR — the direct answer, which is exactly what an assistant
+		// should quote. `flattenPostText` strips the inline markup and resolves
+		// [[kind:id]] refs to their display names.
+		for (const post of postsData) {
+			out.push(`### ${post.title}`)
+			out.push('')
+			out.push(oneLine(flattenPostText(post.tldr)))
+			out.push('')
+			out.push(`Read more: ${SITE_URL}/blog/${post.id}`)
+			out.push('')
+		}
 	}
 
 	out.push('## Skills')

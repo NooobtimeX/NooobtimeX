@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import WrittenAbout from '@/components/blog/WrittenAbout'
 import Container from '@/components/cyber/Container'
 import CyberIcon from '@/components/cyber/CyberIcon'
 import CyberTag from '@/components/cyber/CyberTag'
@@ -7,7 +8,7 @@ import MotionReveal from '@/components/cyber/MotionReveal'
 import NeonPanel from '@/components/cyber/NeonPanel'
 import ProjectCard from '@/components/projects/ProjectCard'
 import { formatExperienceDuration } from '@/lib/utils'
-import { type Organization, experiencesData, projectsData } from '@/common'
+import { type Organization, experiencesData, postsByEntity, projectsData } from '@/common'
 
 interface CompanyDetailProps {
 	organization: Organization
@@ -247,6 +248,9 @@ const CompanyDetail: React.FC<CompanyDetailProps> = ({ organization }) => {
 					</div>
 				</section>
 			)}
+
+			{/* Journal entries that reference this organization */}
+			<WrittenAbout posts={postsByEntity[organization.id]} />
 		</Container>
 	)
 }

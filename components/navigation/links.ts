@@ -52,6 +52,14 @@ export const NAV_LINKS: readonly NavLink[] = [
 		icon: 'mdi:card-account-mail-outline',
 		inFooter: true,
 		isMobileTab: true
+	},
+	{
+		label: 'Journal',
+		href: '/blog',
+		code: '08',
+		icon: 'mdi:post-outline',
+		inFooter: true,
+		isMobileTab: false
 	}
 ]
 

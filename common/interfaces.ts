@@ -1,6 +1,9 @@
 /**
  * Core interfaces for the NooobtimeX project. All domain models live here.
  */
+// Type-only — erased at compile time, so the interfaces → data/skills → interfaces
+// cycle never exists at runtime. It buys `Post.skills` the same typo safety projects get.
+import type { SkillId } from './data/skills'
 import {
 	EmploymentType,
 	EntityId,
@@ -9,6 +12,8 @@ import {
 	ExperienceId,
 	Location,
 	Position,
+	PostCategory,
+	PostChapter,
 	SkillCategory,
 	SocialPlatform
 } from './enums'
@@ -163,6 +168,82 @@ export interface Project {
 	/** Org the work was seconded to / delivered via — a credit, not an employer. */
 	viaOrganizationId?: EntityId
 	timeline?: Milestone[]
+}
+
+// --- Blog ---
+
+/**
+ * One block of a post body. A discriminated union rather than markdown/MDX on purpose:
+ * blocks stay serialisable strings (so `scripts/llms/generate.ts` can flatten them),
+ * the renderer stays a plain switch, and no markdown pipeline enters the runtime
+ * container. Inline text supports exactly four forms, resolved by `common/data/posts/inline.ts`:
+ * `` `code` ``, `**bold**`, `[text](href)`, and `[[kind:id]]` cross-references.
+ */
+export type PostBlock =
+	| { kind: 'p'; text: string }
+	| { kind: 'h2'; text: string } // TOC anchors are derived from these, never authored
+	| { kind: 'h3'; text: string }
+	| { kind: 'code'; lang: string; code: string; caption?: string }
+	| { kind: 'list'; ordered?: boolean; items: string[] }
+	| { kind: 'callout'; tone: 'info' | 'warn' | 'danger' | 'success'; title?: string; text: string }
+	| { kind: 'quote'; text: string; cite?: string }
+	| { kind: 'image'; src: string; alt: string; caption?: string }
+	| { kind: 'stat'; value: string; label: string; source?: string }
+	| { kind: 'table'; head: string[]; rows: string[][] }
+
+/** A question a reader actually asks — rendered visibly AND emitted as FAQPage JSON-LD. */
+export interface PostFaq {
+	q: string
+	a: string
+}
+
+/**
+ * Authoring shape for a blog post. Two validation tiers, enforced by `resolvePost`:
+ *
+ * - **Stub** (`draft: true`): only `id`, `title`, `publishedAt`, `chapter` are needed.
+ *   Renders nowhere — not prerendered, not in the sitemap, llms.txt or ⌘K, and its URL
+ *   is a real 404 (`dynamicParams = false`). The backlog lives in the repo as stubs.
+ * - **Full** (no `draft`): every AEO field below is required and validated. Flipping
+ *   `draft` off IS publishing — there is no scheduler.
+ *
+ * `publishedAt` is the real date of the work (a milestone, a commit), never a future
+ * date — the resolver throws on a future-dated non-draft.
+ */
+export interface PostDef {
+	id: string // url-safe id — /blog/<id>. NEVER slugify(title); see scripts/links/check.ts.
+	title: string // query-shaped — how someone would SEARCH it, not a clever headline
+	publishedAt: string // YYYY-MM-DD, the real date of the work. Backfill caps at 2026-07-31.
+	chapter: PostChapter
+	draft?: boolean
+	// --- Required once draft is off (resolvePost enforces) ---
+	description?: string // <= 155 chars — the meta description
+	tldr?: string // 2-3 sentences, THE direct answer. Rendered first; what an engine cites.
+	category?: PostCategory
+	faqs?: PostFaq[] // >= 3 — feeds FAQPage JSON-LD, rendered visibly by PostFaq
+	body?: PostBlock[]
+	// --- Optional either way ---
+	updatedAt?: string // YYYY-MM-DD, >= publishedAt
+	series?: { id: string; part: number } // cross-chapter topic cluster, e.g. 'container-diet'
+	lessons?: string[] // the "what I'd do differently" bullets
+	skills?: SkillId[] // cross-links to /skills/<id> — typo-checked at compile time
+	relatedProjectIds?: string[] // cross-links to /projects/<id> — validated by resolvePost
+	relatedExperienceIds?: ExperienceId[] // cross-links to /career/<id>
+	relatedEntityIds?: EntityId[] // cross-links to /companies/<id>
+	sources?: { title: string; url: string }[] // outbound citations
+	accent?: string // hex for the OG card — defaults per category; mirrors Project.accent
+	cover?: string // from assets, when a post earns one
+}
+
+/** A resolved, publishable post — every AEO field present, `readingMinutes` derived. */
+export interface Post extends PostDef {
+	description: string
+	tldr: string
+	category: PostCategory
+	faqs: PostFaq[]
+	body: PostBlock[]
+	accent: string
+	/** Derived by `resolvePost` at 200 wpm — never authored. */
+	readingMinutes: number
 }
 
 /** Global personal information */
