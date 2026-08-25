@@ -59,3 +59,70 @@ export const breadcrumbSchema = (trail: Crumb[]) => ({
 		...(crumb.path && i < trail.length - 1 && { item: `${SITE_URL}${crumb.path === '/' ? '' : crumb.path}` })
 	}))
 })
+
+/** The blog index node — `/blog` is `@id`-stable so posts can point back at it. */
+export const BLOG_ID = `${SITE_URL}/blog#blog`
+
+export const blogSchema = (posts: { id: string; title: string }[]) => ({
+	'@context': 'https://schema.org',
+	'@type': 'Blog',
+	'@id': BLOG_ID,
+	'url': `${SITE_URL}/blog`,
+	'name': `${DISPLAY_NAME} — Engineering Journal`,
+	'inLanguage': 'en',
+	'author': personRef(),
+	'publisher': personRef(),
+	'isPartOf': { '@id': WEBSITE_ID },
+	'blogPost': posts.map(p => ({ '@type': 'BlogPosting', '@id': `${SITE_URL}/blog/${p.id}#article` }))
+})
+
+interface BlogPostingInput {
+	id: string
+	title: string
+	description: string
+	publishedAt: string
+	updatedAt?: string
+	section: string
+	keywords: string[]
+	wordCount: number
+	image?: string
+}
+
+/**
+ * One post. `author`/`publisher` resolve to the SAME `#person` node the home page
+ * declares, so the whole archive reads as one entity's body of work — the reason
+ * `PERSON_ID` exists (see the header of this file).
+ */
+export const blogPostingSchema = (post: BlogPostingInput) => ({
+	'@context': 'https://schema.org',
+	'@type': 'BlogPosting',
+	'@id': `${SITE_URL}/blog/${post.id}#article`,
+	'headline': post.title,
+	'description': post.description,
+	'url': `${SITE_URL}/blog/${post.id}`,
+	'datePublished': post.publishedAt,
+	'dateModified': post.updatedAt ?? post.publishedAt,
+	'inLanguage': 'en',
+	'author': personRef(),
+	'publisher': personRef(),
+	'isPartOf': { '@id': BLOG_ID },
+	'mainEntityOfPage': `${SITE_URL}/blog/${post.id}`,
+	'articleSection': post.section,
+	'keywords': post.keywords.join(', '),
+	'wordCount': post.wordCount,
+	...(post.image && { image: `${SITE_URL}${post.image}` })
+})
+
+/**
+ * FAQPage for a post's rendered FAQ section. Emitted ONLY alongside the visible
+ * `PostFaq` component — schema for content the page does not show reads as spam.
+ */
+export const faqSchema = (faqs: { q: string; a: string }[]) => ({
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	'mainEntity': faqs.map(f => ({
+		'@type': 'Question',
+		'name': f.q,
+		'acceptedAnswer': { '@type': 'Answer', 'text': f.a }
+	}))
+})

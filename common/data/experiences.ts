@@ -20,7 +20,7 @@ export const jasmineTechnologySolutionExperience: ExperienceItem = {
 	organization: jasmineTechnologySolution,
 	position: 'developer',
 	description:
-		'Full-Stack Platform Ownership: Led full-stack development of the LOOKLOOK PET platform across storefront, B2B partner console, and Medusa-based Mercur marketplace. Microservices & Checkout: Managed 20+ NestJS microservices communicating over NATS, and built a custom native payment UI featuring client-side Omise card tokenization, inline PromptPay QR polling, and card-lock promotions. Team & Claim Workflows: Owned the B2B portal (~55% commits) delivering organization switchers, dynamic roles, and claim-an-unlisted-place verification logic. Infrastructure: Maintained Dockerized services on Railway via GitHub CI/CD, and migrated storage to Cloudflare R2.',
+		'Full-Stack Platform Ownership: Led full-stack development of the LOOKLOOK PET platform across storefront, B2B partner console, and Medusa-based Mercur marketplace. Microservices & Checkout: Managed 15+ NestJS microservices communicating over NATS, and built a custom native payment UI featuring client-side Omise card tokenization, inline PromptPay QR polling, and card-lock promotions. Team & Claim Workflows: Owned the B2B portal (~55% commits) delivering organization switchers, dynamic roles, and claim-an-unlisted-place verification logic. Infrastructure: Maintained Dockerized services on Railway via GitHub CI/CD, and migrated storage to Cloudflare R2.',
 	type: 'full-time',
 	category: 'work',
 	startDate: '2025-07-16',
@@ -44,7 +44,7 @@ export const ruamsukPlatingDeveloperFullTime: ExperienceItem = {
 	organization: ruamsukPlating,
 	position: 'developer',
 	description:
-		"Converted to full-time immediately after graduating, ahead of moving to Jasmine Technology Solution that July. Continued the same full-stack and SEO ownership at full capacity, concentrated on the company's web applications and the ongoing move off legacy manual workflows.",
+		"Converted to full-time in the degree's final month, ahead of moving to Jasmine Technology Solution that July. Continued the same full-stack and SEO ownership at full capacity, concentrated on the company's web applications and the ongoing move off legacy manual workflows.",
 	type: 'full-time',
 	category: 'work',
 	startDate: '2025-06-01',

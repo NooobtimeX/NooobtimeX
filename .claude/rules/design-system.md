@@ -49,10 +49,13 @@ These are the design-system primitives — reach for them before writing a `<div
 
 `clip-notch` / `clip-notch-sm` (notched corners), `neon-text-yellow`, `perk-node`.
 
-## 5. React Compiler is on
+## 5. React Compiler RULES are enforced (the compiler itself is not on)
 
-Avoid patterns it rejects — notably hand-rolled `useCallback` / `useMemo` it flags
-as "Compilation Skipped". Write plain components and let the compiler memoize.
+`next.config.ts` never sets `reactCompiler` — what is on is `eslint-plugin-react-hooks`
+v7, whose `recommended` config ships the compiler-derived rules as errors (`purity`,
+`set-state-in-effect`, `preserve-manual-memoization`, …). Practical effect is the same:
+avoid patterns the compiler rejects — hand-rolled `useCallback` / `useMemo`, synchronous
+setState in effects — and write plain components.
 
 ## 6. Icons — three surfaces, and they are not interchangeable
 

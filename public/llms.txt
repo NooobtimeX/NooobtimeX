@@ -34,7 +34,7 @@ Read more: https://nooobtimex.me/career/jasmine-tech
 
 ### Developer — RUAMSUK PLATING LIMITED PARTNERSHIP (Jun 2025 - Jul 2025)
 
-Full Stack & SEO: Drove full-stack web application development while integrating targeted SEO and online marketing strategies. Digital Transformation: Led digital organizational transformation, modernizing legacy workflows to increase operational efficiency.
+Converted to full-time immediately after graduating, ahead of moving to Jasmine Technology Solution that July. Continued the same full-stack and SEO ownership at full capacity, concentrated on the company's web applications and the ongoing move off legacy manual workflows.
 
 Read more: https://nooobtimex.me/career/ruamsuk-software-engineer-full-time
 
@@ -46,7 +46,7 @@ Read more: https://nooobtimex.me/career/freelance
 
 ### Developer — RUAMSUK PLATING LIMITED PARTNERSHIP (Aug 2021 - May 2025)
 
-Full Stack & SEO: Drove full-stack web application development while integrating targeted SEO and online marketing strategies. Digital Transformation: Led digital organizational transformation, modernizing legacy workflows to increase operational efficiency.
+The first four years at RS Trophy, worked part-time alongside the Computer Science degree at Thammasat. Full Stack & SEO: built and iterated the company's web applications while integrating targeted SEO and online-marketing work. Digital Transformation: modernized legacy manual workflows into web-based systems, raising day-to-day operational efficiency.
 
 Read more: https://nooobtimex.me/career/ruamsuk-software-engineer-part-time
 
@@ -131,6 +131,20 @@ This site — a Cyberpunk 2077–inspired portfolio built on Next.js (App Router
 - Stack: Next.js, Tailwind CSS, SEO, React, Shadcn/ui, Bun.js, Railway, AEO, GEO, JSON-LD, Google Tag Manager, Base UI, Embla Carousel, TypeScript, Git/GitHub, Prettier, ESLint
 - Live: https://github.com/NooobtimeX/NooobtimeX
 - Details: https://nooobtimex.me/projects/portfolio
+
+## Writing
+
+### One line in layout.tsx told Google 90 pages were duplicates of my homepage
+
+Never set alternates in a Next.js App Router root layout. Metadata is inherited by every child segment that does not override it, so a root canonical: "/" makes every page on the site declare the homepage as its canonical — which reads to Google as "do not index anything but /". Set the canonical per page instead, through one shared helper, and keep only metadataBase in the root layout.
+
+Read more: https://nooobtimex.me/blog/root-layout-canonical-90-duplicates
+
+### How I became CTO at 23 of the company that hired me as a part-time student
+
+On 2021-08-01 I started a part-time developer job and a computer science degree in the same month. On 2026-08-01 — five years later to the month — I became CTO of that same company, RS Trophy, at 23. The path ran through four years of part-time work while studying, a 45-day full-time bridge, and one year at a SET-listed telecom. A CTO title at a small limited partnership means owning every technology decision alone, not leading an engineering org — and saying that plainly is the point of this post.
+
+Read more: https://nooobtimex.me/blog/how-i-became-cto-at-23
 
 ## Skills
 

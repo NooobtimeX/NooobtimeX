@@ -12,7 +12,7 @@ import {
 	CommandItem,
 	CommandList
 } from '@/components/ui/command'
-import { entitiesData, experiencesData, projectsData, skillsData } from '@/common'
+import { entitiesData, experiencesData, postsData, projectsData, skillsData } from '@/common'
 
 interface GlobalSearchProps {
 	open: boolean
@@ -43,6 +43,15 @@ const GlobalSearch: React.FC<GlobalSearchProps> = ({ open, onOpenChange }) => {
 						<CommandItem key={item.href} value={`nav ${item.label}`} onSelect={() => go(item.href)}>
 							<Icon icon={item.icon} className='text-cyber-cyan size-4' />
 							<span className='font-mono uppercase'>{item.label}</span>
+						</CommandItem>
+					))}
+				</CommandGroup>
+
+				<CommandGroup heading='Journal'>
+					{postsData.map(p => (
+						<CommandItem key={p.id} value={`post ${p.title}`} onSelect={() => go(`/blog/${p.id}`)}>
+							<Icon icon='mdi:post-outline' className='text-cyber-cyan size-4' />
+							<span className='truncate'>{p.title}</span>
 						</CommandItem>
 					))}
 				</CommandGroup>

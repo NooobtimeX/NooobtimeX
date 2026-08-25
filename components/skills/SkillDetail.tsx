@@ -1,12 +1,13 @@
 import React from 'react'
 import Link from 'next/link'
+import WrittenAbout from '@/components/blog/WrittenAbout'
 import Container from '@/components/cyber/Container'
 import CyberIcon from '@/components/cyber/CyberIcon'
 import MotionReveal from '@/components/cyber/MotionReveal'
 import NeonPanel from '@/components/cyber/NeonPanel'
 import ProjectCard from '@/components/projects/ProjectCard'
 import { cn, formatExperienceDuration } from '@/lib/utils'
-import { type Skill, categoryMetadata, experiencesData, projectsData } from '@/common'
+import { type Skill, type SkillId, categoryMetadata, experiencesData, postsBySkill, projectsData } from '@/common'
 
 const humanize = (value: string) =>
 	value
@@ -138,6 +139,9 @@ const SkillDetail: React.FC<SkillDetailProps> = ({ skill }) => {
 					</div>
 				:	<p className='text-muted-foreground font-mono text-sm'>No public gigs tagged with this perk yet.</p>}
 			</section>
+
+			{/* Journal entries that reference this skill — the reverse side of post cross-refs */}
+			<WrittenAbout posts={postsBySkill[skill.id as SkillId]} />
 		</Container>
 	)
 }
