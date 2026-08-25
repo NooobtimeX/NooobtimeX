@@ -28,13 +28,13 @@ Read more: https://nooobtimex.me/career/ruamsuk-cto
 
 ### Developer — Jasmine Technology Solution (Jul 2025 - Jul 2026)
 
-Full-Stack Platform Ownership: Led full-stack development of the LOOKLOOK PET platform across storefront, B2B partner console, and Medusa-based Mercur marketplace. Microservices & Checkout: Managed 20+ NestJS microservices communicating over NATS, and built a custom native payment UI featuring client-side Omise card tokenization, inline PromptPay QR polling, and card-lock promotions. Team & Claim Workflows: Owned the B2B portal (~55% commits) delivering organization switchers, dynamic roles, and claim-an-unlisted-place verification logic. Infrastructure: Maintained Dockerized services on Railway via GitHub CI/CD, and migrated storage to Cloudflare R2.
+Full-Stack Platform Ownership: Led full-stack development of the LOOKLOOK PET platform across storefront, B2B partner console, and Medusa-based Mercur marketplace. Microservices & Checkout: Managed 15+ NestJS microservices communicating over NATS, and built a custom native payment UI featuring client-side Omise card tokenization, inline PromptPay QR polling, and card-lock promotions. Team & Claim Workflows: Owned the B2B portal (~55% commits) delivering organization switchers, dynamic roles, and claim-an-unlisted-place verification logic. Infrastructure: Maintained Dockerized services on Railway via GitHub CI/CD, and migrated storage to Cloudflare R2.
 
 Read more: https://nooobtimex.me/career/jasmine-tech
 
 ### Developer — RUAMSUK PLATING LIMITED PARTNERSHIP (Jun 2025 - Jul 2025)
 
-Converted to full-time immediately after graduating, ahead of moving to Jasmine Technology Solution that July. Continued the same full-stack and SEO ownership at full capacity, concentrated on the company's web applications and the ongoing move off legacy manual workflows.
+Converted to full-time in the degree's final month, ahead of moving to Jasmine Technology Solution that July. Continued the same full-stack and SEO ownership at full capacity, concentrated on the company's web applications and the ongoing move off legacy manual workflows.
 
 Read more: https://nooobtimex.me/career/ruamsuk-software-engineer-full-time
 
@@ -65,7 +65,7 @@ A full-stack SaaS platform that issues and verifies English Premier League comme
 
 ### LOOKLOOK PET Platform
 
-Architect and lead full-stack developer of the LOOKLOOK PET platform — a multi-surface pet-parent community and B2B2C multi-vendor marketplace. Owned the ecosystem end-to-end across three core scopes: (1) **Core Storefront & Microservices**: Scaled 15+ NestJS services — first over a NATS message bus, later simplified to direct HTTP service calls — backed by MongoDB, Redis, and BullMQ, and fronted by a Next.js storefront. Designed a custom native payment UI with client-side Omise tokenization, inline PromptPay QR polling, card-lock promotional gating, and migrated headless WordPress to MongoDB with TipTap HTML rendering. (2) **B2B Partner Portal**: Built and owned ~55% of the console codebase, developing claim-an-unlisted-place flows, team switcher management with dynamic roles, analytics panels with CSV orders export, and custom Lottie route loaders. (3) **Mercur Multi-Vendor Marketplace**: Served as sole maintainer of the Medusa.js 2 marketplace and seller panels, upgrading to Sprint-46, building a workflow-based refund system, and launching bilingual TH/EN deal templates. (4) **Customer Mobile App**: Delivered the customer-facing mobile app in Flutter against the same service layer. Deployed on Railway with Docker and Cloudflare R2.
+Architect and lead full-stack developer of the LOOKLOOK PET platform — a multi-surface pet-parent community and B2B2C multi-vendor marketplace. Owned the ecosystem end-to-end across three core scopes: (1) Core Storefront & Microservices: Scaled 15+ NestJS services — first over a NATS message bus, later simplified to direct HTTP service calls — backed by MongoDB, Redis, and BullMQ, and fronted by a Next.js storefront. Designed a custom native payment UI with client-side Omise tokenization, inline PromptPay QR polling, card-lock promotional gating, and migrated headless WordPress to MongoDB with TipTap HTML rendering. (2) B2B Partner Portal: Built and owned ~55% of the console codebase, developing claim-an-unlisted-place flows, team switcher management with dynamic roles, analytics panels with CSV orders export, and custom Lottie route loaders. (3) Mercur Multi-Vendor Marketplace: Served as sole maintainer of the Medusa.js 2 marketplace and seller panels, upgrading to Sprint-46, building a workflow-based refund system, and launching bilingual TH/EN deal templates. (4) Customer Mobile App: Delivered the customer-facing mobile app in Flutter against the same service layer. Deployed on Railway with Docker and Cloudflare R2.
 
 - Stack: Next.js, React, Flutter, Tailwind CSS, Radix UI, TanStack Query, Nest.js, Node.js, NATS, MongoDB, Redis, BullMQ, Omise, SEO, Google Tag Manager, Clerk, WordPress, Tencent Cloud, CircleCI, Railway, Docker, Medusa, Mercur, MinIO, PostgreSQL, Algolia, Resend, Better Auth, Cloudflare R2, AWS S3, TypeScript, Git/GitHub, Prettier, ESLint
 - Live: https://looklook.pet
@@ -95,7 +95,7 @@ A flood and water-level monitoring dashboard for tracking station gauges in real
 
 ### QR Food Platform
 
-A senior thesis project from Thammasat University. Developed a full-stack QR-code ordering and multi-branch restaurant management web application designed to streamline in-restaurant operations and eliminate expensive POS hardware. Key components include: (1) **Customer Table Ordering**: A Nuxt 3 web application enabling customers to scan table-specific QR codes, browse live menus, customize dishes with add-ons, add items to a real-time cart, and place orders directly from their mobile devices. Features integrated support for calling staff and live bill tracking. (2) **Staff & Kitchen Portal**: Features custom views for restaurant staff to take orders directly at the table, manage order queues, track preparation statuses, and process instant table closures with bill printing. (3) **Multi-Branch Admin Console**: An analytical dashboard for owners to manage multiple restaurant branches, configure custom staff roles (owner/staff), toggle menu item availability dynamically per branch, customize food sections and add-on options, and view real-time sales statistics. Built with Nuxt 3, Vue 3, Tailwind CSS, Prisma, and PostgreSQL (Supabase), containerized with Docker and deployed on Vercel.
+A senior thesis project from Thammasat University. Developed a full-stack QR-code ordering and multi-branch restaurant management web application designed to streamline in-restaurant operations and eliminate expensive POS hardware. Key components include: (1) Customer Table Ordering: A Nuxt 3 web application enabling customers to scan table-specific QR codes, browse live menus, customize dishes with add-ons, add items to a real-time cart, and place orders directly from their mobile devices. Features integrated support for calling staff and live bill tracking. (2) Staff & Kitchen Portal: Features custom views for restaurant staff to take orders directly at the table, manage order queues, track preparation statuses, and process instant table closures with bill printing. (3) Multi-Branch Admin Console: An analytical dashboard for owners to manage multiple restaurant branches, configure custom staff roles (owner/staff), toggle menu item availability dynamically per branch, customize food sections and add-on options, and view real-time sales statistics. Built with Nuxt 3, Vue 3, Tailwind CSS, Prisma, and PostgreSQL (Supabase), containerized with Docker and deployed on Vercel.
 
 - Stack: Vue.js, Nuxt.js, Tailwind CSS, Prisma, Supabase, PostgreSQL, Docker, Vercel, TypeScript, Git/GitHub, Prettier, ESLint
 - Details: https://nooobtimex.me/projects/qr-food
@@ -134,17 +134,77 @@ This site — a Cyberpunk 2077–inspired portfolio built on Next.js (App Router
 
 ## Writing
 
+### loading.tsx turns every notFound() into an indexable soft-404
+
+A streaming loading.tsx flushes response headers before the page component runs, so the status is committed at 200 and a later notFound() can only paint 404 UI into a 200 response. On my catch-all detail routes that turned every mistyped slug into an indexable soft-404 — one of them was in my sitemap. The fix is generateStaticParams plus export const dynamicParams = false, which makes Next reject unknown params at the routing layer, before anything streams.
+
+Read more: https://nooobtimex.me/blog/loading-tsx-soft-404
+
 ### One line in layout.tsx told Google 90 pages were duplicates of my homepage
 
 Never set alternates in a Next.js App Router root layout. Metadata is inherited by every child segment that does not override it, so a root canonical: "/" makes every page on the site declare the homepage as its canonical — which reads to Google as "do not index anything but /". Set the canonical per page instead, through one shared helper, and keep only metadataBase in the root layout.
 
 Read more: https://nooobtimex.me/blog/root-layout-canonical-90-duplicates
 
+### Most of my automation is failure handling
+
+I built an n8n workflow that turns a row in a Google Sheet into a finished, uploaded product video for my family's trophy business. Of its 40 working nodes, 13 — a full third — exist only for failure: polling, retry counters, error writes, cleanup. The pipeline's real coordination layer is four words in a spreadsheet status column: pending, processing, done, error. The happy path is the demo; the failure-handling third is what makes it automation.
+
+Read more: https://nooobtimex.me/blog/automation-is-mostly-failure-handling
+
 ### How I became CTO at 23 of the company that hired me as a part-time student
 
 On 2021-08-01 I started a part-time developer job and a computer science degree in the same month. On 2026-08-01 — five years later to the month — I became CTO of that same company, RS Trophy, at 23. The path ran through four years of part-time work while studying, a 45-day full-time bridge, and one year at a SET-listed telecom. A CTO title at a small limited partnership means owning every technology decision alone, not leading an engineering org — and saying that plainly is the point of this post.
 
 Read more: https://nooobtimex.me/blog/how-i-became-cto-at-23
+
+### The plan was to come back in 2030. I came back in 2026.
+
+The plan I carried into my year away said: reach Senior at Jasmine Technology Solution, build a web career at scale, and return to my family's trophy company around 2030 as Technical Lead or Architect. Instead I came back on 2026-08-01 as CTO — four years early, one level higher than the plan's target. The date moved because everything the plan was waiting on turned out to be already done: trust was banked through five prior years and a year of daily proof, the company needed its systems owned now, and the role on offer was bigger than the one I was staying away to qualify for.
+
+Read more: https://nooobtimex.me/blog/plan-was-2030-came-back-2026
+
+### Replacing restaurant POS hardware with QR ordering: scoping a senior thesis
+
+In August 2023 I scoped my senior thesis at Thammasat: QR Food, a full-stack system replacing expensive restaurant POS hardware with QR-code ordering on the customer’s own phone. The first month produced objectives and a Prisma schema on PostgreSQL (Supabase) — no screens — plus a deliberate bet on Nuxt 3, still the only non-React project in my portfolio. Sixteen months later I defended a 38-endpoint system covering table ordering, kitchen workflow, and multi-branch management.
+
+Read more: https://nooobtimex.me/blog/replacing-pos-hardware-with-qr-ordering
+
+### On-page SEO for a bilingual Thai B2B catalog
+
+I launched rs-trophy.com in April 2023 on WordPress + WooCommerce, and the on-page work that mattered was the category pages — hand-written titles, metas, and intro copy carrying both Thai and English product terms, because Thai buyers query in both scripts, often inside the same search. Analytics and ad tracking went live the same day, but most orders still closed on the phone, so I treated rankings and inquiries as the honest metrics and accepted the attribution gap.
+
+Read more: https://nooobtimex.me/blog/onpage-seo-for-a-thai-b2b-catalog
+
+### Three storefronts in ten months on the boring stack
+
+Between March 2022 and January 2023 I stood up three storefronts for my family's trophy business — RS Award, RS Medal, and RS TROPHY — solo, part-time, on WordPress. A fixed four-phase playbook (setup, design, development, launch with SEO and ad tracking) turned each build into a repetition instead of a project. Boring was the point: as a full-time student I needed a stack I could not get stuck in, and I paid for it in skills that did not compound.
+
+Read more: https://nooobtimex.me/blog/three-storefronts-ten-months
+
+### Launching a WooCommerce storefront for a Thai manufacturer
+
+In late 2022, as a second-year CS student and part-time developer at my family's trophy factory, I started the WooCommerce storefront that became rs-trophy.com. Choosing a plugin over custom code felt like a cop-out and was the right call: four recorded months from discovery to the April 2023 go-live, solo, with SEO, analytics, and ad tracking wired in at launch. That storefront then ran in production for three years.
+
+Read more: https://nooobtimex.me/blog/woocommerce-storefront-for-a-manufacturer
+
+### Designing a brand-aligned WordPress catalog theme without a designer
+
+In September 2022 I spent a month making RS Medal's WordPress theme look like it belonged to my family's awards company — with no designer and no brand book. Brand alignment without a designer turned out to be restraint: an accent palette taken from the medal finishes, one display face, neutral everything else, and product photography doing the talking. The theme was replaced by a Next.js remake in 2025; the information architecture thinking is the part that lasted.
+
+Read more: https://nooobtimex.me/blog/brand-aligned-wordpress-catalog-theme
+
+### My first client work was WordPress, and that was the right call
+
+My first client build — a plaque-and-award catalog for my family's trophy factory — shipped on WordPress in three months in 2022, solo and part-time. Custom code would have shipped later and served the business worse. The stack was a bridge, and it held for almost four years before the Next.js remake.
+
+Read more: https://nooobtimex.me/blog/first-client-work-was-wordpress
+
+### I started my first dev job and my CS degree in the same month
+
+In August 2021 I started my first developer job — part-time at RUAMSUK PLATING LIMITED PARTNERSHIP, my family's trophy and medal factory — and my B.S. in Computer Science at Thammasat, both dated 2021-08-01 in this site's career data. I was 18. The job and the degree ran in parallel for almost four years, and the pattern that month set — studying and shipping at the same time — ended with the same company making me CTO exactly five years later.
+
+Read more: https://nooobtimex.me/blog/started-job-and-degree-same-month
 
 ## Skills
 
