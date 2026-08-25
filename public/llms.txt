@@ -134,6 +134,12 @@ This site — a Cyberpunk 2077–inspired portfolio built on Next.js (App Router
 
 ## Writing
 
+### A 116-line build gate that fails on broken internal links
+
+After three SEO defects that no build, lint or type check reported, I added a 116-line post-build gate. It walks the prerendered HTML in .next/server/app, collects every internal href, and fails the build if one points at a route the build did not emit. The design rule that makes it work: it reads the build output on both sides, never the data layer — deriving links and routes from the same source would only prove that source agrees with itself.
+
+Read more: https://nooobtimex.me/blog/links-check-build-gate
+
 ### loading.tsx turns every notFound() into an indexable soft-404
 
 A streaming loading.tsx flushes response headers before the page component runs, so the status is committed at 200 and a later notFound() can only paint 404 UI into a 200 response. On my catch-all detail routes that turned every mistyped slug into an indexable soft-404 — one of them was in my sitemap. The fix is generateStaticParams plus export const dynamicParams = false, which makes Next reject unknown params at the routing layer, before anything streams.
@@ -145,6 +151,12 @@ Read more: https://nooobtimex.me/blog/loading-tsx-soft-404
 Never set alternates in a Next.js App Router root layout. Metadata is inherited by every child segment that does not override it, so a root canonical: "/" makes every page on the site declare the homepage as its canonical — which reads to Google as "do not index anything but /". Set the canonical per page instead, through one shared helper, and keep only metadataBase in the root layout.
 
 Read more: https://nooobtimex.me/blog/root-layout-canonical-90-duplicates
+
+### Your sitemap can submit 200-status Not Found pages
+
+A sitemap is the strongest indexing signal you send — you are asserting that these URLs exist and deserve crawl budget. Mine composed detail URLs with slugify(name) while the routes were keyed by id, so it submitted /skills/vue-js, a 200-status “Skill Not Found” page, to Google. Generate sitemap URLs from the exact value generateStaticParams emits, never from a display transform of a name.
+
+Read more: https://nooobtimex.me/blog/sitemap-200-not-found-pages
 
 ### Most of my automation is failure handling
 
@@ -163,6 +175,60 @@ Read more: https://nooobtimex.me/blog/how-i-became-cto-at-23
 The plan I carried into my year away said: reach Senior at Jasmine Technology Solution, build a web career at scale, and return to my family's trophy company around 2030 as Technical Lead or Architect. Instead I came back on 2026-08-01 as CTO — four years early, one level higher than the plan's target. The date moved because everything the plan was waiting on turned out to be already done: trust was banked through five prior years and a year of daily proof, the company needed its systems owned now, and the role on offer was bigger than the one I was staying away to qualify for.
 
 Read more: https://nooobtimex.me/blog/plan-was-2030-came-back-2026
+
+### Sole PM, sole PO, sole designer — and the engineer
+
+From 2026-08-01 my role description says I act as sole PM, PO, and UI/UX designer on top of being the engineer. The honest version: those are not four jobs I am good at, they are four points of view that are supposed to disagree — and inside one head the implementer wins every argument by default, because the implementer is the one holding the keyboard. What keeps them apart is not discipline. It is written artifacts and automated gates: decisions committed before the code that depends on them, and a build that fails when the product promise and the shipped routes disagree.
+
+Read more: https://nooobtimex.me/blog/sole-pm-po-designer
+
+### Token-free GitHub stats with ISR: no PAT, no rate-limit wall
+
+My portfolio renders live GitHub contributions, repo counts, stars and a byte-accurate language breakdown without a personal access token. Three things make that survivable: the contribution calendar comes from a public third-party endpoint (GitHub's own calendar is GraphQL-only, and GraphQL always needs auth), every fetch is cached for 86400 seconds by Next's ISR, and every fetcher returns null instead of throwing — so a rate-limited request degrades the section rather than breaking the build.
+
+Read more: https://nooobtimex.me/blog/token-free-github-stats-isr
+
+### Retiring self-managed VMs and CircleCI + SSH for Railway across a fleet
+
+On 7 November 2025 we retired the self-managed Tencent Cloud VMs behind a 15+ service platform, along with their CircleCI and SSH deploy pipelines, and moved every service to Railway built from its own Dockerfile. The real change was not the hosting bill — it was that the definition of a running service moved from a long-lived machine's accumulated state into a file in the repo. An SSH pipeline deploys to a host you maintain; config-as-code rebuilds the host from the commit.
+
+Read more: https://nooobtimex.me/blog/vm-fleet-to-railway
+
+### We replaced a NATS message bus with plain HTTP calls
+
+On 30 October 2025 we took the NATS / JetStream message bus out of the internal BFF-to-service path on a platform of 15+ NestJS services and replaced it with direct HTTP calls. Almost all of that traffic was request/reply — one caller, one responder, an answer needed now — which is an RPC wearing an event's clothes. HTTP handed that traffic back its status codes, per-endpoint timeouts and a URL you can curl. The genuinely asynchronous work did not move; it already lived on a job queue.
+
+Read more: https://nooobtimex.me/blog/replaced-nats-with-http
+
+### Server-Sent Events for realtime game rooms — why not WebSockets
+
+A poker table pushes far more than it receives, so I streamed room state to every player over Server-Sent Events and left player actions as ordinary HTTP POSTs. EventSource gives you automatic reconnection, plain text/event-stream over HTTP, and no upgrade handshake to babysit. The cost is real: one direction only, a per-origin connection cap on HTTP/1.1, and a long-lived connection whose fan-out lives in one process — which is exactly the limit I had to re-architect around later.
+
+Read more: https://nooobtimex.me/blog/sse-game-rooms-not-websockets
+
+### Test-driving a poker hand evaluator
+
+A hand evaluator has a closed specification: nine hand categories, a total order over them, and exactly 2,598,960 distinct five-card hands. That is the profile of a problem where you can write the expected answer before the code, so I built the evaluator on Online Poker Game test-first and let the comparison rules — kickers, the wheel, exact ties that split a pot — arrive as failing tests. It worked because the domain was closed. The same discipline did nothing for the parts of the game where I could not state correct in advance.
+
+Read more: https://nooobtimex.me/blog/tdd-poker-hand-evaluator
+
+### Role-based accounts with NextAuth, bcrypt and Zod — the whole flow
+
+NextAuth's Credentials provider gives you a session and nothing else — the user lookup, the bcrypt.compare, and the decision to return a user or null are all code you write yourself. I shipped it on day two of a 13-day freelance build with one Zod schema used twice, on the client through React Hook Form for the error messages and again on the server as the actual trust boundary. The harder half was not hashing passwords; it was deciding where a user's role lives once someone can change it from an admin screen.
+
+Read more: https://nooobtimex.me/blog/nextauth-bcrypt-zod-role-accounts
+
+### Why I built my thesis on Nuxt 3 instead of Next.js
+
+I built my senior thesis, QR Food Platform, on Nuxt.js 3 while every other line of code I shipped was React. The defensible reason is that in early 2024 Nuxt 3 had a settled mental model and the Next.js App Router was still redrawing what a component was — and a solo project with a fixed defense date is worth more with a stable framework than a fashionable one. The honest reason is that I wanted to learn a second ecosystem somewhere the only stakeholder was a grading committee. It worked, and I have not chosen Nuxt since.
+
+Read more: https://nooobtimex.me/blog/why-nuxt-not-next-for-my-thesis
+
+### Starting to freelance in my third year of university
+
+On 1 January 2024 I started taking outside client work, in the third year of my CS degree, while already working part-time at my family's trophy factory and five months into a senior thesis. The reason was not money or portfolio: every line of code I had shipped for money went to one client I could not be fired by. Freelance was the first work where someone else defined the problem and could say no.
+
+Read more: https://nooobtimex.me/blog/starting-to-freelance-in-third-year
 
 ### Replacing restaurant POS hardware with QR ordering: scoping a senior thesis
 

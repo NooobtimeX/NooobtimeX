@@ -10,7 +10,7 @@ export const sseGameRoomsNotWebsockets: PostDef = {
 	category: 'nextjs',
 	description:
 		'Why I streamed poker room state over Server-Sent Events instead of WebSockets: one-way push, reconnects for free, and the costs I accepted.',
-	tldr: "A poker table pushes far more than it receives, so I streamed room state to every player over **Server-Sent Events** and left player actions as ordinary HTTP POSTs. `EventSource` gives you automatic reconnection, plain `text/event-stream` over HTTP, and no upgrade handshake to babysit. The cost is real: one direction only, a per-origin connection cap on HTTP/1.1, and a long-lived connection whose fan-out lives in one process — which is exactly the limit I had to re-architect around later.",
+	tldr: 'A poker table pushes far more than it receives, so I streamed room state to every player over **Server-Sent Events** and left player actions as ordinary HTTP POSTs. `EventSource` gives you automatic reconnection, plain `text/event-stream` over HTTP, and no upgrade handshake to babysit. The cost is real: one direction only, a per-origin connection cap on HTTP/1.1, and a long-lived connection whose fan-out lives in one process — which is exactly the limit I had to re-architect around later.',
 	skills: ['sse', 'next-js', 'typescript', 'react'],
 	relatedProjectIds: ['online-poker-game'],
 	relatedExperienceIds: ['freelance'],
@@ -21,12 +21,12 @@ export const sseGameRoomsNotWebsockets: PostDef = {
 		},
 		{
 			kind: 'p',
-			text: "The default answer to realtime multiplayer is WebSockets. I did not take it. Before picking a transport I wrote down what actually crosses the wire at a poker table, and the traffic turned out to be extremely lopsided."
+			text: 'The default answer to realtime multiplayer is WebSockets. I did not take it. Before picking a transport I wrote down what actually crosses the wire at a poker table, and the traffic turned out to be extremely lopsided.'
 		},
 		{ kind: 'h2', text: 'The traffic is not symmetric' },
 		{
 			kind: 'p',
-			text: "Everything interesting at a table is the server telling you something changed. The client, meanwhile, speaks rarely: a few discrete decisions per hand, each one a thing the player deliberately clicked."
+			text: 'Everything interesting at a table is the server telling you something changed. The client, meanwhile, speaks rarely: a few discrete decisions per hand, each one a thing the player deliberately clicked.'
 		},
 		{
 			kind: 'list',
@@ -38,11 +38,11 @@ export const sseGameRoomsNotWebsockets: PostDef = {
 		},
 		{
 			kind: 'p',
-			text: "That last point is what settled it. A player action is a request with a result, not a fire-and-forget message. Sending it as an HTTP `POST` to a route handler gives me a status code, a response body, a normal error path, and idempotency handling for the double-click — all things I would have had to rebuild inside a socket protocol. So writes stay HTTP, and the only thing that needs a persistent channel is the one-way state push."
+			text: 'That last point is what settled it. A player action is a request with a result, not a fire-and-forget message. Sending it as an HTTP `POST` to a route handler gives me a status code, a response body, a normal error path, and idempotency handling for the double-click — all things I would have had to rebuild inside a socket protocol. So writes stay HTTP, and the only thing that needs a persistent channel is the one-way state push.'
 		},
 		{
 			kind: 'p',
-			text: "Server-Sent Events is exactly that shape: a one-way stream of text events over an ordinary HTTP response that never ends."
+			text: 'Server-Sent Events is exactly that shape: a one-way stream of text events over an ordinary HTTP response that never ends.'
 		},
 		{ kind: 'h2', text: 'What SSE gives you for free' },
 		{
@@ -62,12 +62,12 @@ export const sseGameRoomsNotWebsockets: PostDef = {
 		},
 		{
 			kind: 'p',
-			text: "The first thing the stream sends is a full snapshot, not a delta. A poker table holds a handful of seats, a board of at most five cards, and a pot — small enough that sending the whole thing on every connect is cheaper to reason about than maintaining a replay log the client can rejoin. Reconnection then stops being a special case: a returning player gets the same snapshot a new one does, and the only state the client keeps is what the server just told it."
+			text: 'The first thing the stream sends is a full snapshot, not a delta. A poker table holds a handful of seats, a board of at most five cards, and a pot — small enough that sending the whole thing on every connect is cheaper to reason about than maintaining a replay log the client can rejoin. Reconnection then stops being a special case: a returning player gets the same snapshot a new one does, and the only state the client keeps is what the server just told it.'
 		},
 		{ kind: 'h2', text: 'The costs I signed up for' },
 		{
 			kind: 'p',
-			text: "This is where I have to argue against my own choice, because SSE is not free and the limits are structural rather than cosmetic."
+			text: 'This is where I have to argue against my own choice, because SSE is not free and the limits are structural rather than cosmetic.'
 		},
 		{
 			kind: 'list',
@@ -80,7 +80,7 @@ export const sseGameRoomsNotWebsockets: PostDef = {
 		},
 		{
 			kind: 'p',
-			text: "The deepest cost is not in the protocol at all. `room.subscribe` in that handler is an in-memory fan-out: the set of open streams lives in one Node process, so every player at a table has to be connected to the same instance. That is perfectly fine for one box and a fatal assumption the moment there are two. In February 2026 I re-architected the project around exactly that — containerized deploy, a [[skill:bullmq]] job queue, persisted game logs, and [[skill:redis]]-backed realtime with retries. The transport survived that change unaltered. The naive fan-out did not."
+			text: 'The deepest cost is not in the protocol at all. `room.subscribe` in that handler is an in-memory fan-out: the set of open streams lives in one Node process, so every player at a table has to be connected to the same instance. That is perfectly fine for one box and a fatal assumption the moment there are two. In February 2026 I re-architected the project around exactly that — containerized deploy, a [[skill:bullmq]] job queue, persisted game logs, and [[skill:redis]]-backed realtime with retries. The transport survived that change unaltered. The naive fan-out did not.'
 		},
 		{ kind: 'h2', text: 'When I would still reach for WebSockets' },
 		{
@@ -89,13 +89,13 @@ export const sseGameRoomsNotWebsockets: PostDef = {
 		},
 		{
 			kind: 'p',
-			text: "One thing the transport choice decided for me, which I did not appreciate on 11 June: a native `EventSource` cannot send custom headers, so a bearer token cannot ride the stream. Cookies can. That constraint is most of the reason the auth I added two months later came out the way it did, which is [its own post](/blog/session-auth-for-game-rooms)."
+			text: 'One thing the transport choice decided for me, which I did not appreciate on 11 June: a native `EventSource` cannot send custom headers, so a bearer token cannot ride the stream. Cookies can. That constraint is most of the reason the auth I added two months later came out the way it did, which is its own post.'
 		}
 	],
 	lessons: [
 		'I now pick a transport from the shape of the traffic, not from the category of the app. "Realtime multiplayer" implies WebSockets only if the traffic is actually bidirectional.',
 		'Free reconnection was worth more than raw latency. Most of the failure modes in a long-lived connection are reconnect bugs, and SSE hands that loop to the browser.',
-		"The transport was never the scaling limit — my in-memory subscriber set was. I should have named that assumption in a comment on day one instead of discovering it when I containerized the thing."
+		'The transport was never the scaling limit — my in-memory subscriber set was. I should have named that assumption in a comment on day one instead of discovering it when I containerized the thing.'
 	],
 	faqs: [
 		{

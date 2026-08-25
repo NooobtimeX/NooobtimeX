@@ -10,7 +10,7 @@ export const solePmPoDesigner: PostDef = {
 	category: 'engineering',
 	description:
 		'My CTO role description lists me as sole PM, PO and UI/UX designer. Four viewpoints in one head, and the implementer wins every argument by default.',
-	tldr: "From 2026-08-01 my role description says I act as **sole PM, PO, and UI/UX designer** on top of being the engineer. The honest version: those are not four jobs I am good at, they are four points of view that are supposed to disagree — and inside one head the implementer wins every argument by default, because the implementer is the one holding the keyboard. What keeps them apart is not discipline. It is **written artifacts and automated gates**: decisions committed before the code that depends on them, and a build that fails when the product promise and the shipped routes disagree.",
+	tldr: 'From 2026-08-01 my role description says I act as **sole PM, PO, and UI/UX designer** on top of being the engineer. The honest version: those are not four jobs I am good at, they are four points of view that are supposed to disagree — and inside one head the implementer wins every argument by default, because the implementer is the one holding the keyboard. What keeps them apart is not discipline. It is **written artifacts and automated gates**: decisions committed before the code that depends on them, and a build that fails when the product promise and the shipped routes disagree.',
 	skills: ['typescript', 'next-js', 'seo'],
 	relatedProjectIds: ['portfolio', 'rs-trophy'],
 	relatedExperienceIds: ['ruamsuk-cto'],
@@ -36,7 +36,8 @@ export const solePmPoDesigner: PostDef = {
 		{
 			kind: 'stat',
 			value: '4',
-			label: 'roles the CTO job description assigns to one person — PM, PO, UI/UX designer, and the engineer who has to build it',
+			label:
+				'roles the CTO job description assigns to one person — PM, PO, UI/UX designer, and the engineer who has to build it',
 			source: 'common/data/experiences.ts on this site'
 		},
 		{ kind: 'h2', text: 'Written decisions are the only real second person' },
@@ -56,7 +57,8 @@ export const solePmPoDesigner: PostDef = {
 1. Never set \`alternates\` in \`app/layout.tsx\`.
 2. Every \`[...id]\` route needs \`export const dynamicParams = false\`.
 3. Detail-route URLs are keyed by \`id\`, never \`slugify(name)\`.`,
-			caption: 'Abridged from this repo’s CLAUDE.md — acceptance criteria written so the future implementer cannot argue with them.'
+			caption:
+				'Abridged from this repo’s CLAUDE.md — acceptance criteria written so the future implementer cannot argue with them.'
 		},
 		{
 			kind: 'p',
@@ -95,7 +97,7 @@ export const solePmPoDesigner: PostDef = {
 		},
 		{
 			kind: 'p',
-			text: 'The point of all of this is not that one person can do four jobs. It is that one person doing four jobs loses the disagreement that made the four jobs worth splitting up, and the only way to get it back is to make some of the disagreement external — in files, in gates, in decisions that outlive the mood they were made in. Whether the resulting title should be CTO or something more honest about the shape of the work is [its own question](/blog/cto-or-product-engineer). And the tooling I lean on to cover four roles is [a separate argument](/blog/amplify-not-replace) about what AI is actually for.'
+			text: 'The point of all of this is not that one person can do four jobs. It is that one person doing four jobs loses the disagreement that made the four jobs worth splitting up, and the only way to get it back is to make some of the disagreement external — in files, in gates, in decisions that outlive the mood they were made in. Whether the resulting title should be CTO or something more honest about the shape of the work is its own question. And the tooling I lean on to cover four roles is a separate argument about what AI is actually for.'
 		}
 	],
 	lessons: [
