@@ -100,7 +100,15 @@ export const metadata: Metadata = {
 		}
 	},
 	verification: {
-		google: 'KiAn5R5UAuZgmwSS_KpMOO2FIRmt-39QIKrHKXrAOL8'
+		google: 'KiAn5R5UAuZgmwSS_KpMOO2FIRmt-39QIKrHKXrAOL8',
+		// Ownership declaration only — no ads serve from the portfolio. AdSense
+		// verifies the site you add, and the site being added is this root domain,
+		// because ads run on prettier-config.nooobtimex.me and AdSense manages
+		// sites at the root. Pairs with public/ads.txt, which crawlers likewise
+		// read only from the root of a host.
+		other: {
+			'google-adsense-account': 'ca-pub-6034794215506479'
+		}
 	}
 }
 
