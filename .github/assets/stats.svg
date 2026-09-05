@@ -31,11 +31,11 @@
 		<text class="mono" x="552" y="162" font-size="16" fill="#E6FBFF">CSS</text>
 		<text class="mono" x="964" y="162" font-size="16" fill="#00F0FF" text-anchor="end" font-weight="700">1.3%</text>
 		<rect x="552" y="170" width="412" height="9" fill="#0A0C11" stroke="#1B2A33" stroke-width="1" />
-		<rect x="552" y="170" width="5.21" height="9" fill="#00F0FF" />
+		<rect x="552" y="170" width="5.2" height="9" fill="#00F0FF" />
 		<text class="mono" x="552" y="206" font-size="16" fill="#E6FBFF">JAVASCRIPT</text>
 		<text class="mono" x="964" y="206" font-size="16" fill="#FF003C" text-anchor="end" font-weight="700">0.8%</text>
 		<rect x="552" y="214" width="412" height="9" fill="#0A0C11" stroke="#1B2A33" stroke-width="1" />
-		<rect x="552" y="214" width="3.49" height="9" fill="#FF003C" />
+		<rect x="552" y="214" width="3.48" height="9" fill="#FF003C" />
 		<rect x="0" y="0" width="1000" height="250" fill="url(#scanlines)" />
 	</g>
 	<polygon points="19,1 999,1 999,231 981,249 1,249 1,19" fill="none" stroke="#1B2A33" stroke-width="2" />
