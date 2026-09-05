@@ -10,7 +10,7 @@ export const thaiLocalizationAndANewDesignSystem: PostDef = {
 	category: 'nextjs',
 	description:
 		"On 30 January 2026 I swapped RS Award's design system and localized it to Thai in one milestone. Thai is a typography constraint, not a translation step.",
-	tldr: "On 30 January 2026 the [[project:rs-award]] remake got a new design system with motion primitives and a Thai UI in the same milestone. That pairing was deliberate: **Thai is a typography constraint before it is a translation job** — no spaces between words, marks stacking above and below the baseline, and no italic tradition — so a component kit whose defaults were picked for English breaks in four places at once. The cost of batching them was that I could no longer attribute a regression to one change or the other.",
+	tldr: 'On 30 January 2026 the [[project:rs-award]] remake got a new design system with motion primitives and a Thai UI in the same milestone. That pairing was deliberate: **Thai is a typography constraint before it is a translation job** — no spaces between words, marks stacking above and below the baseline, and no italic tradition — so a component kit whose defaults were picked for English breaks in four places at once. The cost of batching them was that I could no longer attribute a regression to one change or the other.',
 	skills: ['next-js', 'tailwind-css', 'shadcn-ui'],
 	relatedProjectIds: ['rs-award'],
 	relatedEntityIds: ['ruamsuk-plating'],
@@ -21,7 +21,7 @@ export const thaiLocalizationAndANewDesignSystem: PostDef = {
 		},
 		{
 			kind: 'p',
-			text: "Two days before this milestone the data layer had moved from Prisma/Postgres to [[skill:mongodb]], mid-build. My full-time job at that point was somewhere else entirely: the career timeline on this site puts me at [[career:jasmine-tech]] from July 2025, with no role at the family company again until the CTO one in August 2026. The remake carried on through that gap anyway, which is the honest shape of a lot of family-company work — no title on it, no sprint board, just the site that sells the plaques."
+			text: 'Two days before this milestone the data layer had moved from Prisma/Postgres to [[skill:mongodb]], mid-build. My full-time job at that point was somewhere else entirely: the career timeline on this site puts me at [[career:jasmine-tech]] from July 2025, with no role at the family company again until the CTO one in August 2026. The remake carried on through that gap anyway, which is the honest shape of a lot of family-company work — no title on it, no sprint board, just the site that sells the plaques.'
 		},
 		{ kind: 'h2', text: 'Thai is a typography constraint, not a translation layer' },
 		{

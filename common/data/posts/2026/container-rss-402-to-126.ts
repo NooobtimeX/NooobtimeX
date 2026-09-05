@@ -12,7 +12,7 @@ export const containerRss402To126: PostDef = {
 	series: { id: 'container-diet', part: 2 },
 	description:
 		'My portfolio held 402 MB resident for a static site. Most of it was 26.7 MB of icon JSON the page graph never used but loaded at boot anyway.',
-	tldr: "A mostly-static portfolio was holding **402 MB of resident memory**. The cause was not traffic or a leak: `lib/og-assets.ts` imported six full `@iconify-json` collections at module scope — **32,844 icons, 26.7 MB**, of which the site server-renders about a hundred. Turbopack inlined that into two 25 MB server chunks and Next 16 materialised both at boot. The data was provably dead in the page graph; it was reachable only because `app/opengraph-image.tsx` — a metadata convention Next evaluates for **every** page — imported an 8-key colour palette from the same module. Splitting that palette into a file with zero imports, and generating a small committed icon subset instead, took it to **126 MB**.",
+	tldr: 'A mostly-static portfolio was holding **402 MB of resident memory**. The cause was not traffic or a leak: `lib/og-assets.ts` imported six full `@iconify-json` collections at module scope — **32,844 icons, 26.7 MB**, of which the site server-renders about a hundred. Turbopack inlined that into two 25 MB server chunks and Next 16 materialised both at boot. The data was provably dead in the page graph; it was reachable only because `app/opengraph-image.tsx` — a metadata convention Next evaluates for **every** page — imported an 8-key colour palette from the same module. Splitting that palette into a file with zero imports, and generating a small committed icon subset instead, took it to **126 MB**.',
 	skills: ['next-js', 'docker', 'railway', 'bun-js'],
 	relatedProjectIds: ['portfolio'],
 	body: [
@@ -48,7 +48,7 @@ export const containerRss402To126: PostDef = {
 		},
 		{
 			kind: 'p',
-			text: 'It imported one thing from `og-assets.ts`: an eight-key colour palette. Eight hex strings. And because it imported that module, the module\'s whole graph — including 26.7 MB of icon JSON that nothing in the page graph actually reads — got welded into the shared chunk that every route entry loads at boot.'
+			text: "It imported one thing from `og-assets.ts`: an eight-key colour palette. Eight hex strings. And because it imported that module, the module's whole graph — including 26.7 MB of icon JSON that nothing in the page graph actually reads — got welded into the shared chunk that every route entry loads at boot."
 		},
 		{
 			kind: 'p',
@@ -57,7 +57,8 @@ export const containerRss402To126: PostDef = {
 		{
 			kind: 'code',
 			lang: 'ts',
-			caption: 'lib/og-palette.ts — the constraint is the entire reason the file exists, so it is written at the top of it.',
+			caption:
+				'lib/og-palette.ts — the constraint is the entire reason the file exists, so it is written at the top of it.',
 			code: '// ⚠️ THIS FILE MUST HAVE ZERO IMPORTS, and lib/og-assets.ts must never\n// re-export OG. app/opengraph-image.tsx is a metadata convention: Next\n// evaluates it for EVERY page and welds its whole import graph into the\n// shared chunk. A re-export re-welds all 26 MB with no visible symptom.\nexport const OG = { bg: "#06070d", fg: "#e6fbff" /* … */ }'
 		},
 		{ kind: 'h2', text: 'Replacing the library with an artifact' },

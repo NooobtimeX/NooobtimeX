@@ -18,7 +18,7 @@ export const bunBuildsNodeServes: PostDef = {
 	body: [
 		{
 			kind: 'p',
-			text: "This repo is a Bun repo. The lockfile is `bun.lock`, every script runs through `bun run`, and the build scripts are TypeScript executed directly by Bun with no compile step. So when I moved [[project:portfolio]] onto [[skill:railway]] behind a Dockerfile on 2026-07-30, the obvious move was to run the whole thing on Bun — install, build, serve."
+			text: 'This repo is a Bun repo. The lockfile is `bun.lock`, every script runs through `bun run`, and the build scripts are TypeScript executed directly by Bun with no compile step. So when I moved [[project:portfolio]] onto [[skill:railway]] behind a Dockerfile on 2026-07-30, the obvious move was to run the whole thing on Bun — install, build, serve.'
 		},
 		{
 			kind: 'p',
@@ -42,12 +42,13 @@ export const bunBuildsNodeServes: PostDef = {
 		{ kind: 'h2', text: 'Three stages, two runtimes' },
 		{
 			kind: 'p',
-			text: "So the Dockerfile splits the job. Bun does what Bun is good at and never touches a request. The header comment states the arrangement in one line so nobody has to reconstruct it: **Bun installs dependencies; Node builds and serves.**"
+			text: 'So the Dockerfile splits the job. Bun does what Bun is good at and never touches a request. The header comment states the arrangement in one line so nobody has to reconstruct it: **Bun installs dependencies; Node builds and serves.**'
 		},
 		{
 			kind: 'code',
 			lang: 'dockerfile',
-			caption: 'Dockerfile — stage 1 installs on Bun; the manifests-only copy keeps this layer cached until dependencies actually change.',
+			caption:
+				'Dockerfile — stage 1 installs on Bun; the manifests-only copy keeps this layer cached until dependencies actually change.',
 			code: 'FROM oven/bun:1-slim AS installer\nWORKDIR /app\n\nCOPY package.json bun.lock ./\n\nRUN bun install --frozen-lockfile'
 		},
 		{
@@ -57,7 +58,8 @@ export const bunBuildsNodeServes: PostDef = {
 		{
 			kind: 'code',
 			lang: 'dockerfile',
-			caption: 'Dockerfile — stage 2. One binary copied in, so a Bun-run check and a Node-run build coexist in the same layer.',
+			caption:
+				'Dockerfile — stage 2. One binary copied in, so a Bun-run check and a Node-run build coexist in the same layer.',
 			code: 'FROM node:26-slim AS builder\nWORKDIR /app\n\nCOPY --from=installer /usr/local/bin/bun /usr/local/bin/bun\nCOPY --from=installer /app/node_modules ./node_modules\nCOPY . .\n\nRUN bun run icons:check && npx next build'
 		},
 		{
@@ -88,7 +90,8 @@ export const bunBuildsNodeServes: PostDef = {
 		{
 			kind: 'code',
 			lang: 'bash',
-			caption: 'The local check. Build the real image, run it with an injected port, and confirm the server binds and answers.',
+			caption:
+				'The local check. Build the real image, run it with an injected port, and confirm the server binds and answers.',
 			code: 'docker build -t nooobtimex . && docker run --rm -e PORT=7788 -p 7788:7788 nooobtimex'
 		},
 		{ kind: 'h2', text: 'What this costs' },
@@ -109,7 +112,7 @@ export const bunBuildsNodeServes: PostDef = {
 	faqs: [
 		{
 			q: 'Can you run a Next.js standalone server on Bun in production?',
-			a: 'It starts and serves, but as of oven-sh/bun#27514 the standalone server leaks resident memory under Bun\'s Node-compat HTTP layer. On a short-lived process you will not notice; on a long-running container it presents as a slow OOM with no stack trace. I build with Bun and serve with Node specifically to avoid that failure mode.'
+			a: "It starts and serves, but as of oven-sh/bun#27514 the standalone server leaks resident memory under Bun's Node-compat HTTP layer. On a short-lived process you will not notice; on a long-running container it presents as a slow OOM with no stack trace. I build with Bun and serve with Node specifically to avoid that failure mode."
 		},
 		{
 			q: 'How do you use Bun and Node in the same Dockerfile?',
@@ -117,7 +120,7 @@ export const bunBuildsNodeServes: PostDef = {
 		},
 		{
 			q: 'Why does my Railway healthcheck hang even though the container starts fine?',
-			a: "Check whether a `.env` file got into the image. Next copies `.env` into `.next/standalone/` at build time, and a `PORT` inside it overrides the port the platform injects — so the server binds to the wrong port and the healthcheck never finds it. Excluding `.env` in `.dockerignore` fixes it. Reproduce locally with `docker run --rm -e PORT=7788 -p 7788:7788 <image>`."
+			a: 'Check whether a `.env` file got into the image. Next copies `.env` into `.next/standalone/` at build time, and a `PORT` inside it overrides the port the platform injects — so the server binds to the wrong port and the healthcheck never finds it. Excluding `.env` in `.dockerignore` fixes it. Reproduce locally with `docker run --rm -e PORT=7788 -p 7788:7788 <image>`.'
 		},
 		{
 			q: "What does Next's output: 'standalone' actually give you?",

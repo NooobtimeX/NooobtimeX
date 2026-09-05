@@ -188,11 +188,29 @@ A mostly-static portfolio was holding 402 MB of resident memory. The cause was n
 
 Read more: https://nooobtimex.me/blog/container-rss-402-to-126
 
+### Dropping next/image on purpose: libvips, host cores, and the qualities:[100] trap
+
+I turned Next.js image optimization off on purpose with images: { unoptimized: true }, and the site uses plain <img> tags. Two reasons. First, a config line I had written months earlier — qualities: [100] — was an allowlist with exactly one member, so requests that asked for nothing got Next's default of 75 snapped up to the only permitted value, re-encoding everything near-lossless. Second, the optimizer keeps libvips in the runtime container: roughly 23 MB resident on require, a 50 MB native cache, and one worker thread per host core, because libvips reads the machine rather than the cgroup. Every asset was already WebP at the right dimensions, so the optimizer was pure cost.
+
+Read more: https://nooobtimex.me/blog/dropping-next-image-qualities-trap
+
+### MALLOC_ARENA_MAX across a glibc bump hiding in an unsuffixed -slim tag
+
+MALLOC_ARENA_MAX=2 is one line of Docker config that holds down resident memory on my Railway container, and I nearly shipped a base-image bump without noticing it changed the library that knob talks to. glibc hands every thread its own malloc arena — up to 8 × ncores — and those free lists are rarely returned to the OS, so on a many-core host they are tens of MB the heap profiler cannot see. Moving the runtime from node:24-slim to node:26-slim also crossed Debian stable, bookworm to trixie, glibc 2.36 to 2.41. Measured afterwards, container RSS came in at 71–75 MiB against a 126 MB baseline.
+
+Read more: https://nooobtimex.me/blog/malloc-arena-glibc-slim-tag
+
 ### Build with Bun, serve with Node: dodging a standalone RSS leak
 
 I install with Bun.js and serve with Node.js, on purpose. The Next standalone server leaks resident memory under Bun's Node-compat HTTP layer (oven-sh/bun#27514), and on a long-lived container that does not look like a leak — it looks like a slow, unexplained OOM days after deploy. So stage 1 installs on oven/bun:1-slim, stages 2 and 3 run on node:26-slim, and the process that actually answers requests is node server.js. The build keeps Bun's speed; the runtime keeps Node's boring memory behaviour.
 
 Read more: https://nooobtimex.me/blog/bun-builds-node-serves
+
+### Three places a Railway container can get its start command
+
+A Railway service deployed from a Dockerfile can resolve its start command from railway.toml's startCommand, from the image's CMD, or from a start script in package.json. I made all three say node server.js rather than reason about precedence, including a build step that writes the script into the image. The two settings that actually decide whether the deploy succeeds are separate: HOSTNAME=0.0.0.0, so the server does not bind to loopback inside the container, and leaving the injected $PORT alone so the healthcheck can find it. Everything else in the file is about not rebuilding when nothing changed.
+
+Read more: https://nooobtimex.me/blog/railway-start-command-three-places
 
 ### Token-free GitHub stats with ISR: no PAT, no rate-limit wall
 
