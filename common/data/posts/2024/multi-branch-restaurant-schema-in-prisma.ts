@@ -94,11 +94,7 @@ export const multiBranchRestaurantSchemaInPrisma: PostDef = {
 		},
 		{
 			kind: 'p',
-			text: "What makes me keep defending it is the asymmetry, not the elegance. Adding a `branchId` to an eight-table schema afterwards is not one migration; it is a backfill, a new unique constraint on every natural key, and an audit of every query in the codebase to find the reads that were silently global. Doing it up front cost me a keystroke per query and about a day of thinking. Structural decisions that are cheap now and expensive later deserve the benefit of the doubt — and I would still not extend that benefit to a feature, only to a key."
-		},
-		{
-			kind: 'p',
-			text: "The order of work mattered more than the design. Spending the first month on the schema, with no framework and no screens, meant three separate front-ends — customer, staff, owner — inherited one definition of what a branch, a table and an order were. When Phase 2 added the multi-branch console in August 2024, that was screens and endpoints over a shape that already existed. It was the easiest phase of the project, and it was easy in March, in a file nobody looked at."
+			text: "What makes me keep defending it is the asymmetry, not the elegance. Adding a `branchId` to an eight-table schema afterwards is not one migration; it is a backfill, a new unique constraint on every natural key, and an audit of every query in the codebase to find the reads that were silently global. Doing it up front cost me a keystroke per query and about a day of thinking. Structural decisions that are cheap now and expensive later deserve the benefit of the doubt — and I would still not extend that benefit to a feature, only to a key. The order of work is what actually paid: three separate front-ends, customer, staff and owner, inherited one definition of a branch, a table and an order, so when Phase 2 added the multi-branch console in August 2024 it was screens over a shape that already existed."
 		}
 	],
 	lessons: [
