@@ -15,7 +15,14 @@ export const blogSystemAndJsonLdForAStorefront: PostDef = {
 	relatedProjectIds: ['rs-medal'],
 	relatedExperienceIds: ['ruamsuk-software-engineer-full-time'],
 	relatedEntityIds: ['ruamsuk-plating'],
-	sources: [{ title: 'RS Medal', url: 'https://www.rs-medal.com' }],
+	sources: [
+		{ title: 'schema.org — BlogPosting', url: 'https://schema.org/BlogPosting' },
+		{
+			title: 'Google Search Central — Article structured data',
+			url: 'https://developers.google.com/search/docs/appearance/structured-data/article'
+		},
+		{ title: 'RS Medal', url: 'https://www.rs-medal.com' }
+	],
 	body: [
 		{
 			kind: 'p',

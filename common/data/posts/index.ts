@@ -131,6 +131,9 @@ const fail = (id: string, msg: string): never => {
 	throw new Error(`[posts] "${id}": ${msg}`)
 }
 
+/** Posts that show code must cite at least this many sources. See the check in `resolvePost`. */
+const CODE_POST_MIN_SOURCES = 2
+
 const resolvePost = (d: PostDef): Post => {
 	if (!/^[a-z0-9-]+$/.test(d.id)) fail(d.id, 'id must be url-safe kebab-case')
 	if (!DATE.test(d.publishedAt)) fail(d.id, `publishedAt "${d.publishedAt}" is not YYYY-MM-DD`)
@@ -173,6 +176,26 @@ const resolvePost = (d: PostDef): Post => {
 	}
 	for (const pid of d.relatedProjectIds ?? [])
 		if (!projectsData.some(p => p.id === pid)) fail(d.id, `relatedProjectIds "${pid}" is not a project id`)
+
+	// Outbound citations. A post carrying a code block is making a claim someone can check,
+	// and an unsourced technical claim is the one thing an answer engine cannot repeat with
+	// confidence. Narrative posts — a career turn, a decision about people — carry no code
+	// and are exempt, because forcing a doc link into a story invents authority rather than
+	// showing it. Reachability is NOT checked here: that needs the network, and a deploy gate
+	// that fails when a vendor's docs are down gets bypassed. See `bun run links:external`.
+	const seenUrls = new Set<string>()
+	for (const s of d.sources ?? []) {
+		if (!s.title.trim()) fail(d.id, `source ${s.url} has no title — the link text is what a reader decides on`)
+		if (!s.url.startsWith('https://')) fail(d.id, `source "${s.url}" must be https`)
+		if (seenUrls.has(s.url)) fail(d.id, `source "${s.url}" is cited twice`)
+		seenUrls.add(s.url)
+	}
+	if (d.body!.some(b => b.kind === 'code') && (d.sources?.length ?? 0) < CODE_POST_MIN_SOURCES)
+		fail(
+			d.id,
+			`has code blocks but ${d.sources?.length ?? 0} source(s) — a post that shows code cites at least `
+				+ `${CODE_POST_MIN_SOURCES}. Link the docs, spec or issue the claim rests on, or drop the code block.`
+		)
 
 	const category = d.category!
 	return {

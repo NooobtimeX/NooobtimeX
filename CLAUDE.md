@@ -33,6 +33,7 @@ scripts/icons/     # generates that subset · the ONLY place @iconify-json/* may
 | Links  | `bun run links:check`     | post-build gate: every internal `href` must resolve. Needs a build first |
 | Images | `bun run images:optimize` | after adding anything to `public/` — idempotent, commit the result       |
 | LLMs   | `bun run llms:generate`   | regenerates `public/llms.txt` from `common/` — commit the artifact       |
+| Cites  | `bun run links:external`  | fetches every blog citation. Run before shipping a post; NOT in `build`  |
 
 **Definition of done for any code change: `bun run lint` then `bun run build`, both
 green.** Run them before declaring work complete.
@@ -79,7 +80,7 @@ docker build -t nooobtimex . && docker run --rm -e PORT=7788 -p 7788:7788 nooobt
   `Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>`
   Only commit/push when asked; branch first if on `main` and unsure.
 
-## SEO — three invariants the build depends on
+## SEO — four invariants the build depends on
 
 These encode bugs that were live on nooobtimex.me and produced **no error anywhere**.
 
@@ -96,7 +97,14 @@ These encode bugs that were live on nooobtimex.me and produced **no error anywhe
    `dynamicParams = false`, every mistyped slug is an indexable soft-404 titled "… Not
    Found".
 
-3. **Detail-route URLs are keyed by `id`, never `slugify(name)`.** They agreed for 60 of 61
+3. **A post that shows code cites at least two sources.** `resolvePost` fails the build
+   otherwise, and `bun run links:external` fetches every one of them — because
+   [`scripts/links/check.ts`](scripts/links/check.ts) only validates hrefs starting with
+   `/`, so a citation URL that 404s, or one that was never real, passes every other gate
+   and ships inside a published article. Posts with no code block are exempt: a narrative
+   does not get more true by linking a doc at it.
+
+4. **Detail-route URLs are keyed by `id`, never `slugify(name)`.** They agreed for 60 of 61
    skills — `Vue.js` slugified to `vue-js` while its id is `vue`, so every Vue link _and
    the sitemap_ pointed at a 200-status "Skill Not Found" page.
    [`scripts/links/check.ts`](scripts/links/check.ts) now fails the build on any internal
@@ -116,6 +124,8 @@ reference before adding or changing code in that area.**
   [`/app-conventions`](.claude/skills/app-conventions/SKILL.md).
 - Adding/editing content — the "add my new project / skill / role" task recipes →
   [`/portfolio-content`](.claude/skills/portfolio-content/SKILL.md).
+- Writing a Journal post (`/blog`) — the full-tier AEO contract, the outbound-citation
+  rules and the series gap rule → [`/blog-post`](.claude/skills/blog-post/SKILL.md).
 - UI / design — the Cyberpunk design system (`components/cyber/`, signal colors,
   notch/HUD utilities, React Compiler, Iconify) →
   [`.claude/rules/design-system.md`](.claude/rules/design-system.md) — a

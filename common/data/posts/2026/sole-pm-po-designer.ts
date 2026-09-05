@@ -123,5 +123,15 @@ export const solePmPoDesigner: PostDef = {
 			q: 'Do build gates really replace code review?',
 			a: 'They replace one specific slice of it: the class of mistakes that produce no error. A link check that fails on any internal href the build did not emit catches a wrong slug that compiles, returns 200, and renders a “Not Found” page. It does not catch a bad abstraction, a confusing screen, or a wrong product decision — those still need a person, and if you work alone you simply do not have that coverage.'
 		}
+	],
+	sources: [
+		{
+			title: 'Michael Nygard — Documenting Architecture Decisions',
+			url: 'https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions'
+		},
+		{
+			title: 'adr.github.io — Architecture Decision Records',
+			url: 'https://adr.github.io/'
+		}
 	]
 }

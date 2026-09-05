@@ -136,5 +136,15 @@ export const containerRss402To126: PostDef = {
 			q: 'How do you prove a large removal did not change anything?',
 			a: 'Compare the artifacts the removed code was supposedly feeding. Here all twelve prerendered OG cards were byte-identical before and after, which demonstrates the 26.7 MB was never being read at render time. A memory graph shows the win; the byte comparison shows nothing broke to get it.'
 		}
+	],
+	sources: [
+		{
+			title: 'Next.js — output: standalone',
+			url: 'https://nextjs.org/docs/app/api-reference/config/next-config-js/output'
+		},
+		{
+			title: 'Iconify — icon-sets, the JSON collections this imported',
+			url: 'https://github.com/iconify/icon-sets'
+		}
 	]
 }

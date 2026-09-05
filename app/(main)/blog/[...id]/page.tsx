@@ -63,7 +63,8 @@ const PostPage: React.FC<PostPageProps> = async ({ params }) => {
 		section: categoryMetadataPosts[post.category].label,
 		keywords: post.skills ?? [],
 		wordCount: post.readingMinutes * 200,
-		image: `/card/og/blog/${post.id}`
+		image: `/card/og/blog/${post.id}`,
+		sources: post.sources
 	})
 
 	// FAQ answers are flattened to plain prose — JSON-LD must not carry `[[ref]]` markup.

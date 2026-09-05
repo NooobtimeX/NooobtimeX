@@ -115,5 +115,15 @@ export const woocommerceStorefrontForAManufacturer: PostDef = {
 			q: 'What matters most when launching an e-commerce site for a manufacturer?',
 			a: "Being findable. A manufacturer's customers start as searches, not as visitors who already know the brand's URL, so on-page SEO, analytics, and ad tracking belong in the launch itself, not in a phase two. The storefront features are table stakes; the demand wiring is what makes them earn anything."
 		}
+	],
+	sources: [
+		{
+			title: 'WooCommerce — Template structure and overrides',
+			url: 'https://developer.woocommerce.com/docs/theming/theme-development/template-structure'
+		},
+		{
+			title: 'WordPress Plugin Handbook — Hooks',
+			url: 'https://developer.wordpress.org/plugins/hooks/'
+		}
 	]
 }

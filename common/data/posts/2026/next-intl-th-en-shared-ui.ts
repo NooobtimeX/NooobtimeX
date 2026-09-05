@@ -131,5 +131,15 @@ export const nextIntlThEnSharedUi: PostDef = {
 			q: 'Should a shared UI package call translation hooks?',
 			a: 'No. A component that calls a translation hook depends on the i18n library, on a specific message namespace, and on every consumer providing the same context — and it can no longer be rendered in a test or a story on its own. Pass display strings in as props and let each app resolve them. The package stays portable and the ownership of copy stays in one place.'
 		}
+	],
+	sources: [
+		{
+			title: 'next-intl — Getting started',
+			url: 'https://next-intl.dev/docs/getting-started'
+		},
+		{
+			title: 'ICU User Guide — Formatting messages',
+			url: 'https://unicode-org.github.io/icu/userguide/format_parse/messages/'
+		}
 	]
 }

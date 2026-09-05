@@ -112,5 +112,15 @@ export const automationIsMostlyFailureHandling: PostDef = {
 			q: 'How does an AI product video pipeline work end to end?',
 			a: "Mine runs on a six-hour schedule: it claims the oldest `pending` row from a Google Sheet, has Claude write a short Thai script from a brand-knowledge prompt, synthesises the voice-over with ElevenLabs, and generates footage with Kling through Fal.ai's async queue. FFMPEG then scales the footage to the target platform's aspect ratio, loops it to the voice duration, mixes background music under the narration and overlays the logo. The finished H.264 file uploads to a date-named Google Drive folder and the row flips to `done` with the link."
 		}
+	],
+	sources: [
+		{
+			title: 'n8n — Handle errors gracefully',
+			url: 'https://docs.n8n.io/build/flow-logic/handle-errors-gracefully'
+		},
+		{
+			title: 'n8n — Documentation',
+			url: 'https://docs.n8n.io/'
+		}
 	]
 }

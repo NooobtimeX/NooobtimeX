@@ -126,5 +126,19 @@ export const whyNuxtNotNextForMyThesis: PostDef = {
 			q: 'Does the framework choice matter as much as it feels like it does?',
 			a: 'Usually less. On QR Food the decisions that determined whether the product worked were what the table QR token identified, how branches owned menus, and where per-branch availability lived — all of them database and domain decisions that would have been identical in React or Vue. The framework changed how fast I typed, not what I was building.'
 		}
+	],
+	sources: [
+		{
+			title: 'Nuxt — The pages directory',
+			url: 'https://nuxt.com/docs/guide/directory-structure/pages'
+		},
+		{
+			title: 'Next.js — Layouts and pages',
+			url: 'https://nextjs.org/docs/app/getting-started/layouts-and-pages'
+		},
+		{
+			title: 'Vue.js — Introduction',
+			url: 'https://vuejs.org/guide/introduction.html'
+		}
 	]
 }

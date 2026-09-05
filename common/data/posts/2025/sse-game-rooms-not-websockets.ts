@@ -42,7 +42,7 @@ export const sseGameRoomsNotWebsockets: PostDef = {
 		},
 		{
 			kind: 'p',
-			text: 'Server-Sent Events is exactly that shape: a one-way stream of text events over an ordinary HTTP response that never ends.'
+			text: '[Server-Sent Events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events) is exactly that shape: a one-way stream of text events over an ordinary HTTP response that never ends.'
 		},
 		{ kind: 'h2', text: 'What SSE gives you for free' },
 		{
@@ -113,6 +113,16 @@ export const sseGameRoomsNotWebsockets: PostDef = {
 		{
 			q: 'What is the browser connection limit for Server-Sent Events?',
 			a: 'Over HTTP/1.1, browsers allow roughly six concurrent connections per origin, and each open stream occupies one for the lifetime of the tab — so a few tabs of the same app can starve each other. Over HTTP/2 the streams are multiplexed on one connection and the cap is far higher, so how the app is served matters as much as the client code.'
+		}
+	],
+	sources: [
+		{
+			title: 'MDN — Using server-sent events',
+			url: 'https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events'
+		},
+		{
+			title: 'WHATWG HTML Standard — Server-sent events',
+			url: 'https://html.spec.whatwg.org/multipage/server-sent-events.html'
 		}
 	]
 }

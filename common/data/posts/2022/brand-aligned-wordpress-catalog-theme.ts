@@ -111,5 +111,15 @@ export const brandAlignedWordpressCatalogTheme: PostDef = {
 			q: 'What does information architecture mean for a product catalog website?',
 			a: 'It is the structure underneath the styling: what the categories are, what each page must let a visitor do, and where every page leads. For a catalog, organize by how customers ask for the product rather than how the factory produces it, and give every page one clear next step — for custom goods that step is usually an enquiry, not a cart.'
 		}
+	],
+	sources: [
+		{
+			title: 'WordPress Theme Handbook — Template Hierarchy',
+			url: 'https://developer.wordpress.org/themes/classic-themes/basics/template-hierarchy/'
+		},
+		{
+			title: 'WordPress Theme Handbook — Child Themes',
+			url: 'https://developer.wordpress.org/themes/advanced-topics/child-themes/'
+		}
 	]
 }

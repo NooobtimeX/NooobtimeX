@@ -26,7 +26,7 @@ export const sitemap200NotFoundPages: PostDef = {
 		{ kind: 'h2', text: 'A sitemap is a nomination, not an index' },
 		{
 			kind: 'p',
-			text: 'It is worth being precise about what a sitemap does, because it changes how bad this is. A sitemap does not describe your site — it **nominates** URLs. It tells a crawler that these specific addresses exist, are canonical enough to be worth fetching, and should be spent crawl budget on. That is why a broken entry is worse than a broken link: a broken link needs a crawler to find the page that carries it, while a sitemap entry skips discovery entirely. Mine handed over an error page and asked for it to be indexed.'
+			text: 'It is worth being precise about [what a sitemap does](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap), because it changes how bad this is. A sitemap does not describe your site — it **nominates** URLs. It tells a crawler that these specific addresses exist, are canonical enough to be worth fetching, and should be spent crawl budget on. That is why a broken entry is worse than a broken link: a broken link needs a crawler to find the page that carries it, while a sitemap entry skips discovery entirely. Mine handed over an error page and asked for it to be indexed.'
 		},
 		{
 			kind: 'stat',
@@ -115,6 +115,20 @@ export const sitemap200NotFoundPages: PostDef = {
 		{
 			q: 'How do I catch broken internal URLs before they reach my sitemap?',
 			a: 'Compare the links your build produced against the routes your build emitted, as a post-build step. Reading the prerendered HTML in `.next/server/app` and checking every internal `href` against the emitted route list turns this class of drift into a build error instead of something a crawler finds later.'
+		}
+	],
+	sources: [
+		{
+			title: 'Next.js — sitemap.ts file convention',
+			url: 'https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap'
+		},
+		{
+			title: 'Google Search Central — Build and submit a sitemap',
+			url: 'https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap'
+		},
+		{
+			title: 'Google Search Central — HTTP status codes and soft 404s',
+			url: 'https://developers.google.com/crawling/docs/troubleshooting/http-status-codes'
 		}
 	]
 }

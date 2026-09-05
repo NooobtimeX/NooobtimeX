@@ -21,7 +21,7 @@ export const loadingTsxSoft404: PostDef = {
 		},
 		{
 			kind: 'p',
-			text: 'The page was not even orphaned. Every Vue link on the site pointed at it, and my sitemap submitted it to Google. The mechanism that made it a 200 instead of a 404 was a file I had added purely for user experience: `app/loading.tsx`.'
+			text: 'The page was not even orphaned. Every Vue link on the site pointed at it, and my sitemap submitted it to Google. The mechanism that made it [a 200 instead of a 404](https://developers.google.com/crawling/docs/troubleshooting/http-status-codes) was a file I had added purely for user experience: `app/loading.tsx`.'
 		},
 		{ kind: 'h2', text: 'How a loading spinner commits a 200' },
 		{
@@ -112,6 +112,20 @@ export const loadingTsxSoft404: PostDef = {
 		{
 			q: 'Should I delete loading.tsx to avoid soft 404s?',
 			a: 'No. Streaming loading UI is behaving as documented; the defect is letting a request for a nonexistent slug get far enough to stream. Keep the loading UI and close the routing layer with `dynamicParams = false` (or validate params before the boundary). Deleting the spinner trades away real UX to patch one symptom of a bug class that stays alive.'
+		}
+	],
+	sources: [
+		{
+			title: 'Next.js — loading.js file convention',
+			url: 'https://nextjs.org/docs/app/api-reference/file-conventions/loading'
+		},
+		{
+			title: 'Next.js — notFound()',
+			url: 'https://nextjs.org/docs/app/api-reference/functions/not-found'
+		},
+		{
+			title: 'Google Search Central — HTTP status codes and soft 404s',
+			url: 'https://developers.google.com/crawling/docs/troubleshooting/http-status-codes'
 		}
 	]
 }

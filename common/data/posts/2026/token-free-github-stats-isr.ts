@@ -82,7 +82,7 @@ export const tokenFreeGithubStatsIsr: PostDef = {
 			kind: 'callout',
 			tone: 'warn',
 			title: 'This is the part that can hit the wall',
-			text: 'The repo list is fetched with `per_page=100`, so a cold render can fire up to a hundred unauthenticated requests at GitHub in one burst — and unauthenticated REST is limited by IP, at 60 requests an hour. The daily cache is what keeps that from happening more than once a day, but it is a mitigation, not a guarantee: a cold container plus a cache miss is still a hundred calls.'
+			text: 'The repo list is fetched with `per_page=100`, so a cold render can fire up to a hundred unauthenticated requests at GitHub in one burst — and [unauthenticated REST is limited by IP](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api), at 60 requests an hour. The daily cache is what keeps that from happening more than once a day, but it is a mitigation, not a guarantee: a cold container plus a cache miss is still a hundred calls.'
 		},
 		{
 			kind: 'p',
@@ -127,6 +127,16 @@ export const tokenFreeGithubStatsIsr: PostDef = {
 		{
 			q: 'Should a data fetch failure break a Next.js build?',
 			a: 'It depends on whether the data is the point of the page. For decorative or supplementary data, returning `null` and omitting the section keeps deploys independent of someone else’s uptime. For content a visitor came to read, failing loudly is better — a silently missing section looks identical to a healthy site from every angle you would normally check.'
+		}
+	],
+	sources: [
+		{
+			title: 'GitHub REST API — Rate limits',
+			url: 'https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api'
+		},
+		{
+			title: 'Next.js — Incremental Static Regeneration',
+			url: 'https://nextjs.org/docs/app/guides/incremental-static-regeneration'
 		}
 	]
 }

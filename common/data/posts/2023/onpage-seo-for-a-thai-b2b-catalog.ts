@@ -113,5 +113,19 @@ export const onpageSeoForAThaiB2bCatalog: PostDef = {
 			q: 'How do you measure SEO when customers order by phone or LINE?',
 			a: 'Accept that web analytics only sees the top of the funnel and measure what it can honestly show: rankings, organic visits to the money pages, and inquiry actions like clicks on the phone number or chat link. The order itself closes off-platform, so revenue attribution to a ranking is a guess. Naming that gap is better than trusting a dashboard number that structurally cannot include most of the sales.'
 		}
+	],
+	sources: [
+		{
+			title: 'Google Search Central — Localized versions of your pages (hreflang)',
+			url: 'https://developers.google.com/search/docs/specialty/international/localized-versions'
+		},
+		{
+			title: 'Google Search Central — Influencing your title links',
+			url: 'https://developers.google.com/search/docs/appearance/title-link'
+		},
+		{
+			title: 'Google Search Central — Consolidate duplicate URLs with canonicals',
+			url: 'https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls'
+		}
 	]
 }

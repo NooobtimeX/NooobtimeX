@@ -127,5 +127,15 @@ export const linksCheckBuildGate: PostDef = {
 			q: 'Is a custom link checker worth it on a small site?',
 			a: 'It was for me at roughly 90 routes, because the failure it prevents is invisible: a broken internal link ships, gets crawled, and stays wrong until a human clicks it. The cost is real though — a script to maintain, and a build that now needs its output. On a site where every link is hand-written and reviewed, the odds change.'
 		}
+	],
+	sources: [
+		{
+			title: 'Next.js — generateStaticParams',
+			url: 'https://nextjs.org/docs/app/api-reference/functions/generate-static-params'
+		},
+		{
+			title: 'Google Search Central — HTTP status codes and soft 404s',
+			url: 'https://developers.google.com/crawling/docs/troubleshooting/http-status-codes'
+		}
 	]
 }

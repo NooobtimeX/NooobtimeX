@@ -120,5 +120,15 @@ export const replacingPosHardwareWithQrOrdering: PostDef = {
 			q: 'What was the QR Food senior thesis project?',
 			a: 'QR Food was my senior thesis at Thammasat University: a full-stack QR-code ordering and multi-branch restaurant management web application, built solo with Nuxt 3, Vue 3, Prisma, and PostgreSQL on Supabase. Customers scan a table QR to order and call staff, staff manage queues and close tables, and owners manage branches and sales statistics. I scoped it in August 2023 and defended it in December 2024.'
 		}
+	],
+	sources: [
+		{
+			title: 'Nuxt — Introduction',
+			url: 'https://nuxt.com/docs/getting-started/introduction'
+		},
+		{
+			title: 'Prisma ORM — Data modeling',
+			url: 'https://www.prisma.io/docs/orm/data-modeling'
+		}
 	]
 }

@@ -112,5 +112,8 @@ export const firstClientWorkWasWordpress: PostDef = {
 	relatedProjectIds: ['rs-award', 'rs-medal', 'rs-trophy'],
 	relatedExperienceIds: ['ruamsuk-software-engineer-part-time', 'thammasat-bs-cs'],
 	relatedEntityIds: ['ruamsuk-plating'],
-	sources: [{ title: 'RS Award — the live site this post is about', url: 'https://www.rs-award.com' }]
+	sources: [
+		{ title: 'WordPress Plugin Handbook — Hooks', url: 'https://developer.wordpress.org/plugins/hooks/' },
+		{ title: 'RS Award — the live site this post is about', url: 'https://www.rs-award.com' }
+	]
 }

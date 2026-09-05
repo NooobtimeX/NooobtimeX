@@ -132,5 +132,15 @@ export const multiBranchRestaurantSchemaInPrisma: PostDef = {
 			q: 'Is it premature to design for multiple tenants before you have them?',
 			a: 'For features, usually yes. For keys, usually no — the two are not the same decision. Adding a tenant column later means backfilling data, adding unique constraints across the schema and auditing every existing query for silently global reads, while adding it up front costs one field and one filter per query. Design the key early, build the tenant-facing screens when someone asks.'
 		}
+	],
+	sources: [
+		{
+			title: 'Prisma ORM — Data modeling',
+			url: 'https://www.prisma.io/docs/orm/data-modeling'
+		},
+		{
+			title: 'Prisma ORM — Relations in relational databases',
+			url: 'https://www.prisma.io/docs/orm/data-modeling/relational-databases'
+		}
 	]
 }

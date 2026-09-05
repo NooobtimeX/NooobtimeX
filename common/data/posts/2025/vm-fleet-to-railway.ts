@@ -121,5 +121,15 @@ export const vmFleetToRailway: PostDef = {
 			q: 'How do you avoid the healthcheck hanging after a migration?',
 			a: "Bind to the injected `PORT` environment variable rather than a hard-coded number, and make sure no committed environment file overrides it — an env file baked into the image will shadow the platform's injected value and the health check will never find the process. Expose a cheap health endpoint that does not depend on downstream services, or a slow dependency will fail your own deploy."
 		}
+	],
+	sources: [
+		{
+			title: 'Railway — Deploying with Dockerfiles',
+			url: 'https://docs.railway.com/builds/dockerfiles'
+		},
+		{
+			title: 'Docker — Multi-stage builds',
+			url: 'https://docs.docker.com/build/building/multi-stage/'
+		}
 	]
 }

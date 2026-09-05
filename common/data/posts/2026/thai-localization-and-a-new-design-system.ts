@@ -120,5 +120,9 @@ export const thaiLocalizationAndANewDesignSystem: PostDef = {
 			a: 'Only when one person owns both changes and there is no live traffic to regress. The two touch the same surface, so batching them avoids restyling every component twice. The price is attribution: when something looks wrong afterwards you cannot tell from the history which change caused it, so you bisect by hand. With a reviewer or a QA pass in the loop, split them.'
 		}
 	],
-	sources: [{ title: 'RS Award — the live site this post is about', url: 'https://www.rs-award.com' }]
+	sources: [
+		{ title: 'Tailwind CSS — Theme configuration', url: 'https://tailwindcss.com/docs/theme' },
+		{ title: 'shadcn/ui — Theming', url: 'https://ui.shadcn.com/docs/theming' },
+		{ title: 'RS Award — the live site this post is about', url: 'https://www.rs-award.com' }
+	]
 }

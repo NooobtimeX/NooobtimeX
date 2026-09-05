@@ -86,12 +86,18 @@ interface BlogPostingInput {
 	keywords: string[]
 	wordCount: number
 	image?: string
+	sources?: { title: string; url: string }[]
 }
 
 /**
  * One post. `author`/`publisher` resolve to the SAME `#person` node the home page
  * declares, so the whole archive reads as one entity's body of work — the reason
  * `PERSON_ID` exists (see the header of this file).
+ *
+ * `citation` carries the post's outbound sources. Without it the reference list is a
+ * visual footer only: a human sees the post is grounded in the Next.js docs and a bug
+ * report, and a machine reading the structured data sees an unsourced opinion. Reachability
+ * of these URLs is enforced separately by `bun run links:external`.
  */
 export const blogPostingSchema = (post: BlogPostingInput) => ({
 	'@context': 'https://schema.org',
@@ -110,7 +116,10 @@ export const blogPostingSchema = (post: BlogPostingInput) => ({
 	'articleSection': post.section,
 	'keywords': post.keywords.join(', '),
 	'wordCount': post.wordCount,
-	...(post.image && { image: `${SITE_URL}${post.image}` })
+	...(post.image && { image: `${SITE_URL}${post.image}` }),
+	...(post.sources?.length && {
+		citation: post.sources.map(s => ({ '@type': 'CreativeWork', 'name': s.title, 'url': s.url }))
+	})
 })
 
 /**

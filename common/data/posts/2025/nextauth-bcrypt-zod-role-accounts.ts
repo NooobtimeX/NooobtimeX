@@ -26,7 +26,7 @@ export const nextauthBcryptZodRoleAccounts: PostDef = {
 		{ kind: 'h2', text: 'Credentials is the provider you write yourself' },
 		{
 			kind: 'p',
-			text: 'With an OAuth provider, NextAuth owns the handshake. With Credentials it owns the session cookie and the callback plumbing, and everything inside `authorize()` is yours: parse the input, find the user, compare the hash, return a user object or `null`. There is no framework opinion in there at all, which is exactly why it is worth writing carefully once.'
+			text: 'With an OAuth provider, [NextAuth](https://next-auth.js.org/configuration/options) owns the handshake. With Credentials it owns the session cookie and the callback plumbing, and everything inside `authorize()` is yours: parse the input, find the user, compare the hash, return a user object or `null`. There is no framework opinion in there at all, which is exactly why it is worth writing carefully once.'
 		},
 		{
 			kind: 'code',
@@ -100,6 +100,20 @@ export const nextauthBcryptZodRoleAccounts: PostDef = {
 		{
 			q: 'Why does returning null for both a wrong password and a missing user still leak information?',
 			a: 'Because the two paths cost different amounts of time. The missing-user branch returns before `bcrypt.compare` runs, so it answers faster, and that difference is measurable over enough requests — it tells an attacker which email addresses have accounts. Compare against a dummy hash when no user is found so both branches do the same work.'
+		}
+	],
+	sources: [
+		{
+			title: 'NextAuth.js — Configuration options',
+			url: 'https://next-auth.js.org/configuration/options'
+		},
+		{
+			title: 'Zod — TypeScript-first schema validation',
+			url: 'https://zod.dev/'
+		},
+		{
+			title: 'React Hook Form — Documentation',
+			url: 'https://react-hook-form.com/docs'
 		}
 	]
 }

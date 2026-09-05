@@ -127,5 +127,15 @@ export const tddPokerHandEvaluator: PostDef = {
 			q: 'When is test-first the wrong approach?',
 			a: 'When the specification is still your own judgement. If you cannot state the expected result before writing the code — most UI, most product decisions, anything whose correctness you will only recognise once you see it — tests written first just encode your first guess, and then you maintain the guess.'
 		}
+	],
+	sources: [
+		{
+			title: 'Martin Fowler — Test Driven Development',
+			url: 'https://martinfowler.com/bliki/TestDrivenDevelopment.html'
+		},
+		{
+			title: 'List of poker hands — the ranking the tests encode',
+			url: 'https://en.wikipedia.org/wiki/List_of_poker_hands'
+		}
 	]
 }

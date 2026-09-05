@@ -23,7 +23,7 @@ export const replacedNatsWithHttp: PostDef = {
 		},
 		{
 			kind: 'p',
-			text: 'This post is not a verdict on NATS. NATS is very good at the thing it is for. It is a note on the question I did not ask carefully enough when the architecture was drawn: what shape is the traffic actually going to be?'
+			text: 'This post is not a verdict on NATS. [NATS](https://docs.nats.io/learn/core-nats/) is very good at the thing it is for. It is a note on the question I did not ask carefully enough when the architecture was drawn: what shape is the traffic actually going to be?'
 		},
 		{ kind: 'h2', text: 'What the bus was really carrying' },
 		{
@@ -117,6 +117,16 @@ export const replacedNatsWithHttp: PostDef = {
 		{
 			q: 'How do you handle background jobs after removing the message bus?',
 			a: 'Put them on a real job queue rather than a general-purpose bus. On this platform the asynchronous work already ran on BullMQ over Redis, so removing the bus took nothing away — a queue gives you inspectable jobs, explicit retry and backoff policies, and a dead-letter path, all of which are easier to reason about than a stream consumer for the same purpose.'
+		}
+	],
+	sources: [
+		{
+			title: 'NestJS — NATS transporter',
+			url: 'https://docs.nestjs.com/microservices/nats'
+		},
+		{
+			title: 'NATS — Core NATS',
+			url: 'https://docs.nats.io/learn/core-nats/'
 		}
 	]
 }

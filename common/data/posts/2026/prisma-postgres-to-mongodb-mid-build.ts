@@ -14,7 +14,10 @@ export const prismaPostgresToMongodbMidBuild: PostDef = {
 	skills: ['mongodb', 'prisma', 'postgresql', 'next-js'],
 	relatedProjectIds: ['rs-award'],
 	relatedEntityIds: ['ruamsuk-plating'],
-	sources: [{ title: 'RS Award', url: 'https://www.rs-award.com' }],
+	sources: [
+		{ title: 'Prisma ORM — MongoDB connector', url: 'https://www.prisma.io/docs/orm/overview/databases/mongodb' },
+		{ title: 'RS Award', url: 'https://www.rs-award.com' }
+	],
 	body: [
 		{
 			kind: 'p',
