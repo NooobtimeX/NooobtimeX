@@ -43,7 +43,7 @@ export const solePmPoDesigner: PostDef = {
 		{ kind: 'h2', text: 'Written decisions are the only real second person' },
 		{
 			kind: 'p',
-			text: 'The fix I actually use is not willpower. It is that a decision written down before the code exists cannot be silently overruled by the person writing the code, because it is sitting in the diff, in a file, with a reason attached. It becomes an argument with two sides again — my past self against my present self, and my past self had more context about the user and less about how annoying the implementation was going to be.'
+			text: 'The fix I actually use is not willpower. It is that [a decision written down before the code exists](https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions) cannot be silently overruled by the person writing the code, because it is sitting in the diff, in a file, with a reason attached. It becomes an argument with two sides again — my past self against my present self, and my past self had more context about the user and less about how annoying the implementation was going to be.'
 		},
 		{
 			kind: 'p',

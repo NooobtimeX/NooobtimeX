@@ -31,7 +31,7 @@ export const nextIntlThEnSharedUi: PostDef = {
 		},
 		{
 			kind: 'p',
-			text: 'That ordering is not cosmetic. It decides which language the message catalogue is authored in, which one gets reviewed by someone who actually speaks it, and which one is allowed to be slightly awkward. If English is the source, Thai copy ends up as a machine-shaped echo of English sentence structure, and it reads like it.'
+			text: 'That ordering is not cosmetic. It decides which language [the message catalogue](https://unicode-org.github.io/icu/userguide/format_parse/messages/) is authored in, which one gets reviewed by someone who actually speaks it, and which one is allowed to be slightly awkward. If English is the source, Thai copy ends up as a machine-shaped echo of English sentence structure, and it reads like it.'
 		},
 		{
 			kind: 'code',

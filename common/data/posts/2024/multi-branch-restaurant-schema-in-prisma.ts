@@ -30,7 +30,7 @@ export const multiBranchRestaurantSchemaInPrisma: PostDef = {
 		},
 		{
 			kind: 'p',
-			text: 'I put it in a column. Every row that belongs to a location carries a `branchId` foreign key back to a `Branch`, and `Branch` is the only node in the graph with no parent above the restaurant itself. One database, one schema, one row-scoped boundary.'
+			text: 'I put it in a column. Every row that belongs to a location carries a `branchId` [foreign key](https://www.prisma.io/docs/orm/data-modeling/relational-databases) back to a `Branch`, and `Branch` is the only node in the graph with no parent above the restaurant itself. One database, one schema, one row-scoped boundary.'
 		},
 		{
 			kind: 'code',

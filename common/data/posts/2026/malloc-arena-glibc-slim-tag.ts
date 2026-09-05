@@ -57,7 +57,7 @@ export const mallocArenaGlibcSlimTag: PostDef = {
 		{ kind: 'h2', text: 'What MALLOC_ARENA_MAX actually does' },
 		{
 			kind: 'p',
-			text: 'glibc does not keep one heap. To stop threads fighting over a single lock on every allocation, it hands out additional arenas — separate heaps with their own locks — and the default ceiling is generous: up to eight arenas per CPU core. Each arena keeps its own free list, and glibc is reluctant to hand those pages back to the operating system once it has them.'
+			text: 'glibc does not keep one heap. To stop threads fighting over a single lock on every allocation, it hands out [additional arenas](https://www.gnu.org/software/libc/manual/html_node/Memory-Allocation-Tunables.html) — separate heaps with their own locks — and the default ceiling is generous: up to eight arenas per CPU core. Each arena keeps its own free list, and glibc is reluctant to hand those pages back to the operating system once it has them.'
 		},
 		{
 			kind: 'p',

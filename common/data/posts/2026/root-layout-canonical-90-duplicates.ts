@@ -19,7 +19,7 @@ export const rootLayoutCanonical90Duplicates: PostDef = {
 		},
 		{
 			kind: 'p',
-			text: 'A canonical is exactly that strong a claim. It says: this URL is a duplicate; index that other one instead. So the practical effect of one line of config was the whole site asking not to be indexed — with no error, no warning, and nothing visibly broken in the browser.'
+			text: '[A canonical](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls) is exactly that strong a claim. It says: this URL is a duplicate; index that other one instead. So the practical effect of one line of config was the whole site asking not to be indexed — with no error, no warning, and nothing visibly broken in the browser.'
 		},
 		{ kind: 'h2', text: 'How one line becomes ninety tags' },
 		{

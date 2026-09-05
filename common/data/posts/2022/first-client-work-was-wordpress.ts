@@ -36,7 +36,7 @@ export const firstClientWorkWasWordpress: PostDef = {
 		},
 		{
 			kind: 'p',
-			text: 'I was a first-year student who wanted to write code, and I chose not to. I picked WordPress — hosting, a theme, a plugin stack — and I have spent time since then deciding whether that was a cop-out. It was not. It was the right call, and I want to be precise about why, because the honest reasons are less flattering than "the best tool for the job".'
+			text: 'I was a first-year student who wanted to write code, and I chose not to. I picked WordPress — hosting, a theme, [a plugin stack](https://developer.wordpress.org/plugins/hooks/) — and I have spent time since then deciding whether that was a cop-out. It was not. It was the right call, and I want to be precise about why, because the honest reasons are less flattering than "the best tool for the job".'
 		},
 		{ kind: 'h2', text: 'Why WordPress, when I was studying to write code' },
 		{

@@ -86,7 +86,7 @@ export const brandAlignedWordpressCatalogTheme: PostDef = {
 		},
 		{
 			kind: 'p',
-			text: "The theme itself did not survive. In May 2025 I started the ground-up Next.js remake of RS Medal, and every line of that child theme was written off. What carried over was not code — it was the way of deciding: products as the palette source, structure in the customer's language, every page pointed at an enquiry. The files were disposable. The decisions were the asset."
+			text: "The theme itself did not survive. In May 2025 I started the ground-up Next.js remake of RS Medal, and every line of that [child theme](https://developer.wordpress.org/themes/advanced-topics/child-themes/) was written off. What carried over was not code — it was the way of deciding: products as the palette source, structure in the customer's language, every page pointed at an enquiry. The files were disposable. The decisions were the asset."
 		}
 	],
 	lessons: [

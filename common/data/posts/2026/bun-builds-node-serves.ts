@@ -27,7 +27,7 @@ export const bunBuildsNodeServes: PostDef = {
 		{ kind: 'h2', text: 'The bug that does not look like a bug' },
 		{
 			kind: 'p',
-			text: "Next's `output: 'standalone'` emits a small `server.js` plus a traced subset of `node_modules`. It is a Node program. Running a Node program on Bun is normally fine — that is what the Node-compat layer is for — but the standalone server sits on the HTTP path, handling every request for the life of the container, and under Bun's compat layer it leaks resident memory (oven-sh/bun#27514)."
+			text: "Next's `output: 'standalone'` emits a small `server.js` plus a traced subset of `node_modules`. It is a Node program. Running a Node program on Bun is normally fine — that is what the Node-compat layer is for — but the standalone server sits on the HTTP path, handling every request for the life of the container, and under Bun's compat layer it leaks resident memory ([oven-sh/bun#27514](https://github.com/oven-sh/bun/issues/27514))."
 		},
 		{
 			kind: 'p',

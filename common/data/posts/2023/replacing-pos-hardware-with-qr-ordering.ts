@@ -43,7 +43,7 @@ export const replacingPosHardwareWithQrOrdering: PostDef = {
 		{ kind: 'h2', text: 'August was a database month' },
 		{
 			kind: 'p',
-			text: 'The inception milestone produced exactly two artifacts: written objectives, and a database schema — designed in [[skill:prisma]] against PostgreSQL on [[skill:supabase]]. No screens, no framework code. That ordering was deliberate. Everything the system promises is relational: branches own tables and menus, menu items own add-ons, orders join a table to items and to the staff member who closes them, and roles gate who can touch what. Get those keys wrong and every surface built on top inherits the mistake.'
+			text: 'The inception milestone produced exactly two artifacts: written objectives, and [a database schema](https://www.prisma.io/docs/orm/data-modeling) — designed in [[skill:prisma]] against PostgreSQL on [[skill:supabase]]. No screens, no framework code. That ordering was deliberate. Everything the system promises is relational: branches own tables and menus, menu items own add-ons, orders join a table to items and to the staff member who closes them, and roles gate who can touch what. Get those keys wrong and every surface built on top inherits the mistake.'
 		},
 		{
 			kind: 'code',

@@ -33,7 +33,7 @@ export const containerRss402To126: PostDef = {
 		},
 		{
 			kind: 'p',
-			text: 'Those six packages are **32,844 icons and 26.7 MB of JSON**. The site server-renders on the order of a hundred of them. So 26.7 MB was being loaded to serve about 0.4% of itself — and worse, Turbopack inlined the payload into two 25 MB server chunks, which Next 16 materialises at boot rather than lazily.'
+			text: '[Those six packages](https://github.com/iconify/icon-sets) are **32,844 icons and 26.7 MB of JSON**. The site server-renders on the order of a hundred of them. So 26.7 MB was being loaded to serve about 0.4% of itself — and worse, Turbopack inlined the payload into two 25 MB server chunks, which Next 16 materialises at boot rather than lazily.'
 		},
 		{
 			kind: 'callout',

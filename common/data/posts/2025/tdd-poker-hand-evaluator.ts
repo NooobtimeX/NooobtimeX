@@ -21,7 +21,7 @@ export const tddPokerHandEvaluator: PostDef = {
 		},
 		{
 			kind: 'p',
-			text: 'The evaluator was the first thing I wrote, and the milestone I recorded for it says test-driven, with dedicated unit suites for the ranking logic. The day after, showdown resolution and deck management landed with full unit-test coverage too. That was not discipline for its own sake. It was that a poker hand evaluator is the rare piece of software whose specification is finite, published, and older than software.'
+			text: 'The evaluator was the first thing I wrote, and the milestone I recorded for it says [test-driven](https://martinfowler.com/bliki/TestDrivenDevelopment.html), with dedicated unit suites for the ranking logic. The day after, showdown resolution and deck management landed with full unit-test coverage too. That was not discipline for its own sake. It was that a poker hand evaluator is the rare piece of software whose specification is finite, published, and older than software.'
 		},
 		{ kind: 'h2', text: 'A closed domain is what TDD is actually for' },
 		{

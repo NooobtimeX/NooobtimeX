@@ -17,7 +17,7 @@ export const automationIsMostlyFailureHandling: PostDef = {
 	body: [
 		{
 			kind: 'p',
-			text: "In mid-August 2026, a few weeks into the [[career:ruamsuk-cto]] role at my family's 20-year-old trophy company, I finished an n8n workflow that turns a row in a Google Sheet into a finished product video for [[company:ruamsuk-plating]]'s social channels — script, voice-over, AI footage, music, logo, uploaded to Drive — with no human in the loop. Type a product description into a spreadsheet; within the next scheduled run, a video exists."
+			text: "In mid-August 2026, a few weeks into the [[career:ruamsuk-cto]] role at my family's 20-year-old trophy company, I finished [an n8n workflow](https://docs.n8n.io/) that turns a row in a Google Sheet into a finished product video for [[company:ruamsuk-plating]]'s social channels — script, voice-over, AI footage, music, logo, uploaded to Drive — with no human in the loop. Type a product description into a spreadsheet; within the next scheduled run, a video exists."
 		},
 		{
 			kind: 'p',

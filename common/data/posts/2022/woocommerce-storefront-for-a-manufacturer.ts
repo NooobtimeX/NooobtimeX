@@ -49,7 +49,7 @@ export const woocommerceStorefrontForAManufacturer: PostDef = {
 		{ kind: 'h2', text: 'Four months, in the order the timeline records' },
 		{
 			kind: 'p',
-			text: 'The build ran in a straight line, roughly one phase a month. Discovery and setup meant hosting, a theme, and the commerce plugin stack. Design meant the storefront theme and the catalog browsing experience. Development meant the product catalog, the cart and checkout flows, and the marketing integrations. Then go-live — the storefront that ran until the modern rebuild.'
+			text: 'The build ran in a straight line, roughly one phase a month. Discovery and setup meant hosting, a theme, and the [commerce plugin stack](https://developer.wordpress.org/plugins/hooks/). Design meant the storefront theme and the catalog browsing experience. Development meant the product catalog, the cart and checkout flows, and the marketing integrations. Then go-live — the storefront that ran until the modern rebuild.'
 		},
 		{
 			kind: 'table',

@@ -26,7 +26,7 @@ export const whyNuxtNotNextForMyThesis: PostDef = {
 		{ kind: 'h2', text: 'The two frameworks answer the same question' },
 		{
 			kind: 'p',
-			text: 'Nuxt is to Vue what Next is to React: file-based routing, server rendering, a data-fetching story, and a single deployable artifact that contains both the pages and the endpoints. At the level a thesis operates on, the feature lists rhyme. So the choice was never about capability. It was about which mental model I would be debugging at 1am the week before a demo.'
+			text: 'Nuxt is to Vue what Next is to React: [file-based routing](https://nuxt.com/docs/guide/directory-structure/pages), server rendering, a data-fetching story, and a single deployable artifact that contains both the pages and the endpoints. At the level a thesis operates on, the feature lists rhyme. So the choice was never about capability. It was about which mental model I would be debugging at 1am the week before a demo.'
 		},
 		{
 			kind: 'p',

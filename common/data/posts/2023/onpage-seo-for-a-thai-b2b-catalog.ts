@@ -37,7 +37,7 @@ export const onpageSeoForAThaiB2bCatalog: PostDef = {
 		},
 		{
 			kind: 'p',
-			text: 'Stock WooCommerce fights this. A category archive out of the box is a grid of thumbnails with a templated title and no crawlable copy at all. Each category on rs-trophy.com got a hand-written title, its own meta description, one clean H1, and a real paragraph of Thai intro text above the grid — what the products are, that the factory makes them in house, that engraving is custom. Product pages inherited a template; the categories were written like landing pages, because that is what they were.'
+			text: 'Stock WooCommerce fights this. A category archive out of the box is a grid of thumbnails with [a templated title](https://developers.google.com/search/docs/appearance/title-link) and no crawlable copy at all. Each category on rs-trophy.com got a hand-written title, its own meta description, one clean H1, and a real paragraph of Thai intro text above the grid — what the products are, that the factory makes them in house, that engraving is custom. Product pages inherited a template; the categories were written like landing pages, because that is what they were.'
 		},
 		{
 			kind: 'code',

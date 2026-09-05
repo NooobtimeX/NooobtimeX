@@ -32,7 +32,7 @@ export const linksCheckBuildGate: PostDef = {
 		{ kind: 'h2', text: 'What it actually compares' },
 		{
 			kind: 'p',
-			text: 'The gate builds two sets and subtracts one from the other. The first is every path the build can serve. It comes from walking `.next/server/app` and reading the filenames — `.html` and `.body` files are the prerendered pages and static route handlers:'
+			text: 'The gate builds two sets and subtracts one from the other. The first is [every path the build can serve](https://nextjs.org/docs/app/api-reference/functions/generate-static-params). It comes from walking `.next/server/app` and reading the filenames — `.html` and `.body` files are the prerendered pages and static route handlers:'
 		},
 		{
 			kind: 'code',

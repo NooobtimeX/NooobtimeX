@@ -68,7 +68,7 @@ export const blogSystemAndJsonLdForAStorefront: PostDef = {
 		{ kind: 'h2', text: 'JSON-LD is the part that pays' },
 		{
 			kind: 'p',
-			text: "Structured data was the cheapest thing I built that week and the one I would keep if I could only keep one. It is not a feature; it is the page's own data, serialised in a shape a machine reads without guessing. The catalog already knew what a product was. The blog already knew what an article was. Emitting that as `application/ld+json` is a `JSON.stringify` away."
+			text: "[Structured data](https://developers.google.com/search/docs/appearance/structured-data/article) was the cheapest thing I built that week and the one I would keep if I could only keep one. It is not a feature; it is the page's own data, serialised in a shape a machine reads without guessing. The catalog already knew what a product was. The blog already knew what an article was. Emitting that as `application/ld+json` is a `JSON.stringify` away."
 		},
 		{
 			kind: 'code',

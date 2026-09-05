@@ -46,7 +46,7 @@ export const vmFleetToRailway: PostDef = {
 		{ kind: 'h2', text: 'Config as code, one service at a time' },
 		{
 			kind: 'p',
-			text: 'The move was deliberately boring: give every service a Dockerfile, point the platform at the repository, and let the build be the deploy. The Dockerfile becomes the single description of the runtime — base image, install, build, the command that starts the process — and it is reviewed like any other file, in the same pull request as the code that depends on it.'
+			text: 'The move was deliberately boring: give every service a Dockerfile, point the platform at the repository, and [let the build be the deploy](https://docs.railway.com/builds/dockerfiles). The Dockerfile becomes the single description of the runtime — base image, install, build, the command that starts the process — and it is reviewed like any other file, in the same pull request as the code that depends on it.'
 		},
 		{
 			kind: 'code',

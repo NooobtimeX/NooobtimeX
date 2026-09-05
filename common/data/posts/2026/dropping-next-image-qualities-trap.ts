@@ -39,7 +39,7 @@ export const droppingNextImageQualitiesTrap: PostDef = {
 		},
 		{
 			kind: 'p',
-			text: '`qualities` is not a preference. It is the list of quality values the optimizer is permitted to serve, and it exists so an attacker cannot walk your image endpoint through a hundred distinct re-encodes. Restricting it is the right instinct. Restricting it to a single value changes what it means.'
+			text: '`qualities` is not a preference. It is [the list of quality values the optimizer is permitted to serve](https://nextjs.org/docs/app/api-reference/components/image#qualities), and it exists so an attacker cannot walk your image endpoint through a hundred distinct re-encodes. Restricting it is the right instinct. Restricting it to a single value changes what it means.'
 		},
 		{
 			kind: 'p',

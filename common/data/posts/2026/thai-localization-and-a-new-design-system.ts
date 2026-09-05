@@ -39,7 +39,7 @@ export const thaiLocalizationAndANewDesignSystem: PostDef = {
 		},
 		{
 			kind: 'p',
-			text: 'None of that is fixable string by string. It is fixable exactly once, in the tokens the whole system reads from — which is why replacing the design system and localizing to Thai were not two projects that happened to collide. They were one project.'
+			text: 'None of that is fixable string by string. It is fixable exactly once, in [the tokens the whole system reads from](https://tailwindcss.com/docs/theme) — which is why replacing the design system and localizing to Thai were not two projects that happened to collide. They were one project.'
 		},
 		{
 			kind: 'code',

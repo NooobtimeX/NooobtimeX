@@ -75,7 +75,7 @@ export const prismaPostgresToMongodbMidBuild: PostDef = {
 		},
 		{
 			kind: 'p',
-			text: 'The migration itself was small, and I want to be clear that this is a fact about the project rather than about MongoDB. There were no foreign keys to unpick, no live traffic to cut over, no production data to preserve — the catalog is authored content. Swapping the storage layer on a read-mostly site with a single writer is a different exercise from swapping it under a running business, and nothing I learned that day transfers to the second case.'
+			text: 'The migration itself was small, and I want to be clear that this is a fact about the project rather than about [MongoDB](https://www.prisma.io/docs/orm/overview/databases/mongodb). There were no foreign keys to unpick, no live traffic to cut over, no production data to preserve — the catalog is authored content. Swapping the storage layer on a read-mostly site with a single writer is a different exercise from swapping it under a running business, and nothing I learned that day transfers to the second case.'
 		},
 		{
 			kind: 'stat',

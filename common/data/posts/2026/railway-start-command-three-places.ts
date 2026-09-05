@@ -19,7 +19,7 @@ export const railwayStartCommandThreePlaces: PostDef = {
 	body: [
 		{
 			kind: 'p',
-			text: 'When I moved [[project:portfolio]] onto [[skill:railway]] on 30 July 2026, the deploy configuration went into the repository as `railway.toml` rather than into the dashboard. That part was easy to decide: config-as-code overrides the dashboard, so there is exactly one place to look and it is in the diff.'
+			text: 'When I moved [[project:portfolio]] onto [[skill:railway]] on 30 July 2026, the deploy configuration went into the repository as `railway.toml` rather than into the dashboard. That part was easy to decide: [config-as-code overrides the dashboard](https://docs.railway.com/guides/config-as-code), so there is exactly one place to look and it is in the diff.'
 		},
 		{
 			kind: 'p',
