@@ -73,6 +73,19 @@ Also enforced: `https` only, non-empty title, no duplicate URL within a post.
 Never cite a blog aggregator, an SEO-farm rewrite, or a Stack Overflow answer when the
 doc it paraphrases exists.
 
+**Finding a real issue** — search the API, never guess a number:
+
+```bash
+curl -s "https://api.github.com/search/issues?q=$(python3 -c "import urllib.parse;print(urllib.parse.quote('repo:vercel/next.js notFound loading.tsx status 200 in:title,body type:issue'))")&per_page=5"
+```
+
+Then fetch the issue and read its title, body, state and author before citing it. An issue
+filed by **someone else** is worth more than one you filed: it is independent evidence the
+behaviour is real rather than a misconfiguration on this side, and it is worth saying so in
+the prose ("filed by someone I have never met"). If no issue matches the specific claim,
+cite nothing — an adjacent bug presented as the same one is a worse error than a missing
+link, because it reads as verified.
+
 ### Verification is mandatory
 
 ```bash

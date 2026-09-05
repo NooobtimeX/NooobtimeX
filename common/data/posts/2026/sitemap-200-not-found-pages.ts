@@ -26,7 +26,7 @@ export const sitemap200NotFoundPages: PostDef = {
 		{ kind: 'h2', text: 'A sitemap is a nomination, not an index' },
 		{
 			kind: 'p',
-			text: 'It is worth being precise about [what a sitemap does](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap), because it changes how bad this is. A sitemap does not describe your site — it **nominates** URLs. It tells a crawler that these specific addresses exist, are canonical enough to be worth fetching, and should be spent crawl budget on. That is why a broken entry is worse than a broken link: a broken link needs a crawler to find the page that carries it, while a sitemap entry skips discovery entirely. Mine handed over an error page and asked for it to be indexed.'
+			text: 'It is worth being precise about [what a sitemap does](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap), because it changes how bad this is. A sitemap does not describe your site — it **nominates** URLs. It tells a crawler that these specific addresses exist, are canonical enough to be worth fetching, and should be spent crawl budget on. That is why a broken entry is worse than a broken link: a broken link needs a crawler to find the page that carries it, while a sitemap entry skips discovery entirely. Mine handed over an error page and asked for it to be indexed. What a crawler then does with that is on the record: [vercel/next.js#79942](https://github.com/vercel/next.js/issues/79942) is dynamic routes being tagged soft 404 by Googlebot and left unindexed, reported by a stranger a year before my audit.'
 		},
 		{
 			kind: 'stat',
@@ -118,6 +118,10 @@ export const sitemap200NotFoundPages: PostDef = {
 		}
 	],
 	sources: [
+		{
+			title: 'vercel/next.js#79942 — Soft 404 on dynamic routes (Googlebot indexing)',
+			url: 'https://github.com/vercel/next.js/issues/79942'
+		},
 		{
 			title: 'Next.js — sitemap.ts file convention',
 			url: 'https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap'

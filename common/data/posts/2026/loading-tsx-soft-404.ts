@@ -37,7 +37,7 @@ export const loadingTsxSoft404: PostDef = {
 		},
 		{
 			kind: 'p',
-			text: 'Streaming is the trap. To send that shell before the page is ready, Next must flush the response headers immediately — and it flushes them with status **200**, because at that moment nothing has gone wrong yet. When my page component then looked up the slug, found nothing, and called `notFound()`, the status was already on the wire. Next did the only thing it still could: render the 404 UI into the body of an already-committed 200.'
+			text: 'Streaming is the trap. To send that shell before the page is ready, Next must flush the response headers immediately — and it flushes them with status **200**, because at that moment nothing has gone wrong yet. When my page component then looked up the slug, found nothing, and called `notFound()`, the status was already on the wire. Next did the only thing it still could: render the 404 UI into the body of an already-committed 200. This is not something peculiar to my setup: [vercel/next.js#93253](https://github.com/vercel/next.js/issues/93253) reports exactly it — `notFound()` answering 200 whenever a sibling `loading.tsx` is present — filed by someone I have never met, against a canary I was not running.'
 		},
 		{
 			kind: 'p',
@@ -115,6 +115,14 @@ export const loadingTsxSoft404: PostDef = {
 		}
 	],
 	sources: [
+		{
+			title: 'vercel/next.js#93253 — notFound() returns HTTP 200 when a sibling loading.tsx is present',
+			url: 'https://github.com/vercel/next.js/issues/93253'
+		},
+		{
+			title: 'vercel/next.js#93238 — HTTPAccessFallbackBoundary swallows the notFound() status code',
+			url: 'https://github.com/vercel/next.js/issues/93238'
+		},
 		{
 			title: 'Next.js — loading.js file convention',
 			url: 'https://nextjs.org/docs/app/api-reference/file-conventions/loading'
